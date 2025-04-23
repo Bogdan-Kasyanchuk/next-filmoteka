@@ -1,0 +1,55 @@
+{
+    "extends": [
+        "stylelint-config-standard",
+        "stylelint-config-clean-order",
+        "stylelint-config-tailwindcss"
+    ],
+    "plugins": [
+        "@stylistic/stylelint-plugin"
+    ],
+    "rules": {
+        "@stylistic/indentation": 4,
+        "@stylistic/no-eol-whitespace": true,
+        "@stylistic/string-quotes": "single",
+        "@stylistic/block-closing-brace-empty-line-before": "never",
+        "@stylistic/block-opening-brace-space-before": "always",
+        "@stylistic/max-empty-lines": 1,
+        "declaration-block-no-redundant-longhand-properties": null,
+        "selector-class-pattern": null,
+        "media-query-no-invalid": null,
+        "alpha-value-notation": "number",
+        "color-function-notation": "legacy",
+        "value-keyword-case": [
+            "lower",
+            {
+                "ignoreFunctions": [
+                    "theme"
+                ],
+                "ignoreProperties": [
+                    "background-color"
+                ]
+            }
+        ],
+        "at-rule-no-unknown": [
+            true,
+            {
+                "ignoreAtRules": [
+                    "theme",
+                    "mixin",
+                    "include",
+                    "screen",
+                    "if",
+                    "define-mixin"
+                ]
+            }
+        ],
+        "unit-no-unknown": [
+            true,
+            {
+                "ignoreFunctions": [
+                    "theme"
+                ]
+            }
+        ]
+    }
+}
