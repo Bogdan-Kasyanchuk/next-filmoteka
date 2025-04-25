@@ -1,0 +1,33 @@
+*,
+*::before,
+*::after {
+    transition-timing-function: linear;
+    transition-duration: 150ms;
+}
+
+html {
+    height: 100%;
+    min-height: 100vh;
+}
+
+body {
+    scroll-behavior: smooth;
+
+    display: flex;
+    flex-direction: column;
+
+    height: 100%;
+
+    line-height: 1.25;
+    color: var(--color-foreground);
+
+    background-color: var(--color-background);
+}
+
+main {
+    height: 100%;
+}
+
+button {
+    cursor: pointer;
+}
