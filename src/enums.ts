@@ -1,11 +1,23 @@
-// export enum StatisticCardType {
-//     DARK = 'dark',
-//     GRADIENT = 'gradient',
-// }
+export enum ResourseType {
+    MOVIE = 'movie',
+    TV = 'tv',
+}
 
-// export enum CompanyStatusType {
-//     ACTIVE = 'active',
-//     NOT_ACTIVE = 'notActive',
-//     PENDING = 'pending',
-//     SUSPENDED = 'suspended',
-// }
+export enum TimeType {
+    DAY = 'day',
+    WEEK = 'week',
+}
+
+export enum MovieType {
+    NOW_PLAYING = 'now_playing',
+    POPULAR = 'popular',
+    TOP_RATED = 'top_rated',
+    UPCOMING = 'upcoming',
+}
+
+export enum TVType {
+    AIRING_TODAY = 'airing_today',
+    ON_THE_AIR = 'on_the_air',
+    POPULAR = 'popular',
+    TOP_RATED = 'top_rated',
+}
