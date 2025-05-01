@@ -1,4 +1,21 @@
+/* Tailwind */
 @import 'tailwindcss';
-@import './theme.css';
-@import './reset.css';
-@import './page.css';
+@import './theme/base.css';
+
+/* App */
+@import './app/reset.css' layer(base);
+
+/* Utilities */
+@import './utilities/base.css' layer(base);
+
+/* Components */
+
+/* @import './components/icon.css' layer(base); */
+
+/* Parts */
+@import './parts/header/header.css' layer(base);
+@import './parts/footer/footer.css' layer(base);
+
+/* Layouts */
+@import './layouts/page.css' layer(base);
+@import './layouts/container.css' layer(base);

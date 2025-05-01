@@ -19,27 +19,27 @@
         "media-query-no-invalid": null,
         "alpha-value-notation": "number",
         "color-function-notation": "legacy",
-        "value-keyword-case": [
-            "lower",
-            {
-                "ignoreFunctions": [
-                    "theme"
-                ],
-                "ignoreProperties": [
-                    "background-color"
-                ]
-            }
-        ],
         "at-rule-no-unknown": [
             true,
             {
                 "ignoreAtRules": [
                     "theme",
+                    "screen",
+                    "utility",
+                    "variant",
                     "mixin",
                     "include",
-                    "screen",
                     "if",
+                    "else",
                     "define-mixin"
+                ]
+            }
+        ],
+        "at-rule-no-deprecated": [
+            true,
+            {
+                "ignoreAtRules": [
+                    "apply"
                 ]
             }
         ],

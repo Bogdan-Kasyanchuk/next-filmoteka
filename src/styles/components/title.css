@@ -1,0 +1,71 @@
+/* .c-title {
+    line-height: 1;
+
+    &--1 {
+        font-size: theme('fontSize.7xl');
+
+        @media (screen(md)) {
+            font-size: theme('fontSize.8xl');
+        }
+
+        @media (screen(lg)) {
+            font-size: theme('fontSize.9xl');
+        }
+
+        @media (screen(xl)) {
+            font-size: theme('fontSize.10xl');
+        }
+    }
+
+    &--2 {
+        font-size: theme('fontSize.7xl');
+
+        @media (screen(lg)) {
+            font-size: theme('fontSize.8xl');
+        }
+    }
+
+    &--3 {
+        font-size: theme('fontSize.5xl');
+
+        @media (screen(lg)) {
+            font-size: theme('fontSize.7xl');
+        }
+    }
+
+    &--4 {
+        font-size: theme('fontSize.3xl');
+
+        @media (screen(lg)) {
+            font-size: theme('fontSize.6xl');
+        }
+    }
+
+    &--5 {
+        font-size: theme('fontSize.2xl');
+
+        @media (screen(md)) {
+            font-size: theme('fontSize.5xl');
+        }
+    }
+
+    &--6 {
+        font-size: theme('fontSize.xl');
+
+        @media (screen(md)) {
+            font-size: theme('fontSize.4xl');
+        }
+    }
+
+    &--uppercase {
+        text-transform: uppercase;
+    }
+
+    &--bold {
+        font-weight: 700;
+    }
+
+    &--center {
+        text-align: center;
+    }
+} */

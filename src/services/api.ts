@@ -1,12 +1,12 @@
-import { MovieType, ResourseType, TimeType, TVType } from "@/enums";
+import { MovieType, ResourseType, TimeType, TVType } from '@/enums';
 
 const parameters = {
     API_KEY: process.env.NEXT_PUBLIC_API_KEY,
     BASE_URL: process.env.NEXT_PUBLIC_BASE_URL,
+    LOCALE: process.env.NEXT_PUBLIC_LOCALE,
 };
 
-const { API_KEY, BASE_URL, } = parameters;
-const LOCALE = 'en-US';
+const { API_KEY, BASE_URL, LOCALE } = parameters;
 
 async function fetchApi<T>(url: string) {
     const response = await fetch(url);

@@ -1,0 +1,39 @@
+.i-icon {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+
+    &--mono {
+        background-color: currentcolor;
+
+        mask-image: var(--icon-path);
+
+        mask-position: center;
+
+        mask-repeat: no-repeat;
+        mask-size: contain;
+    }
+
+    &--color {
+        background-image: var(--icon-path);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+    }
+}
+
+.i-icon--home {
+    --icon-path: url('./svg/home.svg');
+}
+
+.i-icon--movie {
+    --icon-path: url('./svg/movie.svg');
+}
+
+.i-icon--tv {
+    --icon-path: url('./svg/tv.svg');
+}
+
+.i-icon--video {
+    --icon-path: url('./svg/video.svg');
+}

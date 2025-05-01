@@ -1,0 +1,17 @@
+.u-link-overlay[href] {
+    transition-property: opacity;
+
+    &::before {
+        content: '';
+
+        position: absolute;
+        z-index: 1;
+        inset: 0;
+
+        display: block;
+    }
+
+    &:hover {
+        opacity: 0.75;
+    }
+}

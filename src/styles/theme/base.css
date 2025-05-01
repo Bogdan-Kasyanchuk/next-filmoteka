@@ -1,0 +1,62 @@
+@theme {
+    --color-primary: #fff;
+    --color-secondary: #111;
+    --color-accent: #18819e;
+    --color-accent-hover: #08587d;
+    --color-success: #38c550;
+    --color-warning: #ffc107;
+    --color-danger: #fe0000;
+    --color-bg-body: #555;
+}
+
+@utility u-link {
+    color: red;
+
+    /* color: theme('colors.accent'); */
+    text-decoration: none;
+    transition-property: opacity;
+
+    &:visited {
+        /* color: theme('colors.link-visited'); */
+    }
+
+    @media (any-hover: hover) {
+        &:hover {
+            opacity: 0.75;
+        }
+    }
+}
+
+@utility u-hide-scroll-bar {
+    scrollbar-color: transparent transparent;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+
+    &::-webkit-scrollbar-track {
+        display: none;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        display: none;
+    }
+}
+
+@utility u-scroll {
+    overflow-x: auto;
+    overflow-y: hidden;
+    display: flex;
+
+    width: calc(100% + 40px);
+    margin-inline: -20px;
+
+    &::after,
+    &::before {
+        content: '';
+        display: block;
+        flex-shrink: 0;
+        width: 20px;
+    }
+}
