@@ -42,15 +42,16 @@ export default function Navigation() {
                             >
                                 <Link
                                     href={link.href}
-                                    className=''
+                                    className='c-navigation__link u-link'
                                 >
                                     <Image
-                                        width={24}
-                                        height={24}
+                                        width={30}
+                                        height={30}
                                         src={link.icon}
                                         alt={link.name}
+                                        className='c-navigation__img'
                                     />
-                                    <span className=''>{link.name}</span>
+                                    <span className='c-navigation__text'>{link.name}</span>
                                 </Link>
                             </li>
                         )

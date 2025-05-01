@@ -33,7 +33,3 @@
 .i-icon--tv {
     --icon-path: url('./svg/tv.svg');
 }
-
-.i-icon--video {
-    --icon-path: url('./svg/video.svg');
-}

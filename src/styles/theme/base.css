@@ -10,9 +10,6 @@
 }
 
 @utility u-link {
-    color: red;
-
-    /* color: theme('colors.accent'); */
     text-decoration: none;
     transition-property: opacity;
 

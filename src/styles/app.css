@@ -10,8 +10,6 @@
 
 /* Components */
 
-/* @import './components/icon.css' layer(base); */
-
 /* Parts */
 @import './parts/header/header.css' layer(base);
 @import './parts/footer/footer.css' layer(base);
