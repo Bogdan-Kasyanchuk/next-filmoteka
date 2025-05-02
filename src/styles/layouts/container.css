@@ -1,4 +1,4 @@
-/* .l-container {
+.l-container {
     @apply container;
 
     --gap: 20px;
@@ -14,28 +14,20 @@
     }
 
     &--small {
-        @media (screen(lg)) {
-            max-width: 728px;
-        }
-
-        @media (screen(xxxl)) {
-            max-width: 810px;
+        @variant min-md {
+            max-width: var(--breakpoint-md);
         }
     }
 
     &--medium {
-        @media (screen(xl)) {
-            max-width: 984px;
-        }
-
-        @media (screen(xxl)) {
-            max-width: 1150px;
+        @variant min-lg {
+            max-width: var(--breakpoint-lg);
         }
     }
 
     &--large {
-        @media (screen(xl)) {
-            max-width: 1200px;
+        @variant min-xl {
+            max-width: var(--breakpoint-xl);
         }
     }
 
@@ -44,4 +36,4 @@
         margin-inline: auto;
         padding-inline: var(--gap);
     }
-} */
+}

@@ -32,17 +32,14 @@ export default function Navigation() {
                 {
                     links.map(
                         (link) => (
-                            <li
-                                key={link.name}
-                                className={
-                                    clsx('c-navigation__item', {
-                                        'c-navigation__item--active': pathname === link.href,
-                                    })
-                                }
-                            >
+                            <li key={link.name}>
                                 <Link
                                     href={link.href}
-                                    className='c-navigation__link u-link'
+                                    className={
+                                        clsx('c-navigation__link', {
+                                            'c-navigation__link--is-active': pathname === link.href,
+                                        })
+                                    }
                                 >
                                     <Image
                                         width={30}
@@ -51,7 +48,7 @@ export default function Navigation() {
                                         alt={link.name}
                                         className='c-navigation__img'
                                     />
-                                    <span className='c-navigation__text'>{link.name}</span>
+                                    {link.name}
                                 </Link>
                             </li>
                         )

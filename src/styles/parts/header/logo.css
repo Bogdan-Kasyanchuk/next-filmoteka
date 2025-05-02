@@ -6,7 +6,7 @@
 
     color: var(--color-accent);
 
-    .c-logo__img {
+    &__img {
         width: auto;
         height: 36px;
 
@@ -15,10 +15,10 @@
         }
     }
 
-    .c-logo__text {
+    &__text {
         display: none;
 
-        font-size: var(--text-3xl);
+        font-size: var(--text-5xl);
         font-weight: 500;
         line-height: 1;
         text-transform: uppercase;
