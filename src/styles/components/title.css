@@ -1,5 +1,6 @@
 .c-title {
     line-height: 1;
+    color: var(--color-primary);
 
     &--2 {
         font-size: var(--text-5xl);

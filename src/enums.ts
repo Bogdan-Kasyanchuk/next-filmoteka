@@ -1,4 +1,4 @@
-export enum ResourceType {
+export enum MediaType {
     MOVIE = 'movie',
     TV = 'tv',
 }

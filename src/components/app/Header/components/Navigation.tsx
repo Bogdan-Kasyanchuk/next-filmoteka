@@ -18,7 +18,7 @@ const links = [
     },
     {
         name: 'TV',
-        href: '/tvs',
+        href: '/tv',
         icon: './svg/tv.svg',
     },
 ];

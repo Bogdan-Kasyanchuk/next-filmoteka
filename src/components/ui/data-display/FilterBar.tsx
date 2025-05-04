@@ -1,20 +1,27 @@
-type Props = {
+import clsx from 'clsx';
+
+type Props<T> = {
     filters: Array<{
         label: string,
-        value: string
+        value: T
     }>
-    onClick: (value: string) => void
+    active: T,
+    onClick: (value: T) => void
 }
 
-export default function FilterBar(props: Props) {
+export default function FilterBar<T>(props: Props<T>) {
     return (
-        <ul className="">
+        <ul className="c-filter-bar">
             {
                 props.filters.map(
-                    filter => (
+                    (filter, index) => (
                         <li
-                            key={filter.value}
-                            className=""
+                            key={index}
+                            className={
+                                clsx('c-filter-bar__item', {
+                                    'c-filter-bar__item--is-active': filter.value === props.active,
+                                })
+                            }
                             onClick={
                                 () => {
                                     props.onClick(filter.value);

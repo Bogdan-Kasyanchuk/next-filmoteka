@@ -11,6 +11,9 @@
 /* Components */
 @import './components/title.css' layer(base);
 @import './components/filter-bar.css' layer(base);
+@import './components/loader.css' layer(base);
+@import './components/cards/movie-card.css' layer(base);
+@import './components/cards/tv-card.css' layer(base);
 
 /* Parts */
 @import './parts/header/header.css' layer(base);

@@ -3,6 +3,7 @@
 
 .c-header {
     position: sticky;
+    z-index: 5;
     top: 0;
 
     padding-block: 15px;

@@ -1,66 +1,44 @@
-// import PropTypes from 'prop-types';
-// import { Link, useLocation } from 'react-router-dom';
-// import PosterNotAvailable from 'images/poster-not-available.jpg';
-// import styles from './MovieCard.module.css';
+import Image from 'next/image';
+import Link from 'next/link';
 
-// const MovieCard = ({ element, url }) => {
-//   const location = useLocation();
+import { TVMapper } from '@/types';
 
-//   const {
-//     poster_path,
-//     title,
-//     original_title,
-//     name,
-//     original_name,
-//     vote_average,
-//   } = element;
+type Props = {
+    tv: TVMapper
+}
 
-//   const normalizedTitle =
-//     title || original_title ? title || original_title : name || original_name;
+export default function MovieCard(props: Props) {
+    const normalizedTitle = props.tv.name || props.tv.original_name;
 
-//   return (
-//     <li className={styles['movie-card']}>
-//       <Link
-//         className={styles['movie-card-link']}
-//         to={{
-//           pathname: `${url}/${element.id}`,
-//           state: { from: location },
-//         }}
-//       >
-//         <div className={styles['movie-card-wrapper-img']}>
-//           <img
-//             className={styles['movie-card-img']}
-//             src={
-//               poster_path
-//                 ? `https://image.tmdb.org/t/p/w500${poster_path}`
-//                 : PosterNotAvailable
-//             }
-//             alt={normalizedTitle}
-//           />
-//         </div>
-//         <div className={styles['movie-card-description']}>
-//           <p className={styles['movie-card-description-title']}>
-//             {normalizedTitle}
-//           </p>
-//           <p className={styles['movie-card-description-average']}>
-//             {vote_average}
-//           </p>
-//         </div>
-//       </Link>
-//     </li>
-//   );
-// };
+    return (
+        <Link
+            href={`/tv/${props.tv.id}`}
+            className='с-tv-card'
+        >
+            <div className='с-tv-card__cover'>
+                <Image
+                    fill
+                    src={
+                        props.tv.poster_path
+                            ? `${process.env.NEXT_PUBLIC_BASE_URL_IMG}${props.tv.poster_path}`
+                            : './img/poster-not-available.jpg'
+                    }
+                    alt={normalizedTitle}
+                />
+            </div>
 
-// MovieCard.propTypes = {
-//   element: PropTypes.shape({
-//     poster_path: PropTypes.string,
-//     title: PropTypes.string,
-//     original_title: PropTypes.string,
-//     name: PropTypes.string,
-//     original_name: PropTypes.string,
-//     vote_average: PropTypes.number,
-//   }),
-//   url: PropTypes.string.isRequired,
-// };
+            <div className='с-tv-card__tag'>
+                {props.tv.media_type}
+            </div>
 
-// export default MovieCard;
+            <div className='с-tv-card__footer'>
+                <p className='с-tv-card__footer-title'>
+                    {normalizedTitle}
+                </p>
+                <p className='с-tv-card__footer-average'>
+                    {props.tv.vote_average}
+                </p>
+            </div>
+        </Link>
+    );
+};

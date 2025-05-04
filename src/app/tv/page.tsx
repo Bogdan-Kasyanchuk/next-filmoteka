@@ -4,16 +4,15 @@ import Loader from '@/components/ui/data-display/Loader';
 import Container from '@/components/ui/layouts/Container';
 import Title from '@/components/ui/typography/Title';
 import { TVS } from '@/mock/data';
-import { MOVIES } from '@/mock/data';
 
 import Filters from './_components/Filters/Filters';
 import MediaList from './_components/MediaList';
 
 import './_styles/index.css';
 
-export default function Home() {
+export default function Movie() {
     return (
-        <Container className='p-home'>
+        <Container className='p-tvs'>
             <Filters />
 
             <Title
@@ -21,11 +20,11 @@ export default function Home() {
                 bold
                 uppercase
             >
-                Trending today
+                TVS
             </Title>
 
             <Suspense fallback={<Loader />}>
-                <MediaList items={[...MOVIES, ...TVS]} />
+                <MediaList items={TVS} />
             </Suspense>
         </Container>
     );

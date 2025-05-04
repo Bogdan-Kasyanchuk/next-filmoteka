@@ -2,7 +2,7 @@ export default function Home() {
     return (
         <div className='flex flex-col items-center justify-center h-full gap-10'>
             <h1 className='text-6xl text-center'>
-                tvs-id
+                tv-id
             </h1>
         </div>
     );

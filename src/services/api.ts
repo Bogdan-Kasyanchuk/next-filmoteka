@@ -1,4 +1,4 @@
-import { MovieType, ResourceType, TimeType, TVType } from '@/enums';
+import { MovieType, MediaType, TimeType, TVType } from '@/enums';
 
 const parameters = {
     API_KEY: process.env.NEXT_PUBLIC_API_KEY,
@@ -18,7 +18,7 @@ async function fetchApi<T>(url: string) {
     return (await response.json()) as T;
 }
 
-export function getTrendings(type: 'all' | ResourceType, time: TimeType, page: number) {
+export function getTrendings(type: 'all' | MediaType, time: TimeType, page: number) {
     return fetchApi(`${BASE_URL}/trending/${type}/${time}?api_key=${API_KEY}&page=${page}`);
 }
 
@@ -30,35 +30,35 @@ export function getTVs(type: TVType, page: number) {
     return fetchApi(`${BASE_URL}/tv/${type}?api_key=${API_KEY}&page=${page}`);
 }
 
-export function getItemById(type: ResourceType, id: string) {
+export function getItemById(type: MediaType, id: string) {
     return fetchApi(`${BASE_URL}/${type}/${id}?api_key=${API_KEY}&language=${LOCALE}`);
 }
 
-export function getSearchs(type: ResourceType, query: string, page: number) {
+export function getSearchs(type: MediaType, query: string, page: number) {
     return fetchApi(
         `${BASE_URL}/search/${type}?api_key=${API_KEY}&language=${LOCALE}&query=${query}&page=${page}&include_adult=false`,
     );
 }
 
-export function getCredits(type: ResourceType, id: string) {
+export function getCredits(type: MediaType, id: string) {
     return fetchApi(
         `${BASE_URL}/${type}/${id}/credits?api_key=${API_KEY}&language=${LOCALE}`,
     );
 }
 
-export function getReviews(type: ResourceType, id: string, page: number) {
+export function getReviews(type: MediaType, id: string, page: number) {
     return fetchApi(
         `${BASE_URL}/${type}/${id}/reviews?api_key=${API_KEY}&language=${LOCALE}&page=${page}`,
     );
 }
 
-export function getSimilars(type: ResourceType, id: string, page: number) {
+export function getSimilars(type: MediaType, id: string, page: number) {
     return fetchApi(
         `${BASE_URL}/${type}/${id}/similar?api_key=${API_KEY}&language=${LOCALE}&page=${page}`,
     );
 }
 
-export function getVideos(type: ResourceType, id: string, page: number) {
+export function getVideos(type: MediaType, id: string, page: number) {
     return fetchApi(
         `${BASE_URL}/${type}/${id}/videos?api_key=${API_KEY}&language=${LOCALE}&page=${page}`,
     );
