@@ -21,7 +21,7 @@ export default function TVCard(props: Props) {
                     src={
                         props.tv.poster_path
                             ? `${process.env.NEXT_PUBLIC_BASE_URL_IMG}${props.tv.poster_path}`
-                            : './img/poster-not-available.jpg'
+                            : '/img/poster-not-available.jpg'
                     }
                     alt={normalizedTitle}
                 />

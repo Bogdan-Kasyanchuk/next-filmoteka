@@ -10,7 +10,7 @@ export default function Logo() {
             <Image
                 width={46}
                 height={46}
-                src='./svg/logo.svg'
+                src='/svg/logo.svg'
                 alt='Logo'
                 className='c-logo__img'
             />

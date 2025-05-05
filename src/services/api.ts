@@ -1,4 +1,5 @@
 import { MovieType, MediaType, TimeType, TVType } from '@/enums';
+import { MediaShema, MovieShema, TVShema } from '@/types';
 
 const parameters = {
     API_KEY: process.env.NEXT_PUBLIC_API_KEY,
@@ -19,7 +20,7 @@ async function fetchApi<T>(url: string) {
 }
 
 export function getTrendings(type: 'all' | MediaType, time: TimeType, page: number) {
-    return fetchApi(`${BASE_URL}/trending/${type}/${time}?api_key=${API_KEY}&page=${page}`);
+    return fetchApi<MediaShema<MovieShema> | MediaShema<TVShema>>(`${BASE_URL}/trending/${type}/${time}?api_key=${API_KEY}&page=${page}`);
 }
 
 export function getMovies(type: MovieType, page: number) {

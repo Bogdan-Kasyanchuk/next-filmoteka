@@ -22,7 +22,7 @@ export default function MovieCard(props: Props) {
                     src={
                         props.movie.poster_path
                             ? `${process.env.NEXT_PUBLIC_BASE_URL_IMG}${props.movie.poster_path}`
-                            : './img/poster-not-available.jpg'
+                            : '/img/poster-not-available.jpg'
                     }
                     alt={normalizedTitle}
                 />

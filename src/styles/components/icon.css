@@ -22,14 +22,6 @@
     }
 }
 
-.i-icon--home {
-    --icon-path: url('./svg/home.svg');
-}
-
-.i-icon--movie {
-    --icon-path: url('./svg/movie.svg');
-}
-
-.i-icon--tv {
-    --icon-path: url('./svg/tv.svg');
+.i-icon--angle {
+    --icon-path: url('/svg/angle.svg');
 }

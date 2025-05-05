@@ -9,6 +9,8 @@
 @import './utilities/base.css' layer(base);
 
 /* Components */
+@import './components/icon.css' layer(base);
+@import './components/pagination.css' layer(base);
 @import './components/title.css' layer(base);
 @import './components/tabs.css' layer(base);
 @import './components/loader.css' layer(base);

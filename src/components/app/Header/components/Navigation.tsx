@@ -9,17 +9,17 @@ const links = [
     {
         name: 'Home',
         href: '/',
-        icon: './svg/home.svg',
+        icon: '/svg/home.svg',
     },
     {
         name: 'Movies',
         href: '/movies',
-        icon: './svg/movie.svg',
+        icon: '/svg/movie.svg',
     },
     {
         name: 'TV',
         href: '/tv',
-        icon: './svg/tv.svg',
+        icon: '/svg/tv.svg',
     },
 ];
 
