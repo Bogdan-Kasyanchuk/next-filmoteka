@@ -7,7 +7,7 @@ type Props = {
     tv: TVMapper
 }
 
-export default function MovieCard(props: Props) {
+export default function TVCard(props: Props) {
     const normalizedTitle = props.tv.name || props.tv.original_name;
 
     return (

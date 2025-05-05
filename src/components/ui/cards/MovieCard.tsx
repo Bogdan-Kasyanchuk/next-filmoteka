@@ -18,6 +18,7 @@ export default function MovieCard(props: Props) {
             <div className='с-movie-card__cover'>
                 <Image
                     fill
+                    sizes="294px"
                     src={
                         props.movie.poster_path
                             ? `${process.env.NEXT_PUBLIC_BASE_URL_IMG}${props.movie.poster_path}`

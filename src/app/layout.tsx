@@ -6,6 +6,7 @@ import Footer from '@/components/app/Footer';
 import Header from '@/components/app/Header';
 
 import '@/styles/app.css';
+import Providers from './providers';
 
 const font = Plus_Jakarta_Sans({ subsets: ['latin'] });
 
@@ -22,11 +23,13 @@ export default function Layout(props: Props) {
     return (
         <html lang='en'>
             <body className={font.className}>
-                <Header />
+                <Providers>
+                    <Header />
 
-                <main>{props.children}</main>
+                    <main>{props.children}</main>
 
-                <Footer />
+                    <Footer />
+                </Providers>
             </body>
         </html>
     );

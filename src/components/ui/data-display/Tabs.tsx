@@ -9,17 +9,17 @@ type Props<T> = {
     onClick: (value: T) => void
 }
 
-export default function FilterBar<T>(props: Props<T>) {
+export default function Tabs<T>(props: Props<T>) {
     return (
-        <ul className="c-filter-bar">
+        <ul className="c-tabs">
             {
                 props.filters.map(
                     (filter, index) => (
                         <li
                             key={index}
                             className={
-                                clsx('c-filter-bar__item', {
-                                    'c-filter-bar__item--is-active': filter.value === props.active,
+                                clsx('c-tabs__item', {
+                                    'c-tabs__item--is-active': filter.value === props.active,
                                 })
                             }
                             onClick={
