@@ -1,14 +1,14 @@
 .p-home {
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    row-gap: 20px;
     align-items: center;
 
     &__filters {
         display: flex;
         flex-wrap: wrap;
         row-gap: 20px;
-        column-gap: 100px;
+        column-gap: 80px;
         align-items: center;
         justify-content: center;
     }
@@ -16,18 +16,44 @@
     &__content {
         display: flex;
         flex-direction: column;
-        row-gap: 40px;
+        row-gap: 20px;
         align-items: center;
 
         width: 100%;
+
+        @media (width >= 768px) {
+            row-gap: 30px;
+        }
     }
 
     &__media-list {
         display: grid;
-        grid-gap: 20px;
-        grid-template-columns: repeat(auto-fill, 296px);
+        grid-gap: 5px;
+        grid-template-columns: repeat(auto-fill, 175px);
         justify-content: center;
 
-        width: 100%;
+        width: calc(100% + 20px);
+        margin-inline: -10px;
+
+        @media (width >= 480px) {
+            grid-gap: 10px;
+            grid-template-columns: repeat(auto-fill, 215px);
+            width: 100%;
+            margin-inline: 0;
+        }
+
+        @media (width >= 768px) {
+            grid-gap: 15px;
+            grid-template-columns: repeat(auto-fill, 232px);
+        }
+
+        @media (width >= 1024px) {
+            grid-gap: 20px;
+            grid-template-columns: repeat(auto-fill, 296px);
+        }
+    }
+
+    @media (width >= 768px) {
+        row-gap: 30px;
     }
 }

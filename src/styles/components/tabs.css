@@ -1,20 +1,24 @@
 .c-tabs {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
+    gap: 10px;
     align-items: center;
     justify-content: center;
+
+    @variant min-md {
+        gap: 20px
+    }
 
     &__item {
         cursor: pointer;
 
         flex-shrink: 0;
 
-        padding: 9px 18px;
+        padding: 6px 12px;
         border: 1px solid transparent;
         border-radius: 2px;
 
-        font-size: var(--text-lg);
+        font-size: var(--text-sm);
         font-weight: 700;
         line-height: 1;
         color: var(--color-primary);
@@ -23,6 +27,11 @@
         background-color: var(--color-accent);
 
         transition-property: border-color, background-color;
+
+        @variant min-md {
+            padding: 9px 18px;
+            font-size: var(--text-lg);
+        }
 
         &:hover,
         &--is-active {
