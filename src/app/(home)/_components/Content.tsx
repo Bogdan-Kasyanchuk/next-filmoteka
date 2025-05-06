@@ -1,7 +1,6 @@
 'use client';
 
-import { useQuery } from '@tanstack/react-query';
-import { useSearchParams } from 'next/navigation';
+import { keepPreviousData, useQuery } from '@tanstack/react-query';
 
 import MovieCard from '@/components/ui/cards/MovieCard';
 import TVCard from '@/components/ui/cards/TVCard';
@@ -11,15 +10,19 @@ import { MediaType, TimeType } from '@/enums';
 import { getTrendings } from '@/services/api';
 import { MovieMapper, TVMapper } from '@/types';
 
-export default function Content() {
-    const searchParams = useSearchParams();
-    const currentPage = Number(searchParams.get('page')) || 1;
+type Props = {
+    type: 'all' | MediaType;
+    time: TimeType;
+    currentPage: number,
+}
 
+export default function Content(props: Props) {
     const { data, isFetching } = useQuery({
-        queryKey: ['trendings', currentPage],
-        queryFn: () => getTrendings('all', TimeType.DAY, currentPage),
+        queryKey: ['trendings', props.currentPage],
+        queryFn: () => getTrendings(props.type, props.time, props.currentPage),
+        placeholderData: keepPreviousData,
         select: (data) => {
-            const transformedResults = data.results.map(
+            const transformedResults = data.results.map<MovieMapper | TVMapper>(
                 (result) => {
                     if (result.media_type === MediaType.MOVIE) {
                         return {
@@ -40,7 +43,7 @@ export default function Content() {
                             vote_average: result.vote_average,
                         };
                     }
-                }) as Array<MovieMapper | TVMapper>;
+                });
 
             return {
                 results: transformedResults,
@@ -59,12 +62,12 @@ export default function Content() {
                             <ul className='p-home__media-list'>
                                 {
                                     data.results.map(
-                                        (item) => (
-                                            <li key={item.id}>
+                                        (result) => (
+                                            <li key={result.id}>
                                                 {
-                                                    item.media_type === MediaType.MOVIE
-                                                        ? <MovieCard movie={item} />
-                                                        : <TVCard tv={item} />
+                                                    result.media_type === MediaType.MOVIE
+                                                        ? <MovieCard movie={result} />
+                                                        : <TVCard tv={result} />
                                                 }
                                             </li>
                                         )
@@ -73,7 +76,7 @@ export default function Content() {
                             </ul>
 
                             <Pagination
-                                currentPage={currentPage}
+                                currentPage={props.currentPage}
                                 totalPages={data.total_pages}
                             />
                         </div>

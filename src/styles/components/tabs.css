@@ -1,10 +1,14 @@
 .c-tabs {
     display: flex;
+    flex-wrap: wrap;
     gap: 20px;
     align-items: center;
+    justify-content: center;
 
     &__item {
         cursor: pointer;
+
+        flex-shrink: 0;
 
         padding: 9px 18px;
         border: 1px solid transparent;

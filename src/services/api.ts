@@ -24,11 +24,11 @@ export function getTrendings(type: 'all' | MediaType, time: TimeType, page: numb
 }
 
 export function getMovies(type: MovieType, page: number) {
-    return fetchApi(`${BASE_URL}/movie/${type}?api_key=${API_KEY}&page=${page}`);
+    return fetchApi<MediaShema<MovieShema>>(`${BASE_URL}/movie/${type}?api_key=${API_KEY}&page=${page}`);
 }
 
 export function getTVs(type: TVType, page: number) {
-    return fetchApi(`${BASE_URL}/tv/${type}?api_key=${API_KEY}&page=${page}`);
+    return fetchApi<MediaShema<TVShema>>(`${BASE_URL}/tv/${type}?api_key=${API_KEY}&page=${page}`);
 }
 
 export function getItemById(type: MediaType, id: string) {

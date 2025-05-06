@@ -17,12 +17,12 @@ export type MovieShema = {
     overview: string,
     poster_path: string,
     media_type: MediaType.MOVIE,
-    genre_ids: number[],
     popularity: number,
     release_date: string,
     video: boolean,
     vote_average: number,
     vote_count: number,
+    genre_ids: number[],
 };
 
 export type TVShema = {
@@ -35,11 +35,11 @@ export type TVShema = {
     overview: string,
     poster_path: string,
     media_type: MediaType.TV,
-    genre_ids: number[],
     popularity: number,
     first_air_date: string,
     vote_average: number,
     vote_count: number,
+    genre_ids: number[],
     origin_country: string[],
 };
 
@@ -58,7 +58,7 @@ export type TVMapper = {
     original_name: string,
     poster_path: string,
     media_type: MediaType.TV,
-    vote_average: 6.655,
+    vote_average: number,
 };
 
 export type MovieDetailsMapper = {

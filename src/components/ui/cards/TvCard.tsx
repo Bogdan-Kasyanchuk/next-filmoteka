@@ -17,13 +17,14 @@ export default function TVCard(props: Props) {
         >
             <div className='с-tv-card__cover'>
                 <Image
-                    fill
                     src={
                         props.tv.poster_path
                             ? `${process.env.NEXT_PUBLIC_BASE_URL_IMG}${props.tv.poster_path}`
                             : '/img/poster-not-available.jpg'
                     }
+                    sizes="294px"
                     alt={normalizedTitle}
+                    fill
                 />
             </div>
 
