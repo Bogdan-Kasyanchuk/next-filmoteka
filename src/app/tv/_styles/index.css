@@ -1,7 +1,9 @@
+@import '../../../styles/app.css';
+
 .p-tvs {
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    row-gap: 20px;
     align-items: center;
 
     &__filters {
@@ -16,18 +18,44 @@
     &__content {
         display: flex;
         flex-direction: column;
-        row-gap: 30px;
+        row-gap: 20px;
         align-items: center;
 
         width: 100%;
+
+        @variant min-md {
+            row-gap: 30px;
+        }
     }
 
     &__media-list {
         display: grid;
-        grid-gap: 20px;
-        grid-template-columns: repeat(auto-fill, 296px);
+        grid-gap: 5px;
+        grid-template-columns: repeat(auto-fill, 175px);
         justify-content: center;
 
-        width: 100%;
+        width: calc(100% + 20px);
+        margin-inline: -10px;
+
+        @variant min-sm {
+            grid-gap: 10px;
+            grid-template-columns: repeat(auto-fill, 215px);
+            width: 100%;
+            margin-inline: 0;
+        }
+
+        @variant min-md {
+            grid-gap: 15px;
+            grid-template-columns: repeat(auto-fill, 232px);
+        }
+
+        @variant min-lg {
+            grid-gap: 20px;
+            grid-template-columns: repeat(auto-fill, 296px);
+        }
+    }
+
+    @variant min-md {
+        row-gap: 30px;
     }
 }

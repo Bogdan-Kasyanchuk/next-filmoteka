@@ -32,12 +32,13 @@ export default function TVCard(props: Props) {
                 {props.tv.media_type}
             </div>
 
+            <div className='с-tv-card__average'>
+                {props.tv.vote_average}
+            </div>
+
             <div className='с-tv-card__footer'>
                 <p className='с-tv-card__footer-title'>
                     {normalizedTitle}
-                </p>
-                <p className='с-tv-card__footer-average'>
-                    {props.tv.vote_average}
                 </p>
             </div>
         </Link>

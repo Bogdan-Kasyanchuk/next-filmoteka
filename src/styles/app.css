@@ -3,7 +3,7 @@
 @import './theme/base.css';
 
 /* App */
-@import './app/reset.css' layer(base);
+@import './base/reset.css' layer(base);
 
 /* Utilities */
 @import './utilities/base.css' layer(base);
@@ -22,5 +22,4 @@
 @import './parts/footer/footer.css' layer(base);
 
 /* Layouts */
-@import './layouts/page.css' layer(base);
 @import './layouts/container.css' layer(base);

@@ -1,12 +1,12 @@
 .c-title {
-    line-height: 1;
+    line-height: 1.1;
     color: var(--color-primary);
 
     &--2 {
-        font-size: var(--text-5xl);
+        font-size: var(--text-3xl);
 
         @variant min-md {
-            font-size: var(--text-7xl);
+            font-size: var(--text-6xl);
         }
 
         @variant min-xl {
@@ -15,48 +15,16 @@
     }
 
     &--3 {
-        font-size: var(--text-2xl);
+        font-size: var(--text-xl);
 
         @variant min-md {
-            font-size: var(--text-5xl);
+            font-size: var(--text-4xl);
         }
 
         @variant min-xl {
             font-size: var(--text-7xl);
         }
     }
-
-    /* &--3 {
-        font-size: theme('fontSize.5xl');
-
-        @media (screen(lg)) {
-            font-size: theme('fontSize.7xl');
-        }
-    }
-
-    &--4 {
-        font-size: theme('fontSize.3xl');
-
-        @media (screen(lg)) {
-            font-size: theme('fontSize.6xl');
-        }
-    }
-
-    &--5 {
-        font-size: theme('fontSize.2xl');
-
-        @media (screen(md)) {
-            font-size: theme('fontSize.5xl');
-        }
-    }
-
-    &--6 {
-        font-size: theme('fontSize.xl');
-
-        @media (screen(md)) {
-            font-size: theme('fontSize.4xl');
-        }
-    } */
 
     &--uppercase {
         text-transform: uppercase;

@@ -1,3 +1,5 @@
+@import '../../../styles/app.css';
+
 .p-home {
     display: flex;
     flex-direction: column;
@@ -21,7 +23,7 @@
 
         width: 100%;
 
-        @media (width >= 768px) {
+        @variant min-md {
             row-gap: 30px;
         }
     }
@@ -35,25 +37,25 @@
         width: calc(100% + 20px);
         margin-inline: -10px;
 
-        @media (width >= 480px) {
+        @variant min-sm {
             grid-gap: 10px;
             grid-template-columns: repeat(auto-fill, 215px);
             width: 100%;
             margin-inline: 0;
         }
 
-        @media (width >= 768px) {
+        @variant min-md {
             grid-gap: 15px;
             grid-template-columns: repeat(auto-fill, 232px);
         }
 
-        @media (width >= 1024px) {
+        @variant min-lg {
             grid-gap: 20px;
             grid-template-columns: repeat(auto-fill, 296px);
         }
     }
 
-    @media (width >= 768px) {
+    @variant min-md {
         row-gap: 30px;
     }
 }

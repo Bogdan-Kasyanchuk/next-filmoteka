@@ -32,12 +32,13 @@ export default function MovieCard(props: Props) {
                 {props.movie.media_type}
             </div>
 
+            <div className='с-movie-card__average'>
+                {props.movie.vote_average}
+            </div>
+
             <div className='с-movie-card__footer'>
                 <p className='с-movie-card__footer-title'>
                     {normalizedTitle}
-                </p>
-                <p className='с-movie-card__footer-average'>
-                    {props.movie.vote_average}
                 </p>
             </div>
         </Link>

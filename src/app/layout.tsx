@@ -5,7 +5,6 @@ import { ReactNode } from 'react';
 import Footer from '@/components/app/Footer';
 import Header from '@/components/app/Header';
 
-import '@/styles/app.css';
 import Providers from './providers';
 
 const font = Plus_Jakarta_Sans({ subsets: ['latin'] });
