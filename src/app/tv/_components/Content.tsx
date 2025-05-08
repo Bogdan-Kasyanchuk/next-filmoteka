@@ -1,6 +1,6 @@
 'use client';
 
-import { useQuery } from '@tanstack/react-query';
+import { keepPreviousData, useQuery } from '@tanstack/react-query';
 
 import TVCard from '@/components/ui/cards/TVCard';
 import Loader from '@/components/ui/data-display/Loader';
@@ -18,6 +18,7 @@ export default function Content(props: Props) {
     const { data, isFetching } = useQuery({
         queryKey: ['tvs', props.currentPage],
         queryFn: () => getTVs(props.type, props.currentPage),
+        placeholderData: keepPreviousData,
         select: (data) => {
             const transformedResults = data.results.map<TVMapper>(
                 (result) => ({

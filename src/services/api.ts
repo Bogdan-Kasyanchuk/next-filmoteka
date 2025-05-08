@@ -1,16 +1,11 @@
 import { MovieType, MediaType, TimeType, TVType } from '@/enums';
-import { MediaShema, MovieShema, TVShema } from '@/types';
-
-const parameters = {
-    API_KEY: process.env.NEXT_PUBLIC_API_KEY,
-    BASE_URL: process.env.NEXT_PUBLIC_BASE_URL,
-    LOCALE: process.env.NEXT_PUBLIC_LOCALE,
-};
-
-const { API_KEY, BASE_URL, LOCALE } = parameters;
+import { API_KEY, BASE_URL, LOCALE } from '@/helpers/parameters';
+import { DataShema, MovieShema, TVShema } from '@/shemas';
 
 async function fetchApi<T>(url: string) {
-    const response = await fetch(url);
+    const response = await fetch(url, {
+        cache: 'no-store'
+    });
 
     if (!response.ok) {
         throw new Error(await response.text());
@@ -20,22 +15,22 @@ async function fetchApi<T>(url: string) {
 }
 
 export function getTrendings(type: 'all' | MediaType, time: TimeType, page: number) {
-    return fetchApi<MediaShema<MovieShema> | MediaShema<TVShema>>(`${BASE_URL}/trending/${type}/${time}?api_key=${API_KEY}&page=${page}`);
+    return fetchApi<DataShema<MovieShema> | DataShema<TVShema>>(`${BASE_URL}/trending/${type}/${time}?api_key=${API_KEY}&page=${page}`);
 }
 
 export function getMovies(type: MovieType, page: number) {
-    return fetchApi<MediaShema<MovieShema>>(`${BASE_URL}/movie/${type}?api_key=${API_KEY}&page=${page}`);
+    return fetchApi<DataShema<MovieShema>>(`${BASE_URL}/movie/${type}?api_key=${API_KEY}&page=${page}`);
 }
 
 export function getTVs(type: TVType, page: number) {
-    return fetchApi<MediaShema<TVShema>>(`${BASE_URL}/tv/${type}?api_key=${API_KEY}&page=${page}`);
+    return fetchApi<DataShema<TVShema>>(`${BASE_URL}/tv/${type}?api_key=${API_KEY}&page=${page}`);
 }
 
 export function getItemById(type: MediaType, id: string) {
     return fetchApi(`${BASE_URL}/${type}/${id}?api_key=${API_KEY}&language=${LOCALE}`);
 }
 
-export function getSearchs(type: MediaType, query: string, page: number) {
+export function getSearch(type: MediaType, query: string, page: number) {
     return fetchApi(
         `${BASE_URL}/search/${type}?api_key=${API_KEY}&language=${LOCALE}&query=${query}&page=${page}&include_adult=false`,
     );

@@ -21,3 +21,11 @@ export enum TVType {
     POPULAR = 'popular',
     TOP_RATED = 'top_rated',
 }
+
+export enum VideoType {
+    FEATURETTE = 'Featurette',
+    TEASER = 'Teaser',
+    BEHIND_THE_SCENES = 'Behind the Scenes',
+    CLIP = 'Clip',
+    TRAILER = 'Trailer',
+}

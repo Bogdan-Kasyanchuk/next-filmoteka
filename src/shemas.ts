@@ -1,44 +1,86 @@
 import { MediaType, VideoType } from './enums';
 
-export type MovieMapper = {
+export type DataShema<Type> = {
+    page: number,
+    results: Type[],
+    total_pages: number,
+    total_results: number,
+};
+
+export type MovieShema = {
+    adult: boolean,
+    backdrop_path: string,
     id: number,
     title: string,
+    original_language: string,
     original_title: string,
+    overview: string,
     poster_path: string,
     media_type: MediaType.MOVIE,
+    popularity: number,
+    release_date: string,
+    video: boolean,
     vote_average: number,
+    vote_count: number,
+    genre_ids: number[],
 };
 
-export type TVMapper = {
+export type TVShema = {
+    adult: boolean,
+    backdrop_path: string,
     id: number,
     name: string,
+    original_language: string,
     original_name: string,
+    overview: string,
     poster_path: string,
     media_type: MediaType.TV,
+    popularity: number,
+    first_air_date: string,
     vote_average: number,
+    vote_count: number,
+    genre_ids: number[],
+    origin_country: string[],
 };
 
-export type CastMapper = {
+export type CreditsShema = {
+    id: number,
+    cast: CastShema[],
+    crew: CrewShema[]
+};
+
+export type CastShema = {
+    adult: boolean,
     gender: 1 | 2,
+    id: number,
+    known_for_department: string,
     name: string,
     original_name: string,
     popularity: number,
     profile_path: string,
+    cast_id: number,
     character: string,
-};
+    credit_id: string,
+    order: number
+}
 
-export type CrewMapper = {
+export type CrewShema = {
+    adult: boolean,
     gender: 1 | 2,
+    id: number,
+    known_for_department: string,
     name: string,
     original_name: string,
     popularity: number,
     profile_path: string,
+    credit_id: string,
     department: string,
     job: string,
 };
 
-export type ReviewMapper = {
-    author: {
+export type ReviewShema = {
+    author: string,
+    author_details: {
         name: string,
         username: string,
         avatar_path: string,
@@ -46,10 +88,13 @@ export type ReviewMapper = {
     },
     content: string,
     created_at: string,
+    id: string,
     updated_at: string,
+    url: string
 };
 
-export type VideoMapper = {
+export type VideoShema = {
+    iso_639_1: string,
     iso_3166_1: string,
     name: string,
     key: string,
@@ -58,11 +103,12 @@ export type VideoMapper = {
     type: VideoType,
     official: boolean,
     published_at: string,
+    id: string
 };
 
 // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-export type MovieDetailsMapper = {
+export type MovieDetailsShema = {
     imdb_id: string,
     adult: boolean,
     homepage: string,
@@ -98,7 +144,7 @@ export type MovieDetailsMapper = {
 
 }
 
-export type TVDetailsMapper = {
+export type TVDetailsShema = {
     adult: boolean,
     homepage: string,
     first_air_date: string,
@@ -152,7 +198,7 @@ export type TVDetailsMapper = {
     }>
 }
 
-export type SimilarMapper = {
+export type SimilarShema = {
     'adult': false,
     'backdrop_path': '/i3oT0v1KVDZEq8oOZdAAqy78Vub.jpg',
     'genre_ids': [
@@ -174,7 +220,7 @@ export type SimilarMapper = {
     'vote_count': 1331
 };
 
-export type RecomendationMapper = {
+export type RecomendationShema = {
     'backdrop_path': '/fuL0NvVCG7YYjhxkosh8pS0J1nm.jpg',
     'id': 1086497,
     'title': 'The Penguin Lessons',

@@ -1,6 +1,6 @@
 'use client';
 
-import { useQuery } from '@tanstack/react-query';
+import { keepPreviousData, useQuery } from '@tanstack/react-query';
 
 import MovieCard from '@/components/ui/cards/MovieCard';
 import Loader from '@/components/ui/data-display/Loader';
@@ -18,6 +18,7 @@ export default function Content(props: Props) {
     const { data, isFetching } = useQuery({
         queryKey: ['movies', props.currentPage],
         queryFn: () => getMovies(props.type, props.currentPage),
+        placeholderData: keepPreviousData,
         select: (data) => {
             const transformedResults = data.results.map<MovieMapper>(
                 (result) => ({
