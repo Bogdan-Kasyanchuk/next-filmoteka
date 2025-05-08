@@ -60,8 +60,6 @@ export type VideoMapper = {
     published_at: string,
 };
 
-// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
 export type MovieDetailsMapper = {
     imdb_id: string,
     adult: boolean,
@@ -73,7 +71,7 @@ export type MovieDetailsMapper = {
     status: string,
     tagline: string,
     vote_average: number,
-    vote_count: number
+    vote_count: number,
     popularity: number,
     poster_path: string,
     original_language: string,
@@ -92,10 +90,8 @@ export type MovieDetailsMapper = {
     }>,
     spoken_languages: Array<{
         english_name: string,
-        iso_639_1: string,
         name: string
     }>,
-
 }
 
 export type TVDetailsMapper = {
@@ -123,7 +119,7 @@ export type TVDetailsMapper = {
     created_by: Array<{
         name: string,
         original_name: string,
-        gender: number,
+        gender: 1 | 2,
         profile_path: string
     }>,
     production_companies: Array<{
@@ -136,7 +132,6 @@ export type TVDetailsMapper = {
         name: string
     }>,
     seasons: Array<{
-        id: number,
         air_date: string,
         episode_count: number,
         name: string,
@@ -147,10 +142,16 @@ export type TVDetailsMapper = {
     }>,
     spoken_languages: Array<{
         english_name: string,
-        iso_639_1: string,
         name: string
+    }>,
+    networks: Array<{
+        logo_path: string,
+        name: string,
+        origin_country: string
     }>
 }
+
+// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 export type SimilarMapper = {
     'adult': false,
