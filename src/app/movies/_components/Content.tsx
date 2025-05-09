@@ -16,7 +16,7 @@ type Props = {
 
 export default function Content(props: Props) {
     const { data, isFetching } = useQuery({
-        queryKey: ['movies', props.currentPage],
+        queryKey: ['movies', props.type, props.currentPage],
         queryFn: () => getMovies(props.type, props.currentPage),
         placeholderData: keepPreviousData,
         select: (data) => {

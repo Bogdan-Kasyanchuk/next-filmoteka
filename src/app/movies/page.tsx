@@ -25,7 +25,7 @@ export default async function Movie(props: Props) {
     const queryClient = new QueryClient();
 
     await queryClient.prefetchQuery({
-        queryKey: ['movies', currentPage],
+        queryKey: ['movies', type, currentPage],
         queryFn: () => getMovies(type, currentPage),
     });
 

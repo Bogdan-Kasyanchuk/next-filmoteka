@@ -27,7 +27,7 @@ export default async function Page(props: Props) {
     const queryClient = new QueryClient();
 
     await queryClient.prefetchQuery({
-        queryKey: ['trendings', currentPage],
+        queryKey: ['trendings', type, time, currentPage],
         queryFn: () => getTrendings(type, time, currentPage),
     });
 

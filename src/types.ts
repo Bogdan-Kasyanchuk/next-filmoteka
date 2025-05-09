@@ -1,5 +1,21 @@
 import { MediaType, VideoType } from './enums';
 
+type SpokenLanguage = {
+    english_name: string,
+    name: string
+};
+
+type ProductionCountry = {
+    iso_3166_1: string,
+    name: string
+};
+
+type ProductionCompany = {
+    logo_path: string,
+    name: string,
+    origin_country: string
+};
+
 export type MovieMapper = {
     id: number,
     title: string,
@@ -9,6 +25,34 @@ export type MovieMapper = {
     vote_average: number,
 };
 
+export type SimilarMovieMapper = MovieMapper;
+
+export type RecomendationMovieMapper = MovieMapper;
+
+export type MovieDetailsMapper = {
+    imdb_id: string,
+    adult: boolean,
+    homepage: string,
+    budget: number,
+    title: string,
+    original_title: string,
+    overview: string,
+    status: string,
+    tagline: string,
+    vote_average: number,
+    vote_count: number,
+    popularity: number,
+    poster_path: string,
+    original_language: string,
+    release_date: string,
+    revenue: number,
+    genres: string[],
+    origin_country: string[],
+    production_companies: ProductionCompany[],
+    production_countries: ProductionCountry[],
+    spoken_languages: SpokenLanguage[],
+}
+
 export type TVMapper = {
     id: number,
     name: string,
@@ -17,6 +61,57 @@ export type TVMapper = {
     media_type: MediaType.TV,
     vote_average: number,
 };
+
+export type SimilarTVMapper = TVMapper;
+
+export type RecomendationTVMapper = TVMapper;
+
+export type TVDetailsMapper = {
+    adult: boolean,
+    homepage: string,
+    first_air_date: string,
+    last_air_date: string,
+    in_production: boolean,
+    name: string,
+    original_name: string,
+    number_of_episodes: number,
+    number_of_seasons: number,
+    original_language: string,
+    overview: string,
+    status: string,
+    tagline: string,
+    type: string,
+    vote_average: number,
+    vote_count: number
+    popularity: number,
+    poster_path: string,
+    languages: string[],
+    genres: string[],
+    origin_country: string[],
+    production_companies: ProductionCompany[],
+    production_countries: ProductionCountry[],
+    spoken_languages: SpokenLanguage[],
+    created_by: Array<{
+        name: string,
+        original_name: string,
+        gender: 1 | 2,
+        profile_path: string
+    }>,
+    seasons: Array<{
+        air_date: string,
+        episode_count: number,
+        name: string,
+        overview: string,
+        poster_path: string,
+        season_number: number,
+        vote_average: number
+    }>,
+    networks: Array<{
+        logo_path: string,
+        name: string,
+        origin_country: string
+    }>
+}
 
 export type CastMapper = {
     gender: 1 | 2,
@@ -58,140 +153,5 @@ export type VideoMapper = {
     type: VideoType,
     official: boolean,
     published_at: string,
-};
-
-export type MovieDetailsMapper = {
-    imdb_id: string,
-    adult: boolean,
-    homepage: string,
-    budget: number,
-    title: string,
-    original_title: string,
-    overview: string,
-    status: string,
-    tagline: string,
-    vote_average: number,
-    vote_count: number,
-    popularity: number,
-    poster_path: string,
-    original_language: string,
-    release_date: string,
-    revenue: number,
-    genres: string[],
-    origin_country: string[],
-    production_companies: Array<{
-        logo_path: string,
-        name: string,
-        origin_country: string
-    }>,
-    production_countries: Array<{
-        iso_3166_1: string,
-        name: string
-    }>,
-    spoken_languages: Array<{
-        english_name: string,
-        name: string
-    }>,
-}
-
-export type TVDetailsMapper = {
-    adult: boolean,
-    homepage: string,
-    first_air_date: string,
-    last_air_date: string,
-    in_production: boolean,
-    name: string,
-    original_name: string,
-    number_of_episodes: number,
-    number_of_seasons: number,
-    original_language: string,
-    overview: string,
-    status: string,
-    tagline: string,
-    type: string,
-    vote_average: number,
-    vote_count: number
-    popularity: number,
-    poster_path: string,
-    languages: string[],
-    genres: string[],
-    origin_country: string[],
-    created_by: Array<{
-        name: string,
-        original_name: string,
-        gender: 1 | 2,
-        profile_path: string
-    }>,
-    production_companies: Array<{
-        logo_path: string,
-        name: string,
-        origin_country: string
-    }>,
-    production_countries: Array<{
-        iso_3166_1: string,
-        name: string
-    }>,
-    seasons: Array<{
-        air_date: string,
-        episode_count: number,
-        name: string,
-        overview: string,
-        poster_path: string,
-        season_number: number,
-        vote_average: number
-    }>,
-    spoken_languages: Array<{
-        english_name: string,
-        name: string
-    }>,
-    networks: Array<{
-        logo_path: string,
-        name: string,
-        origin_country: string
-    }>
-}
-
-// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-export type SimilarMapper = {
-    'adult': false,
-    'backdrop_path': '/i3oT0v1KVDZEq8oOZdAAqy78Vub.jpg',
-    'genre_ids': [
-        14,
-        35,
-        10749,
-        878
-    ],
-    'id': 12107,
-    'original_language': 'en',
-    'original_title': 'Nutty Professor II: The Klumps',
-    'overview': 'The hilarity begins when professor Sherman Klump finds romance with fellow DNA specialist, Denise Gaines, and discovers a brilliant formula that reverses aging. But Sherman\'s thin and obnoxious alter ego, Buddy Love, wants out...and a big piece of the action. And when Buddy gets loose, things get seriously nutty.',
-    'popularity': 2.0471,
-    'poster_path': '/7HlhufckAoQb1yIu3FNu339Iuv4.jpg',
-    'release_date': '2000-07-27',
-    'title': 'Nutty Professor II: The Klumps',
-    'video': false,
-    'vote_average': 5.004,
-    'vote_count': 1331
-};
-
-export type RecomendationMapper = {
-    'backdrop_path': '/fuL0NvVCG7YYjhxkosh8pS0J1nm.jpg',
-    'id': 1086497,
-    'title': 'The Penguin Lessons',
-    'original_title': 'The Penguin Lessons',
-    'overview': 'In 1976, as Argentina descends into violence and chaos, a world-weary English teacher regains his compassion for others thanks to an unlikely friendship with a penguin.',
-    'poster_path': '/hZ7rDX01j86x8O1E7Pe7658QYs4.jpg',
-    'media_type': 'movie',
-    'adult': false,
-    'original_language': 'en',
-    'genre_ids': [
-        18
-    ],
-    'popularity': 19.7717,
-    'release_date': '2025-03-27',
-    'video': false,
-    'vote_average': 7.167,
-    'vote_count': 27
 };
 
