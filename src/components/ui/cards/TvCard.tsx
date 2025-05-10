@@ -8,8 +8,6 @@ type Props = {
 }
 
 export default function TVCard(props: Props) {
-    const normalizedTitle = props.tv.name || props.tv.original_name;
-
     return (
         <Link
             href={`/tv/${props.tv.id}`}
@@ -22,8 +20,8 @@ export default function TVCard(props: Props) {
                             ? `${process.env.NEXT_PUBLIC_BASE_URL_IMG}${props.tv.poster_path}`
                             : '/img/poster-not-available.jpg'
                     }
-                    sizes="294px"
-                    alt={normalizedTitle}
+                    sizes="(max-width: 479px) 173px, (max-width: 767px) 213px, (max-width: 1023px) 230px, 294px"
+                    alt={props.tv.name}
                     fill
                 />
             </div>
@@ -38,7 +36,7 @@ export default function TVCard(props: Props) {
 
             <div className='с-tv-card__footer'>
                 <p className='с-tv-card__footer-title'>
-                    {normalizedTitle}
+                    {props.tv.name}
                 </p>
             </div>
         </Link>

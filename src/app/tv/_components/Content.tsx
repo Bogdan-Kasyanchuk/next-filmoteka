@@ -23,8 +23,7 @@ export default function Content(props: Props) {
             const transformedResults = data.results.map<TVMapper>(
                 (result) => ({
                     id: result.id,
-                    name: result.name,
-                    original_name: result.original_name,
+                    name: result.name || result.original_name,
                     poster_path: result.poster_path,
                     media_type: MediaType.TV,
                     vote_average: result.vote_average,

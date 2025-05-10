@@ -1,0 +1,17 @@
+@import '../../../../styles/app.css';
+
+.p-tv {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+    align-items: center;
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        row-gap: 20px;
+        align-items: center;
+
+        width: 100%;
+    }
+}

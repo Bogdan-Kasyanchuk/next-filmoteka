@@ -24,7 +24,7 @@ export default function Filters(props: Props) {
 
         params.sort();
 
-        replace(`${pathname}?${params.toString()}`);
+        replace(`${pathname}?${params.toString().split('&').reverse().join('&')}`);
     };
 
     return (

@@ -19,7 +19,6 @@ type ProductionCompany = {
 export type MovieMapper = {
     id: number,
     title: string,
-    original_title: string,
     poster_path: string,
     media_type: MediaType.MOVIE,
     vote_average: number,
@@ -35,7 +34,6 @@ export type MovieDetailsMapper = {
     homepage: string,
     budget: number,
     title: string,
-    original_title: string,
     overview: string,
     status: string,
     tagline: string,
@@ -56,7 +54,6 @@ export type MovieDetailsMapper = {
 export type TVMapper = {
     id: number,
     name: string,
-    original_name: string,
     poster_path: string,
     media_type: MediaType.TV,
     vote_average: number,

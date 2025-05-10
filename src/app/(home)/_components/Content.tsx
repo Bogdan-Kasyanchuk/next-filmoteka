@@ -27,8 +27,7 @@ export default function Content(props: Props) {
                     if (result.media_type === MediaType.MOVIE) {
                         return {
                             id: result.id,
-                            title: result.title,
-                            original_title: result.original_title,
+                            title: result.title || result.original_title,
                             poster_path: result.poster_path,
                             media_type: MediaType.MOVIE,
                             vote_average: result.vote_average,
@@ -36,8 +35,7 @@ export default function Content(props: Props) {
                     } else {
                         return {
                             id: result.id,
-                            name: result.name,
-                            original_name: result.original_name,
+                            name: result.name || result.original_name,
                             poster_path: result.poster_path,
                             media_type: MediaType.TV,
                             vote_average: result.vote_average,

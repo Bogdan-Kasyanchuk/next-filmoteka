@@ -8,8 +8,6 @@ type Props = {
 }
 
 export default function MovieCard(props: Props) {
-    const normalizedTitle = props.movie.title || props.movie.original_title;
-
     return (
         <Link
             href={`/movies/${props.movie.id}`}
@@ -22,8 +20,8 @@ export default function MovieCard(props: Props) {
                             ? `${process.env.NEXT_PUBLIC_BASE_URL_IMG}${props.movie.poster_path}`
                             : '/img/poster-not-available.jpg'
                     }
-                    sizes="294px"
-                    alt={normalizedTitle}
+                    sizes="(max-width: 479px) 173px, (max-width: 767px) 213px, (max-width: 1023px) 230px, 294px"
+                    alt={props.movie.title}
                     fill
                 />
             </div>
@@ -38,7 +36,7 @@ export default function MovieCard(props: Props) {
 
             <div className='с-movie-card__footer'>
                 <p className='с-movie-card__footer-title'>
-                    {normalizedTitle}
+                    {props.movie.title}
                 </p>
             </div>
         </Link>

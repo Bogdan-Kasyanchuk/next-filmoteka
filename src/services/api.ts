@@ -26,8 +26,8 @@ export function getTVs(type: TVType, page: number) {
     return fetchApi<DataShema<TVShema>>(`${BASE_URL}/tv/${type}?api_key=${API_KEY}&page=${page}`);
 }
 
-export function getItemById(type: MediaType, id: string) {
-    return fetchApi(`${BASE_URL}/${type}/${id}?api_key=${API_KEY}&language=${LOCALE}`);
+export function getItemById<T>(type: MediaType, id: string) {
+    return fetchApi<T>(`${BASE_URL}/${type}/${id}?api_key=${API_KEY}&language=${LOCALE}`);
 }
 
 export function getSearch(type: MediaType, query: string, page: number) {

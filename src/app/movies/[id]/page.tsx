@@ -1,9 +1,35 @@
-export default function Home() {
+import { dehydrate, QueryClient, HydrationBoundary } from '@tanstack/react-query';
+
+import Container from '@/components/ui/layouts/Container';
+import { MediaType } from '@/enums';
+import { getItemById } from '@/services/api';
+import { MovieDetailsShema } from '@/shemas';
+
+import Content from './_components/Content';
+
+import './_styles/index.css';
+
+type Props = {
+    params: Promise<{ id: string }>
+};
+
+export default async function Page(props: Props) {
+    const { id } = await props.params;
+
+    const queryClient = new QueryClient();
+
+    await queryClient.prefetchQuery({
+        queryKey: ['movies', id],
+        queryFn: () => getItemById<MovieDetailsShema>(MediaType.MOVIE, id),
+    });
+
+    const dehydratedState = dehydrate(queryClient);
+
     return (
-        <div className='flex flex-col items-center justify-center h-full gap-10'>
-            <h1 className='text-6xl text-center'>
-                movies-id
-            </h1>
-        </div>
+        <Container className='p-movie'>
+            <HydrationBoundary state={dehydratedState}>
+                <Content id={id} />
+            </HydrationBoundary>
+        </Container>
     );
 }

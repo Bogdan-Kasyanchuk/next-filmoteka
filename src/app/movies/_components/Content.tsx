@@ -23,8 +23,7 @@ export default function Content(props: Props) {
             const transformedResults = data.results.map<MovieMapper>(
                 (result) => ({
                     id: result.id,
-                    title: result.title,
-                    original_title: result.original_title,
+                    title: result.title || result.original_title,
                     poster_path: result.poster_path,
                     media_type: MediaType.MOVIE,
                     vote_average: result.vote_average,

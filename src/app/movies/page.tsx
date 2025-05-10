@@ -17,7 +17,7 @@ type Props = {
     }>
 };
 
-export default async function Movie(props: Props) {
+export default async function Page(props: Props) {
     const searchParams = await props.searchParams;
     const type = searchParams.type || MovieType.NOW_PLAYING;
     const currentPage = Number(searchParams.page) || 1;
