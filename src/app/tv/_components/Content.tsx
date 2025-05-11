@@ -5,9 +5,9 @@ import { keepPreviousData, useQuery } from '@tanstack/react-query';
 import TVCard from '@/components/ui/cards/TVCard';
 import Loader from '@/components/ui/data-display/Loader';
 import Pagination from '@/components/ui/data-display/Pagination';
-import { MediaType, TVType } from '@/enums';
+import { TVType } from '@/enums';
+import { transformedTV } from '@/helpers/transformedData';
 import { getTVs } from '@/services/api';
-import { TVMapper } from '@/types';
 
 type Props = {
     type: TVType;
@@ -20,14 +20,8 @@ export default function Content(props: Props) {
         queryFn: () => getTVs(props.type, props.currentPage),
         placeholderData: keepPreviousData,
         select: (data) => {
-            const transformedResults = data.results.map<TVMapper>(
-                (result) => ({
-                    id: result.id,
-                    name: result.name || result.original_name,
-                    poster_path: result.poster_path,
-                    media_type: MediaType.TV,
-                    vote_average: result.vote_average,
-                }));
+            const transformedResults = data.results.map(
+                (result) => transformedTV(result));
 
             return {
                 results: transformedResults,

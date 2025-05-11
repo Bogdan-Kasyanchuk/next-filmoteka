@@ -5,15 +5,10 @@ type SpokenLanguage = {
     name: string
 };
 
-type ProductionCountry = {
-    iso_3166_1: string,
-    name: string
-};
-
 type ProductionCompany = {
     logo_path: string,
     name: string,
-    origin_country: string
+    origin_country?: string
 };
 
 export type MovieMapper = {
@@ -47,7 +42,6 @@ export type MovieDetailsMapper = {
     genres: string[],
     origin_country: string[],
     production_companies: ProductionCompany[],
-    production_countries: ProductionCountry[],
     spoken_languages: SpokenLanguage[],
 }
 
@@ -70,7 +64,6 @@ export type TVDetailsMapper = {
     last_air_date: string,
     in_production: boolean,
     name: string,
-    original_name: string,
     number_of_episodes: number,
     number_of_seasons: number,
     original_language: string,
@@ -86,11 +79,9 @@ export type TVDetailsMapper = {
     genres: string[],
     origin_country: string[],
     production_companies: ProductionCompany[],
-    production_countries: ProductionCountry[],
     spoken_languages: SpokenLanguage[],
     created_by: Array<{
         name: string,
-        original_name: string,
         gender: 1 | 2,
         profile_path: string
     }>,
@@ -113,7 +104,6 @@ export type TVDetailsMapper = {
 export type CastMapper = {
     gender: 1 | 2,
     name: string,
-    original_name: string,
     popularity: number,
     profile_path: string,
     character: string,
@@ -122,7 +112,6 @@ export type CastMapper = {
 export type CrewMapper = {
     gender: 1 | 2,
     name: string,
-    original_name: string,
     popularity: number,
     profile_path: string,
     department: string,

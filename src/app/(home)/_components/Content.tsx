@@ -7,8 +7,8 @@ import TVCard from '@/components/ui/cards/TVCard';
 import Loader from '@/components/ui/data-display/Loader';
 import Pagination from '@/components/ui/data-display/Pagination';
 import { MediaType, TimeType } from '@/enums';
+import { transformedMovie, transformedTV } from '@/helpers/transformedData';
 import { getTrendings } from '@/services/api';
-import { MovieMapper, TVMapper } from '@/types';
 
 type Props = {
     type: 'all' | MediaType;
@@ -22,24 +22,12 @@ export default function Content(props: Props) {
         queryFn: () => getTrendings(props.type, props.time, props.currentPage),
         placeholderData: keepPreviousData,
         select: (data) => {
-            const transformedResults = data.results.map<MovieMapper | TVMapper>(
+            const transformedResults = data.results.map(
                 (result) => {
                     if (result.media_type === MediaType.MOVIE) {
-                        return {
-                            id: result.id,
-                            title: result.title || result.original_title,
-                            poster_path: result.poster_path,
-                            media_type: MediaType.MOVIE,
-                            vote_average: result.vote_average,
-                        };
+                        return transformedMovie(result);
                     } else {
-                        return {
-                            id: result.id,
-                            name: result.name || result.original_name,
-                            poster_path: result.poster_path,
-                            media_type: MediaType.TV,
-                            vote_average: result.vote_average,
-                        };
+                        return transformedTV(result);
                     }
                 });
 

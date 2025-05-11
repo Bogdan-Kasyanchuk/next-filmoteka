@@ -5,9 +5,9 @@ import { keepPreviousData, useQuery } from '@tanstack/react-query';
 import MovieCard from '@/components/ui/cards/MovieCard';
 import Loader from '@/components/ui/data-display/Loader';
 import Pagination from '@/components/ui/data-display/Pagination';
-import { MediaType, MovieType } from '@/enums';
+import { MovieType } from '@/enums';
+import { transformedMovie } from '@/helpers/transformedData';
 import { getMovies } from '@/services/api';
-import { MovieMapper } from '@/types';
 
 type Props = {
     type: MovieType;
@@ -20,14 +20,8 @@ export default function Content(props: Props) {
         queryFn: () => getMovies(props.type, props.currentPage),
         placeholderData: keepPreviousData,
         select: (data) => {
-            const transformedResults = data.results.map<MovieMapper>(
-                (result) => ({
-                    id: result.id,
-                    title: result.title || result.original_title,
-                    poster_path: result.poster_path,
-                    media_type: MediaType.MOVIE,
-                    vote_average: result.vote_average,
-                }));
+            const transformedResults = data.results.map(
+                (result) => transformedMovie(result));
 
             return {
                 results: transformedResults,
