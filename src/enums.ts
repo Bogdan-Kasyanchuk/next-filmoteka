@@ -1,6 +1,6 @@
 export enum MediaType {
     MOVIE = 'movie',
-    TV = 'tv',
+    TV_SHOW = 'tv',
 }
 
 export enum TimeType {
@@ -15,7 +15,7 @@ export enum MovieType {
     UPCOMING = 'upcoming',
 }
 
-export enum TVType {
+export enum TVShowType {
     AIRING_TODAY = 'airing_today',
     ON_THE_AIR = 'on_the_air',
     POPULAR = 'popular',
@@ -28,4 +28,14 @@ export enum VideoType {
     BEHIND_THE_SCENES = 'Behind the Scenes',
     CLIP = 'Clip',
     TRAILER = 'Trailer',
+}
+
+export enum GenderType {
+    WOMAN = 1,
+    MAN = 2,
+}
+
+export enum EpisodeType {
+    STANDARD = 'standard',
+    FINALE = 'finale',
 }

@@ -1,4 +1,4 @@
-import { MediaType, VideoType } from './enums';
+import { EpisodeType, GenderType, MediaType, VideoType } from './enums';
 
 export type DataShema<Type> = {
     page: number,
@@ -27,7 +27,7 @@ export type MovieShema = {
 
 export type SimilarMovieShema = Omit<MovieShema, 'media_type'>;
 
-export type RecomendationMovieShema = MovieShema;
+export type RecommendationMovieShema = MovieShema;
 
 export type MovieDetailsShema = {
     adult: boolean,
@@ -78,7 +78,7 @@ export type MovieDetailsShema = {
     vote_count: number,
 }
 
-export type TVShema = {
+export type TVShowShema = {
     adult: boolean,
     backdrop_path: string,
     id: number,
@@ -87,7 +87,7 @@ export type TVShema = {
     original_name: string,
     overview: string,
     poster_path: string,
-    media_type: MediaType.TV,
+    media_type: MediaType.TV_SHOW,
     popularity: number,
     first_air_date: string,
     vote_average: number,
@@ -96,11 +96,11 @@ export type TVShema = {
     origin_country: string[],
 };
 
-export type SimilarTVShema = Omit<TVShema, 'media_type'>;
+export type SimilarTVShowShema = Omit<TVShowShema, 'media_type'>;
 
-export type RecomendationTVShema = TVShema
+export type RecommendationTVShowShema = TVShowShema
 
-export type TVDetailsShema = {
+export type TVShowDetailsShema = {
     adult: boolean,
     backdrop_path: string,
     created_by: Array<{
@@ -108,7 +108,7 @@ export type TVDetailsShema = {
         credit_id: string,
         name: string,
         original_name: string,
-        gender: number,
+        gender: GenderType,
         profile_path: string
     }>,
     episode_run_time: number[],
@@ -185,6 +185,34 @@ export type TVDetailsShema = {
     vote_count: number
 }
 
+export type TVShowSeasonDetailsShema = {
+    _id: string,
+    air_date: string,
+    name: string,
+    overview: string,
+    id: number,
+    poster_path: string,
+    season_number: number,
+    vote_average: number,
+    episodes: Array<{
+        air_date: string,
+        episode_number: number,
+        episode_type: EpisodeType,
+        id: number,
+        name: string,
+        overview: string,
+        production_code: string,
+        runtime: number,
+        season_number: number,
+        show_id: number,
+        still_path: string,
+        vote_average: number,
+        vote_count: number,
+        crew: CrewShema[],
+        guest_stars: Omit<CastShema, 'cast_id'>[]
+    }>
+}
+
 export type CreditsShema = {
     id: number,
     cast: CastShema[],
@@ -193,7 +221,7 @@ export type CreditsShema = {
 
 export type CastShema = {
     adult: boolean,
-    gender: number,
+    gender: GenderType,
     id: number,
     known_for_department: string,
     name: string,
@@ -208,7 +236,7 @@ export type CastShema = {
 
 export type CrewShema = {
     adult: boolean,
-    gender: number,
+    gender: GenderType,
     id: number,
     known_for_department: string,
     name: string,

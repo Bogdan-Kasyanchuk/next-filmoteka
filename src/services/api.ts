@@ -1,9 +1,13 @@
-import { MovieType, MediaType, TimeType, TVType } from '@/enums';
-import { API_KEY, BASE_URL, LOCALE } from '@/helpers/parameters';
-import { DataShema, MovieShema, TVShema } from '@/shemas';
+import { MovieType, MediaType, TimeType, TVShowType } from '@/enums';
+import { ADULT, API_KEY, BASE_URL, LOCALE } from '@/helpers/parameters';
+import { DataShema, MovieDetailsShema, MovieShema, TVShowDetailsShema, TVShowSeasonDetailsShema, TVShowShema } from '@/shemas';
 
 async function fetchApi<T>(url: string) {
-    const response = await fetch(url, {
+    const buildUrl = new URL(`${BASE_URL}/${url}`);
+    buildUrl.searchParams.append('api_key', API_KEY || '');
+    buildUrl.searchParams.append('language', LOCALE || '');
+
+    const response = await fetch(buildUrl, {
         cache: 'no-store'
     });
 
@@ -15,47 +19,51 @@ async function fetchApi<T>(url: string) {
 }
 
 export function getTrendings(type: 'all' | MediaType, time: TimeType, page: number) {
-    return fetchApi<DataShema<MovieShema> | DataShema<TVShema>>(`${BASE_URL}/trending/${type}/${time}?api_key=${API_KEY}&page=${page}`);
+    return fetchApi<DataShema<MovieShema> | DataShema<TVShowShema>>(`trending/${type}/${time}?page=${page}`);
 }
 
 export function getMovies(type: MovieType, page: number) {
-    return fetchApi<DataShema<MovieShema>>(`${BASE_URL}/movie/${type}?api_key=${API_KEY}&page=${page}`);
+    return fetchApi<DataShema<MovieShema>>(`${MediaType.MOVIE}/${type}?page=${page}`);
 }
 
-export function getTVs(type: TVType, page: number) {
-    return fetchApi<DataShema<TVShema>>(`${BASE_URL}/tv/${type}?api_key=${API_KEY}&page=${page}`);
+export function getMovieById(id: string) {
+    return fetchApi<MovieDetailsShema>(`${MediaType.MOVIE}/${id}`);
 }
 
-export function getItemById<T>(type: MediaType, id: string) {
-    return fetchApi<T>(`${BASE_URL}/${type}/${id}?api_key=${API_KEY}&language=${LOCALE}`);
+export function getTVShows(type: TVShowType, page: number) {
+    return fetchApi<DataShema<TVShowShema>>(`${MediaType.TV_SHOW}/${type}?page=${page}`);
+}
+
+export function getTVShowById(id: string) {
+    return fetchApi<TVShowDetailsShema>(`${MediaType.TV_SHOW}/${id}`);
+}
+
+// ------------------------------------------------------------------------------------
+
+export function getTVShowSeasonByNumber(seriesId: string, number: number) {
+    return fetchApi<TVShowSeasonDetailsShema>(`${MediaType.TV_SHOW}/${seriesId}/season/${number}`);
 }
 
 export function getSearch(type: MediaType, query: string, page: number) {
-    return fetchApi(
-        `${BASE_URL}/search/${type}?api_key=${API_KEY}&language=${LOCALE}&query=${query}&page=${page}&include_adult=false`,
-    );
+    return fetchApi(`search/${type}?query=${query}&page=${page}&include_adult=${ADULT}`);
 }
 
 export function getCredits(type: MediaType, id: string) {
-    return fetchApi(
-        `${BASE_URL}/${type}/${id}/credits?api_key=${API_KEY}&language=${LOCALE}`,
-    );
+    return fetchApi(`${type}/${id}/credits`);
 }
 
 export function getReviews(type: MediaType, id: string, page: number) {
-    return fetchApi(
-        `${BASE_URL}/${type}/${id}/reviews?api_key=${API_KEY}&language=${LOCALE}&page=${page}`,
-    );
+    return fetchApi(`${type}/${id}/reviews?page=${page}`);
 }
 
 export function getSimilars(type: MediaType, id: string, page: number) {
-    return fetchApi(
-        `${BASE_URL}/${type}/${id}/similar?api_key=${API_KEY}&language=${LOCALE}&page=${page}`,
-    );
+    return fetchApi(`${type}/${id}/similar?page=${page}`);
 }
 
-export function getVideos(type: MediaType, id: string, page: number) {
-    return fetchApi(
-        `${BASE_URL}/${type}/${id}/videos?api_key=${API_KEY}&language=${LOCALE}&page=${page}`,
-    );
+export function getRecommendations(type: MediaType, id: string, page: number) {
+    return fetchApi(`${type}/${id}/recommendations?page=${page}`);
+}
+
+export function getVideos(type: MediaType, id: string) {
+    return fetchApi(`${type}/${id}/videos`);
 }

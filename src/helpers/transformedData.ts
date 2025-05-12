@@ -1,6 +1,6 @@
 import { MediaType } from '@/enums';
-import { MovieDetailsShema, MovieShema, TVDetailsShema, TVShema } from '@/shemas';
-import { MovieDetailsMapper, MovieMapper, TVDetailsMapper, TVMapper } from '@/types';
+import { MovieDetailsShema, MovieShema, TVShowDetailsShema, TVShowShema } from '@/shemas';
+import { MovieDetailsMapper, MovieMapper, TVShowDetailsMapper, TVShowMapper } from '@/types';
 
 export const transformedMovie = (movie: MovieShema) => ({
     id: movie.id,
@@ -10,13 +10,13 @@ export const transformedMovie = (movie: MovieShema) => ({
     vote_average: movie.vote_average,
 }) as MovieMapper;
 
-export const transformedTV = (tv: TVShema) => ({
-    id: tv.id,
-    name: tv.name || tv.original_name,
-    poster_path: tv.poster_path,
-    media_type: MediaType.TV,
-    vote_average: tv.vote_average,
-}) as TVMapper;
+export const transformedTVShow = (tvShow: TVShowShema) => ({
+    id: tvShow.id,
+    name: tvShow.name || tvShow.original_name,
+    poster_path: tvShow.poster_path,
+    media_type: MediaType.TV_SHOW,
+    vote_average: tvShow.vote_average,
+}) as TVShowMapper;
 
 export const transformedMovieDetails = (movie: MovieDetailsShema) => ({
     imdb_id: movie.imdb_id,
@@ -30,10 +30,12 @@ export const transformedMovieDetails = (movie: MovieDetailsShema) => ({
     vote_average: movie.vote_average,
     vote_count: movie.vote_count,
     popularity: movie.popularity,
+    backdrop_path: movie.backdrop_path,
     poster_path: movie.poster_path,
     original_language: movie.original_language,
     release_date: movie.release_date,
     revenue: movie.revenue,
+    runtime: movie.runtime,
     genres: movie.genres.map(genre => genre.name),
     origin_country: movie.origin_country,
     production_companies: movie.production_companies.map(
@@ -50,46 +52,47 @@ export const transformedMovieDetails = (movie: MovieDetailsShema) => ({
         })),
 }) as MovieDetailsMapper;
 
-export const transformedTVDetails = (tv: TVDetailsShema) => ({
-    adult: tv.adult,
-    homepage: tv.homepage,
-    first_air_date: tv.first_air_date,
-    last_air_date: tv.last_air_date,
-    in_production: tv.in_production,
-    name: tv.name || tv.original_name,
-    number_of_episodes: tv.number_of_episodes,
-    number_of_seasons: tv.number_of_seasons,
-    original_language: tv.original_language,
-    overview: tv.overview,
-    status: tv.status,
-    tagline: tv.tagline,
-    type: tv.type,
-    vote_average: tv.vote_average,
-    vote_count: tv.vote_count,
-    popularity: tv.popularity,
-    poster_path: tv.poster_path,
-    languages: tv.languages,
-    genres: tv.genres.map(genre => genre.name),
-    origin_country: tv.origin_country,
-    production_companies: tv.production_companies.map(
+export const transformedTVShowDetails = (tvShow: TVShowDetailsShema) => ({
+    adult: tvShow.adult,
+    homepage: tvShow.homepage,
+    first_air_date: tvShow.first_air_date,
+    last_air_date: tvShow.last_air_date,
+    in_production: tvShow.in_production,
+    name: tvShow.name || tvShow.original_name,
+    number_of_episodes: tvShow.number_of_episodes,
+    number_of_seasons: tvShow.number_of_seasons,
+    original_language: tvShow.original_language,
+    overview: tvShow.overview,
+    status: tvShow.status,
+    tagline: tvShow.tagline,
+    type: tvShow.type,
+    vote_average: tvShow.vote_average,
+    vote_count: tvShow.vote_count,
+    popularity: tvShow.popularity,
+    backdrop_path: tvShow.backdrop_path,
+    poster_path: tvShow.poster_path,
+    languages: tvShow.languages,
+    genres: tvShow.genres.map(genre => genre.name),
+    origin_country: tvShow.origin_country,
+    production_companies: tvShow.production_companies.map(
         company => ({
             logo_path: company.logo_path,
             name: company.name,
-            origin_country: tv.production_countries.find(
+            origin_country: tvShow.production_countries.find(
                 country => company.origin_country === country.iso_3166_1)?.name
         })),
-    spoken_languages: tv.spoken_languages.map(
+    spoken_languages: tvShow.spoken_languages.map(
         language => ({
             english_name: language.english_name,
             name: language.name
         })),
-    created_by: tv.created_by.map(
+    created_by: tvShow.created_by.map(
         created => ({
             name: created.name || created.original_name,
             gender: created.gender,
             profile_path: created.profile_path
         })),
-    seasons: tv.seasons.map(
+    seasons: tvShow.seasons.map(
         season => ({
             air_date: season.air_date,
             episode_count: season.episode_count,
@@ -99,10 +102,10 @@ export const transformedTVDetails = (tv: TVDetailsShema) => ({
             season_number: season.season_number,
             vote_average: season.vote_average
         })),
-    networks: tv.networks.map(
+    networks: tvShow.networks.map(
         network => ({
             logo_path: network.logo_path,
             name: network.name,
             origin_country: network.origin_country
         }))
-}) as TVDetailsMapper;
+}) as TVShowDetailsMapper;

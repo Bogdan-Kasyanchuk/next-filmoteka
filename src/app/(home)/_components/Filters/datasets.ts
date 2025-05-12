@@ -13,8 +13,8 @@ export const mediaTypeFilter: Array<{
             value: MediaType.MOVIE
         },
         {
-            label: 'TV',
-            value: MediaType.TV
+            label: 'TV Shows',
+            value: MediaType.TV_SHOW
         }
     ];
 

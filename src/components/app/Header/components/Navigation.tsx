@@ -17,8 +17,8 @@ const links = [
         icon: '/svg/movie.svg',
     },
     {
-        name: 'TV',
-        href: '/tv',
+        name: 'TV Shows',
+        href: '/tv-shows',
         icon: '/svg/tv.svg',
     },
 ];

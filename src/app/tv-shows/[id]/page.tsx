@@ -1,8 +1,7 @@
 import { dehydrate, QueryClient, HydrationBoundary } from '@tanstack/react-query';
 
 import Container from '@/components/ui/layouts/Container';
-import { MediaType } from '@/enums';
-import { getItemById } from '@/services/api';
+import { getTVShowById } from '@/services/api';
 
 import Content from './_components/Content';
 
@@ -18,14 +17,14 @@ export default async function Page(props: Props) {
     const queryClient = new QueryClient();
 
     await queryClient.prefetchQuery({
-        queryKey: ['tvs', id],
-        queryFn: () => getItemById(MediaType.TV, id),
+        queryKey: ['tv-shows', id],
+        queryFn: () => getTVShowById(id),
     });
 
     const dehydratedState = dehydrate(queryClient);
 
     return (
-        <Container className='p-tv'>
+        <Container className='p-tv-show'>
             <HydrationBoundary state={dehydratedState}>
                 <Content id={id} />
             </HydrationBoundary>

@@ -1,12 +1,12 @@
-import { TVDetailsMapper } from '@/types';
+import { TVShowDetailsMapper } from '@/types';
 
 type Props = {
-    tv: TVDetailsMapper
+    tvShow: TVShowDetailsMapper
 }
 
-export default function TVDetailsCard(props: Props) {
+export default function TVShowDetailsCard(props: Props) {
     return (
-        <div>TVDetailsCard</div>
+        <div>TVShowDetailsCard</div>
         // <div className={styles['movie-card-details']}>
         //     <div className={styles['movie-card-details-wrapper-img']}>
         //         <img

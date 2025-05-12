@@ -1,9 +1,7 @@
 import { dehydrate, QueryClient, HydrationBoundary } from '@tanstack/react-query';
 
 import Container from '@/components/ui/layouts/Container';
-import { MediaType } from '@/enums';
-import { getItemById } from '@/services/api';
-import { MovieDetailsShema } from '@/shemas';
+import { getMovieById } from '@/services/api';
 
 import Content from './_components/Content';
 
@@ -20,7 +18,7 @@ export default async function Page(props: Props) {
 
     await queryClient.prefetchQuery({
         queryKey: ['movies', id],
-        queryFn: () => getItemById<MovieDetailsShema>(MediaType.MOVIE, id),
+        queryFn: () => getMovieById(id),
     });
 
     const dehydratedState = dehydrate(queryClient);

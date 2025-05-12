@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
+import { BASE_URL_POSTER } from '@/helpers/parameters';
 import { MovieMapper } from '@/types';
 
 type Props = {
@@ -17,7 +18,7 @@ export default function MovieCard(props: Props) {
                 <Image
                     src={
                         props.movie.poster_path
-                            ? `${process.env.NEXT_PUBLIC_BASE_URL_IMG}${props.movie.poster_path}`
+                            ? `${BASE_URL_POSTER}${props.movie.poster_path}`
                             : '/img/poster-not-available.jpg'
                     }
                     sizes="(max-width: 479px) 173px, (max-width: 767px) 213px, (max-width: 1023px) 230px, 294px"

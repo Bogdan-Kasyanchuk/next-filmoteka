@@ -3,12 +3,12 @@
 import { usePathname, useSearchParams, useRouter } from 'next/navigation';
 
 import Tabs from '@/components/ui/data-display/Tabs';
-import { TVType } from '@/enums';
+import { TVShowType } from '@/enums';
 
-import { tvTypeFilter } from './datasets';
+import { tvShowTypeFilter } from './datasets';
 
 type Props = {
-    type: TVType;
+    type: TVShowType;
 }
 
 export default function Filters(props: Props) {
@@ -16,7 +16,7 @@ export default function Filters(props: Props) {
     const searchParams = useSearchParams();
     const { replace } = useRouter();
 
-    const handleType = (type: TVType) => {
+    const handleType = (type: TVShowType) => {
         const params = new URLSearchParams(searchParams);
 
         params.set('type', type);
@@ -28,9 +28,9 @@ export default function Filters(props: Props) {
     };
 
     return (
-        <div className='p-tvs__filters'>
-            <Tabs<TVType>
-                filters={tvTypeFilter}
+        <div className='p-tv-shows__filters'>
+            <Tabs<TVShowType>
+                filters={tvShowTypeFilter}
                 active={props.type}
                 onClick={
                     (value) => {

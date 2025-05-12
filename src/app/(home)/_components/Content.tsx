@@ -3,11 +3,11 @@
 import { keepPreviousData, useQuery } from '@tanstack/react-query';
 
 import MovieCard from '@/components/ui/cards/MovieCard';
-import TVCard from '@/components/ui/cards/TVCard';
+import TVShowCard from '@/components/ui/cards/TVShowCard';
 import Loader from '@/components/ui/data-display/Loader';
 import Pagination from '@/components/ui/data-display/Pagination';
 import { MediaType, TimeType } from '@/enums';
-import { transformedMovie, transformedTV } from '@/helpers/transformedData';
+import { transformedMovie, transformedTVShow } from '@/helpers/transformedData';
 import { getTrendings } from '@/services/api';
 
 type Props = {
@@ -27,7 +27,7 @@ export default function Content(props: Props) {
                     if (result.media_type === MediaType.MOVIE) {
                         return transformedMovie(result);
                     } else {
-                        return transformedTV(result);
+                        return transformedTVShow(result);
                     }
                 });
 
@@ -53,7 +53,7 @@ export default function Content(props: Props) {
                                                 {
                                                     result.media_type === MediaType.MOVIE
                                                         ? <MovieCard movie={result} />
-                                                        : <TVCard tv={result} />
+                                                        : <TVShowCard tvShow={result} />
                                                 }
                                             </li>
                                         )

@@ -2,26 +2,26 @@
 
 import { keepPreviousData, useQuery } from '@tanstack/react-query';
 
-import TVCard from '@/components/ui/cards/TVCard';
+import TVShowCard from '@/components/ui/cards/TVShowCard';
 import Loader from '@/components/ui/data-display/Loader';
 import Pagination from '@/components/ui/data-display/Pagination';
-import { TVType } from '@/enums';
-import { transformedTV } from '@/helpers/transformedData';
-import { getTVs } from '@/services/api';
+import { TVShowType } from '@/enums';
+import { transformedTVShow } from '@/helpers/transformedData';
+import { getTVShows } from '@/services/api';
 
 type Props = {
-    type: TVType;
+    type: TVShowType;
     currentPage: number,
 }
 
 export default function Content(props: Props) {
     const { data, isFetching } = useQuery({
-        queryKey: ['tvs', props.type, props.currentPage],
-        queryFn: () => getTVs(props.type, props.currentPage),
+        queryKey: ['tv-shows', props.type, props.currentPage],
+        queryFn: () => getTVShows(props.type, props.currentPage),
         placeholderData: keepPreviousData,
         select: (data) => {
             const transformedResults = data.results.map(
-                (result) => transformedTV(result));
+                (result) => transformedTVShow(result));
 
             return {
                 results: transformedResults,
@@ -36,13 +36,13 @@ export default function Content(props: Props) {
                 isFetching
                     ? <Loader />
                     : data && data.results.length > 0
-                        ? <div className='p-tvs__content'>
-                            <ul className='p-tvs__media-list'>
+                        ? <div className='p-tv-shows__content'>
+                            <ul className='p-tv-shows__media-list'>
                                 {
                                     data.results.map(
                                         (result) => (
                                             <li key={result.id}>
-                                                <TVCard tv={result} />
+                                                <TVShowCard tvShow={result} />
                                             </li>
                                         )
                                     )

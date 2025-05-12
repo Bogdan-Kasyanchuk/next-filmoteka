@@ -1,4 +1,4 @@
-import { MediaType, VideoType } from './enums';
+import { EpisodeType, GenderType, MediaType, VideoType } from './enums';
 
 type SpokenLanguage = {
     english_name: string,
@@ -11,6 +11,28 @@ type ProductionCompany = {
     origin_country?: string
 };
 
+type SeasonMapper = {
+    air_date: string,
+    episode_count: number,
+    name: string,
+    overview: string,
+    poster_path: string,
+    season_number: number,
+    vote_average: number
+};
+
+type Network = {
+    logo_path: string,
+    name: string,
+    origin_country: string
+};
+
+type CreatedBy = {
+    name: string,
+    gender: GenderType,
+    profile_path: string
+};
+
 export type MovieMapper = {
     id: number,
     title: string,
@@ -21,7 +43,7 @@ export type MovieMapper = {
 
 export type SimilarMovieMapper = MovieMapper;
 
-export type RecomendationMovieMapper = MovieMapper;
+export type RecommendationMovieMapper = MovieMapper;
 
 export type MovieDetailsMapper = {
     imdb_id: string,
@@ -35,29 +57,31 @@ export type MovieDetailsMapper = {
     vote_average: number,
     vote_count: number,
     popularity: number,
+    backdrop_path: string,
     poster_path: string,
     original_language: string,
     release_date: string,
     revenue: number,
+    runtime: number,
     genres: string[],
     origin_country: string[],
     production_companies: ProductionCompany[],
     spoken_languages: SpokenLanguage[],
 }
 
-export type TVMapper = {
+export type TVShowMapper = {
     id: number,
     name: string,
     poster_path: string,
-    media_type: MediaType.TV,
+    media_type: MediaType.TV_SHOW,
     vote_average: number,
 };
 
-export type SimilarTVMapper = TVMapper;
+export type SimilarTVShowMapper = TVShowMapper;
 
-export type RecomendationTVMapper = TVMapper;
+export type RecommendationTVShowMapper = TVShowMapper;
 
-export type TVDetailsMapper = {
+export type TVShowDetailsMapper = {
     adult: boolean,
     homepage: string,
     first_air_date: string,
@@ -74,35 +98,48 @@ export type TVDetailsMapper = {
     vote_average: number,
     vote_count: number
     popularity: number,
+    backdrop_path: string,
     poster_path: string,
     languages: string[],
     genres: string[],
     origin_country: string[],
     production_companies: ProductionCompany[],
     spoken_languages: SpokenLanguage[],
-    created_by: Array<{
-        name: string,
-        gender: 1 | 2,
-        profile_path: string
-    }>,
-    seasons: Array<{
+    created_by: CreatedBy[],
+    seasons: SeasonMapper[],
+    networks: Network[],
+}
+
+export type TVShowSeasonDetailsMapper = {
+    _id: string,
+    air_date: string,
+    name: string,
+    overview: string,
+    id: number,
+    poster_path: string,
+    season_number: number,
+    vote_average: number,
+    episodes: Array<{
         air_date: string,
-        episode_count: number,
+        episode_number: number,
+        episode_type: EpisodeType,
+        id: number,
         name: string,
         overview: string,
-        poster_path: string,
+        production_code: string,
+        runtime: number,
         season_number: number,
-        vote_average: number
-    }>,
-    networks: Array<{
-        logo_path: string,
-        name: string,
-        origin_country: string
+        // show_id: number,
+        still_path: string,
+        vote_average: number,
+        // vote_count: number,
+        // crew: CrewShema[],
+        // guest_stars: Omit<CastShema, 'cast_id'>[]
     }>
 }
 
 export type CastMapper = {
-    gender: 1 | 2,
+    gender: GenderType,
     name: string,
     popularity: number,
     profile_path: string,
@@ -110,7 +147,7 @@ export type CastMapper = {
 };
 
 export type CrewMapper = {
-    gender: 1 | 2,
+    gender: GenderType,
     name: string,
     popularity: number,
     profile_path: string,
