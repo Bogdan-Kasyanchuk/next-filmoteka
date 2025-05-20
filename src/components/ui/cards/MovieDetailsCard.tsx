@@ -3,6 +3,7 @@ import { Fragment } from 'react';
 
 import { PARAMETERS, IMG_SIZES } from '@/helpers/parameters';
 import { MovieDetailsMapper } from '@/types';
+import { formatDate } from '@/utils/formateDate';
 
 import Container from '../layouts/Container';
 
@@ -75,7 +76,7 @@ export default function MovieDetailsCard(props: Props) {
                             {props.movie.original_language}
                         </span>
                         <span>
-                            {props.movie.release_date}
+                            {formatDate(props.movie.release_date, 'YYYY')}
                         </span>
                         <span>
                             {props.movie.revenue}
