@@ -30,7 +30,7 @@ export default function Filters(props: Props) {
     return (
         <div className='p-movies__filters'>
             <Tabs<MovieType>
-                filters={movieTypeFilter}
+                tabs={movieTypeFilter}
                 active={props.type}
                 onClick={
                     (value) => {

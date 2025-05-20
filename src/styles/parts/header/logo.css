@@ -8,23 +8,19 @@
 
     &__img {
         width: auto;
-        height: 36px;
-
-        @variant min-md {
-            height: 46px;
-        }
+        height: 46px;
     }
 
     &__text {
-        display: none;
+        @apply sr-only;
 
         font-size: var(--text-5xl);
         font-weight: 700;
         line-height: 1;
         text-transform: uppercase;
 
-        @variant min-md {
-            display: block;
+        @variant min-lg {
+            @apply not-sr-only;
         }
     }
 }

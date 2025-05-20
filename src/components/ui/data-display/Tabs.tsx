@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 
 type Props<T> = {
-    filters: Array<{
+    tabs: Array<{
         label: string,
         value: T
     }>
@@ -13,7 +13,7 @@ export default function Tabs<T>(props: Props<T>) {
     return (
         <ul className="c-tabs">
             {
-                props.filters.map(
+                props.tabs.map(
                     (filter, index) => (
                         <li
                             key={index}

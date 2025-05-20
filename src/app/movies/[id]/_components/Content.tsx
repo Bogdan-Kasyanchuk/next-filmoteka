@@ -16,7 +16,7 @@ export default function Content(props: Props) {
     const { data, isFetching } = useQuery({
         queryKey: ['movies', props.id],
         queryFn: () => getMovieById(props.id),
-        select: (data) => transformedMovieDetails(data)
+        select: (data) => transformedMovieDetails(data),
     });
 
     return (

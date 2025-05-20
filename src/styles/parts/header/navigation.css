@@ -7,7 +7,7 @@
         align-items: center;
 
         @variant min-md {
-            column-gap: 40px;
+            column-gap: 30px;
         }
     }
 
@@ -15,21 +15,20 @@
         position: relative;
 
         display: flex;
-        column-gap: 6px;
+        column-gap: 10px;
         align-items: center;
 
-        font-size: var(--text-md);
-        font-weight: 700;
+        padding: 6px;
+
         line-height: 1;
         color: var(--color-primary);
-        text-transform: uppercase;
 
         &::before,
         &::after {
             content: '';
 
             position: absolute;
-            bottom: -8px;
+            bottom: -1px;
 
             width: 0;
             height: 2px;
@@ -40,6 +39,7 @@
             transition-property: width, opacity;
 
             @variant min-md {
+                bottom: -2px;
                 height: 3px;
             }
         }
@@ -55,30 +55,35 @@
         &:hover::before,
         &:hover::after {
             @media (any-hover: hover) {
-                width: 54%;
+                width: 50%;
             }
         }
 
         &--is-active::before,
         &--is-active::after {
             @media (any-hover: hover) {
-                width: 54%;
+                width: 50%;
                 opacity: 1;
             }
-        }
-
-        @variant min-md {
-            column-gap: 10px;
-            font-size: var(--text-2xl);
         }
     }
 
     &__img {
         width: auto;
-        height: 18px;
+        height: 24px;
+    }
+
+    &__text {
+        @apply sr-only;
+
+        font-size: var(--text-md);
+        font-weight: 700;
+        text-transform: uppercase;
 
         @variant min-md {
-            height: 24px;
+            font-size: var(--text-2xl);
+
+            @apply not-sr-only;
         }
     }
 }

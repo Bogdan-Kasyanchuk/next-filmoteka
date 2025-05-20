@@ -42,7 +42,7 @@ export default function Filters(props: Props) {
     return (
         <div className='p-home__filters'>
             <Tabs<'all' | MediaType>
-                filters={mediaTypeFilter}
+                tabs={mediaTypeFilter}
                 active={props.type}
                 onClick={
                     (value) => {
@@ -52,7 +52,7 @@ export default function Filters(props: Props) {
             />
 
             <Tabs<TimeType>
-                filters={timeFilter}
+                tabs={timeFilter}
                 active={props.time}
                 onClick={
                     (value) => {

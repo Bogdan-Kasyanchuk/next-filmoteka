@@ -6,10 +6,14 @@
     z-index: 5;
     top: 0;
 
-    padding-block: 15px;
+    padding-block: 10px;
     border-bottom: 2px solid var(--color-primary);
 
     background-image: linear-gradient(90deg, #222 50%, var(--color-accent) 100%);
+
+    @variant min-md {
+        padding-block: 15px;
+    }
 
     &__container {
         display: flex;

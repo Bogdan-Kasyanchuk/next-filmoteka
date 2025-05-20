@@ -3,7 +3,7 @@
 import Link from 'next/link';
 export default function NotFound() {
     return (
-        <div className='w-full h-full flex flex-col items-center justify-center gap-10'>
+        <div className='flex flex-col items-center justify-center gap-10 w-full'>
             <p className='text-6xl text-center'>Could not found movie</p>
 
             <Link

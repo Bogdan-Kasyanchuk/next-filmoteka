@@ -32,7 +32,10 @@ export default function Navigation() {
                 {
                     links.map(
                         (link) => (
-                            <li key={link.name}>
+                            <li
+                                key={link.name}
+                                className='c-navigation__item'
+                            >
                                 <Link
                                     href={link.href}
                                     className={
@@ -48,7 +51,7 @@ export default function Navigation() {
                                         alt={link.name}
                                         className='c-navigation__img'
                                     />
-                                    {link.name}
+                                    <span className='c-navigation__text'>{link.name}</span>
                                 </Link>
                             </li>
                         )

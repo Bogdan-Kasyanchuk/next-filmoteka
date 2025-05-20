@@ -1,6 +1,5 @@
 import { dehydrate, QueryClient, HydrationBoundary } from '@tanstack/react-query';
 
-import Container from '@/components/ui/layouts/Container';
 import { getMovieById } from '@/services/api';
 
 import Content from './_components/Content';
@@ -24,10 +23,10 @@ export default async function Page(props: Props) {
     const dehydratedState = dehydrate(queryClient);
 
     return (
-        <Container className='p-movie'>
+        <div className='p-movie'>
             <HydrationBoundary state={dehydratedState}>
                 <Content id={id} />
             </HydrationBoundary>
-        </Container>
+        </div>
     );
 }

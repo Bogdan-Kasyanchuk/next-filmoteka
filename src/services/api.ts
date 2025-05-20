@@ -1,11 +1,18 @@
 import { MovieType, MediaType, TimeType, TVShowType } from '@/enums';
-import { ADULT, API_KEY, BASE_URL, LOCALE } from '@/helpers/parameters';
-import { DataShema, MovieDetailsShema, MovieShema, TVShowDetailsShema, TVShowSeasonDetailsShema, TVShowShema } from '@/shemas';
+import { PARAMETERS } from '@/helpers/parameters';
+import {
+    DataShema,
+    MovieDetailsShema,
+    MovieShema,
+    TVShowDetailsShema,
+    TVShowSeasonDetailsShema,
+    TVShowShema
+} from '@/shemas';
 
 async function fetchApi<T>(url: string) {
-    const buildUrl = new URL(`${BASE_URL}/${url}`);
-    buildUrl.searchParams.append('api_key', API_KEY || '');
-    buildUrl.searchParams.append('language', LOCALE || '');
+    const buildUrl = new URL(`${PARAMETERS.BASE_URL}/${url}`);
+    buildUrl.searchParams.append('api_key', PARAMETERS.API_KEY || '');
+    buildUrl.searchParams.append('language', PARAMETERS.LOCALE || '');
 
     const response = await fetch(buildUrl, {
         cache: 'no-store'
@@ -45,7 +52,7 @@ export function getTVShowSeasonByNumber(seriesId: string, number: number) {
 }
 
 export function getSearch(type: MediaType, query: string, page: number) {
-    return fetchApi(`search/${type}?query=${query}&page=${page}&include_adult=${ADULT}`);
+    return fetchApi(`search/${type}?query=${query}&page=${page}&include_adult=${PARAMETERS.ADULT}`);
 }
 
 export function getCredits(type: MediaType, id: string) {
