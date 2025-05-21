@@ -1,6 +1,6 @@
 import { MediaType } from '@/enums';
-import { MovieDetailsShema, MovieShema, TVShowDetailsShema, TVShowShema } from '@/shemas';
-import { MovieDetailsMapper, MovieMapper, TVShowDetailsMapper, TVShowMapper } from '@/types';
+import { CastShema, MovieDetailsShema, MovieShema, TVShowDetailsShema, TVShowShema } from '@/shemas';
+import { CastMapper, MovieDetailsMapper, MovieMapper, TVShowDetailsMapper, TVShowMapper } from '@/types';
 
 export const transformedMovie = (movie: MovieShema) => ({
     id: movie.id,
@@ -109,3 +109,11 @@ export const transformedTVShowDetails = (tvShow: TVShowDetailsShema) => ({
             origin_country: network.origin_country
         }))
 }) as TVShowDetailsMapper;
+
+export const transformedCast = (cast: CastShema) => ({
+    gender: cast.gender,
+    name: cast.name || cast.original_name,
+    popularity: cast.popularity,
+    profile_path: cast.profile_path,
+    character: cast.character,
+}) as CastMapper;

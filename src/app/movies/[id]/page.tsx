@@ -20,13 +20,11 @@ export default async function Page(props: Props) {
         queryFn: () => getMovieById(id),
     });
 
-    const dehydratedState = dehydrate(queryClient);
-
     return (
-        <div className='p-movie'>
-            <HydrationBoundary state={dehydratedState}>
+        <HydrationBoundary state={dehydrate(queryClient)}>
+            <div className='p-movie'>
                 <Content id={id} />
-            </HydrationBoundary>
-        </div>
+            </div>
+        </HydrationBoundary>
     );
 }

@@ -1,0 +1,49 @@
+.cast-item {
+    overflow: hidden;
+    border: 1px solid #18819e;
+    border-radius: 2px;
+}
+
+.cast-item-wrapper-img {
+    position: relative;
+    width: 100%;
+    height: 340px;
+
+    img {
+        object-fit: cover;
+    }
+}
+
+.cast-item-description {
+    height: calc(100% - 340px);
+    padding: 10px;
+
+    line-height: 1.2;
+    color: #fff;
+
+    background-image: linear-gradient(
+        90deg,
+        rgba(0, 0, 0, 0.5) 55%,
+        rgba(24, 129, 158, 0.3) 100%
+    );
+}
+
+.cast-item-description-title {
+    margin-bottom: 5px;
+    font-size: 24px;
+    line-height: 1;
+    text-align: center;
+}
+
+.cast-item-description-text {
+    font-size: 20px;
+    line-height: 1.1;
+}
+
+.cast-item-description-text:not(:last-child) {
+    margin-bottom: 5px;
+}
+
+.cast-item-description-text > span {
+    color: #18819e;
+}

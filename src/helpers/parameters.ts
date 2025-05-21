@@ -7,9 +7,10 @@ export const PARAMETERS = {
 };
 
 export const IMG_SIZES = {
-    CARD_COVER: 'w342',
-    CARD_DETAILS_COVER: 'w500',
-    CARD_DETAILS_BACKDROP: 'w1920_and_h800_multi_faces',
+    MEDIA_CARD_COVER: 'w342',
+    MEDIA_CARD_DETAILS_COVER: 'w500',
+    MEDIA_CARD_DETAILS_BACKDROP: 'w1920_and_h800_multi_faces',
+    CAST_CARD_COVER: 'w185',
     STILL: 'w300',
     LOGO: 'w92',
 };

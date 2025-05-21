@@ -1,22 +1,21 @@
 import Image from 'next/image';
 import { Fragment } from 'react';
 
+import Container from '@/components/ui/layouts/Container';
 import { PARAMETERS, IMG_SIZES } from '@/helpers/parameters';
 import { MovieDetailsMapper } from '@/types';
 import { formatDate } from '@/utils/formateDate';
-
-import Container from '../layouts/Container';
 
 type Props = {
     movie: MovieDetailsMapper
 }
 
-export default function MovieDetailsCard(props: Props) {
+export default function MovieDetails(props: Props) {
     return (
         <div className='с-movie-details-card'>
             <div className='с-movie-details-card__backdrop'>
                 <Image
-                    src={`${PARAMETERS.URL_IMG}/${IMG_SIZES.CARD_DETAILS_BACKDROP}/${props.movie.backdrop_path}`}
+                    src={`${PARAMETERS.URL_IMG}/${IMG_SIZES.MEDIA_CARD_DETAILS_BACKDROP}/${props.movie.backdrop_path}`}
                     sizes="(max-width: 767px) 768px, (max-width: 1319px) 1320px, 1920px"
                     alt={props.movie.title}
                     fill
@@ -28,7 +27,7 @@ export default function MovieDetailsCard(props: Props) {
                     <Image
                         src={
                             props.movie.poster_path
-                                ? `${PARAMETERS.URL_IMG}/${IMG_SIZES.CARD_DETAILS_COVER}/${props.movie.poster_path}`
+                                ? `${PARAMETERS.URL_IMG}/${IMG_SIZES.MEDIA_CARD_DETAILS_COVER}/${props.movie.poster_path}`
                                 : '/img/poster-not-available.jpg'
                         }
                         sizes="500px"

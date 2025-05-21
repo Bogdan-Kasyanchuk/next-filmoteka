@@ -1,6 +1,5 @@
 import { dehydrate, QueryClient, HydrationBoundary } from '@tanstack/react-query';
 
-import Container from '@/components/ui/layouts/Container';
 import { getTVShowById } from '@/services/api';
 
 import Content from './_components/Content';
@@ -21,13 +20,11 @@ export default async function Page(props: Props) {
         queryFn: () => getTVShowById(id),
     });
 
-    const dehydratedState = dehydrate(queryClient);
-
     return (
-        <Container className='p-tv-show'>
-            <HydrationBoundary state={dehydratedState}>
+        <HydrationBoundary state={dehydrate(queryClient)}>
+            <div className='p-tv-show'>
                 <Content id={id} />
-            </HydrationBoundary>
-        </Container>
+            </div>
+        </HydrationBoundary>
     );
 }

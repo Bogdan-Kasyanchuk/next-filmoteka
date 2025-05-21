@@ -7,6 +7,7 @@ import { getTVShows } from '@/services/api';
 
 import Content from './_components/Content';
 import Filters from './_components/Filters';
+import TitleText from './_components/TitleText';
 
 import './_styles/index.css';
 
@@ -29,8 +30,6 @@ export default async function Page(props: Props) {
         queryFn: () => getTVShows(type, currentPage),
     });
 
-    const dehydratedState = dehydrate(queryClient);
-
     return (
         <Container className='p-tv-shows'>
             <Filters type={type} />
@@ -40,18 +39,10 @@ export default async function Page(props: Props) {
                 bold
                 uppercase
             >
-                {
-                    type === TVShowType.AIRING_TODAY
-                        ? 'TV Shows airing today'
-                        : type === TVShowType.ON_THE_AIR
-                            ? 'TV Shows that air in the next 7 days.'
-                            : type === TVShowType.POPULAR
-                                ? 'Popular TV Shows'
-                                : 'TV Shows with a top rating'
-                }
+                <TitleText type={type} />
             </Title>
 
-            <HydrationBoundary state={dehydratedState}>
+            <HydrationBoundary state={dehydrate(queryClient)}>
                 <Content
                     type={type}
                     currentPage={currentPage}

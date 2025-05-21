@@ -3,10 +3,11 @@
 import { useQuery } from '@tanstack/react-query';
 import { notFound } from 'next/navigation';
 
-import TVDetailsCard from '@/components/ui/cards/TVShowDetailsCard';
 import Loader from '@/components/ui/data-display/Loader';
 import { transformedTVShowDetails } from '@/helpers/transformedData';
 import { getTVShowById } from '@/services/api';
+
+import TVShowDetails from './TVShowDetails';
 
 type Props = {
     id: string
@@ -19,15 +20,15 @@ export default function Content(props: Props) {
         select: (data) => transformedTVShowDetails(data)
     });
 
+    if (isFetching) {
+        return <Loader />;
+    }
+
+    if (!data) {
+        return notFound();
+    }
+
     return (
-        <>
-            {
-                isFetching
-                    ? <Loader />
-                    : !data
-                        ? notFound()
-                        : <TVDetailsCard tvShow={data} />
-            }
-        </>
+        <TVShowDetails tvShow={data} />
     );
 }

@@ -7,6 +7,7 @@ import { getMovies } from '@/services/api';
 
 import Content from './_components/Content';
 import Filters from './_components/Filters/Filters';
+import TitleText from './_components/TitleText';
 
 import './_styles/index.css';
 
@@ -29,8 +30,6 @@ export default async function Page(props: Props) {
         queryFn: () => getMovies(type, currentPage),
     });
 
-    const dehydratedState = dehydrate(queryClient);
-
     return (
         <Container className='p-movies'>
             <Filters type={type} />
@@ -40,18 +39,10 @@ export default async function Page(props: Props) {
                 bold
                 uppercase
             >
-                {
-                    type === MovieType.NOW_PLAYING
-                        ? 'Movies that are currently in theatres'
-                        : type === MovieType.POPULAR
-                            ? 'Popular movies'
-                            : type === MovieType.TOP_RATED
-                                ? 'Movies with a top rating'
-                                : 'Movies that are being released soon'
-                }
+                <TitleText type={type} />
             </Title>
 
-            <HydrationBoundary state={dehydratedState}>
+            <HydrationBoundary state={dehydrate(queryClient)}>
                 <Content
                     type={type}
                     currentPage={currentPage}

@@ -7,14 +7,14 @@ type Props = {
     tvShow: TVShowDetailsMapper
 }
 
-export default function TVShowDetailsCard(props: Props) {
+export default function TVShowDetails(props: Props) {
     return (
         <div className={'movie-card-details'}>
             <div className={'movie-card-details-wrapper-img'}>
                 <Image
                     src={
                         props.tvShow.poster_path
-                            ? `${PARAMETERS.URL_IMG}/${IMG_SIZES.CARD_DETAILS_COVER}/${props.tvShow.poster_path}`
+                            ? `${PARAMETERS.URL_IMG}/${IMG_SIZES.MEDIA_CARD_DETAILS_COVER}/${props.tvShow.poster_path}`
                             : '/img/poster-not-available.jpg'
                     }
                     sizes="(max-width: 479px) 173px, (max-width: 767px) 213px, (max-width: 1023px) 230px, 294px"

@@ -2,11 +2,11 @@
 
 import Link from 'next/link';
 
-import '@/styles/app.css';
+import Container from '@/components/ui/layouts/Container';
 
 export default function NotFound() {
     return (
-        <div className='flex flex-col items-center justify-center gap-10 w-full'>
+        <Container className='flex flex-col items-center justify-center gap-10'>
             <p className='text-6xl text-center'>Could not page</p>
 
             <Link
@@ -15,6 +15,6 @@ export default function NotFound() {
             >
                 Back to home
             </Link>
-        </div>
+        </Container>
     );
 }

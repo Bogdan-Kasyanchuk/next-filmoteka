@@ -1,9 +1,12 @@
 'use client';
 
 import Link from 'next/link';
+
+import Container from '@/components/ui/layouts/Container';
+
 export default function NotFound() {
     return (
-        <div className='flex flex-col items-center justify-center gap-10 w-full'>
+        <Container className='flex flex-col items-center justify-center gap-10'>
             <p className='text-6xl text-center'>Could not found movie</p>
 
             <Link
@@ -12,6 +15,6 @@ export default function NotFound() {
             >
                 Back to movies
             </Link>
-        </div>
+        </Container>
     );
 }

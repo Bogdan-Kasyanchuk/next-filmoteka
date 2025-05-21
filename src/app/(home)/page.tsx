@@ -7,6 +7,7 @@ import { getTrendings } from '@/services/api';
 
 import Content from './_components/Content';
 import Filters from './_components/Filters/Filters';
+import TitleText from './_components/TitleText';
 
 import './_styles/index.css';
 
@@ -31,8 +32,6 @@ export default async function Page(props: Props) {
         queryFn: () => getTrendings(type, time, currentPage),
     });
 
-    const dehydratedState = dehydrate(queryClient);
-
     return (
         <Container className='p-home'>
             <Filters
@@ -45,10 +44,10 @@ export default async function Page(props: Props) {
                 bold
                 uppercase
             >
-                {time === TimeType.DAY ? 'Trending today' : 'Trending this week'}
+                <TitleText type={time} />
             </Title>
 
-            <HydrationBoundary state={dehydratedState}>
+            <HydrationBoundary state={dehydrate(queryClient)}>
                 <Content
                     type={type}
                     time={time}

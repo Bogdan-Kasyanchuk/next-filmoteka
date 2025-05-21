@@ -1,13 +1,3 @@
-/* Tailwind */
-@import 'tailwindcss';
-@import './theme/base.css';
-
-/* App */
-@import './base/reset.css' layer(base);
-
-/* Utilities */
-@import './utilities/base.css' layer(base);
-
 /* Components */
 @import './components/icon.css' layer(base);
 @import './components/pagination.css' layer(base);
@@ -16,12 +6,4 @@
 @import './components/loader.css' layer(base);
 @import './components/cards/movie-card.css' layer(base);
 @import './components/cards/tv-show-card.css' layer(base);
-@import './components/cards/movie-details-card.css' layer(base);
-@import './components/cards/tv-show-details-card.css' layer(base);
-
-/* Parts */
-@import './parts/header/header.css' layer(base);
-@import './parts/footer/footer.css' layer(base);
-
-/* Layouts */
-@import './layouts/container.css' layer(base);
+@import './components/cards/cast-card.css' layer(base);
