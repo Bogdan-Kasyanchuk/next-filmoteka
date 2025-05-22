@@ -67,6 +67,10 @@ export type MovieDetailsMapper = {
     origin_country: string[],
     production_companies: ProductionCompany[],
     spoken_languages: SpokenLanguage[],
+    cast: CastMapper[],
+    videos: VideoMapper[],
+    reviews: ReviewMapper[],
+    recommendations: RecommendationMovieMapper[],
 }
 
 export type TVShowMapper = {
@@ -108,6 +112,10 @@ export type TVShowDetailsMapper = {
     created_by: CreatedBy[],
     seasons: SeasonMapper[],
     networks: Network[],
+    cast: CastMapper[],
+    videos: VideoMapper[],
+    reviews: ReviewMapper[],
+    recommendations: RecommendationTVShowMapper[],
 }
 
 export type TVShowSeasonDetailsMapper = {

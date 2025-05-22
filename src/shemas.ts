@@ -76,6 +76,15 @@ export type MovieDetailsShema = {
     video: boolean,
     vote_average: number,
     vote_count: number,
+    credits: {
+        cast: CastShema[],
+        crew: CrewShema[]
+    },
+    videos: {
+        results: VideoShema[]
+    },
+    reviews: DataShema<ReviewShema>,
+    recommendations: DataShema<RecommendationMovieShema>,
 }
 
 export type TVShowShema = {
@@ -182,7 +191,16 @@ export type TVShowDetailsShema = {
     tagline: string,
     type: string,
     vote_average: number,
-    vote_count: number
+    vote_count: number,
+    credits: {
+        cast: CastShema[],
+        crew: CrewShema[]
+    },
+    videos: {
+        results: VideoShema[]
+    },
+    reviews: DataShema<ReviewShema>,
+    recommendations: DataShema<RecommendationTVShowShema>,
 }
 
 export type TVShowSeasonDetailsShema = {
@@ -212,12 +230,6 @@ export type TVShowSeasonDetailsShema = {
         guest_stars: Omit<CastShema, 'cast_id'>[]
     }>
 }
-
-export type CreditsShema = {
-    id: number,
-    cast: CastShema[],
-    crew: CrewShema[]
-};
 
 export type CastShema = {
     adult: boolean,

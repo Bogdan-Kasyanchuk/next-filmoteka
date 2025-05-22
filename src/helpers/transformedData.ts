@@ -1,6 +1,6 @@
 import { MediaType } from '@/enums';
-import { CastShema, MovieDetailsShema, MovieShema, TVShowDetailsShema, TVShowShema } from '@/shemas';
-import { CastMapper, MovieDetailsMapper, MovieMapper, TVShowDetailsMapper, TVShowMapper } from '@/types';
+import { CastShema, MovieDetailsShema, MovieShema, RecommendationMovieShema, RecommendationTVShowShema, ReviewShema, TVShowDetailsShema, TVShowShema, VideoShema } from '@/shemas';
+import { CastMapper, MovieDetailsMapper, MovieMapper, RecommendationMovieMapper, RecommendationTVShowMapper, ReviewMapper, TVShowDetailsMapper, TVShowMapper, VideoMapper } from '@/types';
 
 export const transformedMovie = (movie: MovieShema) => ({
     id: movie.id,
@@ -50,6 +50,11 @@ export const transformedMovieDetails = (movie: MovieDetailsShema) => ({
             english_name: language.english_name,
             name: language.name
         })),
+    cast: movie.credits.cast.map(cast => transformedCast(cast)),
+    videos: movie.videos.results.map(video => transformedVideo(video)),
+    reviews: movie.reviews.results.map(review => transformedReview(review)),
+    recommendations: movie.recommendations.results.map(
+        recommendation => transformedRecommendationMovie(recommendation)),
 }) as MovieDetailsMapper;
 
 export const transformedTVShowDetails = (tvShow: TVShowDetailsShema) => ({
@@ -107,7 +112,12 @@ export const transformedTVShowDetails = (tvShow: TVShowDetailsShema) => ({
             logo_path: network.logo_path,
             name: network.name,
             origin_country: network.origin_country
-        }))
+        })),
+    cast: tvShow.credits.cast.map(cast => transformedCast(cast)),
+    videos: tvShow.videos.results.map(video => transformedVideo(video)),
+    reviews: tvShow.reviews.results.map(review => transformedReview(review)),
+    recommendations: tvShow.recommendations.results.map(
+        recommendation => transformedRecommendationTVShow(recommendation)),
 }) as TVShowDetailsMapper;
 
 export const transformedCast = (cast: CastShema) => ({
@@ -117,3 +127,42 @@ export const transformedCast = (cast: CastShema) => ({
     profile_path: cast.profile_path,
     character: cast.character,
 }) as CastMapper;
+
+export const transformedVideo = (video: VideoShema) => ({
+    iso_3166_1: video.iso_3166_1,
+    name: video.name,
+    key: video.key,
+    site: video.site,
+    size: video.size,
+    type: video.type,
+    official: video.official,
+    published_at: video.published_at,
+}) as VideoMapper;
+
+export const transformedReview = (review: ReviewShema) => ({
+    author: {
+        name: review.author_details.name,
+        username: review.author_details.username,
+        avatar_path: review.author_details.avatar_path,
+        rating: review.author_details.rating,
+    },
+    content: review.content,
+    created_at: review.created_at,
+    updated_at: review.updated_at,
+}) as ReviewMapper;
+
+export const transformedRecommendationMovie = (recommendation: RecommendationMovieShema) => ({
+    id: recommendation.id,
+    title: recommendation.title || recommendation.original_title,
+    poster_path: recommendation.poster_path,
+    media_type: MediaType.MOVIE,
+    vote_average: recommendation.vote_average,
+}) as RecommendationMovieMapper;
+
+export const transformedRecommendationTVShow = (recommendation: RecommendationTVShowShema) => ({
+    id: recommendation.id,
+    name: recommendation.name || recommendation.original_name,
+    poster_path: recommendation.poster_path,
+    media_type: MediaType.TV_SHOW,
+    vote_average: recommendation.vote_average,
+}) as RecommendationTVShowMapper;
