@@ -34,7 +34,7 @@ export default function Content(props: Props) {
 
     return (
         <>
-            <MovieDetails movie={data} />
+            <MovieDetails {...data.movie} />
             {/* <Casts casts={data} />
             <Videos movie={data} />
             <Recommendations movie={data} />

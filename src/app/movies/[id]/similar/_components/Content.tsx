@@ -3,6 +3,6 @@
 export default function Content() {
 
     return (
-        <div>Content</div>
+        <div>Movie similar Content</div>
     );
 }

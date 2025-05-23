@@ -6,18 +6,17 @@ import { PARAMETERS, IMG_SIZES } from '@/helpers/parameters';
 import { MovieDetailsMapper } from '@/types';
 import { formatDate } from '@/utils/formateDate';
 
-type Props = {
-    movie: MovieDetailsMapper
-}
+type Props = MovieDetailsMapper['movie']
 
 export default function MovieDetails(props: Props) {
+
     return (
         <div className='с-movie-details-card'>
             <div className='с-movie-details-card__backdrop'>
                 <Image
-                    src={`${PARAMETERS.URL_IMG}/${IMG_SIZES.MEDIA_CARD_DETAILS_BACKDROP}/${props.movie.backdrop_path}`}
+                    src={`${PARAMETERS.URL_IMG}/${IMG_SIZES.MEDIA_CARD_DETAILS_BACKDROP}/${props.backdrop_path}`}
                     sizes="(max-width: 767px) 768px, (max-width: 1319px) 1320px, 1920px"
-                    alt={props.movie.title}
+                    alt={props.title}
                     fill
                 />
             </div>
@@ -26,12 +25,12 @@ export default function MovieDetails(props: Props) {
                 <div className='с-movie-details-card__cover'>
                     <Image
                         src={
-                            props.movie.poster_path
-                                ? `${PARAMETERS.URL_IMG}/${IMG_SIZES.MEDIA_CARD_DETAILS_COVER}/${props.movie.poster_path}`
+                            props.poster_path
+                                ? `${PARAMETERS.URL_IMG}/${IMG_SIZES.MEDIA_CARD_DETAILS_COVER}/${props.poster_path}`
                                 : '/img/poster-not-available.jpg'
                         }
                         sizes="500px"
-                        alt={props.movie.title}
+                        alt={props.title}
                         fill
                     />
                 </div>
@@ -39,56 +38,56 @@ export default function MovieDetails(props: Props) {
                 <div className='с-movie-details-card__content'>
                     <div className='flex flex-col gap-2.5'>
                         <span>
-                            {props.movie.imdb_id}
+                            {props.imdb_id}
                         </span>
                         <span>
-                            {props.movie.adult ? '18+' : '0+'}
+                            {props.adult ? '18+' : '0+'}
                         </span>
                         <span>
-                            {props.movie.homepage}
+                            {props.homepage}
                         </span>
                         <span>
-                            {props.movie.budget}
+                            {props.budget}
                         </span>
                         <span>
-                            {props.movie.title}
+                            {props.title}
                         </span>
                         <span>
-                            {props.movie.overview}
+                            {props.overview}
                         </span>
                         <span>
-                            {props.movie.status}
+                            {props.status}
                         </span>
                         <span>
-                            {props.movie.tagline}
+                            {props.tagline}
                         </span>
                         <span>
-                            {props.movie.vote_average}
+                            {props.vote_average}
                         </span>
                         <span>
-                            {props.movie.vote_count}
+                            {props.vote_count}
                         </span>
                         <span>
-                            {props.movie.popularity}
+                            {props.popularity}
                         </span>
                         <span>
-                            {props.movie.original_language}
+                            {props.original_language}
                         </span>
                         <span>
-                            {formatDate(props.movie.release_date, 'YYYY')}
+                            {formatDate(props.release_date, 'YYYY')}
                         </span>
                         <span>
-                            {props.movie.revenue}
+                            {props.revenue}
                         </span>
                         <span>
-                            {props.movie.runtime}
+                            {props.runtime}
                         </span>
                         <span>
-                            {props.movie.status}
+                            {props.status}
                         </span>
                         <span>
                             {
-                                props.movie.genres.map(
+                                props.genres.map(
                                     (item, index) => (
                                         <span key={index}>
                                             {item}
@@ -98,7 +97,7 @@ export default function MovieDetails(props: Props) {
                         </span>
                         <span>
                             {
-                                props.movie.origin_country.map(
+                                props.origin_country.map(
                                     (item, index) => (
                                         <span key={index}>
                                             {item}
@@ -108,7 +107,7 @@ export default function MovieDetails(props: Props) {
                         </span>
                         <span>
                             {
-                                props.movie.production_companies.map(
+                                props.production_companies.map(
                                     (item, index) => (
                                         <Fragment key={index}>
                                             <span>
@@ -121,7 +120,7 @@ export default function MovieDetails(props: Props) {
                         </span>
                         <span>
                             {
-                                props.movie.spoken_languages.map(
+                                props.spoken_languages.map(
                                     (item, index) => (
                                         <span key={index}>
                                             {item.name}-{item.english_name}
@@ -133,17 +132,17 @@ export default function MovieDetails(props: Props) {
                     </div>
 
                     {/* <h2 className={'movie-card-details-title'}>
-                            {props.movie.title} ({props.movie.release_date})
+                            {props.title} ({props.release_date})
                         </h2>
                         <ul className={'movie-card-details-list'}>
                             <li className={'movie-card-details-item'}>
-                                Vote count: <span>{props.movie.vote_count}</span>
+                                Vote count: <span>{props.vote_count}</span>
                             </li>
                             <li className={'movie-card-details-item'}>
-                                Vote average: <span>{props.movie.vote_average}</span>
+                                Vote average: <span>{props.vote_average}</span>
                             </li>
                             <li className={'movie-card-details-item'}>
-                                Popularity: <span>{props.movie.popularity.toFixed(1)}</span>
+                                Popularity: <span>{props.popularity.toFixed(1)}</span>
                             </li>
                         </ul>
                         <div className={'movie-card-details-overview'}>
@@ -151,14 +150,14 @@ export default function MovieDetails(props: Props) {
                                 Overview:
                             </h3>
                             <p className={'movie-card-details-overview-text'}>
-                                {props.movie.overview}
+                                {props.overview}
                             </p>
                         </div>
                         <div className={'movie-card-details-genres'}>
                             <h3 className={'movie-card-details-genres-title'}>Genres:</h3>
                             <ul className={'movie-card-details-genres-list'}>
                                 {
-                                    props.movie.genres.map(
+                                    props.genres.map(
                                         (genre, index) => (
                                             <li
                                                 className={'movie-card-details-genres-item'}
@@ -176,7 +175,7 @@ export default function MovieDetails(props: Props) {
                             </h3>
                             <ul className={'movie-card-details-companies-list'}>
                                 {
-                                    props.movie.production_companies.map(
+                                    props.production_companies.map(
                                         (company, index) => (
                                             <li
                                                 className={'movie-card-details-companies-item'}

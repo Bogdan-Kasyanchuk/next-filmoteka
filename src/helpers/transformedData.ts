@@ -19,37 +19,39 @@ export const transformedTVShow = (tvShow: TVShowShema) => ({
 }) as TVShowMapper;
 
 export const transformedMovieDetails = (movie: MovieDetailsShema) => ({
-    imdb_id: movie.imdb_id,
-    adult: movie.adult,
-    homepage: movie.homepage,
-    budget: movie.budget,
-    title: movie.title || movie.original_title,
-    overview: movie.overview,
-    status: movie.status,
-    tagline: movie.tagline,
-    vote_average: movie.vote_average,
-    vote_count: movie.vote_count,
-    popularity: movie.popularity,
-    backdrop_path: movie.backdrop_path,
-    poster_path: movie.poster_path,
-    original_language: movie.original_language,
-    release_date: movie.release_date,
-    revenue: movie.revenue,
-    runtime: movie.runtime,
-    genres: movie.genres.map(genre => genre.name),
-    origin_country: movie.origin_country,
-    production_companies: movie.production_companies.map(
-        company => ({
-            logo_path: company.logo_path,
-            name: company.name,
-            origin_country: movie.production_countries.find(
-                country => company.origin_country === country.iso_3166_1)?.name
-        })),
-    spoken_languages: movie.spoken_languages.map(
-        language => ({
-            english_name: language.english_name,
-            name: language.name
-        })),
+    movie: {
+        imdb_id: movie.imdb_id,
+        adult: movie.adult,
+        homepage: movie.homepage,
+        budget: movie.budget,
+        title: movie.title || movie.original_title,
+        overview: movie.overview,
+        status: movie.status,
+        tagline: movie.tagline,
+        vote_average: movie.vote_average,
+        vote_count: movie.vote_count,
+        popularity: movie.popularity,
+        backdrop_path: movie.backdrop_path,
+        poster_path: movie.poster_path,
+        original_language: movie.original_language,
+        release_date: movie.release_date,
+        revenue: movie.revenue,
+        runtime: movie.runtime,
+        genres: movie.genres.map(genre => genre.name),
+        origin_country: movie.origin_country,
+        production_companies: movie.production_companies.map(
+            company => ({
+                logo_path: company.logo_path,
+                name: company.name,
+                origin_country: movie.production_countries.find(
+                    country => company.origin_country === country.iso_3166_1)?.name
+            })),
+        spoken_languages: movie.spoken_languages.map(
+            language => ({
+                english_name: language.english_name,
+                name: language.name
+            })),
+    },
     cast: movie.credits.cast.map(cast => transformedCast(cast)),
     videos: movie.videos.results.map(video => transformedVideo(video)),
     reviews: movie.reviews.results.map(review => transformedReview(review)),

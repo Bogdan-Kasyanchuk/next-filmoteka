@@ -3,6 +3,6 @@
 export default function Content() {
 
     return (
-        <div>Content</div>
+        <div>Tv-show season Content</div>
     );
 }
