@@ -60,45 +60,53 @@ export const transformedMovieDetails = (movie: MovieDetailsShema) => ({
 }) as MovieDetailsMapper;
 
 export const transformedTVShowDetails = (tvShow: TVShowDetailsShema) => ({
-    adult: tvShow.adult,
-    homepage: tvShow.homepage,
-    first_air_date: tvShow.first_air_date,
-    last_air_date: tvShow.last_air_date,
-    in_production: tvShow.in_production,
-    name: tvShow.name || tvShow.original_name,
-    number_of_episodes: tvShow.number_of_episodes,
-    number_of_seasons: tvShow.number_of_seasons,
-    original_language: tvShow.original_language,
-    overview: tvShow.overview,
-    status: tvShow.status,
-    tagline: tvShow.tagline,
-    type: tvShow.type,
-    vote_average: tvShow.vote_average,
-    vote_count: tvShow.vote_count,
-    popularity: tvShow.popularity,
-    backdrop_path: tvShow.backdrop_path,
-    poster_path: tvShow.poster_path,
-    languages: tvShow.languages,
-    genres: tvShow.genres.map(genre => genre.name),
-    origin_country: tvShow.origin_country,
-    production_companies: tvShow.production_companies.map(
-        company => ({
-            logo_path: company.logo_path,
-            name: company.name,
-            origin_country: tvShow.production_countries.find(
-                country => company.origin_country === country.iso_3166_1)?.name
-        })),
-    spoken_languages: tvShow.spoken_languages.map(
-        language => ({
-            english_name: language.english_name,
-            name: language.name
-        })),
-    created_by: tvShow.created_by.map(
-        created => ({
-            name: created.name || created.original_name,
-            gender: created.gender,
-            profile_path: created.profile_path
-        })),
+    tvShow: {
+        adult: tvShow.adult,
+        homepage: tvShow.homepage,
+        first_air_date: tvShow.first_air_date,
+        last_air_date: tvShow.last_air_date,
+        in_production: tvShow.in_production,
+        name: tvShow.name || tvShow.original_name,
+        number_of_episodes: tvShow.number_of_episodes,
+        number_of_seasons: tvShow.number_of_seasons,
+        original_language: tvShow.original_language,
+        overview: tvShow.overview,
+        status: tvShow.status,
+        tagline: tvShow.tagline,
+        type: tvShow.type,
+        vote_average: tvShow.vote_average,
+        vote_count: tvShow.vote_count,
+        popularity: tvShow.popularity,
+        backdrop_path: tvShow.backdrop_path,
+        poster_path: tvShow.poster_path,
+        languages: tvShow.languages,
+        genres: tvShow.genres.map(genre => genre.name),
+        origin_country: tvShow.origin_country,
+        production_companies: tvShow.production_companies.map(
+            company => ({
+                logo_path: company.logo_path,
+                name: company.name,
+                origin_country: tvShow.production_countries.find(
+                    country => company.origin_country === country.iso_3166_1)?.name
+            })),
+        spoken_languages: tvShow.spoken_languages.map(
+            language => ({
+                english_name: language.english_name,
+                name: language.name
+            })),
+        created_by: tvShow.created_by.map(
+            created => ({
+                name: created.name || created.original_name,
+                gender: created.gender,
+                profile_path: created.profile_path
+            })),
+        networks: tvShow.networks.map(
+            network => ({
+                logo_path: network.logo_path,
+                name: network.name,
+                origin_country: network.origin_country
+            })),
+    },
     seasons: tvShow.seasons.map(
         season => ({
             air_date: season.air_date,
@@ -108,12 +116,6 @@ export const transformedTVShowDetails = (tvShow: TVShowDetailsShema) => ({
             poster_path: season.poster_path,
             season_number: season.season_number,
             vote_average: season.vote_average
-        })),
-    networks: tvShow.networks.map(
-        network => ({
-            logo_path: network.logo_path,
-            name: network.name,
-            origin_country: network.origin_country
         })),
     cast: tvShow.credits.cast.map(cast => transformedCast(cast)),
     videos: tvShow.videos.results.map(video => transformedVideo(video)),
