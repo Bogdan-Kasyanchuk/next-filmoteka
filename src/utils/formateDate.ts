@@ -11,10 +11,7 @@ dayjs.extend(relativeTime);
 dayjs.extend(timezone);
 dayjs.extend(localizedFormat);
 
-export const formatDate = (
-    date: string,
-    format?: string
-) => {
+export const formatDate = (date: string, format?: string) => {
     const locale = 'en';
     const zone = 'Europe/Kyiv';
 

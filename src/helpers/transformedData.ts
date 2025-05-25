@@ -37,26 +37,26 @@ export const transformedMovieDetails = (movie: MovieDetailsShema) => ({
         release_date: movie.release_date,
         revenue: movie.revenue,
         runtime: movie.runtime,
-        genres: movie.genres.map(genre => genre.name),
+        genres: movie.genres.map((genre) => genre.name),
         origin_country: movie.origin_country,
         production_companies: movie.production_companies.map(
-            company => ({
+            (company) => ({
                 logo_path: company.logo_path,
                 name: company.name,
                 origin_country: movie.production_countries.find(
-                    country => company.origin_country === country.iso_3166_1)?.name
+                    (country) => company.origin_country === country.iso_3166_1)?.name
             })),
         spoken_languages: movie.spoken_languages.map(
-            language => ({
+            (language) => ({
                 english_name: language.english_name,
                 name: language.name
             })),
     },
-    cast: movie.credits.cast.map(cast => transformedCast(cast)),
-    videos: movie.videos.results.map(video => transformedVideo(video)),
-    reviews: movie.reviews.results.map(review => transformedReview(review)),
+    cast: movie.credits.cast.map((cast) => transformedCast(cast)),
+    videos: movie.videos.results.map((video) => transformedVideo(video)),
+    reviews: movie.reviews.results.map((review) => transformedReview(review)),
     recommendations: movie.recommendations.results.map(
-        recommendation => transformedRecommendationMovie(recommendation)),
+        (recommendation) => transformedRecommendationMovie(recommendation)),
 }) as MovieDetailsMapper;
 
 export const transformedTVShowDetails = (tvShow: TVShowDetailsShema) => ({
@@ -80,35 +80,35 @@ export const transformedTVShowDetails = (tvShow: TVShowDetailsShema) => ({
         backdrop_path: tvShow.backdrop_path,
         poster_path: tvShow.poster_path,
         languages: tvShow.languages,
-        genres: tvShow.genres.map(genre => genre.name),
+        genres: tvShow.genres.map((genre) => genre.name),
         origin_country: tvShow.origin_country,
         production_companies: tvShow.production_companies.map(
-            company => ({
+            (company) => ({
                 logo_path: company.logo_path,
                 name: company.name,
                 origin_country: tvShow.production_countries.find(
-                    country => company.origin_country === country.iso_3166_1)?.name
+                    (country) => company.origin_country === country.iso_3166_1)?.name
             })),
         spoken_languages: tvShow.spoken_languages.map(
-            language => ({
+            (language) => ({
                 english_name: language.english_name,
                 name: language.name
             })),
         created_by: tvShow.created_by.map(
-            created => ({
+            (created) => ({
                 name: created.name || created.original_name,
                 gender: created.gender,
                 profile_path: created.profile_path
             })),
         networks: tvShow.networks.map(
-            network => ({
+            (network) => ({
                 logo_path: network.logo_path,
                 name: network.name,
                 origin_country: network.origin_country
             })),
     },
     seasons: tvShow.seasons.map(
-        season => ({
+        (season) => ({
             air_date: season.air_date,
             episode_count: season.episode_count,
             name: season.name,
@@ -117,11 +117,11 @@ export const transformedTVShowDetails = (tvShow: TVShowDetailsShema) => ({
             season_number: season.season_number,
             vote_average: season.vote_average
         })),
-    cast: tvShow.credits.cast.map(cast => transformedCast(cast)),
-    videos: tvShow.videos.results.map(video => transformedVideo(video)),
-    reviews: tvShow.reviews.results.map(review => transformedReview(review)),
+    cast: tvShow.credits.cast.map((cast) => transformedCast(cast)),
+    videos: tvShow.videos.results.map((video) => transformedVideo(video)),
+    reviews: tvShow.reviews.results.map((review) => transformedReview(review)),
     recommendations: tvShow.recommendations.results.map(
-        recommendation => transformedRecommendationTVShow(recommendation)),
+        (recommendation) => transformedRecommendationTVShow(recommendation)),
 }) as TVShowDetailsMapper;
 
 export const transformedCast = (cast: CastShema) => ({
