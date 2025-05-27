@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import Image from 'next/image';
 import { Fragment } from 'react';
 
@@ -23,92 +24,91 @@ export default function MovieDetails(props: Props) {
             </div>
 
             <Container className='с-movie-details-card__container'>
-                <div className='flex gap-5'>
-                    <div className='с-movie-details-card__cover'>
-                        <Image
-                            src={
-                                props.poster_path
-                                    ? `${PARAMETERS.URL_IMG}/${IMG_SIZES.MEDIA_CARD_DETAILS_COVER}/${props.poster_path}`
-                                    : '/img/poster-not-available.jpg'
-                            }
-                            sizes="500px"
-                            alt={props.title}
-                            fill
-                        />
-                    </div>
-                    <ul className='с-movie-details-card__list-rounds flex-col'>
-                        <li className='с-movie-details-card__item-round'>
-                            {props.adult ? '18+' : '0+'}
-                        </li>
-                        <li className='с-movie-details-card__item-round'>
-                            {props.runtime} min
-                        </li>
-                        <li className='с-movie-details-card__item-round'>
-                            {(props.vote_average / 10 * 100).toFixed(0)}%
-                        </li>
-                    </ul>
+                <div className='с-movie-details-card__cover'>
+                    <Image
+                        src={
+                            props.poster_path
+                                ? `${PARAMETERS.URL_IMG}/${IMG_SIZES.MEDIA_CARD_DETAILS_COVER}/${props.poster_path}`
+                                : '/img/poster-not-available.jpg'
+                        }
+                        sizes="500px"
+                        alt={props.title}
+                        fill
+                    />
                 </div>
 
-                <div className='с-movie-details-card__content'>
-                    <Title className='с-movie-details-card__title'>
-                        {props.title}&nbsp;({formatDate(props.release_date, 'YYYY')})
-                    </Title>
+                <Title className='с-movie-details-card__title'>
+                    {props.title}&nbsp;({formatDate(props.release_date, 'YYYY')})
+                </Title>
 
-                    <ul className='с-movie-details-card__list-rounds'>
-                        <li className='с-movie-details-card__item-round'>
-                            {props.adult ? '18+' : '0+'}
-                        </li>
-                        <li className='с-movie-details-card__item-round'>
-                            {props.runtime} min
-                        </li>
-                        <li className='с-movie-details-card__item-round'>
-                            {(props.vote_average / 10 * 100).toFixed(0)}%
-                        </li>
-                    </ul>
+                <ul className='с-movie-details-card__list-rounds'>
+                    <li
+                        className={
+                            clsx('с-movie-details-card__list-rounds-item', {
+                                'text-danger': props.adult
+                            })
+                        }
+                    >
+                        {props.adult ? '18' : '0'}
+                        <span>+</span>
+                    </li>
 
-                    <ul className='с-movie-details-card__list'>
-                        <li className='с-movie-details-card__item'>
-                            Adult: <span>{props.adult ? '18+' : '0+'}</span>
-                        </li>
-                        <li className='с-movie-details-card__item'>
-                            IMDB: <span>{props.imdb_id}</span>
-                        </li>
-                        <li className='с-movie-details-card__item'>
-                            Homepage: <span>{props.homepage}</span>
-                        </li>
-                        <li className='с-movie-details-card__item'>
-                            Tagline: <span>{props.tagline}</span>
-                        </li>
-                        <li className='с-movie-details-card__item'>
-                            Budget: <span>{props.budget} $</span>
-                        </li>
-                        <li className='с-movie-details-card__item'>
-                            Revenue: <span>{props.revenue} $</span>
-                        </li>
-                        <li className='с-movie-details-card__item'>
-                            Runtime: <span>{props.runtime} min</span>
-                        </li>
-                        <li className='с-movie-details-card__item'>
-                            Release: <span>{formatDate(props.release_date, 'DD.MM.YYYY')}</span>
-                        </li>
-                        <li className='с-movie-details-card__item'>
-                            Status: <span>{props.status}</span>
-                        </li>
-                        <li className='с-movie-details-card__item'>
-                            Vote count: <span>{props.vote_count}</span>
-                        </li>
-                        <li className='с-movie-details-card__item'>
-                            Vote average: <span>{(props.vote_average / 10 * 100).toFixed(0)}%</span>
-                        </li>
-                        <li className='с-movie-details-card__item'>
-                            Popularity: <span>{props.popularity.toFixed(1)}</span>
-                        </li>
-                        <li className='с-movie-details-card__item'>
-                            Original language: <span>{props.original_language}</span>
-                        </li>
-                    </ul>
+                    <li className='с-movie-details-card__list-rounds-item'>
+                        {(props.vote_average / 10 * 100).toFixed(0)}
+                        <span>%</span>
+                    </li>
 
-                    <div className={'movie-card-details-genres'}>
+                    <li className='с-movie-details-card__list-rounds-item'>
+                        {props.vote_count}
+                        <span>votes</span>
+                    </li>
+
+                    <li className='с-movie-details-card__list-rounds-item'>
+                        {props.popularity.toFixed(0)}
+                        <span>popularity</span>
+                    </li>
+
+                    <li className='с-movie-details-card__list-rounds-item'>
+                        {props.runtime}
+                        <span>min</span>
+                    </li>
+                </ul>
+
+                <ul className='с-movie-details-card__list'>
+                    <li className='с-movie-details-card__item'>
+                        &quot;{props.tagline}&quot;
+                    </li>
+
+                    <li className='с-movie-details-card__item'>
+                        IMDB: <span>https://www.imdb.com/title/{props.imdb_id}</span>
+                    </li>
+
+                    <li className='с-movie-details-card__item'>
+                        Url: <span>{props.homepage}</span>
+                    </li>
+
+                    <li className='с-movie-details-card__item'>
+                        Budget: <span>{props.budget} $</span>
+                    </li>
+
+                    <li className='с-movie-details-card__item'>
+                        Revenue: <span>{props.revenue} $</span>
+                    </li>
+
+                    <li className='с-movie-details-card__item'>
+                        Release: <span>{formatDate(props.release_date, 'DD.MM.YYYY')}</span>
+                    </li>
+
+                    <li className='с-movie-details-card__item'>
+                        Status: <span>{props.status}</span>
+                    </li>
+
+                    <li className='с-movie-details-card__item'>
+                        Original language: <span>{props.original_language}</span>
+                    </li>
+                </ul>
+
+                {/* <div className={'movie-card-details-genres'}>
                         <h3 className={'movie-card-details-genres-title'}>Genres:</h3>
                         <ul className={'movie-card-details-genres-list'}>
                             {
@@ -200,9 +200,7 @@ export default function MovieDetails(props: Props) {
                         <p className={'movie-card-details-overview-text'}>
                             {props.overview}
                         </p>
-                    </div>
-
-                </div>
+                    </div> */}
             </Container>
         </div>
     );
