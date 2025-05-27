@@ -32,7 +32,7 @@ export default function MovieCard(props: Props) {
             </div>
 
             <div className='с-movie-card__average'>
-                {props.movie.vote_average}
+                {(props.movie.vote_average / 10 * 100).toFixed(0)}%
             </div>
 
             <div className='с-movie-card__footer'>

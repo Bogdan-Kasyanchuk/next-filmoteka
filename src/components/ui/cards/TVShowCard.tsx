@@ -32,7 +32,7 @@ export default function TVShowCard(props: Props) {
             </div>
 
             <div className='с-tv-show-card__average'>
-                {props.tvShow.vote_average}
+                {(props.tvShow.vote_average / 10 * 100).toFixed(0)}%
             </div>
 
             <div className='с-tv-show-card__footer'>

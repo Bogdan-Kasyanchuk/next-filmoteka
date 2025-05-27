@@ -1,0 +1,18 @@
+.c-scroll-to-top {
+    @apply w-10 h-10 rounded-xs fixed bottom-5 right-5 flex items-center justify-center z-100 bg-primary cursor-pointer;
+
+    transition-property: background-color, box-shadow;
+
+    i {
+        @apply w-5 h-5 -rotate-90 transition-[filter];
+    }
+
+    &:hover {
+        background-color: var(--color-accent-hover);
+        box-shadow: 0 4px 16px rgba(8, 88, 125, 0.6);
+
+        i {
+            @apply invert;
+        }
+    }
+}

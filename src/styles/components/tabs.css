@@ -26,21 +26,22 @@
 
         background-color: var(--color-accent);
 
-        transition-property: border-color, background-color;
+        transition-property: border-color, background-color, box-shadow;
 
         @variant min-md {
             padding: 9px 18px;
             font-size: var(--text-lg);
         }
 
-        &:hover,
         &--is-active {
+            pointer-events: none;
             border-color: white;
             background-color: var(--color-accent-hover);
         }
 
-        &--is-active {
-            pointer-events: none;
+        &:hover {
+            background-color: var(--color-accent-hover);
+            box-shadow: 0 4px 16px rgba(8, 88, 125, 0.6);
         }
     }
 }

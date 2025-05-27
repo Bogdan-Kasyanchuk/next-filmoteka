@@ -25,3 +25,7 @@
 .i-icon--angle {
     --icon-path: url('/svg/angle.svg');
 }
+
+.i-icon--arrow {
+    --icon-path: url('/svg/arrow.svg');
+}

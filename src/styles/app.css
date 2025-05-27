@@ -1,4 +1,5 @@
 /* Components */
+@import './components/logo.css' layer(base);
 @import './components/icon.css' layer(base);
 @import './components/pagination.css' layer(base);
 @import './components/title.css' layer(base);
