@@ -44,16 +44,12 @@
         }
 
         @variant min-xl {
-            grid-template-columns: 352px 888px;
-            column-gap: 40px;
+            grid-template-columns: 352px 908px;
         }
 
         @variant min-xxl {
-            grid-template-columns: 352px 1008px;
-        }
-
-        @variant min-xxxl {
-            grid-template-columns: 352px 1168px;
+            grid-template-columns: 352px 1028px;
+            max-width: 1440px;
         }
     }
 
@@ -65,20 +61,47 @@
 
         aspect-ratio: 2/3;
         width: 255px;
-        margin-inline: auto;
         border: 1px solid var(--color-accent-hover);
         border-radius: 4px;
 
         box-shadow: 0 4px 16px rgba(8, 88, 125, 0.6);
 
+        @variant min-sm {
+            justify-self: end;
+        }
+
         @variant min-md {
             grid-column: 1/2;
             grid-row: 1/4;
+            justify-self: initial;
             width: 100%;
         }
 
         img {
             object-fit: cover;
+        }
+    }
+
+    &__tag {
+        position: absolute;
+        z-index: 1;
+        top: 10px;
+        left: 10px;
+
+        padding: 5px;
+        border: 1px solid var(--color-danger);
+        border-radius: 2px;
+
+        font-size: var(--text-sm);
+        font-weight: 700;
+        line-height: 1;
+        color: var(--color-danger);
+
+        background-color: var(--color-primary);
+
+        span {
+            position: relative;
+            top: -2px;
         }
     }
 
@@ -104,13 +127,16 @@
         flex-direction: column;
         gap: 20px;
         align-items: center;
-        justify-content: center;
+
+        @variant min-sm {
+            justify-self: start;
+        }
 
         @variant min-md {
             grid-column: -2/-1;
             grid-row: 2/3;
             flex-direction: row;
-            justify-content: flex-start;
+            justify-self: initial;
         }
 
         &-item {
@@ -129,34 +155,22 @@
 
             background-image: radial-gradient(var(--color-secondary) 40%, var(--color-accent) 100%);
 
-            &:not(:first-child) {
-                span {
-                    font-size: 9px;
-                    font-weight: 400;
-                }
+            span {
+                font-size: 9px;
+                font-weight: 400;
+                opacity: 0.75;
             }
 
             &:first-child {
-                span {
-                    font-size: var(--text-sm);
-                    font-weight: 400;
-                }
-            }
-
-            &:nth-child(-n+2) {
                 span {
                     position: relative;
                     top: -4px;
                 }
             }
 
-            &:nth-child(n + 3) {
+            &:nth-child(n + 2) {
                 flex-direction: column;
                 row-gap: 2px;
-
-                span {
-                    opacity: 0.75;
-                }
             }
         }
     }
@@ -174,33 +188,26 @@
 
         &-item {
             display: flex;
+            flex-wrap: wrap;
             column-gap: 6px;
             align-items: center;
 
             font-size: var(--text-lg);
             line-height: 1.2;
 
-            /* white-space: nowrap; */
+            &--link {
+                flex-wrap: nowrap;
+
+                a[href] {
+                    @apply truncate u-link-color;
+                }
+            }
 
             &--tagline {
                 margin-bottom: 10px;
                 font-weight: 600;
                 font-style: italic;
                 opacity: 0.75;
-            }
-
-            a[href] {
-                overflow: hidden;
-
-                color: var(--color-link);
-                text-overflow: ellipsis;
-                white-space: nowrap;
-
-                transition-property: color;
-
-                &:hover {
-                    color: var(--color-link-hover);
-                }
             }
 
             & > *:first-child {
@@ -212,126 +219,68 @@
             }
         }
     }
-}
 
-.movie-card-details {
-    padding-block: 40px;
-    line-height: 1;
-}
+    &__overview {
+        grid-column: 1/-1;
+        line-height: 1.2;
 
-@media screen and (width <= 767px) {
-    .movie-card-details-wrapper-img {
-        position: relative;
+        &-title {
+            margin-bottom: 10px;
+            font-size: var(--text-xl);
+            font-weight: 700;
+        }
 
-        aspect-ratio: 2 / 3;
-        max-width: 500px;
-        margin-right: auto;
-        margin-bottom: 20px;
-        margin-left: auto;
+        &-text {
+            font-size: 18px;
+            opacity: 0.75;
+        }
     }
 
-    .movie-card-details-description {
-        max-width: 570px;
-        margin-right: auto;
-        margin-left: auto;
+    &__companies {
+        grid-column: 1/-1;
+        line-height: 1.2;
+
+        &-title {
+            margin-bottom: 10px;
+            font-size: var(--text-xl);
+            font-weight: 700;
+        }
+
+        &-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            align-items: center;
+        }
+
+        &-item {
+            display: flex;
+            column-gap: 10px;
+            align-items: center;
+        }
+
+        &-logo {
+            position: relative;
+
+            overflow: hidden;
+            flex-shrink: 0;
+
+            aspect-ratio: 1/1;
+            width: 50px;
+            border-radius: 2px;
+
+            background-color: var(--color-primary);
+
+            img {
+                padding: 1px;
+                object-fit: contain;
+            }
+        }
+
+        &-content {
+            display: flex;
+            flex-direction: column;
+            row-gap: 6px;
+        }
     }
-
-    .movie-card-details-title {
-        text-align: center;
-    }
-}
-
-@media screen and (width >= 768px) {
-    .movie-card-details {
-        display: grid;
-        grid-column-gap: 30px;
-        grid-template-columns: 2fr 3fr;
-    }
-
-    .movie-card-details-wrapper-img {
-        position: relative;
-        aspect-ratio: 2 / 3;
-        width: 100%;
-        max-width: 500px;
-    }
-}
-
-.movie-card-details-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-@media screen and (width >= 1024px) {
-    .movie-card-details-img {
-        object-fit: contain;
-    }
-}
-
-.movie-card-details-title {
-    margin-bottom: 20px;
-
-    font-size: 28px;
-    font-weight: 500;
-    color: #fff;
-    text-transform: uppercase;
-}
-
-.movie-card-details-list {
-    margin-bottom: 20px;
-    font-size: 24px;
-    font-weight: 500;
-}
-
-.movie-card-details-item:not(:last-child) {
-    margin-bottom: 10px;
-}
-
-.movie-card-details-item > span {
-    font-weight: 400;
-}
-
-.movie-card-details-overview,
-.movie-card-details-genres,
-.movie-card-details-companies {
-    margin-bottom: 20px;
-}
-
-.movie-card-details-overview-title,
-.movie-card-details-genres-title,
-.movie-card-details-companies-title,
-.movie-card-details-countries-title {
-    margin-bottom: 10px;
-    font-size: 24px;
-    font-weight: 500;
-    color: #fff;
-}
-
-.movie-card-details-overview-text {
-    padding-left: 20px;
-    font-size: 20px;
-    line-height: 1.1;
-}
-
-.movie-card-details-genres-list,
-.movie-card-details-companies-list,
-.movie-card-details-countries-list {
-    display: flex;
-    flex-wrap: wrap;
-    padding-left: 20px;
-    font-size: 20px;
-}
-
-.movie-card-details-genres-item,
-.movie-card-details-companies-item,
-.movie-card-details-countries-item {
-    line-height: 1.1;
-}
-
-.movie-card-details-genres-item:not(:last-child),
-.movie-card-details-companies-item:not(:last-child),
-.movie-card-details-countries-item:not(:last-child) {
-    margin-right: 15px;
-    padding-right: 15px;
-    border-right: 1px solid #111;
 }

@@ -40,14 +40,16 @@ export const transformMovieDetails = (movie: MovieDetailsShema) => ({
         genres: movie.genres.map((genre) => genre.name),
         origin_country: movie.origin_country.map(
             (originCountry) => movie.production_countries.find(
-                (country) => originCountry === country.iso_3166_1)?.name
+                (country) => originCountry === country.iso_3166_1
+            )?.name
         ),
         production_companies: movie.production_companies.map(
             (company) => ({
                 logo_path: company.logo_path,
                 name: company.name,
                 origin_country: movie.production_countries.find(
-                    (country) => company.origin_country === country.iso_3166_1)?.name
+                    (country) => company.origin_country === country.iso_3166_1
+                )?.name
             })
         ),
         spoken_languages: movie.spoken_languages.map(
@@ -85,15 +87,19 @@ export const transformTVShowDetails = (tvShow: TVShowDetailsShema) => ({
         popularity: tvShow.popularity,
         backdrop_path: tvShow.backdrop_path,
         poster_path: tvShow.poster_path,
-        languages: tvShow.languages,
         genres: tvShow.genres.map((genre) => genre.name),
-        origin_country: tvShow.origin_country,
+        origin_country: tvShow.origin_country.map(
+            (originCountry) => tvShow.production_countries.find(
+                (country) => originCountry === country.iso_3166_1
+            )?.name
+        ),
         production_companies: tvShow.production_companies.map(
             (company) => ({
                 logo_path: company.logo_path,
                 name: company.name,
                 origin_country: tvShow.production_countries.find(
-                    (country) => company.origin_country === country.iso_3166_1)?.name
+                    (country) => company.origin_country === country.iso_3166_1
+                )?.name
             })
         ),
         spoken_languages: tvShow.spoken_languages.map(

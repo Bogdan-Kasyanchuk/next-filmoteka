@@ -29,6 +29,8 @@ export default function Content(props: Props) {
     }
 
     return (
-        <TVShowDetails {...data.tvShow} />
+        <div className='p-tv-show'>
+            <TVShowDetails {...data.tvShow} />
+        </div>
     );
 }

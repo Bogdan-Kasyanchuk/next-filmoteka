@@ -1,17 +1,20 @@
-import clsx from 'clsx';
 import Image from 'next/image';
 import { Fragment } from 'react';
 
 import Container from '@/components/ui/layouts/Container';
 import Title from '@/components/ui/typography/Title';
-import { formatCurrency } from '@/helpers/formatCurrency';
 import { PARAMETERS, IMG_SIZES } from '@/helpers/parameters';
 import { MovieDetailsMapper } from '@/types';
+import { formatCurrency } from '@/utils/formatCurrency';
 import { formatDate } from '@/utils/formateDate';
 
 type Props = MovieDetailsMapper['movie']
 
 export default function MovieDetails(props: Props) {
+
+    const originalLanguage = props.spoken_languages.find(
+        (language) => language.iso_639_1 === props.original_language
+    );
 
     return (
         <div className='с-movie-details-card'>
@@ -26,6 +29,14 @@ export default function MovieDetails(props: Props) {
 
             <Container className='с-movie-details-card__container'>
                 <div className='с-movie-details-card__cover'>
+                    {
+                        props.adult &&
+                        <div className='с-movie-details-card__tag'>
+                            18
+                            <span>+</span>
+                        </div>
+                    }
+
                     <Image
                         src={
                             props.poster_path
@@ -43,17 +54,6 @@ export default function MovieDetails(props: Props) {
                 </Title>
 
                 <ul className='с-movie-details-card__list-rounds'>
-                    <li
-                        className={
-                            clsx('с-movie-details-card__list-rounds-item', {
-                                'text-danger': props.adult
-                            })
-                        }
-                    >
-                        {props.adult ? '18' : '0'}
-                        <span>+</span>
-                    </li>
-
                     <li className='с-movie-details-card__list-rounds-item'>
                         {(props.vote_average / 10 * 100).toFixed(0)}
                         <span>%</span>
@@ -79,7 +79,7 @@ export default function MovieDetails(props: Props) {
                     <li className='с-movie-details-card__list-info-item с-movie-details-card__list-info-item--tagline'>
                         &quot;{props.tagline}&quot;
                     </li>
-                    <li className='с-movie-details-card__list-info-item'>
+                    <li className='с-movie-details-card__list-info-item с-movie-details-card__list-info-item--link'>
                         <span>IMDB:</span>
                         <a
                             href={`https://www.imdb.com/title/${props.imdb_id}`}
@@ -90,8 +90,8 @@ export default function MovieDetails(props: Props) {
                         </a>
                     </li>
 
-                    <li className='с-movie-details-card__list-info-item'>
-                        <span>Url:</span>
+                    <li className='с-movie-details-card__list-info-item с-movie-details-card__list-info-item--link'>
+                        <span>WebSite:</span>
                         <a
                             href={props.homepage}
                             rel="noopener noreferrer"
@@ -120,15 +120,6 @@ export default function MovieDetails(props: Props) {
                         <span>Status:</span>
                         <span>{props.status}</span>
                     </li>
-                    <li className='с-movie-details-card__list-info-item'>
-                        <span>Original language:</span>
-                        <span>
-                            {
-                                props.spoken_languages.find(
-                                    (lang) => lang.iso_639_1 === props.original_language)?.name
-                            }
-                        </span>
-                    </li>
 
                     <li className='с-movie-details-card__list-info-item'>
                         <span className='self-start'>Genres:</span>
@@ -139,6 +130,28 @@ export default function MovieDetails(props: Props) {
                                         <Fragment key={index}>
                                             {index !== 0 && <>&nbsp;|&nbsp;</>}
                                             {genre}
+                                        </Fragment>
+                                    ))
+                            }
+                        </span>
+                    </li>
+
+                    <li className='с-movie-details-card__list-info-item'>
+                        <span>Original language:</span>
+                        <span>
+                            {originalLanguage?.name || originalLanguage?.english_name}
+                        </span>
+                    </li>
+
+                    <li className='с-movie-details-card__list-info-item'>
+                        <span className='self-start'>Spoken languages:</span>
+                        <span>
+                            {
+                                props.spoken_languages.map(
+                                    (language, index) => (
+                                        <Fragment key={index}>
+                                            {index !== 0 && <>&nbsp;|&nbsp;</>}
+                                            {language.name || language.english_name}
                                         </Fragment>
                                     ))
                             }
@@ -161,65 +174,52 @@ export default function MovieDetails(props: Props) {
                     </li>
                 </ul>
 
-                {/* <div className={'movie-card-details-genres'}>
-                        <h3 className={'movie-card-details-genres-title'}>Spoken languages:</h3>
-                        <ul className={'movie-card-details-genres-list'}>
-                            {
-                                props.spoken_languages.map(
-                                    (language, index) => (
-                                        <li
-                                            className={'movie-card-details-genres-item'}
-                                            key={index}
-                                        >
-                                            {language.name} - {language.english_name}
-                                        </li>
-                                    ))
-                            }
-                        </ul>
-                    </div>
-
-                    <div className={'movie-card-details-companies'}>
-                        <h3 className={'movie-card-details-companies-title'}>
-                            Production companies:
-                        </h3>
-                        <ul className={'movie-card-details-companies-list'}>
-                            {
-                                props.production_companies.map(
-                                    (company, index) => (
-                                        <li
-                                            className={'flex items-center gap-2'}
-                                            key={index}
-                                        >
+                <div className='с-movie-details-card__companies'>
+                    <p className='с-movie-details-card__companies-title'>
+                        Production companies:
+                    </p>
+                    <ul className='с-movie-details-card__companies-list'>
+                        {
+                            props.production_companies.map(
+                                (company, index) => (
+                                    <li
+                                        key={index}
+                                        className='с-movie-details-card__companies-item'
+                                    >
+                                        <div className='с-movie-details-card__companies-logo'>
                                             <Image
                                                 src={
                                                     company.logo_path
                                                         ? `${PARAMETERS.URL_IMG}/${IMG_SIZES.COMPANY_LOGO}/${company.logo_path}`
                                                         : '/img/poster-not-available.jpg'
                                                 }
-                                                width={60}
-                                                height={60}
+                                                fill
+                                                sizes='60px'
                                                 alt={company.name}
-                                                className='rounded-xs w-15 h-15 object-cover'
-
                                             />
-                                            <div className={'flex gap-2 flex-col'}>
-                                                <span>{company.name}</span>
-                                                <span>{company.origin_country}</span>
-                                            </div>
-                                        </li>
-                                    ))
-                            }
-                        </ul>
-                    </div>
+                                        </div>
+                                        <div className='с-movie-details-card__companies-content'>
+                                            <span className='text-lg font-semibold'>
+                                                {company.name}
+                                            </span>
+                                            <span className='opacity-75 text-sm'>
+                                                {company.origin_country}
+                                            </span>
+                                        </div>
+                                    </li>
+                                ))
+                        }
+                    </ul>
+                </div>
 
-                    <div className={'movie-card-details-overview'}>
-                        <h3 className={'movie-card-details-overview-title'}>
-                            Overview:
-                        </h3>
-                        <p className={'movie-card-details-overview-text'}>
-                            {props.overview}
-                        </p>
-                    </div> */}
+                <div className='с-movie-details-card__overview'>
+                    <p className='с-movie-details-card__overview-title'>
+                        Overview:
+                    </p>
+                    <p className='с-movie-details-card__overview-text'>
+                        {props.overview}
+                    </p>
+                </div>
             </Container>
         </div>
     );

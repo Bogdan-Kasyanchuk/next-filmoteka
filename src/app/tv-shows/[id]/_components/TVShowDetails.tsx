@@ -1,100 +1,232 @@
+import clsx from 'clsx';
 import Image from 'next/image';
+import { Fragment } from 'react';
 
+import Container from '@/components/ui/layouts/Container';
+import Title from '@/components/ui/typography/Title';
 import { PARAMETERS, IMG_SIZES } from '@/helpers/parameters';
 import { TVShowDetailsMapper } from '@/types';
+import { formatDate } from '@/utils/formateDate';
 
 type Props = TVShowDetailsMapper['tvShow'];
 
+// tvShow: {
+//     created_by: CreatedBy[],
+//     networks: Network[],
+// },
+
 export default function TVShowDetails(props: Props) {
+    const originalLanguage = props.spoken_languages.find(
+        (language) => language.iso_639_1 === props.original_language
+    );
+
     return (
-        <div className={'movie-card-details'}>
-            <div className={'movie-card-details-wrapper-img'}>
+        <div className='с-tv-show-details-card'>
+            <div className='с-tv-show-details-card__backdrop'>
                 <Image
-                    src={
-                        props.poster_path
-                            ? `${PARAMETERS.URL_IMG}/${IMG_SIZES.MEDIA_CARD_DETAILS_COVER}/${props.poster_path}`
-                            : '/img/poster-not-available.jpg'
-                    }
-                    sizes="(max-width: 479px) 173px, (max-width: 767px) 213px, (max-width: 1023px) 230px, 294px"
+                    src={`${PARAMETERS.URL_IMG}/${IMG_SIZES.MEDIA_CARD_DETAILS_BACKDROP}/${props.backdrop_path}`}
+                    sizes="(max-width: 767px) 768px, (max-width: 1319px) 1320px, 1920px"
                     alt={props.name}
                     fill
                 />
             </div>
-            <div className={'movie-card-details-description'}>
-                <h2 className={'movie-card-details-title'}>
-                    {props.name}
-                </h2>
-                <ul className={'movie-card-details-list'}>
-                    <li className={'movie-card-details-item'}>
-                        Vote count: <span>{props.vote_count}</span>
+
+            <Container className='с-tv-show-details-card__container'>
+                <div className='с-tv-show-details-card__cover'>
+                    <Image
+                        src={
+                            props.poster_path
+                                ? `${PARAMETERS.URL_IMG}/${IMG_SIZES.MEDIA_CARD_DETAILS_COVER}/${props.poster_path}`
+                                : '/img/poster-not-available.jpg'
+                        }
+                        sizes="500px"
+                        alt={props.name}
+                        fill
+                    />
+                </div>
+
+                <Title className='с-tv-show-details-card__title'>
+                    {props.name}&nbsp;({formatDate(props.first_air_date, 'YYYY')})
+                </Title>
+
+                <ul className='с-tv-show-details-card__list-rounds'>
+                    <li
+                        className={
+                            clsx('с-tv-show-details-card__list-rounds-item', {
+                                'text-danger': props.adult
+                            })
+                        }
+                    >
+                        {props.adult ? '18' : '0'}
+                        <span>+</span>
                     </li>
-                    <li className={'movie-card-details-item'}>
-                        Vote average: <span>{props.vote_average}</span>
+
+                    <li className='с-tv-show-details-card__list-rounds-item'>
+                        {(props.vote_average / 10 * 100).toFixed(0)}
+                        <span>%</span>
                     </li>
-                    <li className={'movie-card-details-item'}>
-                        Popularity: <span>{props.popularity.toFixed(1)}</span>
+
+                    <li className='с-tv-show-details-card__list-rounds-item'>
+                        {props.vote_count}
+                        <span>votes</span>
+                    </li>
+
+                    <li className='с-tv-show-details-card__list-rounds-item'>
+                        {props.popularity.toFixed(0)}
+                        <span>popularity</span>
+                    </li>
+
+                    <li className='с-tv-show-details-card__list-rounds-item'>
+                        {props.number_of_seasons}
+                        <span>seasons</span>
+                    </li>
+
+                    <li className='с-tv-show-details-card__list-rounds-item'>
+                        {props.number_of_episodes}
+                        <span>episodes</span>
                     </li>
                 </ul>
-                <div className={'movie-card-details-overview'}>
-                    <h3 className={'movie-card-details-overview-title'}>
-                        Overview:
-                    </h3>
-                    <p className={'movie-card-details-overview-text'}>
-                        {props.overview}
-                    </p>
-                </div>
-                <div className={'movie-card-details-genres'}>
-                    <h3 className={'movie-card-details-genres-title'}>Genres:</h3>
-                    <ul className={'movie-card-details-genres-list'}>
-                        {
-                            props.genres.map(
-                                (genre, index) => (
-                                    <li
-                                        className={'movie-card-details-genres-item'}
-                                        key={index}
-                                    >
-                                        {genre}
-                                    </li>
-                                ))
-                        }
-                    </ul>
-                </div>
-                <div className={'movie-card-details-companies'}>
-                    <h3 className={'movie-card-details-companies-title'}>
+
+                <ul className='с-tv-show-details-card__list-info'>
+                    <li className='с-tv-show-details-card__list-info-item с-tv-show-details-card__list-info-item--tagline'>
+                        &quot;{props.tagline}&quot;
+                    </li>
+                    <li className='с-tv-show-details-card__list-info-item с-tv-show-details-card__list-info-item--link'>
+                        <span>WebSite:</span>
+                        <a
+                            href={props.homepage}
+                            rel="noopener noreferrer"
+                            target="_blank"
+                        >
+                            {props.homepage}
+                        </a>
+                    </li>
+
+                    <li className='с-tv-show-details-card__list-info-item'>
+                        <span>First air date:</span>
+                        <span>{formatDate(props.first_air_date, 'DD.MM.YYYY')}</span>
+                    </li>
+
+                    <li className='с-tv-show-details-card__list-info-item'>
+                        <span>Last air date:</span>
+                        <span>{formatDate(props.last_air_date, 'DD.MM.YYYY')}</span>
+                    </li>
+
+                    <li className='с-tv-show-details-card__list-info-item'>
+                        <span>In production:</span>
+                        <span>{props.in_production ? 'Yes' : 'No'}</span>
+                    </li>
+
+                    <li className='с-tv-show-details-card__list-info-item'>
+                        <span>Type:</span>
+                        <span>{props.type}</span>
+                    </li>
+
+                    <li className='с-tv-show-details-card__list-info-item'>
+                        <span>Status:</span>
+                        <span>{props.status}</span>
+                    </li>
+
+                    <li className='с-tv-show-details-card__list-info-item'>
+                        <span className='self-start'>Genres:</span>
+                        <span>
+                            {
+                                props.genres.map(
+                                    (genre, index) => (
+                                        <Fragment key={index}>
+                                            {index !== 0 && <>&nbsp;|&nbsp;</>}
+                                            {genre}
+                                        </Fragment>
+                                    ))
+                            }
+                        </span>
+                    </li>
+
+                    <li className='с-tv-show-details-card__list-info-item'>
+                        <span>Original language:</span>
+                        <span>
+                            {originalLanguage?.name || originalLanguage?.english_name}
+                        </span>
+                    </li>
+
+                    <li className='с-tv-show-details-card__list-info-item'>
+                        <span className='self-start'>Spoken languages:</span>
+                        <span>
+                            {
+                                props.spoken_languages.map(
+                                    (language, index) => (
+                                        <Fragment key={index}>
+                                            {index !== 0 && <>&nbsp;|&nbsp;</>}
+                                            {language.name || language.english_name}
+                                        </Fragment>
+                                    ))
+                            }
+                        </span>
+                    </li>
+
+                    <li className='с-tv-show-details-card__list-info-item'>
+                        <span className='self-start'>Countries:</span>
+                        <span>
+                            {
+                                props.origin_country.map(
+                                    (country, index) => (
+                                        <Fragment key={index}>
+                                            {index !== 0 && <>&nbsp;|&nbsp;</>}
+                                            {country}
+                                        </Fragment>
+                                    ))
+                            }
+                        </span>
+                    </li>
+                </ul>
+
+                <div className='с-tv-show-details-card__companies'>
+                    <p className='с-tv-show-details-card__companies-title'>
                         Production companies:
-                    </h3>
-                    <ul className={'movie-card-details-companies-list'}>
+                    </p>
+                    <ul className='с-tv-show-details-card__companies-list'>
                         {
                             props.production_companies.map(
                                 (company, index) => (
                                     <li
-                                        className={'movie-card-details-companies-item'}
                                         key={index}
+                                        className='с-tv-show-details-card__companies-item'
                                     >
-                                        {company.name}
+                                        <div className='с-tv-show-details-card__companies-logo'>
+                                            <Image
+                                                src={
+                                                    company.logo_path
+                                                        ? `${PARAMETERS.URL_IMG}/${IMG_SIZES.COMPANY_LOGO}/${company.logo_path}`
+                                                        : '/img/poster-not-available.jpg'
+                                                }
+                                                fill
+                                                sizes='60px'
+                                                alt={company.name}
+                                            />
+                                        </div>
+                                        <div className='с-tv-show-details-card__companies-content'>
+                                            <span className='text-lg font-semibold'>
+                                                {company.name}
+                                            </span>
+                                            <span className='opacity-75 text-sm'>
+                                                {company.origin_country}
+                                            </span>
+                                        </div>
                                     </li>
                                 ))
                         }
                     </ul>
                 </div>
-                {/* <div className={'movie-card-details-countries'}>
-                    <h3 className={'movie-card-details-countries-title'}>
-                        Production countries:
-                    </h3>
-                    <ul className={'movie-card-details-countries-list'}>
-                        {
-                            production_countries.map(element => (
-                                <li
-                                    className={'movie-card-details-countries-item'}
-                                    key={element.name}
-                                >
-                                    {element.name}
-                                </li>
-                            ))
-                        }
-                    </ul>
-                </div> */}
-            </div>
+
+                <div className='с-tv-show-details-card__overview'>
+                    <p className='с-tv-show-details-card__overview-title'>
+                        Overview:
+                    </p>
+                    <p className='с-tv-show-details-card__overview-text'>
+                        {props.overview}
+                    </p>
+                </div>
+            </Container>
         </div>
     );
 };

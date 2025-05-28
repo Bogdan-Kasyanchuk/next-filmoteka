@@ -1,4 +1,4 @@
-.u-link-overlay[href] {
+.u-link-over[href] {
     transition-property: opacity;
 
     &::before {

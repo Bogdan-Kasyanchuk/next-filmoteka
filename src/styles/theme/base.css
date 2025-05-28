@@ -52,6 +52,38 @@
     }
 }
 
+@utility u-link-color {
+    color: var(--color-link);
+    text-decoration: none;
+    transition-property: color;
+
+    @media (any-hover: hover) {
+        &:hover {
+            color: var(--color-link-hover);
+        }
+    }
+}
+
+@utility u-link-overlay {
+    transition-property: opacity;
+
+    &::before {
+        content: '';
+
+        position: absolute;
+        z-index: 1;
+        inset: 0;
+
+        display: block;
+    }
+
+    @media (any-hover: hover) {
+        &:hover {
+            opacity: 0.75;
+        }
+    }
+}
+
 @utility u-hide-scroll-bar {
     scrollbar-color: transparent transparent;
     scrollbar-width: none;

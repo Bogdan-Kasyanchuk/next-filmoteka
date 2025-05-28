@@ -108,7 +108,6 @@ export type TVShowDetailsMapper = {
         popularity: number,
         backdrop_path: string,
         poster_path: string,
-        languages: string[],
         genres: string[],
         origin_country: string[],
         production_companies: ProductionCompany[],

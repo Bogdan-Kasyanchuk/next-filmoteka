@@ -63,20 +63,8 @@
 
     &__cover {
         position: relative;
+        aspect-ratio: 2/3;
         width: 100%;
-        height: 259px;
-
-        @variant min-sm {
-            height: 319px;
-        }
-
-        @variant min-md {
-            height: 345px;
-        }
-
-        @variant min-lg {
-            height: 441px;
-        }
 
         img {
             object-fit: cover;
