@@ -112,7 +112,6 @@ export const transformTVShowDetails = (tvShow: TVShowDetailsShema) => ({
         created_by: tvShow.created_by.map(
             (created) => ({
                 name: created.name || created.original_name,
-                gender: created.gender,
                 profile_path: created.profile_path
             })
         ),
@@ -120,7 +119,9 @@ export const transformTVShowDetails = (tvShow: TVShowDetailsShema) => ({
             (network) => ({
                 logo_path: network.logo_path,
                 name: network.name,
-                origin_country: network.origin_country
+                origin_country: tvShow.production_countries.find(
+                    (country) => network.origin_country === country.iso_3166_1
+                )?.name
             })
         ),
     },

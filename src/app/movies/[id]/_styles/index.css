@@ -82,7 +82,7 @@
         }
     }
 
-    &__tag {
+    &__adult {
         position: absolute;
         z-index: 1;
         top: 10px;
@@ -220,22 +220,6 @@
         }
     }
 
-    &__overview {
-        grid-column: 1/-1;
-        line-height: 1.2;
-
-        &-title {
-            margin-bottom: 10px;
-            font-size: var(--text-xl);
-            font-weight: 700;
-        }
-
-        &-text {
-            font-size: 18px;
-            opacity: 0.75;
-        }
-    }
-
     &__companies {
         grid-column: 1/-1;
         line-height: 1.2;
@@ -281,6 +265,22 @@
             display: flex;
             flex-direction: column;
             row-gap: 6px;
+        }
+    }
+
+    &__overview {
+        grid-column: 1/-1;
+        line-height: 1.2;
+
+        &-title {
+            margin-bottom: 10px;
+            font-size: var(--text-xl);
+            font-weight: 700;
+        }
+
+        &-text {
+            font-size: 18px;
+            opacity: 0.75;
         }
     }
 }

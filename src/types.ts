@@ -30,7 +30,6 @@ type Network = {
 
 type CreatedBy = {
     name: string,
-    gender: GenderType,
     profile_path: string
 };
 

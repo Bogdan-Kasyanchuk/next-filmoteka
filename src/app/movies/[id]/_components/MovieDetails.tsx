@@ -31,7 +31,7 @@ export default function MovieDetails(props: Props) {
                 <div className='с-movie-details-card__cover'>
                     {
                         props.adult &&
-                        <div className='с-movie-details-card__tag'>
+                        <div className='с-movie-details-card__adult'>
                             18
                             <span>+</span>
                         </div>

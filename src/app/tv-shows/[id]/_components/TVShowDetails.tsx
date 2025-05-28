@@ -1,4 +1,3 @@
-import clsx from 'clsx';
 import Image from 'next/image';
 import { Fragment } from 'react';
 
@@ -10,15 +9,13 @@ import { formatDate } from '@/utils/formateDate';
 
 type Props = TVShowDetailsMapper['tvShow'];
 
-// tvShow: {
-//     created_by: CreatedBy[],
-//     networks: Network[],
-// },
-
 export default function TVShowDetails(props: Props) {
     const originalLanguage = props.spoken_languages.find(
         (language) => language.iso_639_1 === props.original_language
     );
+
+    console.log(props.created_by);
+    console.log(props.networks);
 
     return (
         <div className='с-tv-show-details-card'>
@@ -33,6 +30,14 @@ export default function TVShowDetails(props: Props) {
 
             <Container className='с-tv-show-details-card__container'>
                 <div className='с-tv-show-details-card__cover'>
+                    {
+                        props.adult &&
+                        <div className='с-tv-show-details-card__adult'>
+                            18
+                            <span>+</span>
+                        </div>
+                    }
+
                     <Image
                         src={
                             props.poster_path
@@ -50,17 +55,6 @@ export default function TVShowDetails(props: Props) {
                 </Title>
 
                 <ul className='с-tv-show-details-card__list-rounds'>
-                    <li
-                        className={
-                            clsx('с-tv-show-details-card__list-rounds-item', {
-                                'text-danger': props.adult
-                            })
-                        }
-                    >
-                        {props.adult ? '18' : '0'}
-                        <span>+</span>
-                    </li>
-
                     <li className='с-tv-show-details-card__list-rounds-item'>
                         {(props.vote_average / 10 * 100).toFixed(0)}
                         <span>%</span>
@@ -180,6 +174,77 @@ export default function TVShowDetails(props: Props) {
                     </li>
                 </ul>
 
+                <div className='с-tv-show-details-card__creators'>
+                    <p className='с-tv-show-details-card__creators-title'>
+                        Creators:
+                    </p>
+                    <ul className='с-tv-show-details-card__creators-list'>
+                        {
+                            props.created_by.map(
+                                (creator, index) => (
+                                    <li
+                                        key={index}
+                                        className='с-tv-show-details-card__creators-item'
+                                    >
+                                        <div className='с-tv-show-details-card__creators-logo'>
+                                            <Image
+                                                src={
+                                                    !creator.profile_path
+                                                        ? `${PARAMETERS.URL_IMG}/${IMG_SIZES.CREATOR_AVATAR}/${creator.profile_path}`
+                                                        : '/img/photo-not-available.jpg'
+                                                }
+                                                fill
+                                                sizes='50px'
+                                                alt={creator.name}
+                                            />
+                                        </div>
+                                        <div className='с-tv-show-details-card__creators-content'>
+                                            {creator.name}
+                                        </div>
+                                    </li>
+                                ))
+                        }
+                    </ul>
+                </div>
+
+                <div className='с-tv-show-details-card__networks'>
+                    <p className='с-tv-show-details-card__networks-title'>
+                        Networks:
+                    </p>
+                    <ul className='с-tv-show-details-card__networks-list'>
+                        {
+                            props.networks.map(
+                                (network, index) => (
+                                    <li
+                                        key={index}
+                                        className='с-tv-show-details-card__networks-item'
+                                    >
+                                        <div className='с-tv-show-details-card__networks-logo'>
+                                            <Image
+                                                src={
+                                                    network.logo_path
+                                                        ? `${PARAMETERS.URL_IMG}/${IMG_SIZES.NETWORK_LOGO}/${network.logo_path}`
+                                                        : '/img/poster-not-available.jpg'
+                                                }
+                                                fill
+                                                sizes='50px'
+                                                alt={network.name}
+                                            />
+                                        </div>
+                                        <div className='с-tv-show-details-card__networks-content'>
+                                            <span className='text-lg font-semibold'>
+                                                {network.name}
+                                            </span>
+                                            <span className='opacity-75 text-sm'>
+                                                {network.origin_country}
+                                            </span>
+                                        </div>
+                                    </li>
+                                ))
+                        }
+                    </ul>
+                </div>
+
                 <div className='с-tv-show-details-card__companies'>
                     <p className='с-tv-show-details-card__companies-title'>
                         Production companies:
@@ -200,7 +265,7 @@ export default function TVShowDetails(props: Props) {
                                                         : '/img/poster-not-available.jpg'
                                                 }
                                                 fill
-                                                sizes='60px'
+                                                sizes='50px'
                                                 alt={company.name}
                                             />
                                         </div>
