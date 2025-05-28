@@ -10,23 +10,27 @@
     &__inner {
         width: fit-content;
 
-        font-family: monospace;
-        font-size: 30px;
+        font-size: var(--text-8xl);
         font-weight: bold;
+        text-transform: uppercase;
 
-        background: linear-gradient(90deg, #000 50%, #0000 0) right/200% 100%;
+        background: linear-gradient(90deg, var(--color-accent) 50%, transparent 0) right/200% 100%;
 
-        animation: l21 2s infinite linear;
+        animation: l21 1.5s infinite linear;
 
         &::before {
             content: 'Loading...';
 
-            padding: 0 5px;
+            padding-inline: 8px;
 
-            color: #0000;
+            color: transparent;
 
             background: inherit;
-            background-image: linear-gradient(90deg, #fff 50%, #000 0);
+            background-image: linear-gradient(
+                90deg,
+                var(--color-primary) 50%,
+                var(--color-secondary) 0
+            );
             background-clip: text;
         }
     }

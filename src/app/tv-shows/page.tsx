@@ -6,7 +6,7 @@ import { TVShowType } from '@/enums';
 import { getTVShows } from '@/services/api';
 
 import Content from './_components/Content';
-import Filters from './_components/Filters';
+import Filter from './_components/Filter';
 import TitleText from './_components/TitleText';
 
 import './_styles/index.css';
@@ -32,7 +32,7 @@ export default async function Page(props: Props) {
 
     return (
         <Container className='p-tv-shows'>
-            <Filters type={type} />
+            <Filter type={type} />
 
             <Title
                 center

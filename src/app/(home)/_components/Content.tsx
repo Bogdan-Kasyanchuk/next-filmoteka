@@ -7,7 +7,7 @@ import TVShowCard from '@/components/ui/cards/TVShowCard';
 import Loader from '@/components/ui/data-display/Loader';
 import Pagination from '@/components/ui/data-display/Pagination';
 import { MediaType, TimeType } from '@/enums';
-import { transformedMovie, transformedTVShow } from '@/helpers/transformedData';
+import { transformMovie, transformTVShow } from '@/helpers/transformData';
 import { getTrendings } from '@/services/api';
 
 type Props = {
@@ -25,9 +25,9 @@ export default function Content(props: Props) {
             const transformedResults = data.results.map(
                 (result) => {
                     if (result.media_type === MediaType.MOVIE) {
-                        return transformedMovie(result);
+                        return transformMovie(result);
                     } else {
-                        return transformedTVShow(result);
+                        return transformTVShow(result);
                     }
                 });
 
@@ -66,7 +66,7 @@ export default function Content(props: Props) {
                                 totalPages={data.total_pages}
                             />
                         </div>
-                        : <div className='grow flex items-center justify-center text-8xl'>
+                        : <div className='uppercase text-primary font-bold grow flex items-center justify-center text-8xl'>
                             Data not found
                         </div>
             }

@@ -13,7 +13,7 @@
     &__backdrop {
         position: absolute;
         inset: 0;
-        background-color: rgba(0, 0, 0, 0.75);
+        background-color: rgba(0, 0, 0, 0.85);
 
         img {
             z-index: -1;
@@ -35,8 +35,25 @@
         }
 
         @variant min-md {
-            grid-template-columns: 328px 1fr;
+            grid-template-columns: 328px 380px;
             grid-template-rows: max-content max-content 1fr;
+        }
+
+        @variant min-lg {
+            grid-template-columns: 328px 636px;
+        }
+
+        @variant min-xl {
+            grid-template-columns: 352px 888px;
+            column-gap: 40px;
+        }
+
+        @variant min-xxl {
+            grid-template-columns: 352px 1008px;
+        }
+
+        @variant min-xxxl {
+            grid-template-columns: 352px 1168px;
         }
     }
 
@@ -110,7 +127,7 @@
             font-weight: 700;
             line-height: 1;
 
-            background-image: radial-gradient(#222 40%, var(--color-accent) 100%);
+            background-image: radial-gradient(var(--color-secondary) 40%, var(--color-accent) 100%);
 
             &:not(:first-child) {
                 span {
@@ -144,7 +161,7 @@
         }
     }
 
-    &__list {
+    &__list-info {
         display: flex;
         grid-column: 1/-1;
         flex-direction: column;
@@ -154,11 +171,46 @@
             grid-column: -2/-1;
             grid-row: 3/4;
         }
-    }
 
-    &__item {
-        font-size: var(--text-lg);
-        line-height: 1.2;
+        &-item {
+            display: flex;
+            column-gap: 6px;
+            align-items: center;
+
+            font-size: var(--text-lg);
+            line-height: 1.2;
+
+            /* white-space: nowrap; */
+
+            &--tagline {
+                margin-bottom: 10px;
+                font-weight: 600;
+                font-style: italic;
+                opacity: 0.75;
+            }
+
+            a[href] {
+                overflow: hidden;
+
+                color: var(--color-link);
+                text-overflow: ellipsis;
+                white-space: nowrap;
+
+                transition-property: color;
+
+                &:hover {
+                    color: var(--color-link-hover);
+                }
+            }
+
+            & > *:first-child {
+                opacity: 0.75;
+            }
+
+            & > *:last-child {
+                font-weight: 600;
+            }
+        }
     }
 }
 

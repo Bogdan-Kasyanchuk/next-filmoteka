@@ -4,6 +4,7 @@ import { usePathname, useSearchParams, useRouter } from 'next/navigation';
 
 import Tabs from '@/components/ui/data-display/Tabs';
 import { TVShowType } from '@/enums';
+import { sortParams } from '@/helpers/sortParams';
 
 import { tvShowTypeFilter } from './datasets';
 
@@ -11,7 +12,7 @@ type Props = {
     type: TVShowType;
 }
 
-export default function Filters(props: Props) {
+export default function Filter(props: Props) {
     const pathname = usePathname();
     const searchParams = useSearchParams();
     const { replace } = useRouter();
@@ -22,13 +23,11 @@ export default function Filters(props: Props) {
         params.set('type', type);
         params.set('page', '1');
 
-        params.sort();
-
-        replace(`${pathname}?${params.toString().split('&').reverse().join('&')}`);
+        replace(sortParams(pathname, params));
     };
 
     return (
-        <div className='p-tv-shows__filters'>
+        <div className='p-tv-shows__filter'>
             <Tabs<TVShowType>
                 tabs={tvShowTypeFilter}
                 active={props.type}

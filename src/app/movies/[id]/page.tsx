@@ -22,9 +22,7 @@ export default async function Page(props: Props) {
 
     return (
         <HydrationBoundary state={dehydrate(queryClient)}>
-            <div className='p-movie'>
-                <Content id={id} />
-            </div>
+            <Content id={id} />
         </HydrationBoundary>
     );
 }

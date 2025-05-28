@@ -6,7 +6,7 @@ import MovieCard from '@/components/ui/cards/MovieCard';
 import Loader from '@/components/ui/data-display/Loader';
 import Pagination from '@/components/ui/data-display/Pagination';
 import { MovieType } from '@/enums';
-import { transformedMovie } from '@/helpers/transformedData';
+import { transformMovie } from '@/helpers/transformData';
 import { getMovies } from '@/services/api';
 
 type Props = {
@@ -21,7 +21,7 @@ export default function Content(props: Props) {
         placeholderData: keepPreviousData,
         select: (data) => {
             const transformedResults = data.results.map(
-                (result) => transformedMovie(result));
+                (result) => transformMovie(result));
 
             return {
                 results: transformedResults,
@@ -54,7 +54,7 @@ export default function Content(props: Props) {
                                 totalPages={data.total_pages}
                             />
                         </div>
-                        : <div className='grow flex items-center justify-center text-8xl'>
+                        : <div className='uppercase text-primary font-bold grow flex items-center justify-center text-8xl'>
                             Data not found
                         </div>
             }

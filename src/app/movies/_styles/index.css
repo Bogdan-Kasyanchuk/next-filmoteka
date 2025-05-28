@@ -9,7 +9,7 @@
 
     padding-block: 30px;
 
-    &__filters {
+    &__filter {
         display: flex;
         flex-wrap: wrap;
         row-gap: 20px;

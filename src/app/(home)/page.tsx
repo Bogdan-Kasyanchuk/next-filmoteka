@@ -6,7 +6,7 @@ import { MediaType, TimeType } from '@/enums';
 import { getTrendings } from '@/services/api';
 
 import Content from './_components/Content';
-import Filters from './_components/Filters/Filters';
+import Filter from './_components/Filter';
 import TitleText from './_components/TitleText';
 
 import './_styles/index.css';
@@ -34,7 +34,7 @@ export default async function Page(props: Props) {
 
     return (
         <Container className='p-home'>
-            <Filters
+            <Filter
                 type={type}
                 time={time}
             />

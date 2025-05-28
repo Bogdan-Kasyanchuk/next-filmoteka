@@ -1,13 +1,15 @@
 @theme {
     /* Colors */
     --color-primary: #fff;
-    --color-secondary: #111;
+    --color-secondary: #222;
     --color-accent: #18819e;
     --color-accent-hover: #08587d;
     --color-success: #38c550;
     --color-warning: #ffc107;
     --color-danger: #fe0000;
     --color-bg-body: #555;
+    --color-link: #ff7b00;
+    --color-link-hover: #b75b06;
 
     /* Font sizes */
     /* stylelint-disable-next-line custom-property-pattern */

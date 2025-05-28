@@ -4,6 +4,7 @@ import { Fragment } from 'react';
 
 import Container from '@/components/ui/layouts/Container';
 import Title from '@/components/ui/typography/Title';
+import { formatCurrency } from '@/helpers/formatCurrency';
 import { PARAMETERS, IMG_SIZES } from '@/helpers/parameters';
 import { MovieDetailsMapper } from '@/types';
 import { formatDate } from '@/utils/formateDate';
@@ -74,75 +75,93 @@ export default function MovieDetails(props: Props) {
                     </li>
                 </ul>
 
-                <ul className='с-movie-details-card__list'>
-                    <li className='с-movie-details-card__item'>
+                <ul className='с-movie-details-card__list-info'>
+                    <li className='с-movie-details-card__list-info-item с-movie-details-card__list-info-item--tagline'>
                         &quot;{props.tagline}&quot;
                     </li>
-
-                    <li className='с-movie-details-card__item'>
-                        IMDB: <span>https://www.imdb.com/title/{props.imdb_id}</span>
+                    <li className='с-movie-details-card__list-info-item'>
+                        <span>IMDB:</span>
+                        <a
+                            href={`https://www.imdb.com/title/${props.imdb_id}`}
+                            rel="noopener noreferrer"
+                            target="_blank"
+                        >
+                            https://www.imdb.com/title/{props.imdb_id}
+                        </a>
                     </li>
 
-                    <li className='с-movie-details-card__item'>
-                        Url: <span>{props.homepage}</span>
+                    <li className='с-movie-details-card__list-info-item'>
+                        <span>Url:</span>
+                        <a
+                            href={props.homepage}
+                            rel="noopener noreferrer"
+                            target="_blank"
+                        >
+                            {props.homepage}
+                        </a>
                     </li>
 
-                    <li className='с-movie-details-card__item'>
-                        Budget: <span>{props.budget} $</span>
+                    <li className='с-movie-details-card__list-info-item'>
+                        <span>Budget:</span>
+                        <span>${formatCurrency(props.budget)}</span>
                     </li>
 
-                    <li className='с-movie-details-card__item'>
-                        Revenue: <span>{props.revenue} $</span>
+                    <li className='с-movie-details-card__list-info-item'>
+                        <span>Revenue:</span>
+                        <span>${formatCurrency(props.revenue)}</span>
                     </li>
 
-                    <li className='с-movie-details-card__item'>
-                        Release: <span>{formatDate(props.release_date, 'DD.MM.YYYY')}</span>
+                    <li className='с-movie-details-card__list-info-item'>
+                        <span>Release:</span>
+                        <span>{formatDate(props.release_date, 'DD.MM.YYYY')}</span>
                     </li>
 
-                    <li className='с-movie-details-card__item'>
-                        Status: <span>{props.status}</span>
+                    <li className='с-movie-details-card__list-info-item'>
+                        <span>Status:</span>
+                        <span>{props.status}</span>
+                    </li>
+                    <li className='с-movie-details-card__list-info-item'>
+                        <span>Original language:</span>
+                        <span>
+                            {
+                                props.spoken_languages.find(
+                                    (lang) => lang.iso_639_1 === props.original_language)?.name
+                            }
+                        </span>
                     </li>
 
-                    <li className='с-movie-details-card__item'>
-                        Original language: <span>{props.original_language}</span>
+                    <li className='с-movie-details-card__list-info-item'>
+                        <span className='self-start'>Genres:</span>
+                        <span>
+                            {
+                                props.genres.map(
+                                    (genre, index) => (
+                                        <Fragment key={index}>
+                                            {index !== 0 && <>&nbsp;|&nbsp;</>}
+                                            {genre}
+                                        </Fragment>
+                                    ))
+                            }
+                        </span>
+                    </li>
+
+                    <li className='с-movie-details-card__list-info-item'>
+                        <span className='self-start'>Countries:</span>
+                        <span>
+                            {
+                                props.origin_country.map(
+                                    (country, index) => (
+                                        <Fragment key={index}>
+                                            {index !== 0 && <>&nbsp;|&nbsp;</>}
+                                            {country}
+                                        </Fragment>
+                                    ))
+                            }
+                        </span>
                     </li>
                 </ul>
 
                 {/* <div className={'movie-card-details-genres'}>
-                        <h3 className={'movie-card-details-genres-title'}>Genres:</h3>
-                        <ul className={'movie-card-details-genres-list'}>
-                            {
-                                props.genres.map(
-                                    (genre, index) => (
-                                        <li
-                                            className={'movie-card-details-genres-item'}
-                                            key={index}
-                                        >
-                                            {genre}
-                                        </li>
-                                    ))
-                            }
-                        </ul>
-                    </div>
-
-                    <div className={'movie-card-details-genres'}>
-                        <h3 className={'movie-card-details-genres-title'}>Countries:</h3>
-                        <ul className={'movie-card-details-genres-list'}>
-                            {
-                                props.origin_country.map(
-                                    (country, index) => (
-                                        <li
-                                            className={'movie-card-details-genres-item'}
-                                            key={index}
-                                        >
-                                            {country}
-                                        </li>
-                                    ))
-                            }
-                        </ul>
-                    </div>
-
-                    <div className={'movie-card-details-genres'}>
                         <h3 className={'movie-card-details-genres-title'}>Spoken languages:</h3>
                         <ul className={'movie-card-details-genres-list'}>
                             {

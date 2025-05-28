@@ -4,7 +4,7 @@ import { useQuery } from '@tanstack/react-query';
 import { notFound } from 'next/navigation';
 
 import Loader from '@/components/ui/data-display/Loader';
-import { transformedMovieDetails } from '@/helpers/transformedData';
+import { transformMovieDetails } from '@/helpers/transformData';
 import { getMovieById } from '@/services/api';
 
 // import Casts from './Casts';
@@ -21,7 +21,7 @@ export default function Content(props: Props) {
     const { data, isFetching } = useQuery({
         queryKey: ['movies', props.id],
         queryFn: () => getMovieById(props.id),
-        select: (data) => transformedMovieDetails(data),
+        select: (data) => transformMovieDetails(data),
     });
 
     if (isFetching) {
@@ -33,12 +33,12 @@ export default function Content(props: Props) {
     }
 
     return (
-        <>
+        <div className='p-movie'>
             <MovieDetails {...data.movie} />
             {/* <Casts casts={data} />
             <Videos movie={data} />
             <Recommendations movie={data} />
             <Reviews movie={data} /> */}
-        </>
+        </div>
     );
 }

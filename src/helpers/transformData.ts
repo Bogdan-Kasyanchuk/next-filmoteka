@@ -2,7 +2,7 @@ import { MediaType } from '@/enums';
 import { CastShema, MovieDetailsShema, MovieShema, RecommendationMovieShema, RecommendationTVShowShema, ReviewShema, TVShowDetailsShema, TVShowShema, VideoShema } from '@/shemas';
 import { CastMapper, MovieDetailsMapper, MovieMapper, RecommendationMovieMapper, RecommendationTVShowMapper, ReviewMapper, TVShowDetailsMapper, TVShowMapper, VideoMapper } from '@/types';
 
-export const transformedMovie = (movie: MovieShema) => ({
+export const transformMovie = (movie: MovieShema) => ({
     id: movie.id,
     title: movie.title || movie.original_title,
     poster_path: movie.poster_path,
@@ -10,7 +10,7 @@ export const transformedMovie = (movie: MovieShema) => ({
     vote_average: movie.vote_average,
 }) as MovieMapper;
 
-export const transformedTVShow = (tvShow: TVShowShema) => ({
+export const transformTVShow = (tvShow: TVShowShema) => ({
     id: tvShow.id,
     name: tvShow.name || tvShow.original_name,
     poster_path: tvShow.poster_path,
@@ -18,7 +18,7 @@ export const transformedTVShow = (tvShow: TVShowShema) => ({
     vote_average: tvShow.vote_average,
 }) as TVShowMapper;
 
-export const transformedMovieDetails = (movie: MovieDetailsShema) => ({
+export const transformMovieDetails = (movie: MovieDetailsShema) => ({
     movie: {
         imdb_id: movie.imdb_id,
         adult: movie.adult,
@@ -38,28 +38,34 @@ export const transformedMovieDetails = (movie: MovieDetailsShema) => ({
         revenue: movie.revenue,
         runtime: movie.runtime,
         genres: movie.genres.map((genre) => genre.name),
-        origin_country: movie.origin_country,
+        origin_country: movie.origin_country.map(
+            (originCountry) => movie.production_countries.find(
+                (country) => originCountry === country.iso_3166_1)?.name
+        ),
         production_companies: movie.production_companies.map(
             (company) => ({
                 logo_path: company.logo_path,
                 name: company.name,
                 origin_country: movie.production_countries.find(
                     (country) => company.origin_country === country.iso_3166_1)?.name
-            })),
+            })
+        ),
         spoken_languages: movie.spoken_languages.map(
             (language) => ({
+                iso_639_1: language.iso_639_1,
                 english_name: language.english_name,
                 name: language.name
-            })),
+            })
+        ),
     },
-    cast: movie.credits.cast.map((cast) => transformedCast(cast)),
-    videos: movie.videos.results.map((video) => transformedVideo(video)),
-    reviews: movie.reviews.results.map((review) => transformedReview(review)),
+    cast: movie.credits.cast.map((cast) => transformCast(cast)),
+    videos: movie.videos.results.map((video) => transformVideo(video)),
+    reviews: movie.reviews.results.map((review) => transformReview(review)),
     recommendations: movie.recommendations.results.map(
-        (recommendation) => transformedRecommendationMovie(recommendation)),
+        (recommendation) => transformRecommendationMovie(recommendation)),
 }) as MovieDetailsMapper;
 
-export const transformedTVShowDetails = (tvShow: TVShowDetailsShema) => ({
+export const transformTVShowDetails = (tvShow: TVShowDetailsShema) => ({
     tvShow: {
         adult: tvShow.adult,
         homepage: tvShow.homepage,
@@ -88,24 +94,29 @@ export const transformedTVShowDetails = (tvShow: TVShowDetailsShema) => ({
                 name: company.name,
                 origin_country: tvShow.production_countries.find(
                     (country) => company.origin_country === country.iso_3166_1)?.name
-            })),
+            })
+        ),
         spoken_languages: tvShow.spoken_languages.map(
             (language) => ({
+                iso_639_1: language.iso_639_1,
                 english_name: language.english_name,
                 name: language.name
-            })),
+            })
+        ),
         created_by: tvShow.created_by.map(
             (created) => ({
                 name: created.name || created.original_name,
                 gender: created.gender,
                 profile_path: created.profile_path
-            })),
+            })
+        ),
         networks: tvShow.networks.map(
             (network) => ({
                 logo_path: network.logo_path,
                 name: network.name,
                 origin_country: network.origin_country
-            })),
+            })
+        ),
     },
     seasons: tvShow.seasons.map(
         (season) => ({
@@ -116,15 +127,16 @@ export const transformedTVShowDetails = (tvShow: TVShowDetailsShema) => ({
             poster_path: season.poster_path,
             season_number: season.season_number,
             vote_average: season.vote_average
-        })),
-    cast: tvShow.credits.cast.map((cast) => transformedCast(cast)),
-    videos: tvShow.videos.results.map((video) => transformedVideo(video)),
-    reviews: tvShow.reviews.results.map((review) => transformedReview(review)),
+        })
+    ),
+    cast: tvShow.credits.cast.map((cast) => transformCast(cast)),
+    videos: tvShow.videos.results.map((video) => transformVideo(video)),
+    reviews: tvShow.reviews.results.map((review) => transformReview(review)),
     recommendations: tvShow.recommendations.results.map(
-        (recommendation) => transformedRecommendationTVShow(recommendation)),
+        (recommendation) => transformRecommendationTVShow(recommendation)),
 }) as TVShowDetailsMapper;
 
-export const transformedCast = (cast: CastShema) => ({
+export const transformCast = (cast: CastShema) => ({
     gender: cast.gender,
     name: cast.name || cast.original_name,
     popularity: cast.popularity,
@@ -132,7 +144,7 @@ export const transformedCast = (cast: CastShema) => ({
     character: cast.character,
 }) as CastMapper;
 
-export const transformedVideo = (video: VideoShema) => ({
+export const transformVideo = (video: VideoShema) => ({
     iso_3166_1: video.iso_3166_1,
     name: video.name,
     key: video.key,
@@ -143,7 +155,7 @@ export const transformedVideo = (video: VideoShema) => ({
     published_at: video.published_at,
 }) as VideoMapper;
 
-export const transformedReview = (review: ReviewShema) => ({
+export const transformReview = (review: ReviewShema) => ({
     author: {
         name: review.author_details.name,
         username: review.author_details.username,
@@ -155,7 +167,7 @@ export const transformedReview = (review: ReviewShema) => ({
     updated_at: review.updated_at,
 }) as ReviewMapper;
 
-export const transformedRecommendationMovie = (recommendation: RecommendationMovieShema) => ({
+export const transformRecommendationMovie = (recommendation: RecommendationMovieShema) => ({
     id: recommendation.id,
     title: recommendation.title || recommendation.original_title,
     poster_path: recommendation.poster_path,
@@ -163,7 +175,7 @@ export const transformedRecommendationMovie = (recommendation: RecommendationMov
     vote_average: recommendation.vote_average,
 }) as RecommendationMovieMapper;
 
-export const transformedRecommendationTVShow = (recommendation: RecommendationTVShowShema) => ({
+export const transformRecommendationTVShow = (recommendation: RecommendationTVShowShema) => ({
     id: recommendation.id,
     name: recommendation.name || recommendation.original_name,
     poster_path: recommendation.poster_path,

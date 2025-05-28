@@ -6,7 +6,7 @@ import TVShowCard from '@/components/ui/cards/TVShowCard';
 import Loader from '@/components/ui/data-display/Loader';
 import Pagination from '@/components/ui/data-display/Pagination';
 import { TVShowType } from '@/enums';
-import { transformedTVShow } from '@/helpers/transformedData';
+import { transformTVShow } from '@/helpers/transformData';
 import { getTVShows } from '@/services/api';
 
 type Props = {
@@ -21,7 +21,7 @@ export default function Content(props: Props) {
         placeholderData: keepPreviousData,
         select: (data) => {
             const transformedResults = data.results.map(
-                (result) => transformedTVShow(result));
+                (result) => transformTVShow(result));
 
             return {
                 results: transformedResults,
@@ -54,7 +54,7 @@ export default function Content(props: Props) {
                                 totalPages={data.total_pages}
                             />
                         </div>
-                        : <div className='grow flex items-center justify-center text-8xl'>
+                        : <div className='uppercase text-primary font-bold grow flex items-center justify-center text-8xl'>
                             Data not found
                         </div>
             }
