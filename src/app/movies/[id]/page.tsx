@@ -1,4 +1,5 @@
 import { dehydrate, QueryClient, HydrationBoundary } from '@tanstack/react-query';
+import { Metadata } from 'next';
 
 import { getMovieById } from '@/services/api';
 
@@ -9,6 +10,14 @@ import './_styles/index.css';
 type Props = {
     params: Promise<{ id: string }>
 };
+
+export async function generateMetadata(props: Props): Promise<Metadata> {
+    const { id } = await props.params;
+
+    return {
+        title: id
+    };
+}
 
 export default async function Page(props: Props) {
     const { id } = await props.params;

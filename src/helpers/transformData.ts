@@ -4,6 +4,7 @@ import { CastMapper, MovieDetailsMapper, MovieMapper, RecommendationMovieMapper,
 
 export const transformMovie = (movie: MovieShema) => ({
     id: movie.id,
+    adult: movie.adult,
     title: movie.title || movie.original_title,
     poster_path: movie.poster_path,
     media_type: MediaType.MOVIE,
@@ -12,6 +13,7 @@ export const transformMovie = (movie: MovieShema) => ({
 
 export const transformTVShow = (tvShow: TVShowShema) => ({
     id: tvShow.id,
+    adult: tvShow.adult,
     name: tvShow.name || tvShow.original_name,
     poster_path: tvShow.poster_path,
     media_type: MediaType.TV_SHOW,
@@ -33,15 +35,17 @@ export const transformMovieDetails = (movie: MovieDetailsShema) => ({
         popularity: movie.popularity,
         backdrop_path: movie.backdrop_path,
         poster_path: movie.poster_path,
-        original_language: movie.original_language,
         release_date: movie.release_date,
         revenue: movie.revenue,
         runtime: movie.runtime,
         genres: movie.genres.map((genre) => genre.name),
+        original_language: movie.spoken_languages.find(
+            (language) => language.iso_639_1 === movie.original_language
+        )?.english_name || movie.original_language,
         origin_country: movie.origin_country.map(
             (originCountry) => movie.production_countries.find(
                 (country) => originCountry === country.iso_3166_1
-            )?.name
+            )?.name || originCountry
         ),
         production_companies: movie.production_companies.map(
             (company) => ({
@@ -49,12 +53,11 @@ export const transformMovieDetails = (movie: MovieDetailsShema) => ({
                 name: company.name,
                 origin_country: movie.production_countries.find(
                     (country) => company.origin_country === country.iso_3166_1
-                )?.name
+                )?.name || company.origin_country
             })
         ),
         spoken_languages: movie.spoken_languages.map(
             (language) => ({
-                iso_639_1: language.iso_639_1,
                 english_name: language.english_name,
                 name: language.name
             })
@@ -77,7 +80,6 @@ export const transformTVShowDetails = (tvShow: TVShowDetailsShema) => ({
         name: tvShow.name || tvShow.original_name,
         number_of_episodes: tvShow.number_of_episodes,
         number_of_seasons: tvShow.number_of_seasons,
-        original_language: tvShow.original_language,
         overview: tvShow.overview,
         status: tvShow.status,
         tagline: tvShow.tagline,
@@ -87,11 +89,14 @@ export const transformTVShowDetails = (tvShow: TVShowDetailsShema) => ({
         popularity: tvShow.popularity,
         backdrop_path: tvShow.backdrop_path,
         poster_path: tvShow.poster_path,
+        original_language: tvShow.spoken_languages.find(
+            (language) => language.iso_639_1 === tvShow.original_language
+        )?.english_name || tvShow.original_language,
         genres: tvShow.genres.map((genre) => genre.name),
         origin_country: tvShow.origin_country.map(
             (originCountry) => tvShow.production_countries.find(
                 (country) => originCountry === country.iso_3166_1
-            )?.name
+            )?.name || originCountry
         ),
         production_companies: tvShow.production_companies.map(
             (company) => ({
@@ -99,12 +104,11 @@ export const transformTVShowDetails = (tvShow: TVShowDetailsShema) => ({
                 name: company.name,
                 origin_country: tvShow.production_countries.find(
                     (country) => company.origin_country === country.iso_3166_1
-                )?.name
+                )?.name || company.origin_country
             })
         ),
         spoken_languages: tvShow.spoken_languages.map(
             (language) => ({
-                iso_639_1: language.iso_639_1,
                 english_name: language.english_name,
                 name: language.name
             })
@@ -121,7 +125,7 @@ export const transformTVShowDetails = (tvShow: TVShowDetailsShema) => ({
                 name: network.name,
                 origin_country: tvShow.production_countries.find(
                     (country) => network.origin_country === country.iso_3166_1
-                )?.name
+                )?.name || network.origin_country
             })
         ),
     },
@@ -144,7 +148,6 @@ export const transformTVShowDetails = (tvShow: TVShowDetailsShema) => ({
 }) as TVShowDetailsMapper;
 
 export const transformCast = (cast: CastShema) => ({
-    gender: cast.gender,
     name: cast.name || cast.original_name,
     popularity: cast.popularity,
     profile_path: cast.profile_path,

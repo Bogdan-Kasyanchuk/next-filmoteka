@@ -18,7 +18,7 @@ export default function MovieCard(props: Props) {
                 <Image
                     src={
                         props.movie.poster_path
-                            ? `${PARAMETERS.URL_IMG}/${IMG_SIZES.MEDIA_CARD_COVER}/${props.movie.poster_path}`
+                            ? `${PARAMETERS.URL_IMG}${IMG_SIZES.MEDIA_CARD_COVER}${props.movie.poster_path}`
                             : '/img/poster-not-available.jpg'
                     }
                     sizes="(max-width: 479px) 173px, (max-width: 767px) 213px, (max-width: 1023px) 230px, 294px"
@@ -27,12 +27,22 @@ export default function MovieCard(props: Props) {
                 />
             </div>
 
-            <div className='с-movie-card__tag'>
-                {props.movie.media_type}
-            </div>
+            <div className='с-movie-card__tags'>
+                <div className='с-movie-card__tag с-movie-card__tag--type'>
+                    {props.movie.media_type}
+                </div>
 
-            <div className='с-movie-card__average'>
-                {(props.movie.vote_average / 10 * 100).toFixed(0)}%
+                {
+                    props.movie.adult &&
+                    <div className='с-movie-card__tag с-movie-card__tag--adult'>
+                        18<span>+</span>
+                    </div>
+                }
+
+                <div className='с-movie-card__tag с-movie-card__tag--average'>
+                    {(props.movie.vote_average * 10).toFixed(0) ?? 0}
+                    <span>%</span>
+                </div>
             </div>
 
             <div className='с-movie-card__footer'>

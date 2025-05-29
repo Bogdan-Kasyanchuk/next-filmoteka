@@ -4,6 +4,8 @@ import Link from 'next/link';
 
 import Container from '@/components/ui/layouts/Container';
 
+import '@/styles/app/base.css';
+
 export default function NotFound() {
     return (
         <Container className='flex flex-col items-center justify-center gap-10'>

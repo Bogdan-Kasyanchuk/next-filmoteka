@@ -15,7 +15,7 @@ type Props = {
 }
 
 export default function Content(props: Props) {
-    const { data, isFetching } = useQuery({
+    const { data, isPending, isFetching } = useQuery({
         queryKey: ['tv-shows', props.type, props.currentPage],
         queryFn: () => getTVShows(props.type, props.currentPage),
         placeholderData: keepPreviousData,
@@ -33,7 +33,7 @@ export default function Content(props: Props) {
     return (
         <>
             {
-                isFetching
+                isPending || isFetching
                     ? <Loader />
                     : data && data.results.length > 0
                         ? <div className='p-tv-shows__content'>

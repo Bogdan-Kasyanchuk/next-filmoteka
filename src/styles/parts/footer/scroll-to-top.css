@@ -9,7 +9,7 @@
 
     &:hover {
         background-color: var(--color-accent-hover);
-        box-shadow: 0 4px 16px rgba(8, 88, 125, 0.6);
+        box-shadow: var(--shadow-custom-accent);
 
         i {
             @apply invert;

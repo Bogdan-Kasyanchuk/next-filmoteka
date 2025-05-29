@@ -1,7 +1,6 @@
 import { EpisodeType, GenderType, MediaType, VideoType } from './enums';
 
 type SpokenLanguage = {
-    iso_639_1: string,
     english_name: string,
     name: string
 };
@@ -28,13 +27,14 @@ type Network = {
     origin_country: string
 };
 
-type CreatedBy = {
+type Creator = {
     name: string,
     profile_path: string
 };
 
 export type MovieMapper = {
     id: number,
+    adult: boolean,
     title: string,
     poster_path: string,
     media_type: MediaType.MOVIE,
@@ -77,6 +77,7 @@ export type MovieDetailsMapper = {
 
 export type TVShowMapper = {
     id: number,
+    adult: boolean,
     name: string,
     poster_path: string,
     media_type: MediaType.TV_SHOW,
@@ -111,7 +112,7 @@ export type TVShowDetailsMapper = {
         origin_country: string[],
         production_companies: ProductionCompany[],
         spoken_languages: SpokenLanguage[],
-        created_by: CreatedBy[],
+        created_by: Creator[],
         networks: Network[],
     },
     seasons: SeasonMapper[],
@@ -150,7 +151,6 @@ export type TVShowSeasonDetailsMapper = {
 }
 
 export type CastMapper = {
-    gender: GenderType,
     name: string,
     popularity: number,
     profile_path: string,

@@ -1,0 +1,9 @@
+/* Components */
+@import '../components/title.css' layer(base);
+@import '../components/tabs.css' layer(base);
+@import '../components/pagination.css' layer(base);
+
+/* Cards */
+@import '../components/cards/movie-card.css' layer(base);
+@import '../components/cards/tv-show-card.css' layer(base);
+@import '../components/cards/cast-card.css' layer(base);

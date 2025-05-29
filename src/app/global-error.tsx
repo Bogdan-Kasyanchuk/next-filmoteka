@@ -5,7 +5,7 @@ export default function Error() {
         <html>
             <body>
                 <main>
-                    <div className='flex items-center justify-center w-full h-full'>
+                    <div className='flex items-center justify-center w-full'>
                         <p className='text-3xl'>Something globally went wrong</p>
                     </div>
                 </main>

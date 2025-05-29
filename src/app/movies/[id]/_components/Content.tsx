@@ -4,10 +4,11 @@ import { useQuery } from '@tanstack/react-query';
 import { notFound } from 'next/navigation';
 
 import Loader from '@/components/ui/data-display/Loader';
+import Container from '@/components/ui/layouts/Container';
 import { transformMovieDetails } from '@/helpers/transformData';
 import { getMovieById } from '@/services/api';
 
-// import Casts from './Casts';
+import Casts from './Casts';
 import MovieDetails from './MovieDetails';
 // import Recommendations from './Recommendations';
 // import Reviews from './Reviews';
@@ -18,13 +19,13 @@ type Props = {
 }
 
 export default function Content(props: Props) {
-    const { data, isFetching } = useQuery({
+    const { data, isPending, isFetching } = useQuery({
         queryKey: ['movies', props.id],
         queryFn: () => getMovieById(props.id),
         select: (data) => transformMovieDetails(data),
     });
 
-    if (isFetching) {
+    if (isPending || isFetching) {
         return <Loader />;
     }
 
@@ -35,8 +36,12 @@ export default function Content(props: Props) {
     return (
         <div className='p-movie'>
             <MovieDetails {...data.movie} />
-            {/* <Casts casts={data} />
-            <Videos movie={data} />
+
+            <Container className='xxl:max-w-[1440px] flex flex-col gap-y-[30px]'>
+                <Casts casts={data.cast} />
+            </Container>
+
+            {/* <Videos movie={data} />
             <Recommendations movie={data} />
             <Reviews movie={data} /> */}
         </div>
