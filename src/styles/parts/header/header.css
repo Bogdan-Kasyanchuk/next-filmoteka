@@ -8,7 +8,7 @@
     padding-block: 10px;
     border-bottom: 2px solid var(--color-primary);
 
-    background-image: linear-gradient(90deg, var(--color-secondary) 50%, var(--color-accent) 100%);
+    background: linear-gradient(90deg, var(--color-secondary) 50%, var(--color-accent) 100%);
 
     @variant min-md {
         padding-block: 15px;

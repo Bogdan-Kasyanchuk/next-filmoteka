@@ -11,6 +11,8 @@ import { formatDate } from '@/utils/formateDate';
 type Props = MovieDetailsMapper['movie']
 
 export default function MovieDetails(props: Props) {
+    const average = Math.round(props.vote_average * 10);
+
     return (
         <div>
             <div className='с-movie-details'>
@@ -49,9 +51,18 @@ export default function MovieDetails(props: Props) {
                     </Title>
 
                     <ul className='с-movie-details__list-rounds'>
-                        <li className='с-movie-details__list-rounds-item'>
-                            {(props.vote_average * 10).toFixed(0) ?? 0}
-                            <span>%</span>
+                        <li
+                            className='с-movie-details__list-rounds-item'
+                            style={
+                                {
+                                    background: `conic-gradient(var(--color-success) ${average}%, 0, var(--color-primary) ${100 - average}%)`,
+                                }
+                            }
+                        >
+                            <div className='с-movie-details__list-rounds-item-inner'>
+                                {average}
+                                <span>%</span>
+                            </div>
                         </li>
 
                         <li className='с-movie-details__list-rounds-item'>
@@ -60,7 +71,7 @@ export default function MovieDetails(props: Props) {
                         </li>
 
                         <li className='с-movie-details__list-rounds-item'>
-                            {props.popularity.toFixed(0) ?? 0}
+                            {Math.round(props.popularity)}
                             <span>popularity</span>
                         </li>
 

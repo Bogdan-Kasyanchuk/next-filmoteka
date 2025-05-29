@@ -40,7 +40,7 @@ export default function MovieCard(props: Props) {
                 }
 
                 <div className='с-movie-card__tag с-movie-card__tag--average'>
-                    {(props.movie.vote_average * 10).toFixed(0) ?? 0}
+                    {Math.round(props.movie.vote_average * 10)}
                     <span>%</span>
                 </div>
             </div>

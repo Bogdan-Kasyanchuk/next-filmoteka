@@ -25,7 +25,7 @@ export default function CastCard(props: Props) {
             </div>
 
             <div className='с-cast-card__tag'>
-                {props.cast.popularity.toFixed(1) ?? 0}
+                {Math.round(props.cast.popularity)}
             </div>
 
             <div className='с-cast-card__footer'>

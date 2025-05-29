@@ -10,7 +10,7 @@ import { formatDate } from '@/utils/formateDate';
 type Props = TVShowDetailsMapper['tvShow'];
 
 export default function TVShowDetails(props: Props) {
-    console.log(props.production_companies);
+    const average = Math.round(props.vote_average * 10);
 
     return (
         <>
@@ -50,9 +50,18 @@ export default function TVShowDetails(props: Props) {
                     </Title>
 
                     <ul className='с-tv-show-details__list-rounds'>
-                        <li className='с-tv-show-details__list-rounds-item'>
-                            {(props.vote_average * 10).toFixed(0) ?? 0}
-                            <span>%</span>
+                        <li
+                            className='с-tv-show-details__list-rounds-item'
+                            style={
+                                {
+                                    background: `conic-gradient(var(--color-success) ${average}%, 0, var(--color-primary) ${100 - average}%)`,
+                                }
+                            }
+                        >
+                            <div className='с-tv-show-details__list-rounds-item-inner'>
+                                {average}
+                                <span>%</span>
+                            </div>
                         </li>
 
                         <li className='с-tv-show-details__list-rounds-item'>
@@ -61,7 +70,7 @@ export default function TVShowDetails(props: Props) {
                         </li>
 
                         <li className='с-tv-show-details__list-rounds-item'>
-                            {props.popularity.toFixed(0) ?? 0}
+                            {Math.round(props.popularity)}
                             <span>popularity</span>
                         </li>
 

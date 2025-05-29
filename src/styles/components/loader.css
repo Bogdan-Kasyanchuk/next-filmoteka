@@ -26,7 +26,7 @@
             color: transparent;
 
             background: inherit;
-            background-image: linear-gradient(
+            background: linear-gradient(
                 90deg,
                 var(--color-primary) 50%,
                 var(--color-secondary) 0

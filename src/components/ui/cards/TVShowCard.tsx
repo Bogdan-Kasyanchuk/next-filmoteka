@@ -40,7 +40,7 @@ export default function TVShowCard(props: Props) {
                 }
 
                 <div className='с-tv-show-card__tag с-tv-show-card__tag--average'>
-                    {(props.tvShow.vote_average * 10).toFixed(0) ?? 0}
+                    {Math.round(props.tvShow.vote_average * 10)}
                     <span>%</span>
                 </div>
             </div>
