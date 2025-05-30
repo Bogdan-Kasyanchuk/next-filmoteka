@@ -7,9 +7,6 @@ type Variant = Order;
 type Props = ComponentPropsWithoutRef<`h${Order}`> & {
     order?: `h${Order}`,
     variant?: Variant,
-    uppercase?: boolean,
-    center?: boolean,
-    bold?: boolean
 };
 
 export default function Title(props: Props) {
@@ -21,11 +18,6 @@ export default function Title(props: Props) {
                 clsx([
                     'c-title',
                     `c-title--${props.variant || 2}`,
-                    {
-                        'c-title--uppercase': props.uppercase,
-                        'c-title--bold': props.bold,
-                        'c-title--center': props.center
-                    },
                     props.className
                 ])
             }

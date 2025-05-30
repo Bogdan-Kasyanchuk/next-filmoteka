@@ -44,11 +44,7 @@ export default async function Page(props: Props) {
                 time={time}
             />
 
-            <Title
-                center
-                bold
-                uppercase
-            >
+            <Title className='font-bold uppercase text-center'>
                 <TitleText type={time} />
             </Title>
 

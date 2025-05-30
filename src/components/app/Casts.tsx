@@ -12,8 +12,7 @@ export default function Casts(props: Props) {
             <Title
                 order='h3'
                 variant={3}
-                className='-mt-1.5'
-                bold
+                className='-mt-1.5 font-bold uppercase'
             >
                 Casts
             </Title>

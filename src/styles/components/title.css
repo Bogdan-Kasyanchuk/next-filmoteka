@@ -25,16 +25,4 @@
             font-size: var(--text-7xl);
         }
     }
-
-    &--uppercase {
-        text-transform: uppercase;
-    }
-
-    &--bold {
-        font-weight: 700;
-    }
-
-    &--center {
-        text-align: center;
-    }
 }

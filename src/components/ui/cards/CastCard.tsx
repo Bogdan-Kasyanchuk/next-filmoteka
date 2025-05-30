@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import Image from 'next/image';
 
 import { PARAMETERS, IMG_SIZES } from '@/helpers/parameters';
@@ -11,12 +12,18 @@ export default function CastCard(props: Props) {
 
     return (
         <div className='с-cast-card'>
-            <div className='с-cast-card__cover'>
+            <div
+                className={
+                    clsx('с-cast-card__cover', {
+                        'bg-primary': !props.cast.profile_path
+                    })
+                }
+            >
                 <Image
                     src={
                         props.cast.profile_path
                             ? `${PARAMETERS.URL_IMG}${IMG_SIZES.CAST_CARD_COVER}${props.cast.profile_path}`
-                            : '/img/photo-not-available.jpg'
+                            : '/img/author-placeholder.svg'
                     }
                     sizes="180px"
                     alt={props.cast.name}
@@ -37,6 +44,6 @@ export default function CastCard(props: Props) {
                     {props.cast.character}
                 </p>
             </div>
-        </div>
+        </div >
     );
 };

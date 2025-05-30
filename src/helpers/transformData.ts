@@ -1,6 +1,28 @@
-import { MediaType } from '@/enums';
-import { CastShema, MovieDetailsShema, MovieShema, RecommendationMovieShema, RecommendationTVShowShema, ReviewShema, TVShowDetailsShema, TVShowShema, VideoShema } from '@/shemas';
-import { CastMapper, MovieDetailsMapper, MovieMapper, RecommendationMovieMapper, RecommendationTVShowMapper, ReviewMapper, TVShowDetailsMapper, TVShowMapper, VideoMapper } from '@/types';
+import { MediaType, VideoSiteType, VideoType } from '@/enums';
+import {
+    CastShema,
+    MovieDetailsShema,
+    MovieShema,
+    RecommendationMovieShema,
+    RecommendationTVShowShema,
+    ReviewShema,
+    SeasonShema,
+    TVShowDetailsShema,
+    TVShowShema,
+    VideoShema
+} from '@/shemas';
+import {
+    CastMapper,
+    MovieDetailsMapper,
+    MovieMapper,
+    RecommendationMovieMapper,
+    RecommendationTVShowMapper,
+    ReviewMapper,
+    SeasonMapper,
+    TVShowDetailsMapper,
+    TVShowMapper,
+    VideoMapper
+} from '@/types';
 
 export const transformMovie = (movie: MovieShema) => ({
     id: movie.id,
@@ -64,7 +86,13 @@ export const transformMovieDetails = (movie: MovieDetailsShema) => ({
         ),
     },
     cast: movie.credits.cast.map((cast) => transformCast(cast)),
-    videos: movie.videos.results.map((video) => transformVideo(video)),
+    videos: movie.videos.results.filter(
+        (video) => {
+            if (video.site === VideoSiteType.YOUTUBE && (video.type === VideoType.TRAILER || video.type === VideoType.CLIP)) {
+                return transformVideo(video);
+            }
+        }
+    ),
     reviews: movie.reviews.results.map((review) => transformReview(review)),
     recommendations: movie.recommendations.results.map(
         (recommendation) => transformRecommendationMovie(recommendation)),
@@ -129,23 +157,28 @@ export const transformTVShowDetails = (tvShow: TVShowDetailsShema) => ({
             })
         ),
     },
-    seasons: tvShow.seasons.map(
-        (season) => ({
-            air_date: season.air_date,
-            episode_count: season.episode_count,
-            name: season.name,
-            overview: season.overview,
-            poster_path: season.poster_path,
-            season_number: season.season_number,
-            vote_average: season.vote_average
-        })
-    ),
+    seasons: tvShow.seasons.map((season) => transformSeason(season)),
     cast: tvShow.credits.cast.map((cast) => transformCast(cast)),
-    videos: tvShow.videos.results.map((video) => transformVideo(video)),
+    videos: tvShow.videos.results.filter(
+        (video) => {
+            if (video.site === VideoSiteType.YOUTUBE && video.type === VideoType.TRAILER) {
+                return transformVideo(video);
+            }
+        }
+    ),
     reviews: tvShow.reviews.results.map((review) => transformReview(review)),
     recommendations: tvShow.recommendations.results.map(
         (recommendation) => transformRecommendationTVShow(recommendation)),
 }) as TVShowDetailsMapper;
+
+export const transformSeason = (season: SeasonShema) => ({
+    air_date: season.air_date,
+    episode_count: season.episode_count,
+    name: season.name,
+    poster_path: season.poster_path,
+    season_number: season.season_number,
+    vote_average: season.vote_average
+}) as SeasonMapper;
 
 export const transformCast = (cast: CastShema) => ({
     name: cast.name || cast.original_name,
@@ -155,13 +188,9 @@ export const transformCast = (cast: CastShema) => ({
 }) as CastMapper;
 
 export const transformVideo = (video: VideoShema) => ({
-    iso_3166_1: video.iso_3166_1,
     name: video.name,
     key: video.key,
-    site: video.site,
-    size: video.size,
     type: video.type,
-    official: video.official,
     published_at: video.published_at,
 }) as VideoMapper;
 

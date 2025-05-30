@@ -172,16 +172,6 @@ export type TVShowDetailsShema = {
         iso_3166_1: string,
         name: string
     }>,
-    seasons: Array<{
-        air_date: string,
-        episode_count: number,
-        id: number,
-        name: string,
-        overview: string,
-        poster_path: string,
-        season_number: number,
-        vote_average: number
-    }>,
     spoken_languages: Array<{
         english_name: string,
         iso_639_1: string,
@@ -192,6 +182,7 @@ export type TVShowDetailsShema = {
     type: string,
     vote_average: number,
     vote_count: number,
+    seasons: SeasonShema[],
     credits: {
         cast: CastShema[],
         crew: CrewShema[]
@@ -229,6 +220,17 @@ export type TVShowSeasonDetailsShema = {
         crew: CrewShema[],
         guest_stars: Omit<CastShema, 'cast_id'>[]
     }>
+}
+
+export type SeasonShema = {
+    air_date: string,
+    episode_count: number,
+    id: number,
+    name: string,
+    overview: string,
+    poster_path: string,
+    season_number: number,
+    vote_average: number
 }
 
 export type CastShema = {

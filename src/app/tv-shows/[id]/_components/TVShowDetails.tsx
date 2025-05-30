@@ -228,7 +228,7 @@ export default function TVShowDetails(props: Props) {
                                                         src={
                                                             creator.profile_path
                                                                 ? `${PARAMETERS.URL_IMG}${IMG_SIZES.CREATOR_AVATAR}${creator.profile_path}`
-                                                                : '/img/photo-not-available.jpg'
+                                                                : '/img/author-placeholder.svg'
                                                         }
                                                         fill
                                                         sizes='50px'

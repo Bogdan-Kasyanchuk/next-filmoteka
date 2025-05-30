@@ -30,6 +30,10 @@ export enum VideoType {
     TRAILER = 'Trailer',
 }
 
+export enum VideoSiteType {
+    YOUTUBE = 'YouTube',
+}
+
 export enum GenderType {
     WOMAN = 1,
     MAN = 2,

@@ -7,3 +7,5 @@
 @import '../components/cards/movie-card.css' layer(base);
 @import '../components/cards/tv-show-card.css' layer(base);
 @import '../components/cards/cast-card.css' layer(base);
+@import '../components/cards/video-card.css' layer(base);
+@import '../components/cards/season-card.css' layer(base);

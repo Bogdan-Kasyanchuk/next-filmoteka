@@ -39,11 +39,7 @@ export default async function Page(props: Props) {
         <Container className='p-tv-shows'>
             <Filter type={type} />
 
-            <Title
-                center
-                bold
-                uppercase
-            >
+            <Title className='font-bold uppercase text-center'>
                 <TitleText type={type} />
             </Title>
 

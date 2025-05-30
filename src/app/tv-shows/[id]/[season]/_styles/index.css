@@ -1,23 +1,6 @@
 @import '../../../../../styles/app/base.css';
 @import '../../../../../styles/app/components.css';
 
-.p-tv-show-season {
-    /* display: flex;
-    align-items: center;
-    justify-content: center; */
-
-    /* flex-direction: column; */
-
-    /* row-gap: 20px; */
-
+.p-season {
     width: 100%;
-
-    /* &__content {
-        display: flex;
-        flex-direction: column;
-        row-gap: 20px;
-        align-items: center;
-
-        width: 100%;
-    } */
 }

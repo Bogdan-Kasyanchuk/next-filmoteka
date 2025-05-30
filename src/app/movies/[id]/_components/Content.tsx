@@ -3,16 +3,16 @@
 import { useQuery } from '@tanstack/react-query';
 import { notFound } from 'next/navigation';
 
+import Casts from '@/components/app/Casts';
+import Videos from '@/components/app/Videos';
 import Loader from '@/components/ui/data-display/Loader';
 import Container from '@/components/ui/layouts/Container';
 import { transformMovieDetails } from '@/helpers/transformData';
 import { getMovieById } from '@/services/api';
 
-import Casts from './Casts';
 import MovieDetails from './MovieDetails';
 // import Recommendations from './Recommendations';
 // import Reviews from './Reviews';
-// import Videos from './Videos';
 
 type Props = {
     id: string
@@ -38,7 +38,15 @@ export default function Content(props: Props) {
             <MovieDetails {...data.movie} />
 
             <Container className='xxl:max-w-[1440px] flex flex-col gap-y-[30px]'>
-                <Casts casts={data.cast} />
+                {
+                    data.cast.length > 0 &&
+                    <Casts casts={data.cast} />
+                }
+
+                {
+                    data.videos.length > 0 &&
+                    <Videos videos={data.videos} />
+                }
             </Container>
 
             {/* <Videos movie={data} />

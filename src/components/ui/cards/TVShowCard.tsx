@@ -5,7 +5,7 @@ import { PARAMETERS, IMG_SIZES } from '@/helpers/parameters';
 import { TVShowMapper } from '@/types';
 
 type Props = {
-    tvShow: TVShowMapper
+    tvShow: TVShowMapper,
 }
 
 export default function TVShowCard(props: Props) {
