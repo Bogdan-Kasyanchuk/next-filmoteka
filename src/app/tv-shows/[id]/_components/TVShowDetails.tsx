@@ -39,7 +39,7 @@ export default function TVShowDetails(props: Props) {
                                     ? `${PARAMETERS.URL_IMG}${IMG_SIZES.MEDIA_CARD_DETAILS_COVER}${props.poster_path}`
                                     : '/img/poster-not-available.jpg'
                             }
-                            sizes="500px"
+                            sizes="400px"
                             alt={props.name}
                             fill
                         />
@@ -228,7 +228,7 @@ export default function TVShowDetails(props: Props) {
                                                         src={
                                                             creator.profile_path
                                                                 ? `${PARAMETERS.URL_IMG}${IMG_SIZES.CREATOR_AVATAR}${creator.profile_path}`
-                                                                : '/img/author-placeholder.svg'
+                                                                : '/img/avatar-placeholder.svg'
                                                         }
                                                         fill
                                                         sizes='50px'
@@ -264,7 +264,7 @@ export default function TVShowDetails(props: Props) {
                                                         src={
                                                             network.logo_path
                                                                 ? `${PARAMETERS.URL_IMG}${IMG_SIZES.NETWORK_LOGO}${network.logo_path}`
-                                                                : '/img/poster-not-available.jpg'
+                                                                : '/img/image-placeholder.svg'
                                                         }
                                                         fill
                                                         sizes='50px'
@@ -308,7 +308,7 @@ export default function TVShowDetails(props: Props) {
                                                         src={
                                                             company.logo_path
                                                                 ? `${PARAMETERS.URL_IMG}${IMG_SIZES.COMPANY_LOGO}${company.logo_path}`
-                                                                : '/img/poster-not-available.jpg'
+                                                                : '/img/image-placeholder.svg'
                                                         }
                                                         fill
                                                         sizes='50px'

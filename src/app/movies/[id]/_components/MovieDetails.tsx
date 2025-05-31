@@ -40,7 +40,7 @@ export default function MovieDetails(props: Props) {
                                     ? `${PARAMETERS.URL_IMG}${IMG_SIZES.MEDIA_CARD_DETAILS_COVER}${props.poster_path}`
                                     : '/img/poster-not-available.jpg'
                             }
-                            sizes="500px"
+                            sizes="400px"
                             alt={props.title}
                             fill
                         />
@@ -231,10 +231,10 @@ export default function MovieDetails(props: Props) {
                                                     src={
                                                         company.logo_path
                                                             ? `${PARAMETERS.URL_IMG}${IMG_SIZES.COMPANY_LOGO}${company.logo_path}`
-                                                            : '/img/poster-not-available.jpg'
+                                                            : '/img/image-placeholder.svg'
                                                     }
                                                     fill
-                                                    sizes='60px'
+                                                    sizes='50px'
                                                     alt={company.name}
                                                 />
                                             </div>
