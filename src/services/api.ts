@@ -27,7 +27,9 @@ async function fetchApi<T>(url: string) {
 }
 
 export function getTrendings(type: 'all' | MediaType, time: TimeType, page: number) {
-    return fetchApi<DataShema<MovieShema> | DataShema<TVShowShema>>(`trending/${type}/${time}?page=${page}`);
+    return fetchApi<DataShema<MovieShema> | DataShema<TVShowShema>>(
+        `trending/${type}/${time}?page=${page}`
+    );
 }
 
 export function getMovies(type: MovieType, page: number) {
@@ -35,7 +37,9 @@ export function getMovies(type: MovieType, page: number) {
 }
 
 export function getMovieById(id: string) {
-    return fetchApi<MovieDetailsShema>(`${MediaType.MOVIE}/${id}?append_to_response=credits,videos,reviews,recommendations`);
+    return fetchApi<MovieDetailsShema>(
+        `${MediaType.MOVIE}/${id}?append_to_response=credits,videos,reviews,recommendations`
+    );
 }
 
 export function getTVShows(type: TVShowType, page: number) {
@@ -43,7 +47,9 @@ export function getTVShows(type: TVShowType, page: number) {
 }
 
 export function getTVShowById(id: string) {
-    return fetchApi<TVShowDetailsShema>(`${MediaType.TV_SHOW}/${id}?append_to_response=credits,videos,reviews,recommendations`);
+    return fetchApi<TVShowDetailsShema>(
+        `${MediaType.TV_SHOW}/${id}?append_to_response=credits,videos,reviews,recommendations`
+    );
 }
 
 // ------------------------------------------------------------------------------------
@@ -72,6 +78,6 @@ export function getRecommendations(type: MediaType, id: string, page: number) {
     return fetchApi(`${type}/${id}/recommendations?page=${page}`);
 }
 
-export function getSimilars(type: MediaType, id: string, page: number) {
-    return fetchApi(`${type}/${id}/similar?page=${page}`);
+export function getSimilars<T>(type: MediaType, id: string, page: number) {
+    return fetchApi<DataShema<T>>(`${type}/${id}/similar?page=${page}`);
 }

@@ -16,7 +16,7 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
     const { id, season } = await props.params;
 
     return {
-        title: `${id}: ${season} `
+        title: `${id}: ${season}`
     };
 }
 
