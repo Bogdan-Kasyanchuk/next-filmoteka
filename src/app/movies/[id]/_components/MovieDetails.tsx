@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import { Fragment } from 'react';
 
 import Container from '@/components/ui/layouts/Container';
@@ -8,7 +9,7 @@ import { MovieDetailsMapper } from '@/types';
 import { formatCurrency } from '@/utils/formatCurrency';
 import { formatDate } from '@/utils/formateDate';
 
-type Props = MovieDetailsMapper['movie']
+type Props = MovieDetailsMapper['movie'] & { id: string }
 
 export default function MovieDetails(props: Props) {
     const average = Math.round(props.vote_average * 10);
@@ -44,6 +45,13 @@ export default function MovieDetails(props: Props) {
                             alt={props.title}
                             fill
                         />
+
+                        <Link
+                            href={`/movies/${props.id}/similar`}
+                            className='text-xl text-center p-2.5 bg-secondary/75 absolute bottom-5 start-5 end-5 border border-primary/75'
+                        >
+                            Similar
+                        </Link>
                     </div>
 
                     <Title className='с-movie-details__title'>

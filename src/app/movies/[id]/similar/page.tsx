@@ -2,12 +2,12 @@ import { dehydrate, QueryClient, HydrationBoundary } from '@tanstack/react-query
 import { Metadata } from 'next';
 
 import Container from '@/components/ui/layouts/Container';
-import Title from '@/components/ui/typography/Title';
 import { MediaType } from '@/enums';
-import { getSimilars } from '@/services/api';
+import { getMovieById, getSimilars } from '@/services/api';
 import { MovieShema } from '@/shemas';
 
 import Content from './_components/Content';
+import CurrentMovie from './_components/CurrentMovie';
 
 import './_styles/index.css';
 
@@ -32,17 +32,20 @@ export default async function Page(props: Props) {
     const queryClient = new QueryClient();
 
     await queryClient.prefetchQuery({
+        queryKey: ['movies', id],
+        queryFn: () => getMovieById(id),
+    });
+
+    await queryClient.prefetchQuery({
         queryKey: ['similar', id, currentPage],
         queryFn: () => getSimilars<MovieShema>(MediaType.MOVIE, id, currentPage),
     });
 
     return (
         <Container className='p-movie-similar'>
-            <Title className='font-bold uppercase text-center'>
-                Similar to the {id}
-            </Title>
-
             <HydrationBoundary state={dehydrate(queryClient)}>
+                <CurrentMovie id={id} />
+
                 <Content
                     id={id}
                     currentPage={currentPage}

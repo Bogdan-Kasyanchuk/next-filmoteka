@@ -35,7 +35,10 @@ export default function Content(props: Props) {
 
     return (
         <div className='p-movie'>
-            <MovieDetails {...data.movie} />
+            <MovieDetails
+                {...data.movie}
+                id={props.id}
+            />
 
             <Container className='xxl:max-w-[1440px] flex flex-col gap-y-[30px]'>
                 {
