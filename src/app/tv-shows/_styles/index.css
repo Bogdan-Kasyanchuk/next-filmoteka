@@ -54,7 +54,15 @@
 
         @variant min-lg {
             grid-gap: 20px;
-            grid-template-columns: repeat(auto-fill, 296px);
+            grid-template-columns: repeat(auto-fill, 231px);
+        }
+
+        @variant min-xl {
+            grid-template-columns: repeat(auto-fill, 240px);
+        }
+
+        @variant min-xxl {
+            grid-template-columns: repeat(auto-fill, 243px);
         }
     }
 

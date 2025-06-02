@@ -4,6 +4,7 @@ import {
     // CreditsShema,
     DataShema,
     MovieDetailsShema,
+    MovieDetailsForSimilarShema,
     MovieShema,
     TVShowDetailsShema,
     TVShowSeasonDetailsShema,
@@ -42,6 +43,12 @@ export function getMovieById(id: string) {
     );
 }
 
+export function getSimilarToMovie(id: string, page: number) {
+    return fetchApi<MovieDetailsForSimilarShema>(
+        `${MediaType.MOVIE}/${id}?append_to_response=similar&page=${page}`
+    );
+}
+
 export function getTVShows(type: TVShowType, page: number) {
     return fetchApi<DataShema<TVShowShema>>(`${MediaType.TV_SHOW}/${type}?page=${page}`);
 }
@@ -49,6 +56,12 @@ export function getTVShows(type: TVShowType, page: number) {
 export function getTVShowById(id: string) {
     return fetchApi<TVShowDetailsShema>(
         `${MediaType.TV_SHOW}/${id}?append_to_response=credits,videos,reviews,recommendations`
+    );
+}
+
+export function getSimilarToTVShow(id: string, page: number) {
+    return fetchApi<MovieDetailsForSimilarShema>(
+        `${MediaType.TV_SHOW}/${id}?append_to_response=similar?page=${page}`
     );
 }
 
@@ -76,8 +89,4 @@ export function getReviews(type: MediaType, id: string, page: number) {
 
 export function getRecommendations(type: MediaType, id: string, page: number) {
     return fetchApi(`${type}/${id}/recommendations?page=${page}`);
-}
-
-export function getSimilars<T>(type: MediaType, id: string, page: number) {
-    return fetchApi<DataShema<T>>(`${type}/${id}/similar?page=${page}`);
 }

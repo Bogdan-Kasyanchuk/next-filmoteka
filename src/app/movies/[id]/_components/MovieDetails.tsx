@@ -48,7 +48,7 @@ export default function MovieDetails(props: Props) {
 
                         <Link
                             href={`/movies/${props.id}/similar`}
-                            className='text-xl text-center p-2.5 bg-secondary/75 absolute bottom-5 start-5 end-5 border border-primary/75'
+                            className='с-movie-details__similar-button'
                         >
                             Similar
                         </Link>
@@ -221,7 +221,7 @@ export default function MovieDetails(props: Props) {
 
             {
                 props.production_companies.length > 0 &&
-                <Container className='xxl:max-w-[1440px] mt-[30px] text-primary'>
+                <Container className='с-movie-details__content'>
                     <div className='с-movie-details__companies'>
                         <p className='с-movie-details__companies-title'>
                             Production companies:

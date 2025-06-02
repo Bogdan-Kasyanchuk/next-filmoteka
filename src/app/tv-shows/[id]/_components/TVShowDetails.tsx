@@ -208,7 +208,7 @@ export default function TVShowDetails(props: Props) {
 
             {
                 (props.created_by.length > 0 || props.networks.length > 0 || props.production_companies.length > 0) &&
-                <Container className='xxl:max-w-[1440px] flex flex-col gap-y-[30px] text-primary'>
+                <Container className='с-tv-show-details__content'>
                     {
                         props.created_by.length > 0 &&
                         <div className='с-tv-show-details__creators'>

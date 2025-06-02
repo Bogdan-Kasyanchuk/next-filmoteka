@@ -74,6 +74,19 @@ export type MovieDetailsMapper = {
     recommendations: RecommendationMovieMapper[],
 }
 
+export type MovieDetailsForSimilarMapper = {
+    movie: {
+        adult: boolean,
+        title: string,
+        vote_average: number,
+        poster_path: string,
+        release_date: string,
+        media_type: MediaType.MOVIE,
+        genres: string[],
+    },
+    similar: SimilarMovieMapper[],
+}
+
 export type TVShowMapper = {
     id: number,
     adult: boolean,
@@ -119,6 +132,19 @@ export type TVShowDetailsMapper = {
     videos: VideoMapper[],
     reviews: ReviewMapper[],
     recommendations: RecommendationTVShowMapper[],
+}
+
+export type TVShowDetailsForSimilarMapper = {
+    tvShow: {
+        adult: boolean,
+        first_air_date: string,
+        name: string,
+        vote_average: number,
+        poster_path: string,
+        media_type: MediaType.TV_SHOW,
+        genres: string[],
+    },
+    similar: SimilarTVShowMapper[],
 }
 
 export type TVShowSeasonDetailsMapper = {

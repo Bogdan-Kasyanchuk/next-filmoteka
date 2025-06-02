@@ -110,6 +110,27 @@
         }
     }
 
+    &__similar-button {
+        position: absolute;
+        bottom: 20px;
+        inset-inline: 20px;
+
+        padding: 10px;
+        border-radius: 4px;
+
+        @apply bg-secondary/75 border-2 border-primary/75 transition-colors;
+
+        font-size: var(--text-lg);
+        font-weight: 700;
+        text-align: center;
+        text-transform: uppercase;
+
+        &:hover {
+
+            @apply bg-primary/75 text-secondary;
+        }
+    }
+
     &__title {
         grid-column: 1/-1;
         grid-row: 2/3;
@@ -249,6 +270,10 @@
             font-size: 18px;
             opacity: 0.75;
         }
+    }
+
+    &__content {
+        @apply xxl:max-w-[1440px] mt-[30px] text-primary bg-secondary/75 rounded-sm py-5;
     }
 
     &__companies {

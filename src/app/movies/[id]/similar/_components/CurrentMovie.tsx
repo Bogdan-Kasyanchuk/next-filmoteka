@@ -1,53 +1,81 @@
 'use client';
 
-import { useQuery } from '@tanstack/react-query';
 import Image from 'next/image';
-import { notFound } from 'next/navigation';
+import Link from 'next/link';
+import { Fragment } from 'react';
 
-import Loader from '@/components/ui/data-display/Loader';
-import Container from '@/components/ui/layouts/Container';
 import Title from '@/components/ui/typography/Title';
 import { IMG_SIZES, PARAMETERS } from '@/helpers/parameters';
-import { transformMovieDetails } from '@/helpers/transformData';
-import { getMovieById } from '@/services/api';
+import { MovieDetailsForSimilarMapper } from '@/types';
 import { formatDate } from '@/utils/formateDate';
 
 type Props = {
+    movie: MovieDetailsForSimilarMapper['movie'];
     id: string;
 }
 
 export default function CurrentMovie(props: Props) {
-    const { data, isPending, isFetching } = useQuery({
-        queryKey: ['movies', props.id],
-        queryFn: () => getMovieById(props.id),
-        select: (data) => transformMovieDetails(data),
-    });
-
-    if (isPending || isFetching) {
-        return <Loader />;
-    }
-
-    if (!data) {
-        return notFound();
-    }
-
     return (
-        <Container className='flex items-center gap-5'>
-            <div className='w-[100px] h-[150px] relative'>
+        <div className='p-movie-similar__current-movie'>
+            <div className='p-movie-similar__current-movie-cover'>
                 <Image
                     src={
-                        data.movie.poster_path
-                            ? `${PARAMETERS.URL_IMG}${IMG_SIZES.MEDIA_CARD_DETAILS_COVER}${data.movie.poster_path}`
+                        props.movie.poster_path
+                            ? `${PARAMETERS.URL_IMG}${IMG_SIZES.MEDIA_CARD_DETAILS_COVER}${props.movie.poster_path}`
                             : '/img/poster-not-available.jpg'
                     }
-                    sizes="400px"
-                    alt={data.movie.title}
+                    sizes="100px"
+                    alt={props.movie.title}
                     fill
                 />
             </div>
-            <Title className='с-movie-details__title'>
-                {data.movie.title}&nbsp;({formatDate(data.movie.release_date, 'YYYY')})
-            </Title>
-        </Container>
+
+            <div className='p-movie-similar__current-movie-info'>
+                <Title
+                    className='p-movie-similar__current-movie-title'
+                    variant={3}
+                >
+                    <Link
+                        href={`/movies/${props.id}`}
+                        className='truncate block u-link-color'
+                    >
+                        {props.movie.title}&nbsp;({formatDate(props.movie.release_date, 'YYYY')})
+                    </Link>
+                </Title>
+
+                <div className='p-movie-similar__current-movie-tags'>
+                    <div className='p-movie-similar__current-movie-tag p-movie-similar__current-movie-tag--type'>
+                        {props.movie.media_type}
+                    </div>
+
+                    <div className='p-movie-similar__current-movie-tag p-movie-similar__current-movie-tag--average'>
+                        {Math.round(props.movie.vote_average * 10)}
+                        <span>%</span>
+                    </div>
+
+                    {
+                        props.movie.adult &&
+                        <div className='p-movie-similar__current-movie-tag p-movie-similar__current-movie-tag--adult'>
+                            18<span>+</span>
+                        </div>
+                    }
+                </div>
+
+                {
+                    props.movie.genres.length > 0 &&
+                    <div className='p-movie-similar__current-movie-genres'>
+                        {
+                            props.movie.genres.map(
+                                (genre, index) => (
+                                    <Fragment key={index}>
+                                        {index !== 0 && <>&nbsp;|&nbsp;</>}
+                                        {genre}
+                                    </Fragment>
+                                ))
+                        }
+                    </div>
+                }
+            </div>
+        </div>
     );
 }

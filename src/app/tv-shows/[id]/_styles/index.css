@@ -251,6 +251,10 @@
         }
     }
 
+    &__content {
+        @apply xxl:max-w-[1440px] mt-[30px] text-primary bg-secondary/75 rounded-sm py-5 flex flex-col gap-y-5;
+    }
+
     &__creators {
         grid-column: 1/-1;
         line-height: 1.2;
