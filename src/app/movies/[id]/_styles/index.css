@@ -126,7 +126,6 @@
         text-transform: uppercase;
 
         &:hover {
-
             @apply bg-primary/75 text-secondary;
         }
     }
