@@ -8,6 +8,8 @@ type Props = {
 }
 
 export default function Seasons(props: Props) {
+    console.log(props.seasons);
+    
     return (
         <div className='pt-[30px] border-t border-t-primary/75 -mx-2.5 px-2.5 xxxl:-mx-5 xxxl:px-5'>
             <Title

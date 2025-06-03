@@ -2,22 +2,172 @@
 @import '../../../../../styles/app/components.css';
 
 .p-tv-show-similar {
-    /* display: flex;
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
     align-items: center;
-    justify-content: center; */
 
-    /* flex-direction: column; */
+    padding-top: 20px;
+    padding-bottom: 30px;
 
-    /* row-gap: 20px; */
+    &__current-tv-show {
+        @apply bg-secondary/75 rounded-sm flex items-center gap-2.5 -mx-2.5;
+        @apply sm:mx-0;
+        @apply xl:gap-5;
 
-    width: 100%;
+        width: calc(100% + 20px);
 
-    /* &__content {
+        @variant min-sm {
+            width: 100%;
+        }
+
+        &-cover {
+            position: relative;
+            flex-shrink: 0;
+            aspect-ratio: 2/3;
+            width: 60px;
+
+            @variant min-md {
+                width: 70px;
+            }
+
+            @variant min-xl {
+                width: 80px;
+            }
+
+            img {
+                object-fit: cover;
+            }
+        }
+
+        &-info {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            gap: 4px;
+
+            min-width: 1px;
+            height: 100%;
+            padding-block: 10px;
+            padding-inline-end: 10px;
+
+            color: var(--color-primary);
+
+            @variant min-md {
+                gap: 8px;
+            }
+
+            @variant min-xl {
+                gap: 10px;
+                padding-inline-end: 20px;
+            }
+        }
+
+        &-title {
+            font-weight: 700;
+        }
+
+        &-tags {
+            display: flex;
+            gap: 10px;
+        }
+
+        &-tag {
+            padding: 4px;
+            border-style: solid;
+            border-width: 1px;
+            border-radius: 2px;
+
+            font-size: var(--text-2xs);
+            font-weight: 700;
+            line-height: 1;
+            text-transform: uppercase;
+
+            &--type {
+                border-color: var(--color-secondary);
+                color: var(--color-secondary);
+                background-color: var(--color-primary);
+            }
+
+            &--adult {
+                border-color: var(--color-danger);
+                color: var(--color-danger);
+                background-color: var(--color-primary);
+
+                span {
+                    position: relative;
+                    top: -3px;
+                }
+            }
+
+            &--average {
+                border-color: var(--color-primary);
+                color: var(--color-primary);
+                background-color: var(--color-accent);
+
+                span {
+                    position: relative;
+                    top: -2px;
+                    font-size: 9px;
+                }
+            }
+        }
+
+        &-genres {
+            font-size: var(--text-xs);
+            line-height: 1;
+        }
+    }
+
+    &__content {
         display: flex;
         flex-direction: column;
         row-gap: 20px;
         align-items: center;
 
         width: 100%;
-    } */
+
+        @variant min-md {
+            row-gap: 30px;
+        }
+    }
+
+    &__media-list {
+        display: grid;
+        grid-gap: 5px;
+        grid-template-columns: repeat(auto-fill, 175px);
+        justify-content: center;
+
+        width: calc(100% + 20px);
+        margin-inline: -10px;
+
+        @variant min-sm {
+            grid-gap: 10px;
+            grid-template-columns: repeat(auto-fill, 215px);
+            width: 100%;
+            margin-inline: 0;
+        }
+
+        @variant min-md {
+            grid-gap: 15px;
+            grid-template-columns: repeat(auto-fill, 232px);
+        }
+
+        @variant min-lg {
+            grid-gap: 20px;
+            grid-template-columns: repeat(auto-fill, 231px);
+        }
+
+        @variant min-xl {
+            grid-template-columns: repeat(auto-fill, 240px);
+        }
+
+        @variant min-xxl {
+            grid-template-columns: repeat(auto-fill, 243px);
+        }
+    }
+
+    @variant min-md {
+        row-gap: 30px;
+    }
 }

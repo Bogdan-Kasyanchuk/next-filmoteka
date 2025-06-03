@@ -21,10 +21,10 @@ export default function Content(props: Props) {
         placeholderData: keepPreviousData,
         select: (data) => {
             const transformedResults = data.results.map(
-                (result) => transformMovie(result));
+                (movie) => transformMovie(movie));
 
             return {
-                results: transformedResults,
+                movies: transformedResults,
                 total_pages: data.total_pages
             };
         },
@@ -35,14 +35,14 @@ export default function Content(props: Props) {
             {
                 isPending || isFetching
                     ? <Loader />
-                    : data && data.results.length > 0
+                    : data && data.movies.length > 0
                         ? <div className='p-movies__content'>
                             <ul className='p-movies__media-list'>
                                 {
-                                    data.results.map(
-                                        (result) => (
-                                            <li key={result.id}>
-                                                <MovieCard movie={result} />
+                                    data.movies.map(
+                                        (movie) => (
+                                            <li key={movie.id}>
+                                                <MovieCard movie={movie} />
                                             </li>
                                         )
                                     )

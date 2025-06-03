@@ -35,10 +35,13 @@ export default function SeasonCard(props: Props) {
                 </p>
 
                 <ul className='с-season-card__info-list'>
-                    <li className='с-season-card__info-list-item'>
-                        <span>Air date:</span>
-                        <span>{formatDate(props.season.air_date, 'DD.MM.YYYY')}</span>
-                    </li>
+                    {
+                        props.season.air_date &&
+                        <li className='с-season-card__info-list-item'>
+                            <span>Air date:</span>
+                            <span>{formatDate(props.season.air_date, 'DD.MM.YYYY')}</span>
+                        </li>
+                    }
 
                     <li className='с-season-card__info-list-item'>
                         <span>Rating:</span>

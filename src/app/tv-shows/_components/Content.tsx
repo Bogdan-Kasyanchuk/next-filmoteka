@@ -21,10 +21,10 @@ export default function Content(props: Props) {
         placeholderData: keepPreviousData,
         select: (data) => {
             const transformedResults = data.results.map(
-                (result) => transformTVShow(result));
+                (tvShow) => transformTVShow(tvShow));
 
             return {
-                results: transformedResults,
+                tvShows: transformedResults,
                 total_pages: data.total_pages
             };
         },
@@ -35,14 +35,14 @@ export default function Content(props: Props) {
             {
                 isPending || isFetching
                     ? <Loader />
-                    : data && data.results.length > 0
+                    : data && data.tvShows.length > 0
                         ? <div className='p-tv-shows__content'>
                             <ul className='p-tv-shows__media-list'>
                                 {
-                                    data.results.map(
-                                        (result) => (
-                                            <li key={result.id}>
-                                                <TVShowCard tvShow={result} />
+                                    data.tvShows.map(
+                                        (tvShow) => (
+                                            <li key={tvShow.id}>
+                                                <TVShowCard tvShow={tvShow} />
                                             </li>
                                         )
                                     )

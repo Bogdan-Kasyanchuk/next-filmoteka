@@ -8,7 +8,8 @@ import {
     MovieShema,
     TVShowDetailsShema,
     TVShowSeasonDetailsShema,
-    TVShowShema
+    TVShowShema,
+    TVShowDetailsForSimilarShema
 } from '@/shemas';
 
 async function fetchApi<T>(url: string) {
@@ -60,8 +61,8 @@ export function getTVShowById(id: string) {
 }
 
 export function getSimilarToTVShow(id: string, page: number) {
-    return fetchApi<MovieDetailsForSimilarShema>(
-        `${MediaType.TV_SHOW}/${id}?append_to_response=similar?page=${page}`
+    return fetchApi<TVShowDetailsForSimilarShema>(
+        `${MediaType.TV_SHOW}/${id}?append_to_response=similar&page=${page}`
     );
 }
 

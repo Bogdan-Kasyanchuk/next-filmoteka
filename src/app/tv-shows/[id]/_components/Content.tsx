@@ -34,7 +34,10 @@ export default function Content(props: Props) {
 
     return (
         <div className='p-tv-show'>
-            <TVShowDetails {...data.tvShow} />
+            <TVShowDetails
+                {...data.tvShow}
+                id={props.id}
+            />
 
             <Container className='xxl:max-w-[1440px] flex flex-col gap-y-[30px]'>
                 {

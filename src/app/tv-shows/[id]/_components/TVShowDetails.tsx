@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import { Fragment } from 'react';
 
 import Container from '@/components/ui/layouts/Container';
@@ -7,7 +8,7 @@ import { PARAMETERS, IMG_SIZES } from '@/helpers/parameters';
 import { TVShowDetailsMapper } from '@/types';
 import { formatDate } from '@/utils/formateDate';
 
-type Props = TVShowDetailsMapper['tvShow'];
+type Props = TVShowDetailsMapper['tvShow'] & { id: string };
 
 export default function TVShowDetails(props: Props) {
     const average = Math.round(props.vote_average * 10);
@@ -43,6 +44,13 @@ export default function TVShowDetails(props: Props) {
                             alt={props.name}
                             fill
                         />
+
+                        <Link
+                            href={`/tv-shows/${props.id}/similar`}
+                            className='с-tv-show-details__similar-button'
+                        >
+                            Similar
+                        </Link>
                     </div>
 
                     <Title className='с-tv-show-details__title'>
