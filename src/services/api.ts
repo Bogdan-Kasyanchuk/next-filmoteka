@@ -76,18 +76,10 @@ export function getSearch(type: MediaType, query: string, page: number) {
     return fetchApi(`search/${type}?query=${query}&page=${page}&include_adult=${PARAMETERS.ADULT}`);
 }
 
-// export function getCredits(type: MediaType, id: string) {
-//     return fetchApi<CreditsShema>(`${type}/${id}/credits`);
+// export function getReviews(type: MediaType, id: string, page: number) {
+//     return fetchApi(`${type}/${id}/reviews?page=${page}`);
 // }
 
-// export function getVideos(type: MediaType, id: string) {
-//     return fetchApi(`${type}/${id}/videos`);
+// export function getRecommendations(type: MediaType, id: string, page: number) {
+//     return fetchApi(`${type}/${id}/recommendations?page=${page}`);
 // }
-
-export function getReviews(type: MediaType, id: string, page: number) {
-    return fetchApi(`${type}/${id}/reviews?page=${page}`);
-}
-
-export function getRecommendations(type: MediaType, id: string, page: number) {
-    return fetchApi(`${type}/${id}/recommendations?page=${page}`);
-}

@@ -21,7 +21,7 @@ export default function CurrentMovie(props: Props) {
                 <Image
                     src={
                         props.movie.poster_path
-                            ? `${PARAMETERS.URL_IMG}${IMG_SIZES.MEDIA_CARD_DETAILS_COVER}${props.movie.poster_path}`
+                            ? `${PARAMETERS.URL_IMG}${IMG_SIZES.MEDIA_CARD_CURRENT_COVER}${props.movie.poster_path}`
                             : '/img/poster-not-available.jpg'
                     }
                     sizes="100px"
@@ -37,7 +37,7 @@ export default function CurrentMovie(props: Props) {
                 >
                     <Link
                         href={`/movies/${props.id}`}
-                        className='truncate block u-link-color'
+                        className='u-link-color'
                     >
                         {props.movie.title}&nbsp;({formatDate(props.movie.release_date, 'YYYY')})
                     </Link>

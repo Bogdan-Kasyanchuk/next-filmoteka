@@ -21,7 +21,7 @@ export default function CurrentTVShow(props: Props) {
                 <Image
                     src={
                         props.tvShow.poster_path
-                            ? `${PARAMETERS.URL_IMG}${IMG_SIZES.MEDIA_CARD_DETAILS_COVER}${props.tvShow.poster_path}`
+                            ? `${PARAMETERS.URL_IMG}${IMG_SIZES.MEDIA_CARD_CURRENT_COVER}${props.tvShow.poster_path}`
                             : '/img/poster-not-available.jpg'
                     }
                     sizes="100px"
@@ -37,7 +37,7 @@ export default function CurrentTVShow(props: Props) {
                 >
                     <Link
                         href={`/tv-shows/${props.id}`}
-                        className='truncate block u-link-color'
+                        className='u-link-color'
                     >
                         {props.tvShow.name}&nbsp;({formatDate(props.tvShow.first_air_date, 'YYYY')})
                     </Link>
