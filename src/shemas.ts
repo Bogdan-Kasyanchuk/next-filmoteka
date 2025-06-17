@@ -330,23 +330,25 @@ export type TVShowSeasonDetailsShema = {
     poster_path: string,
     season_number: number,
     vote_average: number,
-    episodes: Array<{
-        air_date: string,
-        episode_number: number,
-        episode_type: EpisodeType,
-        id: number,
-        name: string,
-        overview: string,
-        production_code: string,
-        runtime: number,
-        season_number: number,
-        show_id: number,
-        still_path: string,
-        vote_average: number,
-        vote_count: number,
-        crew: CrewShema[],
-        guest_stars: Omit<CastShema, 'cast_id'>[]
-    }>
+    episodes: EpisodeShema[]
+}
+
+export type EpisodeShema = {
+    air_date: string,
+    episode_number: number,
+    episode_type: EpisodeType,
+    id: number,
+    name: string,
+    overview: string,
+    production_code: string,
+    runtime: number,
+    season_number: number,
+    show_id: number,
+    still_path: string,
+    vote_average: number,
+    vote_count: number,
+    crew: CrewShema[],
+    guest_stars: Omit<CastShema, 'cast_id'>[]
 }
 
 export type SeasonShema = {

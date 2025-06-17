@@ -66,14 +66,14 @@ export function getSimilarToTVShow(id: string, page: number) {
     );
 }
 
-// ------------------------------------------------------------------------------------
-
-export function getTVShowSeasonByNumber(seriesId: string, number: number) {
+export function getTVShowSeasonByNumber(seriesId: string, number: string) {
     return fetchApi<TVShowSeasonDetailsShema>(`${MediaType.TV_SHOW}/${seriesId}/season/${number}`);
 }
 
-export function getSearch(type: MediaType, query: string, page: number) {
-    return fetchApi(`search/${type}?query=${query}&page=${page}&include_adult=${PARAMETERS.ADULT}`);
+// ------------------------------------------------------------------------------------
+
+export function getSearch(query: string, page: number) {
+    return fetchApi(`search/multi?query=${query}&page=${page}&include_adult=${PARAMETERS.ADULT}`);
 }
 
 // export function getReviews(type: MediaType, id: string, page: number) {

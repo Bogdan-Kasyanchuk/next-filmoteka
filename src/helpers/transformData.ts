@@ -13,7 +13,9 @@ import {
     TVShowDetailsShema,
     TVShowDetailsForSimilarShema,
     TVShowShema,
-    VideoShema
+    VideoShema,
+    TVShowSeasonDetailsShema,
+    EpisodeShema
 } from '@/shemas';
 import {
     CastMapper,
@@ -29,7 +31,9 @@ import {
     TVShowDetailsMapper,
     TVShowDetailsForSimilarMapper,
     TVShowMapper,
-    VideoMapper
+    VideoMapper,
+    EpisodeMapper,
+    TVShowSeasonDetailsMapper
 } from '@/types';
 
 export const transformMovie = (movie: MovieShema) => ({
@@ -204,6 +208,31 @@ export const transformTVShowDetailsForSimilar = (tvShow: TVShowDetailsForSimilar
     },
     similar: tvShow.similar.results.map((similar) => transformSimilarTVShow(similar)),
 }) as TVShowDetailsForSimilarMapper;
+
+export const transformTVShowSeasonDetails = (season: TVShowSeasonDetailsShema) => ({
+    season: {
+        air_date: season.air_date,
+        name: season.name,
+        overview: season.overview,
+        poster_path: season.poster_path,
+        season_number: season.season_number,
+        vote_average: season.vote_average,
+    },
+    episodes: season.episodes.map((episode) => transformEpisode(episode)),
+}) as TVShowSeasonDetailsMapper;
+
+export const transformEpisode = (episode: EpisodeShema) => ({
+    air_date: episode.air_date,
+    episode_number: episode.episode_number,
+    episode_type: episode.episode_type,
+    name: episode.name,
+    overview: episode.overview,
+    runtime: episode.runtime,
+    season_number: episode.season_number,
+    still_path: episode.still_path,
+    vote_average: episode.vote_average,
+    vote_count: episode.vote_count,
+}) as EpisodeMapper;
 
 export const transformSeason = (season: SeasonShema) => ({
     air_date: season.air_date,

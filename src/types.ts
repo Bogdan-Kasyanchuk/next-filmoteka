@@ -22,6 +22,53 @@ type Creator = {
     profile_path: string
 };
 
+export type CastMapper = {
+    name: string,
+    popularity: number,
+    profile_path: string,
+    character: string,
+};
+
+export type CrewMapper = {
+    name: string,
+    popularity: number,
+    profile_path: string,
+    department: string,
+    job: string,
+};
+
+export type ReviewMapper = {
+    author: {
+        name: string,
+        username: string,
+        avatar_path: string,
+        rating: number
+    },
+    content: string,
+    created_at: string,
+    updated_at: string,
+};
+
+export type VideoMapper = {
+    name: string,
+    key: string,
+    type: VideoType,
+    published_at: string,
+};
+
+export type EpisodeMapper = {
+    air_date: string,
+    episode_number: number,
+    episode_type: EpisodeType,
+    name: string,
+    overview: string,
+    runtime: number,
+    season_number: number,
+    still_path: string,
+    vote_average: number,
+    vote_count: number,
+};
+
 export type SeasonMapper = {
     air_date: string,
     episode_count: number,
@@ -148,57 +195,14 @@ export type TVShowDetailsForSimilarMapper = {
 }
 
 export type TVShowSeasonDetailsMapper = {
-    air_date: string,
-    name: string,
-    overview: string,
-    poster_path: string,
-    season_number: number,
-    vote_average: number,
-    episodes: Array<{
+    season: {
         air_date: string,
-        episode_number: number,
-        episode_type: EpisodeType,
         name: string,
         overview: string,
-        runtime: number,
+        poster_path: string,
         season_number: number,
-        still_path: string,
         vote_average: number,
-        vote_count: number,
-    }>
-}
-
-export type CastMapper = {
-    name: string,
-    popularity: number,
-    profile_path: string,
-    character: string,
-};
-
-export type CrewMapper = {
-    name: string,
-    popularity: number,
-    profile_path: string,
-    department: string,
-    job: string,
-};
-
-export type ReviewMapper = {
-    author: {
-        name: string,
-        username: string,
-        avatar_path: string,
-        rating: number
     },
-    content: string,
-    created_at: string,
-    updated_at: string,
-};
-
-export type VideoMapper = {
-    name: string,
-    key: string,
-    type: VideoType,
-    published_at: string,
-};
+    episodes: EpisodeMapper[]
+}
 
