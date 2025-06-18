@@ -25,18 +25,20 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
 export default async function Page(props: Props) {
     const { id, season } = await props.params;
 
+    const normalizedSeasonId = season.split('-').at(-1) ?? '0';
+
     const queryClient = new QueryClient();
 
     await queryClient.prefetchQuery({
-        queryKey: ['tv-shows', id, season],
-        queryFn: () => getTVShowSeasonByNumber(id, season),
+        queryKey: ['tv-shows', id, normalizedSeasonId],
+        queryFn: () => getTVShowSeasonByNumber(id, normalizedSeasonId),
     });
 
     return (
         <HydrationBoundary state={dehydrate(queryClient)}>
             <Content
                 id={id}
-                season={season}
+                season={normalizedSeasonId}
             />
         </HydrationBoundary>
     );

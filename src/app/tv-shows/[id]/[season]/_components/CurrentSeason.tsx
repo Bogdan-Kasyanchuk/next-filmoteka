@@ -17,7 +17,7 @@ type Props = {
 export default function CurrentSeason(props: Props) {
     return (
         <div className='p-tv-show-similar__current-tv-show'>
-            <div className='p-tv-show-similar__current-tv-show-cover'>
+            {/* <div className='p-tv-show-similar__current-tv-show-cover'>
                 <Image
                     src={
                         props.tvShow.poster_path
@@ -75,7 +75,8 @@ export default function CurrentSeason(props: Props) {
                         }
                     </div>
                 }
-            </div>
+            </div> */}
+            111111111
         </div>
     );
 }
