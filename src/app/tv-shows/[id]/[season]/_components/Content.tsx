@@ -3,6 +3,7 @@
 import { useQuery } from '@tanstack/react-query';
 import { notFound } from 'next/navigation';
 
+import EpisodeCard from '@/components/ui/cards/EpisodeCard';
 import Loader from '@/components/ui/data-display/Loader';
 import Container from '@/components/ui/layouts/Container';
 import { transformTVShowSeasonDetails } from '@/helpers/transformData';
@@ -36,6 +37,24 @@ export default function Content(props: Props) {
                 season={data.season}
                 id={props.id}
             />
+
+            {
+                data.episodes.length > 0
+                    ? <ul className='p-season__media-list'>
+                        {
+                            data.episodes.map(
+                                (episode, index) => (
+                                    <li key={index}>
+                                        <EpisodeCard episode={episode} />
+                                    </li>
+                                )
+                            )
+                        }
+                    </ul>
+                    : <div className='uppercase text-primary font-bold grow flex items-center justify-center text-8xl'>
+                        Data not found
+                    </div>
+            }
         </Container>
     );
 }

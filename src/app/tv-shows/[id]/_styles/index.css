@@ -266,7 +266,7 @@
         }
 
         &-text {
-            font-size: 18px;
+            font-size: var(--text-md);
             opacity: 0.75;
         }
     }
