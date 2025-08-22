@@ -1,6 +1,7 @@
 'use client';
 
 import Image from 'next/image';
+import Link from 'next/link';
 
 import Title from '@/components/ui/typography/Title';
 import { IMG_SIZES, PARAMETERS } from '@/helpers/parameters';
@@ -29,6 +30,13 @@ export default function CurrentSeason(props: Props) {
             </div>
 
             <div className='p-season__current-season-info'>
+                <Link
+                    href={`/tv-shows/${props.id}`}
+                    className='u-link-color font-bold'
+                >
+                    Go to TV Show
+                </Link>
+
                 <Title
                     className='p-season__current-season-title'
                     variant={3}

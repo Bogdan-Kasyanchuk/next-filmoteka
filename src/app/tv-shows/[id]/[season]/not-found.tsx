@@ -13,7 +13,7 @@ export default function NotFound() {
                 href="/tv-shows"
                 className='text-5xl text-blue-500 hover:underline'
             >
-                Back to tv-show
+                Back to tv-shows
             </Link>
         </Container>
     );

@@ -2,65 +2,87 @@ import Image from 'next/image';
 
 import { PARAMETERS, IMG_SIZES } from '@/helpers/parameters';
 import { EpisodeMapper } from '@/types';
+import { formatDate } from '@/utils/formateDate';
 
 type Props = {
     episode: EpisodeMapper
 }
 
-// air_date: string,
-// episode_number: number,
-// episode_type: EpisodeType,
-// name: string,
-// overview: string,
-// runtime: number,
-// season_number: number,
-// still_path: string,
-// vote_average: number,
-// vote_count: number,
-
 export default function EpisodeCard(props: Props) {
+    console.log(`${PARAMETERS.URL_IMG}${IMG_SIZES.EPISODE_CARD_COVER}${props.episode.still_path}`);
+
     return (
-        // <Link
-        //     href={`/movies/${props.movie.id}`}
-        //     className='с-movie-card'
-        // >
-        //     <div className='с-movie-card__cover'>
-        //         <Image
-        //             src={
-        //                 props.movie.poster_path
-        //                     ? `${PARAMETERS.URL_IMG}${IMG_SIZES.MEDIA_CARD_COVER}${props.movie.poster_path}`
-        //                     : '/img/poster-not-available.jpg'
-        //             }
-        //             sizes="(max-width: 479px) 173px, (max-width: 767px) 213px, (max-width: 1023px) 230px, 294px"
-        //             alt={props.movie.title}
-        //             fill
-        //         />
-        //     </div>
+        <div className='с-movie-card'>
+            <div className='с-movie-card__cover'>
+                <Image
+                    src={
+                        props.episode.still_path
+                            ? `${PARAMETERS.URL_IMG}${IMG_SIZES.EPISODE_CARD_COVER}${props.episode.still_path}`
+                            : '/img/poster-not-available.jpg'
+                    }
+                    sizes="(max-width: 479px) 173px, (max-width: 767px) 213px, (max-width: 1023px) 230px, 294px"
+                    alt={props.episode.name}
+                    fill
+                />
+            </div>
 
-        //     <div className='с-movie-card__tags'>
-        //         <div className='с-movie-card__tag с-movie-card__tag--type'>
-        //             {props.movie.media_type}
-        //         </div>
+            <div className='с-season-card__info'>
+                <p className='с-season-card__info-name'>
+                    {props.episode.name}
+                </p>
 
-        //         {
-        //             props.movie.adult &&
-        //             <div className='с-movie-card__tag с-movie-card__tag--adult'>
-        //                 18<span>+</span>
-        //             </div>
-        //         }
+                <ul className='с-season-card__info-list'>
+                    {
+                        props.episode.air_date &&
+                        <li className='с-season-card__info-list-item'>
+                            <span>Air date:</span>
+                            <span>{formatDate(props.episode.air_date, 'DD.MM.YYYY')}</span>
+                        </li>
+                    }
 
-        //         <div className='с-movie-card__tag с-movie-card__tag--average'>
-        //             {Math.round(props.movie.vote_average * 10)}
-        //             <span>%</span>
-        //         </div>
-        //     </div>
+                    <li className='с-season-card__info-list-item'>
+                        <span>Type:</span>
+                        <span>{props.episode.episode_type}</span>
+                    </li>
 
-        //     <div className='с-movie-card__footer'>
-        //         <p className='с-movie-card__footer-title'>
-        //             {props.movie.title}
-        //         </p>
-        //     </div>
-        // </Link>
-        <div>1</div>
+                    <li className='с-season-card__info-list-item'>
+                        <span>Season:</span>
+                        <span>{props.episode.season_number}</span>
+                    </li>
+
+                    <li className='с-season-card__info-list-item'>
+                        <span>Episode:</span>
+                        <span>{props.episode.episode_number}</span>
+                    </li>
+
+                    <li className='с-season-card__info-list-item'>
+                        <span>Rating:</span>
+                        <span>{Math.round(props.episode.vote_average * 10)}</span>
+                    </li>
+
+                    <li className='с-season-card__info-list-item'>
+                        <span>Votes:</span>
+                        <span>{props.episode.vote_count ?? 0}</span>
+                    </li>
+
+                    <li className='с-season-card__info-list-item'>
+                        <span>Runtime:</span>
+                        <span>{props.episode.runtime ?? 0}min</span>
+                    </li>
+                </ul>
+            </div>
+
+            {
+                props.episode.overview &&
+                <div className='с-movie-details__overview'>
+                    <p className='с-movie-details__overview-title'>
+                        Overview:
+                    </p>
+                    <p className='с-movie-details__overview-text'>
+                        {props.episode.overview}
+                    </p>
+                </div>
+            }
+        </div>
     );
 };

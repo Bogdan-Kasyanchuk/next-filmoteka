@@ -58,7 +58,6 @@ export default function SeasonCard(props: Props) {
                         <span>{props.season.episode_count}</span>
                     </li>
                 </ul>
-
             </div>
         </Link>
     );

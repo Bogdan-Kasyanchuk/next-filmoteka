@@ -50,11 +50,17 @@ export default function Content(props: Props) {
                     data.videos.length > 0 &&
                     <Videos videos={data.videos} />
                 }
-            </Container>
 
-            {/* <Videos movie={data} />
-            <Recommendations movie={data} />
-            <Reviews movie={data} /> */}
+                {/* {
+                    data.recommendations.length > 0 &&
+                    <Recommendations videos={data.recommendations} />
+                } */}
+
+                {/* {
+                    data.reviews.length > 0 &&
+                    <Reviews videos={data.reviews} />
+                } */}
+            </Container>
         </div>
     );
 }

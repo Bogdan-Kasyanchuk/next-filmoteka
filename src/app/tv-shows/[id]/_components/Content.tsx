@@ -12,6 +12,8 @@ import { getTVShowById } from '@/services/api';
 
 import Seasons from './Seasons';
 import TVShowDetails from './TVShowDetails';
+// import Recommendations from './Recommendations';
+// import Reviews from './Reviews';
 
 type Props = {
     id: string
@@ -57,6 +59,16 @@ export default function Content(props: Props) {
                     data.videos.length > 0 &&
                     <Videos videos={data.videos} />
                 }
+
+                {/* {
+                    data.recommendations.length > 0 &&
+                    <Recommendations videos={data.recommendations} />
+                } */}
+
+                {/* {
+                    data.reviews.length > 0 &&
+                    <Reviews videos={data.reviews} />
+                } */}
             </Container>
         </div>
     );
