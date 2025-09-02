@@ -257,7 +257,7 @@
 
     &__overview {
         grid-column: 1/-1;
-        line-height: 1.2;
+        line-height: 1.25;
 
         &-title {
             margin-bottom: 10px;

@@ -11,7 +11,7 @@
     padding-bottom: 30px;
 
     &__current-season {
-        @apply bg-secondary/75 rounded-sm flex flex-col -mx-2.5;
+        @apply bg-secondary rounded-sm flex flex-col -mx-2.5;
         @apply sm:mx-0;
         @apply lg:flex-row;
 
@@ -116,8 +116,8 @@
         &-overview {
             padding: 10px;
 
-            font-size: var(--text-sm);
-            line-height: 1.2;
+            font-size: var(--text-xs);
+            line-height: 1.25;
             color: var(--color-primary);
 
             opacity: 0.75;
@@ -128,6 +128,7 @@
 
             @variant min-xl {
                 padding-inline: 20px;
+                font-size: var(--text-sm);
             }
         }
     }
@@ -150,20 +151,24 @@
 
         @variant min-md {
             grid-gap: 15px;
-            grid-template-columns: repeat(auto-fill, 232px);
+            grid-template-columns: repeat(auto-fill, 212px);
+            max-width: 668px;
         }
 
         @variant min-lg {
             grid-gap: 20px;
-            grid-template-columns: repeat(auto-fill, 231px);
+            grid-template-columns: repeat(auto-fill, 216px);
+            max-width: 924px;
         }
 
         @variant min-xl {
-            grid-template-columns: repeat(auto-fill, 240px);
+            grid-template-columns: repeat(auto-fill, 228px);
+            max-width: 1220px;
         }
 
         @variant min-xxl {
-            grid-template-columns: repeat(auto-fill, 243px);
+            grid-template-columns: repeat(auto-fill, 233px);
+            max-width: 1500px;
         }
     }
 

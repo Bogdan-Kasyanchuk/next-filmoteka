@@ -8,6 +8,8 @@
     border: 1px solid var(--color-accent);
     border-radius: 4px;
 
+    background-color: var(--color-secondary);
+
     &__cover {
         position: relative;
         aspect-ratio: 300/169;
@@ -37,7 +39,7 @@
         &-list {
             display: flex;
             flex-direction: column;
-            row-gap: 5px;
+            row-gap: 4px;
             margin-top: 12px;
 
             &-item {
@@ -63,7 +65,7 @@
         padding: 10px;
 
         font-size: var(--text-sm);
-        line-height: 1.2;
+        line-height: 1.25;
         color: var(--color-primary);
 
         opacity: 0.75;

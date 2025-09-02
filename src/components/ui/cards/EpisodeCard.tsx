@@ -43,7 +43,7 @@ export default function EpisodeCard(props: Props) {
 
                     <li className='с-episode-card__info-list-item'>
                         <span>Type:</span>
-                        <span>{props.episode.episode_type}</span>
+                        <span className='capitalize'>{props.episode.episode_type}</span>
                     </li>
 
                     <li className='с-episode-card__info-list-item'>

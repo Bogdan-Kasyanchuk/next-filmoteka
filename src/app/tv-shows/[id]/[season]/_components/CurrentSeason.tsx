@@ -33,7 +33,7 @@ export default function CurrentSeason(props: Props) {
                 <div className='p-season__current-season-info'>
                     <Link
                         href={`/tv-shows/${props.id}`}
-                        className='u-link-color font-bold leading-[18px]'
+                        className='u-link-color font-bold leading-none text-md'
                     >
                         Go to TV Show
                     </Link>
