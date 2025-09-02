@@ -1,7 +1,6 @@
 import { MovieType, MediaType, TimeType, TVShowType } from '@/enums';
 import { PARAMETERS } from '@/helpers/parameters';
 import {
-    // CreditsShema,
     DataShema,
     MovieDetailsShema,
     MovieDetailsForSimilarShema,

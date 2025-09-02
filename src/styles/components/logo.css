@@ -4,6 +4,8 @@
     column-gap: 10px;
     align-items: center;
 
+    margin-block: -4px;
+
     font-size: var(--text-5xl);
     font-weight: 700;
     line-height: 1;

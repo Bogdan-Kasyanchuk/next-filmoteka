@@ -21,10 +21,7 @@ export default function ButtonScrollToTop() {
                         }
                     }
                 >
-                    <Icon
-                        name="arrow"
-                        type='mono'
-                    />
+                    <Icon name="arrow" />
                 </button>
             }
         </>

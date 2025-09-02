@@ -36,11 +36,17 @@ export default function CastCard(props: Props) {
             </div>
 
             <div className='с-cast-card__footer'>
-                <p className='с-cast-card__footer-name'>
+                <p
+                    className='с-cast-card__footer-name'
+                    title={props.cast.name}
+                >
                     {props.cast.name}
                 </p>
 
-                <p className='с-cast-card__footer-character'>
+                <p
+                    className='с-cast-card__footer-character'
+                    title={props.cast.character}
+                >
                     {props.cast.character}
                 </p>
             </div>

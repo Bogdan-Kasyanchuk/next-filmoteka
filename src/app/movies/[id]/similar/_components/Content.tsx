@@ -4,9 +4,11 @@ import { keepPreviousData, useQuery } from '@tanstack/react-query';
 import { notFound } from 'next/navigation';
 
 import MovieCard from '@/components/ui/cards/MovieCard';
+import DataNotFound from '@/components/ui/data-display/DataNotFound';
 import Loader from '@/components/ui/data-display/Loader';
 import Pagination from '@/components/ui/data-display/Pagination';
 import Container from '@/components/ui/layouts/Container';
+import Title from '@/components/ui/typography/Title';
 import { transformMovieDetailsForSimilar } from '@/helpers/transformData';
 import { getSimilarToMovie } from '@/services/api';
 
@@ -48,6 +50,10 @@ export default function Content(props: Props) {
                 id={props.id}
             />
 
+            <Title className='font-bold uppercase text-center'>
+                Similar
+            </Title>
+
             {
                 data.similar.length > 0
                     ? <div className='p-movie-similar__content'>
@@ -68,9 +74,7 @@ export default function Content(props: Props) {
                             totalPages={data.total_pages}
                         />
                     </div>
-                    : <div className='uppercase text-primary font-bold grow flex items-center justify-center text-8xl'>
-                        Data not found
-                    </div>
+                    : <DataNotFound />
             }
         </Container>
     );

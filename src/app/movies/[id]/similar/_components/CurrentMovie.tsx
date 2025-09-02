@@ -24,7 +24,7 @@ export default function CurrentMovie(props: Props) {
                             ? `${PARAMETERS.URL_IMG}${IMG_SIZES.MEDIA_CARD_CURRENT_COVER}${props.movie.poster_path}`
                             : '/img/poster-not-available.jpg'
                     }
-                    sizes="100px"
+                    sizes="92px"
                     alt={props.movie.title}
                     fill
                 />
@@ -37,6 +37,9 @@ export default function CurrentMovie(props: Props) {
                 >
                     <Link
                         href={`/movies/${props.id}`}
+                        title={
+                            `${props.movie.title} ${formatDate(props.movie.release_date, 'YYYY')}`
+                        }
                         className='u-link-color'
                     >
                         {props.movie.title}&nbsp;({formatDate(props.movie.release_date, 'YYYY')})
@@ -76,6 +79,6 @@ export default function CurrentMovie(props: Props) {
                     </div>
                 }
             </div>
-        </div>
+        </div >
     );
 }

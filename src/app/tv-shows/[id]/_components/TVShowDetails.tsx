@@ -40,7 +40,7 @@ export default function TVShowDetails(props: Props) {
                                     ? `${PARAMETERS.URL_IMG}${IMG_SIZES.MEDIA_CARD_DETAILS_COVER}${props.poster_path}`
                                     : '/img/poster-not-available.jpg'
                             }
-                            sizes="400px"
+                            sizes="(max-width: 767px) 253px, (max-width: 1319px) 326px, 350px"
                             alt={props.name}
                             fill
                         />

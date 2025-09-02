@@ -4,6 +4,7 @@ import { useQuery } from '@tanstack/react-query';
 import { notFound } from 'next/navigation';
 
 import EpisodeCard from '@/components/ui/cards/EpisodeCard';
+import DataNotFound from '@/components/ui/data-display/DataNotFound';
 import Loader from '@/components/ui/data-display/Loader';
 import Container from '@/components/ui/layouts/Container';
 import { transformTVShowSeasonDetails } from '@/helpers/transformData';
@@ -51,9 +52,7 @@ export default function Content(props: Props) {
                             )
                         }
                     </ul>
-                    : <div className='uppercase text-primary font-bold grow flex items-center justify-center text-8xl'>
-                        Data not found
-                    </div>
+                    : <DataNotFound />
             }
         </Container>
     );

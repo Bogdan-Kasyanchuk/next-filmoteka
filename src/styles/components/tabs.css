@@ -26,7 +26,7 @@
 
         background-color: var(--color-accent);
 
-        transition-property: border-color, background-color, box-shadow;
+        transition-property: color, background-color, box-shadow;
 
         @variant min-md {
             padding: 9px 18px;
@@ -35,8 +35,8 @@
 
         &--is-active {
             pointer-events: none;
-            border-color: white;
-            background-color: var(--color-accent-hover);
+            color: var(--color-secondary);
+            background-color: var(--color-link);
         }
 
         &:hover {

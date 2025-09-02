@@ -19,7 +19,10 @@ export default function VideoCard(props: Props) {
             className='c-video-card'
         >
             <div className='c-video-card__header'>
-                <p className='c-video-card__header-name'>
+                <p
+                    className='c-video-card__header-name'
+                    title={props.video.name}
+                >
                     {props.video.name}
                 </p>
 

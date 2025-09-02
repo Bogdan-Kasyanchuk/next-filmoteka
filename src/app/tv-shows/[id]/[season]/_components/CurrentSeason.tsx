@@ -16,52 +16,57 @@ type Props = {
 export default function CurrentSeason(props: Props) {
     return (
         <div className='p-season__current-season'>
-            <div className='p-season__current-season-cover'>
-                <Image
-                    src={
-                        props.season.poster_path
-                            ? `${PARAMETERS.URL_IMG}${IMG_SIZES.SEASON_CARD_DETAILS_COVER}${props.season.poster_path}`
-                            : '/img/poster-not-available.jpg'
-                    }
-                    sizes="100px"
-                    alt={props.season.name}
-                    fill
-                />
-            </div>
-
-            <div className='p-season__current-season-info'>
-                <Link
-                    href={`/tv-shows/${props.id}`}
-                    className='u-link-color font-bold'
-                >
-                    Go to TV Show
-                </Link>
-
-                <Title
-                    className='p-season__current-season-title'
-                    variant={3}
-                >
-                    {props.season.name}&nbsp;({formatDate(props.season.air_date, 'DD.MM.YYYY')})
-                </Title>
-
-                <div className='p-season__current-season-tags'>
-                    <div className='p-season__current-season-tag p-season__current-season-tag--type'>
-                        Season:&nbsp;{props.season.season_number}
-                    </div>
-
-                    <div className='p-season__current-season-tag p-season__current-season-tag--average'>
-                        {Math.round(props.season.vote_average * 10)}
-                        <span>%</span>
-                    </div>
+            <div className='p-season__current-season-inner'>
+                <div className='p-season__current-season-cover'>
+                    <Image
+                        src={
+                            props.season.poster_path
+                                ? `${PARAMETERS.URL_IMG}${IMG_SIZES.SEASON_CARD_DETAILS_COVER}${props.season.poster_path}`
+                                : '/img/poster-not-available.jpg'
+                        }
+                        sizes="92px"
+                        alt={props.season.name}
+                        fill
+                    />
                 </div>
 
-                {
-                    props.season.overview &&
-                    <p className='p-season__current-season-overview'>
-                        {props.season.overview}
-                    </p>
-                }
+                <div className='p-season__current-season-info'>
+                    <Link
+                        href={`/tv-shows/${props.id}`}
+                        className='u-link-color font-bold leading-[18px]'
+                    >
+                        Go to TV Show
+                    </Link>
+
+                    <Title
+                        className='p-season__current-season-title'
+                        title={
+                            `${props.season.name} ${formatDate(props.season.air_date, 'DD.MM.YYYY')}`
+                        }
+                        variant={3}
+                    >
+                        {props.season.name}&nbsp;({formatDate(props.season.air_date, 'DD.MM.YYYY')})
+                    </Title>
+
+                    <div className='p-season__current-season-tags'>
+                        <div className='p-season__current-season-tag p-season__current-season-tag--type'>
+                            Season:&nbsp;{props.season.season_number}
+                        </div>
+
+                        <div className='p-season__current-season-tag p-season__current-season-tag--average'>
+                            {Math.round(props.season.vote_average * 10)}
+                            <span>%</span>
+                        </div>
+                    </div>
+                </div>
             </div>
+
+            {
+                props.season.overview &&
+                <p className='p-season__current-season-overview'>
+                    {props.season.overview}
+                </p>
+            }
         </div>
     );
 }

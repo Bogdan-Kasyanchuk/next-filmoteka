@@ -35,10 +35,7 @@ export default function Pagination(props: Props) {
         ? mobilePagination(props.currentPage, props.totalPages)
         : desktopPagination(props.currentPage, props.totalPages);
 
-    const icon = <Icon
-        type='mono'
-        name='angle'
-    />;
+    const icon = <Icon name='angle' />;
 
     return (
         <div className="c-pagination">
