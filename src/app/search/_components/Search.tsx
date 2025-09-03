@@ -30,6 +30,7 @@ export default function Search() {
                 name='search'
                 defaultValue={searchParams.get('query')?.toString()}
                 placeholder="Search movies, tv shows"
+                autoComplete='off'
                 className="p-search__search-input"
                 onChange={
                     (e) => {
