@@ -50,8 +50,8 @@ export default function Navigation() {
                                     }
                                 >
                                     <Image
-                                        width={30}
-                                        height={30}
+                                        width={24}
+                                        height={24}
                                         src={link.icon}
                                         alt={link.name}
                                         className='c-navigation__img'

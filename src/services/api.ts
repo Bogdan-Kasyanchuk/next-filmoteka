@@ -69,10 +69,9 @@ export function getTVShowSeasonByNumber(seriesId: string, number: string) {
     return fetchApi<TVShowSeasonDetailsShema>(`${MediaType.TV_SHOW}/${seriesId}/season/${number}`);
 }
 
-// ------------------------------------------------------------------------------------
-
 export function getSearch(query: string, page: number) {
-    return fetchApi(`search/multi?query=${query}&page=${page}&include_adult=${PARAMETERS.ADULT}`);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    return fetchApi<DataShema<any>>(`search/multi?query=${query}&page=${page}&include_adult=${PARAMETERS.ADULT}`);
 }
 
 // export function getReviews(type: MediaType, id: string, page: number) {
