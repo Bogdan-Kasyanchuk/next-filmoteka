@@ -10,3 +10,4 @@
 @import '../components/cards/video-card.css' layer(base);
 @import '../components/cards/season-card.css' layer(base);
 @import '../components/cards/episode-card.css' layer(base);
+@import '../components/cards/review-card.css' layer(base);

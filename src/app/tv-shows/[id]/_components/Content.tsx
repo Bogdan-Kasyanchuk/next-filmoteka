@@ -4,16 +4,16 @@ import { useQuery } from '@tanstack/react-query';
 import { notFound } from 'next/navigation';
 
 import Casts from '@/components/app/Casts';
+import Reviews from '@/components/app/Reviews';
 import Videos from '@/components/app/Videos';
 import Loader from '@/components/ui/data-display/Loader';
 import Container from '@/components/ui/layouts/Container';
 import { transformTVShowDetails } from '@/helpers/transformData';
 import { getTVShowById } from '@/services/api';
 
+import Recommendations from './Recommendations';
 import Seasons from './Seasons';
 import TVShowDetails from './TVShowDetails';
-// import Recommendations from './Recommendations';
-// import Reviews from './Reviews';
 
 type Props = {
     id: string
@@ -60,15 +60,15 @@ export default function Content(props: Props) {
                     <Videos videos={data.videos} />
                 }
 
-                {/* {
+                {
                     data.recommendations.length > 0 &&
-                    <Recommendations videos={data.recommendations} />
-                } */}
+                    <Recommendations recommendations={data.recommendations} />
+                }
 
-                {/* {
+                {
                     data.reviews.length > 0 &&
-                    <Reviews videos={data.reviews} />
-                } */}
+                    <Reviews reviews={data.reviews} />
+                }
             </Container>
         </div>
     );

@@ -1,12 +1,12 @@
-import CastCard from '@/components/ui/cards/CastCard';
+import ReviewCard from '@/components/ui/cards/ReviewCard';
 import Title from '@/components/ui/typography/Title';
-import { CastMapper } from '@/types';
+import { ReviewMapper } from '@/types';
 
 type Props = {
-    casts: CastMapper[];
+    reviews: ReviewMapper[];
 }
 
-export default function Casts(props: Props) {
+export default function Reviews(props: Props) {
     return (
         <div className='pt-[30px] border-t border-t-primary/75 -mx-2.5 px-2.5 xxxl:-mx-5 xxxl:px-5'>
             <Title
@@ -14,20 +14,20 @@ export default function Casts(props: Props) {
                 variant={3}
                 className='-mt-1.5 font-bold uppercase'
             >
-                Casts
+                Reviews
             </Title>
 
-            <ul className='mt-5 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-8 xxl:grid-cols-9 gap-2.5 md:gap-[15px] lg:gap-5  '>
+            <ul className='mt-5 grid grid-cols-1 gap-5'>
                 {
-                    props.casts.map(
-                        (cast, index) => (
+                    props.reviews.map(
+                        (review, index) => (
                             <li key={index}>
-                                <CastCard cast={cast} />
+                                <ReviewCard review={review} />
                             </li>
                         )
                     )
                 }
             </ul>
-        </div >
+        </div>
     );
 }

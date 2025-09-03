@@ -16,7 +16,7 @@ export const IMG_SIZES = {
     EPISODE_CARD_COVER: 'w300',
     CAST_CARD_COVER: 'w180_and_h180_face',
     CREATOR_AVATAR: 'w50_and_h50_face',
-    // REVIEWER_AVATAR: 'w185',
+    REVIEWER_AVATAR: 'w92',
     COMPANY_LOGO: 'w92',
     NETWORK_LOGO: 'w92',
 };

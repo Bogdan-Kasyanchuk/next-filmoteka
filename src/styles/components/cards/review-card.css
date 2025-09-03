@@ -1,0 +1,105 @@
+.c-review-card {
+    position: relative;
+
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+
+    height: 100%;
+    padding: 10px;
+    border-radius: 4px;
+
+    background-color: var(--color-primary);
+
+    @variant min-lg {
+        padding: 20px;
+    }
+
+    &__cover {
+        position: relative;
+        flex-shrink: 0;
+        width: 90px;
+        height: 90px;
+
+        img {
+            object-fit: cover;
+        }
+    }
+
+    &__inner {
+        display: flex;
+    }
+
+    &__info {
+        display: flex;
+        flex-wrap: wrap;
+        row-gap: 4px;
+        column-gap: 40px;
+
+        min-width: 1px;
+        height: 100%;
+        padding-inline-start: 20px;
+
+        color: var(--color-secondary);
+
+        @variant min-lg {
+            padding-inline-start: 20px;
+        }
+
+        &-name {
+            display: flex;
+            flex-direction: column;
+            row-gap: 4px;
+
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        &-list {
+            display: flex;
+            flex-direction: column;
+            row-gap: 4px;
+
+            &-item {
+                display: flex;
+                flex-wrap: wrap;
+                column-gap: 6px;
+                align-items: center;
+
+                font-size: var(--text-xs);
+
+                & > *:first-child {
+                    opacity: 0.75;
+                }
+
+                & > *:last-child {
+                    font-weight: 600;
+                }
+            }
+        }
+    }
+
+    &__name {
+        overflow: hidden;
+        font-size: var(--text-lg);
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    &__username {
+        overflow: hidden;
+
+        font-size: var(--text-sm);
+        font-style: italic;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+
+        opacity: 0.75;
+    }
+
+    &__content {
+        font-size: var(--text-xs);
+        line-height: 1.25;
+    }
+}

@@ -23,6 +23,8 @@
         line-height: 1;
         color: var(--color-primary);
 
+        transition-property: opacity;
+
         &::before,
         &::after {
             content: '';
@@ -52,18 +54,26 @@
             left: 50%;
         }
 
-        &:hover::before,
-        &:hover::after {
+        &:not(.c-navigation__link--is-active):hover {
             @media (any-hover: hover) {
-                width: 50%;
+                opacity: 0.75;
+
+                &::before,
+                &::after {
+                    width: 50%;
+                }
             }
         }
 
-        &--is-active::before,
-        &--is-active::after {
+        &--is-active {
+            cursor: default;
+
             @media (any-hover: hover) {
-                width: 50%;
-                opacity: 1;
+                &::before,
+                &::after {
+                    width: 50%;
+                    opacity: 1;
+                }
             }
         }
     }

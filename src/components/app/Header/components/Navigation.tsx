@@ -7,6 +7,11 @@ import { usePathname } from 'next/navigation';
 
 const links = [
     {
+        name: 'Search',
+        href: '/search',
+        icon: '/svg/search.svg',
+    },
+    {
         name: 'Home',
         href: '/',
         icon: '/svg/home.svg',

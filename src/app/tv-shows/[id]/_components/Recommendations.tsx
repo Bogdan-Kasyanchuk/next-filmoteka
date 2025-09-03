@@ -1,22 +1,33 @@
-import CastCard from '@/components/ui/cards/CastCard';
-import { CastMapper } from '@/types';
+import TVShowCard from '@/components/ui/cards/TVShowCard';
+import Title from '@/components/ui/typography/Title';
+import { RecommendationTVShowMapper } from '@/types';
 
 type Props = {
-    casts: CastMapper[];
+    recommendations: RecommendationTVShowMapper[];
 }
 
 export default function Recommendations(props: Props) {
     return (
-        <ul className='mt-10 grid grid-cols-5 gap-5'>
-            {
-                props.casts.map(
-                    (cast, index) => (
-                        <li key={index}>
-                            <CastCard cast={cast} />
-                        </li>
+        <div className='с-recommendations'>
+            <Title
+                order='h3'
+                variant={3}
+                className='с-recommendations__title'
+            >
+                Recommendations
+            </Title>
+
+            <ul className='с-recommendations__list'>
+                {
+                    props.recommendations.map(
+                        (recommendation) => (
+                            <li key={recommendation.id}>
+                                <TVShowCard tvShow={recommendation} />
+                            </li>
+                        )
                     )
-                )
-            }
-        </ul>
+                }
+            </ul>
+        </div>
     );
 }
