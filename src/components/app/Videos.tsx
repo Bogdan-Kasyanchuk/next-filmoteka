@@ -8,16 +8,16 @@ type Props = {
 
 export default function Videos(props: Props) {
     return (
-        <div className='pt-[30px] border-t border-t-primary/75 -mx-2.5 px-2.5 xxxl:-mx-5 xxxl:px-5'>
+        <div className='с-videos'>
             <Title
                 order='h3'
                 variant={3}
-                className='-mt-1.5 font-bold uppercase'
+                className='с-videos__title'
             >
                 Videos
             </Title>
 
-            <ul className='mt-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5'>
+            <ul className='с-videos__list'>
                 {
                     props.videos.map(
                         (video, index) => (

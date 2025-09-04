@@ -1,25 +1,25 @@
 import { EpisodeType, MediaType, VideoType } from './enums';
 
-type SpokenLanguage = {
+export type SpokenLanguage = {
     english_name: string,
-    name: string
+    name: string,
 };
 
-type ProductionCompany = {
+export type ProductionCompany = {
     logo_path: string,
     name: string,
-    origin_country?: string
+    origin_country?: string,
 };
 
-type Network = {
+export type Network = {
     logo_path: string,
     name: string,
-    origin_country: string
+    origin_country: string,
 };
 
-type Creator = {
+export type Creator = {
     name: string,
-    profile_path: string
+    profile_path: string,
 };
 
 export type CastMapper = {
@@ -42,7 +42,7 @@ export type ReviewMapper = {
         name: string,
         username: string,
         avatar_path: string,
-        rating: number
+        rating: number,
     },
     content: string,
     created_at: string,
@@ -75,7 +75,7 @@ export type SeasonMapper = {
     name: string,
     poster_path: string,
     season_number: number,
-    vote_average: number
+    vote_average: number,
 };
 
 export type MovieMapper = {
@@ -119,7 +119,7 @@ export type MovieDetailsMapper = {
     videos: VideoMapper[],
     reviews: ReviewMapper[],
     recommendations: RecommendationMovieMapper[],
-}
+};
 
 export type MovieDetailsForSimilarMapper = {
     movie: {
@@ -132,7 +132,7 @@ export type MovieDetailsForSimilarMapper = {
         genres: string[],
     },
     similar: SimilarMovieMapper[],
-}
+};
 
 export type TVShowMapper = {
     id: number,
@@ -179,7 +179,7 @@ export type TVShowDetailsMapper = {
     videos: VideoMapper[],
     reviews: ReviewMapper[],
     recommendations: RecommendationTVShowMapper[],
-}
+};
 
 export type TVShowDetailsForSimilarMapper = {
     tvShow: {
@@ -192,7 +192,7 @@ export type TVShowDetailsForSimilarMapper = {
         genres: string[],
     },
     similar: SimilarTVShowMapper[],
-}
+};
 
 export type TVShowSeasonDetailsMapper = {
     season: {
@@ -203,6 +203,5 @@ export type TVShowSeasonDetailsMapper = {
         season_number: number,
         vote_average: number,
     },
-    episodes: EpisodeMapper[]
-}
-
+    episodes: EpisodeMapper[],
+};

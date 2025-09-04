@@ -1,0 +1,11 @@
+.swiper {
+    contain: layout;
+
+    .swiper-slide {
+        height: auto;
+
+        &:not(:last-of-type) {
+            margin-inline-end: var(--swiper-col-gap, 20px);
+        }
+    }
+}

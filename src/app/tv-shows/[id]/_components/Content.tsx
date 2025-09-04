@@ -4,14 +4,16 @@ import { useQuery } from '@tanstack/react-query';
 import { notFound } from 'next/navigation';
 
 import Casts from '@/components/app/Casts';
+import Recommendations from '@/components/app/Recommendations';
 import Reviews from '@/components/app/Reviews';
 import Videos from '@/components/app/Videos';
+import TVShowCard from '@/components/ui/cards/TVShowCard';
 import Loader from '@/components/ui/data-display/Loader';
 import Container from '@/components/ui/layouts/Container';
 import { transformTVShowDetails } from '@/helpers/transformData';
 import { getTVShowById } from '@/services/api';
+import { RecommendationTVShowMapper } from '@/types';
 
-import Recommendations from './Recommendations';
 import Seasons from './Seasons';
 import TVShowDetails from './TVShowDetails';
 
@@ -51,18 +53,21 @@ export default function Content(props: Props) {
                 }
 
                 {
-                    data.cast.length > 0 &&
-                    <Casts casts={data.cast} />
-                }
-
-                {
                     data.videos.length > 0 &&
                     <Videos videos={data.videos} />
                 }
 
                 {
+                    data.cast.length > 0 &&
+                    <Casts casts={data.cast} />
+                }
+
+                {
                     data.recommendations.length > 0 &&
-                    <Recommendations recommendations={data.recommendations} />
+                    <Recommendations<RecommendationTVShowMapper>
+                        recommendations={data.recommendations}
+                        item={(item) => <TVShowCard tvShow={item} />}
+                    />
                 }
 
                 {

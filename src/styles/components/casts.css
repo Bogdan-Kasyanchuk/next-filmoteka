@@ -1,0 +1,82 @@
+.с-casts {
+    @apply pt-[30px] border-t border-t-primary/75 -mx-2.5 px-2.5;
+    @apply xxxl:-mx-5 xxxl:px-5;
+
+    &__title {
+        @apply -mt-1.5 font-bold uppercase;
+    }
+
+    &__cards {
+        position: relative;
+        margin-top: 20px;
+    }
+
+    &__slide {
+        --swiper-col-gap: 10px;
+
+        width: calc((100% / 2) - var(--swiper-col-gap) * 1 / 2);
+
+        @variant min-sm {
+            width: calc((100% / 3) - var(--swiper-col-gap) * 2 / 3);
+        }
+
+        @variant min-md {
+            --swiper-col-gap: 15px;
+
+            width: calc((100% / 5) - var(--swiper-col-gap) * 4 / 5);
+        }
+
+        @variant min-lg {
+            --swiper-col-gap: 20px;
+
+            width: calc((100% / 6) - var(--swiper-col-gap) * 5 / 6);
+        }
+
+        @variant min-xl {
+            width: calc((100% / 8) - var(--swiper-col-gap) * 7 / 8);
+        }
+
+        @variant min-xxl {
+            width: calc((100% / 9) - var(--swiper-col-gap) * 8 / 9);
+        }
+    }
+
+    &__arrow {
+        @apply absolute bg-white/25 backdrop-blur-xl z-1 size-9 flex items-center justify-center top-1/2 -translate-y-1/2 rounded-full cursor-pointer;
+
+        transition-property: background-color, box-shadow, opacity;
+
+        i {
+            @apply size-5 transition-[filter];
+        }
+
+        &:not(:disabled):hover {
+            background-color: var(--color-accent-hover);
+            box-shadow: var(--shadow-custom-accent);
+
+            i {
+                @apply invert;
+            }
+        }
+
+        &:disabled {
+            @apply opacity-20 pointer-events-none;
+        }
+
+        &--prev {
+            @apply -start-[18px];
+
+            i {
+                @apply rotate-180 rtl:rotate-0;
+            }
+        }
+
+        &--next {
+            @apply -end-[18px];
+
+            i {
+                @apply rtl:rotate-180;
+            }
+        }
+    }
+}

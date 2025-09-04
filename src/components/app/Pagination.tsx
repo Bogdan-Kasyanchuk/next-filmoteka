@@ -7,7 +7,7 @@ import { usePathname, useSearchParams } from 'next/navigation';
 
 import { mobilePagination, desktopPagination } from '@/utils/generatePagination';
 
-import Icon from './Icon';
+import Icon from '../ui/data-display/Icon';
 
 type Props = {
     currentPage: number,

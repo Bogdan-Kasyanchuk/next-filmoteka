@@ -25,14 +25,14 @@
     &__search {
         position: relative;
         width: 100%;
+        max-width: 728px;
         color: var(--color-primary);
 
         &-input {
             width: 100%;
             height: 50px;
             padding-block: 13px;
-            padding-inline-start: 48px;
-            padding-inline-end: 20px;
+            padding-inline: 48px;
             border: 1px solid var(--color-secondary);
             border-radius: 4px;
 
@@ -47,6 +47,14 @@
 
             &:focus {
                 border-color: var(--color-primary);
+            }
+        }
+
+        &-clear {
+            @apply cursor-pointer w-12 h-12 flex items-center justify-center absolute top-1/2 -translate-y-1/2 end-0 transition-opacity;
+
+            &:hover {
+                @apply opacity-75;
             }
         }
     }

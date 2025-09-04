@@ -1,0 +1,15 @@
+.с-videos {
+    @apply pt-[30px] border-t border-t-primary/75 -mx-2.5 px-2.5;
+    @apply xxxl:-mx-5 xxxl:px-5;
+
+    &__title {
+        @apply -mt-1.5 font-bold uppercase;
+    }
+
+    &__list {
+        @apply mt-5 grid grid-cols-1 gap-5;
+        @apply md:grid-cols-2;
+        @apply lg:grid-cols-3;
+        @apply xl:grid-cols-4;
+    }
+}

@@ -6,13 +6,15 @@ import { notFound } from 'next/navigation';
 import Casts from '@/components/app/Casts';
 import Reviews from '@/components/app/Reviews';
 import Videos from '@/components/app/Videos';
+import MovieCard from '@/components/ui/cards/MovieCard';
 import Loader from '@/components/ui/data-display/Loader';
 import Container from '@/components/ui/layouts/Container';
 import { transformMovieDetails } from '@/helpers/transformData';
 import { getMovieById } from '@/services/api';
+import { RecommendationMovieMapper } from '@/types';
 
 import MovieDetails from './MovieDetails';
-import Recommendations from './Recommendations';
+import Recommendations from '../../../../components/app/Recommendations';
 
 type Props = {
     id: string
@@ -42,18 +44,21 @@ export default function Content(props: Props) {
 
             <Container className='xxl:max-w-[1440px] flex flex-col gap-y-[30px]'>
                 {
-                    data.cast.length > 0 &&
-                    <Casts casts={data.cast} />
-                }
-
-                {
                     data.videos.length > 0 &&
                     <Videos videos={data.videos} />
                 }
 
                 {
+                    data.cast.length > 0 &&
+                    <Casts casts={data.cast} />
+                }
+
+                {
                     data.recommendations.length > 0 &&
-                    <Recommendations recommendations={data.recommendations} />
+                    <Recommendations<RecommendationMovieMapper>
+                        recommendations={data.recommendations}
+                        item={(item) => <MovieCard movie={item} />}
+                    />
                 }
 
                 {

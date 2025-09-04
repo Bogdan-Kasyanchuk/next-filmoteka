@@ -1,5 +1,51 @@
 import { EpisodeType, GenderType, MediaType, VideoType } from './enums';
 
+export type NetworkShema = {
+    id: number,
+    logo_path: string,
+    name: string,
+    origin_country: string,
+};
+
+export type CreatedShema = {
+    id: number,
+    credit_id: string,
+    name: string,
+    original_name: string,
+    gender: GenderType,
+    profile_path: string,
+};
+
+export type GenreShema = {
+    id: number,
+    name: string,
+};
+
+export type CollectionShema = {
+    id: number,
+    name: string,
+    poster_path: string,
+    backdrop_path: string,
+};
+
+export type ProductionCompanyShema = {
+    id: number,
+    logo_path: string,
+    name: string,
+    origin_country: string,
+};
+
+export type ProductionCountryShema = {
+    iso_3166_1: string,
+    name: string,
+};
+
+export type SpokenLanguageShema = {
+    english_name: string,
+    iso_639_1: string,
+    name: string,
+};
+
 export type DataShema<Type> = {
     page: number,
     results: Type[],
@@ -32,17 +78,9 @@ export type RecommendationMovieShema = MovieShema;
 export type MovieDetailsShema = {
     adult: boolean,
     backdrop_path: string,
-    belongs_to_collection: Array<{
-        id: number,
-        name: string,
-        poster_path: string,
-        backdrop_path: string
-    }>,
+    belongs_to_collection: CollectionShema[],
     budget: number,
-    genres: Array<{
-        id: number,
-        name: string,
-    }>,
+    genres: GenreShema[],
     homepage: string,
     id: number,
     imdb_id: string,
@@ -52,24 +90,12 @@ export type MovieDetailsShema = {
     overview: string,
     popularity: number,
     poster_path: string,
-    production_companies: Array<{
-        id: number,
-        logo_path: string,
-        name: string,
-        origin_country: string
-    }>,
-    production_countries: Array<{
-        iso_3166_1: string,
-        name: string
-    }>,
+    production_companies: ProductionCompanyShema[],
+    production_countries: ProductionCountryShema[],
     release_date: string,
     revenue: number,
     runtime: number,
-    spoken_languages: Array<{
-        english_name: string,
-        iso_639_1: string,
-        name: string
-    }>,
+    spoken_languages: SpokenLanguageShema[],
     status: string,
     tagline: string,
     title: string,
@@ -78,64 +104,18 @@ export type MovieDetailsShema = {
     vote_count: number,
     credits: {
         cast: CastShema[],
-        crew: CrewShema[]
+        crew: CrewShema[],
     },
     videos: {
-        results: VideoShema[]
+        results: VideoShema[],
     },
     reviews: DataShema<ReviewShema>,
     recommendations: DataShema<RecommendationMovieShema>,
-}
+};
 
-export type MovieDetailsForSimilarShema = {
-    adult: boolean,
-    backdrop_path: string,
-    belongs_to_collection: Array<{
-        id: number,
-        name: string,
-        poster_path: string,
-        backdrop_path: string
-    }>,
-    budget: number,
-    genres: Array<{
-        id: number,
-        name: string,
-    }>,
-    homepage: string,
-    id: number,
-    imdb_id: string,
-    origin_country: string[],
-    original_language: string,
-    original_title: string,
-    overview: string,
-    popularity: number,
-    poster_path: string,
-    production_companies: Array<{
-        id: number,
-        logo_path: string,
-        name: string,
-        origin_country: string
-    }>,
-    production_countries: Array<{
-        iso_3166_1: string,
-        name: string
-    }>,
-    release_date: string,
-    revenue: number,
-    runtime: number,
-    spoken_languages: Array<{
-        english_name: string,
-        iso_639_1: string,
-        name: string
-    }>,
-    status: string,
-    tagline: string,
-    title: string,
-    video: boolean,
-    vote_average: number,
-    vote_count: number,
+export type MovieDetailsForSimilarShema = Omit<MovieDetailsShema, 'credits' | 'videos' | 'reviews' | 'recommendations'> & {
     similar: DataShema<SimilarMovieShema>,
-}
+};
 
 export type TVShowShema = {
     adult: boolean,
@@ -157,53 +137,24 @@ export type TVShowShema = {
 
 export type SimilarTVShowShema = Omit<TVShowShema, 'media_type'>;
 
-export type RecommendationTVShowShema = TVShowShema
+export type RecommendationTVShowShema = TVShowShema;
 
 export type TVShowDetailsShema = {
     adult: boolean,
     backdrop_path: string,
-    created_by: Array<{
-        id: number,
-        credit_id: string,
-        name: string,
-        original_name: string,
-        gender: GenderType,
-        profile_path: string
-    }>,
+    created_by: CreatedShema[],
     episode_run_time: number[],
     first_air_date: string,
-    genres: Array<{
-        id: number,
-        name: string
-    }>,
+    genres: GenreShema[],
     homepage: string,
     id: number,
     in_production: boolean,
     languages: string[],
     last_air_date: string,
-    last_episode_to_air: {
-        id: number,
-        name: string
-        overview: string,
-        vote_average: number,
-        vote_count: number
-        air_date: string,
-        episode_number: number,
-        episode_type: string,
-        production_code: string,
-        runtime: number,
-        season_number: number,
-        show_id: number,
-        still_path: string
-    },
-    name: string
+    last_episode_to_air: Omit<EpisodeShema, 'crew' | 'guest_stars'>[],
+    name: string,
     next_episode_to_air: string,
-    networks: Array<{
-        id: number,
-        logo_path: string,
-        name: string,
-        origin_country: string
-    }>
+    networks: NetworkShema[],
     number_of_episodes: number,
     number_of_seasons: number,
     origin_country: string[],
@@ -212,21 +163,9 @@ export type TVShowDetailsShema = {
     overview: string,
     popularity: number,
     poster_path: string,
-    production_companies: Array<{
-        id: number,
-        logo_path: string,
-        name: string,
-        origin_country: string
-    }>,
-    production_countries: Array<{
-        iso_3166_1: string,
-        name: string
-    }>,
-    spoken_languages: Array<{
-        english_name: string,
-        iso_639_1: string,
-        name: string
-    }>,
+    production_companies: ProductionCompanyShema[],
+    production_countries: ProductionCountryShema[],
+    spoken_languages: SpokenLanguageShema[],
     status: string,
     tagline: string,
     type: string,
@@ -235,91 +174,18 @@ export type TVShowDetailsShema = {
     seasons: SeasonShema[],
     credits: {
         cast: CastShema[],
-        crew: CrewShema[]
+        crew: CrewShema[],
     },
     videos: {
-        results: VideoShema[]
+        results: VideoShema[],
     },
     reviews: DataShema<ReviewShema>,
     recommendations: DataShema<RecommendationTVShowShema>,
-}
+};
 
-export type TVShowDetailsForSimilarShema = {
-    adult: boolean,
-    backdrop_path: string,
-    created_by: Array<{
-        id: number,
-        credit_id: string,
-        name: string,
-        original_name: string,
-        gender: GenderType,
-        profile_path: string
-    }>,
-    episode_run_time: number[],
-    first_air_date: string,
-    genres: Array<{
-        id: number,
-        name: string
-    }>,
-    homepage: string,
-    id: number,
-    in_production: boolean,
-    languages: string[],
-    last_air_date: string,
-    last_episode_to_air: {
-        id: number,
-        name: string
-        overview: string,
-        vote_average: number,
-        vote_count: number
-        air_date: string,
-        episode_number: number,
-        episode_type: string,
-        production_code: string,
-        runtime: number,
-        season_number: number,
-        show_id: number,
-        still_path: string
-    },
-    name: string
-    next_episode_to_air: string,
-    networks: Array<{
-        id: number,
-        logo_path: string,
-        name: string,
-        origin_country: string
-    }>
-    number_of_episodes: number,
-    number_of_seasons: number,
-    origin_country: string[],
-    original_language: string,
-    original_name: string,
-    overview: string,
-    popularity: number,
-    poster_path: string,
-    production_companies: Array<{
-        id: number,
-        logo_path: string,
-        name: string,
-        origin_country: string
-    }>,
-    production_countries: Array<{
-        iso_3166_1: string,
-        name: string
-    }>,
-    spoken_languages: Array<{
-        english_name: string,
-        iso_639_1: string,
-        name: string
-    }>,
-    status: string,
-    tagline: string,
-    type: string,
-    vote_average: number,
-    vote_count: number,
-    seasons: SeasonShema[],
+export type TVShowDetailsForSimilarShema = Omit<TVShowDetailsShema, 'seasons' | 'credits' | 'videos' | 'reviews' | 'recommendations'> & {
     similar: DataShema<SimilarTVShowShema>,
-}
+};
 
 export type TVShowSeasonDetailsShema = {
     _id: string,
@@ -330,8 +196,8 @@ export type TVShowSeasonDetailsShema = {
     poster_path: string,
     season_number: number,
     vote_average: number,
-    episodes: EpisodeShema[]
-}
+    episodes: EpisodeShema[],
+};
 
 export type EpisodeShema = {
     air_date: string,
@@ -348,8 +214,8 @@ export type EpisodeShema = {
     vote_average: number,
     vote_count: number,
     crew: CrewShema[],
-    guest_stars: Omit<CastShema, 'cast_id'>[]
-}
+    guest_stars: Omit<CastShema, 'cast_id'>[],
+};
 
 export type SeasonShema = {
     air_date: string,
@@ -359,8 +225,8 @@ export type SeasonShema = {
     overview: string,
     poster_path: string,
     season_number: number,
-    vote_average: number
-}
+    vote_average: number,
+};
 
 export type CastShema = {
     adult: boolean,
@@ -374,7 +240,7 @@ export type CastShema = {
     cast_id: number,
     character: string,
     credit_id: string,
-    order: number
+    order: number,
 }
 
 export type CrewShema = {
@@ -397,13 +263,13 @@ export type ReviewShema = {
         name: string,
         username: string,
         avatar_path: string,
-        rating: number
+        rating: number,
     },
     content: string,
     created_at: string,
     id: string,
     updated_at: string,
-    url: string
+    url: string,
 };
 
 export type VideoShema = {
@@ -416,5 +282,5 @@ export type VideoShema = {
     type: VideoType,
     official: boolean,
     published_at: string,
-    id: string
+    id: string,
 };

@@ -1,13 +1,17 @@
 /* Components */
-@import '../components/title.css' layer(base);
-@import '../components/tabs.css' layer(base);
-@import '../components/pagination.css' layer(base);
+@import '../components/tabs.css';
+@import '../components/pagination.css';
+@import '../components/carousel.css';
+@import '../components/recommendations.css';
+@import '../components/casts.css';
+@import '../components/videos.css';
+@import '../components/reviews.css';
 
 /* Cards */
-@import '../components/cards/movie-card.css' layer(base);
-@import '../components/cards/tv-show-card.css' layer(base);
-@import '../components/cards/cast-card.css' layer(base);
-@import '../components/cards/video-card.css' layer(base);
-@import '../components/cards/season-card.css' layer(base);
-@import '../components/cards/episode-card.css' layer(base);
-@import '../components/cards/review-card.css' layer(base);
+@import '../components/cards/movie-card.css';
+@import '../components/cards/tv-show-card.css';
+@import '../components/cards/cast-card.css';
+@import '../components/cards/video-card.css';
+@import '../components/cards/season-card.css';
+@import '../components/cards/episode-card.css';
+@import '../components/cards/review-card.css';
