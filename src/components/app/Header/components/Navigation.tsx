@@ -26,6 +26,11 @@ const links = [
         href: '/tv-shows',
         icon: '/svg/tv.svg',
     },
+    {
+        name: 'Persons',
+        href: '/persons',
+        icon: '/svg/users.svg',
+    },
 ];
 
 export default function Navigation() {

@@ -1,5 +1,6 @@
 import clsx from 'clsx';
 import Image from 'next/image';
+import Link from 'next/link';
 
 import { PARAMETERS, IMG_SIZES } from '@/helpers/parameters';
 import { CastMapper } from '@/types';
@@ -9,9 +10,11 @@ type Props = {
 }
 
 export default function CastCard(props: Props) {
-
     return (
-        <div className='с-cast-card'>
+        <Link
+            href={`/persons/${props.cast.id}`}
+            className='с-cast-card'
+        >
             <div
                 className={
                     clsx('с-cast-card__cover', {
@@ -50,6 +53,6 @@ export default function CastCard(props: Props) {
                     {props.cast.character}
                 </p>
             </div>
-        </div >
+        </Link >
     );
 };

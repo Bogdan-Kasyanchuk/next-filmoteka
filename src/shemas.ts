@@ -284,3 +284,77 @@ export type VideoShema = {
     published_at: string,
     id: string,
 };
+
+export type MediaCastShema = {
+    adult: boolean,
+    backdrop_path: string,
+    genre_ids: number[],
+    id: number,
+    original_language: string,
+    original_title: string,
+    overview: string,
+    popularity: number,
+    poster_path: string,
+    release_date: string,
+    title: string,
+    video: boolean,
+    vote_average: number,
+    vote_count: number,
+    character: string,
+    credit_id: string,
+    order: number,
+    media_type: string,
+}
+
+export type MediaCrewShema = {
+    adult: boolean,
+    backdrop_path: string,
+    genre_ids: number[],
+    id: number,
+    original_language: string,
+    original_title: string,
+    overview: string,
+    popularity: number,
+    poster_path: string,
+    release_date: string,
+    title: string,
+    video: boolean,
+    vote_average: number,
+    vote_count: number,
+    credit_id: string,
+    department: string,
+    job: string,
+    media_type: string,
+};
+
+export type PersonShema = {
+    adult: boolean,
+    gender: GenderType,
+    id: number,
+    known_for_department: string,
+    name: string,
+    popularity: number,
+    profile_path: string,
+    known_for: Omit<MovieShema, 'popularity'>[],
+};
+
+export type PersonDetailsShema = {
+    adult: boolean,
+    also_known_as: string[],
+    biography: string,
+    birthday: string,
+    deathday: string,
+    gender: GenderType,
+    homepage: string,
+    id: number,
+    imdb_id: string,
+    known_for_department: string,
+    name: string,
+    place_of_birth: string,
+    popularity: number,
+    profile_path: string,
+    combined_credits: {
+        cast: MediaCastShema[],
+        crew: MediaCrewShema[],
+    }
+};

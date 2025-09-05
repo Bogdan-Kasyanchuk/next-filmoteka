@@ -8,7 +8,9 @@ import {
     TVShowDetailsShema,
     TVShowSeasonDetailsShema,
     TVShowShema,
-    TVShowDetailsForSimilarShema
+    TVShowDetailsForSimilarShema,
+    PersonShema,
+    PersonDetailsShema
 } from '@/shemas';
 
 async function fetchApi<T>(url: string) {
@@ -67,6 +69,16 @@ export function getSimilarToTVShow(id: string, page: number) {
 
 export function getTVShowSeasonByNumber(seriesId: string, number: string) {
     return fetchApi<TVShowSeasonDetailsShema>(`${MediaType.TV_SHOW}/${seriesId}/season/${number}`);
+}
+
+export function getPersons(page: number) {
+    return fetchApi<DataShema<PersonShema>>(`person/popular?page=${page}`);
+}
+
+export function getPersonById(id: string) {
+    return fetchApi<PersonDetailsShema>(
+        `person/${id}?append_to_response=combined_credits`
+    );
 }
 
 export function getSearch(query: string, page: number) {

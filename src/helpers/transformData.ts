@@ -15,7 +15,11 @@ import {
     TVShowShema,
     VideoShema,
     TVShowSeasonDetailsShema,
-    EpisodeShema
+    EpisodeShema,
+    PersonShema,
+    PersonDetailsShema,
+    MediaCastShema,
+    MediaCrewShema
 } from '@/shemas';
 import {
     CastMapper,
@@ -33,7 +37,11 @@ import {
     TVShowMapper,
     VideoMapper,
     EpisodeMapper,
-    TVShowSeasonDetailsMapper
+    TVShowSeasonDetailsMapper,
+    PersonMapper,
+    PersonDetailsMapper,
+    MediaCastMapper,
+    MediaCrewMapper
 } from '@/types';
 
 export const transformMovie = (movie: MovieShema) => ({
@@ -244,6 +252,7 @@ export const transformSeason = (season: SeasonShema) => ({
 }) as SeasonMapper;
 
 export const transformCast = (cast: CastShema) => ({
+    id: cast.id,
     name: cast.name || cast.original_name,
     popularity: cast.popularity,
     profile_path: cast.profile_path,
@@ -304,3 +313,56 @@ export const transformRecommendationTVShow = (tvShow: RecommendationTVShowShema)
     media_type: MediaType.TV_SHOW,
     vote_average: tvShow.vote_average,
 }) as RecommendationTVShowMapper;
+
+export const transformMediaCast = (media: MediaCastShema) => ({
+    adult: media.adult,
+    id: media.id,
+    title: media.title || media.original_title,
+    poster_path: media.poster_path,
+    release_date: media.release_date,
+    vote_average: media.vote_average,
+    character: media.character,
+    media_type: media.media_type,
+}) as MediaCastMapper;
+
+export const transformMediaCrew = (media: MediaCrewShema) => ({
+    adult: media.adult,
+    id: media.id,
+    title: media.title || media.original_title,
+    poster_path: media.poster_path,
+    release_date: media.release_date,
+    vote_average: media.vote_average,
+    department: media.department,
+    job: media.job,
+    media_type: media.media_type,
+}) as MediaCrewMapper;
+
+export const transformPerson = (person: PersonShema) => ({
+    adult: person.adult,
+    gender: person.gender,
+    id: person.id,
+    known_for_department: person.known_for_department,
+    name: person.name,
+    popularity: person.popularity,
+    profile_path: person.profile_path,
+}) as PersonMapper;
+
+export const transformPersonDetails = (person: PersonDetailsShema) => ({
+    person: {
+        adult: person.adult,
+        also_known_as: person.also_known_as,
+        biography: person.biography,
+        birthday: person.birthday,
+        deathday: person.deathday,
+        gender: person.gender,
+        homepage: person.homepage,
+        imdb_id: person.imdb_id,
+        known_for_department: person.known_for_department,
+        name: person.name,
+        place_of_birth: person.place_of_birth,
+        popularity: person.popularity,
+        profile_path: person.profile_path,
+    },
+    cast: person.combined_credits.cast.map((cast) => transformMediaCast(cast)),
+    crew: person.combined_credits.crew.map((crew) => transformMediaCrew(crew)),
+}) as PersonDetailsMapper;

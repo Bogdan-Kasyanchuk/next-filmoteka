@@ -3,11 +3,11 @@
 
     &__list {
         display: flex;
-        column-gap: 20px;
+        column-gap: 15px;
         align-items: center;
 
-        @variant min-md {
-            column-gap: 30px;
+        @variant min-sm {
+            column-gap: 20px;
         }
     }
 
@@ -30,7 +30,7 @@
             content: '';
 
             position: absolute;
-            bottom: -1px;
+            bottom: 0;
 
             width: 0;
             height: 2px;
@@ -39,11 +39,6 @@
             background-color: currentcolor;
 
             transition-property: width, opacity;
-
-            @variant min-md {
-                bottom: -2px;
-                height: 3px;
-            }
         }
 
         &::before {
@@ -90,9 +85,7 @@
         font-weight: 700;
         text-transform: uppercase;
 
-        @variant min-md {
-            font-size: var(--text-2xl);
-
+        @variant min-lg {
             @apply not-sr-only;
         }
     }

@@ -2,16 +2,14 @@
 
 import PageNotFound from '@/components/ui/data-display/PageNotFound';
 
-import '@/styles/app/base.css';
-
 export default function NotFound() {
     return (
         <PageNotFound
-            title='Could not found page'
+            title='Could not found person'
             link={
                 {
-                    href: '/',
-                    text: 'Back to home'
+                    href: '/persons',
+                    text: 'Back to persons'
                 }
             }
         />

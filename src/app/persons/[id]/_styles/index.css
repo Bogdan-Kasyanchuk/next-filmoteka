@@ -1,0 +1,204 @@
+@import '../../../../styles/app/base.css';
+@import '../../../../styles/app/components.css';
+
+.p-person {
+    display: flex;
+    flex-direction: column;
+    row-gap: 30px;
+
+    width: 100%;
+    padding-bottom: 30px;
+}
+
+.с-person-details {
+    position: relative;
+    width: 100%;
+    color: var(--color-primary);
+
+    &__backdrop {
+        position: absolute;
+        inset: 0;
+        filter: blur(25px);
+
+        &::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.85);
+        }
+
+        img {
+            z-index: -1;
+            object-fit: cover;
+        }
+    }
+
+    &__container {
+        position: relative;
+
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 20px;
+
+        padding-block: 30px;
+
+        @variant min-md {
+            grid-template-columns: 328px 380px;
+            grid-template-rows: max-content 1fr;
+        }
+
+        @variant min-lg {
+            grid-template-columns: 328px 636px;
+        }
+
+        @variant min-xl {
+            grid-template-columns: 352px 908px;
+        }
+
+        @variant min-xxl {
+            grid-template-columns: 352px 1028px;
+            max-width: 1440px;
+        }
+    }
+
+    &__cover {
+        position: relative;
+
+        overflow: hidden;
+        justify-self: center;
+
+        aspect-ratio: 2/3;
+        width: 255px;
+        border: 1px solid var(--color-accent-hover);
+        border-radius: 4px;
+
+        box-shadow: var(--shadow-custom-accent);
+
+        @variant min-md {
+            grid-column: 1/2;
+            grid-row: 1/3;
+            justify-self: initial;
+            width: 100%;
+        }
+
+        img {
+            object-fit: cover;
+        }
+    }
+
+    &__adult {
+        position: absolute;
+        z-index: 1;
+        top: 10px;
+        left: 10px;
+
+        padding: 5px;
+        border: 1px solid var(--color-danger);
+        border-radius: 2px;
+
+        font-size: var(--text-sm);
+        font-weight: 700;
+        line-height: 1;
+        color: var(--color-danger);
+
+        background-color: var(--color-primary);
+
+        span {
+            position: relative;
+            top: -4px;
+        }
+    }
+
+    &__gender {
+        position: absolute;
+        z-index: 1;
+        top: 10px;
+        right: 10px;
+
+        padding: 5px;
+        border: 1px solid  var(--color-secondary);
+        border-radius: 2px;
+
+        font-size: var(--text-sm);
+        font-weight: 700;
+        line-height: 1;
+        color:  var(--color-secondary);
+        text-transform: uppercase;
+
+        background-color: var(--color-primary);
+
+        span {
+            position: relative;
+            top: -4px;
+        }
+    }
+
+    &__name {
+        font-weight: 700;
+        text-align: center;
+        text-transform: uppercase;
+
+        @variant min-md {
+            grid-column: -2/-1;
+            grid-row: 1/2;
+            text-align:start;
+        }
+    }
+
+    &__list-info {
+        display: flex;
+        flex-direction: column;
+        row-gap: 10px;
+        min-width: 1px;
+
+        @variant min-md {
+            grid-column: -2/-1;
+            grid-row: 2/3;
+        }
+
+        &-item {
+            display: flex;
+            flex-wrap: wrap;
+            column-gap: 6px;
+            align-items: center;
+
+            font-size: var(--text-lg);
+            line-height: 1.2;
+
+            &--link {
+                flex-wrap: nowrap;
+
+                a[href] {
+                    @apply truncate u-link-color;
+                }
+            }
+
+            & > *:first-child {
+                opacity: 0.75;
+            }
+
+            & > *:last-child {
+                font-weight: 600;
+            }
+        }
+    }
+
+    &__biography {
+        line-height: 1.25;
+
+        @variant min-md {
+            grid-column: 1/-1;
+        }
+
+        &-title {
+            margin-bottom: 10px;
+            font-size: var(--text-xl);
+            font-weight: 700;
+        }
+
+        &-text {
+            font-size: var(--text-md);
+            opacity: 0.75;
+        }
+    }
+}

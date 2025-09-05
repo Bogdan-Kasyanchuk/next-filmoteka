@@ -1,4 +1,4 @@
-import { EpisodeType, MediaType, VideoType } from './enums';
+import { EpisodeType, GenderType, MediaType, VideoType } from './enums';
 
 export type SpokenLanguage = {
     english_name: string,
@@ -23,6 +23,7 @@ export type Creator = {
 };
 
 export type CastMapper = {
+    id: number,
     name: string,
     popularity: number,
     profile_path: string,
@@ -204,4 +205,57 @@ export type TVShowSeasonDetailsMapper = {
         vote_average: number,
     },
     episodes: EpisodeMapper[],
+};
+
+export type MediaCastMapper = {
+    adult: boolean,
+    id: number,
+    title: string,
+    poster_path: string,
+    release_date: string,
+    vote_average: number,
+    character: string,
+    media_type: string,
+}
+
+export type MediaCrewMapper = {
+    adult: boolean,
+    id: number,
+    title: string,
+    poster_path: string,
+    release_date: string,
+    vote_average: number,
+    department: string,
+    job: string,
+    media_type: string,
+};
+
+export type PersonMapper = {
+    adult: boolean,
+    gender: GenderType,
+    id: number,
+    known_for_department: string,
+    name: string,
+    popularity: number,
+    profile_path: string,
+};
+
+export type PersonDetailsMapper = {
+    person: {
+        adult: boolean,
+        also_known_as: string[],
+        biography: string,
+        birthday: string,
+        deathday: string,
+        gender: GenderType,
+        homepage: string,
+        imdb_id: string,
+        known_for_department: string,
+        name: string,
+        place_of_birth: string,
+        popularity: number,
+        profile_path: string,
+    },
+    cast: MediaCastMapper[],
+    crew: MediaCrewMapper[],
 };

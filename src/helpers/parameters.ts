@@ -19,4 +19,6 @@ export const IMG_SIZES = {
     REVIEWER_AVATAR: 'w92',
     COMPANY_LOGO: 'w92',
     NETWORK_LOGO: 'w92',
+    PERSON_CARD_COVER: 'h632',
+    PERSON_CARD_DETAILS_COVER: 'h632',
 };
