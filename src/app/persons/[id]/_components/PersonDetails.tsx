@@ -3,7 +3,6 @@ import { Fragment } from 'react';
 
 import Container from '@/components/ui/layouts/Container';
 import Title from '@/components/ui/typography/Title';
-import { GenderType } from '@/enums';
 import { PARAMETERS, IMG_SIZES } from '@/helpers/parameters';
 import { PersonDetailsMapper } from '@/types';
 import { formatDate } from '@/utils/formateDate';
@@ -25,23 +24,9 @@ export default function PersonDetails(props: Props) {
             <Container className='с-person-details__container'>
                 <div className='с-person-details__cover'>
                     {
-                        !props.adult &&
+                        props.adult &&
                         <div className='с-person-details__adult'>
                             18<span>+</span>
-                        </div>
-                    }
-
-                    {
-                        props.gender === GenderType.MAN &&
-                        <div className='с-person-details__gender'>
-                            Man
-                        </div>
-                    }
-
-                    {
-                        props.gender === GenderType.WOMAN &&
-                        <div className='с-person-details__gender'>
-                            Woman
                         </div>
                     }
 

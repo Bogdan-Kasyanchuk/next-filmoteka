@@ -54,7 +54,11 @@ export default function TVShowDetails(props: Props) {
                     </div>
 
                     <Title className='с-tv-show-details__title'>
-                        {props.name}&nbsp;({formatDate(props.first_air_date, 'YYYY')})
+                        {props.name}
+                        {
+                            props.first_air_date &&
+                            <>&nbsp;({formatDate(props.first_air_date, 'YYYY')})</>
+                        }
                     </Title>
 
                     <ul className='с-tv-show-details__list-rounds'>
@@ -115,15 +119,21 @@ export default function TVShowDetails(props: Props) {
                             </li>
                         }
 
-                        <li className='с-tv-show-details__list-info-item'>
-                            <span>First air date:</span>
-                            <span>{formatDate(props.first_air_date, 'DD.MM.YYYY')}</span>
-                        </li>
+                        {
+                            props.first_air_date &&
+                            <li className='с-tv-show-details__list-info-item'>
+                                <span>First air date:</span>
+                                <span>{formatDate(props.first_air_date, 'DD.MM.YYYY')}</span>
+                            </li>
+                        }
 
-                        <li className='с-tv-show-details__list-info-item'>
-                            <span>Last air date:</span>
-                            <span>{formatDate(props.last_air_date, 'DD.MM.YYYY')}</span>
-                        </li>
+                        {
+                            props.last_air_date &&
+                            <li className='с-tv-show-details__list-info-item'>
+                                <span>Last air date:</span>
+                                <span>{formatDate(props.last_air_date, 'DD.MM.YYYY')}</span>
+                            </li>
+                        }
 
                         <li className='с-tv-show-details__list-info-item'>
                             <span>In production:</span>

@@ -33,7 +33,7 @@ export default function Content(props: Props) {
         <div className='p-person'>
             <PersonDetails {...data.person} />
 
-            <Container className='xxl:max-w-[1440px] flex flex-col gap-y-[30px]'>
+            <Container className='p-person__container'>
                 {
                     data.cast.length > 0 &&
                     <div>Cast</div>

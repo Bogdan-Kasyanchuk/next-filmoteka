@@ -2,10 +2,10 @@
 
 import { keepPreviousData, useQuery } from '@tanstack/react-query';
 
+import Pagination from '@/components/app/Pagination';
 import MovieCard from '@/components/ui/cards/MovieCard';
 import DataNotFound from '@/components/ui/data-display/DataNotFound';
 import Loader from '@/components/ui/data-display/Loader';
-import Pagination from '@/components/app/Pagination';
 import { MovieType } from '@/enums';
 import { transformMovie } from '@/helpers/transformData';
 import { getMovies } from '@/services/api';

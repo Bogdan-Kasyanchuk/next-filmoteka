@@ -135,10 +135,13 @@ export default function MovieDetails(props: Props) {
                             <span>${formatCurrency(props.revenue)}</span>
                         </li>
 
-                        <li className='с-movie-details__list-info-item'>
-                            <span>Release:</span>
-                            <span>{formatDate(props.release_date, 'DD.MM.YYYY')}</span>
-                        </li>
+                        {
+                            props.release_date &&
+                            <li className='с-movie-details__list-info-item'>
+                                <span>Release:</span>
+                                <span>{formatDate(props.release_date, 'DD.MM.YYYY')}</span>
+                            </li>
+                        }
 
                         <li className='с-movie-details__list-info-item'>
                             <span>Status:</span>

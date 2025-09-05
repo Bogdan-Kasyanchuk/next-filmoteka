@@ -8,6 +8,11 @@
 
     width: 100%;
     padding-bottom: 30px;
+
+    &__container {
+        @apply flex flex-col gap-y-[30px];
+        @apply xxl:max-w-[1440px];
+    }
 }
 
 .с-person-details {
@@ -100,30 +105,6 @@
         font-weight: 700;
         line-height: 1;
         color: var(--color-danger);
-
-        background-color: var(--color-primary);
-
-        span {
-            position: relative;
-            top: -4px;
-        }
-    }
-
-    &__gender {
-        position: absolute;
-        z-index: 1;
-        top: 10px;
-        right: 10px;
-
-        padding: 5px;
-        border: 1px solid  var(--color-secondary);
-        border-radius: 2px;
-
-        font-size: var(--text-sm);
-        font-weight: 700;
-        line-height: 1;
-        color:  var(--color-secondary);
-        text-transform: uppercase;
 
         background-color: var(--color-primary);
 

@@ -354,7 +354,6 @@ export const transformPersonDetails = (person: PersonDetailsShema) => ({
         biography: person.biography,
         birthday: person.birthday,
         deathday: person.deathday,
-        gender: person.gender,
         homepage: person.homepage,
         imdb_id: person.imdb_id,
         known_for_department: person.known_for_department,

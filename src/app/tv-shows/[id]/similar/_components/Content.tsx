@@ -3,10 +3,10 @@
 import { keepPreviousData, useQuery } from '@tanstack/react-query';
 import { notFound } from 'next/navigation';
 
+import Pagination from '@/components/app/Pagination';
 import TVShowCard from '@/components/ui/cards/TVShowCard';
 import DataNotFound from '@/components/ui/data-display/DataNotFound';
 import Loader from '@/components/ui/data-display/Loader';
-import Pagination from '@/components/app/Pagination';
 import Container from '@/components/ui/layouts/Container';
 import Title from '@/components/ui/typography/Title';
 import { transformTVShowDetailsForSimilar } from '@/helpers/transformData';

@@ -18,7 +18,7 @@ export default function EpisodeCard(props: Props) {
                             ? `${PARAMETERS.URL_IMG}${IMG_SIZES.EPISODE_CARD_COVER}${props.episode.still_path}`
                             : '/img/poster-not-available.jpg'
                     }
-                    sizes="(max-width: 479px) 173px, (max-width: 767px) 213px, (max-width: 1023px) 230px, 241px"
+                    sizes="(max-width: 479px) 175px, (max-width: 1319px) 216px, 233px"
                     alt={props.episode.name}
                     fill
                 />

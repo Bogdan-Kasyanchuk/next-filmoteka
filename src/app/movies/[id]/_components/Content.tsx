@@ -42,7 +42,7 @@ export default function Content(props: Props) {
                 id={props.id}
             />
 
-            <Container className='xxl:max-w-[1440px] flex flex-col gap-y-[30px]'>
+            <Container className='p-movie__container'>
                 {
                     data.videos.length > 0 &&
                     <Videos videos={data.videos} />

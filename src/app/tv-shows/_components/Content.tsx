@@ -2,10 +2,10 @@
 
 import { keepPreviousData, useQuery } from '@tanstack/react-query';
 
+import Pagination from '@/components/app/Pagination';
 import TVShowCard from '@/components/ui/cards/TVShowCard';
 import DataNotFound from '@/components/ui/data-display/DataNotFound';
 import Loader from '@/components/ui/data-display/Loader';
-import Pagination from '@/components/app/Pagination';
 import { TVShowType } from '@/enums';
 import { transformTVShow } from '@/helpers/transformData';
 import { getTVShows } from '@/services/api';

@@ -247,7 +247,6 @@ export type PersonDetailsMapper = {
         biography: string,
         birthday: string,
         deathday: string,
-        gender: GenderType,
         homepage: string,
         imdb_id: string,
         known_for_department: string,

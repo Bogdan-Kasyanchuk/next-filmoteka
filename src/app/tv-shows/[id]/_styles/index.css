@@ -8,6 +8,11 @@
 
     width: 100%;
     padding-bottom: 30px;
+
+    &__container {
+        @apply flex flex-col gap-y-[30px];
+        @apply xxl:max-w-[1440px];
+    }
 }
 
 .с-tv-show-details {

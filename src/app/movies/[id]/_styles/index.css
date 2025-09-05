@@ -8,6 +8,11 @@
 
     width: 100%;
     padding-bottom: 30px;
+
+    &__container {
+        @apply flex flex-col gap-y-[30px];
+        @apply xxl:max-w-[1440px];
+    }
 }
 
 .с-movie-details {
@@ -272,7 +277,8 @@
     }
 
     &__content {
-        @apply xxl:max-w-[1440px] mt-[30px] text-primary bg-secondary/75 rounded-sm py-5;
+        @apply mt-[30px] text-primary bg-secondary/75 rounded-sm py-5;
+        @apply xxl:max-w-[1440px];
     }
 
     &__companies {
