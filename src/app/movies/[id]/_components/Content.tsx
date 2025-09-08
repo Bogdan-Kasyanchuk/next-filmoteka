@@ -4,6 +4,7 @@ import { useQuery } from '@tanstack/react-query';
 import { notFound } from 'next/navigation';
 
 import Casts from '@/components/app/Casts';
+import Recommendations from '@/components/app/Recommendations';
 import Reviews from '@/components/app/Reviews';
 import Videos from '@/components/app/Videos';
 import MovieCard from '@/components/ui/cards/MovieCard';
@@ -14,7 +15,6 @@ import { getMovieById } from '@/services/api';
 import { RecommendationMovieMapper } from '@/types';
 
 import MovieDetails from './MovieDetails';
-import Recommendations from '../../../../components/app/Recommendations';
 
 type Props = {
     id: string

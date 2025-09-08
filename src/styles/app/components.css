@@ -16,3 +16,5 @@
 @import '../components/cards/episode-card.css';
 @import '../components/cards/review-card.css';
 @import '../components/cards/person-card.css';
+@import '../components/cards/media-cast-card.css';
+@import '../components/cards/media-crew-card.css';

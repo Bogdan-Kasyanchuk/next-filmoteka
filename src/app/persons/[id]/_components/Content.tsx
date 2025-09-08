@@ -9,6 +9,7 @@ import { transformPersonDetails } from '@/helpers/transformData';
 import { getPersonById } from '@/services/api';
 
 import PersonDetails from './PersonDetails';
+import Timeline from './Timeline';
 
 type Props = {
     id: string
@@ -33,17 +34,15 @@ export default function Content(props: Props) {
         <div className='p-person'>
             <PersonDetails {...data.person} />
 
-            <Container className='p-person__container'>
-                {
-                    data.cast.length > 0 &&
-                    <div>Cast</div>
-                }
-
-                {
-                    data.crew.length > 0 &&
-                    <div>Crew</div>
-                }
-            </Container>
+            {
+                (data.cast.length > 0 || data.crew.length > 0) &&
+                <Container className='p-person__container'>
+                    <Timeline
+                        cast={data.cast}
+                        crew={data.crew}
+                    />
+                </Container>
+            }
         </div>
     );
 }

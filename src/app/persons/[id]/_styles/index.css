@@ -183,3 +183,30 @@
         }
     }
 }
+
+.с-timeline {
+    @apply max-w-[984px] m-auto w-full;
+
+    &__title {
+        @apply -mt-1 font-bold uppercase text-center;
+    }
+
+    &__list {
+        @apply flex flex-col gap-5 mt-5;
+    }
+
+    &__item {
+        &:not(:first-child) {
+            @apply pt-5 border-t border-t-primary/75 -mx-2.5 px-2.5;
+            @apply xl:-mx-5 xl:px-5;
+        }
+
+        &-title {
+            @apply font-bold text-xl text-primary -mt-1;
+        }
+
+        &-list {
+            @apply flex flex-col gap-2.5 mt-2.5;
+        }
+    }
+}

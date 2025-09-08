@@ -208,24 +208,19 @@ export type TVShowSeasonDetailsMapper = {
 };
 
 export type MediaCastMapper = {
-    adult: boolean,
     id: number,
     title: string,
     poster_path: string,
     release_date: string,
-    vote_average: number,
     character: string,
     media_type: string,
 }
 
 export type MediaCrewMapper = {
-    adult: boolean,
     id: number,
     title: string,
     poster_path: string,
     release_date: string,
-    vote_average: number,
-    department: string,
     job: string,
     media_type: string,
 };

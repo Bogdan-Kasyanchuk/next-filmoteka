@@ -315,24 +315,23 @@ export const transformRecommendationTVShow = (tvShow: RecommendationTVShowShema)
 }) as RecommendationTVShowMapper;
 
 export const transformMediaCast = (media: MediaCastShema) => ({
-    adult: media.adult,
     id: media.id,
-    title: media.title || media.original_title,
+    title: media.media_type === MediaType.MOVIE
+        ? media.title || media.original_title
+        : media.name || media.original_name,
     poster_path: media.poster_path,
     release_date: media.release_date,
-    vote_average: media.vote_average,
     character: media.character,
     media_type: media.media_type,
 }) as MediaCastMapper;
 
 export const transformMediaCrew = (media: MediaCrewShema) => ({
-    adult: media.adult,
     id: media.id,
-    title: media.title || media.original_title,
+    title: media.media_type === MediaType.MOVIE
+        ? media.title || media.original_title
+        : media.name || media.original_name,
     poster_path: media.poster_path,
     release_date: media.release_date,
-    vote_average: media.vote_average,
-    department: media.department,
     job: media.job,
     media_type: media.media_type,
 }) as MediaCrewMapper;
