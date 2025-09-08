@@ -63,16 +63,20 @@ export default function Content(props: Props) {
                 }
 
                 {
-                    data.recommendations.length > 0 &&
+                    data.recommendations.items.length > 0 &&
                     <Recommendations<RecommendationTVShowMapper>
                         recommendations={data.recommendations}
                         item={(item) => <TVShowCard tvShow={item} />}
+                        showAllPath={`/tv-shows/${props.id}/recommendations`}
                     />
                 }
 
                 {
-                    data.reviews.length > 0 &&
-                    <Reviews reviews={data.reviews} />
+                    data.reviews.items.length > 0 &&
+                    <Reviews
+                        reviews={data.reviews}
+                        showAllPath={`/tv-shows/${props.id}/reviews`}
+                    />
                 }
             </Container>
         </div>

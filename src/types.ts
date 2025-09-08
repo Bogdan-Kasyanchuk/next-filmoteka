@@ -118,8 +118,14 @@ export type MovieDetailsMapper = {
     },
     cast: CastMapper[],
     videos: VideoMapper[],
-    reviews: ReviewMapper[],
-    recommendations: RecommendationMovieMapper[],
+    reviews: {
+        items: ReviewMapper[],
+        totalPages: number,
+    },
+    recommendations: {
+        items: RecommendationMovieMapper[],
+        totalPages: number,
+    },
 };
 
 export type MovieDetailsForSimilarMapper = {
@@ -178,8 +184,14 @@ export type TVShowDetailsMapper = {
     seasons: SeasonMapper[],
     cast: CastMapper[],
     videos: VideoMapper[],
-    reviews: ReviewMapper[],
-    recommendations: RecommendationTVShowMapper[],
+    reviews: {
+        items: ReviewMapper[],
+        totalPages: number,
+    },
+    recommendations: {
+        items: RecommendationTVShowMapper[],
+        totalPages: number,
+    },
 };
 
 export type TVShowDetailsForSimilarMapper = {

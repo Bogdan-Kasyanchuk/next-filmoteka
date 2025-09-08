@@ -1,9 +1,15 @@
+import Link from 'next/link';
+
 import ReviewCard from '@/components/ui/cards/ReviewCard';
 import Title from '@/components/ui/typography/Title';
 import { ReviewMapper } from '@/types';
 
 type Props = {
-    reviews: ReviewMapper[];
+    reviews: {
+        items: ReviewMapper[],
+        totalPages: number,
+    },
+    showAllPath: string;
 }
 
 export default function Reviews(props: Props) {
@@ -19,15 +25,25 @@ export default function Reviews(props: Props) {
 
             <ul className='с-reviews__list'>
                 {
-                    props.reviews.map(
-                        (review, index) => (
+                    props.reviews.items.map(
+                        (item, index) => (
                             <li key={index}>
-                                <ReviewCard review={review} />
+                                <ReviewCard review={item} />
                             </li>
                         )
                     )
                 }
             </ul>
+
+            {
+                props.reviews.totalPages > 1 &&
+                <Link
+                    href={props.showAllPath}
+                    className='с-reviews__show-all-button'
+                >
+                    Show all reviews
+                </Link>
+            }
         </div>
     );
 }

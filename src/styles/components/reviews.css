@@ -9,4 +9,27 @@
     &__list {
         @apply mt-5 grid grid-cols-1 gap-5;
     }
+
+    &__show-all-button {
+        display: block;
+
+        width: fit-content;
+        min-width: 250px;
+        min-height: 40px;
+        margin-top: 20px;
+        margin-inline: auto;
+        padding: 5px 10px;
+        border-radius: 4px;
+
+        font-size: var(--text-md);
+        font-weight: 700;
+        text-align: center;
+        text-transform: uppercase;
+
+        @apply bg-link border-2 border-link transition-colors;
+
+        &:hover {
+            @apply bg-link-hover border-link-hover;
+        }
+    }
 }

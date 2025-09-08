@@ -113,9 +113,15 @@ export const transformMovieDetails = (movie: MovieDetailsShema) => ({
             }
         }
     ),
-    reviews: movie.reviews.results.map((review) => transformReview(review)),
-    recommendations: movie.recommendations.results.map(
-        (recommendation) => transformRecommendationMovie(recommendation)),
+    reviews: {
+        items: movie.reviews.results.map((review) => transformReview(review)),
+        totalPages: movie.reviews.total_pages
+    },
+    recommendations: {
+        items: movie.recommendations.results.map(
+            (recommendation) => transformRecommendationMovie(recommendation)),
+        totalPages: movie.recommendations.total_pages
+    },
 }) as MovieDetailsMapper;
 
 export const transformMovieDetailsForSimilar = (movie: MovieDetailsForSimilarShema) => ({
@@ -199,9 +205,15 @@ export const transformTVShowDetails = (tvShow: TVShowDetailsShema) => ({
             }
         }
     ),
-    reviews: tvShow.reviews.results.map((review) => transformReview(review)),
-    recommendations: tvShow.recommendations.results.map(
-        (recommendation) => transformRecommendationTVShow(recommendation)),
+    reviews: {
+        items: tvShow.reviews.results.map((review) => transformReview(review)),
+        totalPages: tvShow.reviews.total_pages
+    },
+    recommendations: {
+        items: tvShow.recommendations.results.map(
+            (recommendation) => transformRecommendationTVShow(recommendation)),
+        totalPages: tvShow.recommendations.total_pages
+    },
 }) as TVShowDetailsMapper;
 
 export const transformTVShowDetailsForSimilar = (tvShow: TVShowDetailsForSimilarShema) => ({

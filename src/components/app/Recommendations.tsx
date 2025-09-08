@@ -1,6 +1,7 @@
 'use client';
 
 import clsx from 'clsx';
+import Link from 'next/link';
 import { Dispatch, ReactNode, SetStateAction, useState } from 'react';
 import { Autoplay, Navigation } from 'swiper/modules';
 
@@ -9,8 +10,12 @@ import Icon from '@/components/ui/data-display/Icon';
 import Title from '@/components/ui/typography/Title';
 
 type Props<T> = {
-    recommendations: T[];
+    recommendations: {
+        items: T[],
+        totalPages: number,
+    },
     item: (item: T) => ReactNode,
+    showAllPath: string;
 }
 
 export default function Recommendations<T>(props: Props<T>) {
@@ -29,7 +34,7 @@ export default function Recommendations<T>(props: Props<T>) {
 
             <div className="с-recommendations__cards">
                 <Carousel
-                    items={props.recommendations}
+                    items={props.recommendations.items}
                     modules={[Autoplay, Navigation]}
                     options={
                         {
@@ -66,6 +71,16 @@ export default function Recommendations<T>(props: Props<T>) {
                     />
                 </>
             </div>
+
+            {
+                props.recommendations.totalPages > 1 &&
+                <Link
+                    href={props.showAllPath}
+                    className='с-recommendations__show-all-button'
+                >
+                    Show all recommendations
+                </Link>
+            }
         </div>
     );
 }
