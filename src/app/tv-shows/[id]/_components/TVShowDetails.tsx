@@ -15,8 +15,8 @@ export default function TVShowDetails(props: Props) {
 
     return (
         <>
-            <div className='с-tv-show-details'>
-                <div className='с-tv-show-details__backdrop'>
+            <div className='p-tv-show__details'>
+                <div className='p-tv-show__details-backdrop'>
                     <Image
                         src={`${PARAMETERS.URL_IMG}${IMG_SIZES.MEDIA_CARD_DETAILS_BACKDROP}${props.backdrop_path}`}
                         sizes="(max-width: 767px) 768px, (max-width: 1319px) 1320px, 1920px"
@@ -25,11 +25,11 @@ export default function TVShowDetails(props: Props) {
                     />
                 </div>
 
-                <Container className='с-tv-show-details__container sh'>
-                    <div className='с-tv-show-details__cover'>
+                <Container className='p-tv-show__details-container sh'>
+                    <div className='p-tv-show__details-cover'>
                         {
                             props.adult &&
-                            <div className='с-tv-show-details__adult'>
+                            <div className='p-tv-show__details-adult'>
                                 18<span>+</span>
                             </div>
                         }
@@ -47,13 +47,13 @@ export default function TVShowDetails(props: Props) {
 
                         <Link
                             href={`/tv-shows/${props.id}/similar`}
-                            className='с-tv-show-details__similar-button'
+                            className='p-tv-show__details-similar-button'
                         >
                             Similar
                         </Link>
                     </div>
 
-                    <Title className='с-tv-show-details__title'>
+                    <Title className='p-tv-show__details-title'>
                         {props.name}
                         {
                             props.first_air_date &&
@@ -61,53 +61,53 @@ export default function TVShowDetails(props: Props) {
                         }
                     </Title>
 
-                    <ul className='с-tv-show-details__list-rounds'>
+                    <ul className='p-tv-show__details-list-rounds'>
                         <li
-                            className='с-tv-show-details__list-rounds-item'
+                            className='p-tv-show__details-list-rounds-item'
                             style={
                                 {
                                     background: `conic-gradient(var(--color-success) ${average}%, 0, var(--color-primary) ${100 - average}%)`,
                                 }
                             }
                         >
-                            <div className='с-tv-show-details__list-rounds-item-inner'>
+                            <div className='p-tv-show__details-list-rounds-item-inner'>
                                 {average}
                                 <span>%</span>
                             </div>
                         </li>
 
-                        <li className='с-tv-show-details__list-rounds-item'>
+                        <li className='p-tv-show__details-list-rounds-item'>
                             {props.vote_count ?? 0}
                             <span>votes</span>
                         </li>
 
-                        <li className='с-tv-show-details__list-rounds-item'>
+                        <li className='p-tv-show__details-list-rounds-item'>
                             {Math.round(props.popularity)}
                             <span>popularity</span>
                         </li>
 
-                        <li className='с-tv-show-details__list-rounds-item'>
+                        <li className='p-tv-show__details-list-rounds-item'>
                             {props.number_of_seasons ?? 0}
                             <span>seasons</span>
                         </li>
 
-                        <li className='с-tv-show-details__list-rounds-item'>
+                        <li className='p-tv-show__details-list-rounds-item'>
                             {props.number_of_episodes ?? 0}
                             <span>episodes</span>
                         </li>
                     </ul>
 
-                    <ul className='с-tv-show-details__list-info'>
+                    <ul className='p-tv-show__details-list-info'>
                         {
                             props.tagline &&
-                            <li className='с-tv-show-details__list-info-item с-tv-show-details__list-info-item--tagline'>
+                            <li className='p-tv-show__details-list-info-item p-tv-show__details-list-info-item--tagline'>
                                 &quot;{props.tagline}&quot;
                             </li>
                         }
 
                         {
                             props.homepage &&
-                            <li className='с-tv-show-details__list-info-item с-tv-show-details__list-info-item--link'>
+                            <li className='p-tv-show__details-list-info-item p-tv-show__details-list-info-item--link'>
                                 <span>WebSite:</span>
                                 <a
                                     href={props.homepage}
@@ -121,7 +121,7 @@ export default function TVShowDetails(props: Props) {
 
                         {
                             props.first_air_date &&
-                            <li className='с-tv-show-details__list-info-item'>
+                            <li className='p-tv-show__details-list-info-item'>
                                 <span>First air date:</span>
                                 <span>{formatDate(props.first_air_date, 'DD.MM.YYYY')}</span>
                             </li>
@@ -129,30 +129,30 @@ export default function TVShowDetails(props: Props) {
 
                         {
                             props.last_air_date &&
-                            <li className='с-tv-show-details__list-info-item'>
+                            <li className='p-tv-show__details-list-info-item'>
                                 <span>Last air date:</span>
                                 <span>{formatDate(props.last_air_date, 'DD.MM.YYYY')}</span>
                             </li>
                         }
 
-                        <li className='с-tv-show-details__list-info-item'>
+                        <li className='p-tv-show__details-list-info-item'>
                             <span>In production:</span>
                             <span>{props.in_production ? 'Yes' : 'No'}</span>
                         </li>
 
-                        <li className='с-tv-show-details__list-info-item'>
+                        <li className='p-tv-show__details-list-info-item'>
                             <span>Type:</span>
                             <span>{props.type}</span>
                         </li>
 
-                        <li className='с-tv-show-details__list-info-item'>
+                        <li className='p-tv-show__details-list-info-item'>
                             <span>Status:</span>
                             <span>{props.status}</span>
                         </li>
 
                         {
                             props.genres.length > 0 &&
-                            <li className='с-tv-show-details__list-info-item'>
+                            <li className='p-tv-show__details-list-info-item'>
                                 <span className='self-start'>Genres:</span>
                                 <span>
                                     {
@@ -168,14 +168,14 @@ export default function TVShowDetails(props: Props) {
                             </li>
                         }
 
-                        <li className='с-tv-show-details__list-info-item'>
+                        <li className='p-tv-show__details-list-info-item'>
                             <span>Original language:</span>
                             <span>{props.original_language}</span>
                         </li>
 
                         {
                             props.spoken_languages.length > 0 &&
-                            <li className='с-tv-show-details__list-info-item'>
+                            <li className='p-tv-show__details-list-info-item'>
                                 <span className='self-start'>Spoken languages:</span>
                                 <span>
                                     {
@@ -193,7 +193,7 @@ export default function TVShowDetails(props: Props) {
 
                         {
                             props.origin_country.length > 0 &&
-                            <li className='с-tv-show-details__list-info-item'>
+                            <li className='p-tv-show__details-list-info-item'>
                                 <span className='self-start'>Countries:</span>
                                 <span>
                                     {
@@ -212,11 +212,11 @@ export default function TVShowDetails(props: Props) {
 
                     {
                         props.overview &&
-                        <div className='с-tv-show-details__overview'>
-                            <p className='с-tv-show-details__overview-title'>
+                        <div className='p-tv-show__details-overview'>
+                            <p className='p-tv-show__details-overview-title'>
                                 Overview:
                             </p>
-                            <p className='с-tv-show-details__overview-text'>
+                            <p className='p-tv-show__details-overview-text'>
                                 {props.overview}
                             </p>
                         </div>
@@ -226,22 +226,22 @@ export default function TVShowDetails(props: Props) {
 
             {
                 (props.created_by.length > 0 || props.networks.length > 0 || props.production_companies.length > 0) &&
-                <Container className='с-tv-show-details__content'>
+                <Container className='p-tv-show__details-content'>
                     {
                         props.created_by.length > 0 &&
-                        <div className='с-tv-show-details__creators'>
-                            <p className='с-tv-show-details__creators-title'>
+                        <div className='p-tv-show__details-creators'>
+                            <p className='p-tv-show__details-creators-title'>
                                 Creators:
                             </p>
-                            <ul className='с-tv-show-details__creators-list'>
+                            <ul className='p-tv-show__details-creators-list'>
                                 {
                                     props.created_by.map(
                                         (creator, index) => (
                                             <li
                                                 key={index}
-                                                className='с-tv-show-details__creators-item'
+                                                className='p-tv-show__details-creators-item'
                                             >
-                                                <div className='с-tv-show-details__creators-logo'>
+                                                <div className='p-tv-show__details-creators-logo'>
                                                     <Image
                                                         src={
                                                             creator.profile_path
@@ -253,7 +253,7 @@ export default function TVShowDetails(props: Props) {
                                                         alt={creator.name}
                                                     />
                                                 </div>
-                                                <div className='с-tv-show-details__creators-content'>
+                                                <div className='p-tv-show__details-creators-content'>
                                                     {creator.name}
                                                 </div>
                                             </li>
@@ -265,19 +265,19 @@ export default function TVShowDetails(props: Props) {
 
                     {
                         props.networks.length > 0 &&
-                        <div className='с-tv-show-details__networks'>
-                            <p className='с-tv-show-details__networks-title'>
+                        <div className='p-tv-show__details-networks'>
+                            <p className='p-tv-show__details-networks-title'>
                                 Networks:
                             </p>
-                            <ul className='с-tv-show-details__networks-list'>
+                            <ul className='p-tv-show__details-networks-list'>
                                 {
                                     props.networks.map(
                                         (network, index) => (
                                             <li
                                                 key={index}
-                                                className='с-tv-show-details__networks-item'
+                                                className='p-tv-show__details-networks-item'
                                             >
-                                                <div className='с-tv-show-details__networks-logo'>
+                                                <div className='p-tv-show__details-networks-logo'>
                                                     <Image
                                                         src={
                                                             network.logo_path
@@ -289,7 +289,7 @@ export default function TVShowDetails(props: Props) {
                                                         alt={network.name}
                                                     />
                                                 </div>
-                                                <div className='с-tv-show-details__networks-content'>
+                                                <div className='p-tv-show__details-networks-content'>
                                                     <span className='text-lg font-semibold'>
                                                         {network.name}
                                                     </span>
@@ -309,19 +309,19 @@ export default function TVShowDetails(props: Props) {
 
                     {
                         props.production_companies.length > 0 &&
-                        <div className='с-tv-show-details__companies'>
-                            <p className='с-tv-show-details__companies-title'>
+                        <div className='p-tv-show__details-companies'>
+                            <p className='p-tv-show__details-companies-title'>
                                 Production companies:
                             </p>
-                            <ul className='с-tv-show-details__companies-list'>
+                            <ul className='p-tv-show__details-companies-list'>
                                 {
                                     props.production_companies.map(
                                         (company, index) => (
                                             <li
                                                 key={index}
-                                                className='с-tv-show-details__companies-item'
+                                                className='p-tv-show__details-companies-item'
                                             >
-                                                <div className='с-tv-show-details__companies-logo'>
+                                                <div className='p-tv-show__details-companies-logo'>
                                                     <Image
                                                         src={
                                                             company.logo_path
@@ -333,7 +333,7 @@ export default function TVShowDetails(props: Props) {
                                                         alt={company.name}
                                                     />
                                                 </div>
-                                                <div className='с-tv-show-details__companies-content'>
+                                                <div className='p-tv-show__details-companies-content'>
                                                     <span className='text-lg font-semibold'>
                                                         {company.name}
                                                     </span>

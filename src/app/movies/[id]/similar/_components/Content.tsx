@@ -50,7 +50,7 @@ export default function Content(props: Props) {
                 id={props.id}
             />
 
-            <Title className='font-bold uppercase text-center'>
+            <Title className='p-movie-similar__title'>
                 Similar
             </Title>
 

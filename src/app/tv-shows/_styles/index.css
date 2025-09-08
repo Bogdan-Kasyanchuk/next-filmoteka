@@ -18,6 +18,10 @@
         justify-content: center;
     }
 
+    &__title {
+        @apply font-bold uppercase text-center;
+    }
+
     &__content {
         display: flex;
         flex-direction: column;

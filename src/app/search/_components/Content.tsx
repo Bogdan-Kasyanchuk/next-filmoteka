@@ -65,7 +65,7 @@ export default function Content(props: Props) {
                                                     result.media_type === MediaType.TV_SHOW &&
                                                     <TVShowCard tvShow={result} />
                                                 }
-                                                
+
                                                 {
                                                     result.media_type === MediaType.PERSON &&
                                                     <PersonCard person={result} />
@@ -81,7 +81,7 @@ export default function Content(props: Props) {
                                 totalPages={data.total_pages}
                             />
                         </div>
-                        : <div className='uppercase text-primary font-bold grow flex items-center justify-center text-8xl'>
+                        : <div className='p-search__no-search-results'>
                             No search results
                         </div>
             }

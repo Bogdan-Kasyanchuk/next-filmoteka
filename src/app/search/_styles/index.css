@@ -94,6 +94,10 @@
         }
     }
 
+    &__no-search-results {
+        @apply uppercase text-primary font-bold grow flex items-center justify-center text-8xl;
+    }
+
     @variant min-md {
         row-gap: 30px;
     }

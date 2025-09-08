@@ -1,9 +1,9 @@
 export const PARAMETERS = {
-    API_KEY: process.env.NEXT_PUBLIC_API_KEY,
-    BASE_URL: process.env.NEXT_PUBLIC_BASE_URL,
+    API_KEY: process.env.API_KEY,
+    BASE_URL: process.env.BASE_URL,
+    ADULT: process.env.ADULT,
+    LOCALE: process.env.LOCALE,
     URL_IMG: process.env.NEXT_PUBLIC_URL_IMG,
-    LOCALE: process.env.NEXT_PUBLIC_LOCALE,
-    ADULT: process.env.NEXT_PUBLIC_ADULT,
 };
 
 export const IMG_SIZES = {

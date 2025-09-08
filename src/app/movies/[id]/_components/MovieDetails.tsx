@@ -16,8 +16,8 @@ export default function MovieDetails(props: Props) {
 
     return (
         <div>
-            <div className='с-movie-details'>
-                <div className='с-movie-details__backdrop'>
+            <div className='p-movie__details'>
+                <div className='p-movie__details-backdrop'>
                     <Image
                         src={`${PARAMETERS.URL_IMG}${IMG_SIZES.MEDIA_CARD_DETAILS_BACKDROP}${props.backdrop_path}`}
                         sizes="(max-width: 767px) 768px, (max-width: 1319px) 1320px, 1920px"
@@ -26,11 +26,11 @@ export default function MovieDetails(props: Props) {
                     />
                 </div>
 
-                <Container className='с-movie-details__container'>
-                    <div className='с-movie-details__cover'>
+                <Container className='p-movie__details-container'>
+                    <div className='p-movie__details-cover'>
                         {
                             props.adult &&
-                            <div className='с-movie-details__adult'>
+                            <div className='p-movie__details-adult'>
                                 18<span>+</span>
                             </div>
                         }
@@ -48,58 +48,58 @@ export default function MovieDetails(props: Props) {
 
                         <Link
                             href={`/movies/${props.id}/similar`}
-                            className='с-movie-details__similar-button'
+                            className='p-movie__details-similar-button'
                         >
                             Similar
                         </Link>
                     </div>
 
-                    <Title className='с-movie-details__title'>
+                    <Title className='p-movie__details-title'>
                         {props.title}&nbsp;({formatDate(props.release_date, 'YYYY')})
                     </Title>
 
-                    <ul className='с-movie-details__list-rounds'>
+                    <ul className='p-movie__details-list-rounds'>
                         <li
-                            className='с-movie-details__list-rounds-item'
+                            className='p-movie__details-list-rounds-item'
                             style={
                                 {
                                     background: `conic-gradient(var(--color-success) ${average}%, 0, var(--color-primary) ${100 - average}%)`,
                                 }
                             }
                         >
-                            <div className='с-movie-details__list-rounds-item-inner'>
+                            <div className='p-movie__details-list-rounds-item-inner'>
                                 {average}
                                 <span>%</span>
                             </div>
                         </li>
 
-                        <li className='с-movie-details__list-rounds-item'>
+                        <li className='p-movie__details-list-rounds-item'>
                             {props.vote_count ?? 0}
                             <span>votes</span>
                         </li>
 
-                        <li className='с-movie-details__list-rounds-item'>
+                        <li className='p-movie__details-list-rounds-item'>
                             {Math.round(props.popularity)}
                             <span>popularity</span>
                         </li>
 
-                        <li className='с-movie-details__list-rounds-item'>
+                        <li className='p-movie__details-list-rounds-item'>
                             {props.runtime ?? 0}
                             <span>min</span>
                         </li>
                     </ul>
 
-                    <ul className='с-movie-details__list-info'>
+                    <ul className='p-movie__details-list-info'>
                         {
                             props.tagline &&
-                            <li className='с-movie-details__list-info-item с-movie-details__list-info-item--tagline'>
+                            <li className='p-movie__details-list-info-item p-movie__details-list-info-item--tagline'>
                                 &quot;{props.tagline}&quot;
                             </li>
                         }
 
                         {
                             props.imdb_id &&
-                            <li className='с-movie-details__list-info-item с-movie-details__list-info-item--link'>
+                            <li className='p-movie__details-list-info-item p-movie__details-list-info-item--link'>
                                 <span>IMDB:</span>
                                 <a
                                     href={`https://www.imdb.com/title/${props.imdb_id}`}
@@ -113,7 +113,7 @@ export default function MovieDetails(props: Props) {
 
                         {
                             props.homepage &&
-                            <li className='с-movie-details__list-info-item с-movie-details__list-info-item--link'>
+                            <li className='p-movie__details-list-info-item p-movie__details-list-info-item--link'>
                                 <span>WebSite:</span>
                                 <a
                                     href={props.homepage}
@@ -125,32 +125,32 @@ export default function MovieDetails(props: Props) {
                             </li>
                         }
 
-                        <li className='с-movie-details__list-info-item'>
+                        <li className='p-movie__details-list-info-item'>
                             <span>Budget:</span>
                             <span>${formatCurrency(props.budget)}</span>
                         </li>
 
-                        <li className='с-movie-details__list-info-item'>
+                        <li className='p-movie__details-list-info-item'>
                             <span>Revenue:</span>
                             <span>${formatCurrency(props.revenue)}</span>
                         </li>
 
                         {
                             props.release_date &&
-                            <li className='с-movie-details__list-info-item'>
+                            <li className='p-movie__details-list-info-item'>
                                 <span>Release:</span>
                                 <span>{formatDate(props.release_date, 'DD.MM.YYYY')}</span>
                             </li>
                         }
 
-                        <li className='с-movie-details__list-info-item'>
+                        <li className='p-movie__details-list-info-item'>
                             <span>Status:</span>
                             <span>{props.status}</span>
                         </li>
 
                         {
                             props.genres.length > 0 &&
-                            <li className='с-movie-details__list-info-item'>
+                            <li className='p-movie__details-list-info-item'>
                                 <span className='self-start'>Genres:</span>
                                 <span>
                                     {
@@ -166,14 +166,14 @@ export default function MovieDetails(props: Props) {
                             </li>
                         }
 
-                        <li className='с-movie-details__list-info-item'>
+                        <li className='p-movie__details-list-info-item'>
                             <span>Original language:</span>
                             <span>{props.original_language}</span>
                         </li>
 
                         {
                             props.spoken_languages.length > 0 &&
-                            <li className='с-movie-details__list-info-item'>
+                            <li className='p-movie__details-list-info-item'>
                                 <span className='self-start'>Spoken languages:</span>
                                 <span>
                                     {
@@ -191,7 +191,7 @@ export default function MovieDetails(props: Props) {
 
                         {
                             props.origin_country.length > 0 &&
-                            <li className='с-movie-details__list-info-item'>
+                            <li className='p-movie__details-list-info-item'>
                                 <span className='self-start'>Countries:</span>
                                 <span>
                                     {
@@ -210,11 +210,11 @@ export default function MovieDetails(props: Props) {
 
                     {
                         props.overview &&
-                        <div className='с-movie-details__overview'>
-                            <p className='с-movie-details__overview-title'>
+                        <div className='p-movie__details-overview'>
+                            <p className='p-movie__details-overview-title'>
                                 Overview:
                             </p>
-                            <p className='с-movie-details__overview-text'>
+                            <p className='p-movie__details-overview-text'>
                                 {props.overview}
                             </p>
                         </div>
@@ -224,20 +224,20 @@ export default function MovieDetails(props: Props) {
 
             {
                 props.production_companies.length > 0 &&
-                <Container className='с-movie-details__content'>
-                    <div className='с-movie-details__companies'>
-                        <p className='с-movie-details__companies-title'>
+                <Container className='p-movie__details-content'>
+                    <div className='p-movie__details-companies'>
+                        <p className='p-movie__details-companies-title'>
                             Production companies:
                         </p>
-                        <ul className='с-movie-details__companies-list'>
+                        <ul className='p-movie__details-companies-list'>
                             {
                                 props.production_companies.map(
                                     (company, index) => (
                                         <li
                                             key={index}
-                                            className='с-movie-details__companies-item'
+                                            className='p-movie__details-companies-item'
                                         >
-                                            <div className='с-movie-details__companies-logo'>
+                                            <div className='p-movie__details-companies-logo'>
                                                 <Image
                                                     src={
                                                         company.logo_path
@@ -249,7 +249,7 @@ export default function MovieDetails(props: Props) {
                                                     alt={company.name}
                                                 />
                                             </div>
-                                            <div className='с-movie-details__companies-content'>
+                                            <div className='p-movie__details-companies-content'>
                                                 <span className='text-lg font-semibold'>
                                                     {company.name}
                                                 </span>

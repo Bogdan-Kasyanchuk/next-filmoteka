@@ -32,7 +32,7 @@ export default async function Page(props: Props) {
 
     return (
         <Container className='p-persons'>
-            <Title className='font-bold uppercase text-center'>
+            <Title className='p-persons__title'>
                 Persons
             </Title>
 

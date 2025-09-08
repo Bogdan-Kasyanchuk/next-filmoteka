@@ -11,8 +11,8 @@ type Props = PersonDetailsMapper['person']
 
 export default function PersonDetails(props: Props) {
     return (
-        <div className='с-person-details'>
-            <div className='с-person-details__backdrop'>
+        <div className='p-person__details'>
+            <div className='p-person__details-backdrop'>
                 <Image
                     src={`${PARAMETERS.URL_IMG}${IMG_SIZES.PERSON_CARD_DETAILS_COVER}${props.profile_path}`}
                     sizes="(max-width: 767px) 768px, (max-width: 1319px) 1320px, 1920px"
@@ -21,11 +21,11 @@ export default function PersonDetails(props: Props) {
                 />
             </div>
 
-            <Container className='с-person-details__container'>
-                <div className='с-person-details__cover'>
+            <Container className='p-person__details-container'>
+                <div className='p-person__details-cover'>
                     {
                         props.adult &&
-                        <div className='с-person-details__adult'>
+                        <div className='p-person__details-adult'>
                             18<span>+</span>
                         </div>
                     }
@@ -42,14 +42,14 @@ export default function PersonDetails(props: Props) {
                     />
                 </div>
 
-                <Title className='с-person-details__name'>
+                <Title className='p-person__details-name'>
                     {props.name}
                 </Title>
 
-                <ul className='с-person-details__list-info'>
+                <ul className='p-person__details-list-info'>
                     {
                         props.imdb_id &&
-                        <li className='с-person-details__list-info-item с-person-details__list-info-item--link'>
+                        <li className='p-person__details-list-info-item p-person__details-list-info-item--link'>
                             <span>IMDB:</span>
                             <a
                                 href={`https://www.imdb.com/name/${props.imdb_id}`}
@@ -63,7 +63,7 @@ export default function PersonDetails(props: Props) {
 
                     {
                         props.homepage &&
-                        <li className='с-person-details__list-info-item с-person-details__list-info-item--link'>
+                        <li className='p-person__details-list-info-item p-person__details-list-info-item--link'>
                             <span>WebSite:</span>
                             <a
                                 href={props.homepage}
@@ -75,14 +75,14 @@ export default function PersonDetails(props: Props) {
                         </li>
                     }
 
-                    <li className='с-person-details__list-info-item'>
+                    <li className='p-person__details-list-info-item'>
                         <span>Department:</span>
                         {props.known_for_department}
                     </li>
 
                     {
                         props.place_of_birth &&
-                        <li className='с-person-details__list-info-item'>
+                        <li className='p-person__details-list-info-item'>
                             <span>Place of birth:</span>
                             {props.place_of_birth}
                         </li>
@@ -90,7 +90,7 @@ export default function PersonDetails(props: Props) {
 
                     {
                         props.birthday &&
-                        <li className='с-person-details__list-info-item'>
+                        <li className='p-person__details-list-info-item'>
                             <span>Birthday:</span>
                             <span>{formatDate(props.birthday, 'DD.MM.YYYY')}</span>
                         </li>
@@ -98,20 +98,20 @@ export default function PersonDetails(props: Props) {
 
                     {
                         props.deathday &&
-                        <li className='с-person-details__list-info-item'>
+                        <li className='p-person__details-list-info-item'>
                             <span>Deathday:</span>
                             <span>{formatDate(props.deathday, 'DD.MM.YYYY')}</span>
                         </li>
                     }
 
-                    <li className='с-person-details__list-info-item'>
+                    <li className='p-person__details-list-info-item'>
                         <span>Popularity:</span>
                         {Math.round(props.popularity)}
                     </li>
 
                     {
                         props.also_known_as.length > 0 &&
-                        <li className='с-person-details__list-info-item'>
+                        <li className='p-person__details-list-info-item'>
                             <span className='self-start'>Also known as:</span>
                             <span>
                                 {
@@ -130,11 +130,11 @@ export default function PersonDetails(props: Props) {
 
                 {
                     props.biography &&
-                    <div className='с-person-details__biography'>
-                        <p className='с-person-details__biography-title'>
+                    <div className='p-person__details-biography'>
+                        <p className='p-person__details-biography-title'>
                             Biography:
                         </p>
-                        <p className='с-person-details__biography-text'>
+                        <p className='p-person__details-biography-text'>
                             {props.biography}
                         </p>
                     </div>

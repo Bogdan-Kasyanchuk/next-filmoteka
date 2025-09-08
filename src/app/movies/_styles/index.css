@@ -9,6 +9,10 @@
 
     padding-block: 30px;
 
+    &__title {
+        @apply font-bold uppercase text-center;
+    }
+
     &__filter {
         display: flex;
         flex-wrap: wrap;

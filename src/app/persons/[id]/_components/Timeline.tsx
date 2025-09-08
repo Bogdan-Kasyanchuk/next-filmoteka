@@ -21,22 +21,22 @@ export default function Timeline(props: Props) {
     const crew = transformedData(props.crew);
 
     return (
-        <div className='с-timeline'>
+        <div className='p-person__timeline'>
             <Title
                 order='h3'
                 variant={3}
-                className='с-timeline__title'
+                className='p-person__timeline-title'
             >
                 Timeline
             </Title>
 
-            <ul className="с-timeline__list">
+            <ul className="p-person__timeline-list">
                 {
                     cast.length > 0 &&
-                    <li className='с-timeline__item'>
-                        <p className='с-timeline__item-title'>Acting</p>
+                    <li className='p-person__timeline-item'>
+                        <p className='p-person__timeline-item-title'>Acting</p>
 
-                        <ul className='с-timeline__item-list'>
+                        <ul className='p-person__timeline-item-list'>
                             {
                                 cast.map(
                                     (item, index) => (
@@ -52,10 +52,10 @@ export default function Timeline(props: Props) {
 
                 {
                     crew.length > 0 &&
-                    <li className='с-timeline__item'>
-                        <p className='с-timeline__item-title'>Production</p>
+                    <li className='p-person__timeline-item'>
+                        <p className='p-person__timeline-item-title'>Production</p>
 
-                        <ul className='с-timeline__item-list'>
+                        <ul className='p-person__timeline-item-list'>
                             {
                                 crew.map(
                                     (item, index) => (

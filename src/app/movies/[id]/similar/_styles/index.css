@@ -10,6 +10,10 @@
     padding-top: 20px;
     padding-bottom: 30px;
 
+    &__title {
+        @apply font-bold uppercase text-center;
+    }
+
     &__current-movie {
         @apply bg-secondary rounded-sm flex items-center gap-2.5 -mx-2.5;
         @apply sm:mx-0;

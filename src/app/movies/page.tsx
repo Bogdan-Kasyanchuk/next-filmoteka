@@ -39,7 +39,7 @@ export default async function Page(props: Props) {
         <Container className='p-movies'>
             <Filter type={type} />
 
-            <Title className='font-bold uppercase text-center'>
+            <Title className='p-movies__title'>
                 <TitleText type={type} />
             </Title>
 
