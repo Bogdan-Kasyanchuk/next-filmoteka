@@ -41,7 +41,7 @@ export default function Content(props: Props) {
 
             {
                 data.episodes.length > 0
-                    ? <ul className='p-season__media-list'>
+                    ? <ul className='p-season__list'>
                         {
                             data.episodes.map(
                                 (episode, index) => (

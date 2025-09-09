@@ -57,7 +57,7 @@ export default function Content(props: Props) {
             {
                 data.similar.length > 0
                     ? <div className='p-movie-similar__content'>
-                        <ul className='p-movie-similar__media-list'>
+                        <ul className='p-movie-similar__list'>
                             {
                                 data.similar.map(
                                     (movie) => (
@@ -69,10 +69,13 @@ export default function Content(props: Props) {
                             }
                         </ul>
 
-                        <Pagination
-                            currentPage={props.currentPage}
-                            totalPages={data.total_pages}
-                        />
+                        {
+                            data.total_pages > 1 &&
+                            <Pagination
+                                currentPage={props.currentPage}
+                                totalPages={data.total_pages}
+                            />
+                        }
                     </div>
                     : <DataNotFound />
             }

@@ -51,7 +51,7 @@ export default function Content(props: Props) {
                     ? <Loader />
                     : data && data.results.length > 0
                         ? <div className='p-search__content'>
-                            <ul className='p-search__media-list'>
+                            <ul className='p-search__list'>
                                 {
                                     data.results.map(
                                         (result) => (
@@ -76,10 +76,13 @@ export default function Content(props: Props) {
                                 }
                             </ul>
 
-                            <Pagination
-                                currentPage={props.currentPage}
-                                totalPages={data.total_pages}
-                            />
+                            {
+                                data.total_pages > 1 &&
+                                <Pagination
+                                    currentPage={props.currentPage}
+                                    totalPages={data.total_pages}
+                                />
+                            }
                         </div>
                         : <div className='p-search__no-search-results'>
                             No search results

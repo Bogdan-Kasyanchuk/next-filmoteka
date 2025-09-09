@@ -16,7 +16,6 @@ function transformedData<T extends MediaCastMapper | MediaCrewMapper>(data: T[])
 };
 
 export default function Timeline(props: Props) {
-
     const cast = transformedData(props.cast);
     const crew = transformedData(props.crew);
 

@@ -22,7 +22,7 @@ const links = [
         icon: '/svg/movie.svg',
     },
     {
-        name: 'TV Shows',
+        name: 'TV',
         href: '/tv-shows',
         icon: '/svg/tv.svg',
     },

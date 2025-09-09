@@ -117,6 +117,10 @@ export type MovieDetailsForSimilarShema = Omit<MovieDetailsShema, 'credits' | 'v
     similar: DataShema<SimilarMovieShema>,
 };
 
+export type MovieDetailsForReviewsShema = Omit<MovieDetailsShema, 'credits' | 'videos' | 'recommendations'>;
+
+export type MovieDetailsForRecommendationsShema = Omit<MovieDetailsShema, 'credits' | 'videos' | 'reviews'>;
+
 export type TVShowShema = {
     adult: boolean,
     backdrop_path: string,
@@ -186,6 +190,10 @@ export type TVShowDetailsShema = {
 export type TVShowDetailsForSimilarShema = Omit<TVShowDetailsShema, 'seasons' | 'credits' | 'videos' | 'reviews' | 'recommendations'> & {
     similar: DataShema<SimilarTVShowShema>,
 };
+
+export type TVShowDetailsForReviewsShema = Omit<TVShowDetailsShema, 'seasons' | 'credits' | 'videos' | 'recommendations'>;
+
+export type TVShowDetailsForRecommendationsShema = Omit<TVShowDetailsShema, 'seasons' | 'credits' | 'videos' | 'reviews'>;
 
 export type TVShowSeasonDetailsShema = {
     _id: string,

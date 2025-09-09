@@ -13,7 +13,7 @@ import TitleText from './_components/TitleText';
 import './_styles/index.css';
 
 export const metadata: Metadata = {
-    title: 'TVShow',
+    title: 'TV',
 };
 
 type Props = {

@@ -1,7 +1,7 @@
 @import '../../../../../styles/app/base.css';
 @import '../../../../../styles/app/components.css';
 
-.p-season {
+.p-movie-reviews {
     display: flex;
     flex-direction: column;
     row-gap: 20px;
@@ -10,10 +10,14 @@
     padding-top: 20px;
     padding-bottom: 30px;
 
-    &__current-season {
-        @apply bg-secondary rounded-sm flex flex-col -mx-2.5 text-primary;
+    &__title {
+        @apply font-bold uppercase text-center;
+    }
+
+    &__current-movie {
+        @apply bg-secondary rounded-sm flex items-center gap-2.5 -mx-2.5;
         @apply sm:mx-0;
-        @apply lg:flex-row;
+        @apply xl:gap-5;
 
         width: calc(100% + 20px);
 
@@ -21,16 +25,9 @@
             width: 100%;
         }
 
-        &-inner {
-            @apply flex items-center grow;
-        }
-
         &-cover {
             position: relative;
-
             flex-shrink: 0;
-            align-self: flex-start;
-
             aspect-ratio: 2/3;
             width: 60px;
 
@@ -52,10 +49,12 @@
             flex-direction: column;
             flex-grow: 1;
             gap: 4px;
+            justify-content: space-between;
 
             min-width: 1px;
             height: 100%;
-            padding: 10px;
+            padding-block: 10px;
+            padding-inline-end: 10px;
 
             color: var(--color-primary);
 
@@ -70,12 +69,18 @@
         }
 
         &-title {
-            overflow: hidden;
-
             font-weight: 700;
             line-height: 1;
-            text-overflow: ellipsis;
-            white-space: nowrap;
+
+            a[href] {
+                overflow: hidden;
+                display: inline-block;
+
+                max-width: 100%;
+
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
         }
 
         &-tags {
@@ -100,6 +105,17 @@
                 background-color: var(--color-primary);
             }
 
+            &--adult {
+                border-color: var(--color-danger);
+                color: var(--color-danger);
+                background-color: var(--color-primary);
+
+                span {
+                    position: relative;
+                    top: -3px;
+                }
+            }
+
             &--average {
                 border-color: var(--color-primary);
                 color: var(--color-primary);
@@ -113,60 +129,27 @@
             }
         }
 
-        &-overview {
-            padding: 10px;
+        &-genres {
             font-size: var(--text-xs);
-            line-height: 1.25;
-            opacity: 0.75;
+            line-height: 1;
+        }
+    }
 
-            @variant min-lg {
-                width: 50%;
-            }
+    &__content {
+        display: flex;
+        flex-direction: column;
+        row-gap: 20px;
+        align-items: center;
 
-            @variant min-xl {
-                padding-inline: 20px;
-                font-size: var(--text-sm);
-            }
+        width: 100%;
+
+        @variant min-md {
+            row-gap: 30px;
         }
     }
 
     &__list {
-        display: grid;
-        grid-gap: 5px;
-        grid-template-columns: repeat(auto-fill, 175px);
-        justify-content: center;
-
-        width: calc(100% + 20px);
-        margin-inline: -10px;
-
-        @variant min-sm {
-            grid-gap: 10px;
-            grid-template-columns: repeat(auto-fill, 215px);
-            width: 100%;
-            margin-inline: 0;
-        }
-
-        @variant min-md {
-            grid-gap: 15px;
-            grid-template-columns: repeat(auto-fill, 212px);
-            max-width: 668px;
-        }
-
-        @variant min-lg {
-            grid-gap: 20px;
-            grid-template-columns: repeat(auto-fill, 216px);
-            max-width: 924px;
-        }
-
-        @variant min-xl {
-            grid-template-columns: repeat(auto-fill, 228px);
-            max-width: 1220px;
-        }
-
-        @variant min-xxl {
-            grid-template-columns: repeat(auto-fill, 233px);
-            max-width: 1500px;
-        }
+        @apply mt-5 grid grid-cols-1 gap-5;
     }
 
     @variant min-md {

@@ -148,7 +148,7 @@
         }
     }
 
-    &__media-list {
+    &__list {
         display: grid;
         grid-gap: 5px;
         grid-template-columns: repeat(auto-fill, 175px);

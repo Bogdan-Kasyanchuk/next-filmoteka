@@ -38,7 +38,7 @@ export default function Content(props: Props) {
                     ? <Loader />
                     : data && data.tvShows.length > 0
                         ? <div className='p-tv-shows__content'>
-                            <ul className='p-tv-shows__media-list'>
+                            <ul className='p-tv-shows__list'>
                                 {
                                     data.tvShows.map(
                                         (tvShow) => (
@@ -50,10 +50,13 @@ export default function Content(props: Props) {
                                 }
                             </ul>
 
-                            <Pagination
-                                currentPage={props.currentPage}
-                                totalPages={data.total_pages}
-                            />
+                            {
+                                data.total_pages > 1 &&
+                                <Pagination
+                                    currentPage={props.currentPage}
+                                    totalPages={data.total_pages}
+                                />
+                            }
                         </div>
                         : <DataNotFound />
             }

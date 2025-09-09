@@ -4,15 +4,15 @@ import { keepPreviousData, useQuery } from '@tanstack/react-query';
 import { notFound } from 'next/navigation';
 
 import Pagination from '@/components/app/Pagination';
-import TVShowCard from '@/components/ui/cards/TVShowCard';
+import MovieCard from '@/components/ui/cards/MovieCard';
 import DataNotFound from '@/components/ui/data-display/DataNotFound';
 import Loader from '@/components/ui/data-display/Loader';
 import Container from '@/components/ui/layouts/Container';
 import Title from '@/components/ui/typography/Title';
-import { transformTVShowDetailsForSimilar } from '@/helpers/transformData';
-import { getSimilarToTVShow } from '@/services/api';
+import { transformMovieDetailsForRecommendations } from '@/helpers/transformData';
+import { getRecommendationsToMovie } from '@/services/api';
 
-import CurrentTVShow from './CurrentTVShow';
+import CurrentMovie from './CurrentMovie';
 
 type Props = {
     id: string;
@@ -21,16 +21,16 @@ type Props = {
 
 export default function Content(props: Props) {
     const { data, isPending, isFetching } = useQuery({
-        queryKey: ['tv-shows', props.id, 'similar', props.currentPage],
-        queryFn: () => getSimilarToTVShow(props.id, props.currentPage),
+        queryKey: ['movies', props.id, 'recommendations', props.currentPage],
+        queryFn: () => getRecommendationsToMovie(props.id, props.currentPage),
         placeholderData: keepPreviousData,
         select: (data) => {
-            const transformedResults = transformTVShowDetailsForSimilar(data);
+            const transformedResults = transformMovieDetailsForRecommendations(data);
 
             return {
-                tvShow: transformedResults.tvShow,
-                similar: transformedResults.similar,
-                total_pages: data.similar.total_pages
+                movie: transformedResults.movie,
+                recommendations: transformedResults.recommendations,
+                total_pages: data.recommendations.total_pages
             };
         },
     });
@@ -44,25 +44,25 @@ export default function Content(props: Props) {
     }
 
     return (
-        <Container className='p-tv-show-similar'>
-            <CurrentTVShow
-                tvShow={data.tvShow}
+        <Container className='p-movie-recommendations'>
+            <CurrentMovie
+                movie={data.movie}
                 id={props.id}
             />
 
-            <Title className='p-tv-show-similar__title'>
-                Similar
+            <Title className='p-movie-recommendations__title'>
+                Recommendations
             </Title>
 
             {
-                data.similar.length > 0
-                    ? <div className='p-tv-show-similar__content'>
-                        <ul className='p-tv-show-similar__list'>
+                data.recommendations.length > 0
+                    ? <div className='p-movie-recommendations__content'>
+                        <ul className='p-movie-recommendations__list'>
                             {
-                                data.similar.map(
-                                    (tvShow) => (
-                                        <li key={tvShow.id}>
-                                            <TVShowCard tvShow={tvShow} />
+                                data.recommendations.map(
+                                    (movie) => (
+                                        <li key={movie.id}>
+                                            <MovieCard movie={movie} />
                                         </li>
                                     )
                                 )

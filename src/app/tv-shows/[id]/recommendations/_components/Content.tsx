@@ -9,8 +9,8 @@ import DataNotFound from '@/components/ui/data-display/DataNotFound';
 import Loader from '@/components/ui/data-display/Loader';
 import Container from '@/components/ui/layouts/Container';
 import Title from '@/components/ui/typography/Title';
-import { transformTVShowDetailsForSimilar } from '@/helpers/transformData';
-import { getSimilarToTVShow } from '@/services/api';
+import { transformTVShowDetailsForRecommendations } from '@/helpers/transformData';
+import { getRecommendationsToTVShow } from '@/services/api';
 
 import CurrentTVShow from './CurrentTVShow';
 
@@ -21,16 +21,16 @@ type Props = {
 
 export default function Content(props: Props) {
     const { data, isPending, isFetching } = useQuery({
-        queryKey: ['tv-shows', props.id, 'similar', props.currentPage],
-        queryFn: () => getSimilarToTVShow(props.id, props.currentPage),
+        queryKey: ['tv-shows', props.id, 'recommendations', props.currentPage],
+        queryFn: () => getRecommendationsToTVShow(props.id, props.currentPage),
         placeholderData: keepPreviousData,
         select: (data) => {
-            const transformedResults = transformTVShowDetailsForSimilar(data);
+            const transformedResults = transformTVShowDetailsForRecommendations(data);
 
             return {
                 tvShow: transformedResults.tvShow,
-                similar: transformedResults.similar,
-                total_pages: data.similar.total_pages
+                recommendations: transformedResults.recommendations,
+                total_pages: data.recommendations.total_pages
             };
         },
     });
@@ -44,22 +44,22 @@ export default function Content(props: Props) {
     }
 
     return (
-        <Container className='p-tv-show-similar'>
+        <Container className='p-tv-show-recommendations'>
             <CurrentTVShow
                 tvShow={data.tvShow}
                 id={props.id}
             />
 
-            <Title className='p-tv-show-similar__title'>
-                Similar
+            <Title className='p-tv-show-recommendations__title'>
+                Recommendations
             </Title>
 
             {
-                data.similar.length > 0
-                    ? <div className='p-tv-show-similar__content'>
-                        <ul className='p-tv-show-similar__list'>
+                data.recommendations.length > 0
+                    ? <div className='p-tv-show-recommendations__content'>
+                        <ul className='p-tv-show-recommendations__list'>
                             {
-                                data.similar.map(
+                                data.recommendations.map(
                                     (tvShow) => (
                                         <li key={tvShow.id}>
                                             <TVShowCard tvShow={tvShow} />
