@@ -1,0 +1,23 @@
+@import '../../../../styles/app/base.css';
+@import '../../../../styles/app/components.css';
+
+.p-login {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+    align-items: center;
+
+    padding-block: 30px;
+
+    &__title {
+        @apply font-bold uppercase text-center;
+    }
+
+    &__form {
+        @apply w-full;
+    }
+
+    @variant min-md {
+        row-gap: 30px;
+    }
+}

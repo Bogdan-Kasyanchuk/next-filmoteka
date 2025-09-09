@@ -1,5 +1,5 @@
 .c-scroll-to-top {
-    @apply w-10 h-10 rounded-xs fixed bottom-5 right-5 flex items-center justify-center z-100 bg-primary cursor-pointer;
+    @apply w-10 h-10 rounded-xs fixed bottom-5 right-5 flex items-center justify-center z-100 bg-primary;
 
     transition-property: background-color, box-shadow;
 

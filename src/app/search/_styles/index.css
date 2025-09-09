@@ -51,7 +51,7 @@
         }
 
         &-clear {
-            @apply cursor-pointer w-12 h-12 flex items-center justify-center absolute top-1/2 -translate-y-1/2 end-0 transition-opacity;
+            @apply w-12 h-12 flex items-center justify-center absolute top-1/2 -translate-y-1/2 end-0 transition-opacity;
 
             &:hover {
                 @apply opacity-75;
