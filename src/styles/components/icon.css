@@ -21,3 +21,11 @@
 .i-icon--arrow {
     --icon-path: url('/svg/arrow.svg');
 }
+
+.i-icon--email {
+    --icon-path: url('/svg/email.svg');
+}
+
+.i-icon--key {
+    --icon-path: url('/svg/key.svg');
+}

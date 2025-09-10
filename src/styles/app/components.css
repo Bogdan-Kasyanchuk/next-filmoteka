@@ -6,6 +6,8 @@
 @import '../components/casts.css';
 @import '../components/videos.css';
 @import '../components/reviews.css';
+@import '../components/forms/base.css';
+@import '../components/forms/field.css';
 
 /* Cards */
 @import '../components/cards/movie-card.css';

@@ -14,7 +14,36 @@
     }
 
     &__form {
-        @apply w-full;
+        @apply w-full max-w-[728px];
+
+        &-fields {
+            display: flex;
+            flex-direction: column;
+            row-gap: 20px;
+        }
+
+        &-button {
+            display: block;
+
+            width: 100%;
+            max-width: 335px;
+            min-height: 50px;
+            margin-top: 40px;
+            margin-inline: auto;
+            padding: 12px 24px;
+            border-radius: 4px;
+
+            font-size: var(--text-lg);
+            font-weight: 700;
+            text-align: center;
+            text-transform: uppercase;
+
+            @apply bg-link transition-colors;
+
+            &:hover {
+                @apply bg-link-hover;
+            }
+        }
     }
 
     @variant min-md {

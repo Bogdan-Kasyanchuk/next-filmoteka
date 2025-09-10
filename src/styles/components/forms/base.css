@@ -1,0 +1,24 @@
+.f-group {
+    &--disabled {
+        pointer-events: none;
+        opacity: 0.5;
+    }
+}
+
+.f-label {
+    display: inline-block;
+
+    margin-bottom: 10px;
+
+    font-size: var(--text-lg);
+    font-weight: 700;
+    line-height: 1.2;
+    color:  var(--color-white);
+}
+
+.f-error {
+    margin-top: 4px;
+    font-size: var(--text-xs);
+    line-height: 1.2;
+    color: var(--color-danger);
+}

@@ -93,6 +93,7 @@ export type ArrowProps = {
 function Arrow(props: ArrowProps) {
     return (
         <button
+            type="button"
             ref={props.refEl}
             className={
                 clsx(
