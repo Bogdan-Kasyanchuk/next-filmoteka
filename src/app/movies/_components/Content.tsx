@@ -1,6 +1,7 @@
 'use client';
 
-import { keepPreviousData, useQuery } from '@tanstack/react-query';
+import { keepPreviousData, useInfiniteQuery, useQuery } from '@tanstack/react-query';
+import { Fragment } from 'react';
 
 import Pagination from '@/components/app/Pagination';
 import MovieCard from '@/components/ui/cards/MovieCard';
@@ -16,50 +17,106 @@ type Props = {
 }
 
 export default function Content(props: Props) {
-    const { data, isPending, isFetching } = useQuery({
+    const { data,
+        fetchNextPage,
+        hasNextPage,
+        isFetchingNextPage,
+        isLoading,
+        isError,
+        error,
+    } = useInfiniteQuery({
         queryKey: ['movies', props.type, props.currentPage],
-        queryFn: () => getMovies(props.type, props.currentPage),
-        placeholderData: keepPreviousData,
-        select: (data) => {
-            const transformedResults = data.results.map(
-                (movie) => transformMovie(movie));
+        queryFn: ({ pageParam }) => {
+            console.log(pageParam);
 
-            return {
-                movies: transformedResults,
-                total_pages: data.total_pages
-            };
+            return getMovies(props.type, pageParam);
         },
+        placeholderData: keepPreviousData,
+        initialPageParam: 1,
+        getNextPageParam: (lastPage, allPages) => {
+            // console.log(lastPage);
+
+            return lastPage.page + 1;
+        },
+        // select: (data) => {
+        //     const transformedResults = data.results.map(
+        //         (movie) => transformMovie(movie));
+
+        //     return {
+        //         movies: transformedResults,
+        //         total_pages: data.total_pages
+        //     };
+        // },
     });
 
-    return (
-        <>
-            {
-                isPending || isFetching
-                    ? <Loader />
-                    : data && data.movies.length > 0
-                        ? <div className='p-movies__content'>
-                            <ul className='p-movies__list'>
-                                {
-                                    data.movies.map(
-                                        (movie) => (
-                                            <li key={movie.id}>
-                                                <MovieCard movie={movie} />
-                                            </li>
-                                        )
-                                    )
-                                }
-                            </ul>
+    if (isLoading) return <div>Loading projects...</div>;
+    if (isError) return <div>Error: {error.message}</div>;
 
+    if (!data) {
+        return;
+    }
+
+    // console.log(data);
+
+    return (
+        // <>
+        //     {
+        //         isPending || isFetching
+        //             ? <Loader />
+        //             : data && data.movies.length > 0
+        //                 ? <div className='p-movies__content'>
+        //                     <ul className='p-movies__list'>
+        //                         {
+        //                             data.movies.map(
+        //                                 (movie) => (
+        //                                     <li key={movie.id}>
+        //                                         <MovieCard movie={movie} />
+        //                                     </li>
+        //                                 )
+        //                             )
+        //                         }
+        //                     </ul>
+
+        //                     {
+        //                         data.total_pages > 1 &&
+        //                         <Pagination
+        //                             currentPage={props.currentPage}
+        //                             totalPages={data.total_pages}
+        //                         />
+        //                     }
+        //                 </div>
+        //                 : <DataNotFound />
+        //     }
+        // </>
+        <div>
+            <h1>Projects</h1>
+            <ul>
+                {
+                    data.pages.map((page, i) => (
+                        <Fragment key={i}>
                             {
-                                data.total_pages > 1 &&
-                                <Pagination
-                                    currentPage={props.currentPage}
-                                    totalPages={data.total_pages}
-                                />
+                                page.results.map((item, index) => (
+                                    <li
+                                        className='text-2xl text-white'
+                                        key={item.id}
+                                    >{index + item.title + item.id}</li>
+                                ))
                             }
-                        </div>
-                        : <DataNotFound />
+                        </Fragment>
+                    ))
+                }
+            </ul>
+            {
+                hasNextPage && (
+                    <button
+                        onClick={() => fetchNextPage()}
+                        disabled={isFetchingNextPage}
+                        className='text-2xl text-danger'
+                    >
+                        {isFetchingNextPage ? 'Loading more...' : 'Load More'}
+                    </button>
+                )
             }
-        </>
+        </div>
     );
 }

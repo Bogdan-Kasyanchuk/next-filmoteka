@@ -30,9 +30,22 @@ export default async function Page(props: Props) {
 
     const queryClient = new QueryClient();
 
-    await queryClient.prefetchQuery({
+    await queryClient.prefetchInfiniteQuery({
         queryKey: ['movies', type, currentPage],
-        queryFn: () => getMovies(type, currentPage),
+        queryFn: ({ pageParam }) => {
+            console.log(pageParam);
+            console.log('wqwqwq');
+
+            return getMovies(type, pageParam);
+
+        },
+        initialPageParam: 1,
+        getNextPageParam: (lastPage) => {
+            // console.log(lastPage);
+
+            return lastPage.page + 1;
+        },
+        pages: 1,
     });
 
     return (
