@@ -113,13 +113,7 @@ export type MovieDetailsShema = {
     recommendations: DataShema<RecommendationMovieShema>,
 };
 
-export type MovieDetailsForSimilarShema = Omit<MovieDetailsShema, 'credits' | 'videos' | 'reviews' | 'recommendations'> & {
-    similar: DataShema<SimilarMovieShema>,
-};
-
-export type MovieDetailsForReviewsShema = Omit<MovieDetailsShema, 'credits' | 'videos' | 'recommendations'>;
-
-export type MovieDetailsForRecommendationsShema = Omit<MovieDetailsShema, 'credits' | 'videos' | 'reviews'>;
+export type CurrentMovieDetailsShema = Omit<MovieDetailsShema, 'credits' | 'videos' | 'reviews' | 'recommendations'>;
 
 export type TVShowShema = {
     adult: boolean,

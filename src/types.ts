@@ -128,43 +128,14 @@ export type MovieDetailsMapper = {
     },
 };
 
-export type MovieDetailsForSimilarMapper = {
-    movie: {
-        adult: boolean,
-        title: string,
-        vote_average: number,
-        poster_path: string,
-        release_date: string,
-        media_type: MediaType.MOVIE,
-        genres: string[],
-    },
-    similar: SimilarMovieMapper[],
-};
-
-export type MovieDetailsForReviewsMapper = {
-    movie: {
-        adult: boolean,
-        title: string,
-        vote_average: number,
-        poster_path: string,
-        release_date: string,
-        media_type: MediaType.MOVIE,
-        genres: string[],
-    },
-    reviews: ReviewMapper[],
-};
-
-export type MovieDetailsForRecommendationsMapper = {
-    movie: {
-        adult: boolean,
-        title: string,
-        vote_average: number,
-        poster_path: string,
-        release_date: string,
-        media_type: MediaType.MOVIE,
-        genres: string[],
-    },
-    recommendations: RecommendationMovieMapper[],
+export type CurrentMovieDetailsMapper = {
+    adult: boolean,
+    title: string,
+    vote_average: number,
+    poster_path: string,
+    release_date: string,
+    media_type: MediaType.MOVIE,
+    genres: string[],
 };
 
 export type TVShowMapper = {

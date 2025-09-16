@@ -4,11 +4,11 @@ import { Fragment } from 'react';
 
 import Title from '@/components/ui/typography/Title';
 import { IMG_SIZES, PARAMETERS } from '@/helpers/parameters';
-import { MovieDetailsForReviewsMapper } from '@/types';
+import { CurrentMovieDetailsMapper } from '@/types';
 import { formatDate } from '@/utils/formateDate';
 
 type Props = {
-    movie: MovieDetailsForReviewsMapper['movie'];
+    movie: CurrentMovieDetailsMapper;
     id: string;
 }
 

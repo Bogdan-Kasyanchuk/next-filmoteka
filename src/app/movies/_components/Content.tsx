@@ -21,11 +21,10 @@ export default function Content(props: Props) {
         queryFn: () => getMovies(props.type, props.currentPage),
         placeholderData: keepPreviousData,
         select: (data) => {
-            const transformedResults = data.results.map(
-                (movie) => transformMovie(movie));
-
             return {
-                movies: transformedResults,
+                movies: data.results.map(
+                    (movie) => transformMovie(movie)
+                ),
                 total_pages: data.total_pages
             };
         },

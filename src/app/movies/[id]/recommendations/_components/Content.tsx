@@ -1,6 +1,6 @@
 'use client';
 
-import { keepPreviousData, useQuery } from '@tanstack/react-query';
+import { keepPreviousData, useQueries } from '@tanstack/react-query';
 import { notFound } from 'next/navigation';
 
 import Pagination from '@/components/app/Pagination';
@@ -9,8 +9,11 @@ import DataNotFound from '@/components/ui/data-display/DataNotFound';
 import Loader from '@/components/ui/data-display/Loader';
 import Container from '@/components/ui/layouts/Container';
 import Title from '@/components/ui/typography/Title';
-import { transformMovieDetailsForRecommendations } from '@/helpers/transformData';
-import { getRecommendationsToMovie } from '@/services/api';
+import {
+    transformCurrentMovieDetails,
+    transformRecommendationMovie
+} from '@/helpers/transformData';
+import { getCurrentMovieById, getRecommendationsMovies } from '@/services/api';
 
 import CurrentMovie from './CurrentMovie';
 
@@ -20,26 +23,38 @@ type Props = {
 }
 
 export default function Content(props: Props) {
-    const { data, isPending, isFetching } = useQuery({
-        queryKey: ['movies', props.id, 'recommendations', props.currentPage],
-        queryFn: () => getRecommendationsToMovie(props.id, props.currentPage),
-        placeholderData: keepPreviousData,
-        select: (data) => {
-            const transformedResults = transformMovieDetailsForRecommendations(data);
-
+    const data = useQueries({
+        queries: [
+            {
+                queryKey: ['movies', props.id, 'recommendations'],
+                queryFn: () => getCurrentMovieById(props.id),
+            },
+            {
+                queryKey: ['movies', props.id, 'recommendations', props.currentPage],
+                queryFn: () => getRecommendationsMovies(props.id, props.currentPage),
+                placeholderData: keepPreviousData,
+            },
+        ],
+        combine: (results) => {
             return {
-                movie: transformedResults.movie,
-                recommendations: transformedResults.recommendations,
-                total_pages: data.recommendations.total_pages
+                movie: results[0].data && transformCurrentMovieDetails(results[0].data),
+                recommendations: {
+                    movies: results[1].data && results[1].data.results.map(
+                        (movie) => transformRecommendationMovie(movie)
+                    ),
+                    total_pages: results[1].data?.total_pages
+                },
+                pending: results.some((result) => result.isPending),
+                fetching: results.some((result) => result.isFetching),
             };
         },
     });
 
-    if (isPending || isFetching) {
+    if (data.pending || data.fetching) {
         return <Loader />;
     }
 
-    if (!data) {
+    if (!data.movie || !data.recommendations.movies) {
         return notFound();
     }
 
@@ -55,11 +70,11 @@ export default function Content(props: Props) {
             </Title>
 
             {
-                data.recommendations.length > 0
+                data.recommendations.movies.length > 0
                     ? <div className='p-movie-recommendations__content'>
                         <ul className='p-movie-recommendations__list'>
                             {
-                                data.recommendations.map(
+                                data.recommendations.movies.map(
                                     (movie) => (
                                         <li key={movie.id}>
                                             <MovieCard movie={movie} />
@@ -70,10 +85,10 @@ export default function Content(props: Props) {
                         </ul>
 
                         {
-                            data.total_pages > 1 &&
+                            (data.recommendations.total_pages && data.recommendations.total_pages > 1) &&
                             <Pagination
                                 currentPage={props.currentPage}
-                                totalPages={data.total_pages}
+                                totalPages={data.recommendations.total_pages}
                             />
                         }
                     </div>

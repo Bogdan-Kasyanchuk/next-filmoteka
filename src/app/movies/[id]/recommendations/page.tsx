@@ -1,7 +1,7 @@
 import { dehydrate, QueryClient, HydrationBoundary } from '@tanstack/react-query';
 import { Metadata } from 'next';
 
-import { getRecommendationsToMovie } from '@/services/api';
+import { getCurrentMovieById, getRecommendationsMovies } from '@/services/api';
 
 import Content from './_components/Content';
 
@@ -27,10 +27,20 @@ export default async function Page(props: Props) {
 
     const queryClient = new QueryClient();
 
-    await queryClient.prefetchQuery({
-        queryKey: ['movies', id, 'recommendations', currentPage],
-        queryFn: () => getRecommendationsToMovie(id, currentPage),
-    });
+    await Promise.all([
+        await queryClient.prefetchQuery(
+            {
+                queryKey: ['movies', id, 'recommendations'],
+                queryFn: () => getCurrentMovieById(id),
+            },
+        ),
+        await queryClient.prefetchQuery(
+            {
+                queryKey: ['movies', id, 'recommendations', currentPage],
+                queryFn: () => getRecommendationsMovies(id, currentPage),
+            },
+        )
+    ]);
 
     return (
         <HydrationBoundary state={dehydrate(queryClient)}>

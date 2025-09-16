@@ -1,6 +1,6 @@
 'use client';
 
-import { keepPreviousData, useQuery } from '@tanstack/react-query';
+import { keepPreviousData, useQueries } from '@tanstack/react-query';
 import { notFound } from 'next/navigation';
 
 import Pagination from '@/components/app/Pagination';
@@ -9,8 +9,8 @@ import DataNotFound from '@/components/ui/data-display/DataNotFound';
 import Loader from '@/components/ui/data-display/Loader';
 import Container from '@/components/ui/layouts/Container';
 import Title from '@/components/ui/typography/Title';
-import { transformMovieDetailsForSimilar } from '@/helpers/transformData';
-import { getSimilarToMovie } from '@/services/api';
+import { transformCurrentMovieDetails, transformSimilarMovie } from '@/helpers/transformData';
+import { getCurrentMovieById, getSimilarMovies } from '@/services/api';
 
 import CurrentMovie from './CurrentMovie';
 
@@ -20,26 +20,38 @@ type Props = {
 }
 
 export default function Content(props: Props) {
-    const { data, isPending, isFetching } = useQuery({
-        queryKey: ['movies', props.id, 'similar', props.currentPage],
-        queryFn: () => getSimilarToMovie(props.id, props.currentPage),
-        placeholderData: keepPreviousData,
-        select: (data) => {
-            const transformedResults = transformMovieDetailsForSimilar(data);
-
+    const data = useQueries({
+        queries: [
+            {
+                queryKey: ['movies', props.id, 'similar'],
+                queryFn: () => getCurrentMovieById(props.id),
+            },
+            {
+                queryKey: ['movies', props.id, 'similar', props.currentPage],
+                queryFn: () => getSimilarMovies(props.id, props.currentPage),
+                placeholderData: keepPreviousData,
+            },
+        ],
+        combine: (results) => {
             return {
-                movie: transformedResults.movie,
-                similar: transformedResults.similar,
-                total_pages: data.similar.total_pages
+                movie: results[0].data && transformCurrentMovieDetails(results[0].data),
+                similar: {
+                    movies: results[1].data && results[1].data.results.map(
+                        (movie) => transformSimilarMovie(movie)
+                    ),
+                    total_pages: results[1].data?.total_pages
+                },
+                pending: results.some((result) => result.isPending),
+                fetching: results.some((result) => result.isFetching),
             };
         },
     });
 
-    if (isPending || isFetching) {
+    if (data.pending || data.fetching) {
         return <Loader />;
     }
 
-    if (!data) {
+    if (!data.movie || !data.similar.movies) {
         return notFound();
     }
 
@@ -55,11 +67,11 @@ export default function Content(props: Props) {
             </Title>
 
             {
-                data.similar.length > 0
+                data.similar.movies.length > 0
                     ? <div className='p-movie-similar__content'>
                         <ul className='p-movie-similar__list'>
                             {
-                                data.similar.map(
+                                data.similar.movies.map(
                                     (movie) => (
                                         <li key={movie.id}>
                                             <MovieCard movie={movie} />
@@ -70,10 +82,10 @@ export default function Content(props: Props) {
                         </ul>
 
                         {
-                            data.total_pages > 1 &&
+                            (data.similar.total_pages && data.similar.total_pages > 1) &&
                             <Pagination
                                 currentPage={props.currentPage}
-                                totalPages={data.total_pages}
+                                totalPages={data.similar.total_pages}
                             />
                         }
                     </div>

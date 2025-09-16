@@ -149,7 +149,7 @@
     }
 
     &__list {
-        @apply mt-5 grid grid-cols-1 gap-5;
+        @apply grid grid-cols-1 gap-5;
     }
 
     @variant min-md {
