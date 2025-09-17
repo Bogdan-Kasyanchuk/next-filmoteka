@@ -1,5 +1,6 @@
 /* Components */
 @import '../components/tabs.css';
+@import '../components/popover.css';
 @import '../components/pagination.css';
 @import '../components/carousel.css';
 @import '../components/recommendations.css';

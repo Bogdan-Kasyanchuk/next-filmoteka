@@ -3,14 +3,11 @@ import {
     CastShema,
     MovieDetailsShema,
     MovieShema,
-    RecommendationMovieShema,
-    RecommendationTVShowShema,
     ReviewShema,
     SeasonShema,
     SimilarMovieShema,
     SimilarTVShowShema,
     TVShowDetailsShema,
-    TVShowDetailsForSimilarShema,
     TVShowShema,
     VideoShema,
     TVShowSeasonDetailsShema,
@@ -19,22 +16,16 @@ import {
     PersonDetailsShema,
     MediaCastShema,
     MediaCrewShema,
-    TVShowDetailsForReviewsShema,
-    TVShowDetailsForRecommendationsShema,
-    CurrentMovieDetailsShema
+    CurrentMovieShema,
+    CurrentTVShowShema
 } from '@/shemas';
 import {
     CastMapper,
     MovieDetailsMapper,
     MovieMapper,
-    RecommendationMovieMapper,
-    RecommendationTVShowMapper,
     ReviewMapper,
     SeasonMapper,
-    SimilarMovieMapper,
-    SimilarTVShowMapper,
     TVShowDetailsMapper,
-    TVShowDetailsForSimilarMapper,
     TVShowMapper,
     VideoMapper,
     EpisodeMapper,
@@ -43,12 +34,11 @@ import {
     PersonDetailsMapper,
     MediaCastMapper,
     MediaCrewMapper,
-    TVShowDetailsForReviewsMapper,
-    TVShowDetailsForRecommendationsMapper,
-    CurrentMovieDetailsMapper
+    CurrentMovieMapper,
+    CurrentTVShowMapper
 } from '@/types';
 
-export const transformMovie = (movie: MovieShema) => ({
+export const transformMovie = (movie: MovieShema | SimilarMovieShema) => ({
     id: movie.id,
     adult: movie.adult,
     title: movie.title || movie.original_title,
@@ -114,13 +104,13 @@ export const transformMovieDetails = (movie: MovieDetailsShema) => ({
     },
     recommendations: {
         items: movie.recommendations.results.map(
-            (movie) => transformRecommendationMovie(movie)
+            (movie) => transformMovie(movie)
         ),
         totalPages: movie.recommendations.total_pages
     },
 }) as MovieDetailsMapper;
 
-export const transformCurrentMovieDetails = (movie: CurrentMovieDetailsShema) => ({
+export const transformCurrentMovie = (movie: CurrentMovieShema) => ({
     adult: movie.adult,
     title: movie.title || movie.original_title,
     vote_average: movie.vote_average,
@@ -128,27 +118,9 @@ export const transformCurrentMovieDetails = (movie: CurrentMovieDetailsShema) =>
     release_date: movie.release_date,
     media_type: MediaType.MOVIE,
     genres: movie.genres.map((genre) => genre.name)
-}) as CurrentMovieDetailsMapper;
+}) as CurrentMovieMapper;
 
-export const transformSimilarMovie = (movie: SimilarMovieShema) => ({
-    id: movie.id,
-    adult: movie.adult,
-    title: movie.title || movie.original_title,
-    poster_path: movie.poster_path,
-    media_type: MediaType.MOVIE,
-    vote_average: movie.vote_average,
-}) as SimilarMovieMapper;
-
-export const transformRecommendationMovie = (movie: RecommendationMovieShema) => ({
-    id: movie.id,
-    adult: movie.adult,
-    title: movie.title || movie.original_title,
-    poster_path: movie.poster_path,
-    media_type: MediaType.MOVIE,
-    vote_average: movie.vote_average,
-}) as RecommendationMovieMapper;
-
-export const transformTVShow = (tvShow: TVShowShema) => ({
+export const transformTVShow = (tvShow: TVShowShema | SimilarTVShowShema) => ({
     id: tvShow.id,
     adult: tvShow.adult,
     name: tvShow.name || tvShow.original_name,
@@ -231,52 +203,21 @@ export const transformTVShowDetails = (tvShow: TVShowDetailsShema) => ({
     },
     recommendations: {
         items: tvShow.recommendations.results.map(
-            (tvShow) => transformRecommendationTVShow(tvShow)
+            (tvShow) => transformTVShow(tvShow)
         ),
         totalPages: tvShow.recommendations.total_pages
     },
 }) as TVShowDetailsMapper;
 
-export const transformTVShowDetailsForSimilar = (tvShow: TVShowDetailsForSimilarShema) => ({
-    tvShow: {
-        adult: tvShow.adult,
-        first_air_date: tvShow.first_air_date,
-        name: tvShow.name || tvShow.original_name,
-        vote_average: tvShow.vote_average,
-        poster_path: tvShow.poster_path,
-        media_type: MediaType.TV_SHOW,
-        genres: tvShow.genres.map((genre) => genre.name)
-    },
-    similar: tvShow.similar.results.map((tvShow) => transformSimilarTVShow(tvShow)),
-}) as TVShowDetailsForSimilarMapper;
-
-export const transformTVShowDetailsForReviews = (tvShow: TVShowDetailsForReviewsShema) => ({
-    tvShow: {
-        adult: tvShow.adult,
-        first_air_date: tvShow.first_air_date,
-        name: tvShow.name || tvShow.original_name,
-        vote_average: tvShow.vote_average,
-        poster_path: tvShow.poster_path,
-        media_type: MediaType.TV_SHOW,
-        genres: tvShow.genres.map((genre) => genre.name)
-    },
-    reviews: tvShow.reviews.results.map((review) => transformReview(review)),
-}) as TVShowDetailsForReviewsMapper;
-
-export const transformTVShowDetailsForRecommendations = (tvShow: TVShowDetailsForRecommendationsShema) => ({
-    tvShow: {
-        adult: tvShow.adult,
-        first_air_date: tvShow.first_air_date,
-        name: tvShow.name || tvShow.original_name,
-        vote_average: tvShow.vote_average,
-        poster_path: tvShow.poster_path,
-        media_type: MediaType.TV_SHOW,
-        genres: tvShow.genres.map((genre) => genre.name)
-    },
-    recommendations: tvShow.recommendations.results.map(
-        (tvShow) => transformRecommendationTVShow(tvShow)
-    ),
-}) as TVShowDetailsForRecommendationsMapper;
+export const transformCurrentTVShow = (tvShow: CurrentTVShowShema) => ({
+    adult: tvShow.adult,
+    first_air_date: tvShow.first_air_date,
+    name: tvShow.name || tvShow.original_name,
+    vote_average: tvShow.vote_average,
+    poster_path: tvShow.poster_path,
+    media_type: MediaType.TV_SHOW,
+    genres: tvShow.genres.map((genre) => genre.name)
+}) as CurrentTVShowMapper;
 
 export const transformTVShowSeasonDetails = (season: TVShowSeasonDetailsShema) => ({
     season: {
@@ -289,24 +230,6 @@ export const transformTVShowSeasonDetails = (season: TVShowSeasonDetailsShema) =
     },
     episodes: season.episodes.map((episode) => transformEpisode(episode)),
 }) as TVShowSeasonDetailsMapper;
-
-export const transformSimilarTVShow = (tvShow: SimilarTVShowShema) => ({
-    id: tvShow.id,
-    adult: tvShow.adult,
-    name: tvShow.name || tvShow.original_name,
-    poster_path: tvShow.poster_path,
-    media_type: MediaType.TV_SHOW,
-    vote_average: tvShow.vote_average,
-}) as SimilarTVShowMapper;
-
-export const transformRecommendationTVShow = (tvShow: RecommendationTVShowShema) => ({
-    id: tvShow.id,
-    adult: tvShow.adult,
-    name: tvShow.name || tvShow.original_name,
-    poster_path: tvShow.poster_path,
-    media_type: MediaType.TV_SHOW,
-    vote_average: tvShow.vote_average,
-}) as RecommendationTVShowMapper;
 
 export const transformSeason = (season: SeasonShema) => ({
     air_date: season.air_date,

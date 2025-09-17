@@ -73,8 +73,6 @@ export type MovieShema = {
 
 export type SimilarMovieShema = Omit<MovieShema, 'media_type'>;
 
-export type RecommendationMovieShema = MovieShema;
-
 export type MovieDetailsShema = {
     adult: boolean,
     backdrop_path: string,
@@ -110,10 +108,10 @@ export type MovieDetailsShema = {
         results: VideoShema[],
     },
     reviews: DataShema<ReviewShema>,
-    recommendations: DataShema<RecommendationMovieShema>,
+    recommendations: DataShema<MovieShema>,
 };
 
-export type CurrentMovieDetailsShema = Omit<MovieDetailsShema, 'credits' | 'videos' | 'reviews' | 'recommendations'>;
+export type CurrentMovieShema = Omit<MovieDetailsShema, 'credits' | 'videos' | 'reviews' | 'recommendations'>;
 
 export type TVShowShema = {
     adult: boolean,
@@ -134,8 +132,6 @@ export type TVShowShema = {
 };
 
 export type SimilarTVShowShema = Omit<TVShowShema, 'media_type'>;
-
-export type RecommendationTVShowShema = TVShowShema;
 
 export type TVShowDetailsShema = {
     adult: boolean,
@@ -178,16 +174,10 @@ export type TVShowDetailsShema = {
         results: VideoShema[],
     },
     reviews: DataShema<ReviewShema>,
-    recommendations: DataShema<RecommendationTVShowShema>,
+    recommendations: DataShema<TVShowShema>,
 };
 
-export type TVShowDetailsForSimilarShema = Omit<TVShowDetailsShema, 'seasons' | 'credits' | 'videos' | 'reviews' | 'recommendations'> & {
-    similar: DataShema<SimilarTVShowShema>,
-};
-
-export type TVShowDetailsForReviewsShema = Omit<TVShowDetailsShema, 'seasons' | 'credits' | 'videos' | 'recommendations'>;
-
-export type TVShowDetailsForRecommendationsShema = Omit<TVShowDetailsShema, 'seasons' | 'credits' | 'videos' | 'reviews'>;
+export type CurrentTVShowShema = Omit<TVShowDetailsShema, 'seasons' | 'credits' | 'videos' | 'reviews' | 'recommendations'>;
 
 export type TVShowSeasonDetailsShema = {
     _id: string,

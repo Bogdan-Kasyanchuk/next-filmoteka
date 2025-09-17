@@ -7,15 +7,13 @@ import {
     TVShowDetailsShema,
     TVShowSeasonDetailsShema,
     TVShowShema,
-    TVShowDetailsForSimilarShema,
     PersonShema,
     PersonDetailsShema,
-    TVShowDetailsForReviewsShema,
-    TVShowDetailsForRecommendationsShema,
-    CurrentMovieDetailsShema,
+    CurrentMovieShema,
     SimilarMovieShema,
-    RecommendationMovieShema,
-    ReviewShema
+    ReviewShema,
+    SimilarTVShowShema,
+    CurrentTVShowShema
 } from '@/shemas';
 
 async function fetchApi<T>(url: string) {
@@ -56,7 +54,7 @@ export function getMovieById(id: string) {
 }
 
 export function getCurrentMovieById(id: string) {
-    return fetchApi<CurrentMovieDetailsShema>(`${MediaType.MOVIE}/${id}`);
+    return fetchApi<CurrentMovieShema>(`${MediaType.MOVIE}/${id}`);
 }
 
 export function getSimilarMovies(id: string, page: number) {
@@ -66,7 +64,7 @@ export function getSimilarMovies(id: string, page: number) {
 }
 
 export function getRecommendationsMovies(id: string, page: number) {
-    return fetchApi<DataShema<RecommendationMovieShema>>(
+    return fetchApi<DataShema<MovieShema>>(
         `${MediaType.MOVIE}/${id}/recommendations?page=${page}`
     );
 }
@@ -87,21 +85,25 @@ export function getTVShowById(id: string) {
     );
 }
 
-export function getSimilarToTVShow(id: string, page: number) {
-    return fetchApi<TVShowDetailsForSimilarShema>(
-        `${MediaType.TV_SHOW}/${id}?append_to_response=similar&page=${page}`
+export function getCurrentTVShowById(id: string) {
+    return fetchApi<CurrentTVShowShema>(`${MediaType.TV_SHOW}/${id}`);
+}
+
+export function getSimilarTVShow(id: string, page: number) {
+    return fetchApi<DataShema<SimilarTVShowShema>>(
+        `${MediaType.TV_SHOW}/${id}/similar?page=${page}`
     );
 }
 
-export function getRecommendationsToTVShow(id: string, page: number) {
-    return fetchApi<TVShowDetailsForRecommendationsShema>(
-        `${MediaType.TV_SHOW}/${id}?append_to_response=recommendations&page=${page}`
+export function getRecommendationsTVShow(id: string, page: number) {
+    return fetchApi<DataShema<TVShowShema>>(
+        `${MediaType.TV_SHOW}/${id}/recommendations?page=${page}`
     );
 }
 
 export function getReviewsToTVShow(id: string, page: number) {
-    return fetchApi<TVShowDetailsForReviewsShema>(
-        `${MediaType.TV_SHOW}/${id}?append_to_response=reviews&page=${page}`
+    return fetchApi<DataShema<ReviewShema>>(
+        `${MediaType.TV_SHOW}/${id}/reviews?page=${page}`
     );
 }
 

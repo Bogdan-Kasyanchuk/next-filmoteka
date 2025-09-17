@@ -9,7 +9,7 @@ import DataNotFound from '@/components/ui/data-display/DataNotFound';
 import Loader from '@/components/ui/data-display/Loader';
 import Container from '@/components/ui/layouts/Container';
 import Title from '@/components/ui/typography/Title';
-import { transformCurrentMovieDetails, transformSimilarMovie } from '@/helpers/transformData';
+import { transformCurrentMovie, transformMovie } from '@/helpers/transformData';
 import { getCurrentMovieById, getSimilarMovies } from '@/services/api';
 
 import CurrentMovie from './CurrentMovie';
@@ -34,10 +34,10 @@ export default function Content(props: Props) {
         ],
         combine: (results) => {
             return {
-                movie: results[0].data && transformCurrentMovieDetails(results[0].data),
+                movie: results[0].data && transformCurrentMovie(results[0].data),
                 similar: {
                     movies: results[1].data && results[1].data.results.map(
-                        (movie) => transformSimilarMovie(movie)
+                        (movie) => transformMovie(movie)
                     ),
                     total_pages: results[1].data?.total_pages
                 },

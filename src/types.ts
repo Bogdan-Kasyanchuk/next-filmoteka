@@ -88,10 +88,6 @@ export type MovieMapper = {
     vote_average: number,
 };
 
-export type SimilarMovieMapper = MovieMapper;
-
-export type RecommendationMovieMapper = MovieMapper;
-
 export type MovieDetailsMapper = {
     movie: {
         imdb_id: string,
@@ -123,12 +119,12 @@ export type MovieDetailsMapper = {
         totalPages: number,
     },
     recommendations: {
-        items: RecommendationMovieMapper[],
+        items: MovieMapper[],
         totalPages: number,
     },
 };
 
-export type CurrentMovieDetailsMapper = {
+export type CurrentMovieMapper = {
     adult: boolean,
     title: string,
     vote_average: number,
@@ -146,10 +142,6 @@ export type TVShowMapper = {
     media_type: MediaType.TV_SHOW,
     vote_average: number,
 };
-
-export type SimilarTVShowMapper = TVShowMapper;
-
-export type RecommendationTVShowMapper = TVShowMapper;
 
 export type TVShowDetailsMapper = {
     tvShow: {
@@ -186,48 +178,19 @@ export type TVShowDetailsMapper = {
         totalPages: number,
     },
     recommendations: {
-        items: RecommendationTVShowMapper[],
+        items: TVShowMapper[],
         totalPages: number,
     },
 };
 
-export type TVShowDetailsForSimilarMapper = {
-    tvShow: {
-        adult: boolean,
-        first_air_date: string,
-        name: string,
-        vote_average: number,
-        poster_path: string,
-        media_type: MediaType.TV_SHOW,
-        genres: string[],
-    },
-    similar: SimilarTVShowMapper[],
-};
-
-export type TVShowDetailsForReviewsMapper = {
-    tvShow: {
-        adult: boolean,
-        first_air_date: string,
-        name: string,
-        vote_average: number,
-        poster_path: string,
-        media_type: MediaType.TV_SHOW,
-        genres: string[],
-    },
-    reviews: ReviewMapper[],
-};
-
-export type TVShowDetailsForRecommendationsMapper = {
-    tvShow: {
-        adult: boolean,
-        first_air_date: string,
-        name: string,
-        vote_average: number,
-        poster_path: string,
-        media_type: MediaType.TV_SHOW,
-        genres: string[],
-    },
-    recommendations: RecommendationTVShowMapper[],
+export type CurrentTVShowMapper = {
+    adult: boolean,
+    first_air_date: string,
+    name: string,
+    vote_average: number,
+    poster_path: string,
+    media_type: MediaType.TV_SHOW,
+    genres: string[],
 };
 
 export type TVShowSeasonDetailsMapper = {

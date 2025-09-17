@@ -12,7 +12,7 @@ import Loader from '@/components/ui/data-display/Loader';
 import Container from '@/components/ui/layouts/Container';
 import { transformTVShowDetails } from '@/helpers/transformData';
 import { getTVShowById } from '@/services/api';
-import { RecommendationTVShowMapper } from '@/types';
+import { TVShowMapper } from '@/types';
 
 import Seasons from './Seasons';
 import TVShowDetails from './TVShowDetails';
@@ -64,7 +64,7 @@ export default function Content(props: Props) {
 
                 {
                     data.recommendations.items.length > 0 &&
-                    <Recommendations<RecommendationTVShowMapper>
+                    <Recommendations<TVShowMapper>
                         recommendations={data.recommendations}
                         item={(item) => <TVShowCard tvShow={item} />}
                         showAllPath={`/tv-shows/${props.id}/recommendations`}

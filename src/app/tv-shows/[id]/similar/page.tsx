@@ -1,7 +1,7 @@
 import { dehydrate, QueryClient, HydrationBoundary } from '@tanstack/react-query';
 import { Metadata } from 'next';
 
-import { getSimilarToTVShow } from '@/services/api';
+import { getCurrentTVShowById, getSimilarTVShow } from '@/services/api';
 
 import Content from './_components/Content';
 
@@ -27,10 +27,20 @@ export default async function Page(props: Props) {
 
     const queryClient = new QueryClient();
 
-    await queryClient.prefetchQuery({
-        queryKey: ['tv-shows', id, 'similar', currentPage],
-        queryFn: () => getSimilarToTVShow(id, currentPage),
-    });
+    await Promise.all([
+        await queryClient.prefetchQuery(
+            {
+                queryKey: ['tv-shows', id, 'similar'],
+                queryFn: () => getCurrentTVShowById(id),
+            },
+        ),
+        await queryClient.prefetchQuery(
+            {
+                queryKey: ['tv-shows', id, 'similar', currentPage],
+                queryFn: () => getSimilarTVShow(id, currentPage),
+            },
+        )
+    ]);
 
     return (
         <HydrationBoundary state={dehydrate(queryClient)}>

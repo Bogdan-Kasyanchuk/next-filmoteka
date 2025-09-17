@@ -12,7 +12,7 @@ import Loader from '@/components/ui/data-display/Loader';
 import Container from '@/components/ui/layouts/Container';
 import { transformMovieDetails } from '@/helpers/transformData';
 import { getMovieById } from '@/services/api';
-import { RecommendationMovieMapper } from '@/types';
+import { MovieMapper } from '@/types';
 
 import MovieDetails from './MovieDetails';
 
@@ -55,7 +55,7 @@ export default function Content(props: Props) {
 
                 {
                     data.recommendations.items.length > 0 &&
-                    <Recommendations<RecommendationMovieMapper>
+                    <Recommendations<MovieMapper>
                         recommendations={data.recommendations}
                         item={(item) => <MovieCard movie={item} />}
                         showAllPath={`/movies/${props.id}/recommendations`}

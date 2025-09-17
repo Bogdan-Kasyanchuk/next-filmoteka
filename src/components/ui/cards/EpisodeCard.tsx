@@ -4,6 +4,8 @@ import { PARAMETERS, IMG_SIZES } from '@/helpers/parameters';
 import { EpisodeMapper } from '@/types';
 import { formatDate } from '@/utils/formateDate';
 
+import Popover from '../data-display/Popover';
+
 type Props = {
     episode: EpisodeMapper
 }
@@ -73,12 +75,25 @@ export default function EpisodeCard(props: Props) {
                 </ul>
             </div>
 
-            {/* {
+            {
                 props.episode.overview &&
-                <p className='с-episode-card__overview'>
-                    {props.episode.overview}
-                </p>
-            } */}
+                <Popover
+                    trigger={
+                        <button
+                            type='button'
+                            className='с-episode-card__overview-trigger'
+                        >
+                            i
+                        </button>
+                    }
+                    content={props.episode.overview}
+                    classNames={
+                        {
+                            content: 'с-episode-card__overview',
+                        }
+                    }
+                />
+            }
         </div>
     );
 };

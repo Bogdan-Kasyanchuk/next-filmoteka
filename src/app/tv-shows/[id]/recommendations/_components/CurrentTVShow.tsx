@@ -4,11 +4,11 @@ import { Fragment } from 'react';
 
 import Title from '@/components/ui/typography/Title';
 import { IMG_SIZES, PARAMETERS } from '@/helpers/parameters';
-import { TVShowDetailsForRecommendationsMapper } from '@/types';
+import { CurrentTVShowMapper } from '@/types';
 import { formatDate } from '@/utils/formateDate';
 
 type Props = {
-    tvShow: TVShowDetailsForRecommendationsMapper['tvShow'];
+    tvShow: CurrentTVShowMapper;
     id: string;
 }
 
