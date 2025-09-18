@@ -1,6 +1,7 @@
 'use client';
 
 import PageNotFound from '@/components/ui/data-display/PageNotFound';
+import { pagesTVUrl } from '@/routes';
 
 export default function NotFound() {
     return (
@@ -8,7 +9,7 @@ export default function NotFound() {
             title='Could not found tv show'
             link={
                 {
-                    href: '/tv-shows',
+                    href: pagesTVUrl(),
                     text: 'Back to tv-shows'
                 }
             }

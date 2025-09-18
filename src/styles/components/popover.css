@@ -2,11 +2,9 @@
     &__content {
         will-change: transform, opacity;
 
-        width: 100%;
-        max-width: min(400px, calc(100vw - 40px));
-        border-radius: 4px;
+        z-index: 10;
 
-        background-color: var(--color-primary);
+        border-radius: 4px;
 
         animation-duration: 150ms;
         animation-timing-function: linear;
@@ -29,9 +27,8 @@
     }
 
     &__arrow {
-        width: 20px;
-        height: 10px;
-        fill: var(--color-primary);
+        width: 16px;
+        height: 8px;
     }
 }
 

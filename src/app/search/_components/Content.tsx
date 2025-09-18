@@ -21,8 +21,8 @@ export default function Content(props: Props) {
         queryKey: ['search', props.query, props.currentPage],
         queryFn: () => getSearch(props.query, props.currentPage),
         placeholderData: keepPreviousData,
-        select: (data) => {
-            const transformedResults = data.results.filter(
+        select: (data) => ({
+            results: data.results.filter(
                 (result) => {
                     if (result.media_type === MediaType.MOVIE) {
                         return transformMovie(result);
@@ -35,13 +35,9 @@ export default function Content(props: Props) {
                     if (result.media_type === MediaType.PERSON) {
                         return transformPerson(result);
                     }
-                });
-
-            return {
-                results: transformedResults,
-                total_pages: data.total_pages
-            };
-        },
+                }),
+            total_pages: data.total_pages
+        }),
     });
 
     return (

@@ -5,30 +5,34 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
+import Popover from '@/components/ui/data-display/Popover';
+import {
+    pagesHomeUrl,
+    pagesMovieshUrl,
+    pagesPersonsUrl,
+    pagesSearchUrl,
+    pagesTVUrl
+} from '@/routes';
+
 const links = [
     {
-        name: 'Search',
-        href: '/search',
-        icon: '/svg/search.svg',
-    },
-    {
         name: 'Home',
-        href: '/',
+        href: pagesHomeUrl(),
         icon: '/svg/home.svg',
     },
     {
         name: 'Movies',
-        href: '/movies',
+        href: pagesMovieshUrl(),
         icon: '/svg/movie.svg',
     },
     {
         name: 'TV',
-        href: '/tv-shows',
+        href: pagesTVUrl(),
         icon: '/svg/tv.svg',
     },
     {
         name: 'Persons',
-        href: '/persons',
+        href: pagesPersonsUrl(),
         icon: '/svg/users.svg',
     },
 ];
@@ -40,12 +44,59 @@ export default function Navigation() {
         <nav className='c-navigation'>
             <ul className='c-navigation__list'>
                 {
+                    pathname !== pagesSearchUrl() &&
+                    <li>
+                        <Popover
+                            trigger={
+                                <button
+                                    type='button'
+                                    className='c-navigation__search'
+                                >
+                                    <Image
+                                        width={24}
+                                        height={24}
+                                        src='/svg/search.svg'
+                                        alt='Search'
+                                        className='c-navigation__img'
+                                    />
+                                    <span className='c-navigation__text'>Search</span>
+                                </button>
+                            }
+                            content={
+                                <form
+                                    action={pagesSearchUrl()}
+                                    className="c-navigation__search-form"
+                                >
+                                    <input
+                                        className="c-navigation__search-input"
+                                        name="query"
+                                        placeholder="Search movies, tv shows, persons"
+                                        autoComplete='off'
+                                        minLength={3}
+                                        required
+                                    />
+
+                                    <button
+                                        type='submit'
+                                        className="c-navigation__search-button"
+                                    >
+                                        Пошук
+                                    </button>
+                                </form>
+                            }
+                            classNames={
+                                {
+                                    content: 'c-navigation__search-content',
+                                }
+                            }
+                        />
+                    </li>
+                }
+
+                {
                     links.map(
                         (link) => (
-                            <li
-                                key={link.name}
-                                className='c-navigation__item'
-                            >
+                            <li key={link.name}>
                                 <Link
                                     href={link.href}
                                     className={

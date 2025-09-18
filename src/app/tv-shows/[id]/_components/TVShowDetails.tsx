@@ -7,6 +7,7 @@ import Title from '@/components/ui/typography/Title';
 import { PARAMETERS, IMG_SIZES } from '@/helpers/parameters';
 import { TVShowDetailsMapper } from '@/types';
 import { formatDate } from '@/utils/formateDate';
+import { pagesTVUrl } from '@/routes';
 
 type Props = TVShowDetailsMapper['tvShow'] & { id: string };
 
@@ -46,7 +47,7 @@ export default function TVShowDetails(props: Props) {
                         />
 
                         <Link
-                            href={`/tv-shows/${props.id}/similar`}
+                            href={`${pagesTVUrl()}/${props.id}/similar`}
                             className='p-tv-show__details-similar-button'
                         >
                             Similar

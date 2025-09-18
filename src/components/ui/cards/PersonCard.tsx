@@ -3,6 +3,7 @@ import Link from 'next/link';
 
 import { GenderType } from '@/enums';
 import { PARAMETERS, IMG_SIZES } from '@/helpers/parameters';
+import { pagesPersonsUrl } from '@/routes';
 import { PersonMapper } from '@/types';
 
 type Props = {
@@ -12,7 +13,7 @@ type Props = {
 export default function PersonCard(props: Props) {
     return (
         <Link
-            href={`/persons/${props.person.id}`}
+            href={`${pagesPersonsUrl()}/${props.person.id}`}
             className='с-person-card'
         >
             <div className='с-person-card__cover'>

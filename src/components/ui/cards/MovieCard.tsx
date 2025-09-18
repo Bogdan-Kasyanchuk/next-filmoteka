@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import { PARAMETERS, IMG_SIZES } from '@/helpers/parameters';
+import { pagesMovieshUrl } from '@/routes';
 import { MovieMapper } from '@/types';
 
 type Props = {
@@ -11,7 +12,7 @@ type Props = {
 export default function MovieCard(props: Props) {
     return (
         <Link
-            href={`/movies/${props.movie.id}`}
+            href={`${pagesMovieshUrl()}/${props.movie.id}`}
             className='с-movie-card'
         >
             <div className='с-movie-card__cover'>

@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import { PARAMETERS, IMG_SIZES } from '@/helpers/parameters';
+import { pagesTVUrl } from '@/routes';
 import { SeasonMapper } from '@/types';
 import { formatDate } from '@/utils/formateDate';
 
@@ -13,7 +14,7 @@ type Props = {
 export default function SeasonCard(props: Props) {
     return (
         <Link
-            href={`/tv-shows/${props.tvShowId}/season-${props.season.season_number}`}
+            href={`${pagesTVUrl()}/${props.tvShowId}/season-${props.season.season_number}`}
             className='с-season-card'
         >
             <div className='с-season-card__cover'>

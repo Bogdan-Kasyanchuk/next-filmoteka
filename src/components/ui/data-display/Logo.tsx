@@ -3,6 +3,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { ReactNode } from 'react';
 
+import { pagesHomeUrl } from '@/routes';
+
 type Props = {
     logoPath: string;
     text: ReactNode;
@@ -12,7 +14,7 @@ type Props = {
 export default function Logo(props: Props) {
     return (
         <Link
-            href='/'
+            href={pagesHomeUrl()}
             className={clsx('c-logo u-link', props.className)}
         >
             <Image

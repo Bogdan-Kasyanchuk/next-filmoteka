@@ -20,14 +20,12 @@ export default function Content(props: Props) {
         queryKey: ['movies', props.type, props.currentPage],
         queryFn: () => getMovies(props.type, props.currentPage),
         placeholderData: keepPreviousData,
-        select: (data) => {
-            return {
-                movies: data.results.map(
-                    (movie) => transformMovie(movie)
-                ),
-                total_pages: data.total_pages
-            };
-        },
+        select: (data) => ({
+            movies: data.results.map(
+                (movie) => transformMovie(movie)
+            ),
+            total_pages: data.total_pages
+        }),
     });
 
     return (

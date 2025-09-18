@@ -31,8 +31,7 @@
         &-input {
             width: 100%;
             height: 50px;
-            padding-block: 13px;
-            padding-inline: 48px;
+            padding: 13px 48px;
             border: 1px solid var(--color-secondary);
             border-radius: 4px;
 
@@ -54,7 +53,9 @@
             @apply w-12 h-12 flex items-center justify-center absolute top-1/2 -translate-y-1/2 end-0 transition-opacity;
 
             &:hover {
-                @apply opacity-75;
+                @media (any-hover: hover) {
+                    @apply opacity-75;
+                }
             }
         }
     }
@@ -95,7 +96,7 @@
     }
 
     &__no-search-results {
-        @apply uppercase text-primary font-bold grow flex items-center justify-center text-8xl;
+        @apply uppercase text-primary font-bold grow flex items-center justify-center text-8xl text-center;
     }
 
     @variant min-md {

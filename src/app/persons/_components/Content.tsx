@@ -18,15 +18,12 @@ export default function Content(props: Props) {
         queryKey: ['persons', props.currentPage],
         queryFn: () => getPersons(props.currentPage),
         placeholderData: keepPreviousData,
-        select: (data) => {
-            const transformedResults = data.results.map(
-                (person) => transformPerson(person));
-
-            return {
-                persons: transformedResults,
-                total_pages: data.total_pages
-            };
-        },
+        select: (data) => ({
+            persons: data.results.map(
+                (person) => transformPerson(person)
+            ),
+            total_pages: data.total_pages
+        }),
     });
 
     return (

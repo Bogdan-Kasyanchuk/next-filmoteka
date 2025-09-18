@@ -5,6 +5,7 @@ import { Fragment } from 'react';
 import Container from '@/components/ui/layouts/Container';
 import Title from '@/components/ui/typography/Title';
 import { PARAMETERS, IMG_SIZES } from '@/helpers/parameters';
+import { pagesMovieshUrl } from '@/routes';
 import { MovieDetailsMapper } from '@/types';
 import { formatCurrency } from '@/utils/formatCurrency';
 import { formatDate } from '@/utils/formateDate';
@@ -47,7 +48,7 @@ export default function MovieDetails(props: Props) {
                         />
 
                         <Link
-                            href={`/movies/${props.id}/similar`}
+                            href={`${pagesMovieshUrl()}/${props.id}/similar`}
                             className='p-movie__details-similar-button'
                         >
                             Similar

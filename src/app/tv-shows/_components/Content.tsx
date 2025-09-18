@@ -20,15 +20,12 @@ export default function Content(props: Props) {
         queryKey: ['tv-shows', props.type, props.currentPage],
         queryFn: () => getTVShows(props.type, props.currentPage),
         placeholderData: keepPreviousData,
-        select: (data) => {
-            const transformedResults = data.results.map(
-                (tvShow) => transformTVShow(tvShow));
-
-            return {
-                tvShows: transformedResults,
-                total_pages: data.total_pages
-            };
-        },
+        select: (data) => ({
+            tvShows: data.results.map(
+                (tvShow) => transformTVShow(tvShow)
+            ),
+            total_pages: data.total_pages
+        }),
     });
 
     return (

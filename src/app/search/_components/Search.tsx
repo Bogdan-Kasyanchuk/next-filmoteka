@@ -1,22 +1,26 @@
 'use client';
 
-import { useDebouncedCallback } from '@mantine/hooks';
+import { useDebouncedValue } from '@mantine/hooks';
 import Image from 'next/image';
 import { useSearchParams, usePathname, useRouter } from 'next/navigation';
-import { useRef } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 
 export default function Search() {
     const pathname = usePathname();
     const searchParams = useSearchParams();
     const { replace } = useRouter();
 
-    const ref = useRef<HTMLInputElement>(null);
+    const params = useMemo(
+        () => new URLSearchParams(searchParams),
+        [searchParams]
+    );
 
-    const params = new URLSearchParams(searchParams);
+    const [term, setTerm] = useState(searchParams.get('query')?.toString() ?? '');
+    const [debouncedTerm] = useDebouncedValue(term, 250);
 
-    const handleSearch = useDebouncedCallback((term) => {
-        if (term) {
-            params.set('query', term);
+    useEffect(() => {
+        if (debouncedTerm) {
+            params.set('query', debouncedTerm);
             params.delete('page');
         } else {
             params.delete('query');
@@ -24,34 +28,20 @@ export default function Search() {
         }
 
         replace(`${pathname}?${params.toString()}`);
-    }, 250);
-
-    const handleClear = () => {
-        if (!ref.current) {
-            return;
-        }
-
-        ref.current.value = '';
-
-        params.delete('query');
-        params.delete('page');
-
-        replace(`${pathname}?${params.toString()}`);
-    };
+    }, [debouncedTerm, params, pathname, replace]);
 
     return (
         <div className="p-search__search">
             <input
-                ref={ref}
                 type="text"
                 name='search'
-                defaultValue={searchParams.get('query')?.toString()}
+                value={term}
                 placeholder="Search movies, tv shows, persons"
                 autoComplete='off'
                 className="p-search__search-input"
                 onChange={
                     (e) => {
-                        handleSearch(e.target.value);
+                        setTerm(e.target.value);
                     }
                 }
             />
@@ -65,14 +55,14 @@ export default function Search() {
             />
 
             {
-                ref.current?.value &&
+                debouncedTerm &&
                 <button
                     type="button"
                     aria-label='Clear search'
                     className="p-search__search-clear"
                     onClick={
                         () => {
-                            handleClear();
+                            setTerm('');
                         }
                     }
                 >

@@ -4,6 +4,7 @@ import { Fragment } from 'react';
 
 import Title from '@/components/ui/typography/Title';
 import { IMG_SIZES, PARAMETERS } from '@/helpers/parameters';
+import { pagesTVUrl } from '@/routes';
 import { CurrentTVShowMapper } from '@/types';
 import { formatDate } from '@/utils/formateDate';
 
@@ -34,7 +35,7 @@ export default function CurrentTVShow(props: Props) {
                     variant={3}
                 >
                     <Link
-                        href={`/tv-shows/${props.id}`}
+                        href={`${pagesTVUrl()}/${props.id}`}
                         title={
                             `${props.tvShow.name} ${formatDate(props.tvShow.first_air_date, 'YYYY')}`
                         }

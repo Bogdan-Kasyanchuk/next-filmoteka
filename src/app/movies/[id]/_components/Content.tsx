@@ -11,6 +11,7 @@ import MovieCard from '@/components/ui/cards/MovieCard';
 import Loader from '@/components/ui/data-display/Loader';
 import Container from '@/components/ui/layouts/Container';
 import { transformMovieDetails } from '@/helpers/transformData';
+import { pagesMovieshUrl } from '@/routes';
 import { getMovieById } from '@/services/api';
 import { MovieMapper } from '@/types';
 
@@ -58,7 +59,7 @@ export default function Content(props: Props) {
                     <Recommendations<MovieMapper>
                         recommendations={data.recommendations}
                         item={(item) => <MovieCard movie={item} />}
-                        showAllPath={`/movies/${props.id}/recommendations`}
+                        showAllPath={`${pagesMovieshUrl()}/${props.id}/recommendations`}
                     />
                 }
 
@@ -66,7 +67,7 @@ export default function Content(props: Props) {
                     data.reviews.items.length > 0 &&
                     <Reviews
                         reviews={data.reviews}
-                        showAllPath={`/movies/${props.id}/reviews`}
+                        showAllPath={`${pagesMovieshUrl()}/${props.id}/reviews`}
                     />
                 }
             </Container>

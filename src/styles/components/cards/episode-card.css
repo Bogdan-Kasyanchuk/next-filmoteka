@@ -61,10 +61,15 @@
     }
 
     &__overview {
+        width: 100%;
+        max-width: min(400px, calc(100vw - 40px));
         padding: 12px;
+
         font-size: var(--text-xs);
         line-height: 1.25;
         color: var(--color-secondary);
+
+        background-color: var(--color-primary);
 
         @variant min-xl {
             font-size: var(--text-sm);
@@ -72,8 +77,8 @@
 
         &-trigger {
             position: absolute;
-            top: 10px;
-            inset-inline-end: 10px;
+            top: 5px;
+            inset-inline-end: 5px;
 
             display: flex;
             align-items: center;
@@ -98,6 +103,10 @@
                 background-color: var(--color-accent-hover);
                 box-shadow: var(--shadow-custom-accent);
             }
+        }
+
+        &-arrow {
+            fill: var(--color-primary);
         }
     }
 }

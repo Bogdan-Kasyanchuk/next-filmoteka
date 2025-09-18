@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import { PARAMETERS, IMG_SIZES } from '@/helpers/parameters';
+import { pagesPersonsUrl } from '@/routes';
 import { CastMapper } from '@/types';
 
 type Props = {
@@ -12,7 +13,7 @@ type Props = {
 export default function CastCard(props: Props) {
     return (
         <Link
-            href={`/persons/${props.cast.id}`}
+            href={`${pagesPersonsUrl()}/${props.cast.id}`}
             className='с-cast-card'
         >
             <div

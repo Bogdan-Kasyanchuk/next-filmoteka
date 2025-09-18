@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import { PARAMETERS, IMG_SIZES } from '@/helpers/parameters';
+import { pagesTVUrl } from '@/routes';
 import { TVShowMapper } from '@/types';
 
 type Props = {
@@ -11,7 +12,7 @@ type Props = {
 export default function TVShowCard(props: Props) {
     return (
         <Link
-            href={`/tv-shows/${props.tvShow.id}`}
+            href={`${pagesTVUrl()}/${props.tvShow.id}`}
             className='с-tv-show-card'
         >
             <div className='с-tv-show-card__cover'>

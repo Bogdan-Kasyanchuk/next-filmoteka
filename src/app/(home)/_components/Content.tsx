@@ -22,21 +22,17 @@ export default function Content(props: Props) {
         queryKey: ['trendings', props.type, props.time, props.currentPage],
         queryFn: () => getTrendings(props.type, props.time, props.currentPage),
         placeholderData: keepPreviousData,
-        select: (data) => {
-            const transformedResults = data.results.map(
+        select: (data) => ({
+            results: data.results.map(
                 (result) => {
                     if (result.media_type === MediaType.MOVIE) {
                         return transformMovie(result);
                     } else {
                         return transformTVShow(result);
                     }
-                });
-
-            return {
-                results: transformedResults,
-                total_pages: data.total_pages
-            };
-        },
+                }),
+            total_pages: data.total_pages
+        }),
     });
 
     return (

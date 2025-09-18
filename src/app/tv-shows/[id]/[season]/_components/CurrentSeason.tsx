@@ -5,6 +5,7 @@ import Title from '@/components/ui/typography/Title';
 import { IMG_SIZES, PARAMETERS } from '@/helpers/parameters';
 import { TVShowSeasonDetailsMapper } from '@/types';
 import { formatDate } from '@/utils/formateDate';
+import { pagesTVUrl } from '@/routes';
 
 type Props = {
     season: TVShowSeasonDetailsMapper['season'];
@@ -30,7 +31,7 @@ export default function CurrentSeason(props: Props) {
 
                 <div className='p-season__current-season-info'>
                     <Link
-                        href={`/tv-shows/${props.id}`}
+                        href={`${pagesTVUrl()}/${props.id}`}
                         className='u-link-color font-bold leading-none text-md'
                     >
                         Go to TV Show
