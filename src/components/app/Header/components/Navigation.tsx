@@ -43,55 +43,57 @@ export default function Navigation() {
     return (
         <nav className='c-navigation'>
             <ul className='c-navigation__list'>
-                {
-                    pathname !== pagesSearchUrl() &&
-                    <li>
-                        <Popover
-                            trigger={
-                                <button
-                                    type='button'
-                                    className='c-navigation__search'
-                                >
-                                    <Image
-                                        width={24}
-                                        height={24}
-                                        src='/svg/search.svg'
-                                        alt='Search'
-                                        className='c-navigation__img'
-                                    />
-                                    <span className='c-navigation__text'>Search</span>
-                                </button>
-                            }
-                            content={
-                                <form
-                                    action={pagesSearchUrl()}
-                                    className='c-navigation__search-form'
-                                >
-                                    <input
-                                        className='c-navigation__search-input'
-                                        name='query'
-                                        placeholder='Search movies, tv shows, persons'
-                                        autoComplete='off'
-                                        minLength={3}
-                                        required
-                                    />
-
-                                    <button
-                                        type='submit'
-                                        className='c-navigation__search-button'
-                                    >
-                                        Пошук
-                                    </button>
-                                </form>
-                            }
-                            classNames={
-                                {
-                                    content: 'c-navigation__search-content',
+                <li>
+                    <Popover
+                        trigger={
+                            <button
+                                type='button'
+                                className={
+                                    clsx('c-navigation__link', {
+                                        'c-navigation__link--is-active': pathname ===
+                                            pagesSearchUrl()
+                                    })
                                 }
+                            >
+                                <Image
+                                    width={24}
+                                    height={24}
+                                    src='/svg/search.svg'
+                                    alt='Search'
+                                    className='c-navigation__img'
+                                />
+                                <span className='c-navigation__text'>Search</span>
+                            </button>
+                        }
+                        content={
+                            <form
+                                action={pagesSearchUrl()}
+                                className='c-navigation__search-form'
+                            >
+                                <input
+                                    className='c-navigation__search-input'
+                                    name='query'
+                                    placeholder='Search movies, tv shows, persons'
+                                    autoComplete='off'
+                                    minLength={3}
+                                    required
+                                />
+
+                                <button
+                                    type='submit'
+                                    className='c-navigation__search-button'
+                                >
+                                    Пошук
+                                </button>
+                            </form>
+                        }
+                        classNames={
+                            {
+                                content: 'c-navigation__search',
                             }
-                        />
-                    </li>
-                }
+                        }
+                    />
+                </li>
 
                 {
                     links.map(
