@@ -22,20 +22,20 @@ export default async function Page() {
             <form className='p-registration__form'>
                 <div className='p-registration__form-fields'>
                     <Input
-                        startSection={<Icon name="email" />}
-                        type="email"
-                        name="email"
+                        startSection={<Icon name='email' />}
+                        type='email'
+                        name='email'
                         label='Email'
-                        placeholder="email@domain.com"
-                        autoComplete="off"
+                        placeholder='email@domain.com'
+                        autoComplete='off'
                         // value={value}
                         // error={error}
                         required
                     />
 
                     <Input
-                        startSection={<Icon name="key" />}
-                        type="password"
+                        startSection={<Icon name='key' />}
+                        type='password'
                         label='Password'
                         placeholder='Password'
                     // value={value}
@@ -44,8 +44,8 @@ export default async function Page() {
                     />
 
                     <Input
-                        startSection={<Icon name="key" />}
-                        type="password"
+                        startSection={<Icon name='key' />}
+                        type='password'
                         label='Confirm password'
                         placeholder='Confirm password'
                     // value={value}
@@ -55,8 +55,8 @@ export default async function Page() {
                 </div>
 
                 <button
-                    type="submit"
-                    className="p-registration__form-button"
+                    type='submit'
+                    className='p-registration__form-button'
                 >
                     Registration
                 </button>

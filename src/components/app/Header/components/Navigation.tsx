@@ -65,12 +65,12 @@ export default function Navigation() {
                             content={
                                 <form
                                     action={pagesSearchUrl()}
-                                    className="c-navigation__search-form"
+                                    className='c-navigation__search-form'
                                 >
                                     <input
-                                        className="c-navigation__search-input"
-                                        name="query"
-                                        placeholder="Search movies, tv shows, persons"
+                                        className='c-navigation__search-input'
+                                        name='query'
+                                        placeholder='Search movies, tv shows, persons'
                                         autoComplete='off'
                                         minLength={3}
                                         required
@@ -78,7 +78,7 @@ export default function Navigation() {
 
                                     <button
                                         type='submit'
-                                        className="c-navigation__search-button"
+                                        className='c-navigation__search-button'
                                     >
                                         Пошук
                                     </button>

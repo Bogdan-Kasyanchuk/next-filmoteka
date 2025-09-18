@@ -3,6 +3,7 @@
 import { keepPreviousData, useQueries } from '@tanstack/react-query';
 import { notFound } from 'next/navigation';
 
+import CurrentMovie from '@/components/app/CurrentMovie';
 import Pagination from '@/components/app/Pagination';
 import ReviewCard from '@/components/ui/cards/ReviewCard';
 import DataNotFound from '@/components/ui/data-display/DataNotFound';
@@ -11,8 +12,6 @@ import Container from '@/components/ui/layouts/Container';
 import Title from '@/components/ui/typography/Title';
 import { transformCurrentMovie, transformReview } from '@/helpers/transformData';
 import { getCurrentMovieById, getReviewsToMovie } from '@/services/api';
-
-import CurrentMovie from './CurrentMovie';
 
 type Props = {
     id: string;

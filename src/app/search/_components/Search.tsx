@@ -31,14 +31,14 @@ export default function Search() {
     }, [debouncedTerm, params, pathname, replace]);
 
     return (
-        <div className="p-search__search">
+        <div className='p-search__search'>
             <input
-                type="text"
+                type='text'
                 name='search'
                 value={term}
-                placeholder="Search movies, tv shows, persons"
+                placeholder='Search movies, tv shows, persons'
                 autoComplete='off'
-                className="p-search__search-input"
+                className='p-search__search-input'
                 onChange={
                     (e) => {
                         setTerm(e.target.value);
@@ -49,17 +49,17 @@ export default function Search() {
             <Image
                 width={24}
                 height={24}
-                src="/svg/search.svg"
-                alt="Search icon"
-                className="absolute top-1/2 -translate-y-1/2 start-3"
+                src='/svg/search.svg'
+                alt='Search icon'
+                className='absolute top-1/2 -translate-y-1/2 start-3'
             />
 
             {
                 debouncedTerm &&
                 <button
-                    type="button"
+                    type='button'
                     aria-label='Clear search'
-                    className="p-search__search-clear"
+                    className='p-search__search-clear'
                     onClick={
                         () => {
                             setTerm('');
@@ -69,9 +69,9 @@ export default function Search() {
                     <Image
                         width={24}
                         height={24}
-                        src="/svg/close.svg"
-                        alt="Search icon"
-                        className="pointer-events-none"
+                        src='/svg/close.svg'
+                        alt='Search icon'
+                        className='pointer-events-none'
                     />
                 </button>
             }

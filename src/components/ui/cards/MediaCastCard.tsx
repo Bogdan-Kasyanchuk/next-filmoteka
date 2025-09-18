@@ -38,7 +38,7 @@ export default function MediaCastCard(props: Props) {
                             ? `${PARAMETERS.URL_IMG}${IMG_SIZES.MEDIA_CAST_CARD_COVER}${props.cast.poster_path}`
                             : '/img/poster-not-available.jpg'
                     }
-                    sizes="50px"
+                    sizes='50px'
                     alt={props.cast.title}
                     fill
                 />

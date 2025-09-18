@@ -1,0 +1,120 @@
+.c-current-movie {
+    @apply bg-secondary rounded-sm flex items-center gap-2.5 -mx-2.5;
+    @apply sm:mx-0;
+    @apply xl:gap-5;
+
+    width: calc(100% + 20px);
+
+    @variant min-sm {
+        width: 100%;
+    }
+
+    &__cover {
+        position: relative;
+        flex-shrink: 0;
+        aspect-ratio: 2/3;
+        width: 60px;
+
+        @variant min-md {
+            width: 70px;
+        }
+
+        @variant min-xl {
+            width: 80px;
+        }
+
+        img {
+            object-fit: cover;
+        }
+    }
+
+    &__info {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        gap: 4px;
+        justify-content: space-between;
+
+        min-width: 1px;
+        height: 100%;
+        padding-block: 10px;
+        padding-inline-end: 10px;
+
+        color: var(--color-primary);
+
+        @variant min-md {
+            gap: 8px;
+        }
+
+        @variant min-xl {
+            gap: 10px;
+            padding-inline-end: 20px;
+        }
+    }
+
+    &__title {
+        font-weight: 700;
+        line-height: 1;
+
+        a[href] {
+            overflow: hidden;
+            display: inline-block;
+
+            max-width: 100%;
+
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+    }
+
+    &__tags {
+        display: flex;
+        gap: 10px;
+    }
+
+    &__tag {
+        padding: 4px;
+        border-style: solid;
+        border-width: 1px;
+        border-radius: 2px;
+
+        font-size: var(--text-2xs);
+        font-weight: 700;
+        line-height: 1;
+        text-transform: uppercase;
+
+        &--type {
+            border-color: var(--color-secondary);
+            color: var(--color-secondary);
+            background-color: var(--color-primary);
+        }
+
+        &--adult {
+            border-color: var(--color-danger);
+            color: var(--color-danger);
+            background-color: var(--color-primary);
+
+            span {
+                position: relative;
+                top: -3px;
+            }
+        }
+
+        &--average {
+            border-color: var(--color-primary);
+            color: var(--color-primary);
+            background-color: var(--color-accent);
+
+            span {
+                position: relative;
+                top: -2px;
+                font-size: 9px;
+            }
+        }
+    }
+
+    &__genres {
+        font-size: var(--text-xs);
+        line-height: 1;
+    }
+}

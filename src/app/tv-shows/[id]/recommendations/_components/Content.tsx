@@ -3,6 +3,7 @@
 import { keepPreviousData, useQueries } from '@tanstack/react-query';
 import { notFound } from 'next/navigation';
 
+import CurrentTVShow from '@/components/app/CurrentTVShow';
 import Pagination from '@/components/app/Pagination';
 import TVShowCard from '@/components/ui/cards/TVShowCard';
 import DataNotFound from '@/components/ui/data-display/DataNotFound';
@@ -11,8 +12,6 @@ import Container from '@/components/ui/layouts/Container';
 import Title from '@/components/ui/typography/Title';
 import { transformCurrentTVShow, transformTVShow } from '@/helpers/transformData';
 import { getCurrentTVShowById, getRecommendationsTVShow } from '@/services/api';
-
-import CurrentTVShow from './CurrentTVShow';
 
 type Props = {
     id: string;

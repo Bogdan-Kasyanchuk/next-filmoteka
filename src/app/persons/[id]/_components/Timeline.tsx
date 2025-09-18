@@ -29,7 +29,7 @@ export default function Timeline(props: Props) {
                 Timeline
             </Title>
 
-            <ul className="p-person__timeline-list">
+            <ul className='p-person__timeline-list'>
                 {
                     cast.length > 0 &&
                     <li className='p-person__timeline-item'>

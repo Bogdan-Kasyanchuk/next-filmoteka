@@ -12,16 +12,16 @@ export default function ButtonScrollToTop() {
             {
                 scroll.y > 1000 &&
                 <button
-                    type="button"
+                    type='button'
                     aria-label='Scroll to top'
-                    className="c-scroll-to-top"
+                    className='c-scroll-to-top'
                     onClick={
                         () => {
                             scrollTo({ y: 0 });
                         }
                     }
                 >
-                    <Icon name="arrow" />
+                    <Icon name='arrow' />
                 </button>
             }
         </>

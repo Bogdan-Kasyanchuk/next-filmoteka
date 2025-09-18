@@ -15,23 +15,23 @@ type Props = {
 
 export default function CurrentTVShow(props: Props) {
     return (
-        <div className='p-tv-show-similar__current-tv-show'>
-            <div className='p-tv-show-similar__current-tv-show-cover'>
+        <div className='c-current-tv-show'>
+            <div className='c-current-tv-show__cover'>
                 <Image
                     src={
                         props.tvShow.poster_path
                             ? `${PARAMETERS.URL_IMG}${IMG_SIZES.MEDIA_CARD_CURRENT_COVER}${props.tvShow.poster_path}`
                             : '/img/poster-not-available.jpg'
                     }
-                    sizes="92px"
+                    sizes='92px'
                     alt={props.tvShow.name}
                     fill
                 />
             </div>
 
-            <div className='p-tv-show-similar__current-tv-show-info'>
+            <div className='c-current-tv-show__info'>
                 <Title
-                    className='p-tv-show-similar__current-tv-show-title'
+                    className='c-current-tv-show__title'
                     variant={3}
                 >
                     <Link
@@ -45,19 +45,19 @@ export default function CurrentTVShow(props: Props) {
                     </Link>
                 </Title>
 
-                <div className='p-tv-show-similar__current-tv-show-tags'>
-                    <div className='p-tv-show-similar__current-tv-show-tag p-tv-show-similar__current-tv-show-tag--type'>
+                <div className='c-current-tv-show__tags'>
+                    <div className='c-current-tv-show__tag c-current-tv-show__tag--type'>
                         {props.tvShow.media_type}
                     </div>
 
-                    <div className='p-tv-show-similar__current-tv-show-tag p-tv-show-similar__current-tv-show-tag--average'>
+                    <div className='c-current-tv-show__tag c-current-tv-show__tag--average'>
                         {Math.round(props.tvShow.vote_average * 10)}
                         <span>%</span>
                     </div>
 
                     {
                         props.tvShow.adult &&
-                        <div className='p-tv-show-similar__current-tv-show-tag p-tv-show-similar__current-tv-show-tag--adult'>
+                        <div className='c-current-tv-show__tag c-current-tv-show__tag--adult'>
                             18<span>+</span>
                         </div>
                     }
@@ -65,7 +65,7 @@ export default function CurrentTVShow(props: Props) {
 
                 {
                     props.tvShow.genres.length > 0 &&
-                    <div className='p-tv-show-similar__current-tv-show-genres'>
+                    <div className='c-current-tv-show__genres'>
                         {
                             props.tvShow.genres.map(
                                 (genre, index) => (

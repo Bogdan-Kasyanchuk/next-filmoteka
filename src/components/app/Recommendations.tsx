@@ -32,7 +32,7 @@ export default function Recommendations<T>(props: Props<T>) {
                 Recommendations
             </Title>
 
-            <div className="с-recommendations__cards">
+            <div className='с-recommendations__cards'>
                 <Carousel
                     items={props.recommendations.items}
                     modules={[Autoplay, Navigation]}
@@ -62,11 +62,11 @@ export default function Recommendations<T>(props: Props<T>) {
 
                 <>
                     <Arrow
-                        type="prev"
+                        type='prev'
                         refEl={setPrevButtonRef}
                     />
                     <Arrow
-                        type="next"
+                        type='next'
                         refEl={setNextButtonRef}
                     />
                 </>
@@ -93,7 +93,7 @@ export type ArrowProps = {
 function Arrow(props: ArrowProps) {
     return (
         <button
-            type="button"
+            type='button'
             ref={props.refEl}
             className={
                 clsx(
@@ -105,7 +105,7 @@ function Arrow(props: ArrowProps) {
                 )
             }
         >
-            <Icon name="arrow" />
+            <Icon name='arrow' />
         </button>
     );
 }

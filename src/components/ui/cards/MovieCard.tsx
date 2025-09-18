@@ -22,7 +22,7 @@ export default function MovieCard(props: Props) {
                             ? `${PARAMETERS.URL_IMG}${IMG_SIZES.MEDIA_CARD_COVER}${props.movie.poster_path}`
                             : '/img/poster-not-available.jpg'
                     }
-                    sizes="(max-width: 479px) 173px, (max-width: 767px) 213px, (max-width: 1023px) 230px, 241px"
+                    sizes='(max-width: 479px) 173px, (max-width: 767px) 213px, (max-width: 1023px) 230px, 241px'
                     alt={props.movie.title}
                     fill
                 />

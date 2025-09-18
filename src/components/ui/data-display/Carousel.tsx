@@ -20,7 +20,7 @@ export default function SCarousel<T>(props: Props<T>) {
         <Swiper
             modules={[Mousewheel, ...(props.modules ?? [])]}
             className={props.className}
-            slidesPerView="auto"
+            slidesPerView='auto'
             lazyPreloadPrevNext={2}
             mousewheel={
                 {

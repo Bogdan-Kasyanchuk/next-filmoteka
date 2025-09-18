@@ -27,7 +27,7 @@ export default function Casts(props: Props) {
                 Casts
             </Title>
 
-            <div className="с-casts__cards">
+            <div className='с-casts__cards'>
                 <Carousel
                     items={props.casts}
                     modules={[Autoplay, Navigation]}
@@ -57,11 +57,11 @@ export default function Casts(props: Props) {
 
                 <>
                     <Arrow
-                        type="prev"
+                        type='prev'
                         refEl={setPrevButtonRef}
                     />
                     <Arrow
-                        type="next"
+                        type='next'
                         refEl={setNextButtonRef}
                     />
                 </>
@@ -78,7 +78,7 @@ export type ArrowProps = {
 function Arrow(props: ArrowProps) {
     return (
         <button
-            type="button"
+            type='button'
             ref={props.refEl}
             className={
                 clsx(
@@ -90,7 +90,7 @@ function Arrow(props: ArrowProps) {
                 )
             }
         >
-            <Icon name="arrow" />
+            <Icon name='arrow' />
         </button>
     );
 }

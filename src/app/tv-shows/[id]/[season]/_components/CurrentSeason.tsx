@@ -3,9 +3,9 @@ import Link from 'next/link';
 
 import Title from '@/components/ui/typography/Title';
 import { IMG_SIZES, PARAMETERS } from '@/helpers/parameters';
+import { pagesTVUrl } from '@/routes';
 import { TVShowSeasonDetailsMapper } from '@/types';
 import { formatDate } from '@/utils/formateDate';
-import { pagesTVUrl } from '@/routes';
 
 type Props = {
     season: TVShowSeasonDetailsMapper['season'];
@@ -23,7 +23,7 @@ export default function CurrentSeason(props: Props) {
                                 ? `${PARAMETERS.URL_IMG}${IMG_SIZES.SEASON_CARD_DETAILS_COVER}${props.season.poster_path}`
                                 : '/img/poster-not-available.jpg'
                         }
-                        sizes="92px"
+                        sizes='92px'
                         alt={props.season.name}
                         fill
                     />

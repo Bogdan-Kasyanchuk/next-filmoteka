@@ -5,9 +5,9 @@ import { Fragment } from 'react';
 import Container from '@/components/ui/layouts/Container';
 import Title from '@/components/ui/typography/Title';
 import { PARAMETERS, IMG_SIZES } from '@/helpers/parameters';
+import { pagesTVUrl } from '@/routes';
 import { TVShowDetailsMapper } from '@/types';
 import { formatDate } from '@/utils/formateDate';
-import { pagesTVUrl } from '@/routes';
 
 type Props = TVShowDetailsMapper['tvShow'] & { id: string };
 
@@ -20,7 +20,7 @@ export default function TVShowDetails(props: Props) {
                 <div className='p-tv-show__details-backdrop'>
                     <Image
                         src={`${PARAMETERS.URL_IMG}${IMG_SIZES.MEDIA_CARD_DETAILS_BACKDROP}${props.backdrop_path}`}
-                        sizes="(max-width: 767px) 768px, (max-width: 1319px) 1320px, 1920px"
+                        sizes='(max-width: 767px) 768px, (max-width: 1319px) 1320px, 1920px'
                         alt={props.name}
                         fill
                     />
@@ -41,7 +41,7 @@ export default function TVShowDetails(props: Props) {
                                     ? `${PARAMETERS.URL_IMG}${IMG_SIZES.MEDIA_CARD_DETAILS_COVER}${props.poster_path}`
                                     : '/img/poster-not-available.jpg'
                             }
-                            sizes="(max-width: 767px) 253px, (max-width: 1319px) 326px, 350px"
+                            sizes='(max-width: 767px) 253px, (max-width: 1319px) 326px, 350px'
                             alt={props.name}
                             fill
                         />
@@ -112,8 +112,8 @@ export default function TVShowDetails(props: Props) {
                                 <span>WebSite:</span>
                                 <a
                                     href={props.homepage}
-                                    rel="noopener noreferrer"
-                                    target="_blank"
+                                    rel='noopener noreferrer'
+                                    target='_blank'
                                 >
                                     {props.homepage}
                                 </a>

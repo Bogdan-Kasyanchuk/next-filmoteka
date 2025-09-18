@@ -3,6 +3,7 @@
 import { keepPreviousData, useQueries } from '@tanstack/react-query';
 import { notFound } from 'next/navigation';
 
+import CurrentMovie from '@/components/app/CurrentMovie';
 import Pagination from '@/components/app/Pagination';
 import MovieCard from '@/components/ui/cards/MovieCard';
 import DataNotFound from '@/components/ui/data-display/DataNotFound';
@@ -11,8 +12,6 @@ import Container from '@/components/ui/layouts/Container';
 import Title from '@/components/ui/typography/Title';
 import { transformCurrentMovie, transformMovie } from '@/helpers/transformData';
 import { getCurrentMovieById, getSimilarMovies } from '@/services/api';
-
-import CurrentMovie from './CurrentMovie';
 
 type Props = {
     id: string;

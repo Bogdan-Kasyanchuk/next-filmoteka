@@ -11,7 +11,7 @@ type Props<T> = {
 
 export default function Tabs<T>(props: Props<T>) {
     return (
-        <ul className="c-tabs">
+        <ul className='c-tabs'>
             {
                 props.tabs.map(
                     (filter, index) => (

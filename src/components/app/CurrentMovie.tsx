@@ -15,23 +15,23 @@ type Props = {
 
 export default function CurrentMovie(props: Props) {
     return (
-        <div className='p-movie-similar__current-movie'>
-            <div className='p-movie-similar__current-movie-cover'>
+        <div className='c-current-movie'>
+            <div className='c-current-movie__cover'>
                 <Image
                     src={
                         props.movie.poster_path
                             ? `${PARAMETERS.URL_IMG}${IMG_SIZES.MEDIA_CARD_CURRENT_COVER}${props.movie.poster_path}`
                             : '/img/poster-not-available.jpg'
                     }
-                    sizes="92px"
+                    sizes='92px'
                     alt={props.movie.title}
                     fill
                 />
             </div>
 
-            <div className='p-movie-similar__current-movie-info'>
+            <div className='c-current-movie__info'>
                 <Title
-                    className='p-movie-similar__current-movie-title'
+                    className='c-current-movie__title'
                     variant={3}
                 >
                     <Link
@@ -45,19 +45,19 @@ export default function CurrentMovie(props: Props) {
                     </Link>
                 </Title>
 
-                <div className='p-movie-similar__current-movie-tags'>
-                    <div className='p-movie-similar__current-movie-tag p-movie-similar__current-movie-tag--type'>
+                <div className='c-current-movie__tags'>
+                    <div className='c-current-movie__tag c-current-movie__tag--type'>
                         {props.movie.media_type}
                     </div>
 
-                    <div className='p-movie-similar__current-movie-tag p-movie-similar__current-movie-tag--average'>
+                    <div className='c-current-movie__tag c-current-movie__tag--average'>
                         {Math.round(props.movie.vote_average * 10)}
                         <span>%</span>
                     </div>
 
                     {
                         props.movie.adult &&
-                        <div className='p-movie-similar__current-movie-tag p-movie-similar__current-movie-tag--adult'>
+                        <div className='c-current-movie__tag c-current-movie__tag--adult'>
                             18<span>+</span>
                         </div>
                     }
@@ -65,7 +65,7 @@ export default function CurrentMovie(props: Props) {
 
                 {
                     props.movie.genres.length > 0 &&
-                    <div className='p-movie-similar__current-movie-genres'>
+                    <div className='c-current-movie__genres'>
                         {
                             props.movie.genres.map(
                                 (genre, index) => (

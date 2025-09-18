@@ -38,8 +38,8 @@ export default function Pagination(props: Props) {
     const icon = <Icon name='angle' />;
 
     return (
-        <div className="c-pagination">
-            <ul className="c-pagination__list">
+        <div className='c-pagination'>
+            <ul className='c-pagination__list'>
                 <li
                     className={
                         clsx('c-pagination__item', {
@@ -97,7 +97,7 @@ export default function Pagination(props: Props) {
             </ul>
 
             <div
-                className="c-pagination__progress-bar"
+                className='c-pagination__progress-bar'
                 style={{ width: `${props.currentPage / props.totalPages * 100}%` }}
             />
         </div >
