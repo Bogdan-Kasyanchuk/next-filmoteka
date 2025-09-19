@@ -41,7 +41,7 @@ export default function TVShowDetails(props: Props) {
                                     ? `${PARAMETERS.URL_IMG}${IMG_SIZES.MEDIA_CARD_DETAILS_COVER}${props.poster_path}`
                                     : '/img/poster-not-available.jpg'
                             }
-                            sizes='(max-width: 767px) 253px, (max-width: 1319px) 326px, 350px'
+                            sizes='(max-width: 767px) 253px, (max-width: 1319px) 326px, 500px'
                             alt={props.name}
                             fill
                         />
@@ -286,7 +286,7 @@ export default function TVShowDetails(props: Props) {
                                                                 : '/img/image-placeholder.svg'
                                                         }
                                                         fill
-                                                        sizes='50px'
+                                                        sizes='92px'
                                                         alt={network.name}
                                                     />
                                                 </div>
@@ -330,7 +330,7 @@ export default function TVShowDetails(props: Props) {
                                                                 : '/img/image-placeholder.svg'
                                                         }
                                                         fill
-                                                        sizes='50px'
+                                                        sizes='92px'
                                                         alt={company.name}
                                                     />
                                                 </div>

@@ -2,33 +2,33 @@ import clsx from 'clsx';
 import { Dispatch, SetStateAction, useState } from 'react';
 import { Autoplay, Navigation } from 'swiper/modules';
 
-import CastCard from '@/components/ui/cards/CastCard';
+import CrewCard from '@/components/ui/cards/CrewCard';
 import Carousel from '@/components/ui/data-display/Carousel';
 import Icon from '@/components/ui/data-display/Icon';
 import Title from '@/components/ui/typography/Title';
-import { CastMapper } from '@/types';
+import { CrewMapper } from '@/types';
 
 type Props = {
-    casts: CastMapper[];
+    crews: CrewMapper[];
 }
 
-export default function Casts(props: Props) {
+export default function Crews(props: Props) {
     const [prevButtonRef, setPrevButtonRef] = useState<HTMLButtonElement | null>(null);
     const [nextButtonRef, setNextButtonRef] = useState<HTMLButtonElement | null>(null);
 
     return (
-        <div className='с-casts'>
+        <div className='с-crews'>
             <Title
                 order='h3'
                 variant={3}
-                className='с-casts__title'
+                className='с-crews__title'
             >
-                Casts
+                Crews
             </Title>
 
-            <div className='с-casts__cards'>
+            <div className='с-crews__cards'>
                 <Carousel
-                    items={props.casts}
+                    items={props.crews}
                     modules={[Autoplay, Navigation]}
                     options={
                         {
@@ -45,12 +45,12 @@ export default function Casts(props: Props) {
                     }
                     slideProps={
                         {
-                            className: 'с-casts__slide'
+                            className: 'с-crews__slide'
                         }
                     }
                 >
                     {
-                        slide => <CastCard cast={slide} />
+                        slide => <CrewCard crew={slide} />
                     }
                 </Carousel>
 
@@ -81,10 +81,10 @@ function Arrow(props: ArrowProps) {
             ref={props.refEl}
             className={
                 clsx(
-                    'с-casts__arrow',
+                    'с-crews__arrow',
                     props.type === 'prev'
-                        ? 'с-casts__arrow--prev'
-                        : 'с-casts__arrow--next'
+                        ? 'с-crews__arrow--prev'
+                        : 'с-crews__arrow--next'
 
                 )
             }

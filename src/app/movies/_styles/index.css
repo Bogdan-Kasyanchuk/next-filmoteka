@@ -22,6 +22,20 @@
         justify-content: center;
     }
 
+    &__dates {
+        font-size: var(--text-md);
+        font-weight: 700;
+        color: var(--color-link);
+
+        @variant min-md {
+            font-size: var(--text-xl);
+        }
+
+        @variant min-xl {
+            font-size: var(--text-3xl);
+        }
+    }
+
     &__content {
         display: flex;
         flex-direction: column;

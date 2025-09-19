@@ -18,6 +18,7 @@ export const metadata: Metadata = {
 type Props = {
     searchParams: Promise<{
         type?: 'multi' | MediaType;
+        adult?: 'true' | 'false';
         query?: string;
         page?: string;
     }>
@@ -26,25 +27,30 @@ type Props = {
 export default async function Page(props: Props) {
     const searchParams = await props.searchParams;
     const type = searchParams.type || 'multi';
+    const adult = searchParams.adult || 'false';
     const query = searchParams.query || '';
     const currentPage = Number(searchParams.page) || 1;
 
     const queryClient = new QueryClient();
 
     await queryClient.prefetchQuery({
-        queryKey: ['search', type, query, currentPage],
-        queryFn: () => getSearch(type, query, currentPage),
+        queryKey: ['search', type, adult, query, currentPage],
+        queryFn: () => getSearch(type, adult, query, currentPage),
     });
 
     return (
         <Container className='p-search'>
             <Search />
 
-            <Filter type={type} />
+            <Filter
+                type={type}
+                adult={adult}
+            />
 
             <HydrationBoundary state={dehydrate(queryClient)}>
                 <Content
                     type={type}
+                    adult={adult}
                     query={query}
                     currentPage={currentPage}
                 />

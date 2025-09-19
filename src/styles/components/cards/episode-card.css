@@ -62,7 +62,7 @@
 
     &__overview {
         width: 100%;
-        max-width: min(400px, calc(100vw - 40px));
+        max-width: min(440px, calc(100vw - 40px));
         padding: 12px;
 
         font-size: var(--text-xs);

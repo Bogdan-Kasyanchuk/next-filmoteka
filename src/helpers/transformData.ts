@@ -17,7 +17,8 @@ import {
     MediaCastShema,
     MediaCrewShema,
     CurrentMovieShema,
-    CurrentTVShowShema
+    CurrentTVShowShema,
+    CrewShema
 } from '@/shemas';
 import {
     CastMapper,
@@ -35,7 +36,8 @@ import {
     MediaCastMapper,
     MediaCrewMapper,
     CurrentMovieMapper,
-    CurrentTVShowMapper
+    CurrentTVShowMapper,
+    CrewMapper
 } from '@/types';
 
 export const transformMovie = (movie: MovieShema | SimilarMovieShema) => ({
@@ -91,6 +93,7 @@ export const transformMovieDetails = (movie: MovieDetailsShema) => ({
         ),
     },
     cast: movie.credits.cast.map((cast) => transformCast(cast)),
+    crew: movie.credits.crew.map((crew) => transformCrew(crew)),
     videos: movie.videos.results.filter(
         (video) => {
             if (video.site === VideoSiteType.YOUTUBE && (video.type === VideoType.TRAILER || video.type === VideoType.CLIP)) {
@@ -190,6 +193,7 @@ export const transformTVShowDetails = (tvShow: TVShowDetailsShema) => ({
     },
     seasons: tvShow.seasons.map((season) => transformSeason(season)),
     cast: tvShow.credits.cast.map((cast) => transformCast(cast)),
+    crew: tvShow.credits.crew.map((crew) => transformCrew(crew)),
     videos: tvShow.videos.results.filter(
         (video) => {
             if (video.site === VideoSiteType.YOUTUBE && video.type === VideoType.TRAILER) {
@@ -260,6 +264,14 @@ export const transformCast = (cast: CastShema) => ({
     profile_path: cast.profile_path,
     character: cast.character,
 }) as CastMapper;
+
+export const transformCrew = (crew: CrewShema) => ({
+    id: crew.id,
+    name: crew.name || crew.original_name,
+    popularity: crew.popularity,
+    profile_path: crew.profile_path,
+    job: crew.job,
+}) as CrewMapper;
 
 export const transformVideo = (video: VideoShema) => ({
     name: video.name,

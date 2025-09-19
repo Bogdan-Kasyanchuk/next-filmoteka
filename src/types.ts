@@ -31,10 +31,10 @@ export type CastMapper = {
 };
 
 export type CrewMapper = {
+    id: number,
     name: string,
     popularity: number,
     profile_path: string,
-    department: string,
     job: string,
 };
 
@@ -79,6 +79,14 @@ export type SeasonMapper = {
     vote_average: number,
 };
 
+export type ImageMapper = {
+    height: number,
+    width: number,
+    file_path: string,
+    vote_average: number,
+    vote_count: number,
+};
+
 export type MovieMapper = {
     id: number,
     adult: boolean,
@@ -113,6 +121,7 @@ export type MovieDetailsMapper = {
         spoken_languages: SpokenLanguage[],
     },
     cast: CastMapper[],
+    crew: CrewMapper[],
     videos: VideoMapper[],
     reviews: {
         items: ReviewMapper[],
@@ -172,6 +181,7 @@ export type TVShowDetailsMapper = {
     },
     seasons: SeasonMapper[],
     cast: CastMapper[],
+    crew: CrewMapper[],
     videos: VideoMapper[],
     reviews: {
         items: ReviewMapper[],

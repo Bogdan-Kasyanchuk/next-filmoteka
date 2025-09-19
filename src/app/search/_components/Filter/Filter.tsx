@@ -3,6 +3,7 @@
 import { usePathname, useSearchParams, useRouter } from 'next/navigation';
 
 import Tabs from '@/components/ui/data-display/Tabs';
+import Switch from '@/components/ui/inputs/Switch';
 import { MediaType } from '@/enums';
 import { sortParams } from '@/helpers/sortParams';
 
@@ -10,6 +11,7 @@ import { mediaTypeFilter } from './datasets';
 
 type Props = {
     type: 'multi' | MediaType;
+    adult: 'true' | 'false';
 }
 
 export default function Filter(props: Props) {
@@ -26,6 +28,15 @@ export default function Filter(props: Props) {
         replace(sortParams(pathname, params));
     };
 
+    const handleAdult = (adult: 'true' | 'false') => {
+        const params = new URLSearchParams(searchParams);
+
+        params.set('adult', adult);
+        params.set('page', '1');
+
+        replace(sortParams(pathname, params));
+    };
+
     return (
         <div className='p-search__filter'>
             <Tabs<'multi' | MediaType>
@@ -34,6 +45,18 @@ export default function Filter(props: Props) {
                 onClick={
                     (value) => {
                         handleType(value);
+                    }
+                }
+            />
+
+            <Switch
+                label='Adult'
+                checked={props.adult === 'true'}
+                onChange={
+                    event => {
+                        handleAdult(
+                            event.currentTarget.checked ? 'true' : 'false'
+                        );
                     }
                 }
             />

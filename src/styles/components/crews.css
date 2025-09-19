@@ -1,4 +1,4 @@
-.с-recommendations {
+.с-crews {
     @apply pt-[30px] border-t border-t-primary/75 -mx-2.5 px-2.5;
     @apply xxxl:-mx-5 xxxl:px-5;
 
@@ -12,37 +12,32 @@
     }
 
     &__slide {
-        --swiper-col-gap: 5px;
+        --swiper-col-gap: 10px;
 
         width: calc((100% / 2) - var(--swiper-col-gap) * 1 / 2);
 
         @variant min-sm {
-            --swiper-col-gap: 10px;
+            width: calc((100% / 3) - var(--swiper-col-gap) * 2 / 3);
         }
 
         @variant min-md {
             --swiper-col-gap: 15px;
 
-            width: calc((100% / 3) - var(--swiper-col-gap) * 2 / 3);
+            width: calc((100% / 5) - var(--swiper-col-gap) * 4 / 5);
         }
 
         @variant min-lg {
             --swiper-col-gap: 20px;
 
-            width: calc((100% / 4) - var(--swiper-col-gap) * 3 / 4);
-        }
-
-        @variant min-xl {
-            width: calc((100% / 5) - var(--swiper-col-gap) * 4 / 5);
-        }
-
-        @variant min-xxl {
             width: calc((100% / 6) - var(--swiper-col-gap) * 5 / 6);
         }
 
-        .с-tv-show-card:hover,
-        .с-movie-card:hover {
-            transform: scale(0.98);
+        @variant min-xl {
+            width: calc((100% / 8) - var(--swiper-col-gap) * 7 / 8);
+        }
+
+        @variant min-xxl {
+            width: calc((100% / 9) - var(--swiper-col-gap) * 8 / 9);
         }
     }
 
@@ -73,29 +68,6 @@
 
         &--next {
             @apply -end-[18px];
-        }
-    }
-
-    &__show-all-button {
-        display: block;
-
-        width: fit-content;
-        min-width: 250px;
-        min-height: 40px;
-        margin-top: 20px;
-        margin-inline: auto;
-        padding: 8px 15px;
-        border-radius: 4px;
-
-        font-size: var(--text-md);
-        font-weight: 700;
-        text-align: center;
-        text-transform: uppercase;
-
-        @apply bg-link transition-colors;
-
-        &:hover {
-            @apply bg-link-hover;
         }
     }
 }

@@ -9,6 +9,7 @@ import Loader from '@/components/ui/data-display/Loader';
 import { MovieType } from '@/enums';
 import { transformMovie } from '@/helpers/transformData';
 import { getMovies } from '@/services/api';
+import { formatDate } from '@/utils/formateDate';
 
 type Props = {
     type: MovieType;
@@ -24,7 +25,8 @@ export default function Content(props: Props) {
             movies: data.results.map(
                 (movie) => transformMovie(movie)
             ),
-            total_pages: data.total_pages
+            total_pages: data.total_pages,
+            dates: data.dates
         }),
     });
 
@@ -35,6 +37,15 @@ export default function Content(props: Props) {
                     ? <Loader />
                     : data && data.movies.length > 0
                         ? <div className='p-movies__content'>
+                            {
+                                data.dates &&
+                                <div className='p-movies__dates'>
+                                    {formatDate(data.dates.minimum, 'DD.MM.YYYY')}
+                                    {' - '}
+                                    {formatDate(data.dates.maximum, 'DD.MM.YYYY')}
+                                </div>
+                            }
+
                             <ul className='p-movies__list'>
                                 {
                                     data.movies.map(

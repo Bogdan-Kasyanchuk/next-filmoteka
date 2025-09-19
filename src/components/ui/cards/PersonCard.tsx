@@ -23,7 +23,7 @@ export default function PersonCard(props: Props) {
                             ? `${PARAMETERS.URL_IMG}${IMG_SIZES.PERSON_CARD_COVER}${props.person.profile_path}`
                             : '/img/poster-not-available.jpg'
                     }
-                    sizes='(max-width: 479px) 173px, (max-width: 767px) 213px, (max-width: 1023px) 230px, 241px'
+                    sizes='(max-width: 479px) 173px, (max-width: 767px) 213px, (max-width: 1023px) 230px, 421px'
                     alt={props.person.name}
                     fill
                 />

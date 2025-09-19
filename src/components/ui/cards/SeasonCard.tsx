@@ -24,7 +24,7 @@ export default function SeasonCard(props: Props) {
                             ? `${PARAMETERS.URL_IMG}${IMG_SIZES.SEASON_CARD_COVER}${props.season.poster_path}`
                             : '/img/poster-not-available.jpg'
                     }
-                    sizes='120px'
+                    sizes='154px'
                     alt={props.season.name}
                     fill
                 />

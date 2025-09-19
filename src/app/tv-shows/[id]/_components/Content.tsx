@@ -4,6 +4,7 @@ import { useQuery } from '@tanstack/react-query';
 import { notFound } from 'next/navigation';
 
 import Casts from '@/components/app/Casts';
+import Crews from '@/components/app/Crews';
 import Recommendations from '@/components/app/Recommendations';
 import Reviews from '@/components/app/Reviews';
 import Videos from '@/components/app/Videos';
@@ -61,6 +62,11 @@ export default function Content(props: Props) {
                 {
                     data.cast.length > 0 &&
                     <Casts casts={data.cast} />
+                }
+
+                {
+                    data.crew.length > 0 &&
+                    <Crews crews={data.crew} />
                 }
 
                 {

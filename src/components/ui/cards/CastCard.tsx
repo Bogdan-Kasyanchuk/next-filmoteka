@@ -29,7 +29,7 @@ export default function CastCard(props: Props) {
                             ? `${PARAMETERS.URL_IMG}${IMG_SIZES.CAST_CARD_COVER}${props.cast.profile_path}`
                             : '/img/avatar-placeholder.svg'
                     }
-                    sizes='170px'
+                    sizes='180px'
                     alt={props.cast.name}
                     fill
                 />

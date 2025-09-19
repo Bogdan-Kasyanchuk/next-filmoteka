@@ -14,10 +14,8 @@
     text-decoration: none;
     transition-property: color;
 
-    @media (any-hover: hover) {
-        &:hover {
-            color: var(--color-link-hover);
-        }
+    &:hover {
+        color: var(--color-link-hover);
     }
 }
 
@@ -34,10 +32,8 @@
         display: block;
     }
 
-    @media (any-hover: hover) {
-        &:hover {
-            opacity: 0.75;
-        }
+    &:hover {
+        opacity: 0.75;
     }
 }
 

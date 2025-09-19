@@ -15,14 +15,15 @@ import { MovieMapper, PersonMapper, TVShowMapper } from '@/types';
 
 type Props = {
     type: 'multi' | MediaType;
+    adult: 'true' | 'false';
     query: string;
     currentPage: number,
 }
 
 export default function Content(props: Props) {
     const { data, isPending, isFetching } = useQuery({
-        queryKey: ['search', props.type, props.query, props.currentPage],
-        queryFn: () => getSearch(props.type, props.query, props.currentPage),
+        queryKey: ['search', props.type, props.adult, props.query, props.currentPage],
+        queryFn: () => getSearch(props.type, props.adult, props.query, props.currentPage),
         placeholderData: keepPreviousData,
         select: (data) => ({
             results: data.results.map(

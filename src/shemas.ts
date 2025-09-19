@@ -46,7 +46,21 @@ export type SpokenLanguageShema = {
     name: string,
 };
 
+export type ImageShema = {
+    aspect_ratio: number,
+    height: number,
+    width: number,
+    iso_639_1: string,
+    file_path: string,
+    vote_average: number,
+    vote_count: number,
+};
+
 export type DataShema<Type> = {
+    dates?: {
+        maximum: string,
+        minimum: string,
+    },
     page: number,
     results: Type[],
     total_pages: number,
@@ -109,6 +123,14 @@ export type MovieDetailsShema = {
     },
     reviews: DataShema<ReviewShema>,
     recommendations: DataShema<MovieShema>,
+    external_ids: {
+        id: number,
+        imdb_id: string,
+        wikidata_id: string,
+        facebook_id: string,
+        instagram_id: string,
+        twitter_id: string,
+    } //todo: add external_ids
 };
 
 export type CurrentMovieShema = Omit<MovieDetailsShema, 'credits' | 'videos' | 'reviews' | 'recommendations'>;
@@ -175,6 +197,18 @@ export type TVShowDetailsShema = {
     },
     reviews: DataShema<ReviewShema>,
     recommendations: DataShema<TVShowShema>,
+    external_ids: {
+        id: number,
+        imdb_id: string,
+        freebase_mid: string,
+        freebase_id: string,
+        tvdb_id: number,
+        tvrage_id: number,
+        wikidata_id: string,
+        facebook_id: string,
+        instagram_id: string,
+        twitter_id: string,
+    } //todo: add external_ids
 };
 
 export type CurrentTVShowShema = Omit<TVShowDetailsShema, 'seasons' | 'credits' | 'videos' | 'reviews' | 'recommendations'>;
@@ -354,5 +388,19 @@ export type PersonDetailsShema = {
     combined_credits: {
         cast: MediaCastShema[],
         crew: MediaCrewShema[],
-    }
+    },
+    images: ImageShema[], //todo: add images
+    external_ids: {
+        id: number,
+        freebase_mid: string,
+        freebase_id: string,
+        imdb_id: string,
+        tvrage_id: number,
+        wikidata_id: string,
+        facebook_id: string,
+        instagram_id: string,
+        tiktok_id: string,
+        twitter_id: string,
+        youtube_id: string
+    } //todo: add external_ids
 };

@@ -1,7 +1,6 @@
 export const PARAMETERS = {
     API_KEY: process.env.API_KEY,
     BASE_URL: process.env.BASE_URL,
-    ADULT: process.env.ADULT,
     LOCALE: process.env.LOCALE,
     URL_IMG: process.env.NEXT_PUBLIC_URL_IMG,
 };
@@ -15,12 +14,14 @@ export const IMG_SIZES = {
     SEASON_CARD_DETAILS_COVER: 'w92',
     EPISODE_CARD_COVER: 'w300',
     CAST_CARD_COVER: 'w180_and_h180_face',
+    CREW_CARD_COVER: 'w180_and_h180_face',
     CREATOR_AVATAR: 'w50_and_h50_face',
     REVIEWER_AVATAR: 'w92',
     COMPANY_LOGO: 'w92',
     NETWORK_LOGO: 'w92',
     PERSON_CARD_COVER: 'h632',
     PERSON_CARD_DETAILS_COVER: 'h632',
+    PERSON_IMAGE: 'h632',
     MEDIA_CAST_CARD_COVER: 'w92',
     MEDIA_CREW_CARD_COVER: 'w92',
 };

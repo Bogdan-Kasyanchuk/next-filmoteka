@@ -5,9 +5,8 @@ import clsx from 'clsx';
 import Link from 'next/link';
 import { usePathname, useSearchParams } from 'next/navigation';
 
+import Icon from '@/components/ui/data-display/Icon';
 import { mobilePagination, desktopPagination } from '@/utils/generatePagination';
-
-import Icon from '../ui/data-display/Icon';
 
 type Props = {
     currentPage: number,

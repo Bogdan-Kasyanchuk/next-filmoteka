@@ -12,8 +12,8 @@
     }
 
     &__search {
-        width: 400px;
-        max-width: min(400px, calc(100vw - 40px));
+        width: 440px;
+        max-width: min(440px, calc(100vw - 40px));
         padding: 15px;
         border-color: var(--color-accent-hover);
 
@@ -59,9 +59,7 @@
             @apply bg-link transition-colors;
 
             &:hover {
-                @media (any-hover: hover) {
-                    @apply bg-link-hover;
-                }
+                @apply bg-link-hover;
             }
         }
     }

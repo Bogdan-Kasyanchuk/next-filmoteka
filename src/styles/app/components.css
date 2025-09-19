@@ -5,17 +5,20 @@
 @import '../components/carousel.css';
 @import '../components/recommendations.css';
 @import '../components/casts.css';
+@import '../components/crews.css';
 @import '../components/videos.css';
 @import '../components/reviews.css';
 @import '../components/current-movie.css';
 @import '../components/current-tv-show.css';
 @import '../components/forms/base.css';
 @import '../components/forms/field.css';
+@import '../components/forms/switch.css';
 
 /* Cards */
 @import '../components/cards/movie-card.css';
 @import '../components/cards/tv-show-card.css';
 @import '../components/cards/cast-card.css';
+@import '../components/cards/crew-card.css';
 @import '../components/cards/video-card.css';
 @import '../components/cards/season-card.css';
 @import '../components/cards/episode-card.css';

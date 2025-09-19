@@ -1,18 +1,17 @@
 .c-scroll-to-top {
-    @apply w-10 h-10 rounded-xs fixed bottom-5 right-5 flex items-center justify-center z-100 bg-primary;
+    --icon-size: 20px;
 
-    transition-property: background-color, box-shadow;
+    @apply w-10 h-10 rounded-xs fixed bottom-5 right-5 flex items-center justify-center z-100 bg-primary text-secondary;
+
+    transition-property: background-color, box-shadow, color;
 
     i {
-        @apply w-5 h-5 -rotate-90 transition-[filter];
+        @apply -rotate-90;
     }
 
     &:hover {
+        color: var(--color-primary);
         background-color: var(--color-accent-hover);
         box-shadow: var(--shadow-custom-accent);
-
-        i {
-            @apply invert;
-        }
     }
 }

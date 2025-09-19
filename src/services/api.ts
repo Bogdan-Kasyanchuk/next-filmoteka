@@ -121,10 +121,13 @@ export function getPersonById(id: string) {
     );
 }
 
-export function getSearch(type: 'multi' | MediaType, query: string, page: number) {
-    console.log(type, query, page);
-
+export function getSearch(
+    type: 'multi' | MediaType,
+    adult: 'true' | 'false',
+    query: string,
+    page: number
+) {
     return fetchApi<DataShema<MovieShema | TVShowShema | PersonShema>>(
-        `search/${type}?query=${query}&page=${page}&include_adult=${PARAMETERS.ADULT}`
+        `search/${type}?query=${query}&page=${page}&include_adult=${adult}`
     );
 }
