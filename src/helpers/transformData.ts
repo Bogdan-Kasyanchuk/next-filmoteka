@@ -308,6 +308,7 @@ export const transformPerson = (person: PersonShema) => ({
     id: person.id,
     known_for_department: person.known_for_department,
     name: person.name,
+    media_type: MediaType.PERSON,
     popularity: person.popularity,
     profile_path: person.profile_path,
 }) as PersonMapper;

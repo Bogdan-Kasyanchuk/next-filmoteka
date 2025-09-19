@@ -325,11 +325,13 @@ export type MediaCrewShema = {
 
 export type PersonShema = {
     adult: boolean,
-    gender: GenderType,
     id: number,
-    known_for_department: string,
     name: string,
+    original_name: string,
+    media_type: MediaType.PERSON,
     popularity: number,
+    gender: GenderType,
+    known_for_department: string,
     profile_path: string,
     known_for: Omit<MovieShema, 'popularity'>[],
 };

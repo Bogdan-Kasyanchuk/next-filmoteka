@@ -9,6 +9,15 @@
 
     padding-block: 30px;
 
+    &__filter {
+        display: flex;
+        flex-wrap: wrap;
+        row-gap: 20px;
+        column-gap: 80px;
+        align-items: center;
+        justify-content: center;
+    }
+
     &__content {
         display: flex;
         flex-direction: column;

@@ -38,7 +38,7 @@ async function fetchApi<T>(url: string) {
 }
 
 export function getTrendings(type: 'all' | MediaType, time: TimeType, page: number) {
-    return fetchApi<DataShema<MovieShema> | DataShema<TVShowShema>>(
+    return fetchApi<DataShema<MovieShema | TVShowShema | PersonShema>>(
         `trending/${type}/${time}?page=${page}`
     );
 }
@@ -121,7 +121,10 @@ export function getPersonById(id: string) {
     );
 }
 
-export function getSearch(query: string, page: number) {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    return fetchApi<DataShema<any>>(`search/multi?query=${query}&page=${page}&include_adult=${PARAMETERS.ADULT}`);
+export function getSearch(type: 'multi' | MediaType, query: string, page: number) {
+    console.log(type, query, page);
+
+    return fetchApi<DataShema<MovieShema | TVShowShema | PersonShema>>(
+        `search/${type}?query=${query}&page=${page}&include_adult=${PARAMETERS.ADULT}`
+    );
 }

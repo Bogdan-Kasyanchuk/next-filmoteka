@@ -4,11 +4,12 @@ import { keepPreviousData, useQuery } from '@tanstack/react-query';
 
 import Pagination from '@/components/app/Pagination';
 import MovieCard from '@/components/ui/cards/MovieCard';
+import PersonCard from '@/components/ui/cards/PersonCard';
 import TVShowCard from '@/components/ui/cards/TVShowCard';
 import DataNotFound from '@/components/ui/data-display/DataNotFound';
 import Loader from '@/components/ui/data-display/Loader';
 import { MediaType, TimeType } from '@/enums';
-import { transformMovie, transformTVShow } from '@/helpers/transformData';
+import { transformMovie, transformPerson, transformTVShow } from '@/helpers/transformData';
 import { getTrendings } from '@/services/api';
 
 type Props = {
@@ -27,12 +28,18 @@ export default function Content(props: Props) {
                 (result) => {
                     if (result.media_type === MediaType.MOVIE) {
                         return transformMovie(result);
-                    } else {
+                    }
+
+                    if (result.media_type === MediaType.TV_SHOW) {
                         return transformTVShow(result);
+                    }
+
+                    if (result.media_type === MediaType.PERSON) {
+                        return transformPerson(result);
                     }
                 }),
             total_pages: data.total_pages
-        }),
+        })
     });
 
     return (
@@ -46,11 +53,21 @@ export default function Content(props: Props) {
                                 {
                                     data.results.map(
                                         (result) => (
+                                            result &&
                                             <li key={result.id}>
                                                 {
-                                                    result.media_type === MediaType.MOVIE
-                                                        ? <MovieCard movie={result} />
-                                                        : <TVShowCard tvShow={result} />
+                                                    result.media_type === MediaType.MOVIE &&
+                                                    <MovieCard movie={result} />
+                                                }
+
+                                                {
+                                                    result.media_type === MediaType.TV_SHOW &&
+                                                    <TVShowCard tvShow={result} />
+                                                }
+
+                                                {
+                                                    result.media_type === MediaType.PERSON &&
+                                                    <PersonCard person={result} />
                                                 }
                                             </li>
                                         )

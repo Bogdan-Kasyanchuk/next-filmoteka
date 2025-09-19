@@ -1,34 +1,33 @@
 'use client';
 
-import { useDebouncedValue } from '@mantine/hooks';
+import { useDebouncedValue, useDidUpdate } from '@mantine/hooks';
 import Image from 'next/image';
 import { useSearchParams, usePathname, useRouter } from 'next/navigation';
-import { useEffect, useMemo, useState } from 'react';
+import { useState } from 'react';
+
+import { sortParams } from '@/helpers/sortParams';
 
 export default function Search() {
     const pathname = usePathname();
     const searchParams = useSearchParams();
     const { replace } = useRouter();
 
-    const params = useMemo(
-        () => new URLSearchParams(searchParams),
-        [searchParams]
-    );
-
     const [term, setTerm] = useState(searchParams.get('query')?.toString() ?? '');
     const [debouncedTerm] = useDebouncedValue(term, 250);
 
-    useEffect(() => {
+    useDidUpdate(() => {
+        const params = new URLSearchParams(searchParams);
+
         if (debouncedTerm) {
             params.set('query', debouncedTerm);
-            params.delete('page');
+            params.set('page', '1');
         } else {
             params.delete('query');
             params.delete('page');
         }
 
-        replace(`${pathname}?${params.toString()}`);
-    }, [debouncedTerm, params, pathname, replace]);
+        replace(sortParams(pathname, params));
+    }, [debouncedTerm]);
 
     return (
         <div className='p-search__search'>

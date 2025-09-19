@@ -1,12 +1,12 @@
-import { MediaType, TimeType } from '@/enums';
+import { MediaType } from '@/enums';
 
 export const mediaTypeFilter: Array<{
     label: string,
-    value: 'all' | MediaType
+    value: 'multi' | MediaType
 }> = [
         {
             label: 'All',
-            value: 'all'
+            value: 'multi'
         },
         {
             label: 'Movies',
@@ -19,19 +19,5 @@ export const mediaTypeFilter: Array<{
         {
             label: 'Persons',
             value: MediaType.PERSON
-        }
-    ];
-
-export const timeFilter: Array<{
-    label: string,
-    value: TimeType
-}> = [
-        {
-            label: 'Day',
-            value: TimeType.DAY
-        },
-        {
-            label: 'Week',
-            value: TimeType.WEEK
         }
     ];

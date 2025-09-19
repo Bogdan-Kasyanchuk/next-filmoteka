@@ -229,6 +229,7 @@ export type PersonMapper = {
     id: number,
     known_for_department: string,
     name: string,
+    media_type: MediaType.PERSON,
     popularity: number,
     profile_path: string,
 };
