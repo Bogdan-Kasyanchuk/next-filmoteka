@@ -96,9 +96,13 @@ export type MovieMapper = {
     vote_average: number,
 };
 
+export type SocialLinksMapper = Array<{
+    provider: string,
+    link: string
+}>;
+
 export type MovieDetailsMapper = {
     movie: {
-        imdb_id: string,
         adult: boolean,
         homepage: string,
         budget: number,
@@ -119,6 +123,7 @@ export type MovieDetailsMapper = {
         origin_country: string[],
         production_companies: ProductionCompany[],
         spoken_languages: SpokenLanguage[],
+        socialLinks: SocialLinksMapper
     },
     cast: CastMapper[],
     crew: CrewMapper[],
@@ -131,6 +136,7 @@ export type MovieDetailsMapper = {
         items: MovieMapper[],
         totalPages: number,
     },
+
 };
 
 export type CurrentMovieMapper = {
@@ -178,6 +184,7 @@ export type TVShowDetailsMapper = {
         spoken_languages: SpokenLanguage[],
         created_by: Creator[],
         networks: Network[],
+        socialLinks: SocialLinksMapper
     },
     seasons: SeasonMapper[],
     cast: CastMapper[],
@@ -252,13 +259,14 @@ export type PersonDetailsMapper = {
         birthday: string,
         deathday: string,
         homepage: string,
-        imdb_id: string,
         known_for_department: string,
         name: string,
         place_of_birth: string,
         popularity: number,
         profile_path: string,
+        socialLinks: SocialLinksMapper
     },
+    images: ImageMapper[],
     cast: MediaCastMapper[],
     crew: MediaCrewMapper[],
 };

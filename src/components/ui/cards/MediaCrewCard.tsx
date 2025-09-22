@@ -35,7 +35,7 @@ export default function MediaCrewCard(props: Props) {
                 <Image
                     src={
                         props.crew.poster_path
-                            ? `${PARAMETERS.URL_IMG}${IMG_SIZES.MEDIA_CREW_CARD_COVER}${props.crew.poster_path}`
+                            ? `${PARAMETERS.URL_IMG}/${IMG_SIZES.MEDIA_CREW_CARD_COVER}${props.crew.poster_path}`
                             : '/img/poster-not-available.jpg'
                     }
                     sizes='92px'

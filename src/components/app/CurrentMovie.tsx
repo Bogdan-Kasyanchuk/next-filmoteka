@@ -20,7 +20,7 @@ export default function CurrentMovie(props: Props) {
                 <Image
                     src={
                         props.movie.poster_path
-                            ? `${PARAMETERS.URL_IMG}${IMG_SIZES.MEDIA_CARD_CURRENT_COVER}${props.movie.poster_path}`
+                            ? `${PARAMETERS.URL_IMG}/${IMG_SIZES.MEDIA_CARD_CURRENT_COVER}${props.movie.poster_path}`
                             : '/img/poster-not-available.jpg'
                     }
                     sizes='92px'

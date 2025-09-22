@@ -21,7 +21,17 @@ export const IMG_SIZES = {
     NETWORK_LOGO: 'w92',
     PERSON_CARD_COVER: 'h632',
     PERSON_CARD_DETAILS_COVER: 'h632',
-    PERSON_IMAGE: 'h632',
+    PERSON_IMAGE: 'w185',
     MEDIA_CAST_CARD_COVER: 'w92',
     MEDIA_CREW_CARD_COVER: 'w92',
+};
+
+export const EXTERNAL_ID_URLS = {
+    FACEBOOK: 'https://www.facebook.com',
+    IMDB: 'https://www.imdb.com',
+    INSTAGRAM: 'https://www.instagram.com',
+    TIKTOK: 'https://www.tiktok.com',
+    TWITTER: 'https://x.com',
+    WIKIDATA: 'https://www.wikidata.org/wiki',
+    YOUTUBE: 'https://www.youtube.com',
 };

@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { Fragment } from 'react';
 
+import SocialLinks from '@/components/ui/data-display/SocialLinks';
 import Container from '@/components/ui/layouts/Container';
 import Title from '@/components/ui/typography/Title';
 import { PARAMETERS, IMG_SIZES } from '@/helpers/parameters';
@@ -14,7 +15,7 @@ export default function PersonDetails(props: Props) {
         <div className='p-person__details'>
             <div className='p-person__details-backdrop'>
                 <Image
-                    src={`${PARAMETERS.URL_IMG}${IMG_SIZES.PERSON_CARD_DETAILS_COVER}${props.profile_path}`}
+                    src={`${PARAMETERS.URL_IMG}/${IMG_SIZES.PERSON_CARD_DETAILS_COVER}${props.profile_path}`}
                     sizes='(max-width: 767px) 768px, (max-width: 1319px) 1320px, 1920px'
                     alt={props.name}
                     fill
@@ -33,7 +34,7 @@ export default function PersonDetails(props: Props) {
                     <Image
                         src={
                             props.profile_path
-                                ? `${PARAMETERS.URL_IMG}${IMG_SIZES.PERSON_CARD_DETAILS_COVER}${props.profile_path}`
+                                ? `${PARAMETERS.URL_IMG}/${IMG_SIZES.PERSON_CARD_DETAILS_COVER}${props.profile_path}`
                                 : '/img/poster-not-available.jpg'
                         }
                         sizes='(max-width: 767px) 253px, (max-width: 1319px) 326px, 421px'
@@ -47,20 +48,6 @@ export default function PersonDetails(props: Props) {
                 </Title>
 
                 <ul className='p-person__details-list-info'>
-                    {
-                        props.imdb_id &&
-                        <li className='p-person__details-list-info-item p-person__details-list-info-item--link'>
-                            <span>IMDB:</span>
-                            <a
-                                href={`https://www.imdb.com/name/${props.imdb_id}`}
-                                rel='noopener noreferrer'
-                                target='_blank'
-                            >
-                                https://www.imdb.com/name/{props.imdb_id}
-                            </a>
-                        </li>
-                    }
-
                     {
                         props.homepage &&
                         <li className='p-person__details-list-info-item p-person__details-list-info-item--link'>
@@ -127,6 +114,11 @@ export default function PersonDetails(props: Props) {
                         </li>
                     }
                 </ul>
+
+                {
+                    props.socialLinks.length > 0 &&
+                    <SocialLinks socials={props.socialLinks} />
+                }
 
                 {
                     props.biography &&

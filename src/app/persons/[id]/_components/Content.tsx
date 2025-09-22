@@ -8,6 +8,7 @@ import Container from '@/components/ui/layouts/Container';
 import { transformPersonDetails } from '@/helpers/transformData';
 import { getPersonById } from '@/services/api';
 
+import Images from './Images';
 import PersonDetails from './PersonDetails';
 import Timeline from './Timeline';
 
@@ -34,15 +35,23 @@ export default function Content(props: Props) {
         <div className='p-person'>
             <PersonDetails {...data.person} />
 
-            {
-                (data.cast.length > 0 || data.crew.length > 0) &&
-                <Container className='p-person__container'>
+            <Container className='p-person__container'>
+                {
+                    data.images.length > 0 &&
+                    <Images
+                        images={data.images}
+                        name={data.person.name}
+                    />
+                }
+
+                {
+                    (data.cast.length > 0 || data.crew.length > 0) &&
                     <Timeline
                         cast={data.cast}
                         crew={data.crew}
                     />
-                </Container>
-            }
+                }
+            </Container>
         </div>
     );
 }

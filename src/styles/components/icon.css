@@ -1,33 +1,68 @@
 .i-icon {
     display: inline-block;
-
     width: var(--icon-size, 24px);
     height: var(--icon-size, 24px);
 
-    background-color: currentcolor;
+    &--mono {
+        background-color: currentcolor;
 
-    mask-image: var(--icon-path);
-    mask-position: center;
-    mask-repeat: no-repeat;
-    mask-size: contain;
+        mask-image: var(--icon-path);
+        mask-position: center;
+        mask-repeat: no-repeat;
+        mask-size: contain;
+    }
+
+    &--color {
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+    }
 }
 
-.i-icon--angle {
+.i-icon-angle {
     --icon-path: url('/svg/angle.svg');
 }
 
-.i-icon--arrow {
+.i-icon-arrow {
     --icon-path: url('/svg/arrow.svg');
 }
 
-.i-icon--email {
+.i-icon-email {
     --icon-path: url('/svg/email.svg');
 }
 
-.i-icon--key {
+.i-icon-key {
     --icon-path: url('/svg/key.svg');
 }
 
-.i-icon--check {
+.i-icon-check {
     --icon-path: url('/svg/check.svg');
+}
+
+.i-icon-facebook {
+    background-image: url('/svg/socials/facebook.svg');
+}
+
+.i-icon-imdb {
+    background-image: url('/svg/socials/imdb.svg');
+}
+
+.i-icon-instagram {
+    background-image: url('/svg/socials/instagram.svg');
+}
+
+.i-icon-tiktok {
+    background-image: url('/svg/socials/tiktok.svg');
+}
+
+.i-icon-twitter {
+    background-image: url('/svg/socials/twitter.svg');
+}
+
+.i-icon-youtube {
+    background-image: url('/svg/socials/youtube.svg');
+}
+
+.i-icon-wikidata {
+    background-image: url('/svg/socials/wikidata.svg');
 }

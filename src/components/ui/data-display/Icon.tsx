@@ -2,18 +2,20 @@ import clsx from 'clsx';
 import { ComponentPropsWithoutRef } from 'react';
 
 type Props = ComponentPropsWithoutRef<'i'> & {
-    name: string
+    name: string,
+    type?: 'mono' | 'color'
 };
 
 export default function Icon(props: Props) {
-    const { name, className, ...rest } = props;
+    const { type = 'mono', name, className, ...rest } = props;
 
     return (
         <i
             className={
                 clsx([
                     'i-icon',
-                    `i-icon--${name}`,
+                    `i-icon--${type}`,
+                    `i-icon-${name}`,
                     className
                 ])
             }

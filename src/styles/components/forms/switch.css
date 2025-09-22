@@ -1,6 +1,6 @@
 :root {
     --f-switch-border-width: 1px;
-    --f-switch-border-color: var(--color-primary);
+    --f-switch-border-color: var(--color-accent);
     --f-switch-border-radius: 999px;
     --f-switch-height: 30px;
     --f-switch-width: 60px;
@@ -8,12 +8,13 @@
     --f-switch-bg: var(--color-accent);
     --f-switch-color: var(--color-primary);
     --f-switch-font-size: var(--text-xs);
-    --f-switch-label-font-size: var(--text-sm);
     --f-switch-font-weight: 600;
+    --f-switch-label-font-size: var(--text-sm);
+    --f-switch-label-font-weight: 700;
     --f-switch-icon-thumb-size: 20px;
     --f-switch-icon-size: 16px;
     --f-switch-icon-left: 4px;
-    --f-switch-icon-bg: var(--color-link);
+    --f-switch-icon-bg: var(--color-secondary);
     --f-switch-icon-color: var(--color-primary);
 
     @variant min-md {
@@ -56,6 +57,13 @@
 
         appearance: none;
         background-color: var(--f-switch-bg);
+
+        transition-property: background-color, border-color;
+
+        .f-switch__field:checked + & {
+            --f-switch-bg: var(--color-link);
+            --f-switch-border-color: var(--color-link);
+        }
     }
 
     &__icon {
@@ -121,6 +129,7 @@
 
     &__label {
         font-size: var(--f-switch-label-font-size);
+        font-weight: var(--f-switch-label-font-weight);
         line-height: 1.25;
         text-transform: uppercase;
     }

@@ -26,7 +26,7 @@ export default function CrewCard(props: Props) {
                 <Image
                     src={
                         props.crew.profile_path
-                            ? `${PARAMETERS.URL_IMG}${IMG_SIZES.CREW_CARD_COVER}${props.crew.profile_path}`
+                            ? `${PARAMETERS.URL_IMG}/${IMG_SIZES.CREW_CARD_COVER}${props.crew.profile_path}`
                             : '/img/avatar-placeholder.svg'
                     }
                     sizes='180px'

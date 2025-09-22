@@ -1,0 +1,27 @@
+.c-socials {
+    --gap: 12px;
+    --link-p: 5px;
+
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--gap);
+    align-items: center;
+
+    &__link {
+        --icon-size: 25px;
+
+        display: flex;
+
+        padding: var(--link-p);
+        border: 1px solid var(--color-primary);
+        border-radius: 4px;
+
+        background-color: var(--color-secondary);
+
+        transition-property: opacity;
+
+        &:hover {
+            opacity: 0.75;
+        }
+    }
+}

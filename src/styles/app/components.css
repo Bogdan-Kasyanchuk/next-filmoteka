@@ -10,6 +10,7 @@
 @import '../components/reviews.css';
 @import '../components/current-movie.css';
 @import '../components/current-tv-show.css';
+@import '../components/socials.css';
 @import '../components/forms/base.css';
 @import '../components/forms/field.css';
 @import '../components/forms/switch.css';
@@ -26,3 +27,4 @@
 @import '../components/cards/person-card.css';
 @import '../components/cards/media-cast-card.css';
 @import '../components/cards/media-crew-card.css';
+@import '../components/cards/image-card.css';

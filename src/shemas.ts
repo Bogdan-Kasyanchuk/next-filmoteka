@@ -56,6 +56,15 @@ export type ImageShema = {
     vote_count: number,
 };
 
+export type ExternalIdShema = {
+    id: number,
+    imdb_id: string,
+    wikidata_id: string,
+    facebook_id: string,
+    instagram_id: string,
+    twitter_id: string,
+};
+
 export type DataShema<Type> = {
     dates?: {
         maximum: string,
@@ -123,14 +132,7 @@ export type MovieDetailsShema = {
     },
     reviews: DataShema<ReviewShema>,
     recommendations: DataShema<MovieShema>,
-    external_ids: {
-        id: number,
-        imdb_id: string,
-        wikidata_id: string,
-        facebook_id: string,
-        instagram_id: string,
-        twitter_id: string,
-    } //todo: add external_ids
+    external_ids: ExternalIdShema
 };
 
 export type CurrentMovieShema = Omit<MovieDetailsShema, 'credits' | 'videos' | 'reviews' | 'recommendations'>;
@@ -197,18 +199,12 @@ export type TVShowDetailsShema = {
     },
     reviews: DataShema<ReviewShema>,
     recommendations: DataShema<TVShowShema>,
-    external_ids: {
-        id: number,
-        imdb_id: string,
+    external_ids: ExternalIdShema & {
         freebase_mid: string,
         freebase_id: string,
         tvdb_id: number,
         tvrage_id: number,
-        wikidata_id: string,
-        facebook_id: string,
-        instagram_id: string,
-        twitter_id: string,
-    } //todo: add external_ids
+    }
 };
 
 export type CurrentTVShowShema = Omit<TVShowDetailsShema, 'seasons' | 'credits' | 'videos' | 'reviews' | 'recommendations'>;
@@ -389,18 +385,14 @@ export type PersonDetailsShema = {
         cast: MediaCastShema[],
         crew: MediaCrewShema[],
     },
-    images: ImageShema[], //todo: add images
-    external_ids: {
-        id: number,
+    images: {
+        profiles: ImageShema[],
+    },
+    external_ids: ExternalIdShema & {
         freebase_mid: string,
         freebase_id: string,
-        imdb_id: string,
         tvrage_id: number,
-        wikidata_id: string,
-        facebook_id: string,
-        instagram_id: string,
         tiktok_id: string,
-        twitter_id: string,
         youtube_id: string
-    } //todo: add external_ids
+    }
 };

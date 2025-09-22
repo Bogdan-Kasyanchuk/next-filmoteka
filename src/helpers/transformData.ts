@@ -18,7 +18,8 @@ import {
     MediaCrewShema,
     CurrentMovieShema,
     CurrentTVShowShema,
-    CrewShema
+    CrewShema,
+    ImageShema
 } from '@/shemas';
 import {
     CastMapper,
@@ -37,8 +38,11 @@ import {
     MediaCrewMapper,
     CurrentMovieMapper,
     CurrentTVShowMapper,
-    CrewMapper
+    CrewMapper,
+    ImageMapper
 } from '@/types';
+
+import { EXTERNAL_ID_URLS } from './parameters';
 
 export const transformMovie = (movie: MovieShema | SimilarMovieShema) => ({
     id: movie.id,
@@ -51,7 +55,6 @@ export const transformMovie = (movie: MovieShema | SimilarMovieShema) => ({
 
 export const transformMovieDetails = (movie: MovieDetailsShema) => ({
     movie: {
-        imdb_id: movie.imdb_id,
         adult: movie.adult,
         homepage: movie.homepage,
         budget: movie.budget,
@@ -91,6 +94,7 @@ export const transformMovieDetails = (movie: MovieDetailsShema) => ({
                 name: language.name
             })
         ),
+        socialLinks: transformMovieExternalIds(movie.external_ids)
     },
     cast: movie.credits.cast.map((cast) => transformCast(cast)),
     crew: movie.credits.crew.map((crew) => transformCrew(crew)),
@@ -110,7 +114,7 @@ export const transformMovieDetails = (movie: MovieDetailsShema) => ({
             (movie) => transformMovie(movie)
         ),
         totalPages: movie.recommendations.total_pages
-    },
+    }
 }) as MovieDetailsMapper;
 
 export const transformCurrentMovie = (movie: CurrentMovieShema) => ({
@@ -190,6 +194,7 @@ export const transformTVShowDetails = (tvShow: TVShowDetailsShema) => ({
                 )?.name || network.origin_country
             })
         ),
+        socialLinks: transformTVShowExternalIds(tvShow.external_ids)
     },
     seasons: tvShow.seasons.map((season) => transformSeason(season)),
     cast: tvShow.credits.cast.map((cast) => transformCast(cast)),
@@ -210,7 +215,7 @@ export const transformTVShowDetails = (tvShow: TVShowDetailsShema) => ({
             (tvShow) => transformTVShow(tvShow)
         ),
         totalPages: tvShow.recommendations.total_pages
-    },
+    }
 }) as TVShowDetailsMapper;
 
 export const transformCurrentTVShow = (tvShow: CurrentTVShowShema) => ({
@@ -314,6 +319,14 @@ export const transformMediaCrew = (media: MediaCrewShema) => ({
     media_type: media.media_type,
 }) as MediaCrewMapper;
 
+export const transformImage = (image: ImageShema) => ({
+    height: image.height,
+    width: image.width,
+    file_path: image.file_path,
+    vote_average: image.vote_average,
+    vote_count: image.vote_count,
+}) as ImageMapper;
+
 export const transformPerson = (person: PersonShema) => ({
     adult: person.adult,
     gender: person.gender,
@@ -333,13 +346,67 @@ export const transformPersonDetails = (person: PersonDetailsShema) => ({
         birthday: person.birthday,
         deathday: person.deathday,
         homepage: person.homepage,
-        imdb_id: person.imdb_id,
         known_for_department: person.known_for_department,
         name: person.name,
         place_of_birth: person.place_of_birth,
         popularity: person.popularity,
         profile_path: person.profile_path,
+        socialLinks: transformPersonExternalIds(person.external_ids),
     },
     cast: person.combined_credits.cast.map((media) => transformMediaCast(media)),
     crew: person.combined_credits.crew.map((media) => transformMediaCrew(media)),
+    images: person.images.profiles.map((image) => transformImage(image)),
 }) as PersonDetailsMapper;
+
+export const transformMovieExternalIds = (ids: MovieDetailsShema['external_ids']) => {
+    const links = {
+        imdb: ids.imdb_id ? `${EXTERNAL_ID_URLS.IMDB}/title/${ids.imdb_id}` : '',
+        wikidata: ids.wikidata_id ? `${EXTERNAL_ID_URLS.WIKIDATA}/${ids.wikidata_id}` : '',
+        facebook: ids.facebook_id ? `${EXTERNAL_ID_URLS.FACEBOOK}/${ids.facebook_id}` : '',
+        instagram: ids.instagram_id ? `${EXTERNAL_ID_URLS.INSTAGRAM}/${ids.instagram_id}` : '',
+        twitter: ids.twitter_id ? `${EXTERNAL_ID_URLS.TWITTER}/${ids.twitter_id}` : '',
+    };
+
+    return Object.entries(links)
+        .filter((social) => social[1])
+        .map((social) => ({
+            provider: social[0],
+            link: social[1],
+        }));
+};
+
+export const transformTVShowExternalIds = (ids: TVShowDetailsShema['external_ids']) => {
+    const links = {
+        imdb: ids.imdb_id ? `${EXTERNAL_ID_URLS.IMDB}/title/${ids.imdb_id}` : '',
+        wikidata: ids.wikidata_id ? `${EXTERNAL_ID_URLS.WIKIDATA}/${ids.wikidata_id}` : '',
+        facebook: ids.facebook_id ? `${EXTERNAL_ID_URLS.FACEBOOK}/${ids.facebook_id}` : '',
+        instagram: ids.instagram_id ? `${EXTERNAL_ID_URLS.INSTAGRAM}/${ids.instagram_id}` : '',
+        twitter: ids.twitter_id ? `${EXTERNAL_ID_URLS.TWITTER}/${ids.twitter_id}` : '',
+    };
+
+    return Object.entries(links)
+        .filter((social) => social[1])
+        .map((social) => ({
+            provider: social[0],
+            link: social[1],
+        }));
+};
+
+export const transformPersonExternalIds = (ids: PersonDetailsShema['external_ids']) => {
+    const links = {
+        imdb: ids.imdb_id ? `${EXTERNAL_ID_URLS.IMDB}/name/${ids.imdb_id}` : '',
+        wikidata: ids.wikidata_id ? `${EXTERNAL_ID_URLS.WIKIDATA}/${ids.wikidata_id}` : '',
+        facebook: ids.facebook_id ? `${EXTERNAL_ID_URLS.FACEBOOK}/${ids.facebook_id}` : '',
+        instagram: ids.instagram_id ? `${EXTERNAL_ID_URLS.INSTAGRAM}/${ids.instagram_id}` : '',
+        twitter: ids.twitter_id ? `${EXTERNAL_ID_URLS.TWITTER}/${ids.twitter_id}` : '',
+        tiktok: ids.tiktok_id ? `${EXTERNAL_ID_URLS.TIKTOK}/@${ids.tiktok_id}` : '',
+        youtube: ids.youtube_id ? `${EXTERNAL_ID_URLS.YOUTUBE}/${ids.youtube_id}` : '',
+    };
+
+    return Object.entries(links)
+        .filter((social) => social[1])
+        .map((social) => ({
+            provider: social[0],
+            link: social[1],
+        }));
+};

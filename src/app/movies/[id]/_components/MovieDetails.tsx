@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Fragment } from 'react';
 
+import SocialLinks from '@/components/ui/data-display/SocialLinks';
 import Container from '@/components/ui/layouts/Container';
 import Title from '@/components/ui/typography/Title';
 import { PARAMETERS, IMG_SIZES } from '@/helpers/parameters';
@@ -20,7 +21,7 @@ export default function MovieDetails(props: Props) {
             <div className='p-movie__details'>
                 <div className='p-movie__details-backdrop'>
                     <Image
-                        src={`${PARAMETERS.URL_IMG}${IMG_SIZES.MEDIA_CARD_DETAILS_BACKDROP}${props.backdrop_path}`}
+                        src={`${PARAMETERS.URL_IMG}/${IMG_SIZES.MEDIA_CARD_DETAILS_BACKDROP}${props.backdrop_path}`}
                         sizes='(max-width: 767px) 768px, (max-width: 1319px) 1320px, 1920px'
                         alt={props.title}
                         fill
@@ -39,7 +40,7 @@ export default function MovieDetails(props: Props) {
                         <Image
                             src={
                                 props.poster_path
-                                    ? `${PARAMETERS.URL_IMG}${IMG_SIZES.MEDIA_CARD_DETAILS_COVER}${props.poster_path}`
+                                    ? `${PARAMETERS.URL_IMG}/${IMG_SIZES.MEDIA_CARD_DETAILS_COVER}${props.poster_path}`
                                     : '/img/poster-not-available.jpg'
                             }
                             sizes='(max-width: 767px) 253px, (max-width: 1319px) 326px, 500px'
@@ -95,20 +96,6 @@ export default function MovieDetails(props: Props) {
                             props.tagline &&
                             <li className='p-movie__details-list-info-item p-movie__details-list-info-item--tagline'>
                                 &quot;{props.tagline}&quot;
-                            </li>
-                        }
-
-                        {
-                            props.imdb_id &&
-                            <li className='p-movie__details-list-info-item p-movie__details-list-info-item--link'>
-                                <span>IMDB:</span>
-                                <a
-                                    href={`https://www.imdb.com/title/${props.imdb_id}`}
-                                    rel='noopener noreferrer'
-                                    target='_blank'
-                                >
-                                    https://www.imdb.com/title/{props.imdb_id}
-                                </a>
                             </li>
                         }
 
@@ -220,6 +207,11 @@ export default function MovieDetails(props: Props) {
                             </p>
                         </div>
                     }
+
+                    {
+                        props.socialLinks.length > 0 &&
+                        <SocialLinks socials={props.socialLinks} />
+                    }
                 </Container>
             </div>
 
@@ -242,7 +234,7 @@ export default function MovieDetails(props: Props) {
                                                 <Image
                                                     src={
                                                         company.logo_path
-                                                            ? `${PARAMETERS.URL_IMG}${IMG_SIZES.COMPANY_LOGO}${company.logo_path}`
+                                                            ? `${PARAMETERS.URL_IMG}/${IMG_SIZES.COMPANY_LOGO}${company.logo_path}`
                                                             : '/img/image-placeholder.svg'
                                                     }
                                                     fill

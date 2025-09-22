@@ -20,7 +20,7 @@ export default function ReviewCard(props: Props) {
                     <Image
                         src={
                             props.review.author.avatar_path
-                                ? `${PARAMETERS.URL_IMG}${IMG_SIZES.REVIEWER_AVATAR}${props.review.author.avatar_path}`
+                                ? `${PARAMETERS.URL_IMG}/${IMG_SIZES.REVIEWER_AVATAR}${props.review.author.avatar_path}`
                                 : '/img/avatar-placeholder.svg'
                         }
                         sizes='92px'

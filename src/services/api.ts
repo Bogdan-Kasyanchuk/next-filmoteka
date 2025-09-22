@@ -49,7 +49,7 @@ export function getMovies(type: MovieType, page: number) {
 
 export function getMovieById(id: string) {
     return fetchApi<MovieDetailsShema>(
-        `${MediaType.MOVIE}/${id}?append_to_response=credits,videos,reviews,recommendations`
+        `${MediaType.MOVIE}/${id}?append_to_response=credits,videos,reviews,recommendations,external_ids`
     );
 }
 
@@ -81,7 +81,7 @@ export function getTVShows(type: TVShowType, page: number) {
 
 export function getTVShowById(id: string) {
     return fetchApi<TVShowDetailsShema>(
-        `${MediaType.TV_SHOW}/${id}?append_to_response=credits,videos,reviews,recommendations`
+        `${MediaType.TV_SHOW}/${id}?append_to_response=credits,videos,reviews,recommendations,external_ids`
     );
 }
 
@@ -117,7 +117,7 @@ export function getPersons(page: number) {
 
 export function getPersonById(id: string) {
     return fetchApi<PersonDetailsShema>(
-        `person/${id}?append_to_response=combined_credits`
+        `person/${id}?append_to_response=combined_credits,images,external_ids`
     );
 }
 

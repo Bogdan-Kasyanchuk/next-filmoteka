@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Fragment } from 'react';
 
+import SocialLinks from '@/components/ui/data-display/SocialLinks';
 import Container from '@/components/ui/layouts/Container';
 import Title from '@/components/ui/typography/Title';
 import { PARAMETERS, IMG_SIZES } from '@/helpers/parameters';
@@ -15,11 +16,11 @@ export default function TVShowDetails(props: Props) {
     const average = Math.round(props.vote_average * 10);
 
     return (
-        <>
+        <div>
             <div className='p-tv-show__details'>
                 <div className='p-tv-show__details-backdrop'>
                     <Image
-                        src={`${PARAMETERS.URL_IMG}${IMG_SIZES.MEDIA_CARD_DETAILS_BACKDROP}${props.backdrop_path}`}
+                        src={`${PARAMETERS.URL_IMG}/${IMG_SIZES.MEDIA_CARD_DETAILS_BACKDROP}${props.backdrop_path}`}
                         sizes='(max-width: 767px) 768px, (max-width: 1319px) 1320px, 1920px'
                         alt={props.name}
                         fill
@@ -38,7 +39,7 @@ export default function TVShowDetails(props: Props) {
                         <Image
                             src={
                                 props.poster_path
-                                    ? `${PARAMETERS.URL_IMG}${IMG_SIZES.MEDIA_CARD_DETAILS_COVER}${props.poster_path}`
+                                    ? `${PARAMETERS.URL_IMG}/${IMG_SIZES.MEDIA_CARD_DETAILS_COVER}${props.poster_path}`
                                     : '/img/poster-not-available.jpg'
                             }
                             sizes='(max-width: 767px) 253px, (max-width: 1319px) 326px, 500px'
@@ -222,6 +223,11 @@ export default function TVShowDetails(props: Props) {
                             </p>
                         </div>
                     }
+
+                    {
+                        props.socialLinks.length > 0 &&
+                        <SocialLinks socials={props.socialLinks} />
+                    }
                 </Container>
             </div>
 
@@ -246,7 +252,7 @@ export default function TVShowDetails(props: Props) {
                                                     <Image
                                                         src={
                                                             creator.profile_path
-                                                                ? `${PARAMETERS.URL_IMG}${IMG_SIZES.CREATOR_AVATAR}${creator.profile_path}`
+                                                                ? `${PARAMETERS.URL_IMG}/${IMG_SIZES.CREATOR_AVATAR}${creator.profile_path}`
                                                                 : '/img/avatar-placeholder.svg'
                                                         }
                                                         fill
@@ -282,7 +288,7 @@ export default function TVShowDetails(props: Props) {
                                                     <Image
                                                         src={
                                                             network.logo_path
-                                                                ? `${PARAMETERS.URL_IMG}${IMG_SIZES.NETWORK_LOGO}${network.logo_path}`
+                                                                ? `${PARAMETERS.URL_IMG}/${IMG_SIZES.NETWORK_LOGO}${network.logo_path}`
                                                                 : '/img/image-placeholder.svg'
                                                         }
                                                         fill
@@ -326,7 +332,7 @@ export default function TVShowDetails(props: Props) {
                                                     <Image
                                                         src={
                                                             company.logo_path
-                                                                ? `${PARAMETERS.URL_IMG}${IMG_SIZES.COMPANY_LOGO}${company.logo_path}`
+                                                                ? `${PARAMETERS.URL_IMG}/${IMG_SIZES.COMPANY_LOGO}${company.logo_path}`
                                                                 : '/img/image-placeholder.svg'
                                                         }
                                                         fill
@@ -353,6 +359,6 @@ export default function TVShowDetails(props: Props) {
                     }
                 </Container>
             }
-        </>
+        </div>
     );
 };

@@ -20,7 +20,7 @@ export default function CurrentTVShow(props: Props) {
                 <Image
                     src={
                         props.tvShow.poster_path
-                            ? `${PARAMETERS.URL_IMG}${IMG_SIZES.MEDIA_CARD_CURRENT_COVER}${props.tvShow.poster_path}`
+                            ? `${PARAMETERS.URL_IMG}/${IMG_SIZES.MEDIA_CARD_CURRENT_COVER}${props.tvShow.poster_path}`
                             : '/img/poster-not-available.jpg'
                     }
                     sizes='92px'
