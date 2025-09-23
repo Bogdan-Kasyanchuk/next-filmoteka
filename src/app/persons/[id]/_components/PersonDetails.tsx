@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { Fragment } from 'react';
 
+import ReadMore from '@/components/ui/data-display/ReadMore';
 import SocialLinks from '@/components/ui/data-display/SocialLinks';
 import Container from '@/components/ui/layouts/Container';
 import Title from '@/components/ui/typography/Title';
@@ -129,9 +130,13 @@ export default function PersonDetails(props: Props) {
                         <p className='p-person__details-biography-title'>
                             Biography:
                         </p>
-                        <p className='p-person__details-biography-text'>
-                            {props.person.biography}
-                        </p>
+
+                        <ReadMore
+                            collapseHeight={120}
+                            classNameContent="p-person__details-biography-text"
+                        >
+                            <p>{props.person.biography}</p>
+                        </ReadMore>
                     </div>
                 }
             </Container>
