@@ -2,7 +2,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import { MediaType } from '@/enums';
-import { PARAMETERS, IMG_SIZES } from '@/helpers/parameters';
+import { IMG_SIZES } from '@/helpers/parameters';
+import { imageUrl, pagesMovieUrl, pagesTVShowUrl } from '@/routes';
 import { MediaCrewMapper } from '@/types';
 import { formatDate } from '@/utils/formateDate';
 
@@ -13,7 +14,11 @@ type Props = {
 export default function MediaCrewCard(props: Props) {
     return (
         <Link
-            href={`/${props.crew.media_type === MediaType.MOVIE ? 'movies' : 'tv-shows'}/${props.crew.id}`}
+            href={
+                props.crew.media_type === MediaType.MOVIE
+                    ? pagesMovieUrl(String(props.crew.id))
+                    : pagesTVShowUrl(String(props.crew.id))
+            }
             className='с-media-crew-card'
         >
             <div className='с-media-crew-card__left'>
@@ -35,7 +40,7 @@ export default function MediaCrewCard(props: Props) {
                 <Image
                     src={
                         props.crew.poster_path
-                            ? `${PARAMETERS.URL_IMG}/${IMG_SIZES.MEDIA_CREW_CARD_COVER}${props.crew.poster_path}`
+                            ? imageUrl(IMG_SIZES.MEDIA_CREW_CARD_COVER, props.crew.poster_path)
                             : '/img/poster-not-available.jpg'
                     }
                     sizes='92px'

@@ -1,6 +1,7 @@
 import Image from 'next/image';
 
-import { IMG_SIZES, PARAMETERS } from '@/helpers/parameters';
+import { IMG_SIZES } from '@/helpers/parameters';
+import { imageUrl } from '@/routes';
 import { ImageMapper } from '@/types';
 
 type Props = {
@@ -15,7 +16,7 @@ export default function ImageCard(props: Props) {
                 <Image
                     src={
                         props.image.file_path
-                            ? `${PARAMETERS.URL_IMG}/${IMG_SIZES.PERSON_IMAGE}${props.image.file_path}`
+                            ? imageUrl(IMG_SIZES.PERSON_IMAGE, props.image.file_path)
                             : '/img/avatar-placeholder.svg'
                     }
                     sizes='185px'

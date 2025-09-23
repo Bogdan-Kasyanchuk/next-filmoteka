@@ -9,10 +9,10 @@ import 'swiper/css';
 type Props<T> = {
     items: T[],
     children: (item: T) => ReactNode,
-    className?: string,
     options?: Omit<SwiperProps, 'modules' | 'className'>,
     modules?: SwiperModule[],
-    slideProps?: Omit<SwiperSlideProps, 'children'>
+    slideProps?: Omit<SwiperSlideProps, 'children'>,
+    className?: string,
 };
 
 export default function SCarousel<T>(props: Props<T>) {

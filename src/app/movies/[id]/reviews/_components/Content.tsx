@@ -54,6 +54,10 @@ export default function Content(props: Props) {
         return notFound();
     }
 
+    if (!data.reviews.items.length) {
+        return <DataNotFound />;
+    }
+
     return (
         <Container className='p-movie-reviews'>
             <CurrentMovie
@@ -65,31 +69,27 @@ export default function Content(props: Props) {
                 Reviews
             </Title>
 
-            {
-                data.reviews.items.length > 0
-                    ? <div className='p-movie-reviews__content'>
-                        <ul className='p-movie-reviews__list'>
-                            {
-                                data.reviews.items.map(
-                                    (item, index) => (
-                                        <li key={index}>
-                                            <ReviewCard review={item} />
-                                        </li>
-                                    )
-                                )
-                            }
-                        </ul>
+            <div className='p-movie-reviews__content'>
+                <ul className='p-movie-reviews__list'>
+                    {
+                        data.reviews.items.map(
+                            (item, index) => (
+                                <li key={index}>
+                                    <ReviewCard review={item} />
+                                </li>
+                            )
+                        )
+                    }
+                </ul>
 
-                        {
-                            (data.reviews.total_pages && data.reviews.total_pages > 1) &&
-                            <Pagination
-                                currentPage={props.currentPage}
-                                totalPages={data.reviews.total_pages}
-                            />
-                        }
-                    </div>
-                    : <DataNotFound />
-            }
+                {
+                    (data.reviews.total_pages && data.reviews.total_pages > 1) &&
+                    <Pagination
+                        currentPage={props.currentPage}
+                        totalPages={data.reviews.total_pages}
+                    />
+                }
+            </div>
         </Container>
     );
 }

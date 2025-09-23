@@ -1,8 +1,7 @@
 export const PARAMETERS = {
     API_KEY: process.env.API_KEY,
     BASE_URL: process.env.BASE_URL,
-    LOCALE: process.env.LOCALE,
-    URL_IMG: process.env.NEXT_PUBLIC_URL_IMG,
+    LOCALE: 'en-US',
 };
 
 export const IMG_SIZES = {

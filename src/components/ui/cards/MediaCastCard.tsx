@@ -2,7 +2,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import { MediaType } from '@/enums';
-import { PARAMETERS, IMG_SIZES } from '@/helpers/parameters';
+import { IMG_SIZES } from '@/helpers/parameters';
+import { imageUrl, pagesMovieUrl, pagesTVShowUrl } from '@/routes';
 import { MediaCastMapper } from '@/types';
 import { formatDate } from '@/utils/formateDate';
 
@@ -13,7 +14,11 @@ type Props = {
 export default function MediaCastCard(props: Props) {
     return (
         <Link
-            href={`/${props.cast.media_type === MediaType.MOVIE ? 'movies' : 'tv-shows'}/${props.cast.id}`}
+            href={
+                props.cast.media_type === MediaType.MOVIE
+                    ? pagesMovieUrl(String(props.cast.id))
+                    : pagesTVShowUrl(String(props.cast.id))
+            }
             className='с-media-cast-card'
         >
             <div className='с-media-cast-card__left'>
@@ -35,7 +40,7 @@ export default function MediaCastCard(props: Props) {
                 <Image
                     src={
                         props.cast.poster_path
-                            ? `${PARAMETERS.URL_IMG}/${IMG_SIZES.MEDIA_CAST_CARD_COVER}${props.cast.poster_path}`
+                            ? imageUrl(IMG_SIZES.MEDIA_CAST_CARD_COVER, props.cast.poster_path)
                             : '/img/poster-not-available.jpg'
                     }
                     sizes='92px'

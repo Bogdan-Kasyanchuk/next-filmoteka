@@ -3,8 +3,8 @@ import Link from 'next/link';
 import { Fragment } from 'react';
 
 import Title from '@/components/ui/typography/Title';
-import { IMG_SIZES, PARAMETERS } from '@/helpers/parameters';
-import { pagesMovieshUrl } from '@/routes';
+import { IMG_SIZES } from '@/helpers/parameters';
+import { imageUrl, pagesMovieUrl } from '@/routes';
 import { CurrentMovieMapper } from '@/types';
 import { formatDate } from '@/utils/formateDate';
 
@@ -20,7 +20,7 @@ export default function CurrentMovie(props: Props) {
                 <Image
                     src={
                         props.movie.poster_path
-                            ? `${PARAMETERS.URL_IMG}/${IMG_SIZES.MEDIA_CARD_CURRENT_COVER}${props.movie.poster_path}`
+                            ? imageUrl(IMG_SIZES.MEDIA_CARD_CURRENT_COVER, props.movie.poster_path)
                             : '/img/poster-not-available.jpg'
                     }
                     sizes='92px'
@@ -35,7 +35,7 @@ export default function CurrentMovie(props: Props) {
                     variant={3}
                 >
                     <Link
-                        href={`${pagesMovieshUrl()}/${props.id}`}
+                        href={pagesMovieUrl(props.id)}
                         title={
                             `${props.movie.title} ${formatDate(props.movie.release_date, 'YYYY')}`
                         }

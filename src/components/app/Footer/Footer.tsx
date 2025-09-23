@@ -12,11 +12,10 @@ export default function Footer() {
             >
                 <Logo
                     logoPath='/svg/logo-white.svg'
-                    text={
-                        <p>Filmoteka</p>
-                    }
                     className='text-primary'
-                />
+                >
+                    <p>Filmoteka</p>
+                </Logo>
             </Container>
 
             <ButtonScrollToTop />

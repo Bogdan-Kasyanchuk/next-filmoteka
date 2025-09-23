@@ -32,6 +32,10 @@ export default function Content(props: Props) {
         return notFound();
     }
 
+    if (!data.episodes.length) {
+        return <DataNotFound />;
+    }
+
     return (
         <Container className='p-season'>
             <CurrentSeason
@@ -39,21 +43,17 @@ export default function Content(props: Props) {
                 id={props.id}
             />
 
-            {
-                data.episodes.length > 0
-                    ? <ul className='p-season__list'>
-                        {
-                            data.episodes.map(
-                                (episode, index) => (
-                                    <li key={index}>
-                                        <EpisodeCard episode={episode} />
-                                    </li>
-                                )
-                            )
-                        }
-                    </ul>
-                    : <DataNotFound />
-            }
+            <ul className='p-season__list'>
+                {
+                    data.episodes.map(
+                        (episode, index) => (
+                            <li key={index}>
+                                <EpisodeCard episode={episode} />
+                            </li>
+                        )
+                    )
+                }
+            </ul>
         </Container>
     );
 }

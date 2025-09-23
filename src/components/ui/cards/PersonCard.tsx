@@ -2,8 +2,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import { GenderType } from '@/enums';
-import { PARAMETERS, IMG_SIZES } from '@/helpers/parameters';
-import { pagesPersonsUrl } from '@/routes';
+import { IMG_SIZES } from '@/helpers/parameters';
+import { imageUrl, pagesPersonUrl } from '@/routes';
 import { PersonMapper } from '@/types';
 
 type Props = {
@@ -13,14 +13,14 @@ type Props = {
 export default function PersonCard(props: Props) {
     return (
         <Link
-            href={`${pagesPersonsUrl()}/${props.person.id}`}
+            href={pagesPersonUrl(String(props.person.id))}
             className='с-person-card'
         >
             <div className='с-person-card__cover'>
                 <Image
                     src={
                         props.person.profile_path
-                            ? `${PARAMETERS.URL_IMG}/${IMG_SIZES.PERSON_CARD_COVER}${props.person.profile_path}`
+                            ? imageUrl(IMG_SIZES.PERSON_CARD_COVER, props.person.profile_path)
                             : '/img/poster-not-available.jpg'
                     }
                     sizes='(max-width: 479px) 173px, (max-width: 767px) 213px, (max-width: 1023px) 230px, 421px'

@@ -11,6 +11,7 @@ import Loader from '@/components/ui/data-display/Loader';
 import { MediaType, TimeType } from '@/enums';
 import { transformMovie, transformPerson, transformTVShow } from '@/helpers/transformData';
 import { getTrendings } from '@/services/api';
+import { MovieMapper, PersonMapper, TVShowMapper } from '@/types';
 
 type Props = {
     type: 'all' | MediaType;
@@ -42,49 +43,53 @@ export default function Content(props: Props) {
         })
     });
 
+    if (isPending || isFetching) {
+        return <Loader />;
+    }
+
+    if (!data || !data.results.length) {
+        return <DataNotFound />;
+    }
+
     return (
-        <>
+        <div className='p-home__content'>
+            <ul className='p-home__list'>
+                {
+                    data.results.map(
+                        (result) => (
+                            result &&
+                            <li key={result.id}>
+                                <Card result={result} />
+                            </li>
+                        )
+                    )
+                }
+            </ul>
+
             {
-                isPending || isFetching
-                    ? <Loader />
-                    : data && data.results.length > 0
-                        ? <div className='p-home__content'>
-                            <ul className='p-home__list'>
-                                {
-                                    data.results.map(
-                                        (result) => (
-                                            result &&
-                                            <li key={result.id}>
-                                                {
-                                                    result.media_type === MediaType.MOVIE &&
-                                                    <MovieCard movie={result} />
-                                                }
-
-                                                {
-                                                    result.media_type === MediaType.TV_SHOW &&
-                                                    <TVShowCard tvShow={result} />
-                                                }
-
-                                                {
-                                                    result.media_type === MediaType.PERSON &&
-                                                    <PersonCard person={result} />
-                                                }
-                                            </li>
-                                        )
-                                    )
-                                }
-                            </ul>
-
-                            {
-                                data.total_pages > 1 &&
-                                <Pagination
-                                    currentPage={props.currentPage}
-                                    totalPages={data.total_pages}
-                                />
-                            }
-                        </div>
-                        : <DataNotFound />
+                data.total_pages > 1 &&
+                <Pagination
+                    currentPage={props.currentPage}
+                    totalPages={data.total_pages}
+                />
             }
-        </>
+        </div>
     );
+}
+
+type CardProps = {
+    result: MovieMapper | TVShowMapper | PersonMapper
+}
+
+function Card(props: CardProps) {
+    switch (props.result.media_type) {
+        case MediaType.MOVIE:
+            return <MovieCard movie={props.result} />;
+
+        case MediaType.TV_SHOW:
+            return <TVShowCard tvShow={props.result} />;
+
+        case MediaType.PERSON:
+            return <PersonCard person={props.result} />;
+    }
 }

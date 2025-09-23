@@ -1,6 +1,7 @@
 import Image from 'next/image';
 
-import { IMG_SIZES, PARAMETERS } from '@/helpers/parameters';
+import { IMG_SIZES } from '@/helpers/parameters';
+import { imageUrl } from '@/routes';
 import { ReviewMapper } from '@/types';
 import { formatDate } from '@/utils/formateDate';
 
@@ -20,7 +21,7 @@ export default function ReviewCard(props: Props) {
                     <Image
                         src={
                             props.review.author.avatar_path
-                                ? `${PARAMETERS.URL_IMG}/${IMG_SIZES.REVIEWER_AVATAR}${props.review.author.avatar_path}`
+                                ? imageUrl(IMG_SIZES.REVIEWER_AVATAR, props.review.author.avatar_path)
                                 : '/img/avatar-placeholder.svg'
                         }
                         sizes='92px'

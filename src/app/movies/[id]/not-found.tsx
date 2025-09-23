@@ -1,7 +1,7 @@
 'use client';
 
 import PageNotFound from '@/components/ui/data-display/PageNotFound';
-import { pagesMovieshUrl } from '@/routes';
+import { pagesMoviesUrl } from '@/routes';
 
 export default function NotFound() {
     return (
@@ -9,7 +9,7 @@ export default function NotFound() {
             title='Could not found movie'
             link={
                 {
-                    href: pagesMovieshUrl(),
+                    href: pagesMoviesUrl(),
                     text: 'Back to movies'
                 }
             }

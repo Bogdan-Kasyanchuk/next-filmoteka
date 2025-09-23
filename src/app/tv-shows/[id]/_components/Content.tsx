@@ -11,8 +11,9 @@ import Videos from '@/components/app/Videos';
 import TVShowCard from '@/components/ui/cards/TVShowCard';
 import Loader from '@/components/ui/data-display/Loader';
 import Container from '@/components/ui/layouts/Container';
+import { MediaType } from '@/enums';
 import { transformTVShowDetails } from '@/helpers/transformData';
-import { pagesTVUrl } from '@/routes';
+import { recommendationsUrl, reviewsUrl } from '@/routes';
 import { getTVShowById } from '@/services/api';
 import { TVShowMapper } from '@/types';
 
@@ -41,7 +42,7 @@ export default function Content(props: Props) {
     return (
         <div className='p-tv-show'>
             <TVShowDetails
-                {...data.tvShow}
+                tvShow={data.tvShow}
                 id={props.id}
             />
 
@@ -74,7 +75,7 @@ export default function Content(props: Props) {
                     <Recommendations<TVShowMapper>
                         recommendations={data.recommendations}
                         item={(item) => <TVShowCard tvShow={item} />}
-                        showAllPath={`${pagesTVUrl()}/${props.id}/recommendations`}
+                        showAllPath={recommendationsUrl(MediaType.TV_SHOW, props.id)}
                     />
                 }
 
@@ -82,7 +83,7 @@ export default function Content(props: Props) {
                     data.reviews.items.length > 0 &&
                     <Reviews
                         reviews={data.reviews}
-                        showAllPath={`${pagesTVUrl()}/${props.id}/reviews`}
+                        showAllPath={reviewsUrl(MediaType.TV_SHOW, props.id)}
                     />
                 }
             </Container>

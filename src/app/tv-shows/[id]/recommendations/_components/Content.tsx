@@ -54,6 +54,10 @@ export default function Content(props: Props) {
         return notFound();
     }
 
+    if (!data.recommendations.tvShows.length) {
+        return <DataNotFound />;
+    }
+
     return (
         <Container className='p-tv-show-recommendations'>
             <CurrentTVShow
@@ -65,31 +69,27 @@ export default function Content(props: Props) {
                 Recommendations
             </Title>
 
-            {
-                data.recommendations.tvShows.length > 0
-                    ? <div className='p-tv-show-recommendations__content'>
-                        <ul className='p-tv-show-recommendations__list'>
-                            {
-                                data.recommendations.tvShows.map(
-                                    (tvShow) => (
-                                        <li key={tvShow.id}>
-                                            <TVShowCard tvShow={tvShow} />
-                                        </li>
-                                    )
-                                )
-                            }
-                        </ul>
+            <div className='p-tv-show-recommendations__content'>
+                <ul className='p-tv-show-recommendations__list'>
+                    {
+                        data.recommendations.tvShows.map(
+                            (tvShow) => (
+                                <li key={tvShow.id}>
+                                    <TVShowCard tvShow={tvShow} />
+                                </li>
+                            )
+                        )
+                    }
+                </ul>
 
-                        {
-                            (data.recommendations.total_pages && data.recommendations.total_pages > 1) &&
-                            <Pagination
-                                currentPage={props.currentPage}
-                                totalPages={data.recommendations.total_pages}
-                            />
-                        }
-                    </div>
-                    : <DataNotFound />
-            }
+                {
+                    (data.recommendations.total_pages && data.recommendations.total_pages > 1) &&
+                    <Pagination
+                        currentPage={props.currentPage}
+                        totalPages={data.recommendations.total_pages}
+                    />
+                }
+            </div>
         </Container>
     );
 }

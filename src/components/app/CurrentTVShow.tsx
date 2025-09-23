@@ -3,8 +3,8 @@ import Link from 'next/link';
 import { Fragment } from 'react';
 
 import Title from '@/components/ui/typography/Title';
-import { IMG_SIZES, PARAMETERS } from '@/helpers/parameters';
-import { pagesTVUrl } from '@/routes';
+import { IMG_SIZES } from '@/helpers/parameters';
+import { imageUrl, pagesTVShowUrl } from '@/routes';
 import { CurrentTVShowMapper } from '@/types';
 import { formatDate } from '@/utils/formateDate';
 
@@ -20,7 +20,7 @@ export default function CurrentTVShow(props: Props) {
                 <Image
                     src={
                         props.tvShow.poster_path
-                            ? `${PARAMETERS.URL_IMG}/${IMG_SIZES.MEDIA_CARD_CURRENT_COVER}${props.tvShow.poster_path}`
+                            ? imageUrl(IMG_SIZES.MEDIA_CARD_CURRENT_COVER, props.tvShow.poster_path)
                             : '/img/poster-not-available.jpg'
                     }
                     sizes='92px'
@@ -35,7 +35,7 @@ export default function CurrentTVShow(props: Props) {
                     variant={3}
                 >
                     <Link
-                        href={`${pagesTVUrl()}/${props.id}`}
+                        href={pagesTVShowUrl(props.id)}
                         title={
                             `${props.tvShow.name} ${formatDate(props.tvShow.first_air_date, 'YYYY')}`
                         }

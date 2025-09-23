@@ -4,6 +4,7 @@ import { Metadata } from 'next';
 import Container from '@/components/ui/layouts/Container';
 import { MediaType } from '@/enums';
 import { getSearch } from '@/services/api';
+import { Adult } from '@/types';
 
 import Content from './_components/Content';
 import Filter from './_components/Filter';
@@ -18,7 +19,7 @@ export const metadata: Metadata = {
 type Props = {
     searchParams: Promise<{
         type?: 'multi' | MediaType;
-        adult?: 'true' | 'false';
+        adult?: Adult;
         query?: string;
         page?: string;
     }>

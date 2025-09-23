@@ -4,20 +4,23 @@ import { Fragment } from 'react';
 import SocialLinks from '@/components/ui/data-display/SocialLinks';
 import Container from '@/components/ui/layouts/Container';
 import Title from '@/components/ui/typography/Title';
-import { PARAMETERS, IMG_SIZES } from '@/helpers/parameters';
+import { IMG_SIZES } from '@/helpers/parameters';
+import { imageUrl } from '@/routes';
 import { PersonDetailsMapper } from '@/types';
 import { formatDate } from '@/utils/formateDate';
 
-type Props = PersonDetailsMapper['person']
+type Props = {
+    person: PersonDetailsMapper['person']
+}
 
 export default function PersonDetails(props: Props) {
     return (
         <div className='p-person__details'>
             <div className='p-person__details-backdrop'>
                 <Image
-                    src={`${PARAMETERS.URL_IMG}/${IMG_SIZES.PERSON_CARD_DETAILS_COVER}${props.profile_path}`}
+                    src={imageUrl(IMG_SIZES.PERSON_CARD_DETAILS_COVER, props.person.profile_path)}
                     sizes='(max-width: 767px) 768px, (max-width: 1319px) 1320px, 1920px'
-                    alt={props.name}
+                    alt={props.person.name}
                     fill
                 />
             </div>
@@ -25,7 +28,7 @@ export default function PersonDetails(props: Props) {
             <Container className='p-person__details-container'>
                 <div className='p-person__details-cover'>
                     {
-                        props.adult &&
+                        props.person.adult &&
                         <div className='p-person__details-adult'>
                             18<span>+</span>
                         </div>
@@ -33,76 +36,76 @@ export default function PersonDetails(props: Props) {
 
                     <Image
                         src={
-                            props.profile_path
-                                ? `${PARAMETERS.URL_IMG}/${IMG_SIZES.PERSON_CARD_DETAILS_COVER}${props.profile_path}`
+                            props.person.profile_path
+                                ? imageUrl(IMG_SIZES.PERSON_CARD_DETAILS_COVER, props.person.profile_path)
                                 : '/img/poster-not-available.jpg'
                         }
                         sizes='(max-width: 767px) 253px, (max-width: 1319px) 326px, 421px'
-                        alt={props.name}
+                        alt={props.person.name}
                         fill
                     />
                 </div>
 
                 <Title className='p-person__details-name'>
-                    {props.name}
+                    {props.person.name}
                 </Title>
 
                 <ul className='p-person__details-list-info'>
                     {
-                        props.homepage &&
+                        props.person.homepage &&
                         <li className='p-person__details-list-info-item p-person__details-list-info-item--link'>
                             <span>WebSite:</span>
                             <a
-                                href={props.homepage}
+                                href={props.person.homepage}
                                 rel='noopener noreferrer'
                                 target='_blank'
                             >
-                                {props.homepage}
+                                {props.person.homepage}
                             </a>
                         </li>
                     }
 
                     <li className='p-person__details-list-info-item'>
                         <span>Department:</span>
-                        {props.known_for_department}
+                        {props.person.known_for_department}
                     </li>
 
                     {
-                        props.place_of_birth &&
+                        props.person.place_of_birth &&
                         <li className='p-person__details-list-info-item'>
                             <span>Place of birth:</span>
-                            {props.place_of_birth}
+                            {props.person.place_of_birth}
                         </li>
                     }
 
                     {
-                        props.birthday &&
+                        props.person.birthday &&
                         <li className='p-person__details-list-info-item'>
                             <span>Birthday:</span>
-                            <span>{formatDate(props.birthday, 'DD.MM.YYYY')}</span>
+                            <span>{formatDate(props.person.birthday, 'DD.MM.YYYY')}</span>
                         </li>
                     }
 
                     {
-                        props.deathday &&
+                        props.person.deathday &&
                         <li className='p-person__details-list-info-item'>
                             <span>Deathday:</span>
-                            <span>{formatDate(props.deathday, 'DD.MM.YYYY')}</span>
+                            <span>{formatDate(props.person.deathday, 'DD.MM.YYYY')}</span>
                         </li>
                     }
 
                     <li className='p-person__details-list-info-item'>
                         <span>Popularity:</span>
-                        {Math.round(props.popularity)}
+                        {Math.round(props.person.popularity)}
                     </li>
 
                     {
-                        props.also_known_as.length > 0 &&
+                        props.person.also_known_as.length > 0 &&
                         <li className='p-person__details-list-info-item'>
                             <span className='self-start'>Also known as:</span>
                             <span>
                                 {
-                                    props.also_known_as.map(
+                                    props.person.also_known_as.map(
                                         (item, index) => (
                                             <Fragment key={index}>
                                                 {index !== 0 && <>&nbsp;|&nbsp;</>}
@@ -116,18 +119,18 @@ export default function PersonDetails(props: Props) {
                 </ul>
 
                 {
-                    props.socialLinks.length > 0 &&
-                    <SocialLinks socials={props.socialLinks} />
+                    props.person.socialLinks.length > 0 &&
+                    <SocialLinks socials={props.person.socialLinks} />
                 }
 
                 {
-                    props.biography &&
+                    props.person.biography &&
                     <div className='p-person__details-biography'>
                         <p className='p-person__details-biography-title'>
                             Biography:
                         </p>
                         <p className='p-person__details-biography-text'>
-                            {props.biography}
+                            {props.person.biography}
                         </p>
                     </div>
                 }

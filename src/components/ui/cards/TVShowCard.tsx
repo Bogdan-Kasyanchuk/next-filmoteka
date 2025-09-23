@@ -1,8 +1,8 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { PARAMETERS, IMG_SIZES } from '@/helpers/parameters';
-import { pagesTVUrl } from '@/routes';
+import { IMG_SIZES } from '@/helpers/parameters';
+import { imageUrl, pagesTVShowUrl } from '@/routes';
 import { TVShowMapper } from '@/types';
 
 type Props = {
@@ -12,14 +12,14 @@ type Props = {
 export default function TVShowCard(props: Props) {
     return (
         <Link
-            href={`${pagesTVUrl()}/${props.tvShow.id}`}
+            href={pagesTVShowUrl(String(props.tvShow.id))}
             className='с-tv-show-card'
         >
             <div className='с-tv-show-card__cover'>
                 <Image
                     src={
                         props.tvShow.poster_path
-                            ? `${PARAMETERS.URL_IMG}/${IMG_SIZES.MEDIA_CARD_COVER}${props.tvShow.poster_path}`
+                            ? imageUrl(IMG_SIZES.MEDIA_CARD_COVER, props.tvShow.poster_path)
                             : '/img/poster-not-available.jpg'
                     }
                     sizes='(max-width: 479px) 173px, (max-width: 767px) 213px, (max-width: 1023px) 230px, 342px'

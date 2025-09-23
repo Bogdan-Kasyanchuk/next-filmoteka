@@ -33,7 +33,7 @@ export default function Content(props: Props) {
 
     return (
         <div className='p-person'>
-            <PersonDetails {...data.person} />
+            <PersonDetails person={data.person} />
 
             <Container className='p-person__container'>
                 {

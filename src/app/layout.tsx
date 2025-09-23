@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import { Plus_Jakarta_Sans } from 'next/font/google';
-import { ReactNode } from 'react';
+import { PropsWithChildren } from 'react';
 
 import Footer from '@/components/app/Footer';
 import Header from '@/components/app/Header';
@@ -18,11 +18,7 @@ export const metadata: Metadata = {
     keywords: 'Movies, series, TV shows, actors'
 };
 
-type Props = {
-    children: ReactNode;
-};
-
-export default function Layout(props: Props) {
+export default function Layout(props: PropsWithChildren) {
     return (
         <html lang='en'>
             <body className={font.className}>

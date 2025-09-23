@@ -11,8 +11,9 @@ import Videos from '@/components/app/Videos';
 import MovieCard from '@/components/ui/cards/MovieCard';
 import Loader from '@/components/ui/data-display/Loader';
 import Container from '@/components/ui/layouts/Container';
+import { MediaType } from '@/enums';
 import { transformMovieDetails } from '@/helpers/transformData';
-import { pagesMovieshUrl } from '@/routes';
+import { recommendationsUrl, reviewsUrl } from '@/routes';
 import { getMovieById } from '@/services/api';
 import { MovieMapper } from '@/types';
 
@@ -40,7 +41,7 @@ export default function Content(props: Props) {
     return (
         <div className='p-movie'>
             <MovieDetails
-                {...data.movie}
+                movie={data.movie}
                 id={props.id}
             />
 
@@ -65,7 +66,7 @@ export default function Content(props: Props) {
                     <Recommendations<MovieMapper>
                         recommendations={data.recommendations}
                         item={(item) => <MovieCard movie={item} />}
-                        showAllPath={`${pagesMovieshUrl()}/${props.id}/recommendations`}
+                        showAllPath={recommendationsUrl(MediaType.MOVIE, props.id)}
                     />
                 }
 
@@ -73,7 +74,7 @@ export default function Content(props: Props) {
                     data.reviews.items.length > 0 &&
                     <Reviews
                         reviews={data.reviews}
-                        showAllPath={`${pagesMovieshUrl()}/${props.id}/reviews`}
+                        showAllPath={reviewsUrl(MediaType.MOVIE, props.id)}
                     />
                 }
             </Container>

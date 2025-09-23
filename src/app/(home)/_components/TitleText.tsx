@@ -11,8 +11,5 @@ export default function TitleText(props: Props) {
 
         case TimeType.WEEK:
             return 'Trending this week';
-
-        default:
-            return null;
     }
 }

@@ -94,7 +94,7 @@ export const transformMovieDetails = (movie: MovieDetailsShema) => ({
                 name: language.name
             })
         ),
-        socialLinks: transformMovieExternalIds(movie.external_ids)
+        socialLinks: transformMovieOrTVShowExternalIds(movie.external_ids)
     },
     cast: movie.credits.cast.map((cast) => transformCast(cast)),
     crew: movie.credits.crew.map((crew) => transformCrew(crew)),
@@ -194,7 +194,7 @@ export const transformTVShowDetails = (tvShow: TVShowDetailsShema) => ({
                 )?.name || network.origin_country
             })
         ),
-        socialLinks: transformTVShowExternalIds(tvShow.external_ids)
+        socialLinks: transformMovieOrTVShowExternalIds(tvShow.external_ids)
     },
     seasons: tvShow.seasons.map((season) => transformSeason(season)),
     cast: tvShow.credits.cast.map((cast) => transformCast(cast)),
@@ -240,93 +240,6 @@ export const transformTVShowSeasonDetails = (season: TVShowSeasonDetailsShema) =
     episodes: season.episodes.map((episode) => transformEpisode(episode)),
 }) as TVShowSeasonDetailsMapper;
 
-export const transformSeason = (season: SeasonShema) => ({
-    air_date: season.air_date,
-    episode_count: season.episode_count,
-    name: season.name,
-    poster_path: season.poster_path,
-    season_number: season.season_number,
-    vote_average: season.vote_average
-}) as SeasonMapper;
-
-export const transformEpisode = (episode: EpisodeShema) => ({
-    air_date: episode.air_date,
-    episode_number: episode.episode_number,
-    episode_type: episode.episode_type,
-    name: episode.name,
-    overview: episode.overview,
-    runtime: episode.runtime,
-    season_number: episode.season_number,
-    still_path: episode.still_path,
-    vote_average: episode.vote_average,
-    vote_count: episode.vote_count,
-}) as EpisodeMapper;
-
-export const transformCast = (cast: CastShema) => ({
-    id: cast.id,
-    name: cast.name || cast.original_name,
-    popularity: cast.popularity,
-    profile_path: cast.profile_path,
-    character: cast.character,
-}) as CastMapper;
-
-export const transformCrew = (crew: CrewShema) => ({
-    id: crew.id,
-    name: crew.name || crew.original_name,
-    popularity: crew.popularity,
-    profile_path: crew.profile_path,
-    job: crew.job,
-}) as CrewMapper;
-
-export const transformVideo = (video: VideoShema) => ({
-    name: video.name,
-    key: video.key,
-    type: video.type,
-    published_at: video.published_at,
-}) as VideoMapper;
-
-export const transformReview = (review: ReviewShema) => ({
-    author: {
-        name: review.author_details.name,
-        username: review.author_details.username,
-        avatar_path: review.author_details.avatar_path,
-        rating: review.author_details.rating,
-    },
-    content: review.content,
-    created_at: review.created_at,
-    updated_at: review.updated_at,
-}) as ReviewMapper;
-
-export const transformMediaCast = (media: MediaCastShema) => ({
-    id: media.id,
-    title: media.media_type === MediaType.MOVIE
-        ? media.title || media.original_title
-        : media.name || media.original_name,
-    poster_path: media.poster_path,
-    release_date: media.release_date,
-    character: media.character,
-    media_type: media.media_type,
-}) as MediaCastMapper;
-
-export const transformMediaCrew = (media: MediaCrewShema) => ({
-    id: media.id,
-    title: media.media_type === MediaType.MOVIE
-        ? media.title || media.original_title
-        : media.name || media.original_name,
-    poster_path: media.poster_path,
-    release_date: media.release_date,
-    job: media.job,
-    media_type: media.media_type,
-}) as MediaCrewMapper;
-
-export const transformImage = (image: ImageShema) => ({
-    height: image.height,
-    width: image.width,
-    file_path: image.file_path,
-    vote_average: image.vote_average,
-    vote_count: image.vote_count,
-}) as ImageMapper;
-
 export const transformPerson = (person: PersonShema) => ({
     adult: person.adult,
     gender: person.gender,
@@ -358,7 +271,96 @@ export const transformPersonDetails = (person: PersonDetailsShema) => ({
     images: person.images.profiles.map((image) => transformImage(image)),
 }) as PersonDetailsMapper;
 
-export const transformMovieExternalIds = (ids: MovieDetailsShema['external_ids']) => {
+export const transformReview = (review: ReviewShema) => ({
+    author: {
+        name: review.author_details.name,
+        username: review.author_details.username,
+        avatar_path: review.author_details.avatar_path,
+        rating: review.author_details.rating,
+    },
+    content: review.content,
+    created_at: review.created_at,
+    updated_at: review.updated_at,
+}) as ReviewMapper;
+
+const transformSeason = (season: SeasonShema) => ({
+    air_date: season.air_date,
+    episode_count: season.episode_count,
+    name: season.name,
+    poster_path: season.poster_path,
+    season_number: season.season_number,
+    vote_average: season.vote_average
+}) as SeasonMapper;
+
+const transformEpisode = (episode: EpisodeShema) => ({
+    air_date: episode.air_date,
+    episode_number: episode.episode_number,
+    episode_type: episode.episode_type,
+    name: episode.name,
+    overview: episode.overview,
+    runtime: episode.runtime,
+    season_number: episode.season_number,
+    still_path: episode.still_path,
+    vote_average: episode.vote_average,
+    vote_count: episode.vote_count,
+}) as EpisodeMapper;
+
+const transformCast = (cast: CastShema) => ({
+    id: cast.id,
+    name: cast.name || cast.original_name,
+    popularity: cast.popularity,
+    profile_path: cast.profile_path,
+    character: cast.character,
+}) as CastMapper;
+
+const transformCrew = (crew: CrewShema) => ({
+    id: crew.id,
+    name: crew.name || crew.original_name,
+    popularity: crew.popularity,
+    profile_path: crew.profile_path,
+    job: crew.job,
+}) as CrewMapper;
+
+const transformVideo = (video: VideoShema) => ({
+    name: video.name,
+    key: video.key,
+    type: video.type,
+    published_at: video.published_at,
+}) as VideoMapper;
+
+const transformMediaCast = (media: MediaCastShema) => ({
+    id: media.id,
+    title: media.media_type === MediaType.MOVIE
+        ? media.title || media.original_title
+        : media.name || media.original_name,
+    poster_path: media.poster_path,
+    release_date: media.release_date,
+    character: media.character,
+    media_type: media.media_type,
+}) as MediaCastMapper;
+
+const transformMediaCrew = (media: MediaCrewShema) => ({
+    id: media.id,
+    title: media.media_type === MediaType.MOVIE
+        ? media.title || media.original_title
+        : media.name || media.original_name,
+    poster_path: media.poster_path,
+    release_date: media.release_date,
+    job: media.job,
+    media_type: media.media_type,
+}) as MediaCrewMapper;
+
+const transformImage = (image: ImageShema) => ({
+    height: image.height,
+    width: image.width,
+    file_path: image.file_path,
+    vote_average: image.vote_average,
+    vote_count: image.vote_count,
+}) as ImageMapper;
+
+const transformMovieOrTVShowExternalIds = (
+    ids: MovieDetailsShema['external_ids'] | TVShowDetailsShema['external_ids']
+) => {
     const links = {
         imdb: ids.imdb_id ? `${EXTERNAL_ID_URLS.IMDB}/title/${ids.imdb_id}` : '',
         wikidata: ids.wikidata_id ? `${EXTERNAL_ID_URLS.WIKIDATA}/${ids.wikidata_id}` : '',
@@ -375,24 +377,7 @@ export const transformMovieExternalIds = (ids: MovieDetailsShema['external_ids']
         }));
 };
 
-export const transformTVShowExternalIds = (ids: TVShowDetailsShema['external_ids']) => {
-    const links = {
-        imdb: ids.imdb_id ? `${EXTERNAL_ID_URLS.IMDB}/title/${ids.imdb_id}` : '',
-        wikidata: ids.wikidata_id ? `${EXTERNAL_ID_URLS.WIKIDATA}/${ids.wikidata_id}` : '',
-        facebook: ids.facebook_id ? `${EXTERNAL_ID_URLS.FACEBOOK}/${ids.facebook_id}` : '',
-        instagram: ids.instagram_id ? `${EXTERNAL_ID_URLS.INSTAGRAM}/${ids.instagram_id}` : '',
-        twitter: ids.twitter_id ? `${EXTERNAL_ID_URLS.TWITTER}/${ids.twitter_id}` : '',
-    };
-
-    return Object.entries(links)
-        .filter((social) => social[1])
-        .map((social) => ({
-            provider: social[0],
-            link: social[1],
-        }));
-};
-
-export const transformPersonExternalIds = (ids: PersonDetailsShema['external_ids']) => {
+const transformPersonExternalIds = (ids: PersonDetailsShema['external_ids']) => {
     const links = {
         imdb: ids.imdb_id ? `${EXTERNAL_ID_URLS.IMDB}/name/${ids.imdb_id}` : '',
         wikidata: ids.wikidata_id ? `${EXTERNAL_ID_URLS.WIKIDATA}/${ids.wikidata_id}` : '',

@@ -54,6 +54,10 @@ export default function Content(props: Props) {
         return notFound();
     }
 
+    if (!data.similar.movies.length) {
+        return <DataNotFound />;
+    }
+
     return (
         <Container className='p-movie-similar'>
             <CurrentMovie
@@ -65,31 +69,27 @@ export default function Content(props: Props) {
                 Similar
             </Title>
 
-            {
-                data.similar.movies.length > 0
-                    ? <div className='p-movie-similar__content'>
-                        <ul className='p-movie-similar__list'>
-                            {
-                                data.similar.movies.map(
-                                    (movie) => (
-                                        <li key={movie.id}>
-                                            <MovieCard movie={movie} />
-                                        </li>
-                                    )
-                                )
-                            }
-                        </ul>
+            <div className='p-movie-similar__content'>
+                <ul className='p-movie-similar__list'>
+                    {
+                        data.similar.movies.map(
+                            (movie) => (
+                                <li key={movie.id}>
+                                    <MovieCard movie={movie} />
+                                </li>
+                            )
+                        )
+                    }
+                </ul>
 
-                        {
-                            (data.similar.total_pages && data.similar.total_pages > 1) &&
-                            <Pagination
-                                currentPage={props.currentPage}
-                                totalPages={data.similar.total_pages}
-                            />
-                        }
-                    </div>
-                    : <DataNotFound />
-            }
+                {
+                    (data.similar.total_pages && data.similar.total_pages > 1) &&
+                    <Pagination
+                        currentPage={props.currentPage}
+                        totalPages={data.similar.total_pages}
+                    />
+                }
+            </div>
         </Container>
     );
 }

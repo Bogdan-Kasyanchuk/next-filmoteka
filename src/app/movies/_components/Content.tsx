@@ -30,44 +30,44 @@ export default function Content(props: Props) {
         }),
     });
 
+    if (isPending || isFetching) {
+        return <Loader />;
+    }
+
+    if (!data || !data.movies.length) {
+        return <DataNotFound />;
+    }
+
     return (
-        <>
+        <div className='p-movies__content'>
             {
-                isPending || isFetching
-                    ? <Loader />
-                    : data && data.movies.length > 0
-                        ? <div className='p-movies__content'>
-                            {
-                                data.dates &&
-                                <div className='p-movies__dates'>
-                                    {formatDate(data.dates.minimum, 'DD.MM.YYYY')}
-                                    {' - '}
-                                    {formatDate(data.dates.maximum, 'DD.MM.YYYY')}
-                                </div>
-                            }
-
-                            <ul className='p-movies__list'>
-                                {
-                                    data.movies.map(
-                                        (movie) => (
-                                            <li key={movie.id}>
-                                                <MovieCard movie={movie} />
-                                            </li>
-                                        )
-                                    )
-                                }
-                            </ul>
-
-                            {
-                                data.total_pages > 1 &&
-                                <Pagination
-                                    currentPage={props.currentPage}
-                                    totalPages={data.total_pages}
-                                />
-                            }
-                        </div>
-                        : <DataNotFound />
+                data.dates &&
+                <div className='p-movies__dates'>
+                    {formatDate(data.dates.minimum, 'DD.MM.YYYY')}
+                    {' - '}
+                    {formatDate(data.dates.maximum, 'DD.MM.YYYY')}
+                </div>
             }
-        </>
+
+            <ul className='p-movies__list'>
+                {
+                    data.movies.map(
+                        (movie) => (
+                            <li key={movie.id}>
+                                <MovieCard movie={movie} />
+                            </li>
+                        )
+                    )
+                }
+            </ul>
+
+            {
+                data.total_pages > 1 &&
+                <Pagination
+                    currentPage={props.currentPage}
+                    totalPages={data.total_pages}
+                />
+            }
+        </div>
     );
 }

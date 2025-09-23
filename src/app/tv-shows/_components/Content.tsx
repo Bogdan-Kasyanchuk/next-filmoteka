@@ -28,35 +28,35 @@ export default function Content(props: Props) {
         }),
     });
 
-    return (
-        <>
-            {
-                isPending || isFetching
-                    ? <Loader />
-                    : data && data.tvShows.length > 0
-                        ? <div className='p-tv-shows__content'>
-                            <ul className='p-tv-shows__list'>
-                                {
-                                    data.tvShows.map(
-                                        (tvShow) => (
-                                            <li key={tvShow.id}>
-                                                <TVShowCard tvShow={tvShow} />
-                                            </li>
-                                        )
-                                    )
-                                }
-                            </ul>
+    if (isPending || isFetching) {
+        return <Loader />;
+    }
 
-                            {
-                                data.total_pages > 1 &&
-                                <Pagination
-                                    currentPage={props.currentPage}
-                                    totalPages={data.total_pages}
-                                />
-                            }
-                        </div>
-                        : <DataNotFound />
+    if (!data || !data.tvShows.length) {
+        return <DataNotFound />;
+    }
+
+    return (
+        <div className='p-tv-shows__content'>
+            <ul className='p-tv-shows__list'>
+                {
+                    data.tvShows.map(
+                        (tvShow) => (
+                            <li key={tvShow.id}>
+                                <TVShowCard tvShow={tvShow} />
+                            </li>
+                        )
+                    )
+                }
+            </ul>
+
+            {
+                data.total_pages > 1 &&
+                <Pagination
+                    currentPage={props.currentPage}
+                    totalPages={data.total_pages}
+                />
             }
-        </>
+        </div>
     );
 }

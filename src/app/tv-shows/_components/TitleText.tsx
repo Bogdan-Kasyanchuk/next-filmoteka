@@ -17,8 +17,5 @@ export default function TitleText(props: Props) {
 
         case TVShowType.TOP_RATED:
             return 'TV Shows with a top rating';
-
-        default:
-            return null;
     }
 }

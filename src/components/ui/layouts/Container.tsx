@@ -1,13 +1,12 @@
 import clsx from 'clsx';
-import { ReactNode } from 'react';
+import { PropsWithChildren } from 'react';
 
 type Props = {
-    children: ReactNode,
     size?: 'small' | 'medium' | 'large' | 'full',
     className?: string
 };
 
-export default function Container(props: Props) {
+export default function Container(props: PropsWithChildren<Props>) {
     return (
         <div
             className={

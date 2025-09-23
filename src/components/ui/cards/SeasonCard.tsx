@@ -1,8 +1,8 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { PARAMETERS, IMG_SIZES } from '@/helpers/parameters';
-import { pagesTVUrl } from '@/routes';
+import { IMG_SIZES } from '@/helpers/parameters';
+import { imageUrl, pagesSeasonUrl } from '@/routes';
 import { SeasonMapper } from '@/types';
 import { formatDate } from '@/utils/formateDate';
 
@@ -14,14 +14,14 @@ type Props = {
 export default function SeasonCard(props: Props) {
     return (
         <Link
-            href={`${pagesTVUrl()}/${props.tvShowId}/season-${props.season.season_number}`}
+            href={pagesSeasonUrl(props.tvShowId, String(props.season.season_number))}
             className='с-season-card'
         >
             <div className='с-season-card__cover'>
                 <Image
                     src={
                         props.season.poster_path
-                            ? `${PARAMETERS.URL_IMG}/${IMG_SIZES.SEASON_CARD_COVER}${props.season.poster_path}`
+                            ? imageUrl(IMG_SIZES.SEASON_CARD_COVER, props.season.poster_path)
                             : '/img/poster-not-available.jpg'
                     }
                     sizes='154px'

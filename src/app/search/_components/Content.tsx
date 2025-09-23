@@ -11,11 +11,11 @@ import { MediaType } from '@/enums';
 import { transformMovie, transformPerson, transformTVShow } from '@/helpers/transformData';
 import { getSearch } from '@/services/api';
 import { MovieShema, PersonShema, TVShowShema } from '@/shemas';
-import { MovieMapper, PersonMapper, TVShowMapper } from '@/types';
+import { Adult, MovieMapper, PersonMapper, TVShowMapper } from '@/types';
 
 type Props = {
     type: 'multi' | MediaType;
-    adult: 'true' | 'false';
+    adult: Adult;
     query: string;
     currentPage: number,
 }
@@ -44,54 +44,54 @@ export default function Content(props: Props) {
         })
     });
 
-    return (
-        <>
-            {
-                isPending || isFetching
-                    ? <Loader />
-                    : data && data.results.length > 0
-                        ? <div className='p-search__content'>
-                            <ul className='p-search__list'>
-                                {
-                                    data.results.map(
-                                        (result) => (
-                                            result &&
-                                            <li key={result.id}>
-                                                {
-                                                    props.type === 'multi'
-                                                        ? <AllCards result={result} />
-                                                        : <OneCard
-                                                            result={result}
-                                                            type={props.type}
-                                                        />
-                                                }
-                                            </li>
-                                        )
-                                    )
-                                }
-                            </ul>
+    if (isPending || isFetching) {
+        return <Loader />;
+    }
 
-                            {
-                                data.total_pages > 1 &&
-                                <Pagination
-                                    currentPage={props.currentPage}
-                                    totalPages={data.total_pages}
-                                />
-                            }
-                        </div>
-                        : <div className='p-search__no-search-results'>
-                            No search results
-                        </div>
+    if (!data || !data.results.length) {
+        return <div className='p-search__no-search-results'>
+            No search results
+        </div>;
+    }
+
+    return (
+        <div className='p-search__content'>
+            <ul className='p-search__list'>
+                {
+                    data.results.map(
+                        (result) => (
+                            result &&
+                            <li key={result.id}>
+                                {
+                                    props.type === 'multi'
+                                        ? <CardForMultiType result={result} />
+                                        : <Card
+                                            result={result}
+                                            type={props.type}
+                                        />
+                                }
+                            </li>
+                        )
+                    )
+                }
+            </ul>
+
+            {
+                data.total_pages > 1 &&
+                <Pagination
+                    currentPage={props.currentPage}
+                    totalPages={data.total_pages}
+                />
             }
-        </>
+        </div>
     );
 }
 
-type AllCardsProps = {
+type CardForMultiTypeProps = {
     result: MovieMapper | TVShowMapper | PersonMapper
 }
 
-function AllCards(props: AllCardsProps) {
+function CardForMultiType(props: CardForMultiTypeProps) {
     switch (props.result.media_type) {
         case MediaType.MOVIE:
             return <MovieCard movie={props.result} />;
@@ -104,12 +104,12 @@ function AllCards(props: AllCardsProps) {
     }
 }
 
-type OneCardProps = {
+type CardProps = {
     result: MovieMapper | TVShowMapper | PersonMapper
     type: MediaType
 }
 
-function OneCard(props: OneCardProps) {
+function Card(props: CardProps) {
     switch (props.type) {
         case MediaType.MOVIE:
             return <MovieCard movie={props.result as MovieShema} />;

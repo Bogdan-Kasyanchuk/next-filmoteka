@@ -1,5 +1,7 @@
 import { EpisodeType, GenderType, MediaType, VideoType } from './enums';
 
+export type Adult = 'true' | 'false';
+
 export type SpokenLanguage = {
     english_name: string,
     name: string,

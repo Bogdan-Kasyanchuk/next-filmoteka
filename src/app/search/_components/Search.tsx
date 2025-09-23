@@ -5,19 +5,19 @@ import Image from 'next/image';
 import { useSearchParams, usePathname, useRouter } from 'next/navigation';
 import { useState } from 'react';
 
-import { sortParams } from '@/helpers/sortParams';
+import { sortSearchParams } from '@/helpers/sortSearchParams';
 
 export default function Search() {
     const pathname = usePathname();
     const searchParams = useSearchParams();
     const { replace } = useRouter();
 
-    const [term, setTerm] = useState(searchParams.get('query')?.toString() ?? '');
+    const params = new URLSearchParams(searchParams);
+
+    const [term, setTerm] = useState(searchParams.get('query') ?? '');
     const [debouncedTerm] = useDebouncedValue(term, 250);
 
     useDidUpdate(() => {
-        const params = new URLSearchParams(searchParams);
-
         if (debouncedTerm) {
             params.set('query', debouncedTerm);
             params.set('page', '1');
@@ -26,7 +26,7 @@ export default function Search() {
             params.delete('page');
         }
 
-        replace(sortParams(pathname, params));
+        replace(sortSearchParams(pathname, params));
     }, [debouncedTerm]);
 
     return (

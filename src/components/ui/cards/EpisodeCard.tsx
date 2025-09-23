@@ -1,6 +1,7 @@
 import Image from 'next/image';
 
-import { PARAMETERS, IMG_SIZES } from '@/helpers/parameters';
+import { IMG_SIZES } from '@/helpers/parameters';
+import { imageUrl } from '@/routes';
 import { EpisodeMapper } from '@/types';
 import { formatDate } from '@/utils/formateDate';
 
@@ -17,7 +18,7 @@ export default function EpisodeCard(props: Props) {
                 <Image
                     src={
                         props.episode.still_path
-                            ? `${PARAMETERS.URL_IMG}/${IMG_SIZES.EPISODE_CARD_COVER}${props.episode.still_path}`
+                            ? imageUrl(IMG_SIZES.EPISODE_CARD_COVER, props.episode.still_path)
                             : '/img/poster-not-available.jpg'
                     }
                     sizes='(max-width: 479px) 175px, (max-width: 1319px) 216px, 300px'
@@ -86,7 +87,6 @@ export default function EpisodeCard(props: Props) {
                             i
                         </button>
                     }
-                    content={props.episode.overview}
                     classNames={
                         {
                             content: 'с-episode-card__overview',
@@ -94,7 +94,9 @@ export default function EpisodeCard(props: Props) {
                         }
                     }
                     isArrow
-                />
+                >
+                    {props.episode.overview}
+                </Popover>
             }
         </div>
     );

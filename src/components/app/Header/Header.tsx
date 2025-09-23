@@ -12,11 +12,10 @@ export default function Header() {
             >
                 <Logo
                     logoPath='/svg/logo.svg'
-                    text={
-                        <h1 className='sr-only md:not-sr-only'>Filmoteka</h1>
-                    }
                     className='text-accent'
-                />
+                >
+                    <h1 className='sr-only md:not-sr-only'>Filmoteka</h1>
+                </Logo>
 
                 <Navigation />
             </Container>

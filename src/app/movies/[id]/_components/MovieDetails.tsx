@@ -5,25 +5,29 @@ import { Fragment } from 'react';
 import SocialLinks from '@/components/ui/data-display/SocialLinks';
 import Container from '@/components/ui/layouts/Container';
 import Title from '@/components/ui/typography/Title';
-import { PARAMETERS, IMG_SIZES } from '@/helpers/parameters';
-import { pagesMovieshUrl } from '@/routes';
+import { MediaType } from '@/enums';
+import { IMG_SIZES } from '@/helpers/parameters';
+import { imageUrl, pagesSimilarUrl } from '@/routes';
 import { MovieDetailsMapper } from '@/types';
 import { formatCurrency } from '@/utils/formatCurrency';
 import { formatDate } from '@/utils/formateDate';
 
-type Props = MovieDetailsMapper['movie'] & { id: string }
+type Props = {
+    movie: MovieDetailsMapper['movie']
+    id: string
+}
 
 export default function MovieDetails(props: Props) {
-    const average = Math.round(props.vote_average * 10);
+    const average = Math.round(props.movie.vote_average * 10);
 
     return (
         <div>
             <div className='p-movie__details'>
                 <div className='p-movie__details-backdrop'>
                     <Image
-                        src={`${PARAMETERS.URL_IMG}/${IMG_SIZES.MEDIA_CARD_DETAILS_BACKDROP}${props.backdrop_path}`}
+                        src={imageUrl(IMG_SIZES.MEDIA_CARD_DETAILS_BACKDROP, props.movie.backdrop_path)}
                         sizes='(max-width: 767px) 768px, (max-width: 1319px) 1320px, 1920px'
-                        alt={props.title}
+                        alt={props.movie.title}
                         fill
                     />
                 </div>
@@ -31,7 +35,7 @@ export default function MovieDetails(props: Props) {
                 <Container className='p-movie__details-container'>
                     <div className='p-movie__details-cover'>
                         {
-                            props.adult &&
+                            props.movie.adult &&
                             <div className='p-movie__details-adult'>
                                 18<span>+</span>
                             </div>
@@ -39,17 +43,17 @@ export default function MovieDetails(props: Props) {
 
                         <Image
                             src={
-                                props.poster_path
-                                    ? `${PARAMETERS.URL_IMG}/${IMG_SIZES.MEDIA_CARD_DETAILS_COVER}${props.poster_path}`
+                                props.movie.poster_path
+                                    ? imageUrl(IMG_SIZES.MEDIA_CARD_DETAILS_COVER, props.movie.poster_path)
                                     : '/img/poster-not-available.jpg'
                             }
                             sizes='(max-width: 767px) 253px, (max-width: 1319px) 326px, 500px'
-                            alt={props.title}
+                            alt={props.movie.title}
                             fill
                         />
 
                         <Link
-                            href={`${pagesMovieshUrl()}/${props.id}/similar`}
+                            href={pagesSimilarUrl(MediaType.MOVIE, props.id)}
                             className='p-movie__details-similar-button'
                         >
                             Similar
@@ -57,7 +61,7 @@ export default function MovieDetails(props: Props) {
                     </div>
 
                     <Title className='p-movie__details-title'>
-                        {props.title}&nbsp;({formatDate(props.release_date, 'YYYY')})
+                        {props.movie.title}&nbsp;({formatDate(props.movie.release_date, 'YYYY')})
                     </Title>
 
                     <ul className='p-movie__details-list-rounds'>
@@ -76,73 +80,73 @@ export default function MovieDetails(props: Props) {
                         </li>
 
                         <li className='p-movie__details-list-rounds-item'>
-                            {props.vote_count ?? 0}
+                            {props.movie.vote_count ?? 0}
                             <span>votes</span>
                         </li>
 
                         <li className='p-movie__details-list-rounds-item'>
-                            {Math.round(props.popularity)}
+                            {Math.round(props.movie.popularity)}
                             <span>popularity</span>
                         </li>
 
                         <li className='p-movie__details-list-rounds-item'>
-                            {props.runtime ?? 0}
+                            {props.movie.runtime ?? 0}
                             <span>min</span>
                         </li>
                     </ul>
 
                     <ul className='p-movie__details-list-info'>
                         {
-                            props.tagline &&
+                            props.movie.tagline &&
                             <li className='p-movie__details-list-info-item p-movie__details-list-info-item--tagline'>
-                                &quot;{props.tagline}&quot;
+                                &quot;{props.movie.tagline}&quot;
                             </li>
                         }
 
                         {
-                            props.homepage &&
+                            props.movie.homepage &&
                             <li className='p-movie__details-list-info-item p-movie__details-list-info-item--link'>
                                 <span>WebSite:</span>
                                 <a
-                                    href={props.homepage}
+                                    href={props.movie.homepage}
                                     rel='noopener noreferrer'
                                     target='_blank'
                                 >
-                                    {props.homepage}
+                                    {props.movie.homepage}
                                 </a>
                             </li>
                         }
 
                         <li className='p-movie__details-list-info-item'>
                             <span>Budget:</span>
-                            <span>${formatCurrency(props.budget)}</span>
+                            <span>${formatCurrency(props.movie.budget)}</span>
                         </li>
 
                         <li className='p-movie__details-list-info-item'>
                             <span>Revenue:</span>
-                            <span>${formatCurrency(props.revenue)}</span>
+                            <span>${formatCurrency(props.movie.revenue)}</span>
                         </li>
 
                         {
-                            props.release_date &&
+                            props.movie.release_date &&
                             <li className='p-movie__details-list-info-item'>
                                 <span>Release:</span>
-                                <span>{formatDate(props.release_date, 'DD.MM.YYYY')}</span>
+                                <span>{formatDate(props.movie.release_date, 'DD.MM.YYYY')}</span>
                             </li>
                         }
 
                         <li className='p-movie__details-list-info-item'>
                             <span>Status:</span>
-                            <span>{props.status}</span>
+                            <span>{props.movie.status}</span>
                         </li>
 
                         {
-                            props.genres.length > 0 &&
+                            props.movie.genres.length > 0 &&
                             <li className='p-movie__details-list-info-item'>
                                 <span className='self-start'>Genres:</span>
                                 <span>
                                     {
-                                        props.genres.map(
+                                        props.movie.genres.map(
                                             (genre, index) => (
                                                 <Fragment key={index}>
                                                     {index !== 0 && <>&nbsp;|&nbsp;</>}
@@ -156,16 +160,16 @@ export default function MovieDetails(props: Props) {
 
                         <li className='p-movie__details-list-info-item'>
                             <span>Original language:</span>
-                            <span>{props.original_language}</span>
+                            <span>{props.movie.original_language}</span>
                         </li>
 
                         {
-                            props.spoken_languages.length > 0 &&
+                            props.movie.spoken_languages.length > 0 &&
                             <li className='p-movie__details-list-info-item'>
                                 <span className='self-start'>Spoken languages:</span>
                                 <span>
                                     {
-                                        props.spoken_languages.map(
+                                        props.movie.spoken_languages.map(
                                             (language, index) => (
                                                 <Fragment key={index}>
                                                     {index !== 0 && <>&nbsp;|&nbsp;</>}
@@ -178,12 +182,12 @@ export default function MovieDetails(props: Props) {
                         }
 
                         {
-                            props.origin_country.length > 0 &&
+                            props.movie.origin_country.length > 0 &&
                             <li className='p-movie__details-list-info-item'>
                                 <span className='self-start'>Countries:</span>
                                 <span>
                                     {
-                                        props.origin_country.map(
+                                        props.movie.origin_country.map(
                                             (country, index) => (
                                                 <Fragment key={index}>
                                                     {index !== 0 && <>&nbsp;|&nbsp;</>}
@@ -197,26 +201,26 @@ export default function MovieDetails(props: Props) {
                     </ul>
 
                     {
-                        props.overview &&
+                        props.movie.overview &&
                         <div className='p-movie__details-overview'>
                             <p className='p-movie__details-overview-title'>
                                 Overview:
                             </p>
                             <p className='p-movie__details-overview-text'>
-                                {props.overview}
+                                {props.movie.overview}
                             </p>
                         </div>
                     }
 
                     {
-                        props.socialLinks.length > 0 &&
-                        <SocialLinks socials={props.socialLinks} />
+                        props.movie.socialLinks.length > 0 &&
+                        <SocialLinks socials={props.movie.socialLinks} />
                     }
                 </Container>
             </div>
 
             {
-                props.production_companies.length > 0 &&
+                props.movie.production_companies.length > 0 &&
                 <Container className='p-movie__details-content'>
                     <div className='p-movie__details-companies'>
                         <p className='p-movie__details-companies-title'>
@@ -224,7 +228,7 @@ export default function MovieDetails(props: Props) {
                         </p>
                         <ul className='p-movie__details-companies-list'>
                             {
-                                props.production_companies.map(
+                                props.movie.production_companies.map(
                                     (company, index) => (
                                         <li
                                             key={index}
@@ -234,7 +238,7 @@ export default function MovieDetails(props: Props) {
                                                 <Image
                                                     src={
                                                         company.logo_path
-                                                            ? `${PARAMETERS.URL_IMG}/${IMG_SIZES.COMPANY_LOGO}${company.logo_path}`
+                                                            ? imageUrl(IMG_SIZES.COMPANY_LOGO, company.logo_path)
                                                             : '/img/image-placeholder.svg'
                                                     }
                                                     fill

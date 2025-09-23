@@ -1,6 +1,7 @@
 'use client';
 
 import useInView from '@/hooks/useInView';
+import { youtubeEmbedUrl } from '@/routes';
 import { VideoMapper } from '@/types';
 import { formatDate } from '@/utils/formateDate';
 
@@ -40,7 +41,7 @@ export default function VideoCard(props: Props) {
                 {
                     entry?.isIntersecting &&
                     <iframe
-                        src={`https://www.youtube.com/embed/${props.video.key}`}
+                        src={youtubeEmbedUrl(props.video.key)}
                         title={props.video.name}
                         className='c-video-card__iframe'
                     />

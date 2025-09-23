@@ -1,8 +1,8 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { PARAMETERS, IMG_SIZES } from '@/helpers/parameters';
-import { pagesMovieshUrl } from '@/routes';
+import { IMG_SIZES } from '@/helpers/parameters';
+import { imageUrl, pagesMovieUrl } from '@/routes';
 import { MovieMapper } from '@/types';
 
 type Props = {
@@ -12,14 +12,14 @@ type Props = {
 export default function MovieCard(props: Props) {
     return (
         <Link
-            href={`${pagesMovieshUrl()}/${props.movie.id}`}
+            href={pagesMovieUrl(String(props.movie.id))}
             className='с-movie-card'
         >
             <div className='с-movie-card__cover'>
                 <Image
                     src={
                         props.movie.poster_path
-                            ? `${PARAMETERS.URL_IMG}/${IMG_SIZES.MEDIA_CARD_COVER}${props.movie.poster_path}`
+                            ? imageUrl(IMG_SIZES.MEDIA_CARD_COVER, props.movie.poster_path)
                             : '/img/poster-not-available.jpg'
                     }
                     sizes='(max-width: 479px) 173px, (max-width: 767px) 213px, (max-width: 1023px) 230px, 342px'

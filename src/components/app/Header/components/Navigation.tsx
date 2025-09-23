@@ -8,10 +8,10 @@ import { usePathname } from 'next/navigation';
 import Popover from '@/components/ui/data-display/Popover';
 import {
     pagesHomeUrl,
-    pagesMovieshUrl,
+    pagesMoviesUrl,
     pagesPersonsUrl,
     pagesSearchUrl,
-    pagesTVUrl
+    pagesTVShowsUrl
 } from '@/routes';
 
 const links = [
@@ -22,12 +22,12 @@ const links = [
     },
     {
         name: 'Movies',
-        href: pagesMovieshUrl(),
+        href: pagesMoviesUrl(),
         icon: '/svg/movie.svg',
     },
     {
         name: 'TV',
-        href: pagesTVUrl(),
+        href: pagesTVShowsUrl(),
         icon: '/svg/tv.svg',
     },
     {
@@ -65,34 +65,33 @@ export default function Navigation() {
                                 <span className='c-navigation__text'>Search</span>
                             </button>
                         }
-                        content={
-                            <form
-                                action={pagesSearchUrl()}
-                                className='c-navigation__search-form'
-                            >
-                                <input
-                                    className='c-navigation__search-input'
-                                    name='query'
-                                    placeholder='Search movies, tv shows, persons'
-                                    autoComplete='off'
-                                    minLength={3}
-                                    required
-                                />
-
-                                <button
-                                    type='submit'
-                                    className='c-navigation__search-button'
-                                >
-                                    Пошук
-                                </button>
-                            </form>
-                        }
                         classNames={
                             {
                                 content: 'c-navigation__search',
                             }
                         }
-                    />
+                    >
+                        <form
+                            action={pagesSearchUrl()}
+                            className='c-navigation__search-form'
+                        >
+                            <input
+                                className='c-navigation__search-input'
+                                name='query'
+                                placeholder='Search movies, tv shows, persons'
+                                autoComplete='off'
+                                minLength={3}
+                                required
+                            />
+
+                            <button
+                                type='submit'
+                                className='c-navigation__search-button'
+                            >
+                                Пошук
+                            </button>
+                        </form>
+                    </Popover>
                 </li>
 
                 {

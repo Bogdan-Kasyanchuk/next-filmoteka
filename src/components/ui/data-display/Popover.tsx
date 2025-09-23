@@ -1,10 +1,9 @@
 import { Arrow, Content, Portal, Root, Trigger } from '@radix-ui/react-popover';
 import clsx from 'clsx';
-import React, { ReactNode } from 'react';
+import React, { PropsWithChildren, ReactNode } from 'react';
 
 type Props = {
     trigger: ReactNode,
-    content: ReactNode,
     classNames?: {
         content?: string,
         arrow?: string
@@ -12,7 +11,7 @@ type Props = {
     isArrow?: boolean
 }
 
-export default function EpisodeCard(props: Props) {
+export default function EpisodeCard(props: PropsWithChildren<Props>) {
     return (
         <Root>
             <Trigger asChild>
@@ -25,7 +24,7 @@ export default function EpisodeCard(props: Props) {
                     sideOffset={props.isArrow ? 5 : 10}
                     collisionPadding={20}
                 >
-                    {props.content}
+                    {props.children}
 
                     {
                         props.isArrow &&

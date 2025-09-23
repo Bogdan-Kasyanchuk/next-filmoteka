@@ -17,8 +17,5 @@ export default function TitleText(props: Props) {
 
         case MovieType.UPCOMING:
             return 'Movies that are being released soon';
-
-        default:
-            return null;
     }
 }

@@ -2,8 +2,8 @@ import clsx from 'clsx';
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { PARAMETERS, IMG_SIZES } from '@/helpers/parameters';
-import { pagesPersonsUrl } from '@/routes';
+import { IMG_SIZES } from '@/helpers/parameters';
+import { imageUrl, pagesPersonUrl } from '@/routes';
 import { CastMapper } from '@/types';
 
 type Props = {
@@ -13,7 +13,7 @@ type Props = {
 export default function CastCard(props: Props) {
     return (
         <Link
-            href={`${pagesPersonsUrl()}/${props.cast.id}`}
+            href={pagesPersonUrl(String(props.cast.id))}
             className='с-cast-card'
         >
             <div
@@ -26,7 +26,7 @@ export default function CastCard(props: Props) {
                 <Image
                     src={
                         props.cast.profile_path
-                            ? `${PARAMETERS.URL_IMG}/${IMG_SIZES.CAST_CARD_COVER}${props.cast.profile_path}`
+                            ? imageUrl(IMG_SIZES.CAST_CARD_COVER, props.cast.profile_path)
                             : '/img/avatar-placeholder.svg'
                     }
                     sizes='180px'

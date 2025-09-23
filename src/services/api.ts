@@ -15,9 +15,11 @@ import {
     SimilarTVShowShema,
     CurrentTVShowShema
 } from '@/shemas';
+import { Adult } from '@/types';
 
 async function fetchApi<T>(url: string) {
     const buildUrl = new URL(`${PARAMETERS.BASE_URL}/${url}`);
+
     if (PARAMETERS.API_KEY) {
         buildUrl.searchParams.append('api_key', PARAMETERS.API_KEY);
     }
@@ -123,7 +125,7 @@ export function getPersonById(id: string) {
 
 export function getSearch(
     type: 'multi' | MediaType,
-    adult: 'true' | 'false',
+    adult: Adult,
     query: string,
     page: number
 ) {

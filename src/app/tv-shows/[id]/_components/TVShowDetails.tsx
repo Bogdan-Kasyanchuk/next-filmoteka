@@ -5,24 +5,28 @@ import { Fragment } from 'react';
 import SocialLinks from '@/components/ui/data-display/SocialLinks';
 import Container from '@/components/ui/layouts/Container';
 import Title from '@/components/ui/typography/Title';
-import { PARAMETERS, IMG_SIZES } from '@/helpers/parameters';
-import { pagesTVUrl } from '@/routes';
+import { MediaType } from '@/enums';
+import { IMG_SIZES } from '@/helpers/parameters';
+import { imageUrl, pagesSimilarUrl } from '@/routes';
 import { TVShowDetailsMapper } from '@/types';
 import { formatDate } from '@/utils/formateDate';
 
-type Props = TVShowDetailsMapper['tvShow'] & { id: string };
+type Props = {
+    tvShow: TVShowDetailsMapper['tvShow'],
+    id: string
+};
 
 export default function TVShowDetails(props: Props) {
-    const average = Math.round(props.vote_average * 10);
+    const average = Math.round(props.tvShow.vote_average * 10);
 
     return (
         <div>
             <div className='p-tv-show__details'>
                 <div className='p-tv-show__details-backdrop'>
                     <Image
-                        src={`${PARAMETERS.URL_IMG}/${IMG_SIZES.MEDIA_CARD_DETAILS_BACKDROP}${props.backdrop_path}`}
+                        src={imageUrl(IMG_SIZES.MEDIA_CARD_DETAILS_BACKDROP, props.tvShow.backdrop_path)}
                         sizes='(max-width: 767px) 768px, (max-width: 1319px) 1320px, 1920px'
-                        alt={props.name}
+                        alt={props.tvShow.name}
                         fill
                     />
                 </div>
@@ -30,7 +34,7 @@ export default function TVShowDetails(props: Props) {
                 <Container className='p-tv-show__details-container sh'>
                     <div className='p-tv-show__details-cover'>
                         {
-                            props.adult &&
+                            props.tvShow.adult &&
                             <div className='p-tv-show__details-adult'>
                                 18<span>+</span>
                             </div>
@@ -38,17 +42,17 @@ export default function TVShowDetails(props: Props) {
 
                         <Image
                             src={
-                                props.poster_path
-                                    ? `${PARAMETERS.URL_IMG}/${IMG_SIZES.MEDIA_CARD_DETAILS_COVER}${props.poster_path}`
+                                props.tvShow.poster_path
+                                    ? imageUrl(IMG_SIZES.MEDIA_CARD_DETAILS_COVER, props.tvShow.poster_path)
                                     : '/img/poster-not-available.jpg'
                             }
                             sizes='(max-width: 767px) 253px, (max-width: 1319px) 326px, 500px'
-                            alt={props.name}
+                            alt={props.tvShow.name}
                             fill
                         />
 
                         <Link
-                            href={`${pagesTVUrl()}/${props.id}/similar`}
+                            href={pagesSimilarUrl(MediaType.TV_SHOW, props.id)}
                             className='p-tv-show__details-similar-button'
                         >
                             Similar
@@ -56,10 +60,10 @@ export default function TVShowDetails(props: Props) {
                     </div>
 
                     <Title className='p-tv-show__details-title'>
-                        {props.name}
+                        {props.tvShow.name}
                         {
-                            props.first_air_date &&
-                            <>&nbsp;({formatDate(props.first_air_date, 'YYYY')})</>
+                            props.tvShow.first_air_date &&
+                            <>&nbsp;({formatDate(props.tvShow.first_air_date, 'YYYY')})</>
                         }
                     </Title>
 
@@ -79,86 +83,86 @@ export default function TVShowDetails(props: Props) {
                         </li>
 
                         <li className='p-tv-show__details-list-rounds-item'>
-                            {props.vote_count ?? 0}
+                            {props.tvShow.vote_count ?? 0}
                             <span>votes</span>
                         </li>
 
                         <li className='p-tv-show__details-list-rounds-item'>
-                            {Math.round(props.popularity)}
+                            {Math.round(props.tvShow.popularity)}
                             <span>popularity</span>
                         </li>
 
                         <li className='p-tv-show__details-list-rounds-item'>
-                            {props.number_of_seasons ?? 0}
+                            {props.tvShow.number_of_seasons ?? 0}
                             <span>seasons</span>
                         </li>
 
                         <li className='p-tv-show__details-list-rounds-item'>
-                            {props.number_of_episodes ?? 0}
+                            {props.tvShow.number_of_episodes ?? 0}
                             <span>episodes</span>
                         </li>
                     </ul>
 
                     <ul className='p-tv-show__details-list-info'>
                         {
-                            props.tagline &&
+                            props.tvShow.tagline &&
                             <li className='p-tv-show__details-list-info-item p-tv-show__details-list-info-item--tagline'>
-                                &quot;{props.tagline}&quot;
+                                &quot;{props.tvShow.tagline}&quot;
                             </li>
                         }
 
                         {
-                            props.homepage &&
+                            props.tvShow.homepage &&
                             <li className='p-tv-show__details-list-info-item p-tv-show__details-list-info-item--link'>
                                 <span>WebSite:</span>
                                 <a
-                                    href={props.homepage}
+                                    href={props.tvShow.homepage}
                                     rel='noopener noreferrer'
                                     target='_blank'
                                 >
-                                    {props.homepage}
+                                    {props.tvShow.homepage}
                                 </a>
                             </li>
                         }
 
                         {
-                            props.first_air_date &&
+                            props.tvShow.first_air_date &&
                             <li className='p-tv-show__details-list-info-item'>
                                 <span>First air date:</span>
-                                <span>{formatDate(props.first_air_date, 'DD.MM.YYYY')}</span>
+                                <span>{formatDate(props.tvShow.first_air_date, 'DD.MM.YYYY')}</span>
                             </li>
                         }
 
                         {
-                            props.last_air_date &&
+                            props.tvShow.last_air_date &&
                             <li className='p-tv-show__details-list-info-item'>
                                 <span>Last air date:</span>
-                                <span>{formatDate(props.last_air_date, 'DD.MM.YYYY')}</span>
+                                <span>{formatDate(props.tvShow.last_air_date, 'DD.MM.YYYY')}</span>
                             </li>
                         }
 
                         <li className='p-tv-show__details-list-info-item'>
                             <span>In production:</span>
-                            <span>{props.in_production ? 'Yes' : 'No'}</span>
+                            <span>{props.tvShow.in_production ? 'Yes' : 'No'}</span>
                         </li>
 
                         <li className='p-tv-show__details-list-info-item'>
                             <span>Type:</span>
-                            <span>{props.type}</span>
+                            <span>{props.tvShow.type}</span>
                         </li>
 
                         <li className='p-tv-show__details-list-info-item'>
                             <span>Status:</span>
-                            <span>{props.status}</span>
+                            <span>{props.tvShow.status}</span>
                         </li>
 
                         {
-                            props.genres.length > 0 &&
+                            props.tvShow.genres.length > 0 &&
                             <li className='p-tv-show__details-list-info-item'>
                                 <span className='self-start'>Genres:</span>
                                 <span>
                                     {
-                                        props.genres.map(
+                                        props.tvShow.genres.map(
                                             (genre, index) => (
                                                 <Fragment key={index}>
                                                     {index !== 0 && <>&nbsp;|&nbsp;</>}
@@ -172,16 +176,16 @@ export default function TVShowDetails(props: Props) {
 
                         <li className='p-tv-show__details-list-info-item'>
                             <span>Original language:</span>
-                            <span>{props.original_language}</span>
+                            <span>{props.tvShow.original_language}</span>
                         </li>
 
                         {
-                            props.spoken_languages.length > 0 &&
+                            props.tvShow.spoken_languages.length > 0 &&
                             <li className='p-tv-show__details-list-info-item'>
                                 <span className='self-start'>Spoken languages:</span>
                                 <span>
                                     {
-                                        props.spoken_languages.map(
+                                        props.tvShow.spoken_languages.map(
                                             (language, index) => (
                                                 <Fragment key={index}>
                                                     {index !== 0 && <>&nbsp;|&nbsp;</>}
@@ -194,12 +198,12 @@ export default function TVShowDetails(props: Props) {
                         }
 
                         {
-                            props.origin_country.length > 0 &&
+                            props.tvShow.origin_country.length > 0 &&
                             <li className='p-tv-show__details-list-info-item'>
                                 <span className='self-start'>Countries:</span>
                                 <span>
                                     {
-                                        props.origin_country.map(
+                                        props.tvShow.origin_country.map(
                                             (country, index) => (
                                                 <Fragment key={index}>
                                                     {index !== 0 && <>&nbsp;|&nbsp;</>}
@@ -213,36 +217,36 @@ export default function TVShowDetails(props: Props) {
                     </ul>
 
                     {
-                        props.overview &&
+                        props.tvShow.overview &&
                         <div className='p-tv-show__details-overview'>
                             <p className='p-tv-show__details-overview-title'>
                                 Overview:
                             </p>
                             <p className='p-tv-show__details-overview-text'>
-                                {props.overview}
+                                {props.tvShow.overview}
                             </p>
                         </div>
                     }
 
                     {
-                        props.socialLinks.length > 0 &&
-                        <SocialLinks socials={props.socialLinks} />
+                        props.tvShow.socialLinks.length > 0 &&
+                        <SocialLinks socials={props.tvShow.socialLinks} />
                     }
                 </Container>
             </div>
 
             {
-                (props.created_by.length > 0 || props.networks.length > 0 || props.production_companies.length > 0) &&
+                (props.tvShow.created_by.length > 0 || props.tvShow.networks.length > 0 || props.tvShow.production_companies.length > 0) &&
                 <Container className='p-tv-show__details-content'>
                     {
-                        props.created_by.length > 0 &&
+                        props.tvShow.created_by.length > 0 &&
                         <div className='p-tv-show__details-creators'>
                             <p className='p-tv-show__details-creators-title'>
                                 Creators:
                             </p>
                             <ul className='p-tv-show__details-creators-list'>
                                 {
-                                    props.created_by.map(
+                                    props.tvShow.created_by.map(
                                         (creator, index) => (
                                             <li
                                                 key={index}
@@ -252,7 +256,7 @@ export default function TVShowDetails(props: Props) {
                                                     <Image
                                                         src={
                                                             creator.profile_path
-                                                                ? `${PARAMETERS.URL_IMG}/${IMG_SIZES.CREATOR_AVATAR}${creator.profile_path}`
+                                                                ? imageUrl(IMG_SIZES.CREATOR_AVATAR, creator.profile_path)
                                                                 : '/img/avatar-placeholder.svg'
                                                         }
                                                         fill
@@ -271,14 +275,14 @@ export default function TVShowDetails(props: Props) {
                     }
 
                     {
-                        props.networks.length > 0 &&
+                        props.tvShow.networks.length > 0 &&
                         <div className='p-tv-show__details-networks'>
                             <p className='p-tv-show__details-networks-title'>
                                 Networks:
                             </p>
                             <ul className='p-tv-show__details-networks-list'>
                                 {
-                                    props.networks.map(
+                                    props.tvShow.networks.map(
                                         (network, index) => (
                                             <li
                                                 key={index}
@@ -288,7 +292,7 @@ export default function TVShowDetails(props: Props) {
                                                     <Image
                                                         src={
                                                             network.logo_path
-                                                                ? `${PARAMETERS.URL_IMG}/${IMG_SIZES.NETWORK_LOGO}${network.logo_path}`
+                                                                ? imageUrl(IMG_SIZES.NETWORK_LOGO, network.logo_path)
                                                                 : '/img/image-placeholder.svg'
                                                         }
                                                         fill
@@ -315,14 +319,14 @@ export default function TVShowDetails(props: Props) {
                     }
 
                     {
-                        props.production_companies.length > 0 &&
+                        props.tvShow.production_companies.length > 0 &&
                         <div className='p-tv-show__details-companies'>
                             <p className='p-tv-show__details-companies-title'>
                                 Production companies:
                             </p>
                             <ul className='p-tv-show__details-companies-list'>
                                 {
-                                    props.production_companies.map(
+                                    props.tvShow.production_companies.map(
                                         (company, index) => (
                                             <li
                                                 key={index}
@@ -332,7 +336,7 @@ export default function TVShowDetails(props: Props) {
                                                     <Image
                                                         src={
                                                             company.logo_path
-                                                                ? `${PARAMETERS.URL_IMG}/${IMG_SIZES.COMPANY_LOGO}${company.logo_path}`
+                                                                ? imageUrl(IMG_SIZES.COMPANY_LOGO, company.logo_path)
                                                                 : '/img/image-placeholder.svg'
                                                         }
                                                         fill

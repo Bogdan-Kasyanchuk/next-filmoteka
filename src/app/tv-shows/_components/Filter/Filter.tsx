@@ -4,7 +4,7 @@ import { usePathname, useSearchParams, useRouter } from 'next/navigation';
 
 import Tabs from '@/components/ui/data-display/Tabs';
 import { TVShowType } from '@/enums';
-import { sortParams } from '@/helpers/sortParams';
+import { sortSearchParams } from '@/helpers/sortSearchParams';
 
 import { tvShowTypeFilter } from './datasets';
 
@@ -17,13 +17,13 @@ export default function Filter(props: Props) {
     const searchParams = useSearchParams();
     const { replace } = useRouter();
 
-    const handleType = (type: TVShowType) => {
-        const params = new URLSearchParams(searchParams);
+    const params = new URLSearchParams(searchParams);
 
+    const handleType = (type: TVShowType) => {
         params.set('type', type);
         params.set('page', '1');
 
-        replace(sortParams(pathname, params));
+        replace(sortSearchParams(pathname, params));
     };
 
     return (

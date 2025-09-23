@@ -12,7 +12,6 @@ export const metadata: Metadata = {
 };
 
 export default async function Page() {
-
     return (
         <Container className='p-registration'>
             <Title className='p-registration__title'>

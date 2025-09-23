@@ -2,8 +2,8 @@ import clsx from 'clsx';
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { PARAMETERS, IMG_SIZES } from '@/helpers/parameters';
-import { pagesPersonsUrl } from '@/routes';
+import { IMG_SIZES } from '@/helpers/parameters';
+import { imageUrl, pagesPersonUrl } from '@/routes';
 import { CrewMapper } from '@/types';
 
 type Props = {
@@ -13,7 +13,7 @@ type Props = {
 export default function CrewCard(props: Props) {
     return (
         <Link
-            href={`${pagesPersonsUrl()}/${props.crew.id}`}
+            href={pagesPersonUrl(String(props.crew.id))}
             className='с-crew-card'
         >
             <div
@@ -26,7 +26,7 @@ export default function CrewCard(props: Props) {
                 <Image
                     src={
                         props.crew.profile_path
-                            ? `${PARAMETERS.URL_IMG}/${IMG_SIZES.CREW_CARD_COVER}${props.crew.profile_path}`
+                            ? imageUrl(IMG_SIZES.CREW_CARD_COVER, props.crew.profile_path)
                             : '/img/avatar-placeholder.svg'
                     }
                     sizes='180px'
