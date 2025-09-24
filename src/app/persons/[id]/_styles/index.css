@@ -4,8 +4,6 @@
 .p-person {
     display: flex;
     flex-direction: column;
-    row-gap: 30px;
-
     width: 100%;
     padding-bottom: 30px;
 

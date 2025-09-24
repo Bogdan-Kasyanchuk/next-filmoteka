@@ -1,53 +1,51 @@
-import { useElementSize, useToggle } from '@mantine/hooks';
+'use client';
+
+import { useMediaQuery, useToggle } from '@mantine/hooks';
 import clsx from 'clsx';
-import { PropsWithChildren } from 'react';
 
 type Props = {
-    collapseHeight: number,
-    classNameContent: string,
-    className?: string
+    text: string,
+    maxChars: number,
+    classNames?: {
+        root?: string,
+        text?: string,
+        button?: string
+    }
 };
 
-export default function ReadMore(props: PropsWithChildren<Props>) {
-    const { ref, height } = useElementSize();
-
+export default function ReadMore(props: Props) {
     const [value, toggle] = useToggle([false, true]);
 
-    const isShowButtonToggle = height > props.collapseHeight;
+    const isMobile = useMediaQuery(
+        '(max-width: 767px)',
+        false,
+        { getInitialValueInEffect: false }
+    );
+
+    const isTablet = useMediaQuery(
+        '(min-width: 768px) and (max-width: 1319px)',
+        false,
+        { getInitialValueInEffect: false }
+    );
+
+    const normalizedMaxChars = isMobile
+        ? props.maxChars / 3
+        : isTablet
+            ? props.maxChars / 2
+            : props.maxChars;
+
+    if (props.text.length <= normalizedMaxChars) {
+        return <p>{props.text}</p>;
+    }
 
     return (
-        <div
-            className={
-                clsx([
-                    'c-read-more',
-                    {
-                        'c-read-more--not-truncated': (value || !isShowButtonToggle),
-                        'c-read-more--is-open': value
-                    },
-                    props.className
-                ])
-            }
-        >
-            <div
-                className="c-read-more__collapse"
-                style={
-                    {
-                        height: (!value && isShowButtonToggle)
-                            ? props.collapseHeight
-                            : height
-                    }
-                }
-            >
-                <div
-                    ref={ref}
-                    className={props.classNameContent}
-                >
-                    {props.children}
-                </div>
-            </div>
+        <div className={clsx('c-read-more', props.classNames?.root)}>
+            <p className={clsx('c-read-more__text', props.classNames?.text)}>
+                {value ? props.text : `${props.text.slice(0, normalizedMaxChars)}...`}
+            </p>
 
             {
-                isShowButtonToggle &&
+                props.text.length > normalizedMaxChars &&
                 <button
                     type="button"
                     className="c-read-more__button"
@@ -57,7 +55,7 @@ export default function ReadMore(props: PropsWithChildren<Props>) {
                         }
                     }
                 >
-                    {value ? 'Read less' : 'Read more...'}
+                    {value ? 'Read less' : 'Read more'}
                 </button>
             }
         </div>

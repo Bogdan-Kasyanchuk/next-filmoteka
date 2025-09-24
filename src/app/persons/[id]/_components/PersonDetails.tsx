@@ -132,10 +132,14 @@ export default function PersonDetails(props: Props) {
                         </p>
 
                         <ReadMore
-                            collapseHeight={120}
-                            classNameContent="p-person__details-biography-text"
+                            maxChars={500}
+                            text={props.person.biography}
+                            classNames={
+                                {
+                                    text: 'p-person__details-biography-text'
+                                }
+                            }
                         >
-                            <p>{props.person.biography}</p>
                         </ReadMore>
                     </div>
                 }
