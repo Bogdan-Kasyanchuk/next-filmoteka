@@ -5,6 +5,8 @@ import { imageUrl } from '@/routes';
 import { ReviewMapper } from '@/types';
 import { formatDate } from '@/utils/formateDate';
 
+import ReadMore from '../data-display/ReadMore';
+
 type Props = {
     review: ReviewMapper;
 }
@@ -75,9 +77,22 @@ export default function ReviewCard(props: Props) {
                 </div>
             </div>
 
-            <p className='c-review-card__content'>
-                {props.review.content}
-            </p>
+            <ReadMore
+                maxChars={
+                    {
+                        mobile: 190,
+                        tablet: 330,
+                        desktop: 600
+                    }
+                }
+                text={props.review.content}
+                classNames={
+                    {
+                        text: 'c-review-card__content'
+                    }
+                }
+            >
+            </ReadMore>
         </div>
     );
 }

@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
+import ReadMore from '@/components/ui/data-display/ReadMore';
 import Title from '@/components/ui/typography/Title';
 import { IMG_SIZES } from '@/helpers/parameters';
 import { imageUrl, pagesTVShowUrl } from '@/routes';
@@ -62,9 +63,23 @@ export default function CurrentSeason(props: Props) {
 
             {
                 props.season.overview &&
-                <p className='p-season__current-season-overview'>
-                    {props.season.overview}
-                </p>
+                <ReadMore
+                    maxChars={
+                        {
+                            mobile: 190,
+                            tablet: 330,
+                            desktop: 330
+                        }
+                    }
+                    text={props.season.overview}
+                    classNames={
+                        {
+                            root: 'p-season__current-season-overview',
+                            text: 'p-season__current-season-overview-text'
+                        }
+                    }
+                >
+                </ReadMore>
             }
         </div>
     );

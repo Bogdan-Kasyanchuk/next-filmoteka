@@ -132,7 +132,13 @@ export default function PersonDetails(props: Props) {
                         </p>
 
                         <ReadMore
-                            maxChars={500}
+                            maxChars={
+                                {
+                                    mobile: 190,
+                                    tablet: 330,
+                                    desktop: 600
+                                }
+                            }
                             text={props.person.biography}
                             classNames={
                                 {

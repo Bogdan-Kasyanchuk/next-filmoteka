@@ -56,6 +56,10 @@
                 & > *:last-child {
                     font-weight: 600;
                 }
+
+                @variant min-md {
+                    font-size: var(--text-sm);
+                }
             }
         }
     }
@@ -66,12 +70,12 @@
         padding: 12px;
 
         font-size: var(--text-xs);
-        line-height: 1.25;
+        line-height: 1.4;
         color: var(--color-secondary);
 
         background-color: var(--color-primary);
 
-        @variant min-xl {
+        @variant min-md {
             font-size: var(--text-sm);
         }
 

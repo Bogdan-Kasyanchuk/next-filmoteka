@@ -5,7 +5,11 @@ import clsx from 'clsx';
 
 type Props = {
     text: string,
-    maxChars: number,
+    maxChars: {
+        mobile: number,
+        tablet: number,
+        desktop: number
+    },
     classNames?: {
         root?: string,
         text?: string,
@@ -29,13 +33,19 @@ export default function ReadMore(props: Props) {
     );
 
     const normalizedMaxChars = isMobile
-        ? props.maxChars / 3
+        ? props.maxChars.mobile
         : isTablet
-            ? props.maxChars / 2
-            : props.maxChars;
+            ? props.maxChars.tablet
+            : props.maxChars.desktop;
 
     if (props.text.length <= normalizedMaxChars) {
-        return <p>{props.text}</p>;
+        return (
+            <div className={clsx('c-read-more', props.classNames?.root)}>
+                <p className={clsx('c-read-more__text', props.classNames?.text)}>
+                    {props.text}
+                </p>
+            </div>
+        );
     }
 
     return (

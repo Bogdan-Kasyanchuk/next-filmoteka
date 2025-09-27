@@ -61,11 +61,11 @@
 
             @variant min-md {
                 gap: 8px;
+                padding-inline-end: 20px;
             }
 
             @variant min-xl {
                 gap: 10px;
-                padding-inline-end: 20px;
             }
         }
 
@@ -115,17 +115,23 @@
 
         &-overview {
             padding: 10px;
-            font-size: var(--text-xs);
-            line-height: 1.25;
-            opacity: 0.75;
 
             @variant min-lg {
                 width: 50%;
             }
 
-            @variant min-xl {
+            @variant min-md {
                 padding-inline: 20px;
-                font-size: var(--text-sm);
+            }
+
+            &-text {
+                font-size: var(--text-xs);
+                line-height: 1.4;
+                opacity: 0.75;
+
+                @variant min-md {
+                    font-size: var(--text-sm);
+                }
             }
         }
     }

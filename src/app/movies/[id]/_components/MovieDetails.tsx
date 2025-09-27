@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Fragment } from 'react';
 
+import ReadMore from '@/components/ui/data-display/ReadMore';
 import SocialLinks from '@/components/ui/data-display/SocialLinks';
 import Container from '@/components/ui/layouts/Container';
 import Title from '@/components/ui/typography/Title';
@@ -206,9 +207,23 @@ export default function MovieDetails(props: Props) {
                             <p className='p-movie__details-overview-title'>
                                 Overview:
                             </p>
-                            <p className='p-movie__details-overview-text'>
-                                {props.movie.overview}
-                            </p>
+
+                            <ReadMore
+                                maxChars={
+                                    {
+                                        mobile: 190,
+                                        tablet: 330,
+                                        desktop: 600
+                                    }
+                                }
+                                text={props.movie.overview}
+                                classNames={
+                                    {
+                                        text: 'p-movie__details-overview-text'
+                                    }
+                                }
+                            >
+                            </ReadMore>
                         </div>
                     }
 

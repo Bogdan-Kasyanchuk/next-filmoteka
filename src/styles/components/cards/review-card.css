@@ -100,6 +100,6 @@
 
     &__content {
         font-size: var(--text-xs);
-        line-height: 1.25;
+        line-height: 1.4;
     }
 }
