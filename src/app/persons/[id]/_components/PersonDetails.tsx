@@ -1,7 +1,7 @@
+import { ShowMore } from '@re-dev/react-truncate';
 import Image from 'next/image';
 import { Fragment } from 'react';
 
-import ReadMore from '@/components/ui/data-display/ReadMore';
 import SocialLinks from '@/components/ui/data-display/SocialLinks';
 import Container from '@/components/ui/layouts/Container';
 import Title from '@/components/ui/typography/Title';
@@ -131,22 +131,12 @@ export default function PersonDetails(props: Props) {
                             Biography:
                         </p>
 
-                        <ReadMore
-                            maxChars={
-                                {
-                                    mobile: 190,
-                                    tablet: 330,
-                                    desktop: 600
-                                }
-                            }
-                            text={props.person.biography}
-                            classNames={
-                                {
-                                    text: 'p-person__details-biography-text'
-                                }
-                            }
+                        <ShowMore
+                            className='p-person__details-biography-text'
+                            lines={3}
                         >
-                        </ReadMore>
+                            {props.person.biography}
+                        </ShowMore>
                     </div>
                 }
             </Container>

@@ -115,22 +115,30 @@
 
         &-overview {
             padding: 10px;
+            font-size: var(--text-xs);
+            line-height: 1.4;
+
+            @variant min-md {
+                padding-inline: 20px;
+                font-size: var(--text-sm);
+            }
 
             @variant min-lg {
                 width: 50%;
             }
 
-            @variant min-md {
-                padding-inline: 20px;
+            &-text {
+                opacity: 0.75;
             }
 
-            &-text {
-                font-size: var(--text-xs);
-                line-height: 1.4;
-                opacity: 0.75;
+            & a[data-testid='more-button'],
+            & a[data-testid='less-button'] {
+                font-weight: 700;
+                color: var(--color-link);
+                transition-property: color;
 
-                @variant min-md {
-                    font-size: var(--text-sm);
+                &:hover {
+                    color: var(--color-link-hover);
                 }
             }
         }

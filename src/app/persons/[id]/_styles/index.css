@@ -187,6 +187,18 @@
                 font-size: var(--text-md);
                 opacity: 0.75;
             }
+
+            & a[data-testid='more-button'],
+            & a[data-testid='less-button'] {
+                font-size: var(--text-md);
+                font-weight: 700;
+                color: var(--color-link);
+                transition-property: color;
+
+                &:hover {
+                    color: var(--color-link-hover);
+                }
+            }
         }
     }
 

@@ -1,7 +1,7 @@
+import { ShowMore } from '@re-dev/react-truncate';
 import Image from 'next/image';
 import Link from 'next/link';
 
-import ReadMore from '@/components/ui/data-display/ReadMore';
 import Title from '@/components/ui/typography/Title';
 import { IMG_SIZES } from '@/helpers/parameters';
 import { imageUrl, pagesTVShowUrl } from '@/routes';
@@ -63,23 +63,14 @@ export default function CurrentSeason(props: Props) {
 
             {
                 props.season.overview &&
-                <ReadMore
-                    maxChars={
-                        {
-                            mobile: 190,
-                            tablet: 330,
-                            desktop: 330
-                        }
-                    }
-                    text={props.season.overview}
-                    classNames={
-                        {
-                            root: 'p-season__current-season-overview',
-                            text: 'p-season__current-season-overview-text'
-                        }
-                    }
-                >
-                </ReadMore>
+                <div className='p-season__current-season-overview'>
+                    <ShowMore
+                        className='p-season__current-season-overview-text'
+                        lines={3}
+                    >
+                        {props.season.overview}
+                    </ShowMore>
+                </div>
             }
         </div>
     );
