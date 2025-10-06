@@ -33,22 +33,6 @@ const eslintConfig = [
           ],
           'pathGroups': [
             {
-              'pattern': '@/mock/**',
-              'group': 'internal'
-            },
-            {
-              'pattern': '@/lib/**',
-              'group': 'internal'
-            },
-            {
-              'pattern': '@/components/**',
-              'group': 'internal'
-            },
-            {
-              'pattern': '@/ui/**',
-              'group': 'internal'
-            },
-            {
               'pattern': '@/**',
               'group': 'internal'
             },
@@ -95,7 +79,7 @@ const eslintConfig = [
         {
           'location': 'line-aligned'
         }
-      ],
+      ]
     },
   }),
 ];
