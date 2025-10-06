@@ -12,31 +12,31 @@ type Props<T> = {
     options?: Omit<SwiperProps, 'modules' | 'className'>,
     modules?: SwiperModule[],
     slideProps?: Omit<SwiperSlideProps, 'children'>,
-    className?: string,
+    className?: string
 };
 
 export default function SCarousel<T>(props: Props<T>) {
     return (
         <Swiper
-            modules={[Mousewheel, ...(props.modules ?? [])]}
-            className={props.className}
-            slidesPerView='auto'
-            lazyPreloadPrevNext={2}
+            modules={ [ Mousewheel, ...(props.modules ?? []) ] }
+            className={ props.className }
+            slidesPerView="auto"
+            lazyPreloadPrevNext={ 2 }
             mousewheel={
                 {
                     forceToAxis: true
                 }
             }
-            {...props.options}
+            { ...props.options }
         >
             {
                 props.items.map(
                     (item, index) => (
                         <SwiperSlide
-                            key={index}
-                            {...props.slideProps}
+                            key={ index }
+                            { ...props.slideProps }
                         >
-                            {props.children(item)}
+                            { props.children(item) }
                         </SwiperSlide>
                     ))
             }

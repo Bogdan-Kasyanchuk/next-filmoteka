@@ -9,69 +9,69 @@ import Popover from '../data-display/Popover';
 
 type Props = {
     episode: EpisodeMapper
-}
+};
 
 export default function EpisodeCard(props: Props) {
     return (
-        <div className='с-episode-card'>
-            <div className='с-episode-card__cover'>
+        <div className="с-episode-card">
+            <div className="с-episode-card__cover">
                 <Image
                     src={
                         props.episode.still_path
                             ? imageUrl(IMG_SIZES.EPISODE_CARD_COVER, props.episode.still_path)
                             : '/img/poster-not-available.jpg'
                     }
-                    sizes='(max-width: 479px) 175px, (max-width: 1319px) 216px, 300px'
-                    alt={props.episode.name}
+                    sizes="(max-width: 479px) 175px, (max-width: 1319px) 216px, 300px"
+                    alt={ props.episode.name }
                     fill
                 />
             </div>
 
-            <div className='с-episode-card__info'>
+            <div className="с-episode-card__info">
                 <p
-                    className='с-episode-card__info-name'
-                    title={props.episode.name}
+                    className="с-episode-card__info-name"
+                    title={ props.episode.name }
                 >
-                    {props.episode.name}
+                    { props.episode.name }
                 </p>
 
-                <ul className='с-episode-card__info-list'>
+                <ul className="с-episode-card__info-list">
                     {
                         props.episode.air_date &&
-                        <li className='с-episode-card__info-list-item'>
+                        <li className="с-episode-card__info-list-item">
                             <span>Air date:</span>
-                            <span>{formatDate(props.episode.air_date, 'DD.MM.YYYY')}</span>
+                            <span>{ formatDate(props.episode.air_date, 'DD.MM.YYYY') }</span>
                         </li>
                     }
 
-                    <li className='с-episode-card__info-list-item'>
+                    <li className="с-episode-card__info-list-item">
                         <span>Type:</span>
-                        <span className='capitalize'>{props.episode.episode_type}</span>
+                        <span className="capitalize">{ props.episode.episode_type }</span>
                     </li>
 
-                    <li className='с-episode-card__info-list-item'>
+                    <li className="с-episode-card__info-list-item">
                         <span>Season:</span>
-                        <span>{props.episode.season_number}</span>
+                        <span>{ props.episode.season_number }</span>
                     </li>
 
-                    <li className='с-episode-card__info-list-item'>
+                    <li className="с-episode-card__info-list-item">
                         <span>Episode:</span>
-                        <span>{props.episode.episode_number}</span>
+                        <span>{ props.episode.episode_number }</span>
                     </li>
 
-                    <li className='с-episode-card__info-list-item'>
+                    <li className="с-episode-card__info-list-item">
                         <span>Rating:</span>
-                        <span>{Math.round(props.episode.vote_average * 10)}</span>
+                        <span>{ Math.round(props.episode.vote_average * 10) }</span>
                     </li>
 
-                    <li className='с-episode-card__info-list-item'>
+                    <li className="с-episode-card__info-list-item">
                         <span>Votes:</span>
-                        <span>{props.episode.vote_count ?? 0}</span>
+                        <span>{ props.episode.vote_count ?? 0 }</span>
                     </li>
 
-                    <li className='с-episode-card__info-list-item'>
+                    <li className="с-episode-card__info-list-item">
                         <span>Runtime:</span>
-                        <span>{props.episode.runtime ?? 0}min</span>
+                        <span>{ props.episode.runtime ?? 0 }min</span>
                     </li>
                 </ul>
             </div>
@@ -81,8 +81,8 @@ export default function EpisodeCard(props: Props) {
                 <Popover
                     trigger={
                         <button
-                            type='button'
-                            className='с-episode-card__overview-trigger'
+                            type="button"
+                            className="с-episode-card__overview-trigger"
                         >
                             i
                         </button>
@@ -95,9 +95,9 @@ export default function EpisodeCard(props: Props) {
                     }
                     isArrow
                 >
-                    {props.episode.overview}
+                    { props.episode.overview }
                 </Popover>
             }
         </div>
     );
-};
+}

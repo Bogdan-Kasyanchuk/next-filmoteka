@@ -9,57 +9,57 @@ import { formatDate } from '@/utils/formateDate';
 type Props = {
     season: SeasonMapper,
     tvShowId: string
-}
+};
 
 export default function SeasonCard(props: Props) {
     return (
         <Link
-            href={pagesSeasonUrl(props.tvShowId, String(props.season.season_number))}
-            className='с-season-card'
+            href={ pagesSeasonUrl(props.tvShowId, String(props.season.season_number)) }
+            className="с-season-card"
         >
-            <div className='с-season-card__cover'>
+            <div className="с-season-card__cover">
                 <Image
                     src={
                         props.season.poster_path
                             ? imageUrl(IMG_SIZES.SEASON_CARD_COVER, props.season.poster_path)
                             : '/img/poster-not-available.jpg'
                     }
-                    sizes='154px'
-                    alt={props.season.name}
+                    sizes="154px"
+                    alt={ props.season.name }
                     fill
                 />
             </div>
 
-            <div className='с-season-card__info'>
-                <p className='с-season-card__info-name'>
-                    {props.season.name}
+            <div className="с-season-card__info">
+                <p className="с-season-card__info-name">
+                    { props.season.name }
                 </p>
 
-                <ul className='с-season-card__info-list'>
+                <ul className="с-season-card__info-list">
                     {
                         props.season.air_date &&
-                        <li className='с-season-card__info-list-item'>
+                        <li className="с-season-card__info-list-item">
                             <span>Air date:</span>
-                            <span>{formatDate(props.season.air_date, 'DD.MM.YYYY')}</span>
+                            <span>{ formatDate(props.season.air_date, 'DD.MM.YYYY') }</span>
                         </li>
                     }
 
-                    <li className='с-season-card__info-list-item'>
+                    <li className="с-season-card__info-list-item">
                         <span>Rating:</span>
-                        <span>{Math.round(props.season.vote_average * 10)}</span>
+                        <span>{ Math.round(props.season.vote_average * 10) }</span>
                     </li>
 
-                    <li className='с-season-card__info-list-item'>
+                    <li className="с-season-card__info-list-item">
                         <span>Season:</span>
-                        <span>{props.season.season_number}</span>
+                        <span>{ props.season.season_number }</span>
                     </li>
 
-                    <li className='с-season-card__info-list-item'>
+                    <li className="с-season-card__info-list-item">
                         <span>Episodes:</span>
-                        <span>{props.season.episode_count}</span>
+                        <span>{ props.season.episode_count }</span>
                     </li>
                 </ul>
             </div>
         </Link>
     );
-};
+}

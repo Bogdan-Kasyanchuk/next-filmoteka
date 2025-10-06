@@ -1,4 +1,4 @@
-import { dehydrate, QueryClient, HydrationBoundary } from '@tanstack/react-query';
+import { HydrationBoundary, QueryClient, dehydrate } from '@tanstack/react-query';
 import { Metadata } from 'next';
 
 import { getCurrentMovieById, getSimilarMovies } from '@/services/api';
@@ -16,7 +16,7 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
     const { id } = await props.params;
 
     return {
-        title: `${id}: similar`
+        title: `${ id }: similar`
     };
 }
 
@@ -30,23 +30,23 @@ export default async function Page(props: Props) {
     await Promise.all([
         await queryClient.prefetchQuery(
             {
-                queryKey: ['movies', id, 'similar'],
-                queryFn: () => getCurrentMovieById(id),
-            },
+                queryKey: [ 'movies', id, 'similar' ],
+                queryFn: () => getCurrentMovieById(id)
+            }
         ),
         await queryClient.prefetchQuery(
             {
-                queryKey: ['movies', id, 'similar', currentPage],
-                queryFn: () => getSimilarMovies(id, currentPage),
-            },
+                queryKey: [ 'movies', id, 'similar', currentPage ],
+                queryFn: () => getSimilarMovies(id, currentPage)
+            }
         )
     ]);
 
     return (
-        <HydrationBoundary state={dehydrate(queryClient)}>
+        <HydrationBoundary state={ dehydrate(queryClient) }>
             <Content
-                id={id}
-                currentPage={currentPage}
+                id={ id }
+                currentPage={ currentPage }
             />
         </HydrationBoundary>
     );

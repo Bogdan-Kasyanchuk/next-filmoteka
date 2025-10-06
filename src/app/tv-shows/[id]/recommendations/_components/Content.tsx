@@ -14,36 +14,36 @@ import { transformCurrentTVShow, transformTVShow } from '@/helpers/transformData
 import { getCurrentTVShowById, getRecommendationsTVShow } from '@/services/api';
 
 type Props = {
-    id: string;
-    currentPage: number,
-}
+    id: string,
+    currentPage: number
+};
 
 export default function Content(props: Props) {
     const data = useQueries({
         queries: [
             {
-                queryKey: ['tv-shows', props.id, 'recommendations'],
-                queryFn: () => getCurrentTVShowById(props.id),
+                queryKey: [ 'tv-shows', props.id, 'recommendations' ],
+                queryFn: () => getCurrentTVShowById(props.id)
             },
             {
-                queryKey: ['tv-shows', props.id, 'recommendations', props.currentPage],
+                queryKey: [ 'tv-shows', props.id, 'recommendations', props.currentPage ],
                 queryFn: () => getRecommendationsTVShow(props.id, props.currentPage),
-                placeholderData: keepPreviousData,
-            },
+                placeholderData: keepPreviousData
+            }
         ],
-        combine: (results) => {
+        combine: results => {
             return {
-                tvShow: results[0].data && transformCurrentTVShow(results[0].data),
+                tvShow: results[ 0 ].data && transformCurrentTVShow(results[ 0 ].data),
                 recommendations: {
-                    tvShows: results[1].data && results[1].data.results.map(
-                        (tvShow) => transformTVShow(tvShow)
+                    tvShows: results[ 1 ].data && results[ 1 ].data.results.map(
+                        tvShow => transformTVShow(tvShow)
                     ),
-                    total_pages: results[1].data?.total_pages
+                    total_pages: results[ 1 ].data?.total_pages
                 },
-                pending: results.some((result) => result.isPending),
-                fetching: results.some((result) => result.isFetching),
+                pending: results.some(result => result.isPending),
+                fetching: results.some(result => result.isFetching)
             };
-        },
+        }
     });
 
     if (data.pending || data.fetching) {
@@ -59,23 +59,23 @@ export default function Content(props: Props) {
     }
 
     return (
-        <Container className='p-tv-show-recommendations'>
+        <Container className="p-tv-show-recommendations">
             <CurrentTVShow
-                tvShow={data.tvShow}
-                id={props.id}
+                tvShow={ data.tvShow }
+                id={ props.id }
             />
 
-            <Title className='p-tv-show-recommendations__title'>
+            <Title className="p-tv-show-recommendations__title">
                 Recommendations
             </Title>
 
-            <div className='p-tv-show-recommendations__content'>
-                <ul className='p-tv-show-recommendations__list'>
+            <div className="p-tv-show-recommendations__content">
+                <ul className="p-tv-show-recommendations__list">
                     {
                         data.recommendations.tvShows.map(
-                            (tvShow) => (
-                                <li key={tvShow.id}>
-                                    <TVShowCard tvShow={tvShow} />
+                            tvShow => (
+                                <li key={ tvShow.id }>
+                                    <TVShowCard tvShow={ tvShow } />
                                 </li>
                             )
                         )
@@ -85,8 +85,8 @@ export default function Content(props: Props) {
                 {
                     (data.recommendations.total_pages && data.recommendations.total_pages > 1) &&
                     <Pagination
-                        currentPage={props.currentPage}
-                        totalPages={data.recommendations.total_pages}
+                        currentPage={ props.currentPage }
+                        totalPages={ data.recommendations.total_pages }
                     />
                 }
             </div>

@@ -2,7 +2,7 @@ import { TVShowType } from '@/enums';
 
 type Props = {
     type: TVShowType
-}
+};
 
 export default function TitleText(props: Props) {
     switch (props.type) {

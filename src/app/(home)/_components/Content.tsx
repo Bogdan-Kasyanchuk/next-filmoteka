@@ -14,19 +14,19 @@ import { getTrendings } from '@/services/api';
 import { MovieMapper, PersonMapper, TVShowMapper } from '@/types';
 
 type Props = {
-    type: 'all' | MediaType;
-    time: TimeType;
-    currentPage: number,
-}
+    type: 'all' | MediaType,
+    time: TimeType,
+    currentPage: number
+};
 
 export default function Content(props: Props) {
     const { data, isPending, isFetching } = useQuery({
-        queryKey: ['trendings', props.type, props.time, props.currentPage],
+        queryKey: [ 'trendings', props.type, props.time, props.currentPage ],
         queryFn: () => getTrendings(props.type, props.time, props.currentPage),
         placeholderData: keepPreviousData,
-        select: (data) => ({
+        select: data => ({
             results: data.results.map(
-                (result) => {
+                result => {
                     if (result.media_type === MediaType.MOVIE) {
                         return transformMovie(result);
                     }
@@ -52,14 +52,14 @@ export default function Content(props: Props) {
     }
 
     return (
-        <div className='p-home__content'>
-            <ul className='p-home__list'>
+        <div className="p-home__content">
+            <ul className="p-home__list">
                 {
                     data.results.map(
-                        (result) => (
+                        result => (
                             result &&
-                            <li key={result.id}>
-                                <Card result={result} />
+                            <li key={ result.id }>
+                                <Card result={ result } />
                             </li>
                         )
                     )
@@ -69,8 +69,8 @@ export default function Content(props: Props) {
             {
                 data.total_pages > 1 &&
                 <Pagination
-                    currentPage={props.currentPage}
-                    totalPages={data.total_pages}
+                    currentPage={ props.currentPage }
+                    totalPages={ data.total_pages }
                 />
             }
         </div>
@@ -79,17 +79,17 @@ export default function Content(props: Props) {
 
 type CardProps = {
     result: MovieMapper | TVShowMapper | PersonMapper
-}
+};
 
 function Card(props: CardProps) {
     switch (props.result.media_type) {
         case MediaType.MOVIE:
-            return <MovieCard movie={props.result} />;
+            return <MovieCard movie={ props.result } />;
 
         case MediaType.TV_SHOW:
-            return <TVShowCard tvShow={props.result} />;
+            return <TVShowCard tvShow={ props.result } />;
 
         case MediaType.PERSON:
-            return <PersonCard person={props.result} />;
+            return <PersonCard person={ props.result } />;
     }
 }

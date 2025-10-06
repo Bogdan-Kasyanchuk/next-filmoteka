@@ -13,15 +13,15 @@ import { getTVShowSeasonByNumber } from '@/services/api';
 import CurrentSeason from './CurrentSeason';
 
 type Props = {
-    id: string
+    id: string,
     season: string
-}
+};
 
 export default function Content(props: Props) {
     const { data, isPending, isFetching } = useQuery({
-        queryKey: ['tv-shows', props.id, props.season],
+        queryKey: [ 'tv-shows', props.id, props.season ],
         queryFn: () => getTVShowSeasonByNumber(props.id, props.season),
-        select: (data) => transformTVShowSeasonDetails(data)
+        select: data => transformTVShowSeasonDetails(data)
     });
 
     if (isPending || isFetching) {
@@ -37,18 +37,18 @@ export default function Content(props: Props) {
     }
 
     return (
-        <Container className='p-season'>
+        <Container className="p-season">
             <CurrentSeason
-                season={data.season}
-                id={props.id}
+                season={ data.season }
+                id={ props.id }
             />
 
-            <ul className='p-season__list'>
+            <ul className="p-season__list">
                 {
                     data.episodes.map(
                         (episode, index) => (
-                            <li key={index}>
-                                <EpisodeCard episode={episode} />
+                            <li key={ index }>
+                                <EpisodeCard episode={ episode } />
                             </li>
                         )
                     )

@@ -9,27 +9,27 @@ import Title from '@/components/ui/typography/Title';
 import { CastMapper } from '@/types';
 
 type Props = {
-    casts: CastMapper[];
-}
+    casts: CastMapper[]
+};
 
 export default function Casts(props: Props) {
-    const [prevButtonRef, setPrevButtonRef] = useState<HTMLButtonElement | null>(null);
-    const [nextButtonRef, setNextButtonRef] = useState<HTMLButtonElement | null>(null);
+    const [ prevButtonRef, setPrevButtonRef ] = useState<HTMLButtonElement | null>(null);
+    const [ nextButtonRef, setNextButtonRef ] = useState<HTMLButtonElement | null>(null);
 
     return (
-        <div className='с-casts'>
+        <div className="с-casts">
             <Title
-                order='h3'
-                variant={3}
-                className='с-casts__title'
+                order="h3"
+                variant={ 3 }
+                className="с-casts__title"
             >
                 Casts
             </Title>
 
-            <div className='с-casts__cards'>
+            <div className="с-casts__cards">
                 <Carousel
-                    items={props.casts}
-                    modules={[Autoplay, Navigation]}
+                    items={ props.casts }
+                    modules={ [ Autoplay, Navigation ] }
                     options={
                         {
                             autoplay: {
@@ -50,22 +50,22 @@ export default function Casts(props: Props) {
                     }
                 >
                     {
-                        slide => <CastCard cast={slide} />
+                        slide => <CastCard cast={ slide } />
                     }
                 </Carousel>
 
                 <>
                     <Arrow
-                        type='prev'
-                        refEl={setPrevButtonRef}
+                        type="prev"
+                        refEl={ setPrevButtonRef }
                     />
                     <Arrow
-                        type='next'
-                        refEl={setNextButtonRef}
+                        type="next"
+                        refEl={ setNextButtonRef }
                     />
                 </>
             </div>
-        </div >
+        </div>
     );
 }
 
@@ -77,8 +77,8 @@ export type ArrowProps = {
 function Arrow(props: ArrowProps) {
     return (
         <button
-            type='button'
-            ref={props.refEl}
+            type="button"
+            ref={ props.refEl }
             className={
                 clsx(
                     'с-casts__arrow',
@@ -89,7 +89,7 @@ function Arrow(props: ArrowProps) {
                 )
             }
         >
-            <Icon name='arrow' />
+            <Icon name="arrow" />
         </button>
     );
 }

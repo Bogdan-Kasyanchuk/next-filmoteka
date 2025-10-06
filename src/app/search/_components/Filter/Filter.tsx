@@ -1,6 +1,6 @@
 'use client';
 
-import { usePathname, useSearchParams, useRouter } from 'next/navigation';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 
 import Tabs from '@/components/ui/data-display/Tabs';
 import Switch from '@/components/ui/inputs/Switch';
@@ -11,9 +11,9 @@ import { Adult } from '@/types';
 import { mediaTypeFilter } from './datasets';
 
 type Props = {
-    type: 'multi' | MediaType;
-    adult: Adult;
-}
+    type: 'multi' | MediaType,
+    adult: Adult
+};
 
 export default function Filter(props: Props) {
     const pathname = usePathname();
@@ -37,20 +37,20 @@ export default function Filter(props: Props) {
     };
 
     return (
-        <div className='p-search__filter'>
+        <div className="p-search__filter">
             <Tabs<'multi' | MediaType>
-                tabs={mediaTypeFilter}
-                active={props.type}
+                tabs={ mediaTypeFilter }
+                active={ props.type }
                 onClick={
-                    (value) => {
+                    value => {
                         handleType(value);
                     }
                 }
             />
 
             <Switch
-                label='Adult'
-                checked={props.adult === 'true'}
+                label="Adult"
+                checked={ props.adult === 'true' }
                 onChange={
                     event => {
                         handleAdult(

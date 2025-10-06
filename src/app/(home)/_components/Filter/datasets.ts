@@ -4,34 +4,34 @@ export const mediaTypeFilter: Array<{
     label: string,
     value: 'all' | MediaType
 }> = [
-        {
-            label: 'All',
-            value: 'all'
-        },
-        {
-            label: 'Movies',
-            value: MediaType.MOVIE
-        },
-        {
-            label: 'TV Shows',
-            value: MediaType.TV_SHOW
-        },
-        {
-            label: 'Persons',
-            value: MediaType.PERSON
-        }
-    ];
+    {
+        label: 'All',
+        value: 'all'
+    },
+    {
+        label: 'Movies',
+        value: MediaType.MOVIE
+    },
+    {
+        label: 'TV Shows',
+        value: MediaType.TV_SHOW
+    },
+    {
+        label: 'Persons',
+        value: MediaType.PERSON
+    }
+];
 
 export const timeFilter: Array<{
     label: string,
     value: TimeType
 }> = [
-        {
-            label: 'Day',
-            value: TimeType.DAY
-        },
-        {
-            label: 'Week',
-            value: TimeType.WEEK
-        }
-    ];
+    {
+        label: 'Day',
+        value: TimeType.DAY
+    },
+    {
+        label: 'Week',
+        value: TimeType.WEEK
+    }
+];

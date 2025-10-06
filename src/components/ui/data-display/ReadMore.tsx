@@ -18,7 +18,7 @@ type Props = {
 };
 
 export default function ReadMore(props: Props) {
-    const [value, toggle] = useToggle([false, true]);
+    const [ value, toggle ] = useToggle([ false, true ]);
 
     const isMobile = useMediaQuery(
         '(max-width: 767px)',
@@ -40,18 +40,18 @@ export default function ReadMore(props: Props) {
 
     if (props.text.length <= normalizedMaxChars) {
         return (
-            <div className={clsx('c-read-more', props.classNames?.root)}>
-                <p className={clsx('c-read-more__text', props.classNames?.text)}>
-                    {props.text}
+            <div className={ clsx('c-read-more', props.classNames?.root) }>
+                <p className={ clsx('c-read-more__text', props.classNames?.text) }>
+                    { props.text }
                 </p>
             </div>
         );
     }
 
     return (
-        <div className={clsx('c-read-more', props.classNames?.root)}>
-            <p className={clsx('c-read-more__text', props.classNames?.text)}>
-                {value ? props.text : `${props.text.slice(0, normalizedMaxChars)}...`}
+        <div className={ clsx('c-read-more', props.classNames?.root) }>
+            <p className={ clsx('c-read-more__text', props.classNames?.text) }>
+                { value ? props.text : `${ props.text.slice(0, normalizedMaxChars) }...` }
             </p>
 
             {
@@ -65,7 +65,7 @@ export default function ReadMore(props: Props) {
                         }
                     }
                 >
-                    {value ? 'Read less' : 'Read more'}
+                    { value ? 'Read less' : 'Read more' }
                 </button>
             }
         </div>

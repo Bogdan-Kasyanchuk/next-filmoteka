@@ -14,36 +14,36 @@ import { transformCurrentTVShow, transformTVShow } from '@/helpers/transformData
 import { getCurrentTVShowById, getSimilarTVShow } from '@/services/api';
 
 type Props = {
-    id: string;
-    currentPage: number,
-}
+    id: string,
+    currentPage: number
+};
 
 export default function Content(props: Props) {
     const data = useQueries({
         queries: [
             {
-                queryKey: ['tv-shows', props.id, 'similar'],
-                queryFn: () => getCurrentTVShowById(props.id),
+                queryKey: [ 'tv-shows', props.id, 'similar' ],
+                queryFn: () => getCurrentTVShowById(props.id)
             },
             {
-                queryKey: ['tv-shows', props.id, 'similar', props.currentPage],
+                queryKey: [ 'tv-shows', props.id, 'similar', props.currentPage ],
                 queryFn: () => getSimilarTVShow(props.id, props.currentPage),
-                placeholderData: keepPreviousData,
-            },
+                placeholderData: keepPreviousData
+            }
         ],
-        combine: (results) => {
+        combine: results => {
             return {
-                tvShow: results[0].data && transformCurrentTVShow(results[0].data),
+                tvShow: results[ 0 ].data && transformCurrentTVShow(results[ 0 ].data),
                 similar: {
-                    tvShows: results[1].data && results[1].data.results.map(
-                        (tvShow) => transformTVShow(tvShow)
+                    tvShows: results[ 1 ].data && results[ 1 ].data.results.map(
+                        tvShow => transformTVShow(tvShow)
                     ),
-                    total_pages: results[1].data?.total_pages
+                    total_pages: results[ 1 ].data?.total_pages
                 },
-                pending: results.some((result) => result.isPending),
-                fetching: results.some((result) => result.isFetching),
+                pending: results.some(result => result.isPending),
+                fetching: results.some(result => result.isFetching)
             };
-        },
+        }
     });
 
     if (data.pending || data.fetching) {
@@ -59,23 +59,23 @@ export default function Content(props: Props) {
     }
 
     return (
-        <Container className='p-tv-show-similar'>
+        <Container className="p-tv-show-similar">
             <CurrentTVShow
-                tvShow={data.tvShow}
-                id={props.id}
+                tvShow={ data.tvShow }
+                id={ props.id }
             />
 
-            <Title className='p-tv-show-similar__title'>
+            <Title className="p-tv-show-similar__title">
                 Similar
             </Title>
 
-            <div className='p-tv-show-similar__content'>
-                <ul className='p-tv-show-similar__list'>
+            <div className="p-tv-show-similar__content">
+                <ul className="p-tv-show-similar__list">
                     {
                         data.similar.tvShows.map(
-                            (tvShow) => (
-                                <li key={tvShow.id}>
-                                    <TVShowCard tvShow={tvShow} />
+                            tvShow => (
+                                <li key={ tvShow.id }>
+                                    <TVShowCard tvShow={ tvShow } />
                                 </li>
                             )
                         )
@@ -85,8 +85,8 @@ export default function Content(props: Props) {
                 {
                     (data.similar.total_pages && data.similar.total_pages > 1) &&
                     <Pagination
-                        currentPage={props.currentPage}
-                        totalPages={data.similar.total_pages}
+                        currentPage={ props.currentPage }
+                        totalPages={ data.similar.total_pages }
                     />
                 }
             </div>

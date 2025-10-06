@@ -4,9 +4,9 @@ import { ComponentPropsWithoutRef } from 'react';
 type Order = 2 | 3;
 type Variant = Order;
 
-type Props = ComponentPropsWithoutRef<`h${Order}`> & {
-    order?: `h${Order}`,
-    variant?: Variant,
+type Props = ComponentPropsWithoutRef<`h${ Order }`> & {
+    order?: `h${ Order }`,
+    variant?: Variant
 };
 
 export default function Title(props: Props) {
@@ -17,12 +17,12 @@ export default function Title(props: Props) {
             className={
                 clsx([
                     'c-title',
-                    `c-title--${props.variant || 2}`,
+                    `c-title--${ props.variant || 2 }`,
                     props.className
                 ])
             }
         >
-            {props.children}
+            { props.children }
         </Component>
     );
 }

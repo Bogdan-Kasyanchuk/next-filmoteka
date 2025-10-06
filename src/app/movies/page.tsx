@@ -1,4 +1,4 @@
-import { dehydrate, QueryClient, HydrationBoundary } from '@tanstack/react-query';
+import { HydrationBoundary, QueryClient, dehydrate } from '@tanstack/react-query';
 import { Metadata } from 'next';
 
 import Container from '@/components/ui/layouts/Container';
@@ -13,13 +13,13 @@ import TitleText from './_components/TitleText';
 import './_styles/index.css';
 
 export const metadata: Metadata = {
-    title: 'Movies',
+    title: 'Movies'
 };
 
 type Props = {
     searchParams: Promise<{
-        type?: MovieType;
-        page?: string;
+        type?: MovieType,
+        page?: string
     }>
 };
 
@@ -31,22 +31,22 @@ export default async function Page(props: Props) {
     const queryClient = new QueryClient();
 
     await queryClient.prefetchQuery({
-        queryKey: ['movies', type, currentPage],
-        queryFn: () => getMovies(type, currentPage),
+        queryKey: [ 'movies', type, currentPage ],
+        queryFn: () => getMovies(type, currentPage)
     });
 
     return (
-        <Container className='p-movies'>
-            <Filter type={type} />
+        <Container className="p-movies">
+            <Filter type={ type } />
 
-            <Title className='p-movies__title'>
-                <TitleText type={type} />
+            <Title className="p-movies__title">
+                <TitleText type={ type } />
             </Title>
 
-            <HydrationBoundary state={dehydrate(queryClient)}>
+            <HydrationBoundary state={ dehydrate(queryClient) }>
                 <Content
-                    type={type}
-                    currentPage={currentPage}
+                    type={ type }
+                    currentPage={ currentPage }
                 />
             </HydrationBoundary>
         </Container>

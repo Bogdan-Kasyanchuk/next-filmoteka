@@ -12,22 +12,22 @@ import { getMovies } from '@/services/api';
 import { formatDate } from '@/utils/formateDate';
 
 type Props = {
-    type: MovieType;
-    currentPage: number,
-}
+    type: MovieType,
+    currentPage: number
+};
 
 export default function Content(props: Props) {
     const { data, isPending, isFetching } = useQuery({
-        queryKey: ['movies', props.type, props.currentPage],
+        queryKey: [ 'movies', props.type, props.currentPage ],
         queryFn: () => getMovies(props.type, props.currentPage),
         placeholderData: keepPreviousData,
-        select: (data) => ({
+        select: data => ({
             movies: data.results.map(
-                (movie) => transformMovie(movie)
+                movie => transformMovie(movie)
             ),
             total_pages: data.total_pages,
             dates: data.dates
-        }),
+        })
     });
 
     if (isPending || isFetching) {
@@ -39,22 +39,22 @@ export default function Content(props: Props) {
     }
 
     return (
-        <div className='p-movies__content'>
+        <div className="p-movies__content">
             {
                 data.dates &&
-                <div className='p-movies__dates'>
-                    {formatDate(data.dates.minimum, 'DD.MM.YYYY')}
-                    {' - '}
-                    {formatDate(data.dates.maximum, 'DD.MM.YYYY')}
+                <div className="p-movies__dates">
+                    { formatDate(data.dates.minimum, 'DD.MM.YYYY') }
+                    { ' - ' }
+                    { formatDate(data.dates.maximum, 'DD.MM.YYYY') }
                 </div>
             }
 
-            <ul className='p-movies__list'>
+            <ul className="p-movies__list">
                 {
                     data.movies.map(
-                        (movie) => (
-                            <li key={movie.id}>
-                                <MovieCard movie={movie} />
+                        movie => (
+                            <li key={ movie.id }>
+                                <MovieCard movie={ movie } />
                             </li>
                         )
                     )
@@ -64,8 +64,8 @@ export default function Content(props: Props) {
             {
                 data.total_pages > 1 &&
                 <Pagination
-                    currentPage={props.currentPage}
-                    totalPages={data.total_pages}
+                    currentPage={ props.currentPage }
+                    totalPages={ data.total_pages }
                 />
             }
         </div>

@@ -4,22 +4,22 @@ type Props<T> = {
     tabs: Array<{
         label: string,
         value: T
-    }>
+    }>,
     active: T,
     onClick: (value: T) => void
-}
+};
 
 export default function Tabs<T>(props: Props<T>) {
     return (
-        <ul className='c-tabs'>
+        <ul className="c-tabs">
             {
                 props.tabs.map(
                     (filter, index) => (
                         <li
-                            key={index}
+                            key={ index }
                             className={
                                 clsx('c-tabs__item', {
-                                    'c-tabs__item--is-active': filter.value === props.active,
+                                    'c-tabs__item--is-active': filter.value === props.active
                                 })
                             }
                             onClick={
@@ -28,7 +28,7 @@ export default function Tabs<T>(props: Props<T>) {
                                 }
                             }
                         >
-                            {filter.label}
+                            { filter.label }
                         </li>
                     ))
             }

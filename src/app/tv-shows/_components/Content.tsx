@@ -11,21 +11,21 @@ import { transformTVShow } from '@/helpers/transformData';
 import { getTVShows } from '@/services/api';
 
 type Props = {
-    type: TVShowType;
-    currentPage: number,
-}
+    type: TVShowType,
+    currentPage: number
+};
 
 export default function Content(props: Props) {
     const { data, isPending, isFetching } = useQuery({
-        queryKey: ['tv-shows', props.type, props.currentPage],
+        queryKey: [ 'tv-shows', props.type, props.currentPage ],
         queryFn: () => getTVShows(props.type, props.currentPage),
         placeholderData: keepPreviousData,
-        select: (data) => ({
+        select: data => ({
             tvShows: data.results.map(
-                (tvShow) => transformTVShow(tvShow)
+                tvShow => transformTVShow(tvShow)
             ),
             total_pages: data.total_pages
-        }),
+        })
     });
 
     if (isPending || isFetching) {
@@ -37,13 +37,13 @@ export default function Content(props: Props) {
     }
 
     return (
-        <div className='p-tv-shows__content'>
-            <ul className='p-tv-shows__list'>
+        <div className="p-tv-shows__content">
+            <ul className="p-tv-shows__list">
                 {
                     data.tvShows.map(
-                        (tvShow) => (
-                            <li key={tvShow.id}>
-                                <TVShowCard tvShow={tvShow} />
+                        tvShow => (
+                            <li key={ tvShow.id }>
+                                <TVShowCard tvShow={ tvShow } />
                             </li>
                         )
                     )
@@ -53,8 +53,8 @@ export default function Content(props: Props) {
             {
                 data.total_pages > 1 &&
                 <Pagination
-                    currentPage={props.currentPage}
-                    totalPages={data.total_pages}
+                    currentPage={ props.currentPage }
+                    totalPages={ data.total_pages }
                 />
             }
         </div>

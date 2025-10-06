@@ -5,14 +5,14 @@ import ButtonScrollToTop from './components/ButtonScrollToTop';
 
 export default function Footer() {
     return (
-        <footer className='c-footer'>
+        <footer className="c-footer">
             <Container
-                size='full'
-                className='c-footer__container'
+                size="full"
+                className="c-footer__container"
             >
                 <Logo
-                    logoPath='/svg/logo-white.svg'
-                    className='text-primary'
+                    logoPath="/svg/logo-white.svg"
+                    className="text-primary"
                 >
                     <p>Filmoteka</p>
                 </Logo>

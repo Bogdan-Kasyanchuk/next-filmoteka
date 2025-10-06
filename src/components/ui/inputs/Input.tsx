@@ -45,23 +45,23 @@ export default function Input(props: Props) {
             {
                 label &&
                 <label
-                    htmlFor={id}
-                    className={clsx('f-label', classNames?.label)}
+                    htmlFor={ id }
+                    className={ clsx('f-label', classNames?.label) }
                 >
-                    {label}
+                    { label }
                 </label>
             }
 
-            <div className={clsx('f-field__wrapper', classNames?.wrapper)}>
+            <div className={ clsx('f-field__wrapper', classNames?.wrapper) }>
                 {
                     startSection &&
-                    <div className={clsx('f-field__section', classNames?.section)}>
-                        {startSection}
+                    <div className={ clsx('f-field__section', classNames?.section) }>
+                        { startSection }
                     </div>
                 }
 
                 <input
-                    id={id}
+                    id={ id }
                     className={
                         clsx([
                             'f-field',
@@ -71,22 +71,22 @@ export default function Input(props: Props) {
                             }
                         ])
                     }
-                    disabled={disabled}
-                    {...rest}
+                    disabled={ disabled }
+                    { ...rest }
                 />
 
                 {
                     endSection &&
-                    <div className={clsx('f-field__section', classNames?.section)}>
-                        {endSection}
+                    <div className={ clsx('f-field__section', classNames?.section) }>
+                        { endSection }
                     </div>
                 }
             </div>
 
             {
                 error &&
-                <div className={clsx('f-error', classNames?.error)}>
-                    {error}
+                <div className={ clsx('f-error', classNames?.error) }>
+                    { error }
                 </div>
             }
         </div>

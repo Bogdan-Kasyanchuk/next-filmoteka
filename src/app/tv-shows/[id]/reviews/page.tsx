@@ -1,4 +1,4 @@
-import { dehydrate, QueryClient, HydrationBoundary } from '@tanstack/react-query';
+import { HydrationBoundary, QueryClient, dehydrate } from '@tanstack/react-query';
 import { Metadata } from 'next';
 
 import { getCurrentTVShowById, getReviewsToTVShow } from '@/services/api';
@@ -16,7 +16,7 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
     const { id } = await props.params;
 
     return {
-        title: `${id}: reviews`
+        title: `${ id }: reviews`
     };
 }
 
@@ -30,23 +30,23 @@ export default async function Page(props: Props) {
     await Promise.all([
         await queryClient.prefetchQuery(
             {
-                queryKey: ['tv-shows', id, 'reviews'],
-                queryFn: () => getCurrentTVShowById(id),
-            },
+                queryKey: [ 'tv-shows', id, 'reviews' ],
+                queryFn: () => getCurrentTVShowById(id)
+            }
         ),
         await queryClient.prefetchQuery(
             {
-                queryKey: ['tv-shows', id, 'reviews', currentPage],
-                queryFn: () => getReviewsToTVShow(id, currentPage),
-            },
+                queryKey: [ 'tv-shows', id, 'reviews', currentPage ],
+                queryFn: () => getReviewsToTVShow(id, currentPage)
+            }
         )
     ]);
 
     return (
-        <HydrationBoundary state={dehydrate(queryClient)}>
+        <HydrationBoundary state={ dehydrate(queryClient) }>
             <Content
-                id={id}
-                currentPage={currentPage}
+                id={ id }
+                currentPage={ currentPage }
             />
         </HydrationBoundary>
     );

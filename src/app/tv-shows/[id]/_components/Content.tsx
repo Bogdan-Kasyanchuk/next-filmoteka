@@ -22,13 +22,13 @@ import TVShowDetails from './TVShowDetails';
 
 type Props = {
     id: string
-}
+};
 
 export default function Content(props: Props) {
     const { data, isPending, isFetching } = useQuery({
-        queryKey: ['tv-shows', props.id],
+        queryKey: [ 'tv-shows', props.id ],
         queryFn: () => getTVShowById(props.id),
-        select: (data) => transformTVShowDetails(data)
+        select: data => transformTVShowDetails(data)
     });
 
     if (isPending || isFetching) {
@@ -40,50 +40,50 @@ export default function Content(props: Props) {
     }
 
     return (
-        <div className='p-tv-show'>
+        <div className="p-tv-show">
             <TVShowDetails
-                tvShow={data.tvShow}
-                id={props.id}
+                tvShow={ data.tvShow }
+                id={ props.id }
             />
 
-            <Container className='p-tv-show__container'>
+            <Container className="p-tv-show__container">
                 {
                     data.seasons.length > 0 &&
                     <Seasons
-                        seasons={data.seasons}
-                        tvShowId={props.id}
+                        seasons={ data.seasons }
+                        tvShowId={ props.id }
                     />
                 }
 
                 {
                     data.videos.length > 0 &&
-                    <Videos videos={data.videos} />
+                    <Videos videos={ data.videos } />
                 }
 
                 {
                     data.cast.length > 0 &&
-                    <Casts casts={data.cast} />
+                    <Casts casts={ data.cast } />
                 }
 
                 {
                     data.crew.length > 0 &&
-                    <Crews crews={data.crew} />
+                    <Crews crews={ data.crew } />
                 }
 
                 {
                     data.recommendations.items.length > 0 &&
                     <Recommendations<TVShowMapper>
-                        recommendations={data.recommendations}
-                        item={(item) => <TVShowCard tvShow={item} />}
-                        showAllPath={recommendationsUrl(MediaType.TV_SHOW, props.id)}
+                        recommendations={ data.recommendations }
+                        item={ item => <TVShowCard tvShow={ item } /> }
+                        showAllPath={ recommendationsUrl(MediaType.TV_SHOW, props.id) }
                     />
                 }
 
                 {
                     data.reviews.items.length > 0 &&
                     <Reviews
-                        reviews={data.reviews}
-                        showAllPath={reviewsUrl(MediaType.TV_SHOW, props.id)}
+                        reviews={ data.reviews }
+                        showAllPath={ reviewsUrl(MediaType.TV_SHOW, props.id) }
                     />
                 }
             </Container>

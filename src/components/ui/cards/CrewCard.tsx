@@ -8,13 +8,13 @@ import { CrewMapper } from '@/types';
 
 type Props = {
     crew: CrewMapper
-}
+};
 
 export default function CrewCard(props: Props) {
     return (
         <Link
-            href={pagesPersonUrl(String(props.crew.id))}
-            className='с-crew-card'
+            href={ pagesPersonUrl(String(props.crew.id)) }
+            className="с-crew-card"
         >
             <div
                 className={
@@ -29,31 +29,31 @@ export default function CrewCard(props: Props) {
                             ? imageUrl(IMG_SIZES.CREW_CARD_COVER, props.crew.profile_path)
                             : '/img/avatar-placeholder.svg'
                     }
-                    sizes='180px'
-                    alt={props.crew.name}
+                    sizes="180px"
+                    alt={ props.crew.name }
                     fill
                 />
             </div>
 
-            <div className='с-crew-card__tag'>
-                {Math.round(props.crew.popularity)}
+            <div className="с-crew-card__tag">
+                { Math.round(props.crew.popularity) }
             </div>
 
-            <div className='с-crew-card__footer'>
+            <div className="с-crew-card__footer">
                 <p
-                    className='с-crew-card__footer-name'
-                    title={props.crew.name}
+                    className="с-crew-card__footer-name"
+                    title={ props.crew.name }
                 >
-                    {props.crew.name}
+                    { props.crew.name }
                 </p>
 
                 <p
-                    className='с-crew-card__footer-job'
-                    title={props.crew.job}
+                    className="с-crew-card__footer-job"
+                    title={ props.crew.job }
                 >
-                    {props.crew.job}
+                    { props.crew.job }
                 </p>
             </div>
-        </Link >
+        </Link>
     );
-};
+}

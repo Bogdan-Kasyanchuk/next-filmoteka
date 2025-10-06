@@ -39,32 +39,32 @@ export default function Switch(props: Props) {
                 ])
             }
         >
-            <div className={clsx('f-switch', classNames?.switch)}>
+            <div className={ clsx('f-switch', classNames?.switch) }>
                 {
                     label &&
-                    <div className={clsx('f-switch__label', classNames?.label)}>
-                        {label}
+                    <div className={ clsx('f-switch__label', classNames?.label) }>
+                        { label }
                     </div>
                 }
                 <input
-                    id={id}
-                    type={type}
-                    className={clsx('f-switch__field', classNames?.field)}
-                    checked={checked}
-                    disabled={disabled}
-                    {...rest}
+                    id={ id }
+                    type={ type }
+                    className={ clsx('f-switch__field', classNames?.field) }
+                    checked={ checked }
+                    disabled={ disabled }
+                    { ...rest }
                 />
 
                 <label
-                    htmlFor={id}
-                    className={clsx('f-switch__inner', classNames?.inner)}
+                    htmlFor={ id }
+                    className={ clsx('f-switch__inner', classNames?.inner) }
                 >
                     <span className="f-switch__icon">
                         <Icon name="check" />
                     </span>
 
                     <span className="f-switch__text">
-                        {checked ? 'Yes' : 'No'}
+                        { checked ? 'Yes' : 'No' }
                     </span>
                 </label>
             </div>

@@ -21,13 +21,13 @@ import MovieDetails from './MovieDetails';
 
 type Props = {
     id: string
-}
+};
 
 export default function Content(props: Props) {
     const { data, isPending, isFetching } = useQuery({
-        queryKey: ['movies', props.id],
+        queryKey: [ 'movies', props.id ],
         queryFn: () => getMovieById(props.id),
-        select: (data) => transformMovieDetails(data),
+        select: data => transformMovieDetails(data)
     });
 
     if (isPending || isFetching) {
@@ -39,42 +39,42 @@ export default function Content(props: Props) {
     }
 
     return (
-        <div className='p-movie'>
+        <div className="p-movie">
             <MovieDetails
-                movie={data.movie}
-                id={props.id}
+                movie={ data.movie }
+                id={ props.id }
             />
 
-            <Container className='p-movie__container'>
+            <Container className="p-movie__container">
                 {
                     data.videos.length > 0 &&
-                    <Videos videos={data.videos} />
+                    <Videos videos={ data.videos } />
                 }
 
                 {
                     data.cast.length > 0 &&
-                    <Casts casts={data.cast} />
+                    <Casts casts={ data.cast } />
                 }
 
                 {
                     data.crew.length > 0 &&
-                    <Crews crews={data.crew} />
+                    <Crews crews={ data.crew } />
                 }
 
                 {
                     data.recommendations.items.length > 0 &&
                     <Recommendations<MovieMapper>
-                        recommendations={data.recommendations}
-                        item={(item) => <MovieCard movie={item} />}
-                        showAllPath={recommendationsUrl(MediaType.MOVIE, props.id)}
+                        recommendations={ data.recommendations }
+                        item={ item => <MovieCard movie={ item } /> }
+                        showAllPath={ recommendationsUrl(MediaType.MOVIE, props.id) }
                     />
                 }
 
                 {
                     data.reviews.items.length > 0 &&
                     <Reviews
-                        reviews={data.reviews}
-                        showAllPath={reviewsUrl(MediaType.MOVIE, props.id)}
+                        reviews={ data.reviews }
+                        showAllPath={ reviewsUrl(MediaType.MOVIE, props.id) }
                     />
                 }
             </Container>

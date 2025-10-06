@@ -4,25 +4,25 @@ export type Adult = 'true' | 'false';
 
 export type SpokenLanguage = {
     english_name: string,
-    name: string,
+    name: string
 };
 
 export type ProductionCompany = {
     logo_path: string,
     name: string,
-    origin_country?: string,
+    origin_country?: string
 };
 
 export type Network = {
     logo_path: string,
     name: string,
-    origin_country: string,
+    origin_country: string
 };
 
 export type Creator = {
     id: number,
     name: string,
-    profile_path: string,
+    profile_path: string
 };
 
 export type CastMapper = {
@@ -30,7 +30,7 @@ export type CastMapper = {
     name: string,
     popularity: number,
     profile_path: string,
-    character: string,
+    character: string
 };
 
 export type CrewMapper = {
@@ -38,7 +38,7 @@ export type CrewMapper = {
     name: string,
     popularity: number,
     profile_path: string,
-    job: string,
+    job: string
 };
 
 export type ReviewMapper = {
@@ -46,18 +46,18 @@ export type ReviewMapper = {
         name: string,
         username: string,
         avatar_path: string,
-        rating: number,
+        rating: number
     },
     content: string,
     created_at: string,
-    updated_at: string,
+    updated_at: string
 };
 
 export type VideoMapper = {
     name: string,
     key: string,
     type: VideoType,
-    published_at: string,
+    published_at: string
 };
 
 export type EpisodeMapper = {
@@ -70,7 +70,7 @@ export type EpisodeMapper = {
     season_number: number,
     still_path: string,
     vote_average: number,
-    vote_count: number,
+    vote_count: number
 };
 
 export type SeasonMapper = {
@@ -79,7 +79,7 @@ export type SeasonMapper = {
     name: string,
     poster_path: string,
     season_number: number,
-    vote_average: number,
+    vote_average: number
 };
 
 export type ImageMapper = {
@@ -87,7 +87,7 @@ export type ImageMapper = {
     width: number,
     file_path: string,
     vote_average: number,
-    vote_count: number,
+    vote_count: number
 };
 
 export type MovieMapper = {
@@ -96,7 +96,7 @@ export type MovieMapper = {
     title: string,
     poster_path: string,
     media_type: MediaType.MOVIE,
-    vote_average: number,
+    vote_average: number
 };
 
 export type SocialLinksMapper = Array<{
@@ -133,12 +133,12 @@ export type MovieDetailsMapper = {
     videos: VideoMapper[],
     reviews: {
         items: ReviewMapper[],
-        totalPages: number,
+        totalPages: number
     },
     recommendations: {
         items: MovieMapper[],
-        totalPages: number,
-    },
+        totalPages: number
+    }
 
 };
 
@@ -149,7 +149,7 @@ export type CurrentMovieMapper = {
     poster_path: string,
     release_date: string,
     media_type: MediaType.MOVIE,
-    genres: string[],
+    genres: string[]
 };
 
 export type TVShowMapper = {
@@ -158,7 +158,7 @@ export type TVShowMapper = {
     name: string,
     poster_path: string,
     media_type: MediaType.TV_SHOW,
-    vote_average: number,
+    vote_average: number
 };
 
 export type TVShowDetailsMapper = {
@@ -177,7 +177,7 @@ export type TVShowDetailsMapper = {
         tagline: string,
         type: string,
         vote_average: number,
-        vote_count: number
+        vote_count: number,
         popularity: number,
         backdrop_path: string,
         poster_path: string,
@@ -195,12 +195,12 @@ export type TVShowDetailsMapper = {
     videos: VideoMapper[],
     reviews: {
         items: ReviewMapper[],
-        totalPages: number,
+        totalPages: number
     },
     recommendations: {
         items: TVShowMapper[],
-        totalPages: number,
-    },
+        totalPages: number
+    }
 };
 
 export type CurrentTVShowMapper = {
@@ -210,7 +210,7 @@ export type CurrentTVShowMapper = {
     vote_average: number,
     poster_path: string,
     media_type: MediaType.TV_SHOW,
-    genres: string[],
+    genres: string[]
 };
 
 export type TVShowSeasonDetailsMapper = {
@@ -220,9 +220,9 @@ export type TVShowSeasonDetailsMapper = {
         overview: string,
         poster_path: string,
         season_number: number,
-        vote_average: number,
+        vote_average: number
     },
-    episodes: EpisodeMapper[],
+    episodes: EpisodeMapper[]
 };
 
 export type MediaCastMapper = {
@@ -231,8 +231,8 @@ export type MediaCastMapper = {
     poster_path: string,
     release_date: string,
     character: string,
-    media_type: string,
-}
+    media_type: string
+};
 
 export type MediaCrewMapper = {
     id: number,
@@ -240,7 +240,7 @@ export type MediaCrewMapper = {
     poster_path: string,
     release_date: string,
     job: string,
-    media_type: string,
+    media_type: string
 };
 
 export type PersonMapper = {
@@ -251,7 +251,7 @@ export type PersonMapper = {
     name: string,
     media_type: MediaType.PERSON,
     popularity: number,
-    profile_path: string,
+    profile_path: string
 };
 
 export type PersonDetailsMapper = {
@@ -271,5 +271,5 @@ export type PersonDetailsMapper = {
     },
     images: ImageMapper[],
     cast: MediaCastMapper[],
-    crew: MediaCrewMapper[],
+    crew: MediaCrewMapper[]
 };

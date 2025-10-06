@@ -14,12 +14,12 @@ export default function Icon(props: Props) {
             className={
                 clsx([
                     'i-icon',
-                    `i-icon--${type}`,
-                    `i-icon-${name}`,
+                    `i-icon--${ type }`,
+                    `i-icon-${ name }`,
                     className
                 ])
             }
-            {...rest}
+            { ...rest }
         />
     );
 }

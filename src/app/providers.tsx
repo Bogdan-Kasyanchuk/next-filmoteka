@@ -1,6 +1,6 @@
 'use client';
 
-import { isServer, QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { QueryClient, QueryClientProvider, isServer } from '@tanstack/react-query';
 import { ReactNode } from 'react';
 
 function makeQueryClient() {
@@ -9,8 +9,8 @@ function makeQueryClient() {
             queries: {
                 staleTime: 30 * 1000,
                 retry: 1
-            },
-        },
+            }
+        }
     });
 }
 
@@ -22,22 +22,22 @@ function getQueryClient() {
     } else {
         if (!browserQueryClient) {
             browserQueryClient = makeQueryClient();
-        };
+        }
 
         return browserQueryClient;
     }
 }
 
 type Props = {
-    children: ReactNode;
+    children: ReactNode
 };
 
 export default function Providers(props: Props) {
     const queryClient = getQueryClient();
 
     return (
-        <QueryClientProvider client={queryClient}>
-            {props.children}
+        <QueryClientProvider client={ queryClient }>
+            { props.children }
         </QueryClientProvider>
     );
 }

@@ -7,12 +7,12 @@ import Header from '@/components/app/Header';
 
 import Providers from './providers';
 
-const font = Plus_Jakarta_Sans({ subsets: ['latin'] });
+const font = Plus_Jakarta_Sans({ subsets: [ 'latin' ] });
 
 export const metadata: Metadata = {
     title: {
         template: 'Filmoteka | %s',
-        default: 'Filmoteka',
+        default: 'Filmoteka'
     },
     description: 'Library of movies, series, TV shows, actors',
     keywords: 'Movies, series, TV shows, actors'
@@ -20,12 +20,12 @@ export const metadata: Metadata = {
 
 export default function Layout(props: PropsWithChildren) {
     return (
-        <html lang='en'>
-            <body className={font.className}>
+        <html lang="en">
+            <body className={ font.className }>
                 <Providers>
                     <Header />
 
-                    <main>{props.children}</main>
+                    <main>{ props.children }</main>
 
                     <Footer />
                 </Providers>

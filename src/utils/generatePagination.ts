@@ -4,14 +4,14 @@ export const mobilePagination = (currentPage: number, totalPages: number) => {
     }
 
     if (currentPage < 4) {
-        return [1, 2, 3, '...', totalPages];
+        return [ 1, 2, 3, '...', totalPages ];
     }
 
     if (currentPage > totalPages - 3) {
-        return [1, '...', totalPages - 2, totalPages - 1, totalPages];
+        return [ 1, '...', totalPages - 2, totalPages - 1, totalPages ];
     }
 
-    return [1, '...', currentPage, '...', totalPages];
+    return [ 1, '...', currentPage, '...', totalPages ];
 };
 
 export const desktopPagination = (currentPage: number, totalPages: number) => {
@@ -20,7 +20,7 @@ export const desktopPagination = (currentPage: number, totalPages: number) => {
     }
 
     if (currentPage < 6) {
-        return [1, 2, 3, 4, 5, 6, '...', totalPages - 1, totalPages];
+        return [ 1, 2, 3, 4, 5, 6, '...', totalPages - 1, totalPages ];
     }
 
     if (currentPage > totalPages - 5) {
@@ -46,6 +46,6 @@ export const desktopPagination = (currentPage: number, totalPages: number) => {
         currentPage + 1,
         '...',
         totalPages - 1,
-        totalPages,
+        totalPages
     ];
 };

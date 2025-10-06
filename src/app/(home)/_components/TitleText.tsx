@@ -2,7 +2,7 @@ import { TimeType } from '@/enums';
 
 type Props = {
     type: TimeType
-}
+};
 
 export default function TitleText(props: Props) {
     switch (props.type) {

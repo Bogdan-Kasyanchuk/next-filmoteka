@@ -4,7 +4,7 @@ export type NetworkShema = {
     id: number,
     logo_path: string,
     name: string,
-    origin_country: string,
+    origin_country: string
 };
 
 export type CreatedShema = {
@@ -13,37 +13,37 @@ export type CreatedShema = {
     name: string,
     original_name: string,
     gender: GenderType,
-    profile_path: string,
+    profile_path: string
 };
 
 export type GenreShema = {
     id: number,
-    name: string,
+    name: string
 };
 
 export type CollectionShema = {
     id: number,
     name: string,
     poster_path: string,
-    backdrop_path: string,
+    backdrop_path: string
 };
 
 export type ProductionCompanyShema = {
     id: number,
     logo_path: string,
     name: string,
-    origin_country: string,
+    origin_country: string
 };
 
 export type ProductionCountryShema = {
     iso_3166_1: string,
-    name: string,
+    name: string
 };
 
 export type SpokenLanguageShema = {
     english_name: string,
     iso_639_1: string,
-    name: string,
+    name: string
 };
 
 export type ImageShema = {
@@ -53,7 +53,7 @@ export type ImageShema = {
     iso_639_1: string,
     file_path: string,
     vote_average: number,
-    vote_count: number,
+    vote_count: number
 };
 
 export type ExternalIdShema = {
@@ -62,18 +62,18 @@ export type ExternalIdShema = {
     wikidata_id: string,
     facebook_id: string,
     instagram_id: string,
-    twitter_id: string,
+    twitter_id: string
 };
 
 export type DataShema<Type> = {
     dates?: {
         maximum: string,
-        minimum: string,
+        minimum: string
     },
     page: number,
     results: Type[],
     total_pages: number,
-    total_results: number,
+    total_results: number
 };
 
 export type MovieShema = {
@@ -91,7 +91,7 @@ export type MovieShema = {
     video: boolean,
     vote_average: number,
     vote_count: number,
-    genre_ids: number[],
+    genre_ids: number[]
 };
 
 export type SimilarMovieShema = Omit<MovieShema, 'media_type'>;
@@ -125,10 +125,10 @@ export type MovieDetailsShema = {
     vote_count: number,
     credits: {
         cast: CastShema[],
-        crew: CrewShema[],
+        crew: CrewShema[]
     },
     videos: {
-        results: VideoShema[],
+        results: VideoShema[]
     },
     reviews: DataShema<ReviewShema>,
     recommendations: DataShema<MovieShema>,
@@ -152,7 +152,7 @@ export type TVShowShema = {
     vote_average: number,
     vote_count: number,
     genre_ids: number[],
-    origin_country: string[],
+    origin_country: string[]
 };
 
 export type SimilarTVShowShema = Omit<TVShowShema, 'media_type'>;
@@ -192,10 +192,10 @@ export type TVShowDetailsShema = {
     seasons: SeasonShema[],
     credits: {
         cast: CastShema[],
-        crew: CrewShema[],
+        crew: CrewShema[]
     },
     videos: {
-        results: VideoShema[],
+        results: VideoShema[]
     },
     reviews: DataShema<ReviewShema>,
     recommendations: DataShema<TVShowShema>,
@@ -203,7 +203,7 @@ export type TVShowDetailsShema = {
         freebase_mid: string,
         freebase_id: string,
         tvdb_id: number,
-        tvrage_id: number,
+        tvrage_id: number
     }
 };
 
@@ -218,7 +218,7 @@ export type TVShowSeasonDetailsShema = {
     poster_path: string,
     season_number: number,
     vote_average: number,
-    episodes: EpisodeShema[],
+    episodes: EpisodeShema[]
 };
 
 export type EpisodeShema = {
@@ -236,7 +236,7 @@ export type EpisodeShema = {
     vote_average: number,
     vote_count: number,
     crew: CrewShema[],
-    guest_stars: Omit<CastShema, 'cast_id'>[],
+    guest_stars: Omit<CastShema, 'cast_id'>[]
 };
 
 export type SeasonShema = {
@@ -247,7 +247,7 @@ export type SeasonShema = {
     overview: string,
     poster_path: string,
     season_number: number,
-    vote_average: number,
+    vote_average: number
 };
 
 export type CastShema = {
@@ -262,8 +262,8 @@ export type CastShema = {
     cast_id: number,
     character: string,
     credit_id: string,
-    order: number,
-}
+    order: number
+};
 
 export type CrewShema = {
     adult: boolean,
@@ -276,7 +276,7 @@ export type CrewShema = {
     profile_path: string,
     credit_id: string,
     department: string,
-    job: string,
+    job: string
 };
 
 export type ReviewShema = {
@@ -285,13 +285,13 @@ export type ReviewShema = {
         name: string,
         username: string,
         avatar_path: string,
-        rating: number,
+        rating: number
     },
     content: string,
     created_at: string,
     id: string,
     updated_at: string,
-    url: string,
+    url: string
 };
 
 export type VideoShema = {
@@ -304,7 +304,7 @@ export type VideoShema = {
     type: VideoType,
     official: boolean,
     published_at: string,
-    id: string,
+    id: string
 };
 
 export type MediaCastShema = {
@@ -327,8 +327,8 @@ export type MediaCastShema = {
     character: string,
     credit_id: string,
     order: number,
-    media_type: string,
-}
+    media_type: string
+};
 
 export type MediaCrewShema = {
     adult: boolean,
@@ -350,7 +350,7 @@ export type MediaCrewShema = {
     credit_id: string,
     department: string,
     job: string,
-    media_type: string,
+    media_type: string
 };
 
 export type PersonShema = {
@@ -363,7 +363,7 @@ export type PersonShema = {
     gender: GenderType,
     known_for_department: string,
     profile_path: string,
-    known_for: Omit<MovieShema, 'popularity'>[],
+    known_for: Omit<MovieShema, 'popularity'>[]
 };
 
 export type PersonDetailsShema = {
@@ -383,10 +383,10 @@ export type PersonDetailsShema = {
     profile_path: string,
     combined_credits: {
         cast: MediaCastShema[],
-        crew: MediaCrewShema[],
+        crew: MediaCrewShema[]
     },
     images: {
-        profiles: ImageShema[],
+        profiles: ImageShema[]
     },
     external_ids: ExternalIdShema & {
         freebase_mid: string,

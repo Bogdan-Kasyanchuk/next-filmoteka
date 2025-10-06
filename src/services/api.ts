@@ -1,24 +1,24 @@
-import { MovieType, MediaType, TimeType, TVShowType } from '@/enums';
+import { MediaType, MovieType, TVShowType, TimeType } from '@/enums';
 import { PARAMETERS } from '@/helpers/parameters';
 import {
+    CurrentMovieShema,
+    CurrentTVShowShema,
     DataShema,
     MovieDetailsShema,
     MovieShema,
+    PersonDetailsShema,
+    PersonShema,
+    ReviewShema,
+    SimilarMovieShema,
+    SimilarTVShowShema,
     TVShowDetailsShema,
     TVShowSeasonDetailsShema,
-    TVShowShema,
-    PersonShema,
-    PersonDetailsShema,
-    CurrentMovieShema,
-    SimilarMovieShema,
-    ReviewShema,
-    SimilarTVShowShema,
-    CurrentTVShowShema
+    TVShowShema
 } from '@/shemas';
 import { Adult } from '@/types';
 
 async function fetchApi<T>(url: string) {
-    const buildUrl = new URL(`${PARAMETERS.BASE_URL}/${url}`);
+    const buildUrl = new URL(`${ PARAMETERS.BASE_URL }/${ url }`);
 
     if (PARAMETERS.API_KEY) {
         buildUrl.searchParams.append('api_key', PARAMETERS.API_KEY);
@@ -41,85 +41,85 @@ async function fetchApi<T>(url: string) {
 
 export function getTrendings(type: 'all' | MediaType, time: TimeType, page: number) {
     return fetchApi<DataShema<MovieShema | TVShowShema | PersonShema>>(
-        `trending/${type}/${time}?page=${page}`
+        `trending/${ type }/${ time }?page=${ page }`
     );
 }
 
 export function getMovies(type: MovieType, page: number) {
-    return fetchApi<DataShema<MovieShema>>(`${MediaType.MOVIE}/${type}?page=${page}`);
+    return fetchApi<DataShema<MovieShema>>(`${ MediaType.MOVIE }/${ type }?page=${ page }`);
 }
 
 export function getMovieById(id: string) {
     return fetchApi<MovieDetailsShema>(
-        `${MediaType.MOVIE}/${id}?append_to_response=credits,videos,reviews,recommendations,external_ids`
+        `${ MediaType.MOVIE }/${ id }?append_to_response=credits,videos,reviews,recommendations,external_ids`
     );
 }
 
 export function getCurrentMovieById(id: string) {
-    return fetchApi<CurrentMovieShema>(`${MediaType.MOVIE}/${id}`);
+    return fetchApi<CurrentMovieShema>(`${ MediaType.MOVIE }/${ id }`);
 }
 
 export function getSimilarMovies(id: string, page: number) {
     return fetchApi<DataShema<SimilarMovieShema>>(
-        `${MediaType.MOVIE}/${id}/similar?page=${page}`
+        `${ MediaType.MOVIE }/${ id }/similar?page=${ page }`
     );
 }
 
 export function getRecommendationsMovies(id: string, page: number) {
     return fetchApi<DataShema<MovieShema>>(
-        `${MediaType.MOVIE}/${id}/recommendations?page=${page}`
+        `${ MediaType.MOVIE }/${ id }/recommendations?page=${ page }`
     );
 }
 
 export function getReviewsToMovie(id: string, page: number) {
     return fetchApi<DataShema<ReviewShema>>(
-        `${MediaType.MOVIE}/${id}/reviews?page=${page}`
+        `${ MediaType.MOVIE }/${ id }/reviews?page=${ page }`
     );
 }
 
 export function getTVShows(type: TVShowType, page: number) {
-    return fetchApi<DataShema<TVShowShema>>(`${MediaType.TV_SHOW}/${type}?page=${page}`);
+    return fetchApi<DataShema<TVShowShema>>(`${ MediaType.TV_SHOW }/${ type }?page=${ page }`);
 }
 
 export function getTVShowById(id: string) {
     return fetchApi<TVShowDetailsShema>(
-        `${MediaType.TV_SHOW}/${id}?append_to_response=credits,videos,reviews,recommendations,external_ids`
+        `${ MediaType.TV_SHOW }/${ id }?append_to_response=credits,videos,reviews,recommendations,external_ids`
     );
 }
 
 export function getCurrentTVShowById(id: string) {
-    return fetchApi<CurrentTVShowShema>(`${MediaType.TV_SHOW}/${id}`);
+    return fetchApi<CurrentTVShowShema>(`${ MediaType.TV_SHOW }/${ id }`);
 }
 
 export function getSimilarTVShow(id: string, page: number) {
     return fetchApi<DataShema<SimilarTVShowShema>>(
-        `${MediaType.TV_SHOW}/${id}/similar?page=${page}`
+        `${ MediaType.TV_SHOW }/${ id }/similar?page=${ page }`
     );
 }
 
 export function getRecommendationsTVShow(id: string, page: number) {
     return fetchApi<DataShema<TVShowShema>>(
-        `${MediaType.TV_SHOW}/${id}/recommendations?page=${page}`
+        `${ MediaType.TV_SHOW }/${ id }/recommendations?page=${ page }`
     );
 }
 
 export function getReviewsToTVShow(id: string, page: number) {
     return fetchApi<DataShema<ReviewShema>>(
-        `${MediaType.TV_SHOW}/${id}/reviews?page=${page}`
+        `${ MediaType.TV_SHOW }/${ id }/reviews?page=${ page }`
     );
 }
 
 export function getTVShowSeasonByNumber(seriesId: string, number: string) {
-    return fetchApi<TVShowSeasonDetailsShema>(`${MediaType.TV_SHOW}/${seriesId}/season/${number}`);
+    return fetchApi<TVShowSeasonDetailsShema>(`${ MediaType.TV_SHOW }/${ seriesId }/season/${ number }`);
 }
 
 export function getPersons(page: number) {
-    return fetchApi<DataShema<PersonShema>>(`person/popular?page=${page}`);
+    return fetchApi<DataShema<PersonShema>>(`person/popular?page=${ page }`);
 }
 
 export function getPersonById(id: string) {
     return fetchApi<PersonDetailsShema>(
-        `person/${id}?append_to_response=combined_credits,images,external_ids`
+        `person/${ id }?append_to_response=combined_credits,images,external_ids`
     );
 }
 
@@ -130,6 +130,6 @@ export function getSearch(
     page: number
 ) {
     return fetchApi<DataShema<MovieShema | TVShowShema | PersonShema>>(
-        `search/${type}?query=${query}&page=${page}&include_adult=${adult}`
+        `search/${ type }?query=${ query }&page=${ page }&include_adult=${ adult }`
     );
 }

@@ -1,0 +1,106 @@
+{
+  "extends": [
+    "@tarik02/eslint-config-type-1",
+    "@tarik02/eslint-config-type-1-react",
+    "@tarik02/eslint-config-type-1-import"
+  ],
+  "settings": {
+    "react": {
+      "version": "18"
+    }
+  },
+  "env": {
+    "node": true
+  },
+  "rules": {
+    "import/order": [
+      "error",
+      {
+        "groups": [
+          [
+            "builtin",
+            "external"
+          ],
+          "internal",
+          [
+            "parent",
+            "sibling",
+            "index"
+          ],
+          "unknown",
+          "object",
+          "type"
+        ],
+        "pathGroups": [
+          {
+            "pattern": "@/**",
+            "group": "internal"
+          }
+        ],
+        "pathGroupsExcludedImportTypes": [],
+        "alphabetize": {
+          "order": "asc"
+        },
+        "newlines-between": "always"
+      }
+    ],
+    "import/extensions": [
+      "error",
+      "never",
+      {
+        "pattern": {
+          "json": "always",
+          "svg": "always",
+          "jpg": "always",
+          "png": "always"
+        }
+      }
+    ],
+    "import/no-useless-path-segments": [
+      "error",
+      {
+        "noUselessIndex": true
+      }
+    ],
+    "no-case-declarations": "off",
+    "react-hooks/exhaustive-deps": [
+      "error",
+      {
+        "additionalHooks": "useMemoCompare|useIsomorphicEffect|useCancelableEffect"
+      }
+    ],
+    "react/jsx-curly-newline": [
+      "error",
+      {
+        "multiline": "require"
+      }
+    ],
+    "react/no-unknown-property": [
+      "error",
+      {
+        "ignore": [
+          "custom-element",
+          "amp-boilerplate",
+          "amp",
+          "on"
+        ]
+      }
+    ],
+    "react/display-name": [
+      "error",
+      {
+        "checkContextObjects": true
+      }
+    ]
+  },
+  "overrides": [
+    {
+      "files": [
+        "**/*"
+      ],
+      "rules": {
+        "import/extensions": "off"
+      }
+    }
+  ]
+}

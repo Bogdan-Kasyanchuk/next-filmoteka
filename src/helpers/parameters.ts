@@ -1,7 +1,7 @@
 export const PARAMETERS = {
     API_KEY: process.env.API_KEY,
     BASE_URL: process.env.BASE_URL,
-    LOCALE: 'en-US',
+    LOCALE: 'en-US'
 };
 
 export const IMG_SIZES = {
@@ -22,7 +22,7 @@ export const IMG_SIZES = {
     PERSON_CARD_DETAILS_COVER: 'h632',
     PERSON_IMAGE: 'w185',
     MEDIA_CAST_CARD_COVER: 'w92',
-    MEDIA_CREW_CARD_COVER: 'w92',
+    MEDIA_CREW_CARD_COVER: 'w92'
 };
 
 export const EXTERNAL_ID_URLS = {
@@ -32,5 +32,5 @@ export const EXTERNAL_ID_URLS = {
     TIKTOK: 'https://www.tiktok.com',
     TWITTER: 'https://x.com',
     WIKIDATA: 'https://www.wikidata.org/wiki',
-    YOUTUBE: 'https://www.youtube.com',
+    YOUTUBE: 'https://www.youtube.com'
 };

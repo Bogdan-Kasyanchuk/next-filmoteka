@@ -9,7 +9,7 @@ import { formatDate } from '@/utils/formateDate';
 
 type Props = {
     cast: MediaCastMapper
-}
+};
 
 export default function MediaCastCard(props: Props) {
     return (
@@ -19,10 +19,10 @@ export default function MediaCastCard(props: Props) {
                     ? pagesMovieUrl(String(props.cast.id))
                     : pagesTVShowUrl(String(props.cast.id))
             }
-            className='с-media-cast-card'
+            className="с-media-cast-card"
         >
-            <div className='с-media-cast-card__left'>
-                <div className='с-media-cast-card__date'>
+            <div className="с-media-cast-card__left">
+                <div className="с-media-cast-card__date">
                     {
 
                         props.cast.release_date
@@ -31,42 +31,42 @@ export default function MediaCastCard(props: Props) {
                     }
                 </div>
 
-                <div className='с-media-cast-card__type'>
-                    {props.cast.media_type}
+                <div className="с-media-cast-card__type">
+                    { props.cast.media_type }
                 </div>
             </div>
 
-            <div className='с-media-cast-card__cover'>
+            <div className="с-media-cast-card__cover">
                 <Image
                     src={
                         props.cast.poster_path
                             ? imageUrl(IMG_SIZES.MEDIA_CAST_CARD_COVER, props.cast.poster_path)
                             : '/img/poster-not-available.jpg'
                     }
-                    sizes='92px'
-                    alt={props.cast.title}
+                    sizes="92px"
+                    alt={ props.cast.title }
                     fill
                 />
             </div>
 
-            <div className='с-media-cast-card__info'>
+            <div className="с-media-cast-card__info">
                 <p
-                    className='с-media-cast-card__info-name'
-                    title={props.cast.title}
+                    className="с-media-cast-card__info-name"
+                    title={ props.cast.title }
                 >
-                    {props.cast.title}
+                    { props.cast.title }
                 </p>
 
                 {
                     props.cast.character &&
                     <p
-                        className='с-media-cast-card__info-character'
-                        title={props.cast.character}
+                        className="с-media-cast-card__info-character"
+                        title={ props.cast.character }
                     >
-                        as&nbsp;{props.cast.character}
+                        as&nbsp;{ props.cast.character }
                     </p>
                 }
             </div>
-        </Link >
+        </Link>
     );
-};
+}

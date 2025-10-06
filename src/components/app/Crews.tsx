@@ -9,27 +9,27 @@ import Title from '@/components/ui/typography/Title';
 import { CrewMapper } from '@/types';
 
 type Props = {
-    crews: CrewMapper[];
-}
+    crews: CrewMapper[]
+};
 
 export default function Crews(props: Props) {
-    const [prevButtonRef, setPrevButtonRef] = useState<HTMLButtonElement | null>(null);
-    const [nextButtonRef, setNextButtonRef] = useState<HTMLButtonElement | null>(null);
+    const [ prevButtonRef, setPrevButtonRef ] = useState<HTMLButtonElement | null>(null);
+    const [ nextButtonRef, setNextButtonRef ] = useState<HTMLButtonElement | null>(null);
 
     return (
-        <div className='с-crews'>
+        <div className="с-crews">
             <Title
-                order='h3'
-                variant={3}
-                className='с-crews__title'
+                order="h3"
+                variant={ 3 }
+                className="с-crews__title"
             >
                 Crews
             </Title>
 
-            <div className='с-crews__cards'>
+            <div className="с-crews__cards">
                 <Carousel
-                    items={props.crews}
-                    modules={[Autoplay, Navigation]}
+                    items={ props.crews }
+                    modules={ [ Autoplay, Navigation ] }
                     options={
                         {
                             autoplay: {
@@ -50,22 +50,22 @@ export default function Crews(props: Props) {
                     }
                 >
                     {
-                        slide => <CrewCard crew={slide} />
+                        slide => <CrewCard crew={ slide } />
                     }
                 </Carousel>
 
                 <>
                     <Arrow
-                        type='prev'
-                        refEl={setPrevButtonRef}
+                        type="prev"
+                        refEl={ setPrevButtonRef }
                     />
                     <Arrow
-                        type='next'
-                        refEl={setNextButtonRef}
+                        type="next"
+                        refEl={ setNextButtonRef }
                     />
                 </>
             </div>
-        </div >
+        </div>
     );
 }
 
@@ -77,8 +77,8 @@ export type ArrowProps = {
 function Arrow(props: ArrowProps) {
     return (
         <button
-            type='button'
-            ref={props.refEl}
+            type="button"
+            ref={ props.refEl }
             className={
                 clsx(
                     'с-crews__arrow',
@@ -89,7 +89,7 @@ function Arrow(props: ArrowProps) {
                 )
             }
         >
-            <Icon name='arrow' />
+            <Icon name="arrow" />
         </button>
     );
 }

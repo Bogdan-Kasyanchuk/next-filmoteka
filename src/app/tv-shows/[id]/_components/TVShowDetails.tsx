@@ -22,21 +22,21 @@ export default function TVShowDetails(props: Props) {
 
     return (
         <div>
-            <div className='p-tv-show__details'>
-                <div className='p-tv-show__details-backdrop'>
+            <div className="p-tv-show__details">
+                <div className="p-tv-show__details-backdrop">
                     <Image
-                        src={imageUrl(IMG_SIZES.MEDIA_CARD_DETAILS_BACKDROP, props.tvShow.backdrop_path)}
-                        sizes='(max-width: 767px) 768px, (max-width: 1319px) 1320px, 1920px'
-                        alt={props.tvShow.name}
+                        src={ imageUrl(IMG_SIZES.MEDIA_CARD_DETAILS_BACKDROP, props.tvShow.backdrop_path) }
+                        sizes="(max-width: 767px) 768px, (max-width: 1319px) 1320px, 1920px"
+                        alt={ props.tvShow.name }
                         fill
                     />
                 </div>
 
-                <Container className='p-tv-show__details-container sh'>
-                    <div className='p-tv-show__details-cover'>
+                <Container className="p-tv-show__details-container sh">
+                    <div className="p-tv-show__details-cover">
                         {
                             props.tvShow.adult &&
-                            <div className='p-tv-show__details-adult'>
+                            <div className="p-tv-show__details-adult">
                                 18<span>+</span>
                             </div>
                         }
@@ -47,127 +47,127 @@ export default function TVShowDetails(props: Props) {
                                     ? imageUrl(IMG_SIZES.MEDIA_CARD_DETAILS_COVER, props.tvShow.poster_path)
                                     : '/img/poster-not-available.jpg'
                             }
-                            sizes='(max-width: 767px) 253px, (max-width: 1319px) 326px, 500px'
-                            alt={props.tvShow.name}
+                            sizes="(max-width: 767px) 253px, (max-width: 1319px) 326px, 500px"
+                            alt={ props.tvShow.name }
                             fill
                         />
 
                         <Link
-                            href={pagesSimilarUrl(MediaType.TV_SHOW, props.id)}
-                            className='p-tv-show__details-similar-button'
+                            href={ pagesSimilarUrl(MediaType.TV_SHOW, props.id) }
+                            className="p-tv-show__details-similar-button"
                         >
                             Similar
                         </Link>
                     </div>
 
-                    <Title className='p-tv-show__details-title'>
-                        {props.tvShow.name}
+                    <Title className="p-tv-show__details-title">
+                        { props.tvShow.name }
                         {
                             props.tvShow.first_air_date &&
-                            <>&nbsp;({formatDate(props.tvShow.first_air_date, 'YYYY')})</>
+                            <>&nbsp;({ formatDate(props.tvShow.first_air_date, 'YYYY') })</>
                         }
                     </Title>
 
-                    <ul className='p-tv-show__details-list-rounds'>
+                    <ul className="p-tv-show__details-list-rounds">
                         <li
-                            className='p-tv-show__details-list-rounds-item'
+                            className="p-tv-show__details-list-rounds-item"
                             style={
                                 {
-                                    background: `conic-gradient(var(--color-success) ${average}%, 0, var(--color-primary) ${100 - average}%)`,
+                                    background: `conic-gradient(var(--color-success) ${ average }%, 0, var(--color-primary) ${ 100 - average }%)`
                                 }
                             }
                         >
-                            <div className='p-tv-show__details-list-rounds-item-inner'>
-                                {average}
+                            <div className="p-tv-show__details-list-rounds-item-inner">
+                                { average }
                                 <span>%</span>
                             </div>
                         </li>
 
-                        <li className='p-tv-show__details-list-rounds-item'>
-                            {props.tvShow.vote_count ?? 0}
+                        <li className="p-tv-show__details-list-rounds-item">
+                            { props.tvShow.vote_count ?? 0 }
                             <span>votes</span>
                         </li>
 
-                        <li className='p-tv-show__details-list-rounds-item'>
-                            {Math.round(props.tvShow.popularity)}
+                        <li className="p-tv-show__details-list-rounds-item">
+                            { Math.round(props.tvShow.popularity) }
                             <span>popularity</span>
                         </li>
 
-                        <li className='p-tv-show__details-list-rounds-item'>
-                            {props.tvShow.number_of_seasons ?? 0}
+                        <li className="p-tv-show__details-list-rounds-item">
+                            { props.tvShow.number_of_seasons ?? 0 }
                             <span>seasons</span>
                         </li>
 
-                        <li className='p-tv-show__details-list-rounds-item'>
-                            {props.tvShow.number_of_episodes ?? 0}
+                        <li className="p-tv-show__details-list-rounds-item">
+                            { props.tvShow.number_of_episodes ?? 0 }
                             <span>episodes</span>
                         </li>
                     </ul>
 
-                    <ul className='p-tv-show__details-list-info'>
+                    <ul className="p-tv-show__details-list-info">
                         {
                             props.tvShow.tagline &&
-                            <li className='p-tv-show__details-list-info-item p-tv-show__details-list-info-item--tagline'>
-                                &quot;{props.tvShow.tagline}&quot;
+                            <li className="p-tv-show__details-list-info-item p-tv-show__details-list-info-item--tagline">
+                                &quot;{ props.tvShow.tagline }&quot;
                             </li>
                         }
 
                         {
                             props.tvShow.homepage &&
-                            <li className='p-tv-show__details-list-info-item p-tv-show__details-list-info-item--link'>
+                            <li className="p-tv-show__details-list-info-item p-tv-show__details-list-info-item--link">
                                 <span>WebSite:</span>
                                 <a
-                                    href={props.tvShow.homepage}
-                                    rel='noopener noreferrer'
-                                    target='_blank'
+                                    href={ props.tvShow.homepage }
+                                    rel="noopener noreferrer"
+                                    target="_blank"
                                 >
-                                    {props.tvShow.homepage}
+                                    { props.tvShow.homepage }
                                 </a>
                             </li>
                         }
 
                         {
                             props.tvShow.first_air_date &&
-                            <li className='p-tv-show__details-list-info-item'>
+                            <li className="p-tv-show__details-list-info-item">
                                 <span>First air date:</span>
-                                <span>{formatDate(props.tvShow.first_air_date, 'DD.MM.YYYY')}</span>
+                                <span>{ formatDate(props.tvShow.first_air_date, 'DD.MM.YYYY') }</span>
                             </li>
                         }
 
                         {
                             props.tvShow.last_air_date &&
-                            <li className='p-tv-show__details-list-info-item'>
+                            <li className="p-tv-show__details-list-info-item">
                                 <span>Last air date:</span>
-                                <span>{formatDate(props.tvShow.last_air_date, 'DD.MM.YYYY')}</span>
+                                <span>{ formatDate(props.tvShow.last_air_date, 'DD.MM.YYYY') }</span>
                             </li>
                         }
 
-                        <li className='p-tv-show__details-list-info-item'>
+                        <li className="p-tv-show__details-list-info-item">
                             <span>In production:</span>
-                            <span>{props.tvShow.in_production ? 'Yes' : 'No'}</span>
+                            <span>{ props.tvShow.in_production ? 'Yes' : 'No' }</span>
                         </li>
 
-                        <li className='p-tv-show__details-list-info-item'>
+                        <li className="p-tv-show__details-list-info-item">
                             <span>Type:</span>
-                            <span>{props.tvShow.type}</span>
+                            <span>{ props.tvShow.type }</span>
                         </li>
 
-                        <li className='p-tv-show__details-list-info-item'>
+                        <li className="p-tv-show__details-list-info-item">
                             <span>Status:</span>
-                            <span>{props.tvShow.status}</span>
+                            <span>{ props.tvShow.status }</span>
                         </li>
 
                         {
                             props.tvShow.genres.length > 0 &&
-                            <li className='p-tv-show__details-list-info-item'>
-                                <span className='self-start'>Genres:</span>
+                            <li className="p-tv-show__details-list-info-item">
+                                <span className="self-start">Genres:</span>
                                 <span>
                                     {
                                         props.tvShow.genres.map(
                                             (genre, index) => (
-                                                <Fragment key={index}>
-                                                    {index !== 0 && <>&nbsp;|&nbsp;</>}
-                                                    {genre}
+                                                <Fragment key={ index }>
+                                                    { index !== 0 && <>&nbsp;|&nbsp;</> }
+                                                    { genre }
                                                 </Fragment>
                                             ))
                                     }
@@ -175,22 +175,22 @@ export default function TVShowDetails(props: Props) {
                             </li>
                         }
 
-                        <li className='p-tv-show__details-list-info-item'>
+                        <li className="p-tv-show__details-list-info-item">
                             <span>Original language:</span>
-                            <span>{props.tvShow.original_language}</span>
+                            <span>{ props.tvShow.original_language }</span>
                         </li>
 
                         {
                             props.tvShow.spoken_languages.length > 0 &&
-                            <li className='p-tv-show__details-list-info-item'>
-                                <span className='self-start'>Spoken languages:</span>
+                            <li className="p-tv-show__details-list-info-item">
+                                <span className="self-start">Spoken languages:</span>
                                 <span>
                                     {
                                         props.tvShow.spoken_languages.map(
                                             (language, index) => (
-                                                <Fragment key={index}>
-                                                    {index !== 0 && <>&nbsp;|&nbsp;</>}
-                                                    {language.name || language.english_name}
+                                                <Fragment key={ index }>
+                                                    { index !== 0 && <>&nbsp;|&nbsp;</> }
+                                                    { language.name || language.english_name }
                                                 </Fragment>
                                             ))
                                     }
@@ -200,15 +200,15 @@ export default function TVShowDetails(props: Props) {
 
                         {
                             props.tvShow.origin_country.length > 0 &&
-                            <li className='p-tv-show__details-list-info-item'>
-                                <span className='self-start'>Countries:</span>
+                            <li className="p-tv-show__details-list-info-item">
+                                <span className="self-start">Countries:</span>
                                 <span>
                                     {
                                         props.tvShow.origin_country.map(
                                             (country, index) => (
-                                                <Fragment key={index}>
-                                                    {index !== 0 && <>&nbsp;|&nbsp;</>}
-                                                    {country}
+                                                <Fragment key={ index }>
+                                                    { index !== 0 && <>&nbsp;|&nbsp;</> }
+                                                    { country }
                                                 </Fragment>
                                             ))
                                     }
@@ -219,48 +219,48 @@ export default function TVShowDetails(props: Props) {
 
                     {
                         props.tvShow.overview &&
-                        <div className='p-tv-show__details-overview'>
-                            <p className='p-tv-show__details-overview-title'>
+                        <div className="p-tv-show__details-overview">
+                            <p className="p-tv-show__details-overview-title">
                                 Overview:
                             </p>
 
                             <ShowMore
-                                className='p-tv-show__details-overview-text'
-                                lines={3}
+                                className="p-tv-show__details-overview-text"
+                                lines={ 3 }
                             >
-                                {props.tvShow.overview}
+                                { props.tvShow.overview }
                             </ShowMore>
                         </div>
                     }
 
                     {
                         props.tvShow.socialLinks.length > 0 &&
-                        <SocialLinks socials={props.tvShow.socialLinks} />
+                        <SocialLinks socials={ props.tvShow.socialLinks } />
                     }
                 </Container>
             </div>
 
             {
                 (props.tvShow.created_by.length > 0 || props.tvShow.networks.length > 0 || props.tvShow.production_companies.length > 0) &&
-                <Container className='p-tv-show__details-content'>
+                <Container className="p-tv-show__details-content">
                     {
                         props.tvShow.created_by.length > 0 &&
-                        <div className='p-tv-show__details-creators'>
-                            <p className='p-tv-show__details-creators-title'>
+                        <div className="p-tv-show__details-creators">
+                            <p className="p-tv-show__details-creators-title">
                                 Creators:
                             </p>
 
-                            <ul className='p-tv-show__details-creators-list'>
+                            <ul className="p-tv-show__details-creators-list">
                                 {
                                     props.tvShow.created_by.map(
                                         (creator, index) => (
-                                            <li key={index}>
+                                            <li key={ index }>
                                                 <Link
-                                                    href={pagesPersonUrl(String(creator.id))}
-                                                    className='p-tv-show__details-creators-item'
+                                                    href={ pagesPersonUrl(String(creator.id)) }
+                                                    className="p-tv-show__details-creators-item"
                                                 >
 
-                                                    <div className='p-tv-show__details-creators-logo'>
+                                                    <div className="p-tv-show__details-creators-logo">
                                                         <Image
                                                             src={
                                                                 creator.profile_path
@@ -268,13 +268,13 @@ export default function TVShowDetails(props: Props) {
                                                                     : '/img/avatar-placeholder.svg'
                                                             }
                                                             fill
-                                                            sizes='50px'
-                                                            alt={creator.name}
+                                                            sizes="50px"
+                                                            alt={ creator.name }
                                                         />
                                                     </div>
 
-                                                    <div className='p-tv-show__details-creators-content'>
-                                                        {creator.name}
+                                                    <div className="p-tv-show__details-creators-content">
+                                                        { creator.name }
                                                     </div>
                                                 </Link>
                                             </li>
@@ -286,19 +286,19 @@ export default function TVShowDetails(props: Props) {
 
                     {
                         props.tvShow.networks.length > 0 &&
-                        <div className='p-tv-show__details-networks'>
-                            <p className='p-tv-show__details-networks-title'>
+                        <div className="p-tv-show__details-networks">
+                            <p className="p-tv-show__details-networks-title">
                                 Networks:
                             </p>
-                            <ul className='p-tv-show__details-networks-list'>
+                            <ul className="p-tv-show__details-networks-list">
                                 {
                                     props.tvShow.networks.map(
                                         (network, index) => (
                                             <li
-                                                key={index}
-                                                className='p-tv-show__details-networks-item'
+                                                key={ index }
+                                                className="p-tv-show__details-networks-item"
                                             >
-                                                <div className='p-tv-show__details-networks-logo'>
+                                                <div className="p-tv-show__details-networks-logo">
                                                     <Image
                                                         src={
                                                             network.logo_path
@@ -306,18 +306,18 @@ export default function TVShowDetails(props: Props) {
                                                                 : '/img/image-placeholder.svg'
                                                         }
                                                         fill
-                                                        sizes='92px'
-                                                        alt={network.name}
+                                                        sizes="92px"
+                                                        alt={ network.name }
                                                     />
                                                 </div>
-                                                <div className='p-tv-show__details-networks-content'>
-                                                    <span className='text-lg font-semibold'>
-                                                        {network.name}
+                                                <div className="p-tv-show__details-networks-content">
+                                                    <span className="text-lg font-semibold">
+                                                        { network.name }
                                                     </span>
                                                     {
                                                         network.origin_country &&
-                                                        <span className='opacity-75 text-sm'>
-                                                            {network.origin_country}
+                                                        <span className="opacity-75 text-sm">
+                                                            { network.origin_country }
                                                         </span>
                                                     }
                                                 </div>
@@ -330,19 +330,19 @@ export default function TVShowDetails(props: Props) {
 
                     {
                         props.tvShow.production_companies.length > 0 &&
-                        <div className='p-tv-show__details-companies'>
-                            <p className='p-tv-show__details-companies-title'>
+                        <div className="p-tv-show__details-companies">
+                            <p className="p-tv-show__details-companies-title">
                                 Production companies:
                             </p>
-                            <ul className='p-tv-show__details-companies-list'>
+                            <ul className="p-tv-show__details-companies-list">
                                 {
                                     props.tvShow.production_companies.map(
                                         (company, index) => (
                                             <li
-                                                key={index}
-                                                className='p-tv-show__details-companies-item'
+                                                key={ index }
+                                                className="p-tv-show__details-companies-item"
                                             >
-                                                <div className='p-tv-show__details-companies-logo'>
+                                                <div className="p-tv-show__details-companies-logo">
                                                     <Image
                                                         src={
                                                             company.logo_path
@@ -350,18 +350,18 @@ export default function TVShowDetails(props: Props) {
                                                                 : '/img/image-placeholder.svg'
                                                         }
                                                         fill
-                                                        sizes='92px'
-                                                        alt={company.name}
+                                                        sizes="92px"
+                                                        alt={ company.name }
                                                     />
                                                 </div>
-                                                <div className='p-tv-show__details-companies-content'>
-                                                    <span className='text-lg font-semibold'>
-                                                        {company.name}
+                                                <div className="p-tv-show__details-companies-content">
+                                                    <span className="text-lg font-semibold">
+                                                        { company.name }
                                                     </span>
                                                     {
                                                         company.origin_country &&
-                                                        <span className='opacity-75 text-sm'>
-                                                            {company.origin_country}
+                                                        <span className="opacity-75 text-sm">
+                                                            { company.origin_country }
                                                         </span>
                                                     }
                                                 </div>
@@ -373,6 +373,6 @@ export default function TVShowDetails(props: Props) {
                     }
                 </Container>
             }
-        </div >
+        </div>
     );
-};
+}

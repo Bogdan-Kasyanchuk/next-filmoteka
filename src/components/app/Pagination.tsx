@@ -6,12 +6,12 @@ import Link from 'next/link';
 import { usePathname, useSearchParams } from 'next/navigation';
 
 import Icon from '@/components/ui/data-display/Icon';
-import { mobilePagination, desktopPagination } from '@/utils/generatePagination';
+import { desktopPagination, mobilePagination } from '@/utils/generatePagination';
 
 type Props = {
     currentPage: number,
     totalPages: number
-}
+};
 
 export default function Pagination(props: Props) {
     const pathname = usePathname();
@@ -21,7 +21,7 @@ export default function Pagination(props: Props) {
         const params = new URLSearchParams(searchParams);
         params.set('page', page.toString());
 
-        return `${pathname}?${params.toString()}`;
+        return `${ pathname }?${ params.toString() }`;
     };
 
     const isMobile = useMediaQuery(
@@ -34,11 +34,11 @@ export default function Pagination(props: Props) {
         ? mobilePagination(props.currentPage, props.totalPages)
         : desktopPagination(props.currentPage, props.totalPages);
 
-    const icon = <Icon name='angle' />;
+    const icon = <Icon name="angle" />;
 
     return (
-        <div className='c-pagination'>
-            <ul className='c-pagination__list'>
+        <div className="c-pagination">
+            <ul className="c-pagination__list">
                 <li
                     className={
                         clsx('c-pagination__item', {
@@ -48,9 +48,9 @@ export default function Pagination(props: Props) {
                 >
                     {
                         props.currentPage <= 1
-                            ? <>{icon}</>
-                            : <Link href={createPageURL(props.currentPage - 1)}>
-                                {icon}
+                            ? <>{ icon }</>
+                            : <Link href={ createPageURL(props.currentPage - 1) }>
+                                { icon }
                             </Link>
                     }
                 </li>
@@ -59,20 +59,20 @@ export default function Pagination(props: Props) {
                     generatedAllPages.map(
                         (page, index) => (
                             <li
-                                key={index}
+                                key={ index }
                                 className={
                                     clsx('c-pagination__item', {
                                         'c-pagination__item--is-active': page === props.currentPage,
-                                        'pointer-events-none': page === '...',
+                                        'pointer-events-none': page === '...'
                                     })
                                 }
                             >
                                 {
                                     typeof page === 'number'
-                                        ? <Link href={createPageURL(page)}>
-                                            {page}
+                                        ? <Link href={ createPageURL(page) }>
+                                            { page }
                                         </Link>
-                                        : <>{page}</>
+                                        : <>{ page }</>
                                 }
                             </li>
                         ))
@@ -87,18 +87,18 @@ export default function Pagination(props: Props) {
                 >
                     {
                         props.currentPage >= props.totalPages
-                            ? <>{icon}</>
-                            : <Link href={createPageURL(props.currentPage + 1)}>
-                                {icon}
+                            ? <>{ icon }</>
+                            : <Link href={ createPageURL(props.currentPage + 1) }>
+                                { icon }
                             </Link>
                     }
                 </li>
             </ul>
 
             <div
-                className='c-pagination__progress-bar'
-                style={{ width: `${props.currentPage / props.totalPages * 100}%` }}
+                className="c-pagination__progress-bar"
+                style={ { width: `${ props.currentPage / props.totalPages * 100 }%` } }
             />
-        </div >
+        </div>
     );
 }

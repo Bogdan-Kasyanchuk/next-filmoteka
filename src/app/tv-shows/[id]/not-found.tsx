@@ -6,7 +6,7 @@ import { pagesTVShowsUrl } from '@/routes';
 export default function NotFound() {
     return (
         <PageNotFound
-            title='Could not found tv show'
+            title="Could not found tv show"
             link={
                 {
                     href: pagesTVShowsUrl(),

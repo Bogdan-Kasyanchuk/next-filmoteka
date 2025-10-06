@@ -1,6 +1,6 @@
 'use client';
 
-import { usePathname, useSearchParams, useRouter } from 'next/navigation';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 
 import Tabs from '@/components/ui/data-display/Tabs';
 import { MovieType } from '@/enums';
@@ -9,8 +9,8 @@ import { sortSearchParams } from '@/helpers/sortSearchParams';
 import { movieTypeFilter } from './datasets';
 
 type Props = {
-    type: MovieType;
-}
+    type: MovieType
+};
 
 export default function Filter(props: Props) {
     const pathname = usePathname();
@@ -27,12 +27,12 @@ export default function Filter(props: Props) {
     };
 
     return (
-        <div className='p-movies__filter'>
+        <div className="p-movies__filter">
             <Tabs<MovieType>
-                tabs={movieTypeFilter}
-                active={props.type}
+                tabs={ movieTypeFilter }
+                active={ props.type }
                 onClick={
-                    (value) => {
+                    value => {
                         handleType(value);
                     }
                 }

@@ -9,7 +9,7 @@ import { formatDate } from '@/utils/formateDate';
 
 type Props = {
     crew: MediaCrewMapper
-}
+};
 
 export default function MediaCrewCard(props: Props) {
     return (
@@ -19,10 +19,10 @@ export default function MediaCrewCard(props: Props) {
                     ? pagesMovieUrl(String(props.crew.id))
                     : pagesTVShowUrl(String(props.crew.id))
             }
-            className='с-media-crew-card'
+            className="с-media-crew-card"
         >
-            <div className='с-media-crew-card__left'>
-                <div className='с-media-crew-card__date'>
+            <div className="с-media-crew-card__left">
+                <div className="с-media-crew-card__date">
                     {
 
                         props.crew.release_date
@@ -31,42 +31,42 @@ export default function MediaCrewCard(props: Props) {
                     }
                 </div>
 
-                <div className='с-media-crew-card__type'>
-                    {props.crew.media_type}
+                <div className="с-media-crew-card__type">
+                    { props.crew.media_type }
                 </div>
             </div>
 
-            <div className='с-media-crew-card__cover'>
+            <div className="с-media-crew-card__cover">
                 <Image
                     src={
                         props.crew.poster_path
                             ? imageUrl(IMG_SIZES.MEDIA_CREW_CARD_COVER, props.crew.poster_path)
                             : '/img/poster-not-available.jpg'
                     }
-                    sizes='92px'
-                    alt={props.crew.title}
+                    sizes="92px"
+                    alt={ props.crew.title }
                     fill
                 />
             </div>
 
-            <div className='с-media-crew-card__info'>
+            <div className="с-media-crew-card__info">
                 <p
-                    className='с-media-crew-card__info-name'
-                    title={props.crew.title}
+                    className="с-media-crew-card__info-name"
+                    title={ props.crew.title }
                 >
-                    {props.crew.title}
+                    { props.crew.title }
                 </p>
 
                 {
                     props.crew.job &&
                     <p
-                        className='с-media-crew-card__info-job'
-                        title={props.crew.job}
+                        className="с-media-crew-card__info-job"
+                        title={ props.crew.job }
                     >
-                        as&nbsp;{props.crew.job}
+                        as&nbsp;{ props.crew.job }
                     </p>
                 }
             </div>
-        </Link >
+        </Link>
     );
-};
+}

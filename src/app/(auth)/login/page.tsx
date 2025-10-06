@@ -8,35 +8,35 @@ import Title from '@/components/ui/typography/Title';
 import './_styles/index.css';
 
 export const metadata: Metadata = {
-    title: 'Login',
+    title: 'Login'
 };
 
 export default async function Page() {
     return (
-        <Container className='p-login'>
-            <Title className='p-login__title'>
+        <Container className="p-login">
+            <Title className="p-login__title">
                 Login
             </Title>
 
-            <form className='p-login__form'>
-                <div className='p-login__form-fields'>
+            <form className="p-login__form">
+                <div className="p-login__form-fields">
                     <Input
-                        startSection={<Icon name='email' />}
-                        type='email'
-                        name='email'
-                        label='Email'
-                        placeholder='email@domain.com'
-                        autoComplete='off'
+                        startSection={ <Icon name="email" /> }
+                        type="email"
+                        name="email"
+                        label="Email"
+                        placeholder="email@domain.com"
+                        autoComplete="off"
                         // value={value}
                         // error={error}
                         required
                     />
 
                     <Input
-                        startSection={<Icon name='key' />}
-                        type='password'
-                        label='Password'
-                        placeholder='Password'
+                        startSection={ <Icon name="key" /> }
+                        type="password"
+                        label="Password"
+                        placeholder="Password"
                     // value={value}
                     // error={error}
                     // onChange={change}
@@ -44,8 +44,8 @@ export default async function Page() {
                 </div>
 
                 <button
-                    type='submit'
-                    className='p-login__form-button'
+                    type="submit"
+                    className="p-login__form-button"
                 >
                     Login
                 </button>

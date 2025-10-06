@@ -12,30 +12,30 @@ import Title from '@/components/ui/typography/Title';
 type Props<T> = {
     recommendations: {
         items: T[],
-        totalPages: number,
+        totalPages: number
     },
     item: (item: T) => ReactNode,
-    showAllPath: string;
-}
+    showAllPath: string
+};
 
 export default function Recommendations<T>(props: Props<T>) {
-    const [prevButtonRef, setPrevButtonRef] = useState<HTMLButtonElement | null>(null);
-    const [nextButtonRef, setNextButtonRef] = useState<HTMLButtonElement | null>(null);
+    const [ prevButtonRef, setPrevButtonRef ] = useState<HTMLButtonElement | null>(null);
+    const [ nextButtonRef, setNextButtonRef ] = useState<HTMLButtonElement | null>(null);
 
     return (
-        <div className='с-recommendations'>
+        <div className="с-recommendations">
             <Title
-                order='h3'
-                variant={3}
-                className='с-recommendations__title'
+                order="h3"
+                variant={ 3 }
+                className="с-recommendations__title"
             >
                 Recommendations
             </Title>
 
-            <div className='с-recommendations__cards'>
+            <div className="с-recommendations__cards">
                 <Carousel
-                    items={props.recommendations.items}
-                    modules={[Autoplay, Navigation]}
+                    items={ props.recommendations.items }
+                    modules={ [ Autoplay, Navigation ] }
                     options={
                         {
                             autoplay: {
@@ -62,12 +62,12 @@ export default function Recommendations<T>(props: Props<T>) {
 
                 <>
                     <Arrow
-                        type='prev'
-                        refEl={setPrevButtonRef}
+                        type="prev"
+                        refEl={ setPrevButtonRef }
                     />
                     <Arrow
-                        type='next'
-                        refEl={setNextButtonRef}
+                        type="next"
+                        refEl={ setNextButtonRef }
                     />
                 </>
             </div>
@@ -75,8 +75,8 @@ export default function Recommendations<T>(props: Props<T>) {
             {
                 props.recommendations.totalPages > 1 &&
                 <Link
-                    href={props.showAllPath}
-                    className='с-recommendations__show-all-button'
+                    href={ props.showAllPath }
+                    className="с-recommendations__show-all-button"
                 >
                     Show all recommendations
                 </Link>
@@ -93,8 +93,8 @@ export type ArrowProps = {
 function Arrow(props: ArrowProps) {
     return (
         <button
-            type='button'
-            ref={props.refEl}
+            type="button"
+            ref={ props.refEl }
             className={
                 clsx(
                     'с-recommendations__arrow',
@@ -105,7 +105,7 @@ function Arrow(props: ArrowProps) {
                 )
             }
         >
-            <Icon name='arrow' />
+            <Icon name="arrow" />
         </button>
     );
 }

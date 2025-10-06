@@ -1,6 +1,6 @@
 'use client';
 
-import { usePathname, useSearchParams, useRouter } from 'next/navigation';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 
 import Tabs from '@/components/ui/data-display/Tabs';
 import { TVShowType } from '@/enums';
@@ -9,8 +9,8 @@ import { sortSearchParams } from '@/helpers/sortSearchParams';
 import { tvShowTypeFilter } from './datasets';
 
 type Props = {
-    type: TVShowType;
-}
+    type: TVShowType
+};
 
 export default function Filter(props: Props) {
     const pathname = usePathname();
@@ -27,12 +27,12 @@ export default function Filter(props: Props) {
     };
 
     return (
-        <div className='p-tv-shows__filter'>
+        <div className="p-tv-shows__filter">
             <Tabs<TVShowType>
-                tabs={tvShowTypeFilter}
-                active={props.type}
+                tabs={ tvShowTypeFilter }
+                active={ props.type }
                 onClick={
-                    (value) => {
+                    value => {
                         handleType(value);
                     }
                 }

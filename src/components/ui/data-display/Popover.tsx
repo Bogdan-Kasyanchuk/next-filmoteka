@@ -1,6 +1,6 @@
 import { Arrow, Content, Portal, Root, Trigger } from '@radix-ui/react-popover';
 import clsx from 'clsx';
-import React, { PropsWithChildren, ReactNode } from 'react';
+import { PropsWithChildren, ReactNode } from 'react';
 
 type Props = {
     trigger: ReactNode,
@@ -9,29 +9,29 @@ type Props = {
         arrow?: string
     },
     isArrow?: boolean
-}
+};
 
 export default function EpisodeCard(props: PropsWithChildren<Props>) {
     return (
         <Root>
             <Trigger asChild>
-                {props.trigger}
+                { props.trigger }
             </Trigger>
 
             <Portal>
                 <Content
-                    className={clsx('c-popover__content', props.classNames?.content)}
-                    sideOffset={props.isArrow ? 5 : 10}
-                    collisionPadding={20}
+                    className={ clsx('c-popover__content', props.classNames?.content) }
+                    sideOffset={ props.isArrow ? 5 : 10 }
+                    collisionPadding={ 20 }
                 >
-                    {props.children}
+                    { props.children }
 
                     {
                         props.isArrow &&
-                        <Arrow className={clsx('c-popover__arrow', props.classNames?.arrow)} />
+                        <Arrow className={ clsx('c-popover__arrow', props.classNames?.arrow) } />
                     }
                 </Content>
             </Portal>
         </Root>
     );
-};
+}

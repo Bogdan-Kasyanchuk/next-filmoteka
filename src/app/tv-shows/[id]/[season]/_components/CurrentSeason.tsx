@@ -9,52 +9,52 @@ import { TVShowSeasonDetailsMapper } from '@/types';
 import { formatDate } from '@/utils/formateDate';
 
 type Props = {
-    season: TVShowSeasonDetailsMapper['season'];
-    id: string;
-}
+    season: TVShowSeasonDetailsMapper['season'],
+    id: string
+};
 
 export default function CurrentSeason(props: Props) {
     return (
-        <div className='p-season__current-season'>
-            <div className='p-season__current-season-inner'>
-                <div className='p-season__current-season-cover'>
+        <div className="p-season__current-season">
+            <div className="p-season__current-season-inner">
+                <div className="p-season__current-season-cover">
                     <Image
                         src={
                             props.season.poster_path
                                 ? imageUrl(IMG_SIZES.SEASON_CARD_DETAILS_COVER, props.season.poster_path)
                                 : '/img/poster-not-available.jpg'
                         }
-                        sizes='92px'
-                        alt={props.season.name}
+                        sizes="92px"
+                        alt={ props.season.name }
                         fill
                     />
                 </div>
 
-                <div className='p-season__current-season-info'>
+                <div className="p-season__current-season-info">
                     <Link
-                        href={pagesTVShowUrl(props.id)}
-                        className='u-link-color font-bold leading-none text-md'
+                        href={ pagesTVShowUrl(props.id) }
+                        className="u-link-color font-bold leading-none text-md"
                     >
                         Go to TV Show
                     </Link>
 
                     <Title
-                        className='p-season__current-season-title'
+                        className="p-season__current-season-title"
                         title={
-                            `${props.season.name} ${formatDate(props.season.air_date, 'DD.MM.YYYY')}`
+                            `${ props.season.name } ${ formatDate(props.season.air_date, 'DD.MM.YYYY') }`
                         }
-                        variant={3}
+                        variant={ 3 }
                     >
-                        {props.season.name}&nbsp;({formatDate(props.season.air_date, 'DD.MM.YYYY')})
+                        { props.season.name }&nbsp;({ formatDate(props.season.air_date, 'DD.MM.YYYY') })
                     </Title>
 
-                    <div className='p-season__current-season-tags'>
-                        <div className='p-season__current-season-tag p-season__current-season-tag--type'>
-                            Season:&nbsp;{props.season.season_number}
+                    <div className="p-season__current-season-tags">
+                        <div className="p-season__current-season-tag p-season__current-season-tag--type">
+                            Season:&nbsp;{ props.season.season_number }
                         </div>
 
-                        <div className='p-season__current-season-tag p-season__current-season-tag--average'>
-                            {Math.round(props.season.vote_average * 10)}
+                        <div className="p-season__current-season-tag p-season__current-season-tag--average">
+                            { Math.round(props.season.vote_average * 10) }
                             <span>%</span>
                         </div>
                     </div>
@@ -63,12 +63,12 @@ export default function CurrentSeason(props: Props) {
 
             {
                 props.season.overview &&
-                <div className='p-season__current-season-overview'>
+                <div className="p-season__current-season-overview">
                     <ShowMore
-                        className='p-season__current-season-overview-text'
-                        lines={3}
+                        className="p-season__current-season-overview-text"
+                        lines={ 3 }
                     >
-                        {props.season.overview}
+                        { props.season.overview }
                     </ShowMore>
                 </div>
             }

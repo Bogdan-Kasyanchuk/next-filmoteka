@@ -14,36 +14,36 @@ import { transformCurrentMovie, transformReview } from '@/helpers/transformData'
 import { getCurrentMovieById, getReviewsToMovie } from '@/services/api';
 
 type Props = {
-    id: string;
-    currentPage: number,
-}
+    id: string,
+    currentPage: number
+};
 
 export default function Content(props: Props) {
     const data = useQueries({
         queries: [
             {
-                queryKey: ['movies', props.id, 'reviews'],
-                queryFn: () => getCurrentMovieById(props.id),
+                queryKey: [ 'movies', props.id, 'reviews' ],
+                queryFn: () => getCurrentMovieById(props.id)
             },
             {
-                queryKey: ['movies', props.id, 'reviews', props.currentPage],
+                queryKey: [ 'movies', props.id, 'reviews', props.currentPage ],
                 queryFn: () => getReviewsToMovie(props.id, props.currentPage),
-                placeholderData: keepPreviousData,
-            },
+                placeholderData: keepPreviousData
+            }
         ],
-        combine: (results) => {
+        combine: results => {
             return {
-                movie: results[0].data && transformCurrentMovie(results[0].data),
+                movie: results[ 0 ].data && transformCurrentMovie(results[ 0 ].data),
                 reviews: {
-                    items: results[1].data && results[1].data.results.map(
-                        (review) => transformReview(review)
+                    items: results[ 1 ].data && results[ 1 ].data.results.map(
+                        review => transformReview(review)
                     ),
-                    total_pages: results[1].data?.total_pages
+                    total_pages: results[ 1 ].data?.total_pages
                 },
-                pending: results.some((result) => result.isPending),
-                fetching: results.some((result) => result.isFetching),
+                pending: results.some(result => result.isPending),
+                fetching: results.some(result => result.isFetching)
             };
-        },
+        }
     });
 
     if (data.pending || data.fetching) {
@@ -59,23 +59,23 @@ export default function Content(props: Props) {
     }
 
     return (
-        <Container className='p-movie-reviews'>
+        <Container className="p-movie-reviews">
             <CurrentMovie
-                movie={data.movie}
-                id={props.id}
+                movie={ data.movie }
+                id={ props.id }
             />
 
-            <Title className='p-movie-reviews__title'>
+            <Title className="p-movie-reviews__title">
                 Reviews
             </Title>
 
-            <div className='p-movie-reviews__content'>
-                <ul className='p-movie-reviews__list'>
+            <div className="p-movie-reviews__content">
+                <ul className="p-movie-reviews__list">
                     {
                         data.reviews.items.map(
                             (item, index) => (
-                                <li key={index}>
-                                    <ReviewCard review={item} />
+                                <li key={ index }>
+                                    <ReviewCard review={ item } />
                                 </li>
                             )
                         )
@@ -85,8 +85,8 @@ export default function Content(props: Props) {
                 {
                     (data.reviews.total_pages && data.reviews.total_pages > 1) &&
                     <Pagination
-                        currentPage={props.currentPage}
-                        totalPages={data.reviews.total_pages}
+                        currentPage={ props.currentPage }
+                        totalPages={ data.reviews.total_pages }
                     />
                 }
             </div>

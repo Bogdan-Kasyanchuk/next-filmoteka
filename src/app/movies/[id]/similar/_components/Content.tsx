@@ -14,36 +14,36 @@ import { transformCurrentMovie, transformMovie } from '@/helpers/transformData';
 import { getCurrentMovieById, getSimilarMovies } from '@/services/api';
 
 type Props = {
-    id: string;
-    currentPage: number,
-}
+    id: string,
+    currentPage: number
+};
 
 export default function Content(props: Props) {
     const data = useQueries({
         queries: [
             {
-                queryKey: ['movies', props.id, 'similar'],
-                queryFn: () => getCurrentMovieById(props.id),
+                queryKey: [ 'movies', props.id, 'similar' ],
+                queryFn: () => getCurrentMovieById(props.id)
             },
             {
-                queryKey: ['movies', props.id, 'similar', props.currentPage],
+                queryKey: [ 'movies', props.id, 'similar', props.currentPage ],
                 queryFn: () => getSimilarMovies(props.id, props.currentPage),
-                placeholderData: keepPreviousData,
-            },
+                placeholderData: keepPreviousData
+            }
         ],
-        combine: (results) => {
+        combine: results => {
             return {
-                movie: results[0].data && transformCurrentMovie(results[0].data),
+                movie: results[ 0 ].data && transformCurrentMovie(results[ 0 ].data),
                 similar: {
-                    movies: results[1].data && results[1].data.results.map(
-                        (movie) => transformMovie(movie)
+                    movies: results[ 1 ].data && results[ 1 ].data.results.map(
+                        movie => transformMovie(movie)
                     ),
-                    total_pages: results[1].data?.total_pages
+                    total_pages: results[ 1 ].data?.total_pages
                 },
-                pending: results.some((result) => result.isPending),
-                fetching: results.some((result) => result.isFetching),
+                pending: results.some(result => result.isPending),
+                fetching: results.some(result => result.isFetching)
             };
-        },
+        }
     });
 
     if (data.pending || data.fetching) {
@@ -59,23 +59,23 @@ export default function Content(props: Props) {
     }
 
     return (
-        <Container className='p-movie-similar'>
+        <Container className="p-movie-similar">
             <CurrentMovie
-                movie={data.movie}
-                id={props.id}
+                movie={ data.movie }
+                id={ props.id }
             />
 
-            <Title className='p-movie-similar__title'>
+            <Title className="p-movie-similar__title">
                 Similar
             </Title>
 
-            <div className='p-movie-similar__content'>
-                <ul className='p-movie-similar__list'>
+            <div className="p-movie-similar__content">
+                <ul className="p-movie-similar__list">
                     {
                         data.similar.movies.map(
-                            (movie) => (
-                                <li key={movie.id}>
-                                    <MovieCard movie={movie} />
+                            movie => (
+                                <li key={ movie.id }>
+                                    <MovieCard movie={ movie } />
                                 </li>
                             )
                         )
@@ -85,8 +85,8 @@ export default function Content(props: Props) {
                 {
                     (data.similar.total_pages && data.similar.total_pages > 1) &&
                     <Pagination
-                        currentPage={props.currentPage}
-                        totalPages={data.similar.total_pages}
+                        currentPage={ props.currentPage }
+                        totalPages={ data.similar.total_pages }
                     />
                 }
             </div>

@@ -8,7 +8,7 @@ import '@/styles/app/base.css';
 export default function NotFound() {
     return (
         <PageNotFound
-            title='Could not found page'
+            title="Could not found page"
             link={
                 {
                     href: pagesHomeUrl(),

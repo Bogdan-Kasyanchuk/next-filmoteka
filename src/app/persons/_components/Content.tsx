@@ -10,20 +10,20 @@ import { transformPerson } from '@/helpers/transformData';
 import { getPersons } from '@/services/api';
 
 type Props = {
-    currentPage: number,
-}
+    currentPage: number
+};
 
 export default function Content(props: Props) {
     const { data, isPending, isFetching } = useQuery({
-        queryKey: ['persons', props.currentPage],
+        queryKey: [ 'persons', props.currentPage ],
         queryFn: () => getPersons(props.currentPage),
         placeholderData: keepPreviousData,
-        select: (data) => ({
+        select: data => ({
             persons: data.results.map(
-                (person) => transformPerson(person)
+                person => transformPerson(person)
             ),
             total_pages: data.total_pages
-        }),
+        })
     });
 
     if (isPending || isFetching) {
@@ -35,13 +35,13 @@ export default function Content(props: Props) {
     }
 
     return (
-        <div className='p-persons__content'>
-            <ul className='p-persons__list'>
+        <div className="p-persons__content">
+            <ul className="p-persons__list">
                 {
                     data.persons.map(
-                        (person) => (
-                            <li key={person.id}>
-                                <PersonCard person={person} />
+                        person => (
+                            <li key={ person.id }>
+                                <PersonCard person={ person } />
                             </li>
                         )
                     )
@@ -51,8 +51,8 @@ export default function Content(props: Props) {
             {
                 data.total_pages > 1 &&
                 <Pagination
-                    currentPage={props.currentPage}
-                    totalPages={data.total_pages}
+                    currentPage={ props.currentPage }
+                    totalPages={ data.total_pages }
                 />
             }
         </div>

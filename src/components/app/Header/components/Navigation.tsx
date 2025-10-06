@@ -18,36 +18,36 @@ const links = [
     {
         name: 'Home',
         href: pagesHomeUrl(),
-        icon: '/svg/home.svg',
+        icon: '/svg/home.svg'
     },
     {
         name: 'Movies',
         href: pagesMoviesUrl(),
-        icon: '/svg/movie.svg',
+        icon: '/svg/movie.svg'
     },
     {
         name: 'TV',
         href: pagesTVShowsUrl(),
-        icon: '/svg/tv.svg',
+        icon: '/svg/tv.svg'
     },
     {
         name: 'Persons',
         href: pagesPersonsUrl(),
-        icon: '/svg/users.svg',
-    },
+        icon: '/svg/users.svg'
+    }
 ];
 
 export default function Navigation() {
     const pathname = usePathname();
 
     return (
-        <nav className='c-navigation'>
-            <ul className='c-navigation__list'>
+        <nav className="c-navigation">
+            <ul className="c-navigation__list">
                 <li>
                     <Popover
                         trigger={
                             <button
-                                type='button'
+                                type="button"
                                 className={
                                     clsx('c-navigation__link', {
                                         'c-navigation__link--is-active': pathname ===
@@ -56,37 +56,37 @@ export default function Navigation() {
                                 }
                             >
                                 <Image
-                                    width={24}
-                                    height={24}
-                                    src='/svg/search.svg'
-                                    alt='Search'
-                                    className='c-navigation__img'
+                                    width={ 24 }
+                                    height={ 24 }
+                                    src="/svg/search.svg"
+                                    alt="Search"
+                                    className="c-navigation__img"
                                 />
-                                <span className='c-navigation__text'>Search</span>
+                                <span className="c-navigation__text">Search</span>
                             </button>
                         }
                         classNames={
                             {
-                                content: 'c-navigation__search',
+                                content: 'c-navigation__search'
                             }
                         }
                     >
                         <form
-                            action={pagesSearchUrl()}
-                            className='c-navigation__search-form'
+                            action={ pagesSearchUrl() }
+                            className="c-navigation__search-form"
                         >
                             <input
-                                className='c-navigation__search-input'
-                                name='query'
-                                placeholder='Search movies, tv shows, persons'
-                                autoComplete='off'
-                                minLength={3}
+                                className="c-navigation__search-input"
+                                name="query"
+                                placeholder="Search movies, tv shows, persons"
+                                autoComplete="off"
+                                minLength={ 3 }
                                 required
                             />
 
                             <button
-                                type='submit'
-                                className='c-navigation__search-button'
+                                type="submit"
+                                className="c-navigation__search-button"
                             >
                                 Пошук
                             </button>
@@ -96,24 +96,24 @@ export default function Navigation() {
 
                 {
                     links.map(
-                        (link) => (
-                            <li key={link.name}>
+                        link => (
+                            <li key={ link.name }>
                                 <Link
-                                    href={link.href}
+                                    href={ link.href }
                                     className={
                                         clsx('c-navigation__link', {
-                                            'c-navigation__link--is-active': pathname === link.href,
+                                            'c-navigation__link--is-active': pathname === link.href
                                         })
                                     }
                                 >
                                     <Image
-                                        width={24}
-                                        height={24}
-                                        src={link.icon}
-                                        alt={link.name}
-                                        className='c-navigation__img'
+                                        width={ 24 }
+                                        height={ 24 }
+                                        src={ link.icon }
+                                        alt={ link.name }
+                                        className="c-navigation__img"
                                     />
-                                    <span className='c-navigation__text'>{link.name}</span>
+                                    <span className="c-navigation__text">{ link.name }</span>
                                 </Link>
                             </li>
                         )
@@ -122,4 +122,4 @@ export default function Navigation() {
             </ul>
         </nav>
     );
-};
+}

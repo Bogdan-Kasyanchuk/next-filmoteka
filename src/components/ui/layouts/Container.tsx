@@ -13,13 +13,13 @@ export default function Container(props: PropsWithChildren<Props>) {
                 clsx([
                     'l-container',
                     {
-                        [`l-container--${props.size}`]: props.size
+                        [ `l-container--${ props.size }` ]: props.size
                     },
                     props.className
                 ])
             }
         >
-            {props.children}
+            { props.children }
         </div>
     );
 }
