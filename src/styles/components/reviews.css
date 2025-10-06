@@ -26,10 +26,14 @@
         text-align: center;
         text-transform: uppercase;
 
-        @apply bg-link transition-colors;
+        background-color: var(--color-active);
 
-        &:hover {
-            @apply bg-link-hover;
+        transition-property: opacity;
+
+        @media (any-hover: hover) {
+            &:hover {
+                opacity: 0.75;
+            }
         }
     }
 }

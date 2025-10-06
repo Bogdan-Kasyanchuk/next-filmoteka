@@ -14,7 +14,7 @@
     --f-switch-icon-thumb-size: 20px;
     --f-switch-icon-size: 16px;
     --f-switch-icon-left: 4px;
-    --f-switch-icon-bg: var(--color-secondary);
+    --f-switch-icon-bg: var(--color-primary);
     --f-switch-icon-color: var(--color-primary);
 
     @variant min-md {
@@ -61,8 +61,8 @@
         transition-property: background-color, border-color;
 
         .f-switch__field:checked + & {
-            --f-switch-bg: var(--color-link);
-            --f-switch-border-color: var(--color-link);
+            --f-switch-bg: var(--color-active);
+            --f-switch-border-color: var(--color-active);
         }
     }
 
@@ -85,7 +85,7 @@
 
         background-color: var(--f-switch-icon-bg);
 
-        transition-property: left, color;
+        transition-property: left, color, background-color;
 
         i {
             opacity: 0;
@@ -97,6 +97,8 @@
         }
 
         .f-switch__field:checked + .f-switch__inner & {
+            --f-switch-icon-bg: var(--color-secondary);
+
             left: calc(100% - (var(--f-switch-icon-left) + var(--f-switch-icon-thumb-size)));
 
             i {
@@ -119,11 +121,12 @@
         line-height: 1;
         text-transform: uppercase;
 
-        transition-property: margin;
+        transition-property: margin, color;
 
         .f-switch__field:checked + .f-switch__inner & {
             margin-inline-start: 0;
             margin-inline-end: calc(var(--f-switch-icon-left) + var(--f-switch-icon-thumb-size));
+            color: var(--color-secondary);
         }
     }
 

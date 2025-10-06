@@ -181,6 +181,7 @@ export const transformTVShowDetails = (tvShow: TVShowDetailsShema) => ({
         ),
         created_by: tvShow.created_by.map(
             (created) => ({
+                id: created.id,
                 name: created.name || created.original_name,
                 profile_path: created.profile_path
             })

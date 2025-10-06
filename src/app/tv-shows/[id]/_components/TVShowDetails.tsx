@@ -8,7 +8,7 @@ import Container from '@/components/ui/layouts/Container';
 import Title from '@/components/ui/typography/Title';
 import { MediaType } from '@/enums';
 import { IMG_SIZES } from '@/helpers/parameters';
-import { imageUrl, pagesSimilarUrl } from '@/routes';
+import { imageUrl, pagesPersonUrl, pagesSimilarUrl } from '@/routes';
 import { TVShowDetailsMapper } from '@/types';
 import { formatDate } from '@/utils/formateDate';
 
@@ -249,29 +249,34 @@ export default function TVShowDetails(props: Props) {
                             <p className='p-tv-show__details-creators-title'>
                                 Creators:
                             </p>
+
                             <ul className='p-tv-show__details-creators-list'>
                                 {
                                     props.tvShow.created_by.map(
                                         (creator, index) => (
-                                            <li
-                                                key={index}
-                                                className='p-tv-show__details-creators-item'
-                                            >
-                                                <div className='p-tv-show__details-creators-logo'>
-                                                    <Image
-                                                        src={
-                                                            creator.profile_path
-                                                                ? imageUrl(IMG_SIZES.CREATOR_AVATAR, creator.profile_path)
-                                                                : '/img/avatar-placeholder.svg'
-                                                        }
-                                                        fill
-                                                        sizes='50px'
-                                                        alt={creator.name}
-                                                    />
-                                                </div>
-                                                <div className='p-tv-show__details-creators-content'>
-                                                    {creator.name}
-                                                </div>
+                                            <li key={index}>
+                                                <Link
+                                                    href={pagesPersonUrl(String(creator.id))}
+                                                    className='p-tv-show__details-creators-item'
+                                                >
+
+                                                    <div className='p-tv-show__details-creators-logo'>
+                                                        <Image
+                                                            src={
+                                                                creator.profile_path
+                                                                    ? imageUrl(IMG_SIZES.CREATOR_AVATAR, creator.profile_path)
+                                                                    : '/img/avatar-placeholder.svg'
+                                                            }
+                                                            fill
+                                                            sizes='50px'
+                                                            alt={creator.name}
+                                                        />
+                                                    </div>
+
+                                                    <div className='p-tv-show__details-creators-content'>
+                                                        {creator.name}
+                                                    </div>
+                                                </Link>
                                             </li>
                                         ))
                                 }
@@ -368,6 +373,6 @@ export default function TVShowDetails(props: Props) {
                     }
                 </Container>
             }
-        </div>
+        </div >
     );
 };

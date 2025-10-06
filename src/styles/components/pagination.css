@@ -20,8 +20,9 @@
         align-items: center;
         justify-content: center;
 
-        width: 36px;
+        min-width: 36px;
         height: 36px;
+        padding: 2px;
         border-radius: 2px;
 
         font-size: var(--text-xs);
@@ -34,7 +35,7 @@
         transition-property: color, background-color, box-shadow;
 
         @variant min-md {
-            width: 40px;
+            min-width: 40px;
             height: 40px;
         }
 
@@ -55,8 +56,8 @@
 
         &--is-active {
             pointer-events: none;
-            color: var(--color-primary);
-            background-color: var(--color-accent);
+            color: var(--color-secondary);
+            background-color: var(--color-active);
         }
 
         &--is-disabled {
@@ -75,7 +76,7 @@
         margin-top: 8px;
         border-radius: 2px;
 
-        background-color: var(--color-accent);
+        background-color: var(--color-active);
 
         transition-property: width;
     }

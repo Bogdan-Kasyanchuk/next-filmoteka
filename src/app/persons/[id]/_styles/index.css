@@ -20,7 +20,7 @@
         &-backdrop {
             position: absolute;
             inset: 0;
-            filter: blur(25px);
+            filter: blur(15px);
 
             &::after {
                 content: '';
@@ -192,13 +192,26 @@
             & a[data-testid='less-button'] {
                 font-size: var(--text-md);
                 font-weight: 700;
-                color: var(--color-link);
-                transition-property: color;
 
-                &:hover {
-                    color: var(--color-link-hover);
-                }
+                @apply u-link-color;
             }
+        }
+    }
+
+    &__images {
+        @apply pt-[30px] border-t border-t-primary/75 -mx-2.5 px-2.5;
+        @apply xxxl:-mx-5 xxxl:px-5;
+
+        &-title {
+            @apply -mt-1.5 font-bold uppercase;
+        }
+
+        &-list {
+            @apply mt-5 grid grid-cols-2 gap-2.5;
+            @apply sm:grid-cols-3;
+            @apply md:grid-cols-4 md:gap-5;
+            @apply lg:grid-cols-6;
+            @apply xl:grid-cols-8;
         }
     }
 
@@ -222,23 +235,6 @@
             &-list {
                 @apply flex flex-col gap-2.5 mt-2.5;
             }
-        }
-    }
-
-    &__images {
-        @apply pt-[30px] border-t border-t-primary/75 -mx-2.5 px-2.5;
-        @apply xxxl:-mx-5 xxxl:px-5;
-
-        &-title {
-            @apply -mt-1.5 font-bold uppercase;
-        }
-
-        &-list {
-            @apply mt-5 grid grid-cols-2 gap-2.5;
-            @apply sm:grid-cols-3;
-            @apply md:grid-cols-4 md:gap-5;
-            @apply lg:grid-cols-6;
-            @apply xl:grid-cols-8;
         }
     }
 }

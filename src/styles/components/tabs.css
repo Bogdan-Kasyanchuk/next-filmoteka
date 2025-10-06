@@ -36,7 +36,7 @@
         &--is-active {
             pointer-events: none;
             color: var(--color-secondary);
-            background-color: var(--color-link);
+            background-color: var(--color-active);
         }
 
         &:hover {

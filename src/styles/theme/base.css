@@ -9,8 +9,7 @@
     --color-warning: #ffc107;
     --color-danger: #fe0000;
     --color-bg-body: #333;
-    --color-link: #ff7b00;
-    --color-link-hover: #b75b06;
+    --color-active: #ff7b00;
 
     /* Font sizes */
     --text-*: initial;

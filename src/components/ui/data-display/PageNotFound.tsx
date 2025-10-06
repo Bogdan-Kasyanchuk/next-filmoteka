@@ -20,7 +20,7 @@ export default function PageNotFound(props: Props) {
 
             <Link
                 href={props.link.href}
-                className='text-5xl text-link font-bold hover:text-link-hover transition-colors'
+                className='text-5xl text-active font-bold hover:opacity-75 transition-opacity'
             >
                 {props.link.text}
             </Link>

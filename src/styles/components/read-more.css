@@ -5,12 +5,14 @@
         font-size: var(--text-md);
         font-weight: 700;
         line-height: 1;
-        color: var(--color-link);
+        color: var(--color-active);
 
-        transition-property: color;
+        transition-property: opacity;
 
-        &:hover {
-            color: var(--color-link-hover);
+        @media (any-hover: hover) {
+            &:hover {
+                opacity: 0.75;
+            }
         }
     }
 }

@@ -24,14 +24,8 @@
             {
                 "ignoreAtRules": [
                     "theme",
-                    "screen",
                     "utility",
-                    "variant",
-                    "mixin",
-                    "include",
-                    "if",
-                    "else",
-                    "define-mixin"
+                    "variant"
                 ]
             }
         ],
@@ -40,14 +34,6 @@
             {
                 "ignoreAtRules": [
                     "apply"
-                ]
-            }
-        ],
-        "unit-no-unknown": [
-            true,
-            {
-                "ignoreFunctions": [
-                    "theme"
                 ]
             }
         ]

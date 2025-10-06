@@ -10,12 +10,14 @@
 }
 
 @utility u-link-color {
-    color: var(--color-link);
+    color: var(--color-active);
     text-decoration: none;
-    transition-property: color;
+    transition-property: opacity;
 
-    &:hover {
-        color: var(--color-link-hover);
+    @media (any-hover: hover) {
+        &:hover {
+            opacity: 0.75;
+        }
     }
 }
 
@@ -32,8 +34,10 @@
         display: block;
     }
 
-    &:hover {
-        opacity: 0.75;
+    @media (any-hover: hover) {
+        &:hover {
+            opacity: 0.75;
+        }
     }
 }
 

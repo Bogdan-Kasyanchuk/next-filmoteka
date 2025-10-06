@@ -68,7 +68,7 @@ export default function Pagination(props: Props) {
                                 }
                             >
                                 {
-                                    typeof page === 'number' && page !== props.currentPage
+                                    typeof page === 'number'
                                         ? <Link href={createPageURL(page)}>
                                             {page}
                                         </Link>

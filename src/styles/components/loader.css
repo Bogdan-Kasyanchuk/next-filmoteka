@@ -1,3 +1,4 @@
+
 .c-loader {
     display: flex;
     flex-direction: column;
@@ -8,36 +9,37 @@
     width: 100%;
 
     &__inner {
-        width: fit-content;
+        padding: 10px;
+        border-style: solid;
+        border-width: 4px;
+        border-image: conic-gradient(var(--color-active) var(--a), transparent calc(var(--a) + 0.5deg)) 1;
 
-        font-size: var(--text-8xl);
-        font-weight: bold;
-        text-transform: uppercase;
+        font-size: var(--text-2xl);
+        font-weight: 700;
+        color: var(--color-primary);
 
-        background: linear-gradient(90deg, var(--color-accent) 50%, transparent 0) right/200% 100%;
+        animation: load 1.5s infinite linear;
 
-        animation: l21 1.5s infinite linear;
-
-        &::before {
-            content: 'Loading...';
-
-            padding-inline: 8px;
-
-            color: transparent;
-
-            background: inherit;
-            background: linear-gradient(
-                90deg,
-                var(--color-primary) 50%,
-                var(--color-secondary) 0
-            );
-            background-clip: text;
+        @variant min-md {
+            padding: 16px;
+            border-width: 6px;
+            font-size: var(--text-6xl);
         }
     }
 }
 
-@keyframes l21 {
+@property --a {
+    inherits: false;
+    initial-value: 0deg;
+    syntax: '<angle>';
+}
+
+@keyframes load {
+    0% {
+        --a: 0deg;
+    }
+
     100% {
-        background-position: left;
+        --a: 360deg;
     }
 }

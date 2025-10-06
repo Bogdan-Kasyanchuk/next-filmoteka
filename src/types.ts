@@ -20,6 +20,7 @@ export type Network = {
 };
 
 export type Creator = {
+    id: number,
     name: string,
     profile_path: string,
 };

@@ -54,6 +54,6 @@ export default function CastCard(props: Props) {
                     {props.cast.character}
                 </p>
             </div>
-        </Link >
+        </Link>
     );
 };
