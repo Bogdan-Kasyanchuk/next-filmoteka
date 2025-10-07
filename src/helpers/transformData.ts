@@ -10,8 +10,10 @@ import {
     MediaCrewShema,
     MovieDetailsShema,
     MovieShema,
+    NetworkDetailsShema,
     PersonDetailsShema,
     PersonShema,
+    ProductionCompanyDetailsShema,
     ReviewShema,
     SeasonShema,
     SimilarMovieShema,
@@ -32,8 +34,10 @@ import {
     MediaCrewMapper,
     MovieDetailsMapper,
     MovieMapper,
+    NetworkDetailsMapper,
     PersonDetailsMapper,
     PersonMapper,
+    ProductionCompanyDetailsMapper,
     ReviewMapper,
     SeasonMapper,
     TVShowDetailsMapper,
@@ -81,6 +85,7 @@ export const transformMovieDetails = (movie: MovieDetailsShema) => ({
         ),
         production_companies: movie.production_companies.map(
             company => ({
+                id: company.id,
                 logo_path: company.logo_path,
                 name: company.name,
                 origin_country: movie.production_countries.find(
@@ -166,6 +171,7 @@ export const transformTVShowDetails = (tvShow: TVShowDetailsShema) => ({
         ),
         production_companies: tvShow.production_companies.map(
             company => ({
+                id: company.id,
                 logo_path: company.logo_path,
                 name: company.name,
                 origin_country: tvShow.production_countries.find(
@@ -188,6 +194,7 @@ export const transformTVShowDetails = (tvShow: TVShowDetailsShema) => ({
         ),
         networks: tvShow.networks.map(
             network => ({
+                id: network.id,
                 logo_path: network.logo_path,
                 name: network.name,
                 origin_country: tvShow.production_countries.find(
@@ -283,6 +290,18 @@ export const transformReview = (review: ReviewShema) => ({
     created_at: review.created_at,
     updated_at: review.updated_at
 }) as ReviewMapper;
+
+export const transformNetworkDetails = (network: NetworkDetailsShema) => ({
+    headquarters: network.headquarters,
+    homepage: network.homepage
+}) as NetworkDetailsMapper;
+
+export const transformProductionCompanyDetails = (company: ProductionCompanyDetailsShema) => ({
+    description: company.description,
+    headquarters: company.headquarters,
+    homepage: company.homepage,
+    parent_company: company.parent_company
+}) as ProductionCompanyDetailsMapper;
 
 const transformSeason = (season: SeasonShema) => ({
     air_date: season.air_date,

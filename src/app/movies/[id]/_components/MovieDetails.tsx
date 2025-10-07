@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Fragment } from 'react';
 
+import HoverCard from '@/components/ui/data-display/HoverCard';
 import SocialLinks from '@/components/ui/data-display/SocialLinks';
 import Container from '@/components/ui/layouts/Container';
 import Title from '@/components/ui/typography/Title';
@@ -12,6 +13,8 @@ import { imageUrl, pagesSimilarUrl } from '@/routes';
 import { MovieDetailsMapper } from '@/types';
 import { formatCurrency } from '@/utils/formatCurrency';
 import { formatDate } from '@/utils/formateDate';
+
+import ProductionCompanyDetails from './ProductionCompanyDetails';
 
 type Props = {
     movie: MovieDetailsMapper['movie'],
@@ -235,34 +238,39 @@ export default function MovieDetails(props: Props) {
                             {
                                 props.movie.production_companies.map(
                                     (company, index) => (
-                                        <li
+                                        <HoverCard
                                             key={ index }
-                                            className="p-movie__details-companies-item"
+                                            trigger={
+                                                <li className="p-movie__details-companies-item">
+                                                    <div className="p-movie__details-companies-logo">
+                                                        <Image
+                                                            src={
+                                                                company.logo_path
+                                                                    ? imageUrl(IMG_SIZES.COMPANY_LOGO, company.logo_path)
+                                                                    : '/img/image-placeholder.svg'
+                                                            }
+                                                            fill
+                                                            sizes="92px"
+                                                            alt={ company.name }
+                                                        />
+                                                    </div>
+                                                    <div className="p-movie__details-companies-content">
+                                                        <span className="text-lg font-semibold">
+                                                            { company.name }
+                                                        </span>
+                                                        {
+                                                            company.origin_country &&
+                                                            <span className="opacity-75 text-sm">
+                                                                { company.origin_country }
+                                                            </span>
+                                                        }
+                                                    </div>
+                                                </li>
+                                            }
+                                            classNameContent="p-movie__details-companies-details"
                                         >
-                                            <div className="p-movie__details-companies-logo">
-                                                <Image
-                                                    src={
-                                                        company.logo_path
-                                                            ? imageUrl(IMG_SIZES.COMPANY_LOGO, company.logo_path)
-                                                            : '/img/image-placeholder.svg'
-                                                    }
-                                                    fill
-                                                    sizes="92px"
-                                                    alt={ company.name }
-                                                />
-                                            </div>
-                                            <div className="p-movie__details-companies-content">
-                                                <span className="text-lg font-semibold">
-                                                    { company.name }
-                                                </span>
-                                                {
-                                                    company.origin_country &&
-                                                    <span className="opacity-75 text-sm">
-                                                        { company.origin_country }
-                                                    </span>
-                                                }
-                                            </div>
-                                        </li>
+                                            <ProductionCompanyDetails id={ company.id } /> 
+                                        </HoverCard>
                                     ))
                             }
                         </ul>

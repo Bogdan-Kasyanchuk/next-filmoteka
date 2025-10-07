@@ -6,8 +6,10 @@ import {
     DataShema,
     MovieDetailsShema,
     MovieShema,
+    NetworkDetailsShema,
     PersonDetailsShema,
     PersonShema,
+    ProductionCompanyDetailsShema,
     ReviewShema,
     SimilarMovieShema,
     SimilarTVShowShema,
@@ -132,4 +134,12 @@ export function getSearch(
     return fetchApi<DataShema<MovieShema | TVShowShema | PersonShema>>(
         `search/${ type }?query=${ query }&page=${ page }&include_adult=${ adult }`
     );
+}
+
+export function getNetworkById(id: number) {
+    return fetchApi<NetworkDetailsShema>(`network/${ id }`);
+}
+
+export function getProductionCompanyById(id: number) {
+    return fetchApi<ProductionCompanyDetailsShema>(`company/${ id }`);
 }

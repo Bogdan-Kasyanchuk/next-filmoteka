@@ -11,7 +11,7 @@ type Props = {
     isArrow?: boolean
 };
 
-export default function EpisodeCard(props: PropsWithChildren<Props>) {
+export default function Popover(props: PropsWithChildren<Props>) {
     return (
         <Root>
             <Trigger asChild>

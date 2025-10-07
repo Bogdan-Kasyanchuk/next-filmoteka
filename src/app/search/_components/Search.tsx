@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { useState } from 'react';
 
-import { sortSearchParams } from '@/helpers/sortSearchParams';
+import buildUri from '@/helpers/buildUri';
 
 export default function Search() {
     const pathname = usePathname();
@@ -26,7 +26,7 @@ export default function Search() {
             params.delete('page');
         }
 
-        replace(sortSearchParams(pathname, params));
+        replace(buildUri(pathname, params));
     }, [ debouncedTerm ]);
 
     return (

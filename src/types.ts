@@ -8,15 +8,29 @@ export type SpokenLanguage = {
 };
 
 export type ProductionCompany = {
-    logo_path: string,
-    name: string,
-    origin_country?: string
-};
-
-export type Network = {
+    id: number,
     logo_path: string,
     name: string,
     origin_country: string
+};
+
+export type ProductionCompanyDetailsMapper = {
+    description: string,
+    headquarters: string,
+    homepage: string,
+    parent_company: string
+};
+
+export type Network = {
+    id: number,
+    logo_path: string,
+    name: string,
+    origin_country: string
+};
+
+export type NetworkDetailsMapper = {
+    headquarters: string,
+    homepage: string
 };
 
 export type Creator = {

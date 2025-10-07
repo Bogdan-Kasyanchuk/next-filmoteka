@@ -4,7 +4,7 @@ import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 
 import Tabs from '@/components/ui/data-display/Tabs';
 import { MovieType } from '@/enums';
-import { sortSearchParams } from '@/helpers/sortSearchParams';
+import buildUri from '@/helpers/buildUri';
 
 import { movieTypeFilter } from './datasets';
 
@@ -23,7 +23,7 @@ export default function Filter(props: Props) {
         params.set('type', type);
         params.set('page', '1');
 
-        replace(sortSearchParams(pathname, params));
+        replace(buildUri(pathname, params));
     };
 
     return (

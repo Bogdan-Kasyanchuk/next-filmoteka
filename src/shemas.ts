@@ -7,6 +7,15 @@ export type NetworkShema = {
     origin_country: string
 };
 
+export type NetworkDetailsShema = {
+    id: number,
+    logo_path: string,
+    name: string,
+    origin_country: string,
+    headquarters: string,
+    homepage: string
+};
+
 export type CreatedShema = {
     id: number,
     credit_id: string,
@@ -33,6 +42,17 @@ export type ProductionCompanyShema = {
     logo_path: string,
     name: string,
     origin_country: string
+};
+
+export type ProductionCompanyDetailsShema = {
+    id: number,
+    logo_path: string,
+    name: string,
+    origin_country: string,
+    description: string,
+    headquarters: string,
+    homepage: string,
+    parent_company: string
 };
 
 export type ProductionCountryShema = {

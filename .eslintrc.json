@@ -6,7 +6,7 @@
   ],
   "settings": {
     "react": {
-      "version": "18"
+      "version": "19"
     }
   },
   "env": {
@@ -52,7 +52,8 @@
           "json": "always",
           "svg": "always",
           "jpg": "always",
-          "png": "always"
+          "png": "always",
+          "css": "always"
         }
       }
     ],
@@ -62,28 +63,10 @@
         "noUselessIndex": true
       }
     ],
-    "no-case-declarations": "off",
-    "react-hooks/exhaustive-deps": [
-      "error",
-      {
-        "additionalHooks": "useMemoCompare|useIsomorphicEffect|useCancelableEffect"
-      }
-    ],
     "react/jsx-curly-newline": [
       "error",
       {
         "multiline": "require"
-      }
-    ],
-    "react/no-unknown-property": [
-      "error",
-      {
-        "ignore": [
-          "custom-element",
-          "amp-boilerplate",
-          "amp",
-          "on"
-        ]
       }
     ],
     "react/display-name": [
@@ -92,15 +75,5 @@
         "checkContextObjects": true
       }
     ]
-  },
-  "overrides": [
-    {
-      "files": [
-        "**/*"
-      ],
-      "rules": {
-        "import/extensions": "off"
-      }
-    }
-  ]
+  }
 }

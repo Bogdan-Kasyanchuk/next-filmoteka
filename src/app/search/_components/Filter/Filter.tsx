@@ -5,7 +5,7 @@ import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import Tabs from '@/components/ui/data-display/Tabs';
 import Switch from '@/components/ui/inputs/Switch';
 import { MediaType } from '@/enums';
-import { sortSearchParams } from '@/helpers/sortSearchParams';
+import buildUri from '@/helpers/buildUri';
 import { Adult } from '@/types';
 
 import { mediaTypeFilter } from './datasets';
@@ -26,14 +26,14 @@ export default function Filter(props: Props) {
         params.set('type', type);
         params.set('page', '1');
 
-        replace(sortSearchParams(pathname, params));
+        replace(buildUri(pathname, params));
     };
 
     const handleAdult = (adult: Adult) => {
         params.set('adult', adult);
         params.set('page', '1');
 
-        replace(sortSearchParams(pathname, params));
+        replace(buildUri(pathname, params));
     };
 
     return (

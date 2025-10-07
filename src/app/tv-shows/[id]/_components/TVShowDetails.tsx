@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Fragment } from 'react';
 
+import HoverCard from '@/components/ui/data-display/HoverCard';
 import SocialLinks from '@/components/ui/data-display/SocialLinks';
 import Container from '@/components/ui/layouts/Container';
 import Title from '@/components/ui/typography/Title';
@@ -11,6 +12,9 @@ import { IMG_SIZES } from '@/helpers/parameters';
 import { imageUrl, pagesPersonUrl, pagesSimilarUrl } from '@/routes';
 import { TVShowDetailsMapper } from '@/types';
 import { formatDate } from '@/utils/formateDate';
+
+import NetworkDetails from './NetworkDetails';
+import ProductionCompanyDetails from './ProductionCompanyDetails';
 
 type Props = {
     tvShow: TVShowDetailsMapper['tvShow'],
@@ -294,34 +298,40 @@ export default function TVShowDetails(props: Props) {
                                 {
                                     props.tvShow.networks.map(
                                         (network, index) => (
-                                            <li
+                                            <HoverCard
                                                 key={ index }
-                                                className="p-tv-show__details-networks-item"
-                                            >
-                                                <div className="p-tv-show__details-networks-logo">
-                                                    <Image
-                                                        src={
-                                                            network.logo_path
-                                                                ? imageUrl(IMG_SIZES.NETWORK_LOGO, network.logo_path)
-                                                                : '/img/image-placeholder.svg'
-                                                        }
-                                                        fill
-                                                        sizes="92px"
-                                                        alt={ network.name }
-                                                    />
-                                                </div>
-                                                <div className="p-tv-show__details-networks-content">
-                                                    <span className="text-lg font-semibold">
-                                                        { network.name }
-                                                    </span>
-                                                    {
-                                                        network.origin_country &&
+                                                trigger={
+                                                    <li className="p-tv-show__details-networks-item">
+                                                        <div className="p-tv-show__details-networks-logo">
+                                                            <Image
+                                                                src={
+                                                                    network.logo_path
+                                                                        ? imageUrl(IMG_SIZES.NETWORK_LOGO, network.logo_path)
+                                                                        : '/img/image-placeholder.svg'
+                                                                }
+                                                                fill
+                                                                sizes="92px"
+                                                                alt={ network.name }
+                                                            />
+                                                        </div>
+                                                        <div className="p-tv-show__details-networks-content">
+                                                            <span className="text-lg font-semibold">
+                                                                { network.name }
+                                                            </span>
+                                                            {
+                                                                network.origin_country &&
                                                         <span className="opacity-75 text-sm">
                                                             { network.origin_country }
                                                         </span>
-                                                    }
-                                                </div>
-                                            </li>
+                                                            }
+                                                        </div>
+                                                    </li>
+                                                }
+                                                classNameContent="p-tv-show__details-networks-details"
+                                            >
+                                                <NetworkDetails id={ network.id } /> 
+                                            </HoverCard>
+
                                         ))
                                 }
                             </ul>
@@ -338,34 +348,39 @@ export default function TVShowDetails(props: Props) {
                                 {
                                     props.tvShow.production_companies.map(
                                         (company, index) => (
-                                            <li
+                                            <HoverCard
                                                 key={ index }
-                                                className="p-tv-show__details-companies-item"
+                                                trigger={
+                                                    <li className="p-tv-show__details-companies-item">
+                                                        <div className="p-tv-show__details-companies-logo">
+                                                            <Image
+                                                                src={
+                                                                    company.logo_path
+                                                                        ? imageUrl(IMG_SIZES.COMPANY_LOGO, company.logo_path)
+                                                                        : '/img/image-placeholder.svg'
+                                                                }
+                                                                fill
+                                                                sizes="92px"
+                                                                alt={ company.name }
+                                                            />
+                                                        </div>
+                                                        <div className="p-tv-show__details-companies-content">
+                                                            <span className="text-lg font-semibold">
+                                                                { company.name }
+                                                            </span>
+                                                            {
+                                                                company.origin_country &&
+                                                                <span className="opacity-75 text-sm">
+                                                                    { company.origin_country }
+                                                                </span>
+                                                            }
+                                                        </div>
+                                                    </li> 
+                                                }
+                                                classNameContent="p-tv-show__details-companies-details"
                                             >
-                                                <div className="p-tv-show__details-companies-logo">
-                                                    <Image
-                                                        src={
-                                                            company.logo_path
-                                                                ? imageUrl(IMG_SIZES.COMPANY_LOGO, company.logo_path)
-                                                                : '/img/image-placeholder.svg'
-                                                        }
-                                                        fill
-                                                        sizes="92px"
-                                                        alt={ company.name }
-                                                    />
-                                                </div>
-                                                <div className="p-tv-show__details-companies-content">
-                                                    <span className="text-lg font-semibold">
-                                                        { company.name }
-                                                    </span>
-                                                    {
-                                                        company.origin_country &&
-                                                        <span className="opacity-75 text-sm">
-                                                            { company.origin_country }
-                                                        </span>
-                                                    }
-                                                </div>
-                                            </li>
+                                                <ProductionCompanyDetails id={ company.id } /> 
+                                            </HoverCard>
                                         ))
                                 }
                             </ul>

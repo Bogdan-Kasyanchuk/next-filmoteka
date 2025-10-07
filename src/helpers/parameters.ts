@@ -1,6 +1,6 @@
 export const PARAMETERS = {
-    API_KEY: process.env.API_KEY,
-    BASE_URL: process.env.BASE_URL,
+    API_KEY: process.env.NEXT_PUBLIC_API_KEY,
+    BASE_URL: 'https://api.themoviedb.org/3',
     LOCALE: 'en-US'
 };
 

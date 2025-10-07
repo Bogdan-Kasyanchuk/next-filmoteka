@@ -1,4 +1,4 @@
-.c-popover {
+.c-hover-card {
     &__content {
         will-change: opacity;
 
@@ -26,11 +26,6 @@
         &[data-state='open'][data-side='left'] {
             animation-name: slide-right-fade;
         }
-    }
-
-    &__arrow {
-        width: 16px;
-        height: 8px;
     }
 }
 
