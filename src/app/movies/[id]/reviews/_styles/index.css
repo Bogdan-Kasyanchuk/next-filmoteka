@@ -28,7 +28,7 @@
     }
 
     &__list {
-        @apply grid grid-cols-1 gap-5;
+        @apply grid grid-cols-1 gap-5 w-full;
     }
 
     @variant min-md {

@@ -6,6 +6,8 @@ import { imageUrl } from '@/routes';
 import { ReviewMapper } from '@/types';
 import { formatDate } from '@/utils/formateDate';
 
+import Icon from '../data-display/Icon';
+
 type Props = {
     review: ReviewMapper
 };
@@ -17,8 +19,13 @@ export default function ReviewCard(props: Props) {
 
     return (
         <div className="c-review-card">
+            <Icon
+                name="pin"
+                className="c-review-card__pin"
+            />
+
             <div className="c-review-card__inner">
-                <div className="c-review-card__cover">
+                <div className="c-review-card__avatar">
                     <Image
                         src={
                             props.review.author.avatar_path
@@ -77,7 +84,7 @@ export default function ReviewCard(props: Props) {
             </div>
 
             <div className="c-review-card__content">
-                <ShowMore lines={ 3 }>
+                <ShowMore lines={ 5 }>
                     { props.review.content }
                 </ShowMore>
             </div>

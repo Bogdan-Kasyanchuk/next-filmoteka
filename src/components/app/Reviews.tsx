@@ -27,7 +27,10 @@ export default function Reviews(props: Props) {
                 {
                     props.reviews.items.map(
                         (item, index) => (
-                            <li key={ index }>
+                            <li
+                                key={ index }
+                                className="с-reviews__item"
+                            >
                                 <ReviewCard review={ item } />
                             </li>
                         )

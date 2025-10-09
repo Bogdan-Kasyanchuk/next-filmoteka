@@ -50,11 +50,11 @@ export default function Content(props: Props) {
         return <Loader />;
     }
 
-    if (!data.tvShow || !data.similar.tvShows) {
+    if (!data.tvShow) {
         return notFound();
     }
 
-    if (!data.similar.tvShows.length) {
+    if (!data.similar.tvShows?.length) {
         return <DataNotFound />;
     }
 

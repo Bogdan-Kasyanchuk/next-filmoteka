@@ -50,11 +50,11 @@ export default function Content(props: Props) {
         return <Loader />;
     }
 
-    if (!data.movie || !data.recommendations.movies) {
+    if (!data.movie) {
         return notFound();
     }
 
-    if (!data.recommendations.movies.length) {
+    if (!data.recommendations.movies?.length) {
         return <DataNotFound />;
     }
 

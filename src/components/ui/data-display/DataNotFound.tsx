@@ -1,7 +1,23 @@
+import Image from 'next/image';
+
 export default function DataNotFound() {
     return (
-        <div className="uppercase text-primary font-bold grow flex items-center justify-center text-6xl md:text-8xl">
-            Data not found
+        <div className="c-data-not-found">
+            <Image
+                width={ 80 }
+                height={ 80 }
+                src="/svg/data.svg"
+                alt="Data icon"
+                className=""
+            />
+
+            <p className="c-data-not-found__title">
+                Data not found
+            </p>
+
+            <p className="c-data-not-found__text">
+                There is no data to show you right now.
+            </p>
         </div>
     );
 }

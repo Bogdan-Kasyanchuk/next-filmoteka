@@ -1,26 +1,44 @@
 .c-review-card {
     position: relative;
 
-    overflow: hidden;
     display: flex;
     flex-direction: column;
     row-gap: 20px;
 
-    height: 100%;
     padding: 10px;
     border-radius: 4px;
 
     background-color: var(--color-primary);
 
-    @variant min-lg {
-        padding: 20px;
+    .p-movie-reviews & {
+        @variant min-md {
+            padding: 20px;
+        }
     }
 
-    &__cover {
+    &__pin {
+        --icon-size: 30px;
+
+        position: absolute;
+        z-index: 1;
+        top: -20px;
+        inset-inline-start: 50%;
+        transform: translateX(-50%) scale(-1, 1);
+
+        .p-movie-reviews & {
+            display: none;
+        }
+    }
+
+    &__avatar {
         position: relative;
+
+        overflow: hidden;
         flex-shrink: 0;
+
         width: 90px;
         height: 90px;
+        border-radius: 4px;
 
         img {
             object-fit: cover;
@@ -33,18 +51,23 @@
 
     &__info {
         display: flex;
-        flex-wrap: wrap;
+        flex-direction: column;
         row-gap: 4px;
-        column-gap: 40px;
 
         min-width: 1px;
         height: 100%;
-        padding-inline-start: 20px;
+        padding-inline-start: 10px;
 
         color: var(--color-secondary);
 
-        @variant min-lg {
-            padding-inline-start: 20px;
+        .p-movie-reviews & {
+            flex-direction: row;
+            flex-wrap: wrap;
+            column-gap: 40px;
+
+            @variant min-md {
+                padding-inline-start: 20px;
+            }
         }
 
         &-name {
@@ -52,8 +75,14 @@
             flex-direction: column;
             row-gap: 4px;
 
+            width: 100%;
+
             font-weight: 700;
             line-height: 1.2;
+
+            .p-movie-reviews & {
+                width: auto;
+            }
         }
 
         &-list {

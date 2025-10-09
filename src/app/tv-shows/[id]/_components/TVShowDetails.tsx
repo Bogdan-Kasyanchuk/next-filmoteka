@@ -230,7 +230,7 @@ export default function TVShowDetails(props: Props) {
 
                             <ShowMore
                                 className="p-tv-show__details-overview-text"
-                                lines={ 3 }
+                                lines={ 5 }
                             >
                                 { props.tvShow.overview }
                             </ShowMore>

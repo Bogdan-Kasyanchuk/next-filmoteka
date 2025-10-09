@@ -20,7 +20,7 @@ import {
 import { Adult } from '@/types';
 
 async function fetchApi<T>(url: string) {
-    const buildUrl = new URL(`${ PARAMETERS.BASE_URL }/${ url }`);
+    const buildUrl = new URL(`${ PARAMETERS.API_URL }/${ url }`);
 
     buildUrl.searchParams.append('api_key', PARAMETERS.API_KEY);
     buildUrl.searchParams.append('language', PARAMETERS.LOCALE);

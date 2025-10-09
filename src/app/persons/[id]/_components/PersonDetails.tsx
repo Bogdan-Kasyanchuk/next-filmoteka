@@ -133,7 +133,7 @@ export default function PersonDetails(props: Props) {
 
                         <ShowMore
                             className="p-person__details-biography-text"
-                            lines={ 3 }
+                            lines={ 5 }
                         >
                             { props.person.biography }
                         </ShowMore>

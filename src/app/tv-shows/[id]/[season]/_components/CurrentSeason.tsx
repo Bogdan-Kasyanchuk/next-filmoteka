@@ -66,7 +66,7 @@ export default function CurrentSeason(props: Props) {
                 <div className="p-season__current-season-overview">
                     <ShowMore
                         className="p-season__current-season-overview-text"
-                        lines={ 3 }
+                        lines={ 5 }
                     >
                         { props.season.overview }
                     </ShowMore>

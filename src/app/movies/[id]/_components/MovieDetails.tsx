@@ -213,7 +213,7 @@ export default function MovieDetails(props: Props) {
 
                             <ShowMore
                                 className="p-movie__details-overview-text"
-                                lines={ 3 }
+                                lines={ 5 }
                             >
                                 { props.movie.overview }
                             </ShowMore>

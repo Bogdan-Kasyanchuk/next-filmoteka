@@ -1,4 +1,6 @@
 /* Components */
+@import '../components/data-not-found.css';
+@import '../components/no-search-results.css';
 @import '../components/tabs.css';
 @import '../components/popover.css';
 @import '../components/hover-card.css';

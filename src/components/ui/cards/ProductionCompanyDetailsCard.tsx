@@ -49,7 +49,7 @@ export default function ProductionCompanyDetailsCard(props: Props) {
 
                 props.company.description &&
                 <p className="c-production-company-details-card__description">
-                    <ShowMore lines={ 3 }>
+                    <ShowMore lines={ 5 }>
                         { props.company.description }
                     </ShowMore>
                 </p>

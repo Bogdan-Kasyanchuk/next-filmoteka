@@ -1,5 +1,6 @@
-
 .c-loader {
+    position: relative;
+
     display: flex;
     flex-direction: column;
     flex-grow: 1;
@@ -9,37 +10,94 @@
     width: 100%;
 
     &__inner {
-        padding: 10px;
-        border-style: solid;
-        border-width: 4px;
-        border-image: conic-gradient(var(--color-active) var(--a), transparent calc(var(--a) + 0.5deg)) 1;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
 
-        font-size: var(--text-2xl);
+        width: 150px;
+        height: 150px;
+        border: 3px solid var(--color-secondary);
+        border-radius: 50%;
+
+        font-size: var(--text-lg);
         font-weight: 700;
-        color: var(--color-primary);
+        line-height: 150px;
+        color: var(--color-active);
+        text-align: center;
+        text-shadow: 0 0 10px var(--color-active);
+        text-transform: uppercase;
+        letter-spacing: 4px;
 
-        animation: load 1.5s infinite linear;
+        background: var(--color-secondary);
+        box-shadow: 0 0 20px rgba(34, 34, 34, 0.5);
 
-        @variant min-md {
-            padding: 16px;
-            border-width: 6px;
-            font-size: var(--text-6xl);
+        &::before {
+            content: '';
+
+            position: absolute;
+            top: -3px;
+            left: -3px;
+
+            width: calc(100% + 6px);
+            height: calc(100% + 6px);
+            border: 3px solid transparent;
+            border-top: 3px solid var(--color-active);
+            border-right: 3px solid var(--color-active);
+            border-radius: 50%;
+
+            animation: animate-c 2s linear infinite;
+        }
+
+        span {
+            position: absolute;
+            top: calc(50% - 2px);
+            left: 50%;
+            transform-origin: left;
+
+            display: block;
+
+            width: 50%;
+            height: 4px;
+
+            background: transparent;
+
+            animation: animate 2s linear infinite;
+
+            &::before {
+                content: '';
+
+                position: absolute;
+                top: -6px;
+                right: -8px;
+
+                width: 16px;
+                height: 16px;
+                border-radius: 50%;
+
+                background: var(--color-active);
+                box-shadow: 0 0 20px var(--color-active);
+            }
         }
     }
 }
 
-@property --a {
-    inherits: false;
-    initial-value: 0deg;
-    syntax: '<angle>';
-}
-
-@keyframes load {
+@keyframes animate-c {
     0% {
-        --a: 0deg;
+        transform: rotate(0deg);
     }
 
     100% {
-        --a: 360deg;
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes animate {
+    0% {
+        transform: rotate(45deg);
+    }
+
+    100% {
+        transform: rotate(405deg);
     }
 }

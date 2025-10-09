@@ -11,6 +11,7 @@
 @import '../components/icon.css' layer(base);
 @import '../components/loader.css' layer(base);
 @import '../components/title.css' layer(base);
+@import '../components/error-404.css' layer(base);
 
 /* Parts */
 @import '../parts/header/header.css' layer(base);

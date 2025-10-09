@@ -7,6 +7,7 @@ import MovieCard from '@/components/ui/cards/MovieCard';
 import PersonCard from '@/components/ui/cards/PersonCard';
 import TVShowCard from '@/components/ui/cards/TVShowCard';
 import Loader from '@/components/ui/data-display/Loader';
+import NoSearchResults from '@/components/ui/data-display/NoSearchResults';
 import { MediaType } from '@/enums';
 import { transformMovie, transformPerson, transformTVShow } from '@/helpers/transformData';
 import { getSearch } from '@/services/api';
@@ -49,11 +50,7 @@ export default function Content(props: Props) {
     }
 
     if (!data || !data.results.length) {
-        return (
-            <div className="p-search__no-search-results">
-            No search results
-            </div>
-        );
+        return <NoSearchResults />;
     }
 
     return (

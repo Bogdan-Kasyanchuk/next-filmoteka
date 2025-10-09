@@ -19,6 +19,10 @@
     }
 }
 
+.i-icon-pin {
+    --icon-path: url('/svg/pin.svg');
+}
+
 .i-icon-angle {
     --icon-path: url('/svg/angle.svg');
 }

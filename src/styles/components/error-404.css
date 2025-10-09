@@ -1,0 +1,43 @@
+.c-error-404 {
+    @apply flex flex-col items-center justify-center gap-5 text-primary;
+
+    &__title {
+        @apply text-[128px] font-bold uppercase leading-none;
+    }
+
+    &__subtitle {
+        @apply text-5xl font-bold text-center mt-5 leading-[1.25];
+    }
+
+    &__text {
+        @apply text-md opacity-75 text-center leading-[1.25];
+    }
+
+    &__button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        width: fit-content;
+        min-width: 300px;
+        min-height: 50px;
+        margin-top: 20px;
+        padding: 8px 16px;
+        border-radius: 4px;
+
+        font-size: var(--text-lg);
+        font-weight: 700;
+        color: var(--color-secondary);
+        text-transform: uppercase;
+
+        background-color: var(--color-active);
+
+        transition-property: opacity;
+
+        @media (any-hover: hover) {
+            &:hover {
+                opacity: 0.75;
+            }
+        }
+    }
+}
