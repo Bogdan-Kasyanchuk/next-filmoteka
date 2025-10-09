@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { useState } from 'react';
 
-import buildUri from '@/helpers/buildUri';
+import buildUri from '@/utils/buildUri';
 
 export default function Search() {
     const pathname = usePathname();

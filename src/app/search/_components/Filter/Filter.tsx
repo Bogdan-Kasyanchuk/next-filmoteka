@@ -5,8 +5,8 @@ import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import Tabs from '@/components/ui/data-display/Tabs';
 import Switch from '@/components/ui/inputs/Switch';
 import { MediaType } from '@/enums';
-import buildUri from '@/helpers/buildUri';
 import { Adult } from '@/types';
+import buildUri from '@/utils/buildUri';
 
 import { mediaTypeFilter } from './datasets';
 

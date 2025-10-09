@@ -4,7 +4,7 @@ import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 
 import Tabs from '@/components/ui/data-display/Tabs';
 import { MovieType } from '@/enums';
-import buildUri from '@/helpers/buildUri';
+import buildUri from '@/utils/buildUri';
 
 import { movieTypeFilter } from './datasets';
 
