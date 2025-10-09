@@ -22,13 +22,8 @@ import { Adult } from '@/types';
 async function fetchApi<T>(url: string) {
     const buildUrl = new URL(`${ PARAMETERS.BASE_URL }/${ url }`);
 
-    if (PARAMETERS.API_KEY) {
-        buildUrl.searchParams.append('api_key', PARAMETERS.API_KEY);
-    }
-
-    if (PARAMETERS.LOCALE) {
-        buildUrl.searchParams.append('language', PARAMETERS.LOCALE);
-    }
+    buildUrl.searchParams.append('api_key', PARAMETERS.API_KEY);
+    buildUrl.searchParams.append('language', PARAMETERS.LOCALE);
 
     const response = await fetch(buildUrl, {
         cache: 'no-store'
