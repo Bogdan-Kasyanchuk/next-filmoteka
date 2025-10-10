@@ -95,7 +95,7 @@
             position: absolute;
             z-index: 1;
             top: 10px;
-            left: 10px;
+            inset-inline-start: 10px;
 
             padding: 5px;
             border: 1px solid var(--color-danger);

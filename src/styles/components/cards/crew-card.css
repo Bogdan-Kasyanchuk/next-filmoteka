@@ -20,7 +20,7 @@
     &__tag {
         position: absolute;
         top: 10px;
-        right: 10px;
+        inset-inline-end: 10px;
 
         padding: 4px;
         border: 1px solid var(--color-primary);

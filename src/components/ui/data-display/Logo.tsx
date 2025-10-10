@@ -6,7 +6,7 @@ import { PropsWithChildren } from 'react';
 import { pagesHomeUrl } from '@/routes';
 
 type Props = {
-    logoPath: string,
+    imgSrc: string,
     className?: string
 };
 
@@ -19,7 +19,7 @@ export default function Logo(props: PropsWithChildren<Props>) {
             <Image
                 width={ 46 }
                 height={ 46 }
-                src={ props.logoPath }
+                src={ props.imgSrc }
                 alt="Logo"
                 className="c-logo__img"
             />

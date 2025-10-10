@@ -71,7 +71,7 @@
 
         position: absolute;
         z-index: 1;
-        left: var(--f-switch-icon-left);
+        inset-inline-start: var(--f-switch-icon-left);
 
         display: flex;
         align-items: center;
@@ -99,7 +99,7 @@
         .f-switch__field:checked + .f-switch__inner & {
             --f-switch-icon-bg: var(--color-secondary);
 
-            left: calc(100% - (var(--f-switch-icon-left) + var(--f-switch-icon-thumb-size)));
+            inset-inline-start: calc(100% - (var(--f-switch-icon-left) + var(--f-switch-icon-thumb-size)));
 
             i {
                 opacity: 1;

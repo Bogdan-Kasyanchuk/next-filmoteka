@@ -11,7 +11,7 @@ export default function Footer() {
                 className="c-footer__container"
             >
                 <Logo
-                    logoPath="/svg/logo-white.svg"
+                    imgSrc="/svg/logo-white.svg"
                     className="text-primary"
                 >
                     <p>Filmoteka</p>

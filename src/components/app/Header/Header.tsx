@@ -11,7 +11,7 @@ export default function Header() {
                 className="c-header__container"
             >
                 <Logo
-                    logoPath="/svg/logo.svg"
+                    imgSrc="/svg/logo.svg"
                     className="text-accent"
                 >
                     <h1 className="sr-only md:not-sr-only">Filmoteka</h1>

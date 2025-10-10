@@ -1,9 +1,9 @@
 export default (pathname: string, params: URLSearchParams) => {
-    const page = params.get('page');
     const query = params.get('query');
+    const page = params.get('page');
 
-    params.delete('page');
     params.delete('query');
+    params.delete('page');
 
     if (query) {
         params.set('query', query);

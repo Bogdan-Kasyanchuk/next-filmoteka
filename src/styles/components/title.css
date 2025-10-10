@@ -10,7 +10,7 @@
         }
 
         @variant min-xl {
-            font-size: var(--text-8xl);
+            font-size: var(--text-9xl);
         }
     }
 

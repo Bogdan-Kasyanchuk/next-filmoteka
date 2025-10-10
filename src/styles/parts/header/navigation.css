@@ -99,11 +99,11 @@
         }
 
         &::before {
-            right: 50%;
+            inset-inline-end: 50%;
         }
 
         &::after {
-            left: 50%;
+            inset-inline-start: 50%;
         }
 
         &:not(.c-navigation__link--is-active):hover {
