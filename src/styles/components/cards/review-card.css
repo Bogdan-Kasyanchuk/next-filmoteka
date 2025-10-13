@@ -16,20 +16,6 @@
         }
     }
 
-    &__pin {
-        --icon-size: 30px;
-
-        position: absolute;
-        z-index: 1;
-        top: -20px;
-        inset-inline-start: 50%;
-        transform: translateX(-50%) scale(-1, 1);
-
-        .p-movie-reviews & {
-            display: none;
-        }
-    }
-
     &__avatar {
         position: relative;
 

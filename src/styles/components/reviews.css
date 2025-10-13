@@ -7,34 +7,10 @@
     }
 
     &__list {
-        @apply mt-5 grid grid-cols-1 gap-5 p-5 bg-secondary rounded-sm;
+        @apply mt-5 grid grid-cols-1 gap-5 p-5 rounded-sm bg-secondary/75 -mx-5;
         @apply md:grid-cols-2;
         @apply lg:grid-cols-3;
         @apply xxl:grid-cols-4;
-
-        background-image: url('/img/purty-wood.png');
-    }
-
-    &__item {
-        &:nth-child(1n) .c-review-card__pin {
-            color: var(--color-warning);
-        }
-
-        &:nth-child(2n) .c-review-card__pin {
-            color: var(--color-accent);
-        }
-
-        &:nth-child(3n) .c-review-card__pin {
-            color: var(--color-success);
-        }
-
-        &:nth-child(4n) .c-review-card__pin {
-            color: var(--color-danger);
-        }
-
-        &:nth-child(5n) .c-review-card__pin {
-            color: var(--color-active);
-        }
     }
 
     &__show-all-button {

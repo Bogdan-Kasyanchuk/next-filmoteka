@@ -19,11 +19,6 @@ export default function ReviewCard(props: Props) {
 
     return (
         <div className="c-review-card">
-            <Icon
-                name="pin"
-                className="c-review-card__pin"
-            />
-
             <div className="c-review-card__inner">
                 <div className="c-review-card__avatar">
                     <Image
