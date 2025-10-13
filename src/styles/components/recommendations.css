@@ -40,24 +40,18 @@
             width: calc((100% / 6) - var(--swiper-col-gap) * 5 / 6);
         }
 
-        .с-tv-show-card:hover,
-        .с-movie-card:hover {
-            transform: scale(0.98);
+        @media (any-hover: hover) {
+            .с-tv-show-card:hover,
+            .с-movie-card:hover {
+                transform: scale(0.98);
+            }
         }
     }
 
     &__arrow {
         --icon-size: 20px;
 
-        @apply absolute bg-white/25 backdrop-blur-xl z-1 size-9 flex items-center justify-center top-1/2 -translate-y-1/2 rounded-full text-secondary;
-
         transition-property: background-color, box-shadow, opacity, color;
-
-        &:not(:disabled):hover {
-            color: var(--color-primary);
-            background-color: var(--color-accent-hover);
-            box-shadow: var(--shadow-custom-accent);
-        }
 
         &:disabled {
             @apply opacity-20 pointer-events-none;
@@ -74,6 +68,16 @@
         &--next {
             @apply -end-[18px];
         }
+
+        @media (any-hover: hover) {
+            &:not(:disabled):hover {
+                color: var(--color-primary);
+                background-color: var(--color-accent-hover);
+                box-shadow: var(--shadow-custom-accent);
+            }
+        }
+
+        @apply absolute bg-white/25 backdrop-blur-xl z-1 size-9 flex items-center justify-center top-1/2 -translate-y-1/2 rounded-full text-secondary;
     }
 
     &__show-all-button {

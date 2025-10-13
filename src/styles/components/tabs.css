@@ -39,9 +39,11 @@
             background-color: var(--color-active);
         }
 
-        &:hover {
-            background-color: var(--color-accent-hover);
-            box-shadow: var(--shadow-custom-accent);
+        @media (any-hover: hover) {
+            &:hover {
+                background-color: var(--color-accent-hover);
+                box-shadow: var(--shadow-custom-accent);
+            }
         }
     }
 }

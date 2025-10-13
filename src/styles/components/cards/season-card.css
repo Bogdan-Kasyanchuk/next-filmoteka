@@ -10,12 +10,6 @@
 
     transition-property: transform, box-shadow, border-color;
 
-    &:hover {
-        transform: scale(1.02);
-        border-color: var(--color-accent-hover);
-        box-shadow: var(--shadow-custom-accent);
-    }
-
     &__cover {
         position: relative;
         aspect-ratio: 2/3;
@@ -59,6 +53,14 @@
                     font-weight: 600;
                 }
             }
+        }
+    }
+
+    @media (any-hover: hover) {
+        &:hover {
+            transform: scale(1.02);
+            border-color: var(--color-accent-hover);
+            box-shadow: var(--shadow-custom-accent);
         }
     }
 }

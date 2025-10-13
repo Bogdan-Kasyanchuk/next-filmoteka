@@ -20,8 +20,10 @@
 
         transition-property: opacity;
 
-        &:hover {
-            opacity: 0.75;
+        @media (any-hover: hover) {
+            &:hover {
+                opacity: 0.75;
+            }
         }
     }
 }

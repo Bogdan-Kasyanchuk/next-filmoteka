@@ -9,12 +9,6 @@
 
     transition-property: transform, box-shadow, border-color;
 
-    &:hover {
-        transform: scale(1.02);
-        border-color: var(--color-accent-hover);
-        box-shadow: var(--shadow-custom-accent);
-    }
-
     &__tags {
         position: absolute;
         top: 10px;
@@ -113,6 +107,14 @@
             @variant min-md {
                 font-size: var(--text-md);
             }
+        }
+    }
+
+    @media (any-hover: hover) {
+        &:hover {
+            transform: scale(1.02);
+            border-color: var(--color-accent-hover);
+            box-shadow: var(--shadow-custom-accent);
         }
     }
 }

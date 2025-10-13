@@ -101,11 +101,13 @@
 
             transition-property: color, background-color, border-color, box-shadow;
 
-            &:hover {
-                border-color: var(--color-accent-hover);
-                color: var(--color-primary);
-                background-color: var(--color-accent-hover);
-                box-shadow: var(--shadow-custom-accent);
+            @media (any-hover: hover) {
+                &:hover {
+                    border-color: var(--color-accent-hover);
+                    color: var(--color-primary);
+                    background-color: var(--color-accent-hover);
+                    box-shadow: var(--shadow-custom-accent);
+                }
             }
         }
 

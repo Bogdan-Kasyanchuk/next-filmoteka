@@ -129,8 +129,10 @@
             text-align: center;
             text-transform: uppercase;
 
-            &:hover {
-                @apply bg-primary/75 text-secondary;
+            @media (any-hover: hover) {
+                &:hover {
+                    @apply bg-primary/75 text-secondary;
+                }
             }
         }
 

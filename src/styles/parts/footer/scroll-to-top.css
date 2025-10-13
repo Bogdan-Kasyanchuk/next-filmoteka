@@ -9,9 +9,11 @@
         @apply -rotate-90;
     }
 
-    &:hover {
-        color: var(--color-primary);
-        background-color: var(--color-accent-hover);
-        box-shadow: var(--shadow-custom-accent);
+    @media (any-hover: hover) {
+        &:hover {
+            color: var(--color-primary);
+            background-color: var(--color-accent-hover);
+            box-shadow: var(--shadow-custom-accent);
+        }
     }
 }
