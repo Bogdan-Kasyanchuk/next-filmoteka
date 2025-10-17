@@ -21,7 +21,7 @@ body {
     padding: 0;
 
     -webkit-font-smoothing: antialiased;
-    line-height: 1.25;
+    line-height: 1.4;
     color: var(--color-secondary);
     text-size-adjust: 100%;
     text-rendering: optimizelegibility !important;

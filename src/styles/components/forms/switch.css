@@ -133,7 +133,7 @@
     &__label {
         font-size: var(--f-switch-label-font-size);
         font-weight: var(--f-switch-label-font-weight);
-        line-height: 1.25;
+        line-height: 1.2;
         text-transform: uppercase;
     }
 }
