@@ -7,6 +7,7 @@ import MovieCard from '@/components/ui/cards/MovieCard';
 import PersonCard from '@/components/ui/cards/PersonCard';
 import TVShowCard from '@/components/ui/cards/TVShowCard';
 import DataNotFound from '@/components/ui/data-display/DataNotFound';
+import FailedLoadData from '@/components/ui/data-display/FailedLoadData';
 import Loader from '@/components/ui/data-display/Loader';
 import { MediaType, TimeType } from '@/enums';
 import { transformMovie, transformPerson, transformTVShow } from '@/helpers/transformData';
@@ -20,32 +21,33 @@ type Props = {
 };
 
 export default function Content(props: Props) {
-    const { data, isPending, isFetching } = useQuery({
+    const { data, isPending, isError } = useQuery({
         queryKey: [ 'trendings', props.type, props.time, props.currentPage ],
         queryFn: () => getTrendings(props.type, props.time, props.currentPage),
         placeholderData: keepPreviousData,
         select: data => ({
             results: data.results.map(
                 result => {
-                    if (result.media_type === MediaType.MOVIE) {
-                        return transformMovie(result);
-                    }
-
-                    if (result.media_type === MediaType.TV_SHOW) {
-                        return transformTVShow(result);
-                    }
-
-                    if (result.media_type === MediaType.PERSON) {
-                        return transformPerson(result);
+                    switch (result.media_type) {
+                        case MediaType.MOVIE:
+                            return transformMovie(result);
+                        case MediaType.TV_SHOW:
+                            return transformTVShow(result);
+                        case MediaType.PERSON:
+                            return transformPerson(result);
                     }
                 }),
             total_pages: data.total_pages
         })
     });
 
-    if (isPending || isFetching) {
+    if (isPending) {
         return <Loader />;
     }
+
+    if (isError) {
+        return <FailedLoadData />;
+    } 
 
     if (!data || !data.results.length) {
         return <DataNotFound />;

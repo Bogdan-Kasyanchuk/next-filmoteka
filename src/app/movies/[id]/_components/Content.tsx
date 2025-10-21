@@ -24,17 +24,17 @@ type Props = {
 };
 
 export default function Content(props: Props) {
-    const { data, isPending, isFetching } = useQuery({
+    const { data, isPending, isError } = useQuery({
         queryKey: [ 'movies', props.id ],
         queryFn: () => getMovieById(props.id),
         select: data => transformMovieDetails(data)
     });
 
-    if (isPending || isFetching) {
+    if (isPending) {
         return <Loader />;
     }
 
-    if (!data) {
+    if (isError || !data) {
         return notFound();
     }
 
@@ -47,11 +47,6 @@ export default function Content(props: Props) {
 
             <Container className="p-movie__container">
                 {
-                    data.videos.length > 0 &&
-                    <Videos videos={ data.videos } />
-                }
-
-                {
                     data.cast.length > 0 &&
                     <Casts casts={ data.cast } />
                 }
@@ -59,6 +54,11 @@ export default function Content(props: Props) {
                 {
                     data.crew.length > 0 &&
                     <Crews crews={ data.crew } />
+                }
+
+                {
+                    data.videos.length > 0 &&
+                    <Videos videos={ data.videos } />
                 }
 
                 {

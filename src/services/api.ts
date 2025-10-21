@@ -131,10 +131,10 @@ export function getSearch(
     );
 }
 
-export function getNetworkById(id: number) {
+export function getNetworkById(id: string) {
     return fetchApi<NetworkDetailsShema>(`network/${ id }`);
 }
 
-export function getProductionCompanyById(id: number) {
+export function getProductionCompanyById(id: string) {
     return fetchApi<ProductionCompanyDetailsShema>(`company/${ id }`);
 }

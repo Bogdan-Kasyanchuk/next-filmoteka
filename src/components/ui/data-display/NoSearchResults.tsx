@@ -8,7 +8,6 @@ export default function NoSearchResults() {
                 height={ 80 }
                 src="/svg/search.svg"
                 alt="Search icon"
-                className=""
             />
 
             <p className="c-no-search-results__title">

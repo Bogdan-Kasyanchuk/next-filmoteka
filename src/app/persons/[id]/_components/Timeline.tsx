@@ -1,3 +1,5 @@
+import { useMemo } from 'react';
+
 import MediaCastCard from '@/components/ui/cards/MediaCastCard';
 import MediaCrewCard from '@/components/ui/cards/MediaCrewCard';
 import Title from '@/components/ui/typography/Title';
@@ -16,8 +18,13 @@ function transformedData<T extends MediaCastMapper | MediaCrewMapper>(data: T[])
 }
 
 export default function Timeline(props: Props) {
-    const cast = transformedData(props.cast);
-    const crew = transformedData(props.crew);
+    const cast = useMemo(() => transformedData(props.cast), [ props.cast ]);
+    const crew = useMemo(() => transformedData(props.crew), [ props.crew ]);
+
+    const sections = [
+        { title: 'Acting', data: cast, prop: 'cast' },
+        { title: 'Production', data: crew, prop: 'crew' }
+    ] as const;
 
     return (
         <div className="p-person__timeline">
@@ -31,44 +38,40 @@ export default function Timeline(props: Props) {
 
             <ul className="p-person__timeline-list">
                 {
-                    cast.length > 0 &&
-                    <li className="p-person__timeline-item">
-                        <p className="p-person__timeline-item-title">Acting</p>
+                    sections.map(
+                        section => (
+                            section.data.length > 0 && (
+                                <li
+                                    key={ section.title }
+                                    className="p-person__timeline-item"
+                                >
+                                    <p className="p-person__timeline-item-title">
+                                        { section.title }
+                                    </p>
 
-                        <ul className="p-person__timeline-item-list">
-                            {
-                                cast.map(
-                                    (item, index) => (
-                                        <li key={ index }>
-                                            <MediaCastCard cast={ item } />
-                                        </li>
-                                    )
-                                )
-                            }
-                        </ul>
-                    </li>
-                }
-
-                {
-                    crew.length > 0 &&
-                    <li className="p-person__timeline-item">
-                        <p className="p-person__timeline-item-title">Production</p>
-
-                        <ul className="p-person__timeline-item-list">
-                            {
-                                crew.map(
-                                    (item, index) => (
-                                        <li key={ index }>
-                                            <MediaCrewCard crew={ item } />
-                                        </li>
-                                    )
-                                )
-                            }
-                        </ul>
-                    </li>
+                                    <ul className="p-person__timeline-item-list">
+                                        {
+                                            section.data.map(
+                                                (item, index) => (
+                                                    <li key={ index }>
+                                                        {
+                                                            section.prop === 'cast'
+                                                                ? <MediaCastCard 
+                                                                    cast={ item as MediaCastMapper }
+                                                                />
+                                                                : <MediaCrewCard
+                                                                    crew={ item as MediaCrewMapper }
+                                                                /> 
+                                                        }
+                                                    </li>
+                                                ))
+                                        }
+                                    </ul>
+                                </li>
+                            )
+                        ))
                 }
             </ul>
         </div>
     );
 }
-

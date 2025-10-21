@@ -35,45 +35,45 @@ export default function EpisodeCard(props: Props) {
                     { props.episode.name }
                 </p>
 
-                <ul className="с-episode-card__info-list">
+                <dl className="с-episode-card__info-list">
                     {
                         props.episode.air_date &&
-                        <li className="с-episode-card__info-list-item">
-                            <span>Air date:</span>
-                            <span>{ formatDate(props.episode.air_date, 'DD.MM.YYYY') }</span>
-                        </li>
+                        <div className="с-episode-card__info-list-item">
+                            <dt>Air date:</dt>
+                            <dd>{ formatDate(props.episode.air_date, 'DD.MM.YYYY') }</dd>
+                        </div>
                     }
 
-                    <li className="с-episode-card__info-list-item">
-                        <span>Type:</span>
-                        <span className="capitalize">{ props.episode.episode_type }</span>
-                    </li>
+                    <div className="с-episode-card__info-list-item">
+                        <dt>Type:</dt>
+                        <dd className="capitalize">{ props.episode.episode_type }</dd>
+                    </div>
 
-                    <li className="с-episode-card__info-list-item">
-                        <span>Season:</span>
-                        <span>{ props.episode.season_number }</span>
-                    </li>
+                    <div className="с-episode-card__info-list-item">
+                        <dt>Season:</dt>
+                        <dd>{ props.episode.season_number }</dd>
+                    </div>
 
-                    <li className="с-episode-card__info-list-item">
-                        <span>Episode:</span>
-                        <span>{ props.episode.episode_number }</span>
-                    </li>
+                    <div className="с-episode-card__info-list-item">
+                        <dt>Episode:</dt>
+                        <dd>{ props.episode.episode_number }</dd>
+                    </div>
 
-                    <li className="с-episode-card__info-list-item">
-                        <span>Rating:</span>
-                        <span>{ Math.round(props.episode.vote_average * 10) }</span>
-                    </li>
+                    <div className="с-episode-card__info-list-item">
+                        <dt>Rating:</dt>
+                        <dd>{ Math.round(props.episode.vote_average ?? 0 * 10) }</dd>
+                    </div>
 
-                    <li className="с-episode-card__info-list-item">
-                        <span>Votes:</span>
-                        <span>{ props.episode.vote_count ?? 0 }</span>
-                    </li>
+                    <div className="с-episode-card__info-list-item">
+                        <dt>Votes:</dt>
+                        <dd>{ props.episode.vote_count ?? 0 }</dd>
+                    </div>
 
-                    <li className="с-episode-card__info-list-item">
-                        <span>Runtime:</span>
-                        <span>{ props.episode.runtime ?? 0 }min</span>
-                    </li>
-                </ul>
+                    <div className="с-episode-card__info-list-item">
+                        <dt>Runtime:</dt>
+                        <dd>{ props.episode.runtime ?? 0 }min</dd>
+                    </div>
+                </dl>
             </div>
 
             {

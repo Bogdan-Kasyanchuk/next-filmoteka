@@ -7,11 +7,11 @@ import { transformProductionCompanyDetails } from '@/helpers/transformData';
 import { getProductionCompanyById } from '@/services/api';
 
 type Props = {
-    id: number
+    id: string
 };
 
 export default function ProductionCompanyDetails(props: Props) {
-    const { data, isPending, isFetching } = useQuery({
+    const { data, isPending, isError } = useQuery({
         queryKey: [ 'production-company', props.id ],
         queryFn: () => getProductionCompanyById(props.id),
         select: data => {
@@ -25,11 +25,11 @@ export default function ProductionCompanyDetails(props: Props) {
         }
     });
 
-    if (isPending || isFetching) {
+    if (isPending) {
         return <div className="font-bold text-md">Loading...</div>;
     }
 
-    if (!data) {
+    if ( isError || !data) {
         return <div className="font-bold text-md">Data not found</div>; 
     }
 

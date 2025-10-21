@@ -22,7 +22,7 @@ type Props = {
 };
 
 export default function MovieDetails(props: Props) {
-    const average = Math.round(props.movie.vote_average * 10);
+    const average = Math.round(props.movie.vote_average ?? 0 * 10);
 
     return (
         <div>
@@ -89,7 +89,7 @@ export default function MovieDetails(props: Props) {
                         </li>
 
                         <li className="p-movie__details-list-rounds-item">
-                            { Math.round(props.movie.popularity) }
+                            { Math.round(props.movie.popularity ?? 0) }
                             <span>popularity</span>
                         </li>
 
@@ -123,12 +123,12 @@ export default function MovieDetails(props: Props) {
 
                         <li className="p-movie__details-list-info-item">
                             <span>Budget:</span>
-                            <span>${ formatCurrency(props.movie.budget) }</span>
+                            <span>${ formatCurrency(props.movie.budget ?? 0) }</span>
                         </li>
 
                         <li className="p-movie__details-list-info-item">
                             <span>Revenue:</span>
-                            <span>${ formatCurrency(props.movie.revenue) }</span>
+                            <span>${ formatCurrency(props.movie.revenue ?? 0) }</span>
                         </li>
 
                         {
@@ -139,10 +139,13 @@ export default function MovieDetails(props: Props) {
                             </li>
                         }
 
-                        <li className="p-movie__details-list-info-item">
-                            <span>Status:</span>
-                            <span>{ props.movie.status }</span>
-                        </li>
+                        {
+                            props.movie.status &&
+                            <li className="p-movie__details-list-info-item">
+                                <span>Status:</span>
+                                <span>{ props.movie.status }</span>
+                            </li>
+                        }
 
                         {
                             props.movie.genres.length > 0 &&
@@ -162,10 +165,13 @@ export default function MovieDetails(props: Props) {
                             </li>
                         }
 
-                        <li className="p-movie__details-list-info-item">
-                            <span>Original language:</span>
-                            <span>{ props.movie.original_language }</span>
-                        </li>
+                        {
+                            props.movie.original_language &&
+                            <li className="p-movie__details-list-info-item">
+                                <span>Original language:</span>
+                                <span>{ props.movie.original_language }</span>
+                            </li>
+                        }
 
                         {
                             props.movie.spoken_languages.length > 0 &&
@@ -205,6 +211,11 @@ export default function MovieDetails(props: Props) {
                     </ul>
 
                     {
+                        props.movie.socialLinks.length > 0 &&
+                        <SocialLinks socials={ props.movie.socialLinks } />
+                    }
+
+                    {
                         props.movie.overview &&
                         <div className="p-movie__details-overview">
                             <p className="p-movie__details-overview-title">
@@ -220,10 +231,6 @@ export default function MovieDetails(props: Props) {
                         </div>
                     }
 
-                    {
-                        props.movie.socialLinks.length > 0 &&
-                        <SocialLinks socials={ props.movie.socialLinks } />
-                    }
                 </Container>
             </div>
 
@@ -234,6 +241,7 @@ export default function MovieDetails(props: Props) {
                         <p className="p-movie__details-companies-title">
                             Production companies:
                         </p>
+
                         <ul className="p-movie__details-companies-list">
                             {
                                 props.movie.production_companies.map(
@@ -254,10 +262,12 @@ export default function MovieDetails(props: Props) {
                                                             alt={ company.name }
                                                         />
                                                     </div>
+                                                    
                                                     <div className="p-movie__details-companies-content">
                                                         <span className="text-lg font-semibold">
                                                             { company.name }
                                                         </span>
+                                                        
                                                         {
                                                             company.origin_country &&
                                                             <span className="opacity-75 text-sm">

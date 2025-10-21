@@ -16,8 +16,8 @@ export default function MediaCrewCard(props: Props) {
         <Link
             href={
                 props.crew.media_type === MediaType.MOVIE
-                    ? pagesMovieUrl(String(props.crew.id))
-                    : pagesTVShowUrl(String(props.crew.id))
+                    ? pagesMovieUrl(props.crew.id)
+                    : pagesTVShowUrl(props.crew.id)
             }
             className="с-media-crew-card"
         >

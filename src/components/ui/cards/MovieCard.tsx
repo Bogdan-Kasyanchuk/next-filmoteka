@@ -12,7 +12,7 @@ type Props = {
 export default function MovieCard(props: Props) {
     return (
         <Link
-            href={ pagesMovieUrl(String(props.movie.id)) }
+            href={ pagesMovieUrl(props.movie.id) }
             className="с-movie-card"
         >
             <div className="с-movie-card__cover">
@@ -41,7 +41,7 @@ export default function MovieCard(props: Props) {
                 }
 
                 <div className="с-movie-card__tag с-movie-card__tag--average">
-                    { Math.round(props.movie.vote_average * 10) }
+                    { Math.round(props.movie.vote_average ?? 0 * 10) }
                     <span>%</span>
                 </div>
             </div>

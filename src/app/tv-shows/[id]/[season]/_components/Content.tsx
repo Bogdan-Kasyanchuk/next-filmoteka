@@ -18,17 +18,17 @@ type Props = {
 };
 
 export default function Content(props: Props) {
-    const { data, isPending, isFetching } = useQuery({
+    const { data, isPending, isError } = useQuery({
         queryKey: [ 'tv-shows', props.id, props.season ],
         queryFn: () => getTVShowSeasonByNumber(props.id, props.season),
         select: data => transformTVShowSeasonDetails(data)
     });
 
-    if (isPending || isFetching) {
+    if (isPending) {
         return <Loader />;
     }
 
-    if (!data) {
+    if (isError || !data) {
         return notFound();
     }
 

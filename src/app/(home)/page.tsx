@@ -12,10 +12,6 @@ import TitleText from './_components/TitleText';
 
 import './_styles/index.css';
 
-export const metadata: Metadata = {
-    title: 'Home'
-};
-
 type Props = {
     searchParams: Promise<{
         type?: 'all' | MediaType,
@@ -24,11 +20,31 @@ type Props = {
     }>
 };
 
-export default async function Page(props: Props) {
+export async function generateMetadata(props: Props): Promise<Metadata> {
     const searchParams = await props.searchParams;
+
     const type = searchParams.type || 'all';
     const time = searchParams.time || TimeType.DAY;
-    const currentPage = Number(searchParams.page) || 1;
+
+    const normalizedType = type === MediaType.MOVIE
+        ? 'movies'
+        : type === MediaType.TV_SHOW
+            ? 'tv'
+            : type === MediaType.PERSON
+                ? 'persons'
+                : 'all';
+  
+    return {
+        title: `Home | Trending ${ normalizedType } (${ time.toLowerCase() })`
+    };
+}
+
+export default async function Page(props: Props) {
+    const searchParams = await props.searchParams;
+
+    const type = searchParams.type || 'all';
+    const time = searchParams.time || TimeType.DAY;
+    const currentPage = Number(searchParams.page ?? 1);
 
     const queryClient = new QueryClient();
 

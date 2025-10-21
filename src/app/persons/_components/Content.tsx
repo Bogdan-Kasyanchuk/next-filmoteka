@@ -5,6 +5,7 @@ import { keepPreviousData, useQuery } from '@tanstack/react-query';
 import Pagination from '@/components/app/Pagination';
 import PersonCard from '@/components/ui/cards/PersonCard';
 import DataNotFound from '@/components/ui/data-display/DataNotFound';
+import FailedLoadData from '@/components/ui/data-display/FailedLoadData';
 import Loader from '@/components/ui/data-display/Loader';
 import { transformPerson } from '@/helpers/transformData';
 import { getPersons } from '@/services/api';
@@ -14,21 +15,23 @@ type Props = {
 };
 
 export default function Content(props: Props) {
-    const { data, isPending, isFetching } = useQuery({
+    const { data, isPending, isError } = useQuery({
         queryKey: [ 'persons', props.currentPage ],
         queryFn: () => getPersons(props.currentPage),
         placeholderData: keepPreviousData,
         select: data => ({
-            persons: data.results.map(
-                person => transformPerson(person)
-            ),
+            persons: data.results.map(transformPerson),
             total_pages: data.total_pages
         })
     });
 
-    if (isPending || isFetching) {
+    if (isPending) {
         return <Loader />;
     }
+
+    if (isError) {
+        return <FailedLoadData />;
+    } 
 
     if (!data || !data.persons.length) {
         return <DataNotFound />;

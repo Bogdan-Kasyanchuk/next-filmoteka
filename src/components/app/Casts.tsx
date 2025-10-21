@@ -1,3 +1,5 @@
+'use client';
+
 import clsx from 'clsx';
 import { Dispatch, SetStateAction, useState } from 'react';
 import { Autoplay, Navigation } from 'swiper/modules';

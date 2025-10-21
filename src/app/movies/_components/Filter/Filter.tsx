@@ -16,12 +16,12 @@ export default function Filter(props: Props) {
     const pathname = usePathname();
     const searchParams = useSearchParams();
     const { replace } = useRouter();
-
-    const params = new URLSearchParams(searchParams);
-
+    
     const handleType = (type: MovieType) => {
+        const params = new URLSearchParams(searchParams);
+        
         params.set('type', type);
-        params.set('page', '1');
+        params.delete('page');
 
         replace(buildUri(pathname, params));
     };

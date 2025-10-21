@@ -13,7 +13,7 @@ type Props = {
 export default function CastCard(props: Props) {
     return (
         <Link
-            href={ pagesPersonUrl(String(props.cast.id)) }
+            href={ pagesPersonUrl(props.cast.id) }
             className="с-cast-card"
         >
             <div
@@ -34,9 +34,9 @@ export default function CastCard(props: Props) {
                     fill
                 />
             </div>
-
+   
             <div className="с-cast-card__tag">
-                { Math.round(props.cast.popularity) }
+                { Math.round(props.cast.popularity ?? 0) }
             </div>
 
             <div className="с-cast-card__footer">

@@ -8,7 +8,6 @@ export default function DataNotFound() {
                 height={ 80 }
                 src="/svg/data.svg"
                 alt="Data icon"
-                className=""
             />
 
             <p className="c-data-not-found__title">

@@ -1,10 +1,58 @@
 import { EpisodeType, GenderType, MediaType, VideoType } from './enums';
 
-export type NetworkShema = {
+type NetworkShema = {
     id: number,
     logo_path: string,
     name: string,
     origin_country: string
+};
+
+type CreatedShema = {
+    id: number,
+    credit_id: string,
+    name: string,
+    original_name: string,
+    gender: GenderType,
+    profile_path: string
+};
+
+type GenreShema = {
+    id: number,
+    name: string
+};
+
+type CollectionShema = {
+    id: number,
+    name: string,
+    poster_path: string,
+    backdrop_path: string
+};
+
+type ProductionCompanyShema = {
+    id: number,
+    logo_path: string,
+    name: string,
+    origin_country: string
+};
+
+type ProductionCountryShema = {
+    iso_3166_1: string,
+    name: string
+};
+
+type SpokenLanguageShema = {
+    english_name: string,
+    iso_639_1: string,
+    name: string
+};
+
+type ExternalIdShema = {
+    id: number,
+    imdb_id: string,
+    wikidata_id: string,
+    facebook_id: string,
+    instagram_id: string,
+    twitter_id: string
 };
 
 export type NetworkDetailsShema = {
@@ -14,34 +62,6 @@ export type NetworkDetailsShema = {
     origin_country: string,
     headquarters: string,
     homepage: string
-};
-
-export type CreatedShema = {
-    id: number,
-    credit_id: string,
-    name: string,
-    original_name: string,
-    gender: GenderType,
-    profile_path: string
-};
-
-export type GenreShema = {
-    id: number,
-    name: string
-};
-
-export type CollectionShema = {
-    id: number,
-    name: string,
-    poster_path: string,
-    backdrop_path: string
-};
-
-export type ProductionCompanyShema = {
-    id: number,
-    logo_path: string,
-    name: string,
-    origin_country: string
 };
 
 export type ProductionCompanyDetailsShema = {
@@ -55,17 +75,6 @@ export type ProductionCompanyDetailsShema = {
     parent_company: string
 };
 
-export type ProductionCountryShema = {
-    iso_3166_1: string,
-    name: string
-};
-
-export type SpokenLanguageShema = {
-    english_name: string,
-    iso_639_1: string,
-    name: string
-};
-
 export type ImageShema = {
     aspect_ratio: number,
     height: number,
@@ -74,15 +83,6 @@ export type ImageShema = {
     file_path: string,
     vote_average: number,
     vote_count: number
-};
-
-export type ExternalIdShema = {
-    id: number,
-    imdb_id: string,
-    wikidata_id: string,
-    facebook_id: string,
-    instagram_id: string,
-    twitter_id: string
 };
 
 export type DataShema<Type> = {

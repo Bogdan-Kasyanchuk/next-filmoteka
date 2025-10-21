@@ -10,7 +10,7 @@ export default function ProductionCompanyDetailsCard(props: Props) {
     return (
         <div className="c-production-company-details-card">
             <p className="c-production-company-details-card__title">
-                Details information about company
+                Details information about company:
             </p>
 
             <ul className="c-production-company-details-card__list">
@@ -46,7 +46,6 @@ export default function ProductionCompanyDetailsCard(props: Props) {
             </ul>
 
             {
-
                 props.company.description &&
                 <p className="c-production-company-details-card__description">
                     <ShowMore lines={ 5 }>

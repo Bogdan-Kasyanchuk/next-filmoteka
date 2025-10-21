@@ -8,7 +8,7 @@ export default function NetworkDetailsCard(props: Props) {
     return (
         <div className="c-network-details-card">
             <p className="c-network-details-card__title">
-                Details information about network
+                Details information about network:
             </p>
 
             <ul className="c-network-details-card__list">

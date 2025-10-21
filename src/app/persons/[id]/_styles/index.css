@@ -199,8 +199,7 @@
     }
 
     &__images {
-        @apply pt-[30px] border-t border-t-primary/75 -mx-2.5 px-2.5;
-        @apply xxxl:-mx-5 xxxl:px-5;
+        @apply pt-[30px];
 
         &-title {
             @apply -mt-1.5 font-bold uppercase;

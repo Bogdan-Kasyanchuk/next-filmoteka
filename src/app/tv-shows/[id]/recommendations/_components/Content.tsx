@@ -22,7 +22,7 @@ export default function Content(props: Props) {
     const data = useQueries({
         queries: [
             {
-                queryKey: [ 'tv-shows', props.id, 'recommendations' ],
+                queryKey: [ 'tv-shows', 'current', props.id ],
                 queryFn: () => getCurrentTVShowById(props.id)
             },
             {
@@ -35,26 +35,24 @@ export default function Content(props: Props) {
             return {
                 tvShow: results[ 0 ].data && transformCurrentTVShow(results[ 0 ].data),
                 recommendations: {
-                    tvShows: results[ 1 ].data && results[ 1 ].data.results.map(
-                        tvShow => transformTVShow(tvShow)
-                    ),
-                    total_pages: results[ 1 ].data?.total_pages
+                    tvShows: results[ 1 ].data?.results.map(transformTVShow) ?? [],
+                    total_pages: results[ 1 ].data?.total_pages ?? 0
                 },
                 pending: results.some(result => result.isPending),
-                fetching: results.some(result => result.isFetching)
+                error: results.some(result => result.isError)
             };
         }
     });
 
-    if (data.pending || data.fetching) {
+    if (data.pending) {
         return <Loader />;
     }
 
-    if (!data.tvShow) {
+    if (data.error || !data.tvShow) {
         return notFound();
     }
 
-    if (!data.recommendations.tvShows?.length) {
+    if (!data.recommendations.tvShows.length) {
         return <DataNotFound />;
     }
 
@@ -83,7 +81,7 @@ export default function Content(props: Props) {
                 </ul>
 
                 {
-                    (data.recommendations.total_pages && data.recommendations.total_pages > 1) &&
+                    data.recommendations.total_pages > 1 &&
                     <Pagination
                         currentPage={ props.currentPage }
                         totalPages={ data.recommendations.total_pages }

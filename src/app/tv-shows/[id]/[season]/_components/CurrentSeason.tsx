@@ -54,7 +54,7 @@ export default function CurrentSeason(props: Props) {
                         </div>
 
                         <div className="p-season__current-season-tag p-season__current-season-tag--average">
-                            { Math.round(props.season.vote_average * 10) }
+                            { Math.round(props.season.vote_average ?? 0 * 10) }
                             <span>%</span>
                         </div>
                     </div>

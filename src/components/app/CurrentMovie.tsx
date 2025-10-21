@@ -51,7 +51,7 @@ export default function CurrentMovie(props: Props) {
                     </div>
 
                     <div className="c-current-movie__tag c-current-movie__tag--average">
-                        { Math.round(props.movie.vote_average * 10) }
+                        { Math.round(props.movie.vote_average ?? 0 * 10) }
                         <span>%</span>
                     </div>
 

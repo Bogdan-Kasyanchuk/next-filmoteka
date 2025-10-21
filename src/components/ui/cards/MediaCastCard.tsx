@@ -16,8 +16,8 @@ export default function MediaCastCard(props: Props) {
         <Link
             href={
                 props.cast.media_type === MediaType.MOVIE
-                    ? pagesMovieUrl(String(props.cast.id))
-                    : pagesTVShowUrl(String(props.cast.id))
+                    ? pagesMovieUrl(props.cast.id)
+                    : pagesTVShowUrl(props.cast.id)
             }
             className="с-media-cast-card"
         >

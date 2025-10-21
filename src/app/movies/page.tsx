@@ -12,10 +12,6 @@ import TitleText from './_components/TitleText';
 
 import './_styles/index.css';
 
-export const metadata: Metadata = {
-    title: 'Movies'
-};
-
 type Props = {
     searchParams: Promise<{
         type?: MovieType,
@@ -23,10 +19,29 @@ type Props = {
     }>
 };
 
+export async function generateMetadata(props: Props): Promise<Metadata> {
+    const searchParams = await props.searchParams;
+
+    const type = searchParams.type || MovieType.NOW_PLAYING;
+
+    const normalizedType = type === MovieType.NOW_PLAYING
+        ? 'Now playing'
+        : type === MovieType.POPULAR
+            ? 'Popular'
+            : type === MovieType.TOP_RATED
+                ? 'Top rated'
+                : 'Upcoming';
+  
+    return {
+        title: `Movies | ${ normalizedType }`
+    };
+}
+
 export default async function Page(props: Props) {
     const searchParams = await props.searchParams;
+
     const type = searchParams.type || MovieType.NOW_PLAYING;
-    const currentPage = Number(searchParams.page) || 1;
+    const currentPage = Number(searchParams.page ?? 1);
 
     const queryClient = new QueryClient();
 

@@ -12,7 +12,7 @@ type Props = {
 export default function TVShowCard(props: Props) {
     return (
         <Link
-            href={ pagesTVShowUrl(String(props.tvShow.id)) }
+            href={ pagesTVShowUrl(props.tvShow.id) }
             className="с-tv-show-card"
         >
             <div className="с-tv-show-card__cover">
@@ -41,7 +41,7 @@ export default function TVShowCard(props: Props) {
                 }
 
                 <div className="с-tv-show-card__tag с-tv-show-card__tag--average">
-                    { Math.round(props.tvShow.vote_average * 10) }
+                    { Math.round(props.tvShow.vote_average ?? 0 * 10) }
                     <span>%</span>
                 </div>
             </div>

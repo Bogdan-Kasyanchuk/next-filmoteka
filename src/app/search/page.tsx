@@ -27,10 +27,11 @@ type Props = {
 
 export default async function Page(props: Props) {
     const searchParams = await props.searchParams;
+    
     const type = searchParams.type || 'multi';
     const adult = searchParams.adult || 'false';
     const query = searchParams.query || '';
-    const currentPage = Number(searchParams.page) || 1;
+    const currentPage = Number(searchParams.page ?? 1);
 
     const queryClient = new QueryClient();
 

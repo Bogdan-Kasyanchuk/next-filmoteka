@@ -62,6 +62,7 @@ export default function Navigation() {
                                     alt="Search"
                                     className="c-navigation__img"
                                 />
+
                                 <span className="c-navigation__text">Search</span>
                             </button>
                         }
@@ -113,6 +114,7 @@ export default function Navigation() {
                                         alt={ link.name }
                                         className="c-navigation__img"
                                     />
+                                    
                                     <span className="c-navigation__text">{ link.name }</span>
                                 </Link>
                             </li>

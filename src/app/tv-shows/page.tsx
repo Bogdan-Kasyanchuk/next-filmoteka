@@ -12,10 +12,6 @@ import TitleText from './_components/TitleText';
 
 import './_styles/index.css';
 
-export const metadata: Metadata = {
-    title: 'TV'
-};
-
 type Props = {
     searchParams: Promise<{
         type?: TVShowType,
@@ -23,10 +19,29 @@ type Props = {
     }>
 };
 
+export async function generateMetadata(props: Props): Promise<Metadata> {
+    const searchParams = await props.searchParams;
+
+    const type = searchParams.type || TVShowType.AIRING_TODAY;
+
+    const normalizedType = type === TVShowType.AIRING_TODAY
+        ? 'Airing today'
+        : type === TVShowType.ON_THE_AIR
+            ? 'On the air'
+            : type === TVShowType.POPULAR
+                ? 'Popular'
+                : 'Top rated';
+  
+    return {
+        title: `TV | ${ normalizedType }`
+    };
+}
+
 export default async function Page(props: Props) {
     const searchParams = await props.searchParams;
     const type = searchParams.type || TVShowType.AIRING_TODAY;
-    const currentPage = Number(searchParams.page) || 1;
+
+    const currentPage = Number(searchParams.page ?? 1);
 
     const queryClient = new QueryClient();
 

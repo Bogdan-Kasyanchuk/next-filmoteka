@@ -13,7 +13,7 @@ type Props = {
 export default function PersonCard(props: Props) {
     return (
         <Link
-            href={ pagesPersonUrl(String(props.person.id)) }
+            href={ pagesPersonUrl(props.person.id) }
             className="с-person-card"
         >
             <div className="с-person-card__cover">
@@ -52,7 +52,7 @@ export default function PersonCard(props: Props) {
                 }
 
                 <div className="с-person-card__tag с-person-card__tag--popularity">
-                    { Math.round(props.person.popularity) }
+                    { Math.round(props.person.popularity ?? 0) }
                 </div>
             </div>
 
@@ -63,6 +63,7 @@ export default function PersonCard(props: Props) {
                 >
                     { props.person.name }
                 </p>
+                
                 <p
                     className="с-person-card__footer-department"
                     title={ props.person.known_for_department }

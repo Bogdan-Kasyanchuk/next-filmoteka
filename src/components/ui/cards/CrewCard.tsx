@@ -13,7 +13,7 @@ type Props = {
 export default function CrewCard(props: Props) {
     return (
         <Link
-            href={ pagesPersonUrl(String(props.crew.id)) }
+            href={ pagesPersonUrl(props.crew.id) }
             className="с-crew-card"
         >
             <div
@@ -36,7 +36,7 @@ export default function CrewCard(props: Props) {
             </div>
 
             <div className="с-crew-card__tag">
-                { Math.round(props.crew.popularity) }
+                { Math.round(props.crew.popularity ?? 0) }
             </div>
 
             <div className="с-crew-card__footer">

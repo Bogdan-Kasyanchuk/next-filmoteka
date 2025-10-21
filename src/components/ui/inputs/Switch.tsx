@@ -46,6 +46,7 @@ export default function Switch(props: Props) {
                         { label }
                     </div>
                 }
+                
                 <input
                     id={ id }
                     type={ type }

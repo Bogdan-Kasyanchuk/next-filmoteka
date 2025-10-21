@@ -7,11 +7,11 @@ import { transformNetworkDetails } from '@/helpers/transformData';
 import { getNetworkById } from '@/services/api';
 
 type Props = {
-    id: number
+    id: string
 };
 
 export default function NetworkDetails(props: Props) {
-    const { data, isPending, isFetching } = useQuery({
+    const { data, isPending, isError } = useQuery({
         queryKey: [ 'network', props.id ],
         queryFn: () => getNetworkById(props.id),
         select: data => {
@@ -25,11 +25,11 @@ export default function NetworkDetails(props: Props) {
         }
     });
 
-    if (isPending || isFetching) {
+    if (isPending) {
         return <div className="font-bold text-md">Loading...</div>;
     }
 
-    if (!data) {
+    if ( isError || !data) {
         return <div className="font-bold text-md">Data not found</div>; 
     }
 

@@ -1,7 +1,8 @@
 import { HydrationBoundary, QueryClient, dehydrate } from '@tanstack/react-query';
 import { Metadata } from 'next';
 
-import { getTVShowSeasonByNumber } from '@/services/api';
+import { getTVShowById, getTVShowSeasonByNumber } from '@/services/api';
+import { TVShowDetailsShema } from '@/shemas';
 
 import Content from './_components/Content';
 
@@ -15,29 +16,40 @@ type Props = {
 };
 
 export async function generateMetadata(props: Props): Promise<Metadata> {
-    const { id, season } = await props.params;
+    const params = await props.params;
+
+    const queryClient = new QueryClient();
+    
+    await queryClient.prefetchQuery({
+        queryKey: [ 'tv-shows', params.id ],
+        queryFn: () => getTVShowById(params.id)
+    });
+    
+    const data = queryClient.getQueryData<TVShowDetailsShema>([ 'tv-shows', params.id ]);
+
+    const name = data?.name || data?.original_name || 'TV';
 
     return {
-        title: `${ id }: ${ season }`
+        title: `${ name } | ${ params.season }`
     };
 }
 
 export default async function Page(props: Props) {
-    const { id, season } = await props.params;
+    const params = await props.params;
 
-    const normalizedSeasonId = season.split('-').at(-1) ?? '0';
+    const normalizedSeasonId = params.season.split('-').at(-1) ?? '0';
 
     const queryClient = new QueryClient();
 
     await queryClient.prefetchQuery({
-        queryKey: [ 'tv-shows', id, normalizedSeasonId ],
-        queryFn: () => getTVShowSeasonByNumber(id, normalizedSeasonId)
+        queryKey: [ 'tv-shows', params.id, normalizedSeasonId ],
+        queryFn: () => getTVShowSeasonByNumber(params.id, normalizedSeasonId)
     });
 
     return (
         <HydrationBoundary state={ dehydrate(queryClient) }>
             <Content
-                id={ id }
+                id={ params.id }
                 season={ normalizedSeasonId }
             />
         </HydrationBoundary>

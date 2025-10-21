@@ -17,17 +17,17 @@ type Props = {
 };
 
 export default function Content(props: Props) {
-    const { data, isPending, isFetching } = useQuery({
+    const { data, isPending, isError } = useQuery({
         queryKey: [ 'persons', props.id ],
         queryFn: () => getPersonById(props.id),
         select: data => transformPersonDetails(data)
     });
 
-    if (isPending || isFetching) {
+    if (isPending) {
         return <Loader />;
     }
 
-    if (!data) {
+    if (isError || !data) {
         return notFound();
     }
 

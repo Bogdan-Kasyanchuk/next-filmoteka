@@ -14,7 +14,7 @@ type Props = {
 export default function SeasonCard(props: Props) {
     return (
         <Link
-            href={ pagesSeasonUrl(props.tvShowId, String(props.season.season_number)) }
+            href={ pagesSeasonUrl(props.tvShowId, props.season.season_number) }
             className="с-season-card"
         >
             <div className="с-season-card__cover">
@@ -35,30 +35,30 @@ export default function SeasonCard(props: Props) {
                     { props.season.name }
                 </p>
 
-                <ul className="с-season-card__info-list">
+                <dl className="с-season-card__info-list">
                     {
                         props.season.air_date &&
-                        <li className="с-season-card__info-list-item">
-                            <span>Air date:</span>
-                            <span>{ formatDate(props.season.air_date, 'DD.MM.YYYY') }</span>
-                        </li>
+                        <div className="с-season-card__info-list-item">
+                            <dt>Air date:</dt>
+                            <dd>{ formatDate(props.season.air_date, 'DD.MM.YYYY') }</dd>
+                        </div>
                     }
 
-                    <li className="с-season-card__info-list-item">
-                        <span>Rating:</span>
-                        <span>{ Math.round(props.season.vote_average * 10) }</span>
-                    </li>
+                    <div className="с-season-card__info-list-item">
+                        <dt>Rating:</dt>
+                        <dd>{ Math.round(props.season.vote_average ?? 0 * 10) }</dd>
+                    </div>
 
-                    <li className="с-season-card__info-list-item">
-                        <span>Season:</span>
-                        <span>{ props.season.season_number }</span>
-                    </li>
+                    <div className="с-season-card__info-list-item">
+                        <dt>Season:</dt>
+                        <dd>{ props.season.season_number }</dd>
+                    </div>
 
-                    <li className="с-season-card__info-list-item">
-                        <span>Episodes:</span>
-                        <span>{ props.season.episode_count }</span>
-                    </li>
-                </ul>
+                    <div className="с-season-card__info-list-item">
+                        <dt>Episodes:</dt>
+                        <dd>{ props.season.episode_count }</dd>
+                    </div>
+                </dl>
             </div>
         </Link>
     );

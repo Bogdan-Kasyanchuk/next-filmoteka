@@ -2,6 +2,7 @@ import { HydrationBoundary, QueryClient, dehydrate } from '@tanstack/react-query
 import { Metadata } from 'next';
 
 import { getMovieById } from '@/services/api';
+import { MovieDetailsShema } from '@/shemas';
 
 import Content from './_components/Content';
 
@@ -12,26 +13,35 @@ type Props = {
 };
 
 export async function generateMetadata(props: Props): Promise<Metadata> {
-    const { id } = await props.params;
+    const params = await props.params;
+        
+    const queryClient = new QueryClient();
+
+    await queryClient.prefetchQuery({
+        queryKey: [ 'movies', params.id ],
+        queryFn: () => getMovieById(params.id)
+    });
+
+    const data = queryClient.getQueryData<MovieDetailsShema>([ 'movies', params.id ]);
 
     return {
-        title: id
+        title: data?.title || data?.original_title || 'Movie'
     };
 }
 
 export default async function Page(props: Props) {
-    const { id } = await props.params;
+    const params = await props.params;
 
     const queryClient = new QueryClient();
 
     await queryClient.prefetchQuery({
-        queryKey: [ 'movies', id ],
-        queryFn: () => getMovieById(id)
+        queryKey: [ 'movies', params.id ],
+        queryFn: () => getMovieById(params.id)
     });
 
     return (
         <HydrationBoundary state={ dehydrate(queryClient) }>
-            <Content id={ id } />
+            <Content id={ params.id } />
         </HydrationBoundary>
     );
 }

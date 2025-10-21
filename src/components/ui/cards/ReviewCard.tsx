@@ -6,8 +6,6 @@ import { imageUrl } from '@/routes';
 import { ReviewMapper } from '@/types';
 import { formatDate } from '@/utils/formateDate';
 
-import Icon from '../data-display/Icon';
-
 type Props = {
     review: ReviewMapper
 };
@@ -59,7 +57,7 @@ export default function ReviewCard(props: Props) {
                     <ul className="c-review-card__info-list">
                         <li className="c-review-card__info-list-item">
                             <span>Rating:</span>
-                            <span>{ Math.round(props.review.author.rating * 10) }</span>
+                            <span>{ Math.round(props.review.author.rating ?? 0 * 10) }</span>
                         </li>
 
                         <li className="c-review-card__info-list-item">

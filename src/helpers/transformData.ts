@@ -49,7 +49,7 @@ import {
 import { EXTERNAL_ID_URLS } from './parameters';
 
 export const transformMovie = (movie: MovieShema | SimilarMovieShema) => ({
-    id: movie.id,
+    id: movie.id.toString(),
     adult: movie.adult,
     title: movie.title || movie.original_title,
     poster_path: movie.poster_path,
@@ -85,7 +85,7 @@ export const transformMovieDetails = (movie: MovieDetailsShema) => ({
         ),
         production_companies: movie.production_companies.map(
             company => ({
-                id: company.id,
+                id: company.id.toString(),
                 logo_path: company.logo_path,
                 name: company.name,
                 origin_country: movie.production_countries.find(
@@ -133,7 +133,7 @@ export const transformCurrentMovie = (movie: CurrentMovieShema) => ({
 }) as CurrentMovieMapper;
 
 export const transformTVShow = (tvShow: TVShowShema | SimilarTVShowShema) => ({
-    id: tvShow.id,
+    id: tvShow.id.toString(),
     adult: tvShow.adult,
     name: tvShow.name || tvShow.original_name,
     poster_path: tvShow.poster_path,
@@ -171,7 +171,7 @@ export const transformTVShowDetails = (tvShow: TVShowDetailsShema) => ({
         ),
         production_companies: tvShow.production_companies.map(
             company => ({
-                id: company.id,
+                id: company.id.toString(),
                 logo_path: company.logo_path,
                 name: company.name,
                 origin_country: tvShow.production_countries.find(
@@ -187,14 +187,14 @@ export const transformTVShowDetails = (tvShow: TVShowDetailsShema) => ({
         ),
         created_by: tvShow.created_by.map(
             created => ({
-                id: created.id,
+                id: created.id.toString(),
                 name: created.name || created.original_name,
                 profile_path: created.profile_path
             })
         ),
         networks: tvShow.networks.map(
             network => ({
-                id: network.id,
+                id: network.id.toString(),
                 logo_path: network.logo_path,
                 name: network.name,
                 origin_country: tvShow.production_countries.find(
@@ -251,7 +251,7 @@ export const transformTVShowSeasonDetails = (season: TVShowSeasonDetailsShema) =
 export const transformPerson = (person: PersonShema) => ({
     adult: person.adult,
     gender: person.gender,
-    id: person.id,
+    id: person.id.toString(),
     known_for_department: person.known_for_department,
     name: person.name,
     media_type: MediaType.PERSON,
@@ -326,7 +326,7 @@ const transformEpisode = (episode: EpisodeShema) => ({
 }) as EpisodeMapper;
 
 const transformCast = (cast: CastShema) => ({
-    id: cast.id,
+    id: cast.id.toString(),
     name: cast.name || cast.original_name,
     popularity: cast.popularity,
     profile_path: cast.profile_path,
@@ -334,7 +334,7 @@ const transformCast = (cast: CastShema) => ({
 }) as CastMapper;
 
 const transformCrew = (crew: CrewShema) => ({
-    id: crew.id,
+    id: crew.id.toString(),
     name: crew.name || crew.original_name,
     popularity: crew.popularity,
     profile_path: crew.profile_path,
@@ -349,7 +349,7 @@ const transformVideo = (video: VideoShema) => ({
 }) as VideoMapper;
 
 const transformMediaCast = (media: MediaCastShema) => ({
-    id: media.id,
+    id: media.id.toString(),
     title: media.media_type === MediaType.MOVIE
         ? media.title || media.original_title
         : media.name || media.original_name,
@@ -360,7 +360,7 @@ const transformMediaCast = (media: MediaCastShema) => ({
 }) as MediaCastMapper;
 
 const transformMediaCrew = (media: MediaCrewShema) => ({
-    id: media.id,
+    id: media.id.toString(),
     title: media.media_type === MediaType.MOVIE
         ? media.title || media.original_title
         : media.name || media.original_name,

@@ -6,7 +6,9 @@ import Link from 'next/link';
 import { usePathname, useSearchParams } from 'next/navigation';
 
 import Icon from '@/components/ui/data-display/Icon';
-import { desktopPagination, mobilePagination } from '@/utils/generatePagination';
+import buildUri from '@/utils/buildUri';
+
+import { ELLIPSIS, desktopPagination, mobilePagination } from './generatePagination';
 
 type Props = {
     currentPage: number,
@@ -19,9 +21,10 @@ export default function Pagination(props: Props) {
 
     const createPageURL = (page: number) => {
         const params = new URLSearchParams(searchParams);
-        params.set('page', page.toString());
+        
+        params.set('page', String(page));
 
-        return `${ pathname }?${ params.toString() }`;
+        return buildUri(pathname, params);
     };
 
     const isMobile = useMediaQuery(
@@ -63,7 +66,7 @@ export default function Pagination(props: Props) {
                                 className={
                                     clsx('c-pagination__item', {
                                         'c-pagination__item--is-active': page === props.currentPage,
-                                        'pointer-events-none': page === '...'
+                                        'pointer-events-none': page === ELLIPSIS
                                     })
                                 }
                             >

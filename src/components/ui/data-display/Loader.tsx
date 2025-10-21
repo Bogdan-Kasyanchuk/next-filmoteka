@@ -10,6 +10,7 @@ export default function Loader(props: Props) {
         <div className={ clsx('c-loader', props.className) }>
             <div className={ clsx('c-loader__inner', props.classNameInner) }>
                 Loading
+                
                 <span />
             </div>
         </div>

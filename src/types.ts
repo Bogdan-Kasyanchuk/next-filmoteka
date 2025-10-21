@@ -1,17 +1,28 @@
 import { EpisodeType, GenderType, MediaType, VideoType } from './enums';
 
-export type Adult = 'true' | 'false';
-
-export type SpokenLanguage = {
+type SpokenLanguage = {
     english_name: string,
     name: string
 };
 
-export type ProductionCompany = {
-    id: number,
+type ProductionCompany = {
+    id: string,
     logo_path: string,
     name: string,
     origin_country: string
+};
+
+type Network = {
+    id: string,
+    logo_path: string,
+    name: string,
+    origin_country: string
+};
+
+type Creator = {
+    id: string,
+    name: string,
+    profile_path: string
 };
 
 export type ProductionCompanyDetailsMapper = {
@@ -21,26 +32,13 @@ export type ProductionCompanyDetailsMapper = {
     parent_company: string
 };
 
-export type Network = {
-    id: number,
-    logo_path: string,
-    name: string,
-    origin_country: string
-};
-
 export type NetworkDetailsMapper = {
     headquarters: string,
     homepage: string
 };
 
-export type Creator = {
-    id: number,
-    name: string,
-    profile_path: string
-};
-
 export type CastMapper = {
-    id: number,
+    id: string,
     name: string,
     popularity: number,
     profile_path: string,
@@ -48,7 +46,7 @@ export type CastMapper = {
 };
 
 export type CrewMapper = {
-    id: number,
+    id: string,
     name: string,
     popularity: number,
     profile_path: string,
@@ -104,19 +102,19 @@ export type ImageMapper = {
     vote_count: number
 };
 
+export type SocialLinksMapper = Array<{
+    provider: string,
+    link: string
+}>;
+
 export type MovieMapper = {
-    id: number,
+    id: string,
     adult: boolean,
     title: string,
     poster_path: string,
     media_type: MediaType.MOVIE,
     vote_average: number
 };
-
-export type SocialLinksMapper = Array<{
-    provider: string,
-    link: string
-}>;
 
 export type MovieDetailsMapper = {
     movie: {
@@ -153,7 +151,6 @@ export type MovieDetailsMapper = {
         items: MovieMapper[],
         totalPages: number
     }
-
 };
 
 export type CurrentMovieMapper = {
@@ -167,7 +164,7 @@ export type CurrentMovieMapper = {
 };
 
 export type TVShowMapper = {
-    id: number,
+    id: string,
     adult: boolean,
     name: string,
     poster_path: string,
@@ -240,7 +237,7 @@ export type TVShowSeasonDetailsMapper = {
 };
 
 export type MediaCastMapper = {
-    id: number,
+    id: string,
     title: string,
     poster_path: string,
     release_date: string,
@@ -249,7 +246,7 @@ export type MediaCastMapper = {
 };
 
 export type MediaCrewMapper = {
-    id: number,
+    id: string,
     title: string,
     poster_path: string,
     release_date: string,
@@ -260,7 +257,7 @@ export type MediaCrewMapper = {
 export type PersonMapper = {
     adult: boolean,
     gender: GenderType,
-    id: number,
+    id: string,
     known_for_department: string,
     name: string,
     media_type: MediaType.PERSON,
@@ -287,3 +284,5 @@ export type PersonDetailsMapper = {
     cast: MediaCastMapper[],
     crew: MediaCrewMapper[]
 };
+
+export type Adult = 'true' | 'false';

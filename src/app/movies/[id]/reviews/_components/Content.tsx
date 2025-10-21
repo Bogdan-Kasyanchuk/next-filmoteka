@@ -22,7 +22,7 @@ export default function Content(props: Props) {
     const data = useQueries({
         queries: [
             {
-                queryKey: [ 'movies', props.id, 'reviews' ],
+                queryKey: [ 'movies', 'current', props.id ],
                 queryFn: () => getCurrentMovieById(props.id)
             },
             {
@@ -35,26 +35,24 @@ export default function Content(props: Props) {
             return {
                 movie: results[ 0 ].data && transformCurrentMovie(results[ 0 ].data),
                 reviews: {
-                    items: results[ 1 ].data && results[ 1 ].data.results.map(
-                        review => transformReview(review)
-                    ),
-                    total_pages: results[ 1 ].data?.total_pages
+                    items: results[ 1 ].data?.results.map(transformReview) ?? [],
+                    total_pages: results[ 1 ].data?.total_pages ?? 0
                 },
                 pending: results.some(result => result.isPending),
-                fetching: results.some(result => result.isFetching)
+                error: results.some(result => result.isError)
             };
         }
     });
 
-    if (data.pending || data.fetching) {
+    if (data.pending) {
         return <Loader />;
     }
 
-    if (!data.movie) {
+    if (data.error || !data.movie) {
         return notFound();
     }
 
-    if (!data.reviews.items?.length) {
+    if (!data.reviews.items.length) {
         return <DataNotFound />;
     }
 
@@ -83,7 +81,7 @@ export default function Content(props: Props) {
                 </ul>
 
                 {
-                    (data.reviews.total_pages && data.reviews.total_pages > 1) &&
+                    data.reviews.total_pages > 1 &&
                     <Pagination
                         currentPage={ props.currentPage }
                         totalPages={ data.reviews.total_pages }

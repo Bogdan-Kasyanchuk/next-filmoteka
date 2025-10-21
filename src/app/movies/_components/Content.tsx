@@ -5,6 +5,7 @@ import { keepPreviousData, useQuery } from '@tanstack/react-query';
 import Pagination from '@/components/app/Pagination';
 import MovieCard from '@/components/ui/cards/MovieCard';
 import DataNotFound from '@/components/ui/data-display/DataNotFound';
+import FailedLoadData from '@/components/ui/data-display/FailedLoadData';
 import Loader from '@/components/ui/data-display/Loader';
 import { MovieType } from '@/enums';
 import { transformMovie } from '@/helpers/transformData';
@@ -17,22 +18,24 @@ type Props = {
 };
 
 export default function Content(props: Props) {
-    const { data, isPending, isFetching } = useQuery({
+    const { data, isPending, isError } = useQuery({
         queryKey: [ 'movies', props.type, props.currentPage ],
         queryFn: () => getMovies(props.type, props.currentPage),
         placeholderData: keepPreviousData,
         select: data => ({
-            movies: data.results.map(
-                movie => transformMovie(movie)
-            ),
+            movies: data.results.map(transformMovie),
             total_pages: data.total_pages,
             dates: data.dates
         })
     });
 
-    if (isPending || isFetching) {
+    if (isPending) {
         return <Loader />;
     }
+
+    if (isError) {
+        return <FailedLoadData />;
+    } 
 
     if (!data || !data.movies.length) {
         return <DataNotFound />;

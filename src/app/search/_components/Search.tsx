@@ -3,7 +3,7 @@
 import { useDebouncedValue, useDidUpdate } from '@mantine/hooks';
 import Image from 'next/image';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 
 import buildUri from '@/utils/buildUri';
 
@@ -11,20 +11,22 @@ export default function Search() {
     const pathname = usePathname();
     const searchParams = useSearchParams();
     const { replace } = useRouter();
-
-    const params = new URLSearchParams(searchParams);
-
+    
     const [ term, setTerm ] = useState(searchParams.get('query') ?? '');
     const [ debouncedTerm ] = useDebouncedValue(term, 250);
 
+    const inputRef = useRef<HTMLInputElement>(null);
+    
     useDidUpdate(() => {
+        const params = new URLSearchParams(searchParams);
+        
         if (debouncedTerm) {
             params.set('query', debouncedTerm);
-            params.set('page', '1');
         } else {
             params.delete('query');
-            params.delete('page');
         }
+
+        params.delete('page');
 
         replace(buildUri(pathname, params));
     }, [ debouncedTerm ]);
@@ -32,6 +34,7 @@ export default function Search() {
     return (
         <div className="p-search__search">
             <input
+                ref={ inputRef }
                 type="text"
                 name="search"
                 value={ term }
@@ -62,6 +65,7 @@ export default function Search() {
                     onClick={
                         () => {
                             setTerm('');
+                            inputRef.current?.focus();
                         }
                     }
                 >

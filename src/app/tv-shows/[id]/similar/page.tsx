@@ -2,6 +2,7 @@ import { HydrationBoundary, QueryClient, dehydrate } from '@tanstack/react-query
 import { Metadata } from 'next';
 
 import { getCurrentTVShowById, getSimilarTVShow } from '@/services/api';
+import { CurrentTVShowShema } from '@/shemas';
 
 import Content from './_components/Content';
 
@@ -13,31 +14,43 @@ type Props = {
 };
 
 export async function generateMetadata(props: Props): Promise<Metadata> {
-    const { id } = await props.params;
+    const params = await props.params;
+        
+    const queryClient = new QueryClient();
+
+    await queryClient.prefetchQuery({
+        queryKey: [ 'tv-shows', 'current', params.id ],
+        queryFn: () => getCurrentTVShowById(params.id)
+    });
+
+    const data = queryClient.getQueryData<CurrentTVShowShema>([ 'movies', 'current', params.id ]);
+
+    const title = data?.name || data?.original_name || 'TV';
 
     return {
-        title: `${ id }: similar`
+        title: `${ title } | Similar TV`
     };
 }
 
 export default async function Page(props: Props) {
-    const { id } = await props.params;
+    const params = await props.params;
+
     const searchParams = await props.searchParams;
-    const currentPage = Number(searchParams.page) || 1;
+    const currentPage = Number(searchParams.page ?? 1);
 
     const queryClient = new QueryClient();
 
     await Promise.all([
         await queryClient.prefetchQuery(
             {
-                queryKey: [ 'tv-shows', id, 'similar' ],
-                queryFn: () => getCurrentTVShowById(id)
+                queryKey: [ 'tv-shows', 'current', params.id ],
+                queryFn: () => getCurrentTVShowById(params.id)
             }
         ),
         await queryClient.prefetchQuery(
             {
-                queryKey: [ 'tv-shows', id, 'similar', currentPage ],
-                queryFn: () => getSimilarTVShow(id, currentPage)
+                queryKey: [ 'tv-shows', params.id, 'similar', currentPage ],
+                queryFn: () => getSimilarTVShow(params.id, currentPage)
             }
         )
     ]);
@@ -45,7 +58,7 @@ export default async function Page(props: Props) {
     return (
         <HydrationBoundary state={ dehydrate(queryClient) }>
             <Content
-                id={ id }
+                id={ params.id }
                 currentPage={ currentPage }
             />
         </HydrationBoundary>

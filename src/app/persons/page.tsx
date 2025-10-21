@@ -9,19 +9,20 @@ import Content from './_components/Content';
 
 import './_styles/index.css';
 
-export const metadata: Metadata = {
-    title: 'Persons'
-};
-
 type Props = {
     searchParams: Promise<{
         page?: string
     }>
 };
 
+export const metadata: Metadata = {
+    title: 'Persons'
+};
+
 export default async function Page(props: Props) {
     const searchParams = await props.searchParams;
-    const currentPage = Number(searchParams.page) || 1;
+    
+    const currentPage = Number(searchParams.page ?? 1);
 
     const queryClient = new QueryClient();
 

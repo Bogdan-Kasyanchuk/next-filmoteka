@@ -25,17 +25,17 @@ export default function ImageCard(props: Props) {
                 />
             </div>
 
-            <ul className="c-image-card__info-list">
-                <li className="c-image-card__info-item">
-                    <span>Rating:</span>
-                    <span>{ Math.round(props.image.vote_average * 10) }</span>
-                </li>
+            <dl className="c-image-card__info-list">
+                <div className="c-image-card__info-item">
+                    <dt>Rating:</dt>
+                    <dd>{ Math.round(props.image.vote_average ?? 0 * 10) }</dd>
+                </div>
 
-                <li className="c-image-card__info-item">
-                    <span>Votes:</span>
-                    <span>{ props.image.vote_count ?? 0 }</span>
-                </li>
-            </ul>
+                <div className="c-image-card__info-item">
+                    <dt>Votes:</dt>
+                    <dd>{ props.image.vote_count ?? 0 }</dd>
+                </div>
+            </dl>
         </div>
     );
 }

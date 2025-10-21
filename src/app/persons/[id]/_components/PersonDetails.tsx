@@ -66,10 +66,13 @@ export default function PersonDetails(props: Props) {
                         </li>
                     }
 
-                    <li className="p-person__details-list-info-item">
-                        <span>Department:</span>
-                        { props.person.known_for_department }
-                    </li>
+                    {
+                        props.person.known_for_department &&
+                        <li className="p-person__details-list-info-item">
+                            <span>Department:</span>
+                            { props.person.known_for_department }
+                        </li>
+                    }
 
                     {
                         props.person.place_of_birth &&
@@ -97,7 +100,7 @@ export default function PersonDetails(props: Props) {
 
                     <li className="p-person__details-list-info-item">
                         <span>Popularity:</span>
-                        { Math.round(props.person.popularity) }
+                        { Math.round(props.person.popularity ?? 0) }
                     </li>
 
                     {

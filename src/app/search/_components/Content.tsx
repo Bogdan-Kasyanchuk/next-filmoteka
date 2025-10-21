@@ -6,6 +6,7 @@ import Pagination from '@/components/app/Pagination';
 import MovieCard from '@/components/ui/cards/MovieCard';
 import PersonCard from '@/components/ui/cards/PersonCard';
 import TVShowCard from '@/components/ui/cards/TVShowCard';
+import FailedLoadData from '@/components/ui/data-display/FailedLoadData';
 import Loader from '@/components/ui/data-display/Loader';
 import NoSearchResults from '@/components/ui/data-display/NoSearchResults';
 import { MediaType } from '@/enums';
@@ -22,7 +23,7 @@ type Props = {
 };
 
 export default function Content(props: Props) {
-    const { data, isPending, isFetching } = useQuery({
+    const { data, isPending, isError } = useQuery({
         queryKey: [ 'search', props.type, props.adult, props.query, props.currentPage ],
         queryFn: () => getSearch(props.type, props.adult, props.query, props.currentPage),
         placeholderData: keepPreviousData,
@@ -45,9 +46,13 @@ export default function Content(props: Props) {
         })
     });
 
-    if (isPending || isFetching) {
+    if (isPending) {
         return <Loader />;
     }
+
+    if (isError) {
+        return <FailedLoadData />;
+    } 
 
     if (!data || !data.results.length) {
         return <NoSearchResults />;
@@ -111,12 +116,12 @@ type CardProps = {
 function Card(props: CardProps) {
     switch (props.type) {
         case MediaType.MOVIE:
-            return <MovieCard movie={ props.result as MovieShema } />;
+            return <MovieCard movie={ props.result as MovieMapper } />;
 
         case MediaType.TV_SHOW:
-            return <TVShowCard tvShow={ props.result as TVShowShema } />;
+            return <TVShowCard tvShow={ props.result as TVShowMapper } />;
 
         case MediaType.PERSON:
-            return <PersonCard person={ props.result as PersonShema } />;
+            return <PersonCard person={ props.result as PersonMapper } />;
     }
 }

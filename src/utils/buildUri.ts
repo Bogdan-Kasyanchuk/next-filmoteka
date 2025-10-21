@@ -2,16 +2,23 @@ export default (pathname: string, params: URLSearchParams) => {
     const query = params.get('query');
     const page = params.get('page');
 
-    params.delete('query');
-    params.delete('page');
+    const newParams = new URLSearchParams();
+
+    params.forEach((value, key) => {
+        if (key !== 'query' && key !== 'page') {
+            newParams.append(key, value);
+        }
+    });
 
     if (query) {
-        params.set('query', query);
+        newParams.set('query', query);
     }
 
     if (page) {
-        params.set('page', page);
+        newParams.set('page', page);
     }
 
-    return `${ pathname }?${ params.toString() }`;
+    const qs = newParams.toString();
+
+    return qs ? `${ pathname }?${ qs }` : pathname;
 };

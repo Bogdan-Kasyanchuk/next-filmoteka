@@ -18,22 +18,15 @@ export default function Filter(props: Props) {
     const searchParams = useSearchParams();
     const { replace } = useRouter();
 
-    const params = new URLSearchParams(searchParams);
+    const handleParamChange = (key: string, value: string) => {
+        const params = new URLSearchParams(searchParams);
 
-    const handleType = (type: 'all' | MediaType) => {
-        params.set('type', type);
-        params.set('page', '1');
-
+        params.set(key, value);
+        params.delete('page');
+        
         replace(buildUri(pathname, params));
     };
-
-    const handleTime = (time: TimeType) => {
-        params.set('time', time);
-        params.set('page', '1');
-
-        replace(buildUri(pathname, params));
-    };
-
+    
     return (
         <div className="p-home__filter">
             <Tabs<'all' | MediaType>
@@ -41,7 +34,7 @@ export default function Filter(props: Props) {
                 active={ props.type }
                 onClick={
                     value => {
-                        handleType(value);
+                        handleParamChange('type', value);
                     }
                 }
             />
@@ -51,7 +44,7 @@ export default function Filter(props: Props) {
                 active={ props.time }
                 onClick={
                     value => {
-                        handleTime(value);
+                        handleParamChange('time', value);
                     }
                 }
             />

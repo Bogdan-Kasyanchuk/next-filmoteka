@@ -22,7 +22,7 @@ type Props = {
 };
 
 export default function TVShowDetails(props: Props) {
-    const average = Math.round(props.tvShow.vote_average * 10);
+    const average = Math.round(props.tvShow.vote_average ?? 0 * 10);
 
     return (
         <div>
@@ -93,7 +93,7 @@ export default function TVShowDetails(props: Props) {
                         </li>
 
                         <li className="p-tv-show__details-list-rounds-item">
-                            { Math.round(props.tvShow.popularity) }
+                            { Math.round(props.tvShow.popularity ?? 0) }
                             <span>popularity</span>
                         </li>
 
@@ -314,15 +314,17 @@ export default function TVShowDetails(props: Props) {
                                                                 alt={ network.name }
                                                             />
                                                         </div>
+
                                                         <div className="p-tv-show__details-networks-content">
                                                             <span className="text-lg font-semibold">
                                                                 { network.name }
                                                             </span>
+
                                                             {
                                                                 network.origin_country &&
-                                                        <span className="opacity-75 text-sm">
-                                                            { network.origin_country }
-                                                        </span>
+                                                                <span className="opacity-75 text-sm">
+                                                                    { network.origin_country }
+                                                                </span>
                                                             }
                                                         </div>
                                                     </li>
@@ -364,10 +366,12 @@ export default function TVShowDetails(props: Props) {
                                                                 alt={ company.name }
                                                             />
                                                         </div>
+
                                                         <div className="p-tv-show__details-companies-content">
                                                             <span className="text-lg font-semibold">
                                                                 { company.name }
                                                             </span>
+                                                            
                                                             {
                                                                 company.origin_country &&
                                                                 <span className="opacity-75 text-sm">

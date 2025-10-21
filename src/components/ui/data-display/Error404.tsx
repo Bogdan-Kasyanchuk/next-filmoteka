@@ -24,7 +24,6 @@ export default function Error404() {
             >
                 Back to homepage
             </Link>
-
         </Container>
     );
 }
