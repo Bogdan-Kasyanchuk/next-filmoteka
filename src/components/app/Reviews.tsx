@@ -31,7 +31,10 @@ export default function Reviews(props: Props) {
                                 key={ index }
                                 className="с-reviews__item"
                             >
-                                <ReviewCard review={ item } />
+                                <ReviewCard
+                                    review={ item }
+                                    isTextTruncated
+                                />
                             </li>
                         )
                     )

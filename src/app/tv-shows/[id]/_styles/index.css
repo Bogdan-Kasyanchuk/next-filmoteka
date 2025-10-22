@@ -81,7 +81,7 @@
 
             @variant min-md {
                 grid-column: 1/2;
-                grid-row: 1/4;
+                grid-row: 1/5;
                 justify-self: initial;
                 width: 100%;
             }
@@ -216,6 +216,15 @@
             }
         }
 
+        .c-socials {
+            grid-column: 1/-1;
+
+            @variant min-md {
+                grid-column: -2/-1;
+                grid-row: 3/4;
+            }
+        }
+
         &-list-info {
             display: flex;
             grid-column: 1/-1;
@@ -224,7 +233,7 @@
 
             @variant min-md {
                 grid-column: -2/-1;
-                grid-row: 3/4;
+                grid-row: 4/5;
             }
 
             &-item {

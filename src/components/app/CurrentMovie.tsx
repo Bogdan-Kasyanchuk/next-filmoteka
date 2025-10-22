@@ -23,9 +23,10 @@ export default function CurrentMovie(props: Props) {
                             ? imageUrl(IMG_SIZES.MEDIA_CARD_CURRENT_COVER, props.movie.poster_path)
                             : '/img/poster-not-available.jpg'
                     }
-                    sizes="92px"
+                    sizes="81px"
                     alt={ props.movie.title }
                     fill
+                    fetchPriority="high"
                 />
             </div>
 

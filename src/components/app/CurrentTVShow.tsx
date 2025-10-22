@@ -23,9 +23,10 @@ export default function CurrentTVShow(props: Props) {
                             ? imageUrl(IMG_SIZES.MEDIA_CARD_CURRENT_COVER, props.tvShow.poster_path)
                             : '/img/poster-not-available.jpg'
                     }
-                    sizes="92px"
+                    sizes="81px"
                     alt={ props.tvShow.name }
                     fill
+                    fetchPriority="high"
                 />
             </div>
 

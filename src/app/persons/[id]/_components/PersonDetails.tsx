@@ -23,6 +23,7 @@ export default function PersonDetails(props: Props) {
                     sizes="(max-width: 767px) 768px, (max-width: 1319px) 1320px, 1920px"
                     alt={ props.person.name }
                     fill
+                    fetchPriority="high"
                 />
             </div>
 
@@ -41,9 +42,10 @@ export default function PersonDetails(props: Props) {
                                 ? imageUrl(IMG_SIZES.PERSON_CARD_DETAILS_COVER, props.person.profile_path)
                                 : '/img/poster-not-available.jpg'
                         }
-                        sizes="(max-width: 767px) 253px, (max-width: 1319px) 326px, 421px"
+                        sizes="(max-width: 767px) 254px, (max-width: 1319px) 327px, 351px"
                         alt={ props.person.name }
                         fill
+                        fetchPriority="high"
                     />
                 </div>
 

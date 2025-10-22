@@ -29,7 +29,7 @@ export default function CrewCard(props: Props) {
                             ? imageUrl(IMG_SIZES.CREW_CARD_COVER, props.crew.profile_path)
                             : '/img/avatar-placeholder.svg'
                     }
-                    sizes="180px"
+                    sizes="161px"
                     alt={ props.crew.name }
                     fill
                 />

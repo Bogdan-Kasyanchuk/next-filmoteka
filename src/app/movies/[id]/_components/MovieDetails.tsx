@@ -33,6 +33,7 @@ export default function MovieDetails(props: Props) {
                         sizes="(max-width: 767px) 768px, (max-width: 1319px) 1320px, 1920px"
                         alt={ props.movie.title }
                         fill
+                        fetchPriority="high"
                     />
                 </div>
 
@@ -51,9 +52,10 @@ export default function MovieDetails(props: Props) {
                                     ? imageUrl(IMG_SIZES.MEDIA_CARD_DETAILS_COVER, props.movie.poster_path)
                                     : '/img/poster-not-available.jpg'
                             }
-                            sizes="(max-width: 767px) 253px, (max-width: 1319px) 326px, 500px"
+                            sizes="(max-width: 767px) 254px, (max-width: 1319px) 327px, 351px"
                             alt={ props.movie.title }
                             fill
+                            fetchPriority="high"
                         />
 
                         <Link
@@ -230,7 +232,6 @@ export default function MovieDetails(props: Props) {
                             </ShowMore>
                         </div>
                     }
-
                 </Container>
             </div>
 
@@ -258,7 +259,7 @@ export default function MovieDetails(props: Props) {
                                                                     : '/img/image-placeholder.svg'
                                                             }
                                                             fill
-                                                            sizes="92px"
+                                                            sizes="50px"
                                                             alt={ company.name }
                                                         />
                                                     </div>

@@ -59,7 +59,7 @@ export default function Navigation() {
                                     width={ 24 }
                                     height={ 24 }
                                     src="/svg/search.svg"
-                                    alt="Search"
+                                    alt="Search icon"
                                     className="c-navigation__img"
                                 />
 
@@ -111,7 +111,7 @@ export default function Navigation() {
                                         width={ 24 }
                                         height={ 24 }
                                         src={ link.icon }
-                                        alt={ link.name }
+                                        alt={ `${ link.name } icon` }
                                         className="c-navigation__img"
                                     />
                                     

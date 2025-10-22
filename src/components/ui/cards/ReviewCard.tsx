@@ -7,7 +7,8 @@ import { ReviewMapper } from '@/types';
 import { formatDate } from '@/utils/formateDate';
 
 type Props = {
-    review: ReviewMapper
+    review: ReviewMapper,
+    isTextTruncated?: boolean
 };
 
 export default function ReviewCard(props: Props) {
@@ -77,9 +78,13 @@ export default function ReviewCard(props: Props) {
             </div>
 
             <div className="c-review-card__content">
-                <ShowMore lines={ 5 }>
-                    { props.review.content }
-                </ShowMore>
+                {
+                    props.isTextTruncated
+                        ? <ShowMore lines={ 5 }>
+                            { props.review.content }
+                        </ShowMore>
+                        : <p>{ props.review.content }</p>
+                }
             </div>
         </div>
     );

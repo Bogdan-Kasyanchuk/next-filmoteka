@@ -43,7 +43,7 @@ export default function MediaCrewCard(props: Props) {
                             ? imageUrl(IMG_SIZES.MEDIA_CREW_CARD_COVER, props.crew.poster_path)
                             : '/img/poster-not-available.jpg'
                     }
-                    sizes="92px"
+                    sizes="45px"
                     alt={ props.crew.title }
                     fill
                 />

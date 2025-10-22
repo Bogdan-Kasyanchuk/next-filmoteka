@@ -45,7 +45,7 @@ export default function Footer() {
                                 >
                                     <img
                                         src={ logo.icon }
-                                        alt={ logo.name }
+                                        alt={ `${ logo.name } icon` }
                                     />
 
                                     <a
@@ -71,4 +71,3 @@ export default function Footer() {
         </footer>
     );
 }
-

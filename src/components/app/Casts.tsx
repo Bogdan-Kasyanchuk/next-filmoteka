@@ -59,10 +59,12 @@ export default function Casts(props: Props) {
                 <>
                     <Arrow
                         type="prev"
+                        ariaLabel="Previous"
                         refEl={ setPrevButtonRef }
                     />
                     <Arrow
                         type="next"
+                        ariaLabel="Next"
                         refEl={ setNextButtonRef }
                     />
                 </>
@@ -73,6 +75,7 @@ export default function Casts(props: Props) {
 
 export type ArrowProps = {
     type: 'prev' | 'next',
+    ariaLabel: string,
     refEl: Dispatch<SetStateAction<HTMLButtonElement | null>>
 };
 
@@ -81,6 +84,7 @@ function Arrow(props: ArrowProps) {
         <button
             type="button"
             ref={ props.refEl }
+            aria-label={ props.ariaLabel }
             className={
                 clsx(
                     'с-casts__arrow',

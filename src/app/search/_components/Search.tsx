@@ -73,7 +73,7 @@ export default function Search() {
                         width={ 24 }
                         height={ 24 }
                         src="/svg/close.svg"
-                        alt="Search icon"
+                        alt="Close icon"
                         className="pointer-events-none"
                     />
                 </button>

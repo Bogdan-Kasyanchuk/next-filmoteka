@@ -33,6 +33,7 @@ export default function TVShowDetails(props: Props) {
                         sizes="(max-width: 767px) 768px, (max-width: 1319px) 1320px, 1920px"
                         alt={ props.tvShow.name }
                         fill
+                        fetchPriority="high"
                     />
                 </div>
 
@@ -51,9 +52,10 @@ export default function TVShowDetails(props: Props) {
                                     ? imageUrl(IMG_SIZES.MEDIA_CARD_DETAILS_COVER, props.tvShow.poster_path)
                                     : '/img/poster-not-available.jpg'
                             }
-                            sizes="(max-width: 767px) 253px, (max-width: 1319px) 326px, 500px"
+                            sizes="(max-width: 767px) 254px, (max-width: 1319px) 327px, 351px"
                             alt={ props.tvShow.name }
                             fill
+                            fetchPriority="high"
                         />
 
                         <Link
@@ -222,6 +224,11 @@ export default function TVShowDetails(props: Props) {
                     </ul>
 
                     {
+                        props.tvShow.socialLinks.length > 0 &&
+                        <SocialLinks socials={ props.tvShow.socialLinks } />
+                    }
+
+                    {
                         props.tvShow.overview &&
                         <div className="p-tv-show__details-overview">
                             <p className="p-tv-show__details-overview-title">
@@ -235,11 +242,6 @@ export default function TVShowDetails(props: Props) {
                                 { props.tvShow.overview }
                             </ShowMore>
                         </div>
-                    }
-
-                    {
-                        props.tvShow.socialLinks.length > 0 &&
-                        <SocialLinks socials={ props.tvShow.socialLinks } />
                     }
                 </Container>
             </div>
@@ -310,7 +312,7 @@ export default function TVShowDetails(props: Props) {
                                                                         : '/img/image-placeholder.svg'
                                                                 }
                                                                 fill
-                                                                sizes="92px"
+                                                                sizes="50px"
                                                                 alt={ network.name }
                                                             />
                                                         </div>
@@ -362,7 +364,7 @@ export default function TVShowDetails(props: Props) {
                                                                         : '/img/image-placeholder.svg'
                                                                 }
                                                                 fill
-                                                                sizes="92px"
+                                                                sizes="50px"
                                                                 alt={ company.name }
                                                             />
                                                         </div>

@@ -4,6 +4,7 @@ import { useMediaQuery } from '@mantine/hooks';
 import clsx from 'clsx';
 import Link from 'next/link';
 import { usePathname, useSearchParams } from 'next/navigation';
+import { useMemo } from 'react';
 
 import Icon from '@/components/ui/data-display/Icon';
 import buildUri from '@/utils/buildUri';
@@ -33,9 +34,11 @@ export default function Pagination(props: Props) {
         { getInitialValueInEffect: false }
     );
 
-    const generatedAllPages = isMobile
-        ? mobilePagination(props.currentPage, props.totalPages)
-        : desktopPagination(props.currentPage, props.totalPages);
+    const generatedAllPages = useMemo(() => {
+        return isMobile
+            ? mobilePagination(props.currentPage, props.totalPages)
+            : desktopPagination(props.currentPage, props.totalPages);
+    }, [ props.currentPage, props.totalPages, isMobile ]);
 
     const icon = <Icon name="angle" />;
 
@@ -52,7 +55,10 @@ export default function Pagination(props: Props) {
                     {
                         props.currentPage <= 1
                             ? <>{ icon }</>
-                            : <Link href={ createPageURL(props.currentPage - 1) }>
+                            : <Link
+                                href={ createPageURL(props.currentPage - 1) }
+                                aria-label="Previous page"
+                            >
                                 { icon }
                             </Link>
                     }
@@ -91,7 +97,10 @@ export default function Pagination(props: Props) {
                     {
                         props.currentPage >= props.totalPages
                             ? <>{ icon }</>
-                            : <Link href={ createPageURL(props.currentPage + 1) }>
+                            : <Link
+                                href={ createPageURL(props.currentPage + 1) }
+                                aria-label="Next page"
+                            >
                                 { icon }
                             </Link>
                     }
