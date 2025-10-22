@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Fragment } from 'react';
 
+import ProductionCompanyDetails from '@/components/app/ProductionCompanyDetails';
 import HoverCard from '@/components/ui/data-display/HoverCard';
 import SocialLinks from '@/components/ui/data-display/SocialLinks';
 import Container from '@/components/ui/layouts/Container';
@@ -13,8 +14,6 @@ import { imageUrl, pagesSimilarUrl } from '@/routes';
 import { MovieDetailsMapper } from '@/types';
 import { formatCurrency } from '@/utils/formatCurrency';
 import { formatDate } from '@/utils/formateDate';
-
-import ProductionCompanyDetails from './ProductionCompanyDetails';
 
 type Props = {
     movie: MovieDetailsMapper['movie'],

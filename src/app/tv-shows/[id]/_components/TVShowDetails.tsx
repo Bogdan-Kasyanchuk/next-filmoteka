@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Fragment } from 'react';
 
+import ProductionCompanyDetails from '@/components/app/ProductionCompanyDetails';
 import HoverCard from '@/components/ui/data-display/HoverCard';
 import SocialLinks from '@/components/ui/data-display/SocialLinks';
 import Container from '@/components/ui/layouts/Container';
@@ -14,7 +15,6 @@ import { TVShowDetailsMapper } from '@/types';
 import { formatDate } from '@/utils/formateDate';
 
 import NetworkDetails from './NetworkDetails';
-import ProductionCompanyDetails from './ProductionCompanyDetails';
 
 type Props = {
     tvShow: TVShowDetailsMapper['tvShow'],
