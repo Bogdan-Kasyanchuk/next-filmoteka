@@ -1,5 +1,5 @@
 @import '../../../../../styles/app/base.css';
-@import '../../../../../styles/app/components.css';
+@import './components.css';
 
 .p-tv-show-similar {
     display: flex;
