@@ -1,6 +1,7 @@
 'use client';
 
 import { useQuery } from '@tanstack/react-query';
+import { PropsWithChildren } from 'react';
 
 import ProductionCompanyDetailsCard from '@/components/ui/cards/ProductionCompanyDetailsCard';
 import { transformProductionCompanyDetails } from '@/helpers/transformData';
@@ -11,7 +12,7 @@ type Props = {
 };
 
 export default function ProductionCompanyDetails(props: Props) {
-    const { data, isPending, isError } = useQuery({
+    const { data, isPending, isError, error } = useQuery({
         queryKey: [ 'production-company', props.id ],
         queryFn: () => getProductionCompanyById(props.id),
         select: data => {
@@ -26,14 +27,30 @@ export default function ProductionCompanyDetails(props: Props) {
     });
 
     if (isPending) {
-        return <div className="font-bold text-md">Loading...</div>;
+        return (
+            <Content>Loading...</Content>
+        );
     }
 
-    if ( isError || !data) {
-        return <div className="font-bold text-md">Data not found</div>; 
+    if (isError) {
+        return (
+            <Content>{ error.message }</Content>
+        );
+    }
+
+    if (!data) {
+        return (
+            <Content>Data not found</Content>
+        );
     }
 
     return (
         <ProductionCompanyDetailsCard company={ data } />
+    );
+}
+
+function Content(props: PropsWithChildren) {
+    return (
+        <div className="font-bold text-md">{ props.children }</div>
     );
 }

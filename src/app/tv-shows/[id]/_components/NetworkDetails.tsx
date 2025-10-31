@@ -1,6 +1,7 @@
 'use client';
 
 import { useQuery } from '@tanstack/react-query';
+import { PropsWithChildren } from 'react';
 
 import NetworkDetailsCard from '@/components/ui/cards/NetworkDetailsCard';
 import { transformNetworkDetails } from '@/helpers/transformData';
@@ -11,7 +12,7 @@ type Props = {
 };
 
 export default function NetworkDetails(props: Props) {
-    const { data, isPending, isError } = useQuery({
+    const { data, isPending, isError, error } = useQuery({
         queryKey: [ 'network', props.id ],
         queryFn: () => getNetworkById(props.id),
         select: data => {
@@ -26,14 +27,30 @@ export default function NetworkDetails(props: Props) {
     });
 
     if (isPending) {
-        return <div className="font-bold text-md">Loading...</div>;
+        return (
+            <Content>Loading...</Content>
+        );
     }
 
-    if ( isError || !data) {
-        return <div className="font-bold text-md">Data not found</div>; 
+    if (isError) {
+        return (
+            <Content>{ error.message }</Content>
+        );
+    }
+
+    if (!data) {
+        return (
+            <Content>Data not found</Content>
+        );
     }
 
     return (
         <NetworkDetailsCard network={ data } />
+    );
+}
+
+function Content(props: PropsWithChildren) {
+    return (
+        <div className="font-bold text-md">{ props.children }</div>
     );
 }

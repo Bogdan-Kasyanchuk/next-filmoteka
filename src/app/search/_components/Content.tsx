@@ -23,7 +23,7 @@ type Props = {
 };
 
 export default function Content(props: Props) {
-    const { data, isPending, isError } = useQuery({
+    const { data, isPending, isError, error } = useQuery({
         queryKey: [ 'search', props.type, props.adult, props.query, props.currentPage ],
         queryFn: () => getSearch(props.type, props.adult, props.query, props.currentPage),
         placeholderData: keepPreviousData,
@@ -51,8 +51,10 @@ export default function Content(props: Props) {
     }
 
     if (isError) {
-        return <FailedLoadData />;
-    } 
+        return (
+            <FailedLoadData>{ error.message } </FailedLoadData>
+        );
+    }
 
     if (!data || !data.results.length) {
         return <NoSearchResults />;

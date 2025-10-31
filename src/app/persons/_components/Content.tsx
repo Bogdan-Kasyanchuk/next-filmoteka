@@ -15,7 +15,7 @@ type Props = {
 };
 
 export default function Content(props: Props) {
-    const { data, isPending, isError } = useQuery({
+    const { data, isPending, isError, error } = useQuery({
         queryKey: [ 'persons', props.currentPage ],
         queryFn: () => getPersons(props.currentPage),
         placeholderData: keepPreviousData,
@@ -30,8 +30,10 @@ export default function Content(props: Props) {
     }
 
     if (isError) {
-        return <FailedLoadData />;
-    } 
+        return (
+            <FailedLoadData>{ error.message } </FailedLoadData>
+        );
+    }
 
     if (!data || !data.persons.length) {
         return <DataNotFound />;

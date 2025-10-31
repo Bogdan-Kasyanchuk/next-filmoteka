@@ -7,6 +7,7 @@ import CurrentMovie from '@/components/app/CurrentMovie';
 import Pagination from '@/components/app/Pagination';
 import MovieCard from '@/components/ui/cards/MovieCard';
 import DataNotFound from '@/components/ui/data-display/DataNotFound';
+import FailedLoadData from '@/components/ui/data-display/FailedLoadData';
 import Loader from '@/components/ui/data-display/Loader';
 import Container from '@/components/ui/layouts/Container';
 import Title from '@/components/ui/typography/Title';
@@ -32,23 +33,43 @@ export default function Content(props: Props) {
             }
         ],
         combine: results => {
+            let error = { 
+                isError: false,
+                message: ''
+            };
+
+            results.forEach(result => {
+                if (result.isError) {
+                    error = {
+                        isError: result.isError,
+                        message: result.error.message
+                    };
+                }
+            });
+
             return {
                 movie: results[ 0 ].data && transformCurrentMovie(results[ 0 ].data),
                 recommendations: {
                     movies: results[ 1 ].data?.results.map(transformMovie) ?? [],
                     total_pages: results[ 1 ].data?.total_pages ?? 0
                 },
-                pending: results.some(result => result.isPending),
-                error: results.some(result => result.isError)
+                isPending: results.some(result => result.isPending),
+                error
             };
         }
     });
 
-    if (data.pending) {
+    if (data.isPending) {
         return <Loader />;
     }
 
-    if (data.error || !data.movie) {
+    if (data.error.isError) {
+        return (
+            <FailedLoadData>{ data.error.message } </FailedLoadData>
+        );
+    }
+
+    if (!data.movie) {
         return notFound();
     }
 
