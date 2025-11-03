@@ -6,7 +6,6 @@ import { notFound } from 'next/navigation';
 import CurrentMovie from '@/components/app/CurrentMovie';
 import Pagination from '@/components/app/Pagination';
 import MovieCard from '@/components/ui/cards/MovieCard';
-import DataNotFound from '@/components/ui/data-display/DataNotFound';
 import FailedLoadData from '@/components/ui/data-display/FailedLoadData';
 import Loader from '@/components/ui/data-display/Loader';
 import Container from '@/components/ui/layouts/Container';
@@ -65,16 +64,12 @@ export default function Content(props: Props) {
 
     if (data.error.isError) {
         return (
-            <FailedLoadData>{ data.error.message } </FailedLoadData>
+            <FailedLoadData>{ data.error.message }</FailedLoadData>
         );
     }
 
-    if (!data.movie) {
+    if (!data.movie || !data.recommendations.movies.length) {
         return notFound();
-    }
-
-    if (!data.recommendations.movies.length) {
-        return <DataNotFound />;
     }
 
     return (

@@ -208,7 +208,7 @@
         &-list {
             @apply mt-5 grid grid-cols-2 gap-2.5;
             @apply sm:grid-cols-3;
-            @apply md:grid-cols-4 md:gap-5;
+            @apply md:grid-cols-4;
             @apply lg:grid-cols-6;
             @apply xl:grid-cols-8;
         }

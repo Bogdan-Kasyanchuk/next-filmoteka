@@ -19,7 +19,7 @@ export default function ImageCard(props: Props) {
                             ? imageUrl(IMG_SIZES.PERSON_IMAGE, props.image.file_path)
                             : '/img/avatar-placeholder.svg'
                     }
-                    sizes="166px"
+                    sizes="174px"
                     alt={ props.alt }
                     fill
                 />

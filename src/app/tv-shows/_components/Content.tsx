@@ -33,7 +33,7 @@ export default function Content(props: Props) {
 
     if (isError) {
         return (
-            <FailedLoadData>{ error.message } </FailedLoadData>
+            <FailedLoadData>{ error.message }</FailedLoadData>
         );
     }
 

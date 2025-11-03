@@ -6,7 +6,6 @@ import { notFound } from 'next/navigation';
 import CurrentMovie from '@/components/app/CurrentMovie';
 import Pagination from '@/components/app/Pagination';
 import MovieCard from '@/components/ui/cards/MovieCard';
-import DataNotFound from '@/components/ui/data-display/DataNotFound';
 import FailedLoadData from '@/components/ui/data-display/FailedLoadData';
 import Loader from '@/components/ui/data-display/Loader';
 import Container from '@/components/ui/layouts/Container';
@@ -69,12 +68,8 @@ export default function Content(props: Props) {
         );
     }
 
-    if (!data.movie) {
+    if (!data.movie || !data.similar.movies.length) {
         return notFound();
-    }
-
-    if (!data.similar.movies.length) {
-        return <DataNotFound />;
     }
 
     return (

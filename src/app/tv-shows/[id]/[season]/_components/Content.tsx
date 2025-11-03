@@ -4,7 +4,6 @@ import { useQuery } from '@tanstack/react-query';
 import { notFound } from 'next/navigation';
 
 import EpisodeCard from '@/components/ui/cards/EpisodeCard';
-import DataNotFound from '@/components/ui/data-display/DataNotFound';
 import FailedLoadData from '@/components/ui/data-display/FailedLoadData';
 import Loader from '@/components/ui/data-display/Loader';
 import Container from '@/components/ui/layouts/Container';
@@ -31,16 +30,12 @@ export default function Content(props: Props) {
 
     if (isError) {
         return (
-            <FailedLoadData>{ error.message } </FailedLoadData>
+            <FailedLoadData>{ error.message }</FailedLoadData>
         );
     }
 
-    if (!data) {
+    if (!data || !data.episodes.length) {
         return notFound();
-    }
-
-    if (!data.episodes.length) {
-        return <DataNotFound />;
     }
 
     return (

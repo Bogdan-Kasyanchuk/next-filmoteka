@@ -6,7 +6,6 @@ import { notFound } from 'next/navigation';
 import CurrentTVShow from '@/components/app/CurrentTVShow';
 import Pagination from '@/components/app/Pagination';
 import ReviewCard from '@/components/ui/cards/ReviewCard';
-import DataNotFound from '@/components/ui/data-display/DataNotFound';
 import FailedLoadData from '@/components/ui/data-display/FailedLoadData';
 import Loader from '@/components/ui/data-display/Loader';
 import Container from '@/components/ui/layouts/Container';
@@ -65,16 +64,12 @@ export default function Content(props: Props) {
 
     if (data.error.isError) {
         return (
-            <FailedLoadData>{ data.error.message } </FailedLoadData>
+            <FailedLoadData>{ data.error.message }</FailedLoadData>
         );
     }
 
-    if (!data.tvShow) {
+    if (!data.tvShow || !data.reviews.items.length) {
         return notFound();
-    }
-
-    if (!data.reviews.items.length) {
-        return <DataNotFound />;
     }
 
     return (

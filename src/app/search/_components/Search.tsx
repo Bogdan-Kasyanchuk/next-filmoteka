@@ -57,7 +57,7 @@ export default function Search() {
             />
 
             {
-                debouncedTerm &&
+                term &&
                 <button
                     type="button"
                     aria-label="Clear search"

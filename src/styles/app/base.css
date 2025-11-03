@@ -12,7 +12,6 @@
 @import '../components/loader.css' layer(base);
 @import '../components/title.css' layer(base);
 @import '../components/error-404.css' layer(base);
-@import '../components/data-not-found.css' layer(base);
 @import '../components/failed-load-data.css' layer(base);
 
 /* Parts */
