@@ -72,7 +72,11 @@ export type ProductionCompanyDetailsShema = {
     description: string,
     headquarters: string,
     homepage: string,
-    parent_company: string
+    parent_company: string | {
+        id: number,
+        logo_path: string,
+        name: string
+    }
 };
 
 export type ImageShema = {

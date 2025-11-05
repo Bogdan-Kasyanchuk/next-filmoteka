@@ -31,6 +31,10 @@
         align-items: center;
         justify-content: center;
 
+        @variant min-md {
+            gap: 40px;
+        }
+
         &-item {
             position: relative;
             transition-property: opacity;
@@ -46,11 +50,6 @@
                 }
             }
         }
-    }
-
-    &__text {
-        font-size: var(--text-sm);
-        font-weight: 700;
     }
 
     .c-logo {

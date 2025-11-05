@@ -5,7 +5,7 @@ import { PropsWithChildren } from 'react';
 
 import ProductionCompanyDetailsCard from '@/components/ui/cards/ProductionCompanyDetailsCard';
 import { transformProductionCompanyDetails } from '@/helpers/transformData';
-import { getProductionCompanyById } from '@/services/api';
+import { ProductionCompanyDetailsShema } from '@/shemas';
 
 type Props = {
     id: string
@@ -14,7 +14,15 @@ type Props = {
 export default function ProductionCompanyDetails(props: Props) {
     const { data, isPending, isError, error } = useQuery({
         queryKey: [ 'production-company', props.id ],
-        queryFn: () => getProductionCompanyById(props.id),
+        queryFn: async () => {
+            const res = await fetch(`/api/production-companies/${ props.id }`);
+
+            if (!res.ok) {
+                throw new Error(await res.json() as string);
+            }
+
+            return await res.json() as ProductionCompanyDetailsShema;
+        },
         select: data => {
             const result = transformProductionCompanyDetails(data);
 

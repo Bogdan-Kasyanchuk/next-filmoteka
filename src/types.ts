@@ -29,7 +29,7 @@ export type ProductionCompanyDetailsMapper = {
     description: string,
     headquarters: string,
     homepage: string,
-    parent_company: string
+    parent_company: string | null
 };
 
 export type NetworkDetailsMapper = {

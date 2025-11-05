@@ -28,13 +28,6 @@ export default function Footer() {
                 size="full"
                 className="c-footer__container"
             >
-                <Logo
-                    imgSrc="/svg/logo-white.svg"
-                    className="text-primary"
-                >
-                    <p>Filmoteka</p>
-                </Logo>
-
                 <ul className="c-footer__logos">
                     {
                         logos.map(
@@ -62,9 +55,12 @@ export default function Footer() {
                     }
                 </ul>
 
-                <p className="c-footer__text">
-                    © 2025. All rights reserved.
-                </p>
+                <Logo
+                    imgSrc="/svg/logo-white.svg"
+                    className="text-primary"
+                >
+                    <p>Filmoteka</p>
+                </Logo>
             </Container>
 
             <ButtonScrollToTop />

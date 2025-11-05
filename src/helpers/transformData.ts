@@ -300,7 +300,11 @@ export const transformProductionCompanyDetails = (company: ProductionCompanyDeta
     description: company.description,
     headquarters: company.headquarters,
     homepage: company.homepage,
-    parent_company: company.parent_company
+    parent_company: !company.parent_company
+        ? null
+        : typeof company.parent_company === 'string'
+            ? company.parent_company
+            : company.parent_company.name
 }) as ProductionCompanyDetailsMapper;
 
 const transformSeason = (season: SeasonShema) => ({
