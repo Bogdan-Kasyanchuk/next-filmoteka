@@ -141,14 +141,6 @@ export default function MovieDetails(props: Props) {
                         }
 
                         {
-                            props.movie.status &&
-                            <li className="p-movie__details-list-info-item">
-                                <span>Status:</span>
-                                <span>{ props.movie.status }</span>
-                            </li>
-                        }
-
-                        {
                             props.movie.genres.length > 0 &&
                             <li className="p-movie__details-list-info-item">
                                 <span className="self-start">Genres:</span>

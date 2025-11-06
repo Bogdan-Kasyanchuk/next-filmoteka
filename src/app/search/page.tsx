@@ -42,12 +42,14 @@ export default async function Page(props: Props) {
 
     return (
         <Container className="p-search">
-            <Search />
+            <div className="p-search__head">
+                <Search />
 
-            <Filter
-                type={ type }
-                adult={ adult }
-            />
+                <Filter
+                    type={ type }
+                    adult={ adult }
+                />
+            </div>
 
             <HydrationBoundary state={ dehydrate(queryClient) }>
                 <Content

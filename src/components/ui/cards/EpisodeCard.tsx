@@ -50,11 +50,6 @@ export default function EpisodeCard(props: Props) {
                     </div>
 
                     <div className="с-episode-card__info-list-item">
-                        <dt>Season:</dt>
-                        <dd>{ props.episode.season_number }</dd>
-                    </div>
-
-                    <div className="с-episode-card__info-list-item">
                         <dt>Episode:</dt>
                         <dd>{ props.episode.episode_number }</dd>
                     </div>

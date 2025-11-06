@@ -45,7 +45,7 @@
 
             @variant min-md {
                 grid-template-columns: 328px 380px;
-                grid-template-rows: max-content max-content 1fr;
+                grid-template-rows: max-content max-content max-content 1fr;
             }
 
             @variant min-lg {

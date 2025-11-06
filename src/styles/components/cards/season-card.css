@@ -1,7 +1,7 @@
 .с-season-card {
     overflow: hidden;
     display: grid;
-    grid-template-columns: 120px 1fr;
+    grid-template-columns: 105px 1fr;
 
     border: 1px solid var(--color-accent);
     border-radius: 4px;

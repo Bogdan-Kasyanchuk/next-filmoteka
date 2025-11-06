@@ -2,20 +2,31 @@
     --f-switch-border-width: 1px;
     --f-switch-border-color: var(--color-accent);
     --f-switch-border-radius: 999px;
-    --f-switch-height: 30px;
-    --f-switch-width: 60px;
-    --f-switch-gap: 8px;
+    --f-switch-height: 26px;
+    --f-switch-width: 52px;
+    --f-switch-gap: 7px;
     --f-switch-bg: var(--color-accent);
     --f-switch-color: var(--color-primary);
-    --f-switch-font-size: var(--text-xs);
+    --f-switch-font-size: var(--text-2xs);
     --f-switch-font-weight: 600;
-    --f-switch-label-font-size: var(--text-sm);
+    --f-switch-label-font-size: var(--text-xs);
     --f-switch-label-font-weight: 700;
-    --f-switch-icon-thumb-size: 20px;
-    --f-switch-icon-size: 16px;
-    --f-switch-icon-left: 4px;
+    --f-switch-icon-thumb-size: 18px;
+    --f-switch-icon-size: 12px;
+    --f-switch-icon-left: 3px;
     --f-switch-icon-bg: var(--color-primary);
     --f-switch-icon-color: var(--color-primary);
+
+    @variant min-sm {
+        --f-switch-height: 30px;
+        --f-switch-width: 60px;
+        --f-switch-gap: 8px;
+        --f-switch-font-size: var(--text-xs);
+        --f-switch-label-font-size: var(--text-sm);
+        --f-switch-icon-thumb-size: 20px;
+        --f-switch-icon-size: 14px;
+        --f-switch-icon-left: 4px;
+    }
 
     @variant min-md {
         --f-switch-height: 40px;

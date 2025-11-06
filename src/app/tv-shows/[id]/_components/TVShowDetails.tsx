@@ -149,18 +149,8 @@ export default function TVShowDetails(props: Props) {
                         }
 
                         <li className="p-tv-show__details-list-info-item">
-                            <span>In production:</span>
-                            <span>{ props.tvShow.in_production ? 'Yes' : 'No' }</span>
-                        </li>
-
-                        <li className="p-tv-show__details-list-info-item">
                             <span>Type:</span>
                             <span>{ props.tvShow.type }</span>
-                        </li>
-
-                        <li className="p-tv-show__details-list-info-item">
-                            <span>Status:</span>
-                            <span>{ props.tvShow.status }</span>
                         </li>
 
                         {

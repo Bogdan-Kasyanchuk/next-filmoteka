@@ -49,11 +49,11 @@ export default function Search() {
             />
 
             <Image
-                width={ 24 }
-                height={ 24 }
+                width={ 20 }
+                height={ 20 }
                 src="/svg/search.svg"
                 alt="Search icon"
-                className="absolute top-1/2 -translate-y-1/2 start-3"
+                className="absolute top-1/2 -translate-y-1/2 start-[9px]"
             />
 
             {
@@ -70,8 +70,8 @@ export default function Search() {
                     }
                 >
                     <Image
-                        width={ 24 }
-                        height={ 24 }
+                        width={ 20 }
+                        height={ 20 }
                         src="/svg/close.svg"
                         alt="Close icon"
                         className="pointer-events-none"
