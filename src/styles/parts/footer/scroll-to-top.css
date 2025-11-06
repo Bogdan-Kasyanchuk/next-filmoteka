@@ -2,6 +2,7 @@
     --icon-size: 20px;
 
     @apply w-10 h-10 rounded-xs fixed bottom-5 right-5 flex items-center justify-center z-100 bg-primary text-secondary;
+    @apply lg:bottom-[84px];
 
     transition-property: background-color, box-shadow, color;
 

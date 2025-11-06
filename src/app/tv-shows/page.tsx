@@ -33,7 +33,7 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
                 : 'Top rated';
   
     return {
-        title: `TV | ${ normalizedType }`
+        title: `TV Shows | ${ normalizedType }`
     };
 }
 

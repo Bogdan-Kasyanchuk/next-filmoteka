@@ -25,7 +25,7 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
 
     const data = queryClient.getQueryData<CurrentTVShowShema>([ 'movies', 'current', params.id ]);
 
-    const title = data?.name || data?.original_name || 'TV';
+    const title = data?.name || data?.original_name || 'TV Show';
 
     return {
         title: `${ title } | Reviews`

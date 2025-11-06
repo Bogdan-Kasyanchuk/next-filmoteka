@@ -26,7 +26,7 @@ const links = [
         icon: '/svg/movie.svg'
     },
     {
-        name: 'TV',
+        name: 'TV Shows',
         href: pagesTVShowsUrl(),
         icon: '/svg/tv.svg'
     },

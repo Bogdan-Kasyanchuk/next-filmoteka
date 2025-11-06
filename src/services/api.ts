@@ -1,3 +1,5 @@
+import { isServer } from '@tanstack/react-query';
+
 import { MediaType, MovieType, TVShowType, TimeType } from '@/enums';
 import { PARAMETERS } from '@/helpers/parameters';
 import {
@@ -19,13 +21,20 @@ import {
 } from '@/shemas';
 import { Adult } from '@/types';
 
-async function fetchApi<T>(url: string) {
-    const buildUrl = new URL(`${ PARAMETERS.API_URL }/${ url }`);
+async function fetchApi<T>(path: string) {
+    const baseUrl = isServer ? PARAMETERS.API_URL : '/api/tmdb';
 
-    buildUrl.searchParams.append('api_key', PARAMETERS.API_KEY);
-    buildUrl.searchParams.append('language', PARAMETERS.LOCALE);
+    let url: URL;
 
-    const response = await fetch(buildUrl, {
+    if (isServer) {
+        url = new URL(`${ baseUrl }/${ path }`);
+        url.searchParams.append('api_key', PARAMETERS.API_KEY);
+        url.searchParams.append('language', PARAMETERS.LOCALE);
+    } else {
+        url = new URL(`${ baseUrl }/${ path }`, window.location.origin);
+    }
+    
+    const response = await fetch(url, {
         cache: 'no-store'
     });
 

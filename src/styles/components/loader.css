@@ -15,19 +15,19 @@
         inset-inline-start: 50%;
         transform: translate(-50%, -50%);
 
-        width: 150px;
-        height: 150px;
-        border: 3px solid var(--color-secondary);
+        width: 100px;
+        height: 100px;
+        border: 2px solid var(--color-secondary);
         border-radius: 50%;
 
-        font-size: var(--text-lg);
+        font-size: var(--text-sm);
         font-weight: 700;
-        line-height: 150px;
+        line-height: 94px;
         color: var(--color-active);
         text-align: center;
         text-shadow: 0 0 10px var(--color-active);
         text-transform: uppercase;
-        letter-spacing: 4px;
+        letter-spacing: 2px;
 
         background: var(--color-secondary);
         box-shadow: 0 0 20px rgba(34, 34, 34, 0.5);
@@ -36,14 +36,15 @@
             content: '';
 
             position: absolute;
-            top: -3px;
-            inset-inline-start: -3px;
+            top: -2px;
+            inset-inline-start: -2px;
 
-            width: calc(100% + 6px);
-            height: calc(100% + 6px);
-            border: 3px solid transparent;
-            border-top: 3px solid var(--color-active);
-            border-right: 3px solid var(--color-active);
+            width: calc(100% + 4px);
+            height: calc(100% + 4px);
+            border-top: 2px solid var(--color-active);
+            border-bottom: 2px solid transparent;
+            border-inline-start: 2px solid transparent;
+            border-inline-end: 2px solid var(--color-active);
             border-radius: 50%;
 
             animation: animate-c 2s linear infinite;
@@ -68,11 +69,11 @@
                 content: '';
 
                 position: absolute;
-                top: -6px;
-                inset-inline-end: -8px;
+                top: -3px;
+                inset-inline-end: -6px;
 
-                width: 16px;
-                height: 16px;
+                width: 10px;
+                height: 10px;
                 border-radius: 50%;
 
                 background: var(--color-active);

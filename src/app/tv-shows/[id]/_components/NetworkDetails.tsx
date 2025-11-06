@@ -5,7 +5,7 @@ import { PropsWithChildren } from 'react';
 
 import NetworkDetailsCard from '@/components/ui/cards/NetworkDetailsCard';
 import { transformNetworkDetails } from '@/helpers/transformData';
-import { NetworkDetailsShema } from '@/shemas';
+import { getNetworkById } from '@/services/api';
 
 type Props = {
     id: string
@@ -14,15 +14,7 @@ type Props = {
 export default function NetworkDetails(props: Props) {
     const { data, isPending, isError, error } = useQuery({
         queryKey: [ 'network', props.id ],
-        queryFn: async () => {
-            const res = await fetch(`/api/networks/${ props.id }`);
-
-            if (!res.ok) {
-                throw new Error(await res.json() as string);
-            }
-
-            return await res.json() as NetworkDetailsShema;
-        },
+        queryFn: () => getNetworkById(props.id),
         select: data => {
             const result = transformNetworkDetails(data);
 

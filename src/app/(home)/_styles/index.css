@@ -15,11 +15,19 @@
 
     &__filter {
         display: flex;
-        flex-wrap: wrap;
-        row-gap: 20px;
-        column-gap: 80px;
+        flex-direction: column;
+        gap: 10px;
         align-items: center;
         justify-content: center;
+
+        @variant min-md {
+            flex-direction: row;
+            gap: 40px;
+        }
+
+        @variant min-lg {
+            gap: 80px;
+        }
     }
 
     &__content {
