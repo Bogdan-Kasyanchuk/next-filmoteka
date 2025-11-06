@@ -1,4 +1,5 @@
 import { MediaType, MovieType, TVShowType, TimeType } from '@/enums';
+import { PARAMETERS } from '@/helpers/parameters';
 import {
     CurrentMovieShema,
     CurrentTVShowShema,
@@ -19,15 +20,20 @@ import {
 import { Adult } from '@/types';
 
 async function fetchApi<T>(url: string) {
-    const res = await fetch(`/api/${ url }`);
+    const buildUrl = new URL(`${ PARAMETERS.API_URL }/${ url }`);
 
-    if (!res.ok) {
-        const err = await res.json();
+    buildUrl.searchParams.append('api_key', PARAMETERS.API_KEY);
+    buildUrl.searchParams.append('language', PARAMETERS.LOCALE);
 
-        throw new Error(err.message);
+    const response = await fetch(buildUrl, {
+        cache: 'no-store'
+    });
+
+    if (!response.ok) {
+        throw new Error(await response.text());
     }
 
-    return await res.json() as T;
+    return (await response.json()) as T;
 }
 
 export function getTrendings(type: 'all' | MediaType, time: TimeType, page: number) {

@@ -1,5 +1,5 @@
 export const PARAMETERS = {
-    API_TOKEN: process.env.API_TOKEN!,
+    API_KEY: process.env.API_KEY!,
     API_URL: 'https://api.themoviedb.org/3',
     YOUTUBE_EMBED_URL: 'https://www.youtube.com/embed',
     IMAGE_URL: 'https://image.tmdb.org/t/p',
