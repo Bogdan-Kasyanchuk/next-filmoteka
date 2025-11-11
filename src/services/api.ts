@@ -1,5 +1,3 @@
-import { isServer } from '@tanstack/react-query';
-
 import { MediaType, MovieType, TVShowType, TimeType } from '@/enums';
 import { PARAMETERS } from '@/helpers/parameters';
 import {
@@ -22,6 +20,8 @@ import {
 import { Adult } from '@/types';
 
 async function fetchApi<T>(path: string) {
+    const isServer = typeof window === 'undefined';
+
     const baseUrl = isServer ? PARAMETERS.API_URL : '/api/tmdb';
 
     let url: URL;
