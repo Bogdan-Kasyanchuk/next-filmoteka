@@ -1,0 +1,36 @@
+@import '../../../../../../styles/app/base.css';
+@import './components.css';
+
+.p-tv-show-reviews {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+    align-items: center;
+
+    padding-block: 20px 40px;
+
+    &__title {
+        @apply font-bold uppercase text-center;
+    }
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        row-gap: 20px;
+        align-items: center;
+
+        width: 100%;
+
+        @variant min-md {
+            row-gap: 30px;
+        }
+    }
+
+    &__list {
+        @apply grid grid-cols-1 gap-5 w-full;
+    }
+
+    @variant min-md {
+        row-gap: 30px;
+    }
+}

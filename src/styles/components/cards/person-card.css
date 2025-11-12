@@ -34,7 +34,7 @@
             font-size: var(--text-xs);
         }
 
-        &--gender {
+        &--type {
             border-color: var(--color-secondary);
             color: var(--color-secondary);
             background-color: var(--color-primary);

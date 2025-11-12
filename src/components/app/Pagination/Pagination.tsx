@@ -23,9 +23,9 @@ export default function Pagination(props: Props) {
     const createPageURL = (page: number) => {
         const params = new URLSearchParams(searchParams);
         
-        params.set('page', String(page));
+        const basePath = pathname.replace(/\/page\/[0-9]+$/, '');
 
-        return buildUri(pathname, params);
+        return buildUri(`${ basePath }/page/${ page }`, params);
     };
 
     const isMobile = useMediaQuery(

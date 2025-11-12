@@ -5,7 +5,7 @@ import { MediaType } from '@/enums';
 import { IMG_SIZES } from '@/helpers/parameters';
 import { imageUrl, pagesMovieUrl, pagesTVShowUrl } from '@/routes';
 import { MediaCastMapper } from '@/types';
-import { formatDate } from '@/utils/formateDate';
+import formatDate from '@/utils/formateDate';
 
 type Props = {
     cast: MediaCastMapper

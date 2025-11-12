@@ -6,7 +6,7 @@ import Title from '@/components/ui/typography/Title';
 import { IMG_SIZES } from '@/helpers/parameters';
 import { imageUrl, pagesMovieUrl } from '@/routes';
 import { CurrentMovieMapper } from '@/types';
-import { formatDate } from '@/utils/formateDate';
+import formatDate from '@/utils/formateDate';
 
 type Props = {
     movie: CurrentMovieMapper,

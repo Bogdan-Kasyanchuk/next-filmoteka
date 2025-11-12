@@ -1,4 +1,4 @@
-import { EpisodeType, GenderType, MediaType, VideoType } from './enums';
+import { EpisodeType, MediaType, VideoType } from './enums';
 
 type SpokenLanguage = {
     english_name: string,
@@ -252,7 +252,6 @@ export type MediaCrewMapper = {
 
 export type PersonMapper = {
     adult: boolean,
-    gender: GenderType,
     id: string,
     known_for_department: string,
     name: string,

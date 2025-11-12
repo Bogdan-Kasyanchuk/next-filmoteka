@@ -1,0 +1,181 @@
+'use client';
+
+import { useQueries } from '@tanstack/react-query';
+import Link from 'next/link';
+
+import MovieCard from '@/components/ui/cards/MovieCard';
+import PersonCard from '@/components/ui/cards/PersonCard';
+import TVShowCard from '@/components/ui/cards/TVShowCard';
+import DataNotFound from '@/components/ui/data-display/DataNotFound';
+import FailedLoadData from '@/components/ui/data-display/FailedLoadData';
+import Loader from '@/components/ui/data-display/Loader';
+import Container from '@/components/ui/layouts/Container';
+import Title from '@/components/ui/typography/Title';
+import { MediaType, TimeType } from '@/enums';
+import { transformMovie, transformPerson, transformTVShow } from '@/helpers/transformData';
+import { pagesTrendingDayUrl, pagesTrendingWeekUrl } from '@/routes';
+import { getTrendings } from '@/services/api';
+import { MovieMapper, PersonMapper, TVShowMapper } from '@/types';
+
+export default function Content() {
+    const data = useQueries({
+        queries: [
+            {
+                queryKey: [ 'trendings', 'all', TimeType.DAY ],
+                queryFn: () => getTrendings('all', TimeType.DAY)
+            },
+            {
+                queryKey: [ 'trendings', 'all', TimeType.WEEK ],
+                queryFn: () => getTrendings('all', TimeType.WEEK)
+            }
+        ],
+        combine: results => {
+            let error = { 
+                isError: false,
+                message: ''
+            };
+
+            results.forEach(result => {
+                if (result.isError) {
+                    error = {
+                        isError: result.isError,
+                        message: result.error.message
+                    };
+                }
+            });
+
+            return {
+                today: {
+                    items: results[ 0 ].data?.results.map(
+                        result => {
+                            switch (result.media_type) {
+                                case MediaType.MOVIE:
+                                    return transformMovie(result);
+                                case MediaType.TV_SHOW:
+                                    return transformTVShow(result);
+                                case MediaType.PERSON:
+                                    return transformPerson(result);
+                            }
+                        }) ?? [],
+                    total_pages: results[ 0 ].data?.total_pages ?? 0
+                },
+                week: {
+                    items: results[ 1 ].data?.results.map(
+                        result => {
+                            switch (result.media_type) {
+                                case MediaType.MOVIE:
+                                    return transformMovie(result);
+                                case MediaType.TV_SHOW:
+                                    return transformTVShow(result);
+                                case MediaType.PERSON:
+                                    return transformPerson(result);
+                            }
+                        }) ?? [],
+                    total_pages: results[ 1 ].data?.total_pages ?? 0
+                },
+                isPending: results.some(result => result.isPending),
+                error
+            };
+        }
+    });
+
+    if (data.isPending) {
+        return <Loader />;
+    }
+
+    if (data.error.isError) {
+        return (
+            <FailedLoadData>{ data.error.message }</FailedLoadData>
+        );
+    }
+
+    if (!data.today.items.length || !data.week.items.length) {
+        return <DataNotFound />;
+    }
+
+    return (
+        <Container className="p-home">
+            <h1 className="sr-only">Home</h1>
+
+            {
+                data.today.items.length > 0 &&
+                <div className="p-home__content">
+                    <Title className="p-home__title">
+                        Trending today
+                    </Title>
+
+                    <ul className="p-home__list">
+                        {
+                            data.today.items.map(
+                                item => (
+                                    <li key={ item.id }>
+                                        <Card result={ item } />
+                                    </li>
+                                )
+                            )
+                        }
+                    </ul>
+
+                    {
+                        data.today.total_pages > 1 &&
+                        <Link
+                            href={ pagesTrendingDayUrl() }
+                            className="p-home__show-all-button"
+                        >
+                            Show all trending today
+                        </Link>
+                    }
+                </div>
+            }
+
+            {
+                data.week.items.length > 0 &&
+                <div className="p-home__content">
+                    <Title className="p-home__title">
+                        Trending this week
+                    </Title>
+
+                    <ul className="p-home__list">
+                        {
+                            data.week.items.map(
+                                item => (
+                                    <li key={ item.id }>
+                                        <Card result={ item } />
+                                    </li>
+                                )
+                            )
+                        }
+                    </ul>
+
+                    {
+                        data.week.total_pages > 1 &&
+                        <Link
+                            href={ pagesTrendingWeekUrl() }
+                            className="p-home__show-all-button"
+                        >
+                            Show all trending this week
+                        </Link>
+                    }
+                </div>
+            }
+
+        </Container>
+    );
+}
+
+type CardProps = {
+    result: MovieMapper | TVShowMapper | PersonMapper
+};
+
+function Card(props: CardProps) {
+    switch (props.result.media_type) {
+        case MediaType.MOVIE:
+            return <MovieCard movie={ props.result } />;
+
+        case MediaType.TV_SHOW:
+            return <TVShowCard tvShow={ props.result } />;
+
+        case MediaType.PERSON:
+            return <PersonCard person={ props.result } />;
+    }
+}

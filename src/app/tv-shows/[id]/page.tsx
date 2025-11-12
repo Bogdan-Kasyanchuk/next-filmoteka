@@ -4,9 +4,9 @@ import { Metadata } from 'next';
 import { getTVShowById } from '@/services/api';
 import { TVShowDetailsShema } from '@/shemas';
 
-import Content from './_components/Content';
+import Content from './components/Content';
 
-import './_styles/index.css';
+import './styles/index.css';
 
 type Props = {
     params: Promise<{ id: string }>

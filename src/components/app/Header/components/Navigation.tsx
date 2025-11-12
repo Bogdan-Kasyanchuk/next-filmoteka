@@ -18,22 +18,26 @@ const links = [
     {
         name: 'Home',
         href: pagesHomeUrl(),
-        icon: '/svg/home.svg'
+        icon: '/svg/home.svg',
+        exact: true
     },
     {
         name: 'Movies',
         href: pagesMoviesUrl(),
-        icon: '/svg/movie.svg'
+        icon: '/svg/movie.svg',
+        exact: false
     },
     {
         name: 'TV Shows',
         href: pagesTVShowsUrl(),
-        icon: '/svg/tv.svg'
+        icon: '/svg/tv.svg',
+        exact: false
     },
     {
         name: 'Persons',
         href: pagesPersonsUrl(),
-        icon: '/svg/users.svg'
+        icon: '/svg/users.svg',
+        exact: false
     }
 ];
 
@@ -50,8 +54,8 @@ export default function Navigation() {
                                 type="button"
                                 className={
                                     clsx('c-navigation__link', {
-                                        'c-navigation__link--is-active': pathname ===
-                                            pagesSearchUrl()
+                                        'c-navigation__link--is-active c-navigation__link--is-disabled': pathname ===
+                                            pagesSearchUrl() || pathname.startsWith(pagesSearchUrl() + '/')
                                     })
                                 }
                             >
@@ -103,7 +107,10 @@ export default function Navigation() {
                                     href={ link.href }
                                     className={
                                         clsx('c-navigation__link', {
-                                            'c-navigation__link--is-active': pathname === link.href
+                                            'c-navigation__link--is-active': link.exact
+                                                ? pathname === link.href
+                                                : pathname === link.href || pathname.startsWith(link.href + '/'),
+                                            'c-navigation__link--is-disabled': pathname === link.href
                                         })
                                     }
                                 >
