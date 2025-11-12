@@ -247,7 +247,6 @@ export const transformTVShowSeasonDetails = (season: TVShowSeasonDetailsShema) =
 
 export const transformPerson = (person: PersonShema) => ({
     adult: person.adult,
-    gender: person.gender,
     id: person.id.toString(),
     known_for_department: person.known_for_department,
     name: person.name,

@@ -45,7 +45,7 @@ async function fetchApi<T>(path: string) {
     return (await response.json()) as T;
 }
 
-export function getTrendings(type: 'all' | MediaType, time: TimeType, page: number) {
+export function getTrendings(type: 'all' | MediaType, time: TimeType, page = 1) {
     return fetchApi<DataShema<MovieShema | TVShowShema | PersonShema>>(
         `trending/${ type }/${ time }?page=${ page }`
     );
@@ -115,7 +115,7 @@ export function getReviewsToTVShow(id: string, page: number) {
     );
 }
 
-export function getTVShowSeasonByNumber(seriesId: string, number: string) {
+export function getTVShowSeasonByNumber(seriesId: string, number: number) {
     return fetchApi<TVShowSeasonDetailsShema>(`${ MediaType.TV_SHOW }/${ seriesId }/season/${ number }`);
 }
 

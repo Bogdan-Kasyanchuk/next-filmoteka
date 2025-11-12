@@ -1,0 +1,6 @@
+/* Components */
+@import '../../../../../../styles/components/current-tv-show.css';
+@import '../../../../../../styles/components/pagination.css';
+
+/* Cards */
+@import '../../../../../../styles/components/cards/tv-show-card.css';

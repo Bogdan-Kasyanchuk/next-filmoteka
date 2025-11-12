@@ -106,7 +106,7 @@
             inset-inline-start: 50%;
         }
 
-        &:not(.c-navigation__link--is-active):hover {
+        &:not(.c-navigation__link--is-disabled):hover {
             @media (any-hover: hover) {
                 opacity: 0.75;
 
@@ -118,9 +118,6 @@
         }
 
         &--is-active {
-            pointer-events: none;
-            cursor: default;
-
             @media (any-hover: hover) {
                 &::before,
                 &::after {
@@ -128,6 +125,11 @@
                     opacity: 1;
                 }
             }
+        }
+
+        &--is-disabled {
+            pointer-events: none;
+            cursor: default;
         }
     }
 

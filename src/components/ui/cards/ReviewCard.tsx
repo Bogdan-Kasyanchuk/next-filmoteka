@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { IMG_SIZES } from '@/helpers/parameters';
 import { imageUrl } from '@/routes';
 import { ReviewMapper } from '@/types';
-import { formatDate } from '@/utils/formateDate';
+import formatDate from '@/utils/formateDate';
 
 type Props = {
     review: ReviewMapper,

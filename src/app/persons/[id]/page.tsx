@@ -4,9 +4,9 @@ import { Metadata } from 'next';
 import { getPersonById } from '@/services/api';
 import { PersonDetailsShema } from '@/shemas';
 
-import Content from './_components/Content';
+import Content from './components/Content';
 
-import './_styles/index.css';
+import './styles/index.css';
 
 type Props = {
     params: Promise<{ id: string }>

@@ -3,7 +3,7 @@
 import useInView from '@/hooks/useInView';
 import { youtubeEmbedUrl } from '@/routes';
 import { VideoMapper } from '@/types';
-import { formatDate } from '@/utils/formateDate';
+import formatDate from '@/utils/formateDate';
 
 type Props = {
     video: VideoMapper

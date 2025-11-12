@@ -13,7 +13,7 @@ dayjs.extend(localizedFormat);
 const locale = 'en';
 const zone = 'Europe/Kyiv';
 
-export const formatDate = (date: string | number | Date, format?: string) => {
+export default (date: string | number | Date, format?: string) => {
     const parsed = dayjs(date);
 
     if (!parsed.isValid()) {

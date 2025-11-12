@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { IMG_SIZES } from '@/helpers/parameters';
 import { imageUrl } from '@/routes';
 import { EpisodeMapper } from '@/types';
-import { formatDate } from '@/utils/formateDate';
+import formatDate from '@/utils/formateDate';
 
 import Popover from '../data-display/Popover';
 

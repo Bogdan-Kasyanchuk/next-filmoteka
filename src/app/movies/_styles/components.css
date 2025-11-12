@@ -1,7 +1,0 @@
-/* Components */
-@import '../../../styles/components/tabs.css';
-@import '../../../styles/components/pagination.css';
-@import '../../../styles/components/data-not-found.css';
-
-/* Cards */
-@import '../../../styles/components/cards/movie-card.css';

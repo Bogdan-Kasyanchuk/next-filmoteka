@@ -59,7 +59,7 @@ export default function Footer() {
                     imgSrc="/svg/logo-white.svg"
                     className="text-primary"
                 >
-                    <p>Filmoteka</p>
+                    Filmoteka
                 </Logo>
             </Container>
 

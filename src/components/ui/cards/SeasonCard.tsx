@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { IMG_SIZES } from '@/helpers/parameters';
 import { imageUrl, pagesSeasonUrl } from '@/routes';
 import { SeasonMapper } from '@/types';
-import { formatDate } from '@/utils/formateDate';
+import formatDate from '@/utils/formateDate';
 
 type Props = {
     season: SeasonMapper,
