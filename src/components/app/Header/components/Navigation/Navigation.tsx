@@ -6,40 +6,10 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
 import Popover from '@/components/ui/data-display/Popover';
-import {
-    pagesHomeUrl,
-    pagesMoviesUrl,
-    pagesPersonsUrl,
-    pagesSearchUrl,
-    pagesTVShowsUrl
-} from '@/routes';
 
-const links = [
-    {
-        name: 'Home',
-        href: pagesHomeUrl(),
-        icon: '/svg/home.svg',
-        exact: true
-    },
-    {
-        name: 'Movies',
-        href: pagesMoviesUrl(),
-        icon: '/svg/movie.svg',
-        exact: false
-    },
-    {
-        name: 'TV Shows',
-        href: pagesTVShowsUrl(),
-        icon: '/svg/tv.svg',
-        exact: false
-    },
-    {
-        name: 'Persons',
-        href: pagesPersonsUrl(),
-        icon: '/svg/users.svg',
-        exact: false
-    }
-];
+import { links } from './datasets';
+
+const searchLink = links[ 0 ];
 
 export default function Navigation() {
     const pathname = usePathname();
@@ -54,20 +24,22 @@ export default function Navigation() {
                                 type="button"
                                 className={
                                     clsx('c-navigation__link', {
-                                        'c-navigation__link--is-active c-navigation__link--is-disabled': pathname ===
-                                            pagesSearchUrl() || pathname.startsWith(pagesSearchUrl() + '/')
+                                        'c-navigation__link--is-active c-navigation__link--is-disabled': searchLink.exact
+                                            ? pathname === searchLink.href
+                                            : pathname === searchLink.href || pathname.startsWith(searchLink.href + '/page')
                                     })
                                 }
                             >
                                 <Image
                                     width={ 24 }
                                     height={ 24 }
-                                    src="/svg/search.svg"
+                                    src={ searchLink.icon }
                                     alt="Search icon"
                                     className="c-navigation__img"
+                                    priority
                                 />
 
-                                <span className="c-navigation__text">Search</span>
+                                <span className="c-navigation__text">{ searchLink.name }</span>
                             </button>
                         }
                         classNames={
@@ -77,7 +49,7 @@ export default function Navigation() {
                         }
                     >
                         <form
-                            action={ pagesSearchUrl() }
+                            action={ searchLink.href }
                             className="c-navigation__search-form"
                         >
                             <input
@@ -93,14 +65,14 @@ export default function Navigation() {
                                 type="submit"
                                 className="c-navigation__search-button"
                             >
-                                Пошук
+                                Search
                             </button>
                         </form>
                     </Popover>
                 </li>
 
                 {
-                    links.map(
+                    links.slice(1).map(
                         link => (
                             <li key={ link.name }>
                                 <Link
@@ -109,7 +81,7 @@ export default function Navigation() {
                                         clsx('c-navigation__link', {
                                             'c-navigation__link--is-active': link.exact
                                                 ? pathname === link.href
-                                                : pathname === link.href || pathname.startsWith(link.href + '/'),
+                                                : pathname === link.href || pathname.startsWith(link.href + '/page'),
                                             'c-navigation__link--is-disabled': pathname === link.href
                                         })
                                     }
@@ -120,6 +92,7 @@ export default function Navigation() {
                                         src={ link.icon }
                                         alt={ `${ link.name } icon` }
                                         className="c-navigation__img"
+                                        priority
                                     />
                                     
                                     <span className="c-navigation__text">{ link.name }</span>

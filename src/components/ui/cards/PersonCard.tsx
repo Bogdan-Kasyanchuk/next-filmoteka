@@ -1,21 +1,18 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { GenderType } from '@/enums';
 import { IMG_SIZES } from '@/helpers/parameters';
 import { imageUrl, pagesPersonUrl } from '@/routes';
 import { PersonMapper } from '@/types';
 
 type Props = {
-    person: PersonMapper
+    person: PersonMapper,
+    priority?: boolean
 };
 
 export default function PersonCard(props: Props) {
     return (
-        <Link
-            href={ pagesPersonUrl(props.person.id) }
-            className="с-person-card"
-        >
+        <div className="с-person-card">
             <div className="с-person-card__cover">
                 <Image
                     src={
@@ -26,6 +23,7 @@ export default function PersonCard(props: Props) {
                     sizes="(max-width: 479px) 173px, (max-width: 767px) 213px, (max-width: 1023px) 230px, 295px"
                     alt={ props.person.name }
                     fill
+                    priority={ props.priority }
                 />
             </div>
 
@@ -47,20 +45,18 @@ export default function PersonCard(props: Props) {
             </div>
 
             <div className="с-person-card__footer">
-                <p
-                    className="с-person-card__footer-name"
+                <Link
+                    href={ pagesPersonUrl(props.person.id) }
+                    className="с-person-card__footer-name u-overlay"
                     title={ props.person.name }
                 >
                     { props.person.name }
-                </p>
+                </Link>
                 
-                <p
-                    className="с-person-card__footer-department"
-                    title={ props.person.known_for_department }
-                >
+                <p className="с-person-card__footer-department">
                     { props.person.known_for_department }
                 </p>
             </div>
-        </Link>
+        </div>
     );
 }

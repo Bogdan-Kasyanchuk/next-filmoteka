@@ -45,7 +45,7 @@ export default function Footer() {
                                         href={ logo.href }
                                         target="_blank"
                                         rel="nofollow noindex noreferrer"
-                                        className="u-link-overlay"
+                                        className="u-overlay u-link"
                                     >
                                         <span className="sr-only">{ logo.name }</span>
                                     </a>

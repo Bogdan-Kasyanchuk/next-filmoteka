@@ -6,15 +6,13 @@ import { imageUrl, pagesTVShowUrl } from '@/routes';
 import { TVShowMapper } from '@/types';
 
 type Props = {
-    tvShow: TVShowMapper
+    tvShow: TVShowMapper,
+    priority?: boolean
 };
 
 export default function TVShowCard(props: Props) {
     return (
-        <Link
-            href={ pagesTVShowUrl(props.tvShow.id) }
-            className="с-tv-show-card"
-        >
+        <div className="с-tv-show-card">
             <div className="с-tv-show-card__cover">
                 <Image
                     src={
@@ -25,6 +23,7 @@ export default function TVShowCard(props: Props) {
                     sizes="(max-width: 479px) 173px, (max-width: 767px) 213px, (max-width: 1023px) 230px, 295px"
                     alt={ props.tvShow.name }
                     fill
+                    priority={ props.priority }
                 />
             </div>
 
@@ -47,13 +46,14 @@ export default function TVShowCard(props: Props) {
             </div>
 
             <div className="с-tv-show-card__footer">
-                <p
-                    className="с-tv-show-card__footer-title"
+                <Link
+                    href={ pagesTVShowUrl(props.tvShow.id) }
+                    className="с-tv-show-card__footer-title u-overlay"
                     title={ props.tvShow.name }
                 >
                     { props.tvShow.name }
-                </p>
+                </Link>
             </div>
-        </Link>
+        </div>
     );
 }

@@ -95,11 +95,11 @@ export default function Content() {
 
     return (
         <Container className="p-home">
-            <h1 className="sr-only">Home</h1>
+            <h1 className="sr-only">Filmoteka</h1>
 
             {
                 data.today.items.length > 0 &&
-                <div className="p-home__content">
+                <div className="p-home__block">
                     <Title className="p-home__title">
                         Trending today
                     </Title>
@@ -107,9 +107,12 @@ export default function Content() {
                     <ul className="p-home__list">
                         {
                             data.today.items.map(
-                                item => (
+                                (item, i) => (
                                     <li key={ item.id }>
-                                        <Card result={ item } />
+                                        <Card
+                                            result={ item }
+                                            priority={ i < 4 }
+                                        />
                                     </li>
                                 )
                             )
@@ -130,7 +133,7 @@ export default function Content() {
 
             {
                 data.week.items.length > 0 &&
-                <div className="p-home__content">
+                <div className="p-home__block">
                     <Title className="p-home__title">
                         Trending this week
                     </Title>
@@ -138,9 +141,12 @@ export default function Content() {
                     <ul className="p-home__list">
                         {
                             data.week.items.map(
-                                item => (
+                                (item, i) => (
                                     <li key={ item.id }>
-                                        <Card result={ item } />
+                                        <Card
+                                            result={ item }
+                                            priority={ !data.today.items.length && i < 4 }
+                                        />
                                     </li>
                                 )
                             )
@@ -164,18 +170,34 @@ export default function Content() {
 }
 
 type CardProps = {
-    result: MovieMapper | TVShowMapper | PersonMapper
+    result: MovieMapper | TVShowMapper | PersonMapper,
+    priority?: boolean
 };
 
 function Card(props: CardProps) {
     switch (props.result.media_type) {
         case MediaType.MOVIE:
-            return <MovieCard movie={ props.result } />;
+            return (
+                <MovieCard
+                    movie={ props.result }
+                    priority={ props.priority }
+                />
+            );
 
         case MediaType.TV_SHOW:
-            return <TVShowCard tvShow={ props.result } />;
+            return (
+                <TVShowCard
+                    tvShow={ props.result }
+                    priority={ props.priority }
+                />
+            );
 
         case MediaType.PERSON:
-            return <PersonCard person={ props.result } />;
+            return (
+                <PersonCard
+                    person={ props.result }
+                    priority={ props.priority }
+                />
+            );
     }
 }

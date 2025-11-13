@@ -6,15 +6,13 @@ import { imageUrl, pagesMovieUrl } from '@/routes';
 import { MovieMapper } from '@/types';
 
 type Props = {
-    movie: MovieMapper
+    movie: MovieMapper,
+    priority?: boolean
 };
 
 export default function MovieCard(props: Props) {
     return (
-        <Link
-            href={ pagesMovieUrl(props.movie.id) }
-            className="с-movie-card"
-        >
+        <div className="с-movie-card">
             <div className="с-movie-card__cover">
                 <Image
                     src={
@@ -25,6 +23,7 @@ export default function MovieCard(props: Props) {
                     sizes="(max-width: 479px) 174px, (max-width: 767px) 214px, (max-width: 1319px) 230px, 295px"
                     alt={ props.movie.title }
                     fill
+                    priority={ props.priority }
                 />
             </div>
 
@@ -47,13 +46,14 @@ export default function MovieCard(props: Props) {
             </div>
 
             <div className="с-movie-card__footer">
-                <p
-                    className="с-movie-card__footer-title"
+                <Link
+                    href={ pagesMovieUrl(props.movie.id) }
+                    className="с-movie-card__footer-title u-overlay"
                     title={ props.movie.title }
                 >
                     { props.movie.title }
-                </p>
+                </Link>
             </div>
-        </Link>
+        </div>
     );
 }

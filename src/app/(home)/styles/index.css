@@ -9,7 +9,7 @@
 
     padding-block: 40px;
 
-    &__content {
+    &__block {
         display: flex;
         flex-direction: column;
         row-gap: 20px;

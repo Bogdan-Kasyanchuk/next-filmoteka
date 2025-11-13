@@ -7,7 +7,8 @@ import { pagesHomeUrl } from '@/routes';
 
 type Props = {
     imgSrc: string,
-    className?: string
+    className?: string,
+    priority?: boolean
 };
 
 export default function Logo(props: PropsWithChildren<Props>) {
@@ -22,6 +23,7 @@ export default function Logo(props: PropsWithChildren<Props>) {
                 src={ props.imgSrc }
                 alt="Logo"
                 className="c-logo__img"
+                priority={ props.priority }
             />
 
             { props.children }

@@ -9,7 +9,12 @@ import Content from './components/Content';
 import './styles/index.css';
 
 export const metadata: Metadata = {
-    title: 'Home'
+    title: 'Home',
+    description: 'Trending movies, series, tv shows, actors',
+    keywords: [ 'trending', 'movies', 'series', 'tv shows', 'actors' ],
+    alternates: {
+        canonical: 'https://next-filmoteka.netlify.app'
+    }
 };
 
 export default async function Page() {

@@ -21,9 +21,7 @@
     }
 }
 
-@utility u-link-overlay {
-    transition-property: opacity;
-
+@utility u-overlay {
     &::before {
         content: '';
 
@@ -32,12 +30,6 @@
         inset: 0;
 
         display: block;
-    }
-
-    @media (any-hover: hover) {
-        &:hover {
-            opacity: 0.75;
-        }
     }
 }
 

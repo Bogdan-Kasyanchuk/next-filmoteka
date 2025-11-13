@@ -13,8 +13,11 @@ export default function Header() {
                 <Logo
                     imgSrc="/svg/logo.svg"
                     className="text-accent"
+                    priority
                 >
-                    Filmoteka
+                    <span className="max-md:sr-only">
+                        Filmoteka
+                    </span>
                 </Logo>
 
                 <Navigation />
