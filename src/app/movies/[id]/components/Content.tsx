@@ -15,7 +15,7 @@ import Container from '@/components/ui/layouts/Container';
 import { MediaType } from '@/enums';
 import { transformMovieDetails } from '@/helpers/transformData';
 import { recommendationsUrl, reviewsUrl } from '@/routes';
-import { getMovieById } from '@/services/api';
+import { getMovieByIdCached } from '@/services/movies';
 import { MovieMapper } from '@/types';
 
 import MovieDetails from './MovieDetails';
@@ -27,7 +27,7 @@ type Props = {
 export default function Content(props: Props) {
     const { data, isPending, isError, error } = useQuery({
         queryKey: [ 'movies', props.id ],
-        queryFn: () => getMovieById(props.id),
+        queryFn: () => getMovieByIdCached(props.id),
         select: data => transformMovieDetails(data)
     });
 

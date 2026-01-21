@@ -11,7 +11,8 @@ import Loader from '@/components/ui/data-display/Loader';
 import Container from '@/components/ui/layouts/Container';
 import Title from '@/components/ui/typography/Title';
 import { transformCurrentMovie, transformReview } from '@/helpers/transformData';
-import { getCurrentMovieById, getReviewsToMovie } from '@/services/api';
+import { getReviewsToMovie } from '@/services/api';
+import { getCurrentMovieByIdCached } from '@/services/movies';
 
 type Props = {
     id: string,
@@ -23,7 +24,7 @@ export default function Content(props: Props) {
         queries: [
             {
                 queryKey: [ 'movies', 'current', props.id ],
-                queryFn: () => getCurrentMovieById(props.id)
+                queryFn: () => getCurrentMovieByIdCached(props.id)
             },
             {
                 queryKey: [ 'movies', props.id, 'reviews', props.page ],

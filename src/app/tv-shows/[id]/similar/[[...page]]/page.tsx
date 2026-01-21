@@ -1,8 +1,8 @@
 import { HydrationBoundary, QueryClient, dehydrate } from '@tanstack/react-query';
 import { Metadata } from 'next';
 
-import { getCurrentTVShowById, getSimilarTVShow } from '@/services/api';
-import { CurrentTVShowShema } from '@/shemas';
+import { getSimilarTVShow } from '@/services/api';
+import { getCurrentTVShowByIdCached } from '@/services/tv-shows';
 
 import Content from './components/Content';
 
@@ -18,14 +18,7 @@ type Props = {
 export async function generateMetadata(props: Props): Promise<Metadata> {
     const params = await props.params;
         
-    const queryClient = new QueryClient();
-
-    await queryClient.prefetchQuery({
-        queryKey: [ 'tv-shows', 'current', params.id ],
-        queryFn: () => getCurrentTVShowById(params.id)
-    });
-
-    const data = queryClient.getQueryData<CurrentTVShowShema>([ 'tv-shows', 'current', params.id ]);
+    const data = await getCurrentTVShowByIdCached(params.id);
 
     const title = data?.name || data?.original_name || 'TV Show';
 
@@ -45,7 +38,7 @@ export default async function Page(props: Props) {
         await queryClient.prefetchQuery(
             {
                 queryKey: [ 'tv-shows', 'current', params.id ],
-                queryFn: () => getCurrentTVShowById(params.id)
+                queryFn: () => getCurrentTVShowByIdCached(params.id)
             }
         ),
         await queryClient.prefetchQuery(

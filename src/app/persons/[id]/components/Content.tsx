@@ -7,7 +7,7 @@ import FailedLoadData from '@/components/ui/data-display/FailedLoadData';
 import Loader from '@/components/ui/data-display/Loader';
 import Container from '@/components/ui/layouts/Container';
 import { transformPersonDetails } from '@/helpers/transformData';
-import { getPersonById } from '@/services/api';
+import { getPersonByIdCached } from '@/services/persons';
 
 import Images from './Images';
 import PersonDetails from './PersonDetails';
@@ -20,7 +20,7 @@ type Props = {
 export default function Content(props: Props) {
     const { data, isPending, isError, error } = useQuery({
         queryKey: [ 'persons', props.id ],
-        queryFn: () => getPersonById(props.id),
+        queryFn: () => getPersonByIdCached(props.id),
         select: data => transformPersonDetails(data)
     });
 

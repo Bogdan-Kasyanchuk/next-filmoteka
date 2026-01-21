@@ -1,8 +1,8 @@
 import { HydrationBoundary, QueryClient, dehydrate } from '@tanstack/react-query';
 import { Metadata } from 'next';
 
-import { getCurrentMovieById, getSimilarMovies } from '@/services/api';
-import { CurrentMovieShema } from '@/shemas';
+import { getSimilarMovies } from '@/services/api';
+import { getCurrentMovieByIdCached } from '@/services/movies';
 
 import Content from './components/Content';
 
@@ -18,14 +18,7 @@ type Props = {
 export async function generateMetadata(props: Props): Promise<Metadata> {
     const params = await props.params;
         
-    const queryClient = new QueryClient();
-
-    await queryClient.prefetchQuery({
-        queryKey: [ 'movies', 'current', params.id ],
-        queryFn: () => getCurrentMovieById(params.id)
-    });
-
-    const data = queryClient.getQueryData<CurrentMovieShema>([ 'movies', 'current', params.id ]);
+    const data = await getCurrentMovieByIdCached(params.id);
 
     const title = data?.title || data?.original_title || 'Movie';
 
@@ -45,7 +38,7 @@ export default async function Page(props: Props) {
         queryClient.prefetchQuery(
             {
                 queryKey: [ 'movies', 'current', params.id ],
-                queryFn: () => getCurrentMovieById(params.id)
+                queryFn: () => getCurrentMovieByIdCached(params.id)
             }
         ),
         queryClient.prefetchQuery(

@@ -1,8 +1,7 @@
 import { HydrationBoundary, QueryClient, dehydrate } from '@tanstack/react-query';
 import { Metadata } from 'next';
 
-import { getPersonById } from '@/services/api';
-import { PersonDetailsShema } from '@/shemas';
+import { getPersonByIdCached } from '@/services/persons';
 
 import Content from './components/Content';
 
@@ -15,14 +14,7 @@ type Props = {
 export async function generateMetadata(props: Props): Promise<Metadata> {
     const params = await props.params;
         
-    const queryClient = new QueryClient();
-
-    await queryClient.prefetchQuery({
-        queryKey: [ 'persons', params.id ],
-        queryFn: () => getPersonById(params.id)
-    });
-
-    const data = queryClient.getQueryData<PersonDetailsShema>([ 'persons', params.id ]);
+    const data = await getPersonByIdCached(params.id);
 
     return {
         title: data?.name || 'Person'
@@ -36,7 +28,7 @@ export default async function Page(props: Props) {
 
     await queryClient.prefetchQuery({
         queryKey: [ 'persons', params.id ],
-        queryFn: () => getPersonById(params.id)
+        queryFn: () => getPersonByIdCached(params.id)
     });
 
     return (

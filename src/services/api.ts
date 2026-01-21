@@ -19,38 +19,44 @@ import {
 } from '@/shemas';
 import { Adult } from '@/types';
 
-type Options = {
+type FetchOptions = {
     next?: {
-        revalidate?: number,
-        tags?: string[]
+        revalidate?: number
     }
 };
 
-async function fetchApi<T>(path: string, options: Options = {}) {
+export async function fetchApi<T>(
+    path: string,
+    options: FetchOptions = {}
+): Promise<T> {
     const isServer = typeof window === 'undefined';
 
-    const baseUrl = isServer ? PARAMETERS.API_URL : '/api/tmdb';
+    const baseUrl = isServer
+        ? PARAMETERS.API_URL
+        : '/api/tmdb';
 
-    let url: URL;
-    const fetchOptions: Options = {};
+    const url = new URL(`${ baseUrl }/${ path }`, isServer ? undefined : window.location.origin);
 
     if (isServer) {
-        fetchOptions.next = options.next,
-
-        url = new URL(`${ baseUrl }/${ path }`);
-        url.searchParams.append('api_key', PARAMETERS.API_KEY);
-        url.searchParams.append('language', PARAMETERS.LOCALE);
-    } else {
-        url = new URL(`${ baseUrl }/${ path }`, window.location.origin);
+        url.searchParams.set('api_key', PARAMETERS.API_KEY);
+        url.searchParams.set('language', PARAMETERS.LOCALE);
     }
-    
+
+    const fetchOptions: RequestInit & {
+        next?: FetchOptions['next']
+    } = {};
+
+    if (isServer && options.next) {
+        fetchOptions.next = options.next;
+    }
+
     const response = await fetch(url, fetchOptions);
 
     if (!response.ok) {
         throw new Error(await response.text());
     }
 
-    return (await response.json()) as T;
+    return response.json() as Promise<T>;
 }
 
 export function getTrendings(type: 'all' | MediaType, time: TimeType, page = 1) {
@@ -58,8 +64,7 @@ export function getTrendings(type: 'all' | MediaType, time: TimeType, page = 1) 
         `trending/${ type }/${ time }?page=${ page }`,
         {
             next: {
-                revalidate: 60,
-                tags: [ 'trendings', type, time, page.toString() ]
+                revalidate: 60
             }
         }
     );
@@ -69,8 +74,7 @@ export function getMovies(type: MovieType, page: number) {
     return fetchApi<DataShema<MovieShema>>(`${ MediaType.MOVIE }/${ type }?page=${ page }`,
         {
             next: {
-                revalidate: 60,
-                tags: [ 'movies', type, page.toString() ]
+                revalidate: 60
             }
         }
     );
@@ -81,8 +85,7 @@ export function getMovieById(id: string) {
         `${ MediaType.MOVIE }/${ id }?append_to_response=credits,videos,reviews,recommendations,external_ids`,
         {
             next: {
-                revalidate: 60,
-                tags: [ 'movies', id ]
+                revalidate: 60
             }
         }
     );
@@ -92,8 +95,7 @@ export function getCurrentMovieById(id: string) {
     return fetchApi<CurrentMovieShema>(`${ MediaType.MOVIE }/${ id }`,
         {
             next: {
-                revalidate: 60,
-                tags: [ 'movies', 'current', id ]
+                revalidate: 60
             }
         }
     );
@@ -104,8 +106,7 @@ export function getSimilarMovies(id: string, page: number) {
         `${ MediaType.MOVIE }/${ id }/similar?page=${ page }`,
         {
             next: {
-                revalidate: 60,
-                tags: [ 'movies', id, 'similar', page.toString() ]
+                revalidate: 60
             }
         }
     );
@@ -116,8 +117,7 @@ export function getRecommendationsMovies(id: string, page: number) {
         `${ MediaType.MOVIE }/${ id }/recommendations?page=${ page }`,
         {
             next: {
-                revalidate: 60,
-                tags: [ 'movies', id, 'recommendations', page.toString() ]
+                revalidate: 60
             }
         }
     );
@@ -128,8 +128,7 @@ export function getReviewsToMovie(id: string, page: number) {
         `${ MediaType.MOVIE }/${ id }/reviews?page=${ page }`,
         {
             next: {
-                revalidate: 60,
-                tags: [ 'movies', id, 'reviews', page.toString() ]
+                revalidate: 60
             }
         }
     );
@@ -139,8 +138,7 @@ export function getTVShows(type: TVShowType, page: number) {
     return fetchApi<DataShema<TVShowShema>>(`${ MediaType.TV_SHOW }/${ type }?page=${ page }`,
         {
             next: {
-                revalidate: 60,
-                tags: [ 'tv-shows', page.toString() ]
+                revalidate: 60
             }
         }
     );
@@ -151,8 +149,7 @@ export function getTVShowById(id: string) {
         `${ MediaType.TV_SHOW }/${ id }?append_to_response=credits,videos,reviews,recommendations,external_ids`,
         {
             next: {
-                revalidate: 60,
-                tags: [ 'tv-shows', id ]
+                revalidate: 60
             }
         }
     );
@@ -162,8 +159,7 @@ export function getCurrentTVShowById(id: string) {
     return fetchApi<CurrentTVShowShema>(`${ MediaType.TV_SHOW }/${ id }`,
         {
             next: {
-                revalidate: 60,
-                tags: [ 'tv-shows', 'current', id ]
+                revalidate: 60
             }
         }
     );
@@ -174,8 +170,7 @@ export function getSimilarTVShow(id: string, page: number) {
         `${ MediaType.TV_SHOW }/${ id }/similar?page=${ page }`,
         {
             next: {
-                revalidate: 60,
-                tags: [ 'tv-shows', id, 'similar', page.toString() ]
+                revalidate: 60
             }
         }
     );
@@ -186,8 +181,7 @@ export function getRecommendationsTVShow(id: string, page: number) {
         `${ MediaType.TV_SHOW }/${ id }/recommendations?page=${ page }`,
         {
             next: {
-                revalidate: 60,
-                tags: [ 'tv-shows', id, 'recommendations', page.toString() ]
+                revalidate: 60
             }
         }
     );
@@ -198,8 +192,7 @@ export function getReviewsToTVShow(id: string, page: number) {
         `${ MediaType.TV_SHOW }/${ id }/reviews?page=${ page }`,
         {
             next: {
-                revalidate: 60,
-                tags: [ 'tv-shows', id, 'reviews', page.toString() ]
+                revalidate: 60
             }
         }
     );
@@ -209,8 +202,7 @@ export function getTVShowSeasonByNumber(seriesId: string, number: number) {
     return fetchApi<TVShowSeasonDetailsShema>(`${ MediaType.TV_SHOW }/${ seriesId }/season/${ number }`,
         {
             next: {
-                revalidate: 60,
-                tags: [ 'tv-shows', seriesId, number.toString() ]
+                revalidate: 60
             }
         }
     );
@@ -220,8 +212,7 @@ export function getPersons(page: number) {
     return fetchApi<DataShema<PersonShema>>(`person/popular?page=${ page }`,
         {
             next: {
-                revalidate: 60,
-                tags: [ 'persons', page.toString() ]
+                revalidate: 60
             }
         }
     );
@@ -232,8 +223,7 @@ export function getPersonById(id: string) {
         `person/${ id }?append_to_response=combined_credits,images,external_ids`,
         {
             next: {
-                revalidate: 60,
-                tags: [ 'persons', id ]
+                revalidate: 60
             }
         }
     );

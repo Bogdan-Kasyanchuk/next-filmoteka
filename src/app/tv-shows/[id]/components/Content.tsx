@@ -15,7 +15,7 @@ import Container from '@/components/ui/layouts/Container';
 import { MediaType } from '@/enums';
 import { transformTVShowDetails } from '@/helpers/transformData';
 import { recommendationsUrl, reviewsUrl } from '@/routes';
-import { getTVShowById } from '@/services/api';
+import { getTVShowByIdCached } from '@/services/tv-shows';
 import { TVShowMapper } from '@/types';
 
 import Seasons from './Seasons';
@@ -28,7 +28,7 @@ type Props = {
 export default function Content(props: Props) {
     const { data, isPending, isError, error } = useQuery({
         queryKey: [ 'tv-shows', props.id ],
-        queryFn: () => getTVShowById(props.id),
+        queryFn: () => getTVShowByIdCached(props.id),
         select: data => transformTVShowDetails(data)
     });
 

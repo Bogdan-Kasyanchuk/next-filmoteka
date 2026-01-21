@@ -11,7 +11,8 @@ import Loader from '@/components/ui/data-display/Loader';
 import Container from '@/components/ui/layouts/Container';
 import Title from '@/components/ui/typography/Title';
 import { transformCurrentTVShow, transformReview } from '@/helpers/transformData';
-import { getCurrentTVShowById, getReviewsToTVShow } from '@/services/api';
+import { getReviewsToTVShow } from '@/services/api';
+import { getCurrentTVShowByIdCached } from '@/services/tv-shows';
 
 type Props = {
     id: string,
@@ -23,7 +24,7 @@ export default function Content(props: Props) {
         queries: [
             {
                 queryKey: [ 'tv-shows', 'current', props.id ],
-                queryFn: () => getCurrentTVShowById(props.id)
+                queryFn: () => getCurrentTVShowByIdCached(props.id)
             },
             {
                 queryKey: [ 'tv-shows', props.id, 'reviews', props.page ],
