@@ -7,7 +7,7 @@ export default function Providers(props: PropsWithChildren) {
     const [ queryClient ] = useState(() => new QueryClient({
         defaultOptions: {
             queries: {
-                staleTime: 60 * 1000,
+                staleTime: 30 * 1000,
                 retry: 1
             }
         }

@@ -10,7 +10,6 @@ import Loader from '@/components/ui/data-display/Loader';
 import { MovieType } from '@/enums';
 import { transformMovie } from '@/helpers/transformData';
 import { getMovies } from '@/services/api';
-import formatDate from '@/utils/formateDate';
 
 type Props = {
     type: MovieType,
