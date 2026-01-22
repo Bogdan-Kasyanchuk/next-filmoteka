@@ -1,6 +1,9 @@
 import { HydrationBoundary, QueryClient, dehydrate } from '@tanstack/react-query';
 import { Metadata } from 'next';
 
+import { MediaType } from '@/enums';
+import generateMetaTags from '@/helpers/generateMetaTags';
+import { recommendationsUrl } from '@/routes';
 import { getRecommendationsTVShow } from '@/services/api';
 import { getCurrentTVShowByIdCached } from '@/services/cachedWrappers';
 
@@ -20,11 +23,16 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
         
     const data = await getCurrentTVShowByIdCached(params.id);
 
-    const title = data?.name || data?.original_name || 'TV Show';
+    const title = data.name || data.original_name;
 
-    return {
-        title: `${ title } | Recommendations`
-    };
+    return generateMetaTags(
+        {
+            title: `${ title } | Recommendations`,
+            description: `Recommended tv shows based on the ${ title }.`,
+            keywords: [ title, `recommended to ${ title }` ],
+            url: recommendationsUrl(MediaType.TV_SHOW, params.id)
+        }
+    );
 }
 
 export default async function Page(props: Props) {

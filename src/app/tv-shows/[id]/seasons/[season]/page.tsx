@@ -1,6 +1,8 @@
 import { HydrationBoundary, QueryClient, dehydrate } from '@tanstack/react-query';
 import { Metadata } from 'next';
 
+import generateMetaTags from '@/helpers/generateMetaTags';
+import { pagesSeasonUrl } from '@/routes';
 import { getTVShowSeasonByNumber } from '@/services/api';
 import { getTVShowByIdCached } from '@/services/cachedWrappers';
 
@@ -20,11 +22,16 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
 
     const data = await getTVShowByIdCached(params.id);
 
-    const name = data?.name || data?.original_name || 'TV Show';
+    const title = data.name || data.original_name;
 
-    return {
-        title: `${ name } | Season ${ params.season }`
-    };
+    return generateMetaTags(
+        {
+            title: `${ title } | Season ${ params.season }`,
+            description: `${ title }. Season ${ params.season }. Details, episodes. Details of episodes.`,
+            keywords: [ title, `season of ${ title }`, `episodes of ${ title }` ],
+            url: pagesSeasonUrl(params.id, Number(params.season))
+        }
+    );
 }
 
 export default async function Page(props: Props) {

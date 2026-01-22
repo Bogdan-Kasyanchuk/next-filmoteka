@@ -25,7 +25,7 @@ export default function Casts(props: Props) {
                 variant={ 3 }
                 className="с-casts__title"
             >
-                Casts
+                Cast
             </Title>
 
             <div className="с-casts__cards">

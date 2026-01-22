@@ -17,7 +17,7 @@ export const metadata: Metadata = generateMetaTags(
     {
         title: 'Search',
         description: 'Movies, series, tv shows, actors and members of film crews',
-        keywords: [ 'movies', 'series', 'tv shows', 'persons', 'actors', 'members of film crews', 'casts', 'crews' ],
+        keywords: [ 'movies', 'series', 'tv shows', 'persons', 'actors', 'members of film crews' ],
         url: pagesSearchUrl()
     }
 );

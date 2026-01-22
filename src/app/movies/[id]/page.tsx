@@ -1,6 +1,8 @@
 import { HydrationBoundary, QueryClient, dehydrate } from '@tanstack/react-query';
 import { Metadata } from 'next';
 
+import generateMetaTags from '@/helpers/generateMetaTags';
+import { pagesMovieUrl } from '@/routes';
 import { getMovieByIdCached } from '@/services/cachedWrappers';
 
 import Content from './components/Content';
@@ -16,9 +18,16 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
         
     const data = await getMovieByIdCached(params.id);
 
-    return {
-        title: data?.title || data?.original_title || 'Movie'
-    };
+    const title = data.title || data.original_title;
+
+    return generateMetaTags(
+        {
+            title,
+            description: `${ title }. Details, overview, production companies, cast, crew, videos, recommendations, reviews`,
+            keywords: [ title, `cast of ${ title }`, `crew of ${ title }`, `videos of ${ title }`, `reviews of ${ title }` ],
+            url: pagesMovieUrl(params.id)
+        }
+    );
 }
 
 export default async function Page(props: Props) {

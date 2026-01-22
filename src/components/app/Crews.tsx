@@ -25,7 +25,7 @@ export default function Crews(props: Props) {
                 variant={ 3 }
                 className="с-crews__title"
             >
-                Crews
+                Crew
             </Title>
 
             <div className="с-crews__cards">
