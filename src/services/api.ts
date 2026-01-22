@@ -1,3 +1,5 @@
+import { notFound } from 'next/navigation';
+
 import { MediaType, MovieType, TVShowType, TimeType } from '@/enums';
 import { PARAMETERS } from '@/helpers/parameters';
 import {
@@ -53,13 +55,19 @@ export async function fetchApi<T>(
     const response = await fetch(url, fetchOptions);
 
     if (!response.ok) {
-        throw new Error(await response.text());
+
+        if (response.status === 404) {
+            return notFound();
+        }
+
+        const text = await response.text();
+        throw new Error(text || 'API error');
     }
 
     return response.json() as Promise<T>;
 }
 
-export function getTrendings(type: 'all' | MediaType, time: TimeType, page = 1) {
+export function getTrendings(type: 'all' | MediaType, time: TimeType, page: number) {
     return fetchApi<DataShema<MovieShema | TVShowShema | PersonShema>>(
         `trending/${ type }/${ time }?page=${ page }`,
         {

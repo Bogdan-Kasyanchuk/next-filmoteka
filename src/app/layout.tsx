@@ -4,6 +4,7 @@ import { PropsWithChildren } from 'react';
 
 import Footer from '@/components/app/Footer';
 import Header from '@/components/app/Header';
+import { PARAMETERS } from '@/helpers/parameters';
 
 import Providers from './providers';
 
@@ -11,20 +12,15 @@ const font = Plus_Jakarta_Sans({ subsets: [ 'latin' ] });
 
 export const metadata: Metadata = {
     title: {
-        template: 'Filmoteka | %s',
-        default: 'Filmoteka'
+        default: 'Filmoteka',
+        template: 'Filmoteka | %s'
     },
     robots: {
         index: false,
-        follow: false,
-        nocache: true,
-        googleBot: {
-            'max-snippet': -1,
-            'max-video-preview': -1,
-            'max-image-preview': 'large'
-        }
+        follow: false
     },
-    metadataBase: new URL('https://next-filmoteka.netlify.app')
+    applicationName: 'Filmoteka',
+    metadataBase: new URL(PARAMETERS.SITE_URL)
 };
 
 export default function Layout(props: PropsWithChildren) {

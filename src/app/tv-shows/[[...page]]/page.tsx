@@ -4,6 +4,8 @@ import { Metadata } from 'next';
 import Container from '@/components/ui/layouts/Container';
 import Title from '@/components/ui/typography/Title';
 import { TVShowType } from '@/enums';
+import generateMetaTags from '@/helpers/generateMetaTags';
+import { pagesTVShowsUrl } from '@/routes';
 import { getTVShows } from '@/services/api';
 
 import Content from './components/Content';
@@ -32,9 +34,14 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
                 ? 'Popular'
                 : 'Top rated';
   
-    return {
-        title: `TV Shows | ${ normalizedType }`
-    };
+    return generateMetaTags(
+        {
+            title: `TV Shows | ${ normalizedType }`,
+            description: 'Airing today, on the air, popular and top rated tv shows',
+            keywords: [ 'airing today tv shows', 'on the air tv shows', 'popular tv shows', 'top rated tv shows', 'tv shows' ],
+            url: pagesTVShowsUrl()
+        }
+    );
 }
 
 export default async function Page(props: Props) {

@@ -22,11 +22,11 @@ export default function Content() {
         queries: [
             {
                 queryKey: [ 'trendings', 'all', TimeType.DAY ],
-                queryFn: () => getTrendings('all', TimeType.DAY)
+                queryFn: () => getTrendings('all', TimeType.DAY, 1)
             },
             {
                 queryKey: [ 'trendings', 'all', TimeType.WEEK ],
-                queryFn: () => getTrendings('all', TimeType.WEEK)
+                queryFn: () => getTrendings('all', TimeType.WEEK, 1)
             }
         ],
         combine: results => {

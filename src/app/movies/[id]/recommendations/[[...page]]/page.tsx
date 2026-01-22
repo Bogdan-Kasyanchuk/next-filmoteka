@@ -2,7 +2,7 @@ import { HydrationBoundary, QueryClient, dehydrate } from '@tanstack/react-query
 import { Metadata } from 'next';
 
 import { getRecommendationsMovies } from '@/services/api';
-import { getCurrentMovieByIdCached } from '@/services/movies';
+import { getCurrentMovieByIdCached } from '@/services/cachedWrappers';
 
 import Content from './components/Content';
 

@@ -4,6 +4,8 @@ import { Metadata } from 'next';
 import Container from '@/components/ui/layouts/Container';
 import Title from '@/components/ui/typography/Title';
 import { MediaType, TimeType } from '@/enums';
+import generateMetaTags from '@/helpers/generateMetaTags';
+import { pagesTrendingDayUrl } from '@/routes';
 import { getTrendings } from '@/services/api';
 
 import Content from './components/Content';
@@ -31,9 +33,14 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
                 ? 'Persons'
                 : 'All';
   
-    return {
-        title: `Trending today | ${ normalizedType }`
-    };
+    return generateMetaTags(
+        {
+            title: `Trending today | ${ normalizedType }`,
+            description: 'Trending today movies, series, tv shows, actors and members of film crews',
+            keywords: [ 'trending', 'trending today', 'movies', 'series', 'tv shows', 'persons', 'actors', 'members of film crews', 'casts', 'crews' ],
+            url: pagesTrendingDayUrl()
+        }
+    );
 }
 
 export default async function Page(props: Props) {

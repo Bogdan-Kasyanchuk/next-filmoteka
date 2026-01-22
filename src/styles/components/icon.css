@@ -27,14 +27,6 @@
     --icon-path: url('/svg/arrow.svg');
 }
 
-.i-icon-email {
-    --icon-path: url('/svg/email.svg');
-}
-
-.i-icon-key {
-    --icon-path: url('/svg/key.svg');
-}
-
 .i-icon-check {
     --icon-path: url('/svg/check.svg');
 }

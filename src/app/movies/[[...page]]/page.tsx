@@ -4,6 +4,8 @@ import { Metadata } from 'next';
 import Container from '@/components/ui/layouts/Container';
 import Title from '@/components/ui/typography/Title';
 import { MovieType } from '@/enums';
+import generateMetaTags from '@/helpers/generateMetaTags';
+import { pagesMoviesUrl } from '@/routes';
 import { getMovies } from '@/services/api';
 
 import Content from './components/Content';
@@ -31,10 +33,15 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
             : type === MovieType.TOP_RATED
                 ? 'Top rated'
                 : 'Upcoming';
-  
-    return {
-        title: `Movies | ${ normalizedType }`
-    };
+ 
+    return generateMetaTags(
+        {
+            title: `Movies | ${ normalizedType }`,
+            description: 'Now playing, popular, top rated and upcoming movies',
+            keywords: [ 'now playing movies', 'popular movies', 'top rated movies', 'upcoming movies', 'movies' ],
+            url: pagesMoviesUrl()
+        }
+    );
 }
 
 export default async function Page(props: Props) {

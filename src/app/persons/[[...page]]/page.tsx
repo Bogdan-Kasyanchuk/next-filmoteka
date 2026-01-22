@@ -3,6 +3,8 @@ import { Metadata } from 'next';
 
 import Container from '@/components/ui/layouts/Container';
 import Title from '@/components/ui/typography/Title';
+import generateMetaTags from '@/helpers/generateMetaTags';
+import { pagesPersonsUrl } from '@/routes';
 import { getPersons } from '@/services/api';
 
 import Content from './components/Content';
@@ -13,9 +15,14 @@ type Props = {
     params: Promise<{ page?: string[] }>
 };
 
-export const metadata: Metadata = {
-    title: 'Persons'
-};
+export const metadata: Metadata = generateMetaTags(
+    {
+        title: 'Persons',
+        description: 'Actors of films and tv shows. Members of film crews of films and tv shows',
+        keywords: [ 'persons', 'actors', 'members of film crews', 'casts', 'crews' ],
+        url: pagesPersonsUrl()
+    }
+);
 
 export default async function Page(props: Props) {
     const params = await props.params;

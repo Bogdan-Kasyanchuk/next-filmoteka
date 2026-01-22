@@ -1,6 +1,7 @@
 export const PARAMETERS = {
     API_KEY: process.env.API_KEY!,
     API_URL: 'https://api.themoviedb.org/3',
+    SITE_URL: 'https://next-filmoteka.netlify.app',
     YOUTUBE_EMBED_URL: 'https://www.youtube.com/embed',
     IMAGE_URL: 'https://image.tmdb.org/t/p',
     LOCALE: 'en-US'

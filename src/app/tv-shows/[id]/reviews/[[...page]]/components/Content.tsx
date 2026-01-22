@@ -12,7 +12,7 @@ import Container from '@/components/ui/layouts/Container';
 import Title from '@/components/ui/typography/Title';
 import { transformCurrentTVShow, transformReview } from '@/helpers/transformData';
 import { getReviewsToTVShow } from '@/services/api';
-import { getCurrentTVShowByIdCached } from '@/services/tv-shows';
+import { getCurrentTVShowByIdCached } from '@/services/cachedWrappers';
 
 type Props = {
     id: string,

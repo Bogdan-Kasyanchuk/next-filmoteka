@@ -3,6 +3,8 @@ import { Metadata } from 'next';
 
 import Container from '@/components/ui/layouts/Container';
 import { MediaType } from '@/enums';
+import generateMetaTags from '@/helpers/generateMetaTags';
+import { pagesSearchUrl } from '@/routes';
 import { getSearch } from '@/services/api';
 import { Adult } from '@/types';
 
@@ -11,9 +13,14 @@ import Content from './components/Content';
 import Filter from './components/Filter';
 import Search from './components/Search';
 
-export const metadata: Metadata = {
-    title: 'Search'
-};
+export const metadata: Metadata = generateMetaTags(
+    {
+        title: 'Search',
+        description: 'Movies, series, tv shows, actors and members of film crews',
+        keywords: [ 'movies', 'series', 'tv shows', 'persons', 'actors', 'members of film crews', 'casts', 'crews' ],
+        url: pagesSearchUrl()
+    }
+);
 
 type Props = {
     params: Promise<{ page?: string[] }>,

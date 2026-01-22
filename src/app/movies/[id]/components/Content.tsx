@@ -15,7 +15,7 @@ import Container from '@/components/ui/layouts/Container';
 import { MediaType } from '@/enums';
 import { transformMovieDetails } from '@/helpers/transformData';
 import { recommendationsUrl, reviewsUrl } from '@/routes';
-import { getMovieByIdCached } from '@/services/movies';
+import { getMovieByIdCached } from '@/services/cachedWrappers';
 import { MovieMapper } from '@/types';
 
 import MovieDetails from './MovieDetails';
