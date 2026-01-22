@@ -29,7 +29,9 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
             title: `${ title } | Season ${ params.season }`,
             description: `${ title }. Season ${ params.season }. Details, episodes. Details of episodes.`,
             keywords: [ title, `season of ${ title }`, `episodes of ${ title }` ],
-            url: pagesSeasonUrl(params.id, Number(params.season))
+            url: pagesSeasonUrl(params.id, Number(params.season)),
+            index: false,
+            follow: false
         }
     );
 }
