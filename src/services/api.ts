@@ -72,7 +72,7 @@ export function getTrendings(type: 'all' | MediaType, time: TimeType, page: numb
         `trending/${ type }/${ time }?page=${ page }`,
         {
             next: {
-                revalidate: 60
+                revalidate: 3600
             }
         }
     );
@@ -82,7 +82,7 @@ export function getMovies(type: MovieType, page: number) {
     return fetchApi<DataShema<MovieShema>>(`${ MediaType.MOVIE }/${ type }?page=${ page }`,
         {
             next: {
-                revalidate: 60
+                revalidate: 3600
             }
         }
     );
@@ -93,7 +93,7 @@ export function getMovieById(id: string) {
         `${ MediaType.MOVIE }/${ id }?append_to_response=credits,videos,reviews,recommendations,external_ids`,
         {
             next: {
-                revalidate: 60
+                revalidate: 3600
             }
         }
     );
@@ -103,7 +103,7 @@ export function getCurrentMovieById(id: string) {
     return fetchApi<CurrentMovieShema>(`${ MediaType.MOVIE }/${ id }`,
         {
             next: {
-                revalidate: 60
+                revalidate: 3600
             }
         }
     );
@@ -114,7 +114,7 @@ export function getSimilarMovies(id: string, page: number) {
         `${ MediaType.MOVIE }/${ id }/similar?page=${ page }`,
         {
             next: {
-                revalidate: 60
+                revalidate: 3600
             }
         }
     );
@@ -125,7 +125,7 @@ export function getRecommendationsMovies(id: string, page: number) {
         `${ MediaType.MOVIE }/${ id }/recommendations?page=${ page }`,
         {
             next: {
-                revalidate: 60
+                revalidate: 3600
             }
         }
     );
@@ -136,7 +136,7 @@ export function getReviewsToMovie(id: string, page: number) {
         `${ MediaType.MOVIE }/${ id }/reviews?page=${ page }`,
         {
             next: {
-                revalidate: 60
+                revalidate: 3600
             }
         }
     );
@@ -146,7 +146,7 @@ export function getTVShows(type: TVShowType, page: number) {
     return fetchApi<DataShema<TVShowShema>>(`${ MediaType.TV_SHOW }/${ type }?page=${ page }`,
         {
             next: {
-                revalidate: 60
+                revalidate: 3600
             }
         }
     );
@@ -157,7 +157,7 @@ export function getTVShowById(id: string) {
         `${ MediaType.TV_SHOW }/${ id }?append_to_response=credits,videos,reviews,recommendations,external_ids`,
         {
             next: {
-                revalidate: 60
+                revalidate: 3600
             }
         }
     );
@@ -167,7 +167,7 @@ export function getCurrentTVShowById(id: string) {
     return fetchApi<CurrentTVShowShema>(`${ MediaType.TV_SHOW }/${ id }`,
         {
             next: {
-                revalidate: 60
+                revalidate: 3600
             }
         }
     );
@@ -178,7 +178,7 @@ export function getSimilarTVShow(id: string, page: number) {
         `${ MediaType.TV_SHOW }/${ id }/similar?page=${ page }`,
         {
             next: {
-                revalidate: 60
+                revalidate: 3600
             }
         }
     );
@@ -189,7 +189,7 @@ export function getRecommendationsTVShow(id: string, page: number) {
         `${ MediaType.TV_SHOW }/${ id }/recommendations?page=${ page }`,
         {
             next: {
-                revalidate: 60
+                revalidate: 3600
             }
         }
     );
@@ -200,7 +200,7 @@ export function getReviewsToTVShow(id: string, page: number) {
         `${ MediaType.TV_SHOW }/${ id }/reviews?page=${ page }`,
         {
             next: {
-                revalidate: 60
+                revalidate: 3600
             }
         }
     );
@@ -210,7 +210,7 @@ export function getTVShowSeasonByNumber(seriesId: string, number: number) {
     return fetchApi<TVShowSeasonDetailsShema>(`${ MediaType.TV_SHOW }/${ seriesId }/season/${ number }`,
         {
             next: {
-                revalidate: 60
+                revalidate: 3600
             }
         }
     );
@@ -220,7 +220,7 @@ export function getPersons(page: number) {
     return fetchApi<DataShema<PersonShema>>(`person/popular?page=${ page }`,
         {
             next: {
-                revalidate: 60
+                revalidate: 3600
             }
         }
     );
@@ -231,7 +231,7 @@ export function getPersonById(id: string) {
         `person/${ id }?append_to_response=combined_credits,images,external_ids`,
         {
             next: {
-                revalidate: 60
+                revalidate: 3600
             }
         }
     );

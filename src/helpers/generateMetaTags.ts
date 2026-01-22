@@ -4,7 +4,9 @@ type Props = {
     title: string,
     description: string,
     keywords: string[],
-    url: string
+    url: string,
+    index?: boolean,
+    follow?: boolean
 };
 
 export default (props: Props): Metadata => ({
@@ -15,8 +17,8 @@ export default (props: Props): Metadata => ({
         canonical: props.url
     },
     robots: {
-        'index': true,
-        'follow': true,
+        'index': props.index ?? true,
+        'follow': props.follow ?? true,
         'max-snippet': -1,
         'max-video-preview': -1,
         'max-image-preview': 'large'

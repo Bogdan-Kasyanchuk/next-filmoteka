@@ -15,11 +15,11 @@ export const metadata: Metadata = {
         default: 'Filmoteka',
         template: 'Filmoteka | %s'
     },
+    applicationName: 'Filmoteka',
     robots: {
         index: false,
         follow: false
     },
-    applicationName: 'Filmoteka',
     metadataBase: new URL(PARAMETERS.SITE_URL)
 };
 
