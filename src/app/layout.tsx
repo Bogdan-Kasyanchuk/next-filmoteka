@@ -30,7 +30,11 @@ export default function Layout(props: PropsWithChildren) {
                 <Providers>
                     <Header />
 
-                    <main>{ props.children }</main>
+                    <main>
+                        <h1 className="sr-only">Filmoteka</h1>
+                        
+                        { props.children }
+                    </main>
 
                     <Footer />
                 </Providers>

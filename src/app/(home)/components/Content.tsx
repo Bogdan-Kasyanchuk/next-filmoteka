@@ -95,8 +95,6 @@ export default function Content() {
 
     return (
         <Container className="p-home">
-            <h1 className="sr-only">Filmoteka</h1>
-
             {
                 data.today.items.length > 0 &&
                 <div className="p-home__block">
