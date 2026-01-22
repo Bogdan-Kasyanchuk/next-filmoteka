@@ -3,8 +3,8 @@
 import { useQuery } from '@tanstack/react-query';
 import { notFound } from 'next/navigation';
 
-import Casts from '@/components/app/Casts';
-import Crews from '@/components/app/Crews';
+import Cast from '@/components/app/Cast';
+import Crew from '@/components/app/Crew';
 import Recommendations from '@/components/app/Recommendations';
 import Reviews from '@/components/app/Reviews';
 import Videos from '@/components/app/Videos';
@@ -55,12 +55,12 @@ export default function Content(props: Props) {
             <Container className="p-movie__container">
                 {
                     data.cast.length > 0 &&
-                    <Casts casts={ data.cast } />
+                    <Cast cast={ data.cast } />
                 }
 
                 {
                     data.crew.length > 0 &&
-                    <Crews crews={ data.crew } />
+                    <Crew crew={ data.crew } />
                 }
 
                 {
