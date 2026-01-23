@@ -101,7 +101,11 @@ export default function Content(props: Props) {
                     data.reviews.total_pages > 1 &&
                     <Pagination
                         currentPage={ props.page }
-                        totalPages={ data.reviews.total_pages }
+                        totalPages={
+                            data.reviews.total_pages > 500
+                                ? 500
+                                : data.reviews.total_pages 
+                        }
                     />
                 }
             </div>

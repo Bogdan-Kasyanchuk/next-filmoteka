@@ -101,7 +101,11 @@ export default function Content(props: Props) {
                     data.similar.total_pages > 1 &&
                     <Pagination
                         currentPage={ props.page }
-                        totalPages={ data.similar.total_pages }
+                        totalPages={
+                            data.similar.total_pages > 500
+                                ? 500
+                                : data.similar.total_pages 
+                        }
                     />
                 }
             </div>

@@ -17,8 +17,8 @@ import { getMovies, getPersons, getTVShows } from '@/services/api';
 export const revalidate = 86400;
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-    const movies = await getMovies(MovieType.NOW_PLAYING, 1);
-    const tvshows = await getTVShows(TVShowType.ON_THE_AIR, 1);
+    const movies = await getMovies(MovieType.POPULAR, 1);
+    const tvshows = await getTVShows(TVShowType.POPULAR, 1);
     const persons = await getPersons(1);
 
     const staticPages: MetadataRoute.Sitemap = [
