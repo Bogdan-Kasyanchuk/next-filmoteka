@@ -1,9 +1,13 @@
+import { useTranslations } from 'next-intl';
+
 import Logo from '@/components/ui/data-display/Logo';
 import Container from '@/components/ui/layouts/Container';
 
 import Navigation from './components/Navigation';
 
 export default function Header() {
+    const t = useTranslations('Header');
+
     return (
         <header className="c-header">
             <Container
@@ -16,7 +20,7 @@ export default function Header() {
                     priority
                 >
                     <span className="max-md:sr-only">
-                        Filmoteka
+                        { t('filmoteka') }
                     </span>
                 </Logo>
 

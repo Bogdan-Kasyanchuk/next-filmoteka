@@ -1,5 +1,6 @@
 import { ShowMore } from '@re-dev/react-truncate';
 import Image from 'next/image';
+import { useLocale } from 'next-intl';
 
 import { IMG_SIZES } from '@/helpers/parameters';
 import { imageUrl } from '@/routes';
@@ -12,6 +13,8 @@ type Props = {
 };
 
 export default function ReviewCard(props: Props) {
+    const locale = useLocale();
+    
     if (!props.review.content) {
         return null;
     }
@@ -63,14 +66,14 @@ export default function ReviewCard(props: Props) {
 
                         <li className="c-review-card__info-list-item">
                             <span>Created:</span>
-                            <span>{ formatDate(props.review.created_at, 'DD.MM.YYYY') }</span>
+                            <span>{ formatDate(props.review.created_at, locale, 'DD.MM.YYYY') }</span>
                         </li>
 
                         {
                             props.review.updated_at &&
                             <li className="c-review-card__info-list-item">
                                 <span>Updated:</span>
-                                <span>{ formatDate(props.review.updated_at, 'DD.MM.YYYY') }</span>
+                                <span>{ formatDate(props.review.updated_at, locale, 'DD.MM.YYYY') }</span>
                             </li>
                         }
                     </ul>

@@ -1,4 +1,5 @@
 import { notFound } from 'next/navigation';
+import { getLocale } from 'next-intl/server';
 
 import { MediaType, MovieType, TVShowType, TimeType } from '@/enums';
 import { PARAMETERS } from '@/helpers/parameters';
@@ -31,6 +32,8 @@ export async function fetchApi<T>(
     path: string,
     options: FetchOptions = {}
 ): Promise<T> {
+    const locale = await getLocale() as keyof typeof PARAMETERS.LOCALE;
+        
     const isServer = typeof window === 'undefined';
 
     const baseUrl = isServer
@@ -41,7 +44,7 @@ export async function fetchApi<T>(
 
     if (isServer) {
         url.searchParams.set('api_key', PARAMETERS.API_KEY);
-        url.searchParams.set('language', PARAMETERS.LOCALE);
+        url.searchParams.set('language', PARAMETERS.LOCALE[ locale ]);
     }
 
     const fetchOptions: RequestInit & {
@@ -61,6 +64,7 @@ export async function fetchApi<T>(
         }
 
         const text = await response.text();
+        
         throw new Error(text || 'API error');
     }
 

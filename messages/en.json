@@ -1,0 +1,10 @@
+{
+    "Header": {
+        "filmoteka": "Filmoteka",
+        "search": "Search",
+        "home": "Home",
+        "movies": "Movies",
+        "tv": "TV Shows",
+        "persons": "Persons"
+    }
+}

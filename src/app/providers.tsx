@@ -1,21 +1,14 @@
-'use client';
+import { NextIntlClientProvider } from 'next-intl';
+import { PropsWithChildren } from 'react';
 
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { PropsWithChildren, useState } from 'react';
+import QueryProvider from './queryProvider';
 
 export default function Providers(props: PropsWithChildren) {
-    const [ queryClient ] = useState(() => new QueryClient({
-        defaultOptions: {
-            queries: {
-                staleTime: 60 * 1000,
-                retry: 1
-            }
-        }
-    }));
-
     return (
-        <QueryClientProvider client={ queryClient }>
-            { props.children }
-        </QueryClientProvider>
+        <NextIntlClientProvider>
+            <QueryProvider>
+                { props.children }
+            </QueryProvider>
+        </NextIntlClientProvider>
     );
 }

@@ -4,6 +4,7 @@ import clsx from 'clsx';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { useTranslations } from 'next-intl';
 
 import Popover from '@/components/ui/data-display/Popover';
 
@@ -12,6 +13,8 @@ import { links } from './datasets';
 const searchLink = links[ 0 ];
 
 export default function Navigation() {
+    const t = useTranslations('Header');
+
     const pathname = usePathname();
 
     return (
@@ -34,12 +37,12 @@ export default function Navigation() {
                                     width={ 24 }
                                     height={ 24 }
                                     src={ searchLink.icon }
-                                    alt="Search icon"
+                                    alt={ t(searchLink.code) }
                                     className="c-navigation__img"
                                     priority
                                 />
 
-                                <span className="c-navigation__text">{ searchLink.name }</span>
+                                <span className="c-navigation__text">{ t(searchLink.code) }</span>
                             </button>
                         }
                         classNames={
@@ -65,7 +68,7 @@ export default function Navigation() {
                                 type="submit"
                                 className="c-navigation__search-button"
                             >
-                                Search
+                                { t(searchLink.code) }
                             </button>
                         </form>
                     </Popover>
@@ -74,7 +77,7 @@ export default function Navigation() {
                 {
                     links.slice(1).map(
                         link => (
-                            <li key={ link.name }>
+                            <li key={ link.code }>
                                 <Link
                                     href={ link.href }
                                     className={
@@ -90,12 +93,12 @@ export default function Navigation() {
                                         width={ 24 }
                                         height={ 24 }
                                         src={ link.icon }
-                                        alt={ `${ link.name } icon` }
+                                        alt={ t(link.code) }
                                         className="c-navigation__img"
                                         priority
                                     />
                                     
-                                    <span className="c-navigation__text">{ link.name }</span>
+                                    <span className="c-navigation__text">{ t(link.code) }</span>
                                 </Link>
                             </li>
                         )

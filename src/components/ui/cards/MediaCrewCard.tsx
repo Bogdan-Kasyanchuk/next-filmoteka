@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { useLocale } from 'next-intl';
 
 import { MediaType } from '@/enums';
 import { IMG_SIZES } from '@/helpers/parameters';
@@ -12,6 +13,8 @@ type Props = {
 };
 
 export default function MediaCrewCard(props: Props) {
+    const locale = useLocale();
+
     return (
         <Link
             href={
@@ -26,7 +29,7 @@ export default function MediaCrewCard(props: Props) {
                     {
 
                         props.crew.release_date
-                            ? formatDate(props.crew.release_date, 'YYYY')
+                            ? formatDate(props.crew.release_date, locale, 'YYYY')
                             : '-'
                     }
                 </div>

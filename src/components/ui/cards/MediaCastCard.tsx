@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { useLocale } from 'next-intl';
 
 import { MediaType } from '@/enums';
 import { IMG_SIZES } from '@/helpers/parameters';
@@ -12,6 +13,8 @@ type Props = {
 };
 
 export default function MediaCastCard(props: Props) {
+    const locale = useLocale();
+
     return (
         <Link
             href={
@@ -26,7 +29,7 @@ export default function MediaCastCard(props: Props) {
                     {
 
                         props.cast.release_date
-                            ? formatDate(props.cast.release_date, 'YYYY')
+                            ? formatDate(props.cast.release_date, locale, 'YYYY')
                             : '-'
                     }
                 </div>

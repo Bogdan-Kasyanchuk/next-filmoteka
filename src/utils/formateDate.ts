@@ -10,10 +10,9 @@ dayjs.extend(relativeTime);
 dayjs.extend(timezone);
 dayjs.extend(localizedFormat);
 
-const locale = 'en';
 const zone = 'Europe/Kyiv';
 
-export default (date: string | number | Date, format?: string) => {
+export default (date: string | number | Date, locale: string, format?: string) => {
     const parsed = dayjs(date);
 
     if (!parsed.isValid()) {

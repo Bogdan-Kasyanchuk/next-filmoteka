@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { useLocale } from 'next-intl';
 import { Fragment } from 'react';
 
 import Title from '@/components/ui/typography/Title';
@@ -14,6 +15,8 @@ type Props = {
 };
 
 export default function CurrentMovie(props: Props) {
+    const locale = useLocale();
+    
     return (
         <div className="c-current-movie">
             <div className="c-current-movie__cover">
@@ -38,11 +41,11 @@ export default function CurrentMovie(props: Props) {
                     <Link
                         href={ pagesMovieUrl(props.id) }
                         title={
-                            `${ props.movie.title } ${ formatDate(props.movie.release_date, 'YYYY') }`
+                            `${ props.movie.title } ${ formatDate(props.movie.release_date, locale, 'YYYY') }`
                         }
                         className="u-link-color"
                     >
-                        { props.movie.title }&nbsp;({ formatDate(props.movie.release_date, 'YYYY') })
+                        { props.movie.title }&nbsp;({ formatDate(props.movie.release_date, locale, 'YYYY') })
                     </Link>
                 </Title>
 

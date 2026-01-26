@@ -4,7 +4,10 @@ export const PARAMETERS = {
     SITE_URL: 'https://next-filmoteka.netlify.app',
     YOUTUBE_EMBED_URL: 'https://www.youtube.com/embed',
     IMAGE_URL: 'https://image.tmdb.org/t/p',
-    LOCALE: 'en-US'
+    LOCALE: {
+        en: 'en-US',
+        uk: 'uk-UA'
+    }
 };
 
 export const IMG_SIZES = {

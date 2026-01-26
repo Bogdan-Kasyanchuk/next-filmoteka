@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { useLocale } from 'next-intl';
 
 import { IMG_SIZES } from '@/helpers/parameters';
 import { imageUrl } from '@/routes';
@@ -12,6 +13,8 @@ type Props = {
 };
 
 export default function EpisodeCard(props: Props) {
+    const locale = useLocale();
+
     return (
         <div className="с-episode-card">
             <div className="с-episode-card__cover">
@@ -40,7 +43,7 @@ export default function EpisodeCard(props: Props) {
                         props.episode.air_date &&
                         <div className="с-episode-card__info-list-item">
                             <dt>Air date:</dt>
-                            <dd>{ formatDate(props.episode.air_date, 'DD.MM.YYYY') }</dd>
+                            <dd>{ formatDate(props.episode.air_date, locale, 'DD.MM.YYYY') }</dd>
                         </div>
                     }
 
