@@ -22,7 +22,15 @@ export default function Popover(props: PropsWithChildren<Props>) {
                 <Content
                     className={ clsx('c-popover__content', props.classNames?.content) }
                     sideOffset={ props.isArrow ? 5 : 10 }
-                    collisionPadding={ 20 }
+                    collisionPadding={
+                        {
+                            top: 60,
+                            right: 20,
+                            bottom: 20,
+                            left: 20
+                        } 
+                    }
+                    side="top"
                 >
                     { props.children }
 

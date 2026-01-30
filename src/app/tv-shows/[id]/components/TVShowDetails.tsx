@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { Fragment } from 'react';
 
 import ProductionCompanyDetails from '@/components/app/ProductionCompanyDetails';
-import HoverCard from '@/components/ui/data-display/HoverCard';
+import Popover from '@/components/ui/data-display/Popover';
 import SocialLinks from '@/components/ui/data-display/SocialLinks';
 import Container from '@/components/ui/layouts/Container';
 import Title from '@/components/ui/typography/Title';
@@ -290,43 +290,57 @@ export default function TVShowDetails(props: Props) {
                                 {
                                     props.tvShow.networks.map(
                                         (network, index) => (
-                                            <HoverCard
-                                                key={ index }
-                                                trigger={
-                                                    <li className="p-tv-show__details-networks-item">
-                                                        <div className="p-tv-show__details-networks-logo">
-                                                            <Image
-                                                                src={
-                                                                    network.logo_path
-                                                                        ? imageUrl(IMG_SIZES.NETWORK_LOGO, network.logo_path)
-                                                                        : '/img/image-placeholder.svg'
-                                                                }
-                                                                fill
-                                                                sizes="50px"
-                                                                alt={ network.name }
-                                                            />
-                                                        </div>
-
-                                                        <div className="p-tv-show__details-networks-content">
-                                                            <span className="text-lg font-semibold">
-                                                                { network.name }
-                                                            </span>
-
-                                                            {
-                                                                network.origin_country &&
-                                                                <span className="opacity-75 text-sm">
-                                                                    { network.origin_country }
-                                                                </span>
-                                                            }
-                                                        </div>
-                                                    </li>
-                                                }
-                                                classNameContent="p-tv-show__details-networks-details"
+                                            <li 
+                                                key={ index } className="p-tv-show__details-networks-item"
                                             >
-                                                <NetworkDetails id={ network.id } /> 
-                                            </HoverCard>
+                                                <div className="p-tv-show__details-networks-logo">
+                                                    <Image
+                                                        src={
+                                                            network.logo_path
+                                                                ? imageUrl(IMG_SIZES.NETWORK_LOGO, network.logo_path)
+                                                                : '/img/image-placeholder.svg'
+                                                        }
+                                                        fill
+                                                        sizes="50px"
+                                                        alt={ network.name }
+                                                    />
+                                                </div>
 
-                                        ))
+                                                <div className="p-tv-show__details-networks-content">
+                                                    <div className="text-lg font-semibold">
+                                                        { network.name }
+
+                                                        <Popover
+                                                            trigger={
+                                                                <button
+                                                                    type="button"
+                                                                    className="p-tv-show__details-networks-trigger"
+                                                                >
+                                                                    i
+                                                                </button>
+                                                            }
+                                                            classNames={
+                                                                {
+                                                                    content: 'p-tv-show__details-networks-details',
+                                                                    arrow: 'p-tv-show__details-networks-arrow'
+                                                                }
+                                                            }
+                                                            isArrow
+                                                        >
+                                                            <NetworkDetails id={ network.id } /> 
+                                                        </Popover>
+                                                    </div>
+
+                                                    {
+                                                        network.origin_country &&
+                                                        <span className="opacity-75 text-sm">
+                                                            { network.origin_country }
+                                                        </span>
+                                                    }
+                                                </div>
+                                            </li>
+                                        )
+                                    )
                                 }
                             </ul>
                         </div>
@@ -342,42 +356,59 @@ export default function TVShowDetails(props: Props) {
                                 {
                                     props.tvShow.production_companies.map(
                                         (company, index) => (
-                                            <HoverCard
-                                                key={ index }
-                                                trigger={
-                                                    <li className="p-tv-show__details-companies-item">
-                                                        <div className="p-tv-show__details-companies-logo">
-                                                            <Image
-                                                                src={
-                                                                    company.logo_path
-                                                                        ? imageUrl(IMG_SIZES.COMPANY_LOGO, company.logo_path)
-                                                                        : '/img/image-placeholder.svg'
-                                                                }
-                                                                fill
-                                                                sizes="50px"
-                                                                alt={ company.name }
-                                                            />
-                                                        </div>
-
-                                                        <div className="p-tv-show__details-companies-content">
-                                                            <span className="text-lg font-semibold">
-                                                                { company.name }
-                                                            </span>
-                                                            
-                                                            {
-                                                                company.origin_country &&
-                                                                <span className="opacity-75 text-sm">
-                                                                    { company.origin_country }
-                                                                </span>
-                                                            }
-                                                        </div>
-                                                    </li> 
-                                                }
-                                                classNameContent="p-tv-show__details-companies-details"
+                                            <li 
+                                                key={ index } className="p-tv-show__details-companies-item"
                                             >
-                                                <ProductionCompanyDetails id={ company.id } /> 
-                                            </HoverCard>
-                                        ))
+                                                <div className="p-tv-show__details-companies-logo">
+                                                    <Image
+                                                        src={
+                                                            company.logo_path
+                                                                ? imageUrl(IMG_SIZES.COMPANY_LOGO, company.logo_path)
+                                                                : '/img/image-placeholder.svg'
+                                                        }
+                                                        fill
+                                                        sizes="50px"
+                                                        alt={ company.name }
+                                                    />
+                                                </div>
+
+                                                <div className="p-tv-show__details-companies-content">
+                                                    <div className="text-lg font-semibold">
+                                                        { company.name }
+
+                                                        <Popover
+                                                            trigger={
+                                                                <button
+                                                                    type="button"
+                                                                    className="p-tv-show__details-companies-trigger"
+                                                                >
+                                                                    i
+                                                                </button>
+                                                            }
+                                                            classNames={
+                                                                {
+                                                                    content: 'p-tv-show__details-companies-details',
+                                                                    arrow: 'p-tv-show__details-companies-arrow'
+                                                                }
+                                                            }
+                                                            isArrow
+                                                        >
+                                                            <ProductionCompanyDetails
+                                                                id={ company.id }
+                                                            />
+                                                        </Popover>
+                                                    </div>
+                                                            
+                                                    {
+                                                        company.origin_country &&
+                                                        <span className="opacity-75 text-sm">
+                                                            { company.origin_country }
+                                                        </span>
+                                                    }
+                                                </div>
+                                            </li> 
+                                        )
+                                    )
                                 }
                             </ul>
                         </div>

@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { Fragment } from 'react';
 
 import ProductionCompanyDetails from '@/components/app/ProductionCompanyDetails';
-import HoverCard from '@/components/ui/data-display/HoverCard';
+import Popover from '@/components/ui/data-display/Popover';
 import SocialLinks from '@/components/ui/data-display/SocialLinks';
 import Container from '@/components/ui/layouts/Container';
 import Title from '@/components/ui/typography/Title';
@@ -238,42 +238,60 @@ export default function MovieDetails(props: Props) {
                             {
                                 props.movie.production_companies.map(
                                     (company, index) => (
-                                        <HoverCard
+                                        <li
                                             key={ index }
-                                            trigger={
-                                                <li className="p-movie__details-companies-item">
-                                                    <div className="p-movie__details-companies-logo">
-                                                        <Image
-                                                            src={
-                                                                company.logo_path
-                                                                    ? imageUrl(IMG_SIZES.COMPANY_LOGO, company.logo_path)
-                                                                    : '/img/image-placeholder.svg'
-                                                            }
-                                                            fill
-                                                            sizes="50px"
-                                                            alt={ company.name }
-                                                        />
-                                                    </div>
-                                                    
-                                                    <div className="p-movie__details-companies-content">
-                                                        <span className="text-lg font-semibold">
-                                                            { company.name }
-                                                        </span>
-                                                        
-                                                        {
-                                                            company.origin_country &&
-                                                            <span className="opacity-75 text-sm">
-                                                                { company.origin_country }
-                                                            </span>
-                                                        }
-                                                    </div>
-                                                </li>
-                                            }
-                                            classNameContent="p-movie__details-companies-details"
+                                            className="p-movie__details-companies-item"
                                         >
-                                            <ProductionCompanyDetails id={ company.id } /> 
-                                        </HoverCard>
-                                    ))
+                                            <div className="p-movie__details-companies-logo">
+                                                <Image
+                                                    src={
+                                                        company.logo_path
+                                                            ? imageUrl(IMG_SIZES.COMPANY_LOGO, company.logo_path)
+                                                            : '/img/image-placeholder.svg'
+                                                    }
+                                                    fill
+                                                    sizes="50px"
+                                                    alt={ company.name }
+                                                />
+                                            </div>
+                                                    
+                                            <div className="p-movie__details-companies-content">
+                                                <div className="text-lg font-semibold">
+                                                    { company.name }
+
+                                                    <Popover
+                                                        trigger={
+                                                            <button
+                                                                type="button"
+                                                                className="p-movie__details-companies-trigger"
+                                                            >
+                                                                i
+                                                            </button>
+                                                        }
+                                                        classNames={
+                                                            {
+                                                                content: 'p-movie__details-companies-details',
+                                                                arrow: 'p-movie__details-companies-arrow'
+                                                            }
+                                                        }
+                                                        isArrow
+                                                    >
+                                                        <ProductionCompanyDetails
+                                                            id={ company.id }
+                                                        /> 
+                                                    </Popover>
+                                                </div>
+                                                        
+                                                {
+                                                    company.origin_country &&
+                                                    <span className="opacity-75 text-sm">
+                                                        { company.origin_country }
+                                                    </span>
+                                                }
+                                            </div>
+                                        </li>
+                                    )
+                                )
                             }
                         </ul>
                     </div>
