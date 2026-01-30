@@ -13,7 +13,6 @@ export async function GET(req: Request, { params }: Params) {
     const url = new URL(`${ PARAMETERS.API_URL }/${ apiPath }`);
 
     url.searchParams.append('api_key', PARAMETERS.API_KEY);
-    url.searchParams.append('language', PARAMETERS.LOCALE);
 
     const reqUrl = new URL(req.url);
 

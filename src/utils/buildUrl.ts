@@ -13,7 +13,7 @@ export default (pathname: string, params: URLSearchParams) => {
         newParams.set('query', query);
     }
 
-    const qs = newParams.toString();
+    const sp = newParams.toString();
 
-    return qs ? `${ pathname }?${ qs }` : pathname;
+    return sp ? `${ pathname }?${ sp }` : pathname;
 };

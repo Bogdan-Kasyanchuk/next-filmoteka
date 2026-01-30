@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { useRef, useState } from 'react';
 
-import buildUri from '@/utils/buildUri';
+import buildUrl from '@/utils/buildUrl';
 
 export default function Search() {
     const pathname = usePathname();
@@ -28,7 +28,7 @@ export default function Search() {
 
         const basePath = pathname.replace(/\/page\/[0-9]+$/, '');
 
-        push(buildUri(`${ basePath }/page/1`, params));
+        push(buildUrl(`${ basePath }/page/1`, params));
     }, [ debouncedTerm ]);
 
     return (

@@ -7,7 +7,7 @@ import { usePathname, useSearchParams } from 'next/navigation';
 import { useMemo } from 'react';
 
 import Icon from '@/components/ui/data-display/Icon';
-import buildUri from '@/utils/buildUri';
+import buildUrl from '@/utils/buildUrl';
 
 import { ELLIPSIS, desktopPagination, mobilePagination } from './generatePagination';
 
@@ -25,7 +25,7 @@ export default function Pagination(props: Props) {
         
         const basePath = pathname.replace(/\/page\/[0-9]+$/, '');
 
-        return buildUri(`${ basePath }/page/${ page }`, params);
+        return buildUrl(`${ basePath }/page/${ page }`, params);
     };
 
     const isMobile = useMediaQuery(

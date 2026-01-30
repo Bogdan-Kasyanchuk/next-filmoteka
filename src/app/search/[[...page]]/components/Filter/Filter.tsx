@@ -6,7 +6,7 @@ import Tabs from '@/components/ui/data-display/Tabs';
 import Switch from '@/components/ui/inputs/Switch';
 import { MediaType } from '@/enums';
 import { Adult } from '@/types';
-import buildUri from '@/utils/buildUri';
+import buildUrl from '@/utils/buildUrl';
 
 import { mediaTypeFilter } from './datasets';
 
@@ -27,7 +27,7 @@ export default function Filter(props: Props) {
             
         const basePath = pathname.replace(/\/page\/[0-9]+$/, '');
 
-        push(buildUri(`${ basePath }/page/1`, params));
+        push(buildUrl(`${ basePath }/page/1`, params));
     };
     
     return (
