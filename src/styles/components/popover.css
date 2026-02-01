@@ -6,7 +6,14 @@
 
         overflow: hidden;
 
+        width: 100%;
+        max-width: min(440px, calc(100vw - 40px));
+        padding: 12px;
         border-radius: 4px;
+
+        color: var(--popover-color, var(--color-secondary));
+
+        background-color: var(--popover-bg, var(--color-primary));
 
         animation-duration: 150ms;
         animation-timing-function: linear;
@@ -31,6 +38,7 @@
     &__arrow {
         width: 16px;
         height: 8px;
+        fill: var(--popover-bg, var(--color-primary));
     }
 }
 

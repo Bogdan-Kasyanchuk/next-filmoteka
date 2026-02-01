@@ -84,8 +84,7 @@ export default function EpisodeCard(props: Props) {
                     }
                     classNames={
                         {
-                            content: 'с-episode-card__overview',
-                            arrow: 'с-episode-card__overview-arrow'
+                            content: 'с-episode-card__overview'
                         }
                     }
                     isArrow

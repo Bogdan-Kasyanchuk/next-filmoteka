@@ -270,8 +270,7 @@ export default function MovieDetails(props: Props) {
                                                         }
                                                         classNames={
                                                             {
-                                                                content: 'p-movie__details-companies-details',
-                                                                arrow: 'p-movie__details-companies-arrow'
+                                                                content: 'p-movie__details-companies-details'
                                                             }
                                                         }
                                                         isArrow

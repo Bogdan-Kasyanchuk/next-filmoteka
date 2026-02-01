@@ -321,8 +321,7 @@ export default function TVShowDetails(props: Props) {
                                                             }
                                                             classNames={
                                                                 {
-                                                                    content: 'p-tv-show__details-networks-details',
-                                                                    arrow: 'p-tv-show__details-networks-arrow'
+                                                                    content: 'p-tv-show__details-networks-details'
                                                                 }
                                                             }
                                                             isArrow
@@ -387,8 +386,7 @@ export default function TVShowDetails(props: Props) {
                                                             }
                                                             classNames={
                                                                 {
-                                                                    content: 'p-tv-show__details-companies-details',
-                                                                    arrow: 'p-tv-show__details-companies-arrow'
+                                                                    content: 'p-tv-show__details-companies-details'
                                                                 }
                                                             }
                                                             isArrow

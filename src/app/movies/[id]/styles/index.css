@@ -375,20 +375,9 @@
                 }
             }
 
-            &-arrow {
-                fill: var(--color-primary);
-            }
-
             &-details {
-                width: 100%;
-                max-width: min(440px, calc(100vw - 40px));
-                padding: 12px;
-
                 font-size: var(--text-xs);
                 line-height: 1.2;
-                color: var(--color-secondary);
-
-                background-color: var(--color-primary);
 
                 @variant min-md {
                     font-size: var(--text-sm);
