@@ -1,11 +1,10 @@
 'use client';
 
 import { keepPreviousData, useQuery } from '@tanstack/react-query';
+import { notFound } from 'next/navigation';
 
 import Pagination from '@/components/app/Pagination';
 import TVShowCard from '@/components/ui/cards/TVShowCard';
-import DataNotFound from '@/components/ui/data-display/DataNotFound';
-import FailedLoadData from '@/components/ui/data-display/FailedLoadData';
 import Loader from '@/components/ui/data-display/Loader';
 import { TVShowType } from '@/enums';
 import { transformTVShow } from '@/helpers/transformData';
@@ -17,7 +16,7 @@ type Props = {
 };
 
 export default function Content(props: Props) {
-    const { data, isPending, isError, error } = useQuery({
+    const { data, isPending, isError } = useQuery({
         queryKey: [ 'tv-shows', props.type, props.page ],
         queryFn: () => getTVShows(props.type, props.page),
         placeholderData: keepPreviousData,
@@ -31,14 +30,8 @@ export default function Content(props: Props) {
         return <Loader />;
     }
 
-    if (isError) {
-        return (
-            <FailedLoadData>{ error.message }</FailedLoadData>
-        );
-    }
-
-    if (!data || !data.tvShows.length) {
-        return <DataNotFound />;
+    if (isError || !data || !data.tvShows.length) {
+        return notFound();
     }
 
     return (

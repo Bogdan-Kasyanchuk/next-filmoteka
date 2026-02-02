@@ -1,0 +1,181 @@
+.p-season {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+    align-items: center;
+
+    padding-block: 20px 40px;
+
+    &__current-season {
+        @apply bg-secondary rounded-sm flex flex-col -mx-2.5 text-primary;
+        @apply sm:mx-0;
+        @apply lg:flex-row;
+
+        width: calc(100% + 20px);
+
+        @variant min-sm {
+            width: 100%;
+        }
+
+        &-inner {
+            @apply flex items-center grow;
+        }
+
+        &-cover {
+            position: relative;
+
+            flex-shrink: 0;
+            align-self: flex-start;
+
+            aspect-ratio: 2/3;
+            width: 60px;
+
+            @variant min-md {
+                width: 70px;
+            }
+
+            @variant min-xl {
+                width: 80px;
+            }
+
+            img {
+                object-fit: cover;
+            }
+        }
+
+        &-info {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            gap: 4px;
+
+            min-width: 1px;
+            height: 100%;
+            padding: 10px;
+
+            color: var(--color-primary);
+
+            @variant min-md {
+                gap: 8px;
+                padding-inline-end: 20px;
+            }
+
+            @variant min-xl {
+                gap: 10px;
+            }
+        }
+
+        &-title {
+            overflow: hidden;
+
+            font-weight: 700;
+            line-height: 1;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        &-tags {
+            display: flex;
+            gap: 10px;
+        }
+
+        &-tag {
+            padding: 4px;
+            border-style: solid;
+            border-width: 1px;
+            border-radius: 2px;
+
+            font-size: var(--text-2xs);
+            font-weight: 700;
+            line-height: 1;
+            text-transform: uppercase;
+
+            &--type {
+                border-color: var(--color-secondary);
+                color: var(--color-secondary);
+                background-color: var(--color-primary);
+            }
+
+            &--average {
+                border-color: var(--color-primary);
+                color: var(--color-primary);
+                background-color: var(--color-accent);
+
+                span {
+                    position: relative;
+                    top: -2px;
+                    font-size: 9px;
+                }
+            }
+        }
+
+        &-overview {
+            padding: 10px;
+            font-size: var(--text-xs);
+            line-height: 1.4;
+
+            @variant min-md {
+                padding-inline: 20px;
+                font-size: var(--text-sm);
+            }
+
+            @variant min-lg {
+                width: 50%;
+            }
+
+            &-text {
+                opacity: 0.75;
+            }
+
+            & a[data-testid='more-button'],
+            & a[data-testid='less-button'] {
+                font-weight: 700;
+
+                @apply u-link-color;
+            }
+        }
+    }
+
+    &__list {
+        display: grid;
+        grid-gap: 5px;
+        grid-template-columns: repeat(auto-fill, 175px);
+        justify-content: center;
+
+        width: calc(100% + 20px);
+        margin-inline: -10px;
+
+        @variant min-sm {
+            grid-gap: 10px;
+            grid-template-columns: repeat(auto-fill, 215px);
+            width: 100%;
+            margin-inline: 0;
+        }
+
+        @variant min-md {
+            grid-gap: 15px;
+            grid-template-columns: repeat(auto-fill, 212px);
+            max-width: 668px;
+        }
+
+        @variant min-lg {
+            grid-gap: 20px;
+            grid-template-columns: repeat(auto-fill, 216px);
+            max-width: 924px;
+        }
+
+        @variant min-xl {
+            grid-template-columns: repeat(auto-fill, 228px);
+            max-width: 1220px;
+        }
+
+        @variant min-xxl {
+            grid-template-columns: repeat(auto-fill, 233px);
+            max-width: 1500px;
+        }
+    }
+
+    @variant min-md {
+        row-gap: 30px;
+    }
+}

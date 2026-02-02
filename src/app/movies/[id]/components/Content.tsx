@@ -9,7 +9,6 @@ import Recommendations from '@/components/app/Recommendations';
 import Reviews from '@/components/app/Reviews';
 import Videos from '@/components/app/Videos';
 import MovieCard from '@/components/ui/cards/MovieCard';
-import FailedLoadData from '@/components/ui/data-display/FailedLoadData';
 import Loader from '@/components/ui/data-display/Loader';
 import Container from '@/components/ui/layouts/Container';
 import { MediaType } from '@/enums';
@@ -25,7 +24,7 @@ type Props = {
 };
 
 export default function Content(props: Props) {
-    const { data, isPending, isError, error } = useQuery({
+    const { data, isPending, isError } = useQuery({
         queryKey: [ 'movies', props.id ],
         queryFn: () => getMovieByIdCached(props.id),
         select: data => transformMovieDetails(data)
@@ -35,13 +34,7 @@ export default function Content(props: Props) {
         return <Loader />;
     }
 
-    if (isError) {
-        return (
-            <FailedLoadData>{ error.message }</FailedLoadData>
-        );
-    }
-
-    if (!data) {
+    if (isError || !data) {
         return notFound();
     }
 

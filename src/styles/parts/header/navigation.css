@@ -12,9 +12,9 @@
     }
 
     &__search {
-        width: 440px;
-        border-color: var(--color-accent-hover);
-        background-color: var(--color-secondary);
+        --popover-width: 440px;
+        --popover-bg: var(--color-secondary);
+
         box-shadow: var(--shadow-custom-accent);
 
         &-form {

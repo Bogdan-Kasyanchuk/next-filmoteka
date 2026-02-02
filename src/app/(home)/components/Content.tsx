@@ -2,12 +2,11 @@
 
 import { useQueries } from '@tanstack/react-query';
 import Link from 'next/link';
+import { notFound } from 'next/navigation';
 
 import MovieCard from '@/components/ui/cards/MovieCard';
 import PersonCard from '@/components/ui/cards/PersonCard';
 import TVShowCard from '@/components/ui/cards/TVShowCard';
-import DataNotFound from '@/components/ui/data-display/DataNotFound';
-import FailedLoadData from '@/components/ui/data-display/FailedLoadData';
 import Loader from '@/components/ui/data-display/Loader';
 import Container from '@/components/ui/layouts/Container';
 import Title from '@/components/ui/typography/Title';
@@ -83,14 +82,8 @@ export default function Content() {
         return <Loader />;
     }
 
-    if (data.error.isError) {
-        return (
-            <FailedLoadData>{ data.error.message }</FailedLoadData>
-        );
-    }
-
-    if (!data.today.items.length || !data.week.items.length) {
-        return <DataNotFound />;
+    if (data.error.isError || !data.today.items.length || !data.week.items.length) {
+        return notFound();
     }
 
     return (

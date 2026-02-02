@@ -1,23 +1,24 @@
 /* Tailwind */
 @import 'tailwindcss';
-@import '../theme/base.css';
-@import '../theme/utilities.css';
+@import '@/styles/theme/base.css';
 
 /* Base */
-@import '../base/reset.css' layer(base);
-
-/* Components */
-@import '../components/logo.css' layer(base);
-@import '../components/icon.css' layer(base);
-@import '../components/loader.css' layer(base);
-@import '../components/title.css' layer(base);
-@import '../components/error-404.css' layer(base);
-@import '../components/failed-load-data.css' layer(base);
-@import '../components/popover.css' layer(base);
-
-/* Parts */
-@import '../parts/header/header.css' layer(base);
-@import '../parts/footer/footer.css' layer(base);
+@import '@/styles/base/reset.css' layer(base);
 
 /* Layouts */
-@import '../layouts/container.css' layer(base);
+@import '@/styles/layouts/container.css' layer(base);
+
+/* Parts */
+@import '@/styles/parts/header/header.css' layer(base);
+@import '@/styles/parts/footer/footer.css' layer(base);
+
+/* Components */
+@import '@/styles/components/loader.css';
+@import '@/styles/components/error-404.css';
+@import '@/styles/components/popover.css';
+@import '@/styles/components/icon.css';
+@import '@/styles/components/logo.css';
+@import '@/styles/components/title.css';
+
+/* Utilities */
+@import '@/styles/utilities/base.css';

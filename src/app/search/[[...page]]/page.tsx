@@ -1,5 +1,6 @@
 import { HydrationBoundary, QueryClient, dehydrate } from '@tanstack/react-query';
 import { Metadata } from 'next';
+import { notFound } from 'next/navigation';
 
 import Container from '@/components/ui/layouts/Container';
 import { MediaType } from '@/enums';
@@ -7,11 +8,13 @@ import generateMetaTags from '@/helpers/generateMetaTags';
 import { pagesSearchUrl } from '@/routes';
 import { getSearch } from '@/services/api';
 import { Adult } from '@/types';
+import isInvalidPage from '@/utils/isInvalidPage';
 
-import './styles/index.css';
 import Content from './components/Content';
 import Filter from './components/Filter';
 import Search from './components/Search';
+
+import './styles/index.css';
 
 export const metadata: Metadata = generateMetaTags(
     {
@@ -41,6 +44,10 @@ export default async function Page(props: Props) {
     const adult = searchParams.adult || 'false';
     const query = searchParams.query || '';
     const page = params.page ? Number(params.page[ 1 ]) : 1;
+
+    if (params.page && isInvalidPage( params.page[ 0 ], page)) {
+        notFound();
+    }
 
     const queryClient = new QueryClient();
 

@@ -3,7 +3,6 @@
 import { useQuery } from '@tanstack/react-query';
 import { notFound } from 'next/navigation';
 
-import FailedLoadData from '@/components/ui/data-display/FailedLoadData';
 import Loader from '@/components/ui/data-display/Loader';
 import Container from '@/components/ui/layouts/Container';
 import { transformPersonDetails } from '@/helpers/transformData';
@@ -18,7 +17,7 @@ type Props = {
 };
 
 export default function Content(props: Props) {
-    const { data, isPending, isError, error } = useQuery({
+    const { data, isPending, isError } = useQuery({
         queryKey: [ 'persons', props.id ],
         queryFn: () => getPersonByIdCached(props.id),
         select: data => transformPersonDetails(data)
@@ -28,13 +27,7 @@ export default function Content(props: Props) {
         return <Loader />;
     }
 
-    if (isError) {
-        return (
-            <FailedLoadData>{ error.message }</FailedLoadData>
-        );
-    }
-
-    if (!data) {
+    if (isError || !data) {
         return notFound();
     }
 

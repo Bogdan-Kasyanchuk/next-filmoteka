@@ -6,7 +6,6 @@ import { notFound } from 'next/navigation';
 import CurrentTVShow from '@/components/app/CurrentTVShow';
 import Pagination from '@/components/app/Pagination';
 import TVShowCard from '@/components/ui/cards/TVShowCard';
-import FailedLoadData from '@/components/ui/data-display/FailedLoadData';
 import Loader from '@/components/ui/data-display/Loader';
 import Container from '@/components/ui/layouts/Container';
 import Title from '@/components/ui/typography/Title';
@@ -33,20 +32,6 @@ export default function Content(props: Props) {
             }
         ],
         combine: results => {
-            let error = { 
-                isError: false,
-                message: ''
-            };
-
-            results.forEach(result => {
-                if (result.isError) {
-                    error = {
-                        isError: result.isError,
-                        message: result.error.message
-                    };
-                }
-            });
-            
             return {
                 tvShow: results[ 0 ].data && transformCurrentTVShow(results[ 0 ].data),
                 similar: {
@@ -54,7 +39,7 @@ export default function Content(props: Props) {
                     total_pages: results[ 1 ].data?.total_pages ?? 0
                 },
                 pending: results.some(result => result.isPending),
-                error
+                isError: results.some(result => result.isError)
             };
         }
     });
@@ -63,13 +48,7 @@ export default function Content(props: Props) {
         return <Loader />;
     }
 
-    if (data.error.isError) {
-        return (
-            <FailedLoadData>{ data.error.message }</FailedLoadData>
-        );
-    }
-
-    if (!data.tvShow || !data.similar.tvShows.length) {
+    if (data.isError || !data.tvShow || !data.similar.tvShows.length) {
         return notFound();
     }
 

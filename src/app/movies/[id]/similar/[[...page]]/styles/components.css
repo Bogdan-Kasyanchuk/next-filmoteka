@@ -1,6 +1,3 @@
-/* Components */
-@import '../../../../../../styles/components/current-movie.css';
-@import '../../../../../../styles/components/pagination.css';
-
-/* Cards */
-@import '../../../../../../styles/components/cards/movie-card.css';
+@import '@/styles/components/current-movie.css';
+@import '@/styles/components/pagination.css';
+@import '@/styles/components/cards/movie-card.css';

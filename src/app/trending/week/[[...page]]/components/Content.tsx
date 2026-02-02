@@ -1,13 +1,12 @@
 'use client';
 
 import { keepPreviousData, useQuery } from '@tanstack/react-query';
+import { notFound } from 'next/navigation';
 
 import Pagination from '@/components/app/Pagination';
 import MovieCard from '@/components/ui/cards/MovieCard';
 import PersonCard from '@/components/ui/cards/PersonCard';
 import TVShowCard from '@/components/ui/cards/TVShowCard';
-import DataNotFound from '@/components/ui/data-display/DataNotFound';
-import FailedLoadData from '@/components/ui/data-display/FailedLoadData';
 import Loader from '@/components/ui/data-display/Loader';
 import { MediaType, TimeType } from '@/enums';
 import { transformMovie, transformPerson, transformTVShow } from '@/helpers/transformData';
@@ -20,7 +19,7 @@ type Props = {
 };
 
 export default function Content(props: Props) {
-    const { data, isPending, isError, error } = useQuery({
+    const { data, isPending, isError } = useQuery({
         queryKey: [ 'trendings', props.type, TimeType.WEEK, props.page ],
         queryFn: () => getTrendings(props.type, TimeType.WEEK, props.page),
         placeholderData: keepPreviousData,
@@ -44,14 +43,8 @@ export default function Content(props: Props) {
         return <Loader />;
     }
 
-    if (isError) {
-        return (
-            <FailedLoadData>{ error.message }</FailedLoadData>
-        );
-    }
-
-    if (!data || !data.results.length) {
-        return <DataNotFound />;
+    if (isError || !data || !data.results.length) {
+        return notFound();
     }
 
     return (

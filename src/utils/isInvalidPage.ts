@@ -1,0 +1,1 @@
+export default (key: string, page: number) => key !== 'page' || Number.isNaN(page) || page < 1;

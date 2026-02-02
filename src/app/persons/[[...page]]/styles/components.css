@@ -1,6 +1,2 @@
-/* Components */
-@import '../../../../styles/components/pagination.css';
-@import '../../../../styles/components/data-not-found.css';
-
-/* Cards */
-@import '../../../../styles/components/cards/person-card.css';
+@import '@/styles/components/pagination.css';
+@import '@/styles/components/cards/person-card.css';

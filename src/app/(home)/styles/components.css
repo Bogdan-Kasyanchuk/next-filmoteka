@@ -1,7 +1,3 @@
-/* Components */
-@import '../../../styles/components/data-not-found.css';
-
-/* Cards */
-@import '../../../styles/components/cards/movie-card.css';
-@import '../../../styles/components/cards/tv-show-card.css';
-@import '../../../styles/components/cards/person-card.css';
+@import '@/styles/components/cards/movie-card.css';
+@import '@/styles/components/cards/tv-show-card.css';
+@import '@/styles/components/cards/person-card.css';

@@ -6,7 +6,6 @@ import { notFound } from 'next/navigation';
 import CurrentMovie from '@/components/app/CurrentMovie';
 import Pagination from '@/components/app/Pagination';
 import ReviewCard from '@/components/ui/cards/ReviewCard';
-import FailedLoadData from '@/components/ui/data-display/FailedLoadData';
 import Loader from '@/components/ui/data-display/Loader';
 import Container from '@/components/ui/layouts/Container';
 import Title from '@/components/ui/typography/Title';
@@ -33,20 +32,6 @@ export default function Content(props: Props) {
             }
         ],
         combine: results => {
-            let error = { 
-                isError: false,
-                message: ''
-            };
-
-            results.forEach(result => {
-                if (result.isError) {
-                    error = {
-                        isError: result.isError,
-                        message: result.error.message
-                    };
-                }
-            });
-            
             return {
                 movie: results[ 0 ].data && transformCurrentMovie(results[ 0 ].data),
                 reviews: {
@@ -54,7 +39,7 @@ export default function Content(props: Props) {
                     total_pages: results[ 1 ].data?.total_pages ?? 0
                 },
                 pending: results.some(result => result.isPending),
-                error
+                isError: results.some(result => result.isError)
             };
         }
     });
@@ -63,13 +48,7 @@ export default function Content(props: Props) {
         return <Loader />;
     }
 
-    if (data.error.isError) {
-        return (
-            <FailedLoadData>{ data.error.message }</FailedLoadData>
-        );
-    }
-
-    if (!data.movie || !data.reviews.items.length) {
+    if (data.isError || !data.movie || !data.reviews.items.length) {
         return notFound();
     }
 

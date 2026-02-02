@@ -1,11 +1,13 @@
 import { HydrationBoundary, QueryClient, dehydrate } from '@tanstack/react-query';
 import { Metadata } from 'next';
+import { notFound } from 'next/navigation';
 
 import { MediaType } from '@/enums';
 import generateMetaTags from '@/helpers/generateMetaTags';
 import { pagesSimilarUrl } from '@/routes';
 import { getSimilarTVShow } from '@/services/api';
 import { getCurrentTVShowByIdCached } from '@/services/cachedWrappers';
+import isInvalidPage from '@/utils/isInvalidPage';
 
 import Content from './components/Content';
 
@@ -37,8 +39,12 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
 
 export default async function Page(props: Props) {
     const params = await props.params;
-
+    
     const page = params.page ? Number(params.page[ 1 ]) : 1;
+
+    if (params.page && isInvalidPage( params.page[ 0 ], page)) {
+        notFound();
+    }
 
     const queryClient = new QueryClient();
 

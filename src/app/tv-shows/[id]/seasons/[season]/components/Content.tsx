@@ -4,7 +4,6 @@ import { useQuery } from '@tanstack/react-query';
 import { notFound } from 'next/navigation';
 
 import EpisodeCard from '@/components/ui/cards/EpisodeCard';
-import FailedLoadData from '@/components/ui/data-display/FailedLoadData';
 import Loader from '@/components/ui/data-display/Loader';
 import Container from '@/components/ui/layouts/Container';
 import { transformTVShowSeasonDetails } from '@/helpers/transformData';
@@ -18,7 +17,7 @@ type Props = {
 };
 
 export default function Content(props: Props) {
-    const { data, isPending, isError, error } = useQuery({
+    const { data, isPending, isError } = useQuery({
         queryKey: [ 'tv-shows', props.id, props.season ],
         queryFn: () => getTVShowSeasonByNumber(props.id, props.season),
         select: data => transformTVShowSeasonDetails(data)
@@ -28,13 +27,7 @@ export default function Content(props: Props) {
         return <Loader />;
     }
 
-    if (isError) {
-        return (
-            <FailedLoadData>{ error.message }</FailedLoadData>
-        );
-    }
-
-    if (!data || !data.episodes.length) {
+    if (isError || !data || !data.episodes.length) {
         return notFound();
     }
 
