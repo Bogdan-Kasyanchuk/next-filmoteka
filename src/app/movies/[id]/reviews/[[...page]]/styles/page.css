@@ -7,7 +7,9 @@
     padding-block: 20px 40px;
 
     &__title {
-        @apply font-bold uppercase text-center;
+        font-weight: 700;
+        text-align: center;
+        text-transform: uppercase;
     }
 
     &__content {
@@ -24,7 +26,10 @@
     }
 
     &__list {
-        @apply grid grid-cols-1 gap-5 w-full;
+        display: grid;
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+        gap: 20px;
+        width: 100%;
     }
 
     @variant min-md {

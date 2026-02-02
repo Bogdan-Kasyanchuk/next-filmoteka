@@ -39,7 +39,9 @@ export default function Navigation() {
                                     priority
                                 />
 
-                                <span className="c-navigation__text">{ searchLink.name }</span>
+                                <span className="c-navigation__text sr-only lg:not-sr-only">
+                                    { searchLink.name }
+                                </span>
                             </button>
                         }
                         classNames={
@@ -95,7 +97,9 @@ export default function Navigation() {
                                         priority
                                     />
                                     
-                                    <span className="c-navigation__text">{ link.name }</span>
+                                    <span className="c-navigation__text sr-only lg:not-sr-only">
+                                        { link.name }
+                                    </span>
                                 </Link>
                             </li>
                         )

@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import { ComponentPropsWithoutRef } from 'react';
 
-type Order = 2 | 3;
+type Order = 2 | 3 | 4;
 type Variant = Order;
 
 type Props = ComponentPropsWithoutRef<`h${ Order }`> & {

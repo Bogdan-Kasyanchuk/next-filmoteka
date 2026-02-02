@@ -4,7 +4,7 @@ import { Metadata } from 'next';
 import generateMetaTags from '@/helpers/generateMetaTags';
 import { pagesSeasonUrl } from '@/routes';
 import { getTVShowSeasonByNumber } from '@/services/api';
-import { getTVShowByIdCached } from '@/services/cachedWrappers';
+import { getCurrentTVShowByIdCached } from '@/services/cachedWrappers';
 
 import Content from './components/Content';
 
@@ -20,7 +20,7 @@ type Props = {
 export async function generateMetadata(props: Props): Promise<Metadata> {
     const params = await props.params;
 
-    const data = await getTVShowByIdCached(params.id);
+    const data = await getCurrentTVShowByIdCached(params.id);
 
     const title = data.name || data.original_name;
 
@@ -43,10 +43,20 @@ export default async function Page(props: Props) {
 
     const queryClient = new QueryClient();
 
-    await queryClient.prefetchQuery({
-        queryKey: [ 'tv-shows', params.id, season ],
-        queryFn: () => getTVShowSeasonByNumber(params.id, season)
-    });
+    await Promise.all([
+        await queryClient.prefetchQuery(
+            {
+                queryKey: [ 'tv-shows', 'current', params.id ],
+                queryFn: () => getCurrentTVShowByIdCached(params.id)
+            }
+        ),
+        await queryClient.prefetchQuery(
+            {
+                queryKey: [ 'tv-shows', params.id, season ],
+                queryFn: () => getTVShowSeasonByNumber(params.id, season)
+            }
+        )
+    ]);
 
     return (
         <HydrationBoundary state={ dehydrate(queryClient) }>

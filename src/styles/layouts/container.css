@@ -1,6 +1,4 @@
 .l-container {
-    @apply container;
-
     --gap: 20px;
 
     margin-inline: auto;

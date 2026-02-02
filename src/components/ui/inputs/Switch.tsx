@@ -50,7 +50,7 @@ export default function Switch(props: Props) {
                 <input
                     id={ id }
                     type={ type }
-                    className={ clsx('f-switch__field', classNames?.field) }
+                    className={ clsx('f-switch__field sr-only', classNames?.field) }
                     checked={ checked }
                     disabled={ disabled }
                     { ...rest }

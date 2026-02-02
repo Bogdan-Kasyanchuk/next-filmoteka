@@ -5,10 +5,11 @@ import Link from 'next/link';
 import Title from '@/components/ui/typography/Title';
 import { IMG_SIZES } from '@/helpers/parameters';
 import { imageUrl, pagesTVShowUrl } from '@/routes';
-import { TVShowSeasonDetailsMapper } from '@/types';
+import { CurrentTVShowMapper, TVShowSeasonDetailsMapper } from '@/types';
 import formatDate from '@/utils/formateDate';
 
 type Props = {
+    tvShow: CurrentTVShowMapper,
     season: TVShowSeasonDetailsMapper['season'],
     id: string
 };
@@ -31,19 +32,28 @@ export default function CurrentSeason(props: Props) {
                 </div>
 
                 <div className="p-season__current-season-info">
-                    <Link
-                        href={ pagesTVShowUrl(props.id) }
-                        className="u-link-color font-bold leading-none text-md"
+                    <Title
+                        className="p-season__current-season-tv-show-title"
+                        variant={ 3 }
                     >
-                        Go to TV Show
-                    </Link>
+                        <Link
+                            href={ pagesTVShowUrl(props.id) }
+                            title={
+                                `${ props.tvShow.name } ${ formatDate(props.tvShow.first_air_date, 'YYYY') }`
+                            }
+                            className="u-link-color"
+                        >
+                            { props.tvShow.name }&nbsp;({ formatDate(props.tvShow.first_air_date, 'YYYY') })
+                        </Link>
+                    </Title>
 
                     <Title
                         className="p-season__current-season-title"
                         title={
                             `${ props.season.name } ${ formatDate(props.season.air_date, 'DD.MM.YYYY') }`
                         }
-                        variant={ 3 }
+                        order="h3"
+                        variant={ 4 }
                     >
                         { props.season.name }&nbsp;({ formatDate(props.season.air_date, 'DD.MM.YYYY') })
                     </Title>

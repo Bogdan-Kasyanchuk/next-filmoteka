@@ -50,11 +50,23 @@
         }
 
         &-clear {
-            @apply size-[38px] flex items-center justify-center absolute top-1/2 -translate-y-1/2 end-0 transition-opacity;
+            position: absolute;
+            top: 50%;
+            inset-inline-end: 0;
+            transform: translateY(-50%);
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            width: 38px;
+            height: 38px;
+
+            transition-property: opacity;
 
             @media (any-hover: hover) {
                 &:hover {
-                    @apply opacity-75;
+                    opacity: 0.75;
                 }
             }
         }

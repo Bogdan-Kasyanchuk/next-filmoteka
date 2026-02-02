@@ -1,5 +1,5 @@
 .c-title {
-    line-height: 1.1;
+    line-height: 1;
     color: var(--color-primary);
 
     &--2 {
@@ -23,6 +23,18 @@
 
         @variant min-xl {
             font-size: var(--text-7xl);
+        }
+    }
+
+    &--4 {
+        font-size: var(--text-md);
+
+        @variant min-md {
+            font-size: var(--text-2xl);
+        }
+
+        @variant min-xl {
+            font-size: var(--text-5xl);
         }
     }
 }

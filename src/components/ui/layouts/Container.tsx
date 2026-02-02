@@ -11,7 +11,7 @@ export default function Container(props: PropsWithChildren<Props>) {
         <div
             className={
                 clsx([
-                    'l-container',
+                    'container l-container',
                     {
                         [ `l-container--${ props.size }` ]: props.size
                     },

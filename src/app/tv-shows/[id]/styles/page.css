@@ -524,7 +524,9 @@
         @apply xxxl:-mx-5 xxxl:px-5;
 
         &-title {
-            @apply -mt-1.5 font-bold uppercase;
+            margin-top: -6px;
+            font-weight: 700;
+            text-transform: uppercase;
         }
 
         &-list {

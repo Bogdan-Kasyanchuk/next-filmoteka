@@ -20,7 +20,9 @@
     }
 
     &__title {
-        @apply font-bold uppercase text-center;
+        font-weight: 700;
+        text-align: center;
+        text-transform: uppercase;
     }
 
     &__list {

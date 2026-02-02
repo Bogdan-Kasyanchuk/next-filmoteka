@@ -7,18 +7,30 @@
     padding-block: 20px 40px;
 
     &__current-season {
-        @apply bg-secondary rounded-sm flex flex-col -mx-2.5 text-primary;
-        @apply sm:mx-0;
-        @apply lg:flex-row;
+        display: flex;
+        flex-direction: column;
 
         width: calc(100% + 20px);
+        margin-inline: -10px;
+        border-radius: 4px;
+
+        color: var(--color-primary);
+
+        background-color: var(--color-secondary);
 
         @variant min-sm {
             width: 100%;
+            margin-inline: 0;
+        }
+
+        @variant min-lg {
+            flex-direction: row;
         }
 
         &-inner {
-            @apply flex items-center grow;
+            display: flex;
+            flex-grow: 1;
+            align-items: center;
         }
 
         &-cover {
@@ -62,6 +74,21 @@
 
             @variant min-xl {
                 gap: 10px;
+            }
+        }
+
+        &-tv-show-title {
+            font-weight: 700;
+            line-height: 1;
+
+            a[href] {
+                overflow: hidden;
+                display: inline-block;
+
+                max-width: 100%;
+
+                text-overflow: ellipsis;
+                white-space: nowrap;
             }
         }
 

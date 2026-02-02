@@ -1,12 +1,21 @@
 .c-current-tv-show {
-    @apply bg-secondary/75 rounded-sm flex items-center gap-2.5 -mx-2.5;
-    @apply sm:mx-0;
-    @apply xl:gap-5;
+    display: flex;
+    gap: 10px;
+    align-items: center;
 
     width: calc(100% + 20px);
+    margin-inline: -10px;
+    border-radius: 4px;
+
+    background-color: var(--color-secondary);
 
     @variant min-sm {
         width: 100%;
+        margin-inline: 0;
+    }
+
+    @variant min-xl {
+        gap: 20px;
     }
 
     &__cover {

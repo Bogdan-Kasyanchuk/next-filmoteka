@@ -134,14 +134,8 @@
     }
 
     &__text {
-        @apply sr-only;
-
         font-size: var(--text-md);
         font-weight: 700;
         text-transform: uppercase;
-
-        @variant min-lg {
-            @apply not-sr-only;
-        }
     }
 }

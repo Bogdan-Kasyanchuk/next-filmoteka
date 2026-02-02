@@ -5,12 +5,12 @@
 /* Base */
 @import '@/styles/base/reset.css' layer(base);
 
-/* Layouts */
-@import '@/styles/layouts/container.css' layer(base);
-
 /* Parts */
 @import '@/styles/parts/header/header.css' layer(base);
 @import '@/styles/parts/footer/footer.css' layer(base);
+
+/* Layouts */
+@import '@/styles/layouts/container.css' layer(utilities);
 
 /* Components */
 @import '@/styles/components/loader.css';
