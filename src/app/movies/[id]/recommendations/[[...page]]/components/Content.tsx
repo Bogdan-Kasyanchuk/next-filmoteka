@@ -49,7 +49,7 @@ export default function Content(props: Props) {
     }
 
     if (data.isError || !data.movie || !data.recommendations.movies.length) {
-        return notFound();
+        notFound();
     }
 
     return (

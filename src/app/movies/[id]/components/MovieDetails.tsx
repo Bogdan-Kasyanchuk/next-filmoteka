@@ -21,7 +21,7 @@ type Props = {
 };
 
 export default function MovieDetails(props: Props) {
-    const average = Math.round(props.movie.vote_average ?? 0 * 10);
+    const average = Math.round((props.movie.vote_average ?? 0) * 10);
 
     return (
         <div>

@@ -44,7 +44,7 @@ export default function Content(props: Props) {
     }
 
     if (data.isError || !data.tvShow || !data.season) {
-        return notFound();
+        notFound();
     }
 
     return (

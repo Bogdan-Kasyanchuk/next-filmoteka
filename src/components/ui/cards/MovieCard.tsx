@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { IMG_SIZES } from '@/helpers/parameters';
 import { imageUrl, pagesMovieUrl } from '@/routes';
 import { MovieMapper } from '@/types';
+import formatDate from '@/utils/formateDate';
 
 type Props = {
     movie: MovieMapper,
@@ -32,6 +33,10 @@ export default function MovieCard(props: Props) {
                     { props.movie.media_type }
                 </div>
 
+                <div className="с-movie-card__tag с-movie-card__tag--date">
+                    { formatDate(props.movie.release_date, 'YYYY') }
+                </div>
+
                 {
                     props.movie.adult &&
                     <div className="с-movie-card__tag с-movie-card__tag--adult">
@@ -40,7 +45,7 @@ export default function MovieCard(props: Props) {
                 }
 
                 <div className="с-movie-card__tag с-movie-card__tag--average">
-                    { Math.round(props.movie.vote_average ?? 0 * 10) }
+                    { Math.round((props.movie.vote_average ?? 0) * 10) }
                     <span>%</span>
                 </div>
             </div>

@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { IMG_SIZES } from '@/helpers/parameters';
 import { imageUrl, pagesTVShowUrl } from '@/routes';
 import { TVShowMapper } from '@/types';
+import formatDate from '@/utils/formateDate';
 
 type Props = {
     tvShow: TVShowMapper,
@@ -32,6 +33,10 @@ export default function TVShowCard(props: Props) {
                     { props.tvShow.media_type }
                 </div>
 
+                <div className="с-tv-show-card__tag с-tv-show-card__tag--date">
+                    { formatDate(props.tvShow.first_air_date, 'YYYY') }
+                </div>
+
                 {
                     props.tvShow.adult &&
                     <div className="с-tv-show-card__tag с-tv-show-card__tag--adult">
@@ -40,7 +45,7 @@ export default function TVShowCard(props: Props) {
                 }
 
                 <div className="с-tv-show-card__tag с-tv-show-card__tag--average">
-                    { Math.round(props.tvShow.vote_average ?? 0 * 10) }
+                    { Math.round((props.tvShow.vote_average ?? 0) * 10) }
                     <span>%</span>
                 </div>
             </div>

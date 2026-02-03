@@ -54,9 +54,12 @@ export default function EpisodeCard(props: Props) {
                         <dd>{ props.episode.episode_number }</dd>
                     </div>
 
-                    <div className="с-episode-card__info-list-item">
+                    <div className="с-episode-card__info-list-item с-episode-card__info-list-item--rating">
                         <dt>Rating:</dt>
-                        <dd>{ Math.round(props.episode.vote_average ?? 0 * 10) }</dd>
+                        <dd>
+                            { Math.round((props.episode.vote_average ?? 0) * 10) }
+                            <span>%</span>
+                        </dd>
                     </div>
 
                     <div className="с-episode-card__info-list-item">

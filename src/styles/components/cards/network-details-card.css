@@ -4,15 +4,6 @@
     row-gap: 10px;
     width: 100%;
 
-    &__title {
-        font-size: var(--text-md);
-        font-weight: 700;
-
-        @variant min-md {
-            font-size: var(--text-lg);
-        }
-    }
-
     &__list {
         display: flex;
         flex-direction: column;

@@ -31,7 +31,7 @@ export default function Content(props: Props) {
     }
 
     if (isError || !data || !data.movies.length) {
-        return notFound();
+        notFound();
     }
 
     return (

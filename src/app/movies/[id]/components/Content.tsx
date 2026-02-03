@@ -35,7 +35,7 @@ export default function Content(props: Props) {
     }
 
     if (isError || !data) {
-        return notFound();
+        notFound();
     }
 
     return (

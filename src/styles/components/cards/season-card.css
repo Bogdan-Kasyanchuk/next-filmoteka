@@ -52,6 +52,14 @@
                 & > *:last-child {
                     font-weight: 600;
                 }
+
+                &--rating {
+                    span {
+                        position: relative;
+                        top: -4px;
+                        font-size: var(--text-3xs);
+                    }
+                }
             }
         }
     }

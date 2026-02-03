@@ -9,10 +9,6 @@ type Props = {
 export default function ProductionCompanyDetailsCard(props: Props) {
     return (
         <div className="c-production-company-details-card">
-            <p className="c-production-company-details-card__title">
-                Details information about company:
-            </p>
-
             <ul className="c-production-company-details-card__list">
                 {
                     props.company.homepage &&

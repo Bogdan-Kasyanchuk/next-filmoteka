@@ -30,6 +30,11 @@ export default function ReviewCard(props: Props) {
                         alt={ props.review.author.name || props.review.author.username }
                         fill
                     />
+
+                    <div className="c-review-card__tag">
+                        { Math.round((props.review.author.rating ?? 0) * 10) }
+                        <span>%</span>
+                    </div>
                 </div>
 
                 <div className="c-review-card__info">
@@ -56,11 +61,6 @@ export default function ReviewCard(props: Props) {
                     </div>
 
                     <ul className="c-review-card__info-list">
-                        <li className="c-review-card__info-list-item">
-                            <span>Rating:</span>
-                            <span>{ Math.round(props.review.author.rating ?? 0 * 10) }</span>
-                        </li>
-
                         <li className="c-review-card__info-list-item">
                             <span>Created:</span>
                             <span>{ formatDate(props.review.created_at, 'DD.MM.YYYY') }</span>

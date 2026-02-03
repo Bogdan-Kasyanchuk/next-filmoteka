@@ -25,7 +25,7 @@ export default function CurrentSeason(props: Props) {
                                 ? imageUrl(IMG_SIZES.SEASON_CARD_DETAILS_COVER, props.season.poster_path)
                                 : '/img/poster-not-available.jpg'
                         }
-                        sizes="92px"
+                        sizes="87px"
                         alt={ props.season.name }
                         fill
                     />
@@ -47,16 +47,14 @@ export default function CurrentSeason(props: Props) {
                         </Link>
                     </Title>
 
-                    <Title
+                    <h3
                         className="p-season__current-season-title"
                         title={
                             `${ props.season.name } ${ formatDate(props.season.air_date, 'DD.MM.YYYY') }`
                         }
-                        order="h3"
-                        variant={ 4 }
                     >
                         { props.season.name }&nbsp;({ formatDate(props.season.air_date, 'DD.MM.YYYY') })
-                    </Title>
+                    </h3>
 
                     <div className="p-season__current-season-tags">
                         <div className="p-season__current-season-tag p-season__current-season-tag--type">
@@ -64,7 +62,7 @@ export default function CurrentSeason(props: Props) {
                         </div>
 
                         <div className="p-season__current-season-tag p-season__current-season-tag--average">
-                            { Math.round(props.season.vote_average ?? 0 * 10) }
+                            { Math.round((props.season.vote_average ?? 0) * 10) }
                             <span>%</span>
                         </div>
                     </div>

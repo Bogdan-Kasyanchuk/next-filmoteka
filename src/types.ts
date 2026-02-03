@@ -109,6 +109,7 @@ export type SocialLinksMapper = Array<{
 export type MovieMapper = {
     id: string,
     adult: boolean,
+    release_date: string,
     title: string,
     poster_path: string,
     media_type: MediaType.MOVIE,
@@ -164,6 +165,7 @@ export type CurrentMovieMapper = {
 export type TVShowMapper = {
     id: string,
     adult: boolean,
+    first_air_date: string,
     name: string,
     poster_path: string,
     media_type: MediaType.TV_SHOW,

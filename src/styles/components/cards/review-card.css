@@ -31,6 +31,29 @@
         }
     }
 
+    &__tag {
+        position: absolute;
+        top: 4px;
+        inset-inline-end: 4px;
+
+        padding: 2px;
+        border: 1px solid var(--color-primary);
+        border-radius: 2px;
+
+        font-size: 11px;
+        font-weight: 700;
+        line-height: 1;
+        color: var(--color-primary);
+
+        background-color: var(--color-accent);
+
+        span {
+            position: relative;
+            top: -2px;
+            font-size: 8px;
+        }
+    }
+
     &__inner {
         display: flex;
     }

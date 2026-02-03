@@ -22,7 +22,7 @@ type Props = {
 };
 
 export default function TVShowDetails(props: Props) {
-    const average = Math.round(props.tvShow.vote_average ?? 0 * 10);
+    const average = Math.round((props.tvShow.vote_average ?? 0) * 10);
 
     return (
         <div>

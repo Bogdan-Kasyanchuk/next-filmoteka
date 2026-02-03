@@ -29,7 +29,7 @@ export default function Content(props: Props) {
     }
 
     if (isError || !data || !data.persons.length) {
-        return notFound();
+        notFound();
     }
 
     return (

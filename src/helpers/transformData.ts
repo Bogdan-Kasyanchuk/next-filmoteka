@@ -51,6 +51,7 @@ import { EXTERNAL_ID_URLS } from './parameters';
 export const transformMovie = (movie: MovieShema | SimilarMovieShema) => ({
     id: movie.id.toString(),
     adult: movie.adult,
+    release_date: movie.release_date,
     title: movie.title || movie.original_title,
     poster_path: movie.poster_path,
     media_type: MediaType.MOVIE,
@@ -134,6 +135,7 @@ export const transformCurrentMovie = (movie: CurrentMovieShema) => ({
 export const transformTVShow = (tvShow: TVShowShema | SimilarTVShowShema) => ({
     id: tvShow.id.toString(),
     adult: tvShow.adult,
+    first_air_date: tvShow.first_air_date,
     name: tvShow.name || tvShow.original_name,
     poster_path: tvShow.poster_path,
     media_type: MediaType.TV_SHOW,

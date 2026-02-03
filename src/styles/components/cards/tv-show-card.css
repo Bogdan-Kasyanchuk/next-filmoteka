@@ -15,7 +15,11 @@
         inset-inline: 10px;
 
         display: flex;
-        gap: 10px;
+        gap: 6px;
+
+        @variant min-md {
+            gap: 10px;
+        }
     }
 
     &__tag {
@@ -24,13 +28,12 @@
         border-width: 1px;
         border-radius: 2px;
 
-        font-size: var(--text-2xs);
+        font-size: var(--text-3xs);
         font-weight: 700;
         line-height: 1;
         text-transform: uppercase;
 
         @variant min-md {
-            padding: 5px;
             font-size: var(--text-xs);
         }
 
@@ -38,6 +41,12 @@
             border-color: var(--color-secondary);
             color: var(--color-secondary);
             background-color: var(--color-primary);
+        }
+
+        &--date {
+            border-color: var(--color-primary);
+            color: var(--color-primary);
+            background-color: var(--color-active);
         }
 
         &--adult {

@@ -83,7 +83,7 @@ export default function Content() {
     }
 
     if (data.error.isError || !data.today.items.length || !data.week.items.length) {
-        return notFound();
+        notFound();
     }
 
     return (

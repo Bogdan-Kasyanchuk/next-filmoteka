@@ -49,7 +49,7 @@ export default function Content(props: Props) {
     }
 
     if (data.isError || !data.tvShow || !data.recommendations.tvShows.length) {
-        return notFound();
+        notFound();
     }
 
     return (

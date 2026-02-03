@@ -44,9 +44,12 @@ export default function SeasonCard(props: Props) {
                         </div>
                     }
 
-                    <div className="с-season-card__info-list-item">
+                    <div className="с-season-card__info-list-item с-season-card__info-list-item--rating">
                         <dt>Rating:</dt>
-                        <dd>{ Math.round(props.season.vote_average ?? 0 * 10) }</dd>
+                        <dd>
+                            { Math.round((props.season.vote_average ?? 0) * 10) }
+                            <span>%</span>
+                        </dd>
                     </div>
 
                     <div className="с-season-card__info-list-item">

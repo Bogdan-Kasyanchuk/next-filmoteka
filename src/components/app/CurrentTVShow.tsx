@@ -52,7 +52,7 @@ export default function CurrentTVShow(props: Props) {
                     </div>
 
                     <div className="c-current-tv-show__tag c-current-tv-show__tag--average">
-                        { Math.round(props.tvShow.vote_average ?? 0 * 10) }
+                        { Math.round((props.tvShow.vote_average ?? 0) * 10) }
                         <span>%</span>
                     </div>
 
