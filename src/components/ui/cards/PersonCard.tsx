@@ -20,7 +20,7 @@ export default function PersonCard(props: Props) {
                             ? imageUrl(IMG_SIZES.PERSON_COVER, props.person.profile_path)
                             : '/img/poster-not-available.jpg'
                     }
-                    sizes="(max-width: 479px) 173px, (max-width: 767px) 213px, (max-width: 1023px) 230px, 295px"
+                    sizes="(max-width: 479px) 174px, (max-width: 767px) 214px, (max-width: 1023px) 231px, 295px"
                     alt={ props.person.name }
                     fill
                     priority={ props.priority }

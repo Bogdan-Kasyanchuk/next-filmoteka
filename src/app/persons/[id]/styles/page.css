@@ -235,9 +235,17 @@
 
             &-list {
                 display: flex;
-                flex-direction: column;
+                flex-wrap: wrap;
                 gap: 10px;
                 margin-top: 10px;
+
+                li {
+                    width: 100%;
+
+                    @variant min-md {
+                        width: calc((100% - 10px) / 2);
+                    }
+                }
             }
         }
     }

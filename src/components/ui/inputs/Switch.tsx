@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import { ComponentPropsWithoutRef, useId } from 'react';
 
-import Icon from '../data-display/Icon';
+import Icon from '@/components/ui/data-display/Icon';
 
 type Props = Omit<ComponentPropsWithoutRef<'input'>, 'className'> & {
     label?: string,

@@ -65,7 +65,11 @@
         }
 
         @variant min-xxl {
-            grid-template-columns: repeat(auto-fill, 243px);
+            grid-template-columns: repeat(auto-fill, 264px);
+        }
+
+        @variant min-xxxl {
+            grid-template-columns: repeat(auto-fill, 296px);
         }
     }
 

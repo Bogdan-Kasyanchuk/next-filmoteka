@@ -17,6 +17,8 @@
         color: var(--color-primary);
 
         background-color: var(--color-secondary);
+        background-image: conic-gradient(from 90deg at 1px 1px, transparent 25%, rgba(255, 255, 255, 0.1) 0%);
+        background-size: 0.5rem 0.5rem;
 
         @variant min-sm {
             width: 100%;
@@ -66,9 +68,6 @@
             padding: 10px;
 
             color: var(--color-primary);
-
-            background-image: conic-gradient(from 90deg at 1px 1px, transparent 25%, rgba(255, 255, 255, 0.1) 0%);
-            background-size: 0.5rem 0.5rem;
 
             @variant min-md {
                 gap: 8px;
@@ -192,24 +191,24 @@
 
         @variant min-md {
             grid-gap: 15px;
-            grid-template-columns: repeat(auto-fill, 212px);
-            max-width: 668px;
+            grid-template-columns: repeat(auto-fill, 232px);
         }
 
         @variant min-lg {
             grid-gap: 20px;
-            grid-template-columns: repeat(auto-fill, 216px);
-            max-width: 924px;
+            grid-template-columns: repeat(auto-fill, 231px);
         }
 
         @variant min-xl {
-            grid-template-columns: repeat(auto-fill, 228px);
-            max-width: 1220px;
+            grid-template-columns: repeat(auto-fill, 240px);
         }
 
         @variant min-xxl {
-            grid-template-columns: repeat(auto-fill, 233px);
-            max-width: 1500px;
+            grid-template-columns: repeat(auto-fill, 216px);
+        }
+
+        @variant min-xxxl {
+            grid-template-columns: repeat(auto-fill, 243px);
         }
     }
 

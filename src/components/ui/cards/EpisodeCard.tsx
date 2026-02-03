@@ -1,11 +1,10 @@
 import Image from 'next/image';
 
+import Popover from '@/components/ui/data-display/Popover';
 import { IMG_SIZES } from '@/datasets/constants';
 import { imageUrl } from '@/routes';
 import { EpisodeMapper } from '@/types';
 import formatDate from '@/utils/formateDate';
-
-import Popover from '../data-display/Popover';
 
 type Props = {
     episode: EpisodeMapper
@@ -21,7 +20,7 @@ export default function EpisodeCard(props: Props) {
                             ? imageUrl(IMG_SIZES.EPISODE_COVER, props.episode.still_path)
                             : '/img/poster-not-available.jpg'
                     }
-                    sizes="(max-width: 479px) 175px, (max-width: 1319px) 216px, 300px"
+                    sizes="(max-width: 479px) 176px, (max-width: 767px) 216px, 244px"
                     alt={ props.episode.name }
                     fill
                 />

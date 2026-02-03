@@ -26,7 +26,7 @@ export default function ReviewCard(props: Props) {
                                 ? imageUrl(IMG_SIZES.REVIEWER_AVATAR, props.review.author.avatar_path)
                                 : '/img/avatar-placeholder.svg'
                         }
-                        sizes="92px"
+                        sizes="91px"
                         alt={ props.review.author.name || props.review.author.username }
                         fill
                     />
