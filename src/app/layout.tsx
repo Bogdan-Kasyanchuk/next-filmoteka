@@ -4,7 +4,7 @@ import { PropsWithChildren } from 'react';
 
 import Footer from '@/components/app/Footer';
 import Header from '@/components/app/Header';
-import { PARAMETERS } from '@/helpers/parameters';
+import { URLS } from '@/datasets/constants';
 
 import Providers from './providers';
 
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
         index: false,
         follow: false
     },
-    metadataBase: new URL(PARAMETERS.SITE_URL)
+    metadataBase: new URL(URLS.SITE)
 };
 
 export default function Layout(props: PropsWithChildren) {

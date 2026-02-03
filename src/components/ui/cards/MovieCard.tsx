@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { IMG_SIZES } from '@/helpers/parameters';
+import { IMG_SIZES } from '@/datasets/constants';
 import { imageUrl, pagesMovieUrl } from '@/routes';
 import { MovieMapper } from '@/types';
 import formatDate from '@/utils/formateDate';
@@ -18,7 +18,7 @@ export default function MovieCard(props: Props) {
                 <Image
                     src={
                         props.movie.poster_path
-                            ? imageUrl(IMG_SIZES.MEDIA_CARD_COVER, props.movie.poster_path)
+                            ? imageUrl(IMG_SIZES.MEDIA_COVER, props.movie.poster_path)
                             : '/img/poster-not-available.jpg'
                     }
                     sizes="(max-width: 479px) 174px, (max-width: 767px) 214px, (max-width: 1319px) 230px, 295px"

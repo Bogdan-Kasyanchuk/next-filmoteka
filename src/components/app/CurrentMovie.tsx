@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { Fragment } from 'react';
 
 import Title from '@/components/ui/typography/Title';
-import { IMG_SIZES } from '@/helpers/parameters';
+import { IMG_SIZES } from '@/datasets/constants';
 import { imageUrl, pagesMovieUrl } from '@/routes';
 import { CurrentMovieMapper } from '@/types';
 import formatDate from '@/utils/formateDate';
@@ -20,7 +20,7 @@ export default function CurrentMovie(props: Props) {
                 <Image
                     src={
                         props.movie.poster_path
-                            ? imageUrl(IMG_SIZES.MEDIA_CARD_CURRENT_COVER, props.movie.poster_path)
+                            ? imageUrl(IMG_SIZES.MEDIA_CURRENT_COVER, props.movie.poster_path)
                             : '/img/poster-not-available.jpg'
                     }
                     sizes="81px"

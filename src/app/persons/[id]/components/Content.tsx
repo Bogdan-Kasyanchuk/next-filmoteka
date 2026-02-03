@@ -6,7 +6,7 @@ import { notFound } from 'next/navigation';
 import Loader from '@/components/ui/data-display/Loader';
 import Container from '@/components/ui/layouts/Container';
 import { transformPersonDetails } from '@/helpers/transformData';
-import { getPersonByIdCached } from '@/services/cachedWrappers';
+import { getPersonByIdCached } from '@/lib/cachedWrappers';
 
 import Images from './Images';
 import PersonDetails from './PersonDetails';

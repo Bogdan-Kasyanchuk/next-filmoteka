@@ -1,5 +1,14 @@
 import { MediaType, VideoSiteType, VideoType } from '@/enums';
 import {
+    facebookUrl,
+    imdbUrl,
+    instagramUrl,
+    tiktokUrl,
+    twitterUrl,
+    wikidataUrl,
+    youtubeUrl
+} from '@/routes';
+import {
     CastShema,
     CrewShema,
     CurrentMovieShema,
@@ -40,13 +49,12 @@ import {
     ProductionCompanyDetailsMapper,
     ReviewMapper,
     SeasonMapper,
+    SocialLinkMapper,
     TVShowDetailsMapper,
     TVShowMapper,
     TVShowSeasonDetailsMapper,
     VideoMapper
 } from '@/types';
-
-import { EXTERNAL_ID_URLS } from './parameters';
 
 export const transformMovie = (movie: MovieShema | SimilarMovieShema) => ({
     id: movie.id.toString(),
@@ -379,40 +387,39 @@ const transformImage = (image: ImageShema) => ({
     vote_count: image.vote_count
 }) as ImageMapper;
 
+const filterExternalIds = (links: Record<string, any>) => {
+    return Object.entries(links)
+        .filter(social => social[ 1 ])
+        .map(social => ({
+            provider: social[ 0 ],
+            link: social[ 1 ]
+        })) as SocialLinkMapper[];
+};
+
 const transformMovieOrTVShowExternalIds = (
     ids: MovieDetailsShema['external_ids'] | TVShowDetailsShema['external_ids']
 ) => {
     const links = {
-        imdb: ids.imdb_id ? `${ EXTERNAL_ID_URLS.IMDB }/title/${ ids.imdb_id }` : '',
-        wikidata: ids.wikidata_id ? `${ EXTERNAL_ID_URLS.WIKIDATA }/${ ids.wikidata_id }` : '',
-        facebook: ids.facebook_id ? `${ EXTERNAL_ID_URLS.FACEBOOK }/${ ids.facebook_id }` : '',
-        instagram: ids.instagram_id ? `${ EXTERNAL_ID_URLS.INSTAGRAM }/${ ids.instagram_id }` : '',
-        twitter: ids.twitter_id ? `${ EXTERNAL_ID_URLS.TWITTER }/${ ids.twitter_id }` : ''
+        imdb: ids.imdb_id && imdbUrl(ids.imdb_id, 'title'),
+        wikidata: ids.wikidata_id && wikidataUrl(ids.wikidata_id),
+        facebook: ids.facebook_id && facebookUrl(ids.facebook_id),
+        instagram: ids.instagram_id && instagramUrl(ids.instagram_id),
+        twitter: ids.twitter_id && twitterUrl(ids.twitter_id)
     };
 
-    return Object.entries(links)
-        .filter(social => social[ 1 ])
-        .map(social => ({
-            provider: social[ 0 ],
-            link: social[ 1 ]
-        }));
+    return filterExternalIds(links);
 };
 
 const transformPersonExternalIds = (ids: PersonDetailsShema['external_ids']) => {
     const links = {
-        imdb: ids.imdb_id ? `${ EXTERNAL_ID_URLS.IMDB }/name/${ ids.imdb_id }` : '',
-        wikidata: ids.wikidata_id ? `${ EXTERNAL_ID_URLS.WIKIDATA }/${ ids.wikidata_id }` : '',
-        facebook: ids.facebook_id ? `${ EXTERNAL_ID_URLS.FACEBOOK }/${ ids.facebook_id }` : '',
-        instagram: ids.instagram_id ? `${ EXTERNAL_ID_URLS.INSTAGRAM }/${ ids.instagram_id }` : '',
-        twitter: ids.twitter_id ? `${ EXTERNAL_ID_URLS.TWITTER }/${ ids.twitter_id }` : '',
-        tiktok: ids.tiktok_id ? `${ EXTERNAL_ID_URLS.TIKTOK }/@${ ids.tiktok_id }` : '',
-        youtube: ids.youtube_id ? `${ EXTERNAL_ID_URLS.YOUTUBE }/${ ids.youtube_id }` : ''
+        imdb: ids.imdb_id && imdbUrl(ids.imdb_id, 'name'),
+        wikidata: ids.wikidata_id && wikidataUrl(ids.wikidata_id),
+        facebook: ids.facebook_id && facebookUrl(ids.facebook_id),
+        instagram: ids.instagram_id && instagramUrl(ids.instagram_id),
+        twitter: ids.twitter_id && twitterUrl(ids.twitter_id),
+        tiktok: ids.tiktok_id && tiktokUrl(ids.tiktok_id),
+        youtube: ids.youtube_id && youtubeUrl(ids.youtube_id)
     };
 
-    return Object.entries(links)
-        .filter(social => social[ 1 ])
-        .map(social => ({
-            provider: social[ 0 ],
-            link: social[ 1 ]
-        }));
+    return filterExternalIds(links);
 };

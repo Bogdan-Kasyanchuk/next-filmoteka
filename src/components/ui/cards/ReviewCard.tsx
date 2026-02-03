@@ -1,7 +1,7 @@
 import { ShowMore } from '@re-dev/react-truncate';
 import Image from 'next/image';
 
-import { IMG_SIZES } from '@/helpers/parameters';
+import { IMG_SIZES } from '@/datasets/constants';
 import { imageUrl } from '@/routes';
 import { ReviewMapper } from '@/types';
 import formatDate from '@/utils/formateDate';

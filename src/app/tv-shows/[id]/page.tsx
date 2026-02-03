@@ -2,8 +2,8 @@ import { HydrationBoundary, QueryClient, dehydrate } from '@tanstack/react-query
 import { Metadata } from 'next';
 
 import generateMetaTags from '@/helpers/generateMetaTags';
+import { getTVShowByIdCached } from '@/lib/cachedWrappers';
 import { pagesTVShowUrl } from '@/routes';
-import { getTVShowByIdCached } from '@/services/cachedWrappers';
 
 import Content from './components/Content';
 

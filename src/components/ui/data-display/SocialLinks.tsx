@@ -1,9 +1,9 @@
-import { SocialLinksMapper } from '@/types';
+import { SocialLinkMapper } from '@/types';
 
 import Icon from './Icon';
 
 type Props = {
-    socials: SocialLinksMapper
+    socials: SocialLinkMapper[]
 };
 
 export default function SocialLinks(props: Props) {

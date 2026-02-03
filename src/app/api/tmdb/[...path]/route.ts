@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 
-import { PARAMETERS } from '@/helpers/parameters';
+import { PARAMETERS, URLS } from '@/datasets/constants';
 
 type Params = {
     params: Promise<{ path: string[] }>
@@ -10,7 +10,7 @@ export async function GET(req: Request, { params }: Params) {
     const { path } = await params;
     const apiPath = path.join('/');
 
-    const url = new URL(`${ PARAMETERS.API_URL }/${ apiPath }`);
+    const url = new URL(`${ URLS.API }/${ apiPath }`);
 
     url.searchParams.append('api_key', PARAMETERS.API_KEY);
 

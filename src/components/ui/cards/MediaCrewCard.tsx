@@ -1,8 +1,8 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
+import { IMG_SIZES } from '@/datasets/constants';
 import { MediaType } from '@/enums';
-import { IMG_SIZES } from '@/helpers/parameters';
 import { imageUrl, pagesMovieUrl, pagesTVShowUrl } from '@/routes';
 import { MediaCrewMapper } from '@/types';
 import formatDate from '@/utils/formateDate';
@@ -40,7 +40,7 @@ export default function MediaCrewCard(props: Props) {
                 <Image
                     src={
                         props.crew.poster_path
-                            ? imageUrl(IMG_SIZES.MEDIA_CREW_CARD_COVER, props.crew.poster_path)
+                            ? imageUrl(IMG_SIZES.MEDIA_CREW_COVER, props.crew.poster_path)
                             : '/img/poster-not-available.jpg'
                     }
                     sizes="45px"

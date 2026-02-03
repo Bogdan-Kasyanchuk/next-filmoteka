@@ -2,8 +2,8 @@ import { HydrationBoundary, QueryClient, dehydrate } from '@tanstack/react-query
 import { Metadata } from 'next';
 
 import generateMetaTags from '@/helpers/generateMetaTags';
+import { getMovieByIdCached } from '@/lib/cachedWrappers';
 import { pagesMovieUrl } from '@/routes';
-import { getMovieByIdCached } from '@/services/cachedWrappers';
 
 import Content from './components/Content';
 

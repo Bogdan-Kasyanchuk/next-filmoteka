@@ -4,9 +4,9 @@ import { notFound } from 'next/navigation';
 
 import { MediaType } from '@/enums';
 import generateMetaTags from '@/helpers/generateMetaTags';
+import { getCurrentMovieByIdCached } from '@/lib/cachedWrappers';
 import { reviewsUrl } from '@/routes';
 import { getReviewsToMovie } from '@/services/api';
-import { getCurrentMovieByIdCached } from '@/services/cachedWrappers';
 import isInvalidPage from '@/utils/isInvalidPage';
 
 import Content from './components/Content';

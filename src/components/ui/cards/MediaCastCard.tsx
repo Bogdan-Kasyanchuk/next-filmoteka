@@ -1,8 +1,8 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
+import { IMG_SIZES } from '@/datasets/constants';
 import { MediaType } from '@/enums';
-import { IMG_SIZES } from '@/helpers/parameters';
 import { imageUrl, pagesMovieUrl, pagesTVShowUrl } from '@/routes';
 import { MediaCastMapper } from '@/types';
 import formatDate from '@/utils/formateDate';
@@ -40,7 +40,7 @@ export default function MediaCastCard(props: Props) {
                 <Image
                     src={
                         props.cast.poster_path
-                            ? imageUrl(IMG_SIZES.MEDIA_CAST_CARD_COVER, props.cast.poster_path)
+                            ? imageUrl(IMG_SIZES.MEDIA_CAST_COVER, props.cast.poster_path)
                             : '/img/poster-not-available.jpg'
                     }
                     sizes="45px"

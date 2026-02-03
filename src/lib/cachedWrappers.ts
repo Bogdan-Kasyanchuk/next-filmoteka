@@ -6,7 +6,7 @@ import {
     getMovieById,
     getPersonById,
     getTVShowById
-} from './api';
+} from '@/services/api';
 
 export const getMovieByIdCached = cache(
     async (id: string) => getMovieById(id)

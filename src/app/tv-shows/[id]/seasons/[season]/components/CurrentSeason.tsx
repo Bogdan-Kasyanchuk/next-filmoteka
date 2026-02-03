@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import Title from '@/components/ui/typography/Title';
-import { IMG_SIZES } from '@/helpers/parameters';
+import { IMG_SIZES } from '@/datasets/constants';
 import { imageUrl, pagesTVShowUrl } from '@/routes';
 import { CurrentTVShowMapper, TVShowSeasonDetailsMapper } from '@/types';
 import formatDate from '@/utils/formateDate';
@@ -22,7 +22,7 @@ export default function CurrentSeason(props: Props) {
                     <Image
                         src={
                             props.season.poster_path
-                                ? imageUrl(IMG_SIZES.SEASON_CARD_DETAILS_COVER, props.season.poster_path)
+                                ? imageUrl(IMG_SIZES.SEASON_DETAILS_COVER, props.season.poster_path)
                                 : '/img/poster-not-available.jpg'
                         }
                         sizes="87px"

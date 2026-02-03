@@ -10,8 +10,8 @@ import Loader from '@/components/ui/data-display/Loader';
 import Container from '@/components/ui/layouts/Container';
 import Title from '@/components/ui/typography/Title';
 import { transformCurrentTVShow, transformTVShow } from '@/helpers/transformData';
+import { getCurrentTVShowByIdCached } from '@/lib/cachedWrappers';
 import { getRecommendationsTVShow } from '@/services/api';
-import { getCurrentTVShowByIdCached } from '@/services/cachedWrappers';
 
 type Props = {
     id: string,

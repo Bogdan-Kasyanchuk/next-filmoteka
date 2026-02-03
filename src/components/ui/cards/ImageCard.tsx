@@ -1,6 +1,6 @@
 import Image from 'next/image';
 
-import { IMG_SIZES } from '@/helpers/parameters';
+import { IMG_SIZES } from '@/datasets/constants';
 import { imageUrl } from '@/routes';
 import { ImageMapper } from '@/types';
 

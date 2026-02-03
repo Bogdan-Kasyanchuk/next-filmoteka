@@ -1,6 +1,5 @@
+import { URLS } from '@/datasets/constants';
 import { MediaType } from '@/enums';
-
-import { PARAMETERS } from './helpers/parameters';
 
 // ---PAGES----
 export const pagesHomeUrl = () => '/';
@@ -32,6 +31,20 @@ export const recommendationsUrl = (type: MediaType, id: string) => `/${ type ===
 export const reviewsUrl = (type: MediaType, id: string) => `/${ type === MediaType.MOVIE ? 'movies' : 'tv-shows' }/${ id }/reviews`;
 
 // ---URLS----
-export const youtubeEmbedUrl = (id: string) => `${ PARAMETERS.YOUTUBE_EMBED_URL }/${ id }`;
+export const youtubeEmbedUrl = (id: string) => `${ URLS.YOUTUBE_EMBED }/${ id }`;
 
-export const imageUrl = (size: string, path: string) => `${ PARAMETERS.IMAGE_URL }/${ size }${ path }`;
+export const imageUrl = (size: string, path: string) => `${ URLS.IMAGE }/${ size }${ path }`;
+
+export const imdbUrl = (id: string, type: 'title' | 'name') => `${ URLS.IMDB }/${ type }/${ id }`;
+
+export const wikidataUrl = (id: string) => `${ URLS.WIKIDATA }/${ id }`;
+
+export const facebookUrl = (id: string) => `${ URLS.FACEBOOK }/${ id }`;
+
+export const instagramUrl = (id: string) => `${ URLS.INSTAGRAM }/${ id }`;
+
+export const twitterUrl = (id: string) => `${ URLS.TWITTER }/${ id }`;
+
+export const tiktokUrl = (id: string) => `${ URLS.TIKTOK }/@${ id }`;
+
+export const youtubeUrl = (id: string) => `${ URLS.YOUTUBE }/${ id }`;

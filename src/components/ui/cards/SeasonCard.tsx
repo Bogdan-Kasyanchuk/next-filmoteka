@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { IMG_SIZES } from '@/helpers/parameters';
+import { IMG_SIZES } from '@/datasets/constants';
 import { imageUrl, pagesSeasonUrl } from '@/routes';
 import { SeasonMapper } from '@/types';
 import formatDate from '@/utils/formateDate';
@@ -21,7 +21,7 @@ export default function SeasonCard(props: Props) {
                 <Image
                     src={
                         props.season.poster_path
-                            ? imageUrl(IMG_SIZES.SEASON_CARD_COVER, props.season.poster_path)
+                            ? imageUrl(IMG_SIZES.SEASON_COVER, props.season.poster_path)
                             : '/img/poster-not-available.jpg'
                     }
                     sizes="121px"

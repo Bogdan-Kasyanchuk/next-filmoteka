@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { IMG_SIZES } from '@/helpers/parameters';
+import { IMG_SIZES } from '@/datasets/constants';
 import { imageUrl, pagesPersonUrl } from '@/routes';
 import { CrewMapper } from '@/types';
 
@@ -26,7 +26,7 @@ export default function CrewCard(props: Props) {
                 <Image
                     src={
                         props.crew.profile_path
-                            ? imageUrl(IMG_SIZES.CREW_CARD_COVER, props.crew.profile_path)
+                            ? imageUrl(IMG_SIZES.CREW_COVER, props.crew.profile_path)
                             : '/img/avatar-placeholder.svg'
                     }
                     sizes="161px"

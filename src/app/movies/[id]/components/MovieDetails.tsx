@@ -8,8 +8,8 @@ import Popover from '@/components/ui/data-display/Popover';
 import SocialLinks from '@/components/ui/data-display/SocialLinks';
 import Container from '@/components/ui/layouts/Container';
 import Title from '@/components/ui/typography/Title';
+import { IMG_SIZES } from '@/datasets/constants';
 import { MediaType } from '@/enums';
-import { IMG_SIZES } from '@/helpers/parameters';
 import { imageUrl, pagesSimilarUrl } from '@/routes';
 import { MovieDetailsMapper } from '@/types';
 import formatCurrency from '@/utils/formatCurrency';
@@ -28,7 +28,7 @@ export default function MovieDetails(props: Props) {
             <div className="p-movie__details">
                 <div className="p-movie__details-backdrop">
                     <Image
-                        src={ imageUrl(IMG_SIZES.MEDIA_CARD_DETAILS_BACKDROP, props.movie.backdrop_path) }
+                        src={ imageUrl(IMG_SIZES.MEDIA_DETAILS_BACKDROP, props.movie.backdrop_path) }
                         sizes="(max-width: 767px) 768px, (max-width: 1319px) 1320px, 1920px"
                         alt={ props.movie.title }
                         fill
@@ -48,7 +48,7 @@ export default function MovieDetails(props: Props) {
                         <Image
                             src={
                                 props.movie.poster_path
-                                    ? imageUrl(IMG_SIZES.MEDIA_CARD_DETAILS_COVER, props.movie.poster_path)
+                                    ? imageUrl(IMG_SIZES.MEDIA_DETAILS_COVER, props.movie.poster_path)
                                     : '/img/poster-not-available.jpg'
                             }
                             sizes="(max-width: 767px) 254px, (max-width: 1319px) 327px, 351px"

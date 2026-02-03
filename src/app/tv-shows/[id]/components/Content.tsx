@@ -13,8 +13,8 @@ import Loader from '@/components/ui/data-display/Loader';
 import Container from '@/components/ui/layouts/Container';
 import { MediaType } from '@/enums';
 import { transformTVShowDetails } from '@/helpers/transformData';
+import { getTVShowByIdCached } from '@/lib/cachedWrappers';
 import { recommendationsUrl, reviewsUrl } from '@/routes';
-import { getTVShowByIdCached } from '@/services/cachedWrappers';
 import { TVShowMapper } from '@/types';
 
 import Seasons from './Seasons';

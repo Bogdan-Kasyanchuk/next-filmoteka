@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { IMG_SIZES } from '@/helpers/parameters';
+import { IMG_SIZES } from '@/datasets/constants';
 import { imageUrl, pagesPersonUrl } from '@/routes';
 import { PersonMapper } from '@/types';
 
@@ -17,7 +17,7 @@ export default function PersonCard(props: Props) {
                 <Image
                     src={
                         props.person.profile_path
-                            ? imageUrl(IMG_SIZES.PERSON_CARD_COVER, props.person.profile_path)
+                            ? imageUrl(IMG_SIZES.PERSON_COVER, props.person.profile_path)
                             : '/img/poster-not-available.jpg'
                     }
                     sizes="(max-width: 479px) 173px, (max-width: 767px) 213px, (max-width: 1023px) 230px, 295px"

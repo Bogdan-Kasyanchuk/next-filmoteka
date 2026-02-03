@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next';
 
+import { URLS } from '@/datasets/constants';
 import { MovieType, TVShowType } from '@/enums';
-import { PARAMETERS } from '@/helpers/parameters';
 import { 
     pagesMovieUrl,
     pagesMoviesUrl,
@@ -23,53 +23,53 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
     const staticPages: MetadataRoute.Sitemap = [
         {
-            url: PARAMETERS.SITE_URL,
+            url: URLS.SITE,
             changeFrequency: 'daily',
             priority: 1
         },
         {
-            url: `${ PARAMETERS.SITE_URL }${ pagesTrendingDayUrl() }`,
+            url: `${ URLS.SITE }${ pagesTrendingDayUrl() }`,
             changeFrequency: 'daily',
             priority: 0.9
         },
         {
-            url: `${ PARAMETERS.SITE_URL }${ pagesTrendingWeekUrl() }`,
+            url: `${ URLS.SITE }${ pagesTrendingWeekUrl() }`,
             changeFrequency: 'daily',
             priority: 0.9
         },
         {
-            url: `${ PARAMETERS.SITE_URL }${ pagesMoviesUrl() }`,
+            url: `${ URLS.SITE }${ pagesMoviesUrl() }`,
             changeFrequency: 'daily',
             priority: 0.85
         },
         {
-            url: `${ PARAMETERS.SITE_URL }${ pagesTVShowsUrl() }`,
+            url: `${ URLS.SITE }${ pagesTVShowsUrl() }`,
             changeFrequency: 'daily',
             priority: 0.85
         },
         {
-            url: `${ PARAMETERS.SITE_URL }${ pagesPersonsUrl() }`,
+            url: `${ URLS.SITE }${ pagesPersonsUrl() }`,
             changeFrequency: 'weekly',
             priority: 0.8
         }
     ];
 
     const moviePages = movies.results.map(movie => ({
-        url: `${ PARAMETERS.SITE_URL }${ pagesMovieUrl(movie.id.toString()) }`,
+        url: `${ URLS.SITE }${ pagesMovieUrl(movie.id.toString()) }`,
         lastModified: movie.release_date ? new Date(movie.release_date) : undefined,
         changeFrequency: 'weekly',
         priority: 0.7
     })) as MetadataRoute.Sitemap;
 
     const tvshowPages = tvshows.results.map(tvshow => ({
-        url: `${ PARAMETERS.SITE_URL }${ pagesTVShowUrl(tvshow.id.toString()) }`,
+        url: `${ URLS.SITE }${ pagesTVShowUrl(tvshow.id.toString()) }`,
         lastModified: tvshow.first_air_date ? new Date(tvshow.first_air_date) : undefined,
         changeFrequency: 'weekly',
         priority: 0.7
     })) as MetadataRoute.Sitemap;
 
     const personPages = persons.results.map(person => ({
-        url: `${ PARAMETERS.SITE_URL }${ pagesPersonUrl(person.id.toString()) }`,
+        url: `${ URLS.SITE }${ pagesPersonUrl(person.id.toString()) }`,
         changeFrequency: 'monthly',
         priority: 0.6
     })) as MetadataRoute.Sitemap;

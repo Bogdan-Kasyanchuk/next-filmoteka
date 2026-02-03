@@ -5,7 +5,7 @@ import { Fragment } from 'react';
 import SocialLinks from '@/components/ui/data-display/SocialLinks';
 import Container from '@/components/ui/layouts/Container';
 import Title from '@/components/ui/typography/Title';
-import { IMG_SIZES } from '@/helpers/parameters';
+import { IMG_SIZES } from '@/datasets/constants';
 import { imageUrl } from '@/routes';
 import { PersonDetailsMapper } from '@/types';
 import formatDate from '@/utils/formateDate';
@@ -19,7 +19,7 @@ export default function PersonDetails(props: Props) {
         <div className="p-person__details">
             <div className="p-person__details-backdrop">
                 <Image
-                    src={ imageUrl(IMG_SIZES.PERSON_CARD_DETAILS_COVER, props.person.profile_path) }
+                    src={ imageUrl(IMG_SIZES.PERSON_DETAILS_COVER, props.person.profile_path) }
                     sizes="(max-width: 767px) 768px, (max-width: 1319px) 1320px, 1920px"
                     alt={ props.person.name }
                     fill
@@ -39,7 +39,7 @@ export default function PersonDetails(props: Props) {
                     <Image
                         src={
                             props.person.profile_path
-                                ? imageUrl(IMG_SIZES.PERSON_CARD_DETAILS_COVER, props.person.profile_path)
+                                ? imageUrl(IMG_SIZES.PERSON_DETAILS_COVER, props.person.profile_path)
                                 : '/img/poster-not-available.jpg'
                         }
                         sizes="(max-width: 767px) 254px, (max-width: 1319px) 327px, 351px"

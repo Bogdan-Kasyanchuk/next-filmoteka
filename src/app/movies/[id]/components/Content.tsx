@@ -13,8 +13,8 @@ import Loader from '@/components/ui/data-display/Loader';
 import Container from '@/components/ui/layouts/Container';
 import { MediaType } from '@/enums';
 import { transformMovieDetails } from '@/helpers/transformData';
+import { getMovieByIdCached } from '@/lib/cachedWrappers';
 import { recommendationsUrl, reviewsUrl } from '@/routes';
-import { getMovieByIdCached } from '@/services/cachedWrappers';
 import { MovieMapper } from '@/types';
 
 import MovieDetails from './MovieDetails';

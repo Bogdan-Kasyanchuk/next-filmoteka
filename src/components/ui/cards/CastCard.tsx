@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { IMG_SIZES } from '@/helpers/parameters';
+import { IMG_SIZES } from '@/datasets/constants';
 import { imageUrl, pagesPersonUrl } from '@/routes';
 import { CastMapper } from '@/types';
 
@@ -26,7 +26,7 @@ export default function CastCard(props: Props) {
                 <Image
                     src={
                         props.cast.profile_path
-                            ? imageUrl(IMG_SIZES.CAST_CARD_COVER, props.cast.profile_path)
+                            ? imageUrl(IMG_SIZES.CAST_COVER, props.cast.profile_path)
                             : '/img/avatar-placeholder.svg'
                     }
                     sizes="161px"

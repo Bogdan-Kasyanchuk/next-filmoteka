@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation';
 
+import { PARAMETERS, URLS } from '@/datasets/constants';
 import { MediaType, MovieType, TVShowType, TimeType } from '@/enums';
-import { PARAMETERS } from '@/helpers/parameters';
 import {
     CurrentMovieShema,
     CurrentTVShowShema,
@@ -34,12 +34,14 @@ export async function fetchApi<T>(
     const isServer = typeof window === 'undefined';
 
     const baseUrl = isServer
-        ? PARAMETERS.API_URL
+        ? URLS.API
         : '/api/tmdb';
 
     const url = new URL(`${ baseUrl }/${ path }`, isServer ? undefined : window.location.origin);
+
+    const locale = `${ PARAMETERS.LOCALE.language }-${ PARAMETERS.LOCALE.region }`;
     
-    url.searchParams.set('language', PARAMETERS.LOCALE);
+    url.searchParams.set('language', locale);
 
     if (isServer) {
         url.searchParams.set('api_key', PARAMETERS.API_KEY);

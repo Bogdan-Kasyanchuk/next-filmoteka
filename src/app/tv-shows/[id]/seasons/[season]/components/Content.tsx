@@ -7,8 +7,8 @@ import EpisodeCard from '@/components/ui/cards/EpisodeCard';
 import Loader from '@/components/ui/data-display/Loader';
 import Container from '@/components/ui/layouts/Container';
 import { transformCurrentTVShow, transformTVShowSeasonDetails } from '@/helpers/transformData';
+import { getCurrentTVShowByIdCached } from '@/lib/cachedWrappers';
 import { getTVShowSeasonByNumber } from '@/services/api';
-import { getCurrentTVShowByIdCached } from '@/services/cachedWrappers';
 
 import CurrentSeason from './CurrentSeason';
 

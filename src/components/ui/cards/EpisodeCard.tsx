@@ -1,6 +1,6 @@
 import Image from 'next/image';
 
-import { IMG_SIZES } from '@/helpers/parameters';
+import { IMG_SIZES } from '@/datasets/constants';
 import { imageUrl } from '@/routes';
 import { EpisodeMapper } from '@/types';
 import formatDate from '@/utils/formateDate';
@@ -18,7 +18,7 @@ export default function EpisodeCard(props: Props) {
                 <Image
                     src={
                         props.episode.still_path
-                            ? imageUrl(IMG_SIZES.EPISODE_CARD_COVER, props.episode.still_path)
+                            ? imageUrl(IMG_SIZES.EPISODE_COVER, props.episode.still_path)
                             : '/img/poster-not-available.jpg'
                     }
                     sizes="(max-width: 479px) 175px, (max-width: 1319px) 216px, 300px"

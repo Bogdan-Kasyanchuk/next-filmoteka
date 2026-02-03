@@ -101,10 +101,10 @@ export type ImageMapper = {
     vote_count: number
 };
 
-export type SocialLinksMapper = Array<{
+export type SocialLinkMapper = {
     provider: string,
     link: string
-}>;
+};
 
 export type MovieMapper = {
     id: string,
@@ -137,7 +137,7 @@ export type MovieDetailsMapper = {
         origin_country: string[],
         production_companies: ProductionCompany[],
         spoken_languages: SpokenLanguage[],
-        socialLinks: SocialLinksMapper
+        socialLinks: SocialLinkMapper[]
     },
     cast: CastMapper[],
     crew: CrewMapper[],
@@ -196,7 +196,7 @@ export type TVShowDetailsMapper = {
         spoken_languages: SpokenLanguage[],
         created_by: Creator[],
         networks: Network[],
-        socialLinks: SocialLinksMapper
+        socialLinks: SocialLinkMapper[]
     },
     seasons: SeasonMapper[],
     cast: CastMapper[],
@@ -275,7 +275,7 @@ export type PersonDetailsMapper = {
         place_of_birth: string,
         popularity: number,
         profile_path: string,
-        socialLinks: SocialLinksMapper
+        socialLinks: SocialLinkMapper[]
     },
     images: ImageMapper[],
     cast: MediaCastMapper[],
