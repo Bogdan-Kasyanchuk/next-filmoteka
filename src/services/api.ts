@@ -124,13 +124,13 @@ export function getCurrentTVShowById(id: string) {
     return fetchApi<CurrentTVShowShema>(`${ MediaType.TV_SHOW }/${ id }`);
 }
 
-export function getSimilarTVShow(id: string, page: number) {
+export function getSimilarTVShows(id: string, page: number) {
     return fetchApi<DataShema<SimilarTVShowShema>>(
         `${ MediaType.TV_SHOW }/${ id }/similar?page=${ page }`
     );
 }
 
-export function getRecommendationsTVShow(id: string, page: number) {
+export function getRecommendationsTVShows(id: string, page: number) {
     return fetchApi<DataShema<TVShowShema>>(
         `${ MediaType.TV_SHOW }/${ id }/recommendations?page=${ page }`
     );

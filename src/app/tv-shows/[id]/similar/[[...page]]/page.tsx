@@ -6,7 +6,7 @@ import { MediaType } from '@/enums';
 import generateMetaTags from '@/helpers/generateMetaTags';
 import { getCurrentTVShowByIdCached } from '@/lib/cachedWrappers';
 import { pagesSimilarUrl } from '@/routes';
-import { getSimilarTVShow } from '@/services/api';
+import { getSimilarTVShows } from '@/services/api';
 import isInvalidPage from '@/utils/isInvalidPage';
 
 import Content from './components/Content';
@@ -58,7 +58,7 @@ export default async function Page(props: Props) {
         await queryClient.prefetchQuery(
             {
                 queryKey: [ 'tv-shows', params.id, 'similar', page ],
-                queryFn: () => getSimilarTVShow(params.id, page)
+                queryFn: () => getSimilarTVShows(params.id, page)
             }
         )
     ]);

@@ -377,6 +377,12 @@ export type MediaCrewShema = {
     media_type: string
 };
 
+export type PersonCombinedCredits = {
+    id: number,
+    cast: MediaCastShema[],
+    crew: MediaCrewShema[]
+};
+
 export type PersonShema = {
     adult: boolean,
     id: number,

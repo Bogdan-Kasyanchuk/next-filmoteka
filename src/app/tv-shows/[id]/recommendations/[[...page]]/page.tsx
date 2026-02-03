@@ -6,7 +6,7 @@ import { MediaType } from '@/enums';
 import generateMetaTags from '@/helpers/generateMetaTags';
 import { getCurrentTVShowByIdCached } from '@/lib/cachedWrappers';
 import { recommendationsUrl } from '@/routes';
-import { getRecommendationsTVShow } from '@/services/api';
+import { getRecommendationsTVShows } from '@/services/api';
 import isInvalidPage from '@/utils/isInvalidPage';
 
 import Content from './components/Content';
@@ -58,7 +58,7 @@ export default async function Page(props: Props) {
         await queryClient.prefetchQuery(
             {
                 queryKey: [ 'tv-shows', params.id, 'recommendations', page ],
-                queryFn: () => getRecommendationsTVShow(params.id, page)
+                queryFn: () => getRecommendationsTVShows(params.id, page)
             }
         )
     ]);

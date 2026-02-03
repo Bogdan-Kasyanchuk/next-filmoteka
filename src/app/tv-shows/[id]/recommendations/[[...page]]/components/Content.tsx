@@ -11,7 +11,7 @@ import Container from '@/components/ui/layouts/Container';
 import Title from '@/components/ui/typography/Title';
 import { transformCurrentTVShow, transformTVShow } from '@/helpers/transformData';
 import { getCurrentTVShowByIdCached } from '@/lib/cachedWrappers';
-import { getRecommendationsTVShow } from '@/services/api';
+import { getRecommendationsTVShows } from '@/services/api';
 
 type Props = {
     id: string,
@@ -27,7 +27,7 @@ export default function Content(props: Props) {
             },
             {
                 queryKey: [ 'tv-shows', props.id, 'recommendations', props.page ],
-                queryFn: () => getRecommendationsTVShow(props.id, props.page),
+                queryFn: () => getRecommendationsTVShows(props.id, props.page),
                 placeholderData: keepPreviousData
             }
         ],
