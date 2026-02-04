@@ -10,7 +10,7 @@ import Loader from '@/components/ui/data-display/Loader';
 import NoSearchResults from '@/components/ui/data-display/NoSearchResults';
 import { MediaType } from '@/enums';
 import { transformMovie, transformPerson, transformTVShow } from '@/helpers/transformData';
-import { getSearch } from '@/services/api';
+import { getSearch } from '@/services/tmdbApi/general';
 import { MovieShema, PersonShema, TVShowShema } from '@/shemas';
 import { Adult, MovieMapper, PersonMapper, TVShowMapper } from '@/types';
 

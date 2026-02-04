@@ -10,7 +10,7 @@ import TVShowCard from '@/components/ui/cards/TVShowCard';
 import Loader from '@/components/ui/data-display/Loader';
 import { MediaType, TimeType } from '@/enums';
 import { transformMovie, transformPerson, transformTVShow } from '@/helpers/transformData';
-import { getTrendings } from '@/services/api';
+import { getTrendings } from '@/services/tmdbApi/general';
 import { MovieMapper, PersonMapper, TVShowMapper } from '@/types';
 
 type Props = {

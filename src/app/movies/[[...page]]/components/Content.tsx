@@ -8,7 +8,7 @@ import MovieCard from '@/components/ui/cards/MovieCard';
 import Loader from '@/components/ui/data-display/Loader';
 import { MovieType } from '@/enums';
 import { transformMovie } from '@/helpers/transformData';
-import { getMovies } from '@/services/api';
+import { getMovies } from '@/services/tmdbApi/movies';
 
 type Props = {
     type: MovieType,

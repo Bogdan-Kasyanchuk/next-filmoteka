@@ -7,7 +7,7 @@ import Title from '@/components/ui/typography/Title';
 import { TVShowType } from '@/enums';
 import generateMetaTags from '@/helpers/generateMetaTags';
 import { pagesTVShowsUrl } from '@/routes';
-import { getTVShows } from '@/services/api';
+import { getTVShows } from '@/services/tmdbApi/tvShows';
 import isInvalidPage from '@/utils/isInvalidPage';
 
 import Content from './components/Content';

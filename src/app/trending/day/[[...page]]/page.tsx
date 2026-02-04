@@ -7,7 +7,7 @@ import Title from '@/components/ui/typography/Title';
 import { MediaType, TimeType } from '@/enums';
 import generateMetaTags from '@/helpers/generateMetaTags';
 import { pagesTrendingDayUrl } from '@/routes';
-import { getTrendings } from '@/services/api';
+import { getTrendings } from '@/services/tmdbApi/general';
 import isInvalidPage from '@/utils/isInvalidPage';
 
 import Content from './components/Content';

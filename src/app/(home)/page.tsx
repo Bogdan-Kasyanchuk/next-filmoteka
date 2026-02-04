@@ -4,7 +4,7 @@ import { Metadata } from 'next';
 import { TimeType } from '@/enums';
 import generateMetaTags from '@/helpers/generateMetaTags';
 import { pagesHomeUrl } from '@/routes';
-import { getTrendings } from '@/services/api';
+import { getTrendings } from '@/services/tmdbApi/general';
 
 import Content from './components/Content';
 

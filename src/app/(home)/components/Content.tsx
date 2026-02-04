@@ -13,7 +13,7 @@ import Title from '@/components/ui/typography/Title';
 import { MediaType, TimeType } from '@/enums';
 import { transformMovie, transformPerson, transformTVShow } from '@/helpers/transformData';
 import { pagesTrendingDayUrl, pagesTrendingWeekUrl } from '@/routes';
-import { getTrendings } from '@/services/api';
+import { getTrendings } from '@/services/tmdbApi/general';
 import { MovieMapper, PersonMapper, TVShowMapper } from '@/types';
 
 export default function Content() {

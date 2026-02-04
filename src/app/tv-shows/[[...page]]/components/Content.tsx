@@ -8,7 +8,7 @@ import TVShowCard from '@/components/ui/cards/TVShowCard';
 import Loader from '@/components/ui/data-display/Loader';
 import { TVShowType } from '@/enums';
 import { transformTVShow } from '@/helpers/transformData';
-import { getTVShows } from '@/services/api';
+import { getTVShows } from '@/services/tmdbApi/tvShows';
 
 type Props = {
     type: TVShowType,

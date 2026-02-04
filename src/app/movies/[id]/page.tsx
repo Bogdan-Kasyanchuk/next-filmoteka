@@ -2,8 +2,8 @@ import { HydrationBoundary, QueryClient, dehydrate } from '@tanstack/react-query
 import { Metadata } from 'next';
 
 import generateMetaTags from '@/helpers/generateMetaTags';
-import { getMovieByIdCached } from '@/lib/cachedWrappers';
 import { pagesMovieUrl } from '@/routes';
+import { getMovieById } from '@/services/tmdbApi/movies';
 
 import Content from './components/Content';
 
@@ -16,7 +16,7 @@ type Props = {
 export async function generateMetadata(props: Props): Promise<Metadata> {
     const params = await props.params;
         
-    const data = await getMovieByIdCached(params.id);
+    const data = await getMovieById(params.id);
 
     const title = data.title || data.original_title;
 
@@ -37,7 +37,7 @@ export default async function Page(props: Props) {
 
     await queryClient.prefetchQuery({
         queryKey: [ 'movies', params.id ],
-        queryFn: () => getMovieByIdCached(params.id)
+        queryFn: () => getMovieById(params.id)
     });
 
     return (

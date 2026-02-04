@@ -13,8 +13,8 @@ import Loader from '@/components/ui/data-display/Loader';
 import Container from '@/components/ui/layouts/Container';
 import { MediaType } from '@/enums';
 import { transformTVShowDetails } from '@/helpers/transformData';
-import { getTVShowByIdCached } from '@/lib/cachedWrappers';
 import { recommendationsUrl, reviewsUrl } from '@/routes';
+import { getTVShowById } from '@/services/tmdbApi/tvShows';
 import { TVShowMapper } from '@/types';
 
 import Seasons from './Seasons';
@@ -27,7 +27,7 @@ type Props = {
 export default function Content(props: Props) {
     const { data, isPending, isError } = useQuery({
         queryKey: [ 'tv-shows', props.id ],
-        queryFn: () => getTVShowByIdCached(props.id),
+        queryFn: () => getTVShowById(props.id),
         select: data => transformTVShowDetails(data)
     });
 

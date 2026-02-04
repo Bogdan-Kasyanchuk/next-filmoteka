@@ -23,7 +23,7 @@ export default function Timeline(props: Props) {
 
     const sections = [
         { title: 'Acting', data: cast, prop: 'cast' },
-        { title: 'Production', data: crew, prop: 'crew' }
+        { title: 'Producing', data: crew, prop: 'crew' }
     ] as const;
 
     return (
@@ -33,7 +33,7 @@ export default function Timeline(props: Props) {
                 variant={ 3 }
                 className="p-person__timeline-title"
             >
-                Timeline
+                Acting and producing career
             </Title>
 
             <ul className="p-person__timeline-list">

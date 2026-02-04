@@ -10,8 +10,7 @@ import Loader from '@/components/ui/data-display/Loader';
 import Container from '@/components/ui/layouts/Container';
 import Title from '@/components/ui/typography/Title';
 import { transformCurrentMovie, transformMovie } from '@/helpers/transformData';
-import { getCurrentMovieByIdCached } from '@/lib/cachedWrappers';
-import { getRecommendationsMovies } from '@/services/api';
+import { getCurrentMovieById, getRecommendationsMovies } from '@/services/tmdbApi/movies';
 
 type Props = {
     id: string,
@@ -23,7 +22,7 @@ export default function Content(props: Props) {
         queries: [
             {
                 queryKey: [ 'movies', 'current', props.id ],
-                queryFn: () => getCurrentMovieByIdCached(props.id)
+                queryFn: () => getCurrentMovieById(props.id)
             },
             {
                 queryKey: [ 'movies', props.id, 'recommendations', props.page ],

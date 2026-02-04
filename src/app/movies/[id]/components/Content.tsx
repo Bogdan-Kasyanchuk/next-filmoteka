@@ -13,8 +13,8 @@ import Loader from '@/components/ui/data-display/Loader';
 import Container from '@/components/ui/layouts/Container';
 import { MediaType } from '@/enums';
 import { transformMovieDetails } from '@/helpers/transformData';
-import { getMovieByIdCached } from '@/lib/cachedWrappers';
 import { recommendationsUrl, reviewsUrl } from '@/routes';
+import { getMovieById } from '@/services/tmdbApi/movies';
 import { MovieMapper } from '@/types';
 
 import MovieDetails from './MovieDetails';
@@ -26,7 +26,7 @@ type Props = {
 export default function Content(props: Props) {
     const { data, isPending, isError } = useQuery({
         queryKey: [ 'movies', props.id ],
-        queryFn: () => getMovieByIdCached(props.id),
+        queryFn: () => getMovieById(props.id),
         select: data => transformMovieDetails(data)
     });
 

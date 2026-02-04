@@ -10,8 +10,7 @@ import Loader from '@/components/ui/data-display/Loader';
 import Container from '@/components/ui/layouts/Container';
 import Title from '@/components/ui/typography/Title';
 import { transformCurrentTVShow, transformTVShow } from '@/helpers/transformData';
-import { getCurrentTVShowByIdCached } from '@/lib/cachedWrappers';
-import { getSimilarTVShows } from '@/services/api';
+import { getCurrentTVShowById, getSimilarTVShows } from '@/services/tmdbApi/tvShows';
 
 type Props = {
     id: string,
@@ -23,7 +22,7 @@ export default function Content(props: Props) {
         queries: [
             {
                 queryKey: [ 'tv-shows', 'current', props.id ],
-                queryFn: () => getCurrentTVShowByIdCached(props.id)
+                queryFn: () => getCurrentTVShowById(props.id)
             },
             {
                 queryKey: [ 'tv-shows', props.id, 'similar', props.page ],

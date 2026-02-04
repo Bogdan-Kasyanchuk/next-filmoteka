@@ -7,8 +7,7 @@ import EpisodeCard from '@/components/ui/cards/EpisodeCard';
 import Loader from '@/components/ui/data-display/Loader';
 import Container from '@/components/ui/layouts/Container';
 import { transformCurrentTVShow, transformTVShowSeasonDetails } from '@/helpers/transformData';
-import { getCurrentTVShowByIdCached } from '@/lib/cachedWrappers';
-import { getTVShowSeasonByNumber } from '@/services/api';
+import { getCurrentTVShowById, getTVShowSeasonByNumber } from '@/services/tmdbApi/tvShows';
 
 import CurrentSeason from './CurrentSeason';
 
@@ -22,7 +21,7 @@ export default function Content(props: Props) {
         queries: [
             {
                 queryKey: [ 'tv-shows', 'current', props.id ],
-                queryFn: () => getCurrentTVShowByIdCached(props.id)
+                queryFn: () => getCurrentTVShowById(props.id)
             },
             {
                 queryKey: [ 'tv-shows', props.id, props.season ],

@@ -7,7 +7,7 @@ import Pagination from '@/components/app/Pagination';
 import PersonCard from '@/components/ui/cards/PersonCard';
 import Loader from '@/components/ui/data-display/Loader';
 import { transformPerson } from '@/helpers/transformData';
-import { getPersons } from '@/services/api';
+import { getPersons } from '@/services/tmdbApi/persons';
 
 type Props = {
     page: number

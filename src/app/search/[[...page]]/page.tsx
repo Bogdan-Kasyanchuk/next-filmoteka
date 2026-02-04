@@ -6,7 +6,7 @@ import Container from '@/components/ui/layouts/Container';
 import { MediaType } from '@/enums';
 import generateMetaTags from '@/helpers/generateMetaTags';
 import { pagesSearchUrl } from '@/routes';
-import { getSearch } from '@/services/api';
+import { getSearch } from '@/services/tmdbApi/general';
 import { Adult } from '@/types';
 import isInvalidPage from '@/utils/isInvalidPage';
 

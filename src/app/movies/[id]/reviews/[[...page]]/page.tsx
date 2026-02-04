@@ -4,9 +4,8 @@ import { notFound } from 'next/navigation';
 
 import { MediaType } from '@/enums';
 import generateMetaTags from '@/helpers/generateMetaTags';
-import { getCurrentMovieByIdCached } from '@/lib/cachedWrappers';
 import { reviewsUrl } from '@/routes';
-import { getReviewsToMovie } from '@/services/api';
+import { getCurrentMovieById, getReviewsToMovie } from '@/services/tmdbApi/movies';
 import isInvalidPage from '@/utils/isInvalidPage';
 
 import Content from './components/Content';
@@ -23,7 +22,7 @@ type Props = {
 export async function generateMetadata(props: Props): Promise<Metadata> {
     const params = await props.params;
         
-    const data = await getCurrentMovieByIdCached(params.id);
+    const data = await getCurrentMovieById(params.id);
 
     const title = data.title || data.original_title;
 
@@ -52,7 +51,7 @@ export default async function Page(props: Props) {
         await queryClient.prefetchQuery(
             {
                 queryKey: [ 'movies', 'current', params.id ],
-                queryFn: () => getCurrentMovieByIdCached(params.id)
+                queryFn: () => getCurrentMovieById(params.id)
             }
         ),
         await queryClient.prefetchQuery(

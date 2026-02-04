@@ -7,7 +7,7 @@ import Title from '@/components/ui/typography/Title';
 import { MovieType } from '@/enums';
 import generateMetaTags from '@/helpers/generateMetaTags';
 import { pagesMoviesUrl } from '@/routes';
-import { getMovies } from '@/services/api';
+import { getMovies } from '@/services/tmdbApi/movies';
 import isInvalidPage from '@/utils/isInvalidPage';
 
 import Content from './components/Content';

@@ -7,18 +7,18 @@ type Props = {
     name: string
 };
 
-export default function Images(props: Props) {
+export default function Gallery(props: Props) {
     return (
-        <div className="p-person__images">
+        <div className="p-person__gallery">
             <Title
                 order="h3"
                 variant={ 3 }
-                className="p-person__images-title"
+                className="p-person__gallery-title"
             >
-                Images
+                Photo gallery
             </Title>
 
-            <ul className="p-person__images-list">
+            <ul className="p-person__gallery-list">
                 {
                     props.images.map(
                         (image, index) => (

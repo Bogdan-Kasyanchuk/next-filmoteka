@@ -5,14 +5,14 @@ import { PropsWithChildren } from 'react';
 
 import NetworkDetailsCard from '@/components/ui/cards/NetworkDetailsCard';
 import { transformNetworkDetails } from '@/helpers/transformData';
-import { getNetworkById } from '@/services/api';
+import { getNetworkById } from '@/services/tmdbApi/general';
 
 type Props = {
     id: string
 };
 
 export default function NetworkDetails(props: Props) {
-    const { data, isPending, isError, error } = useQuery({
+    const { data, isPending, isError } = useQuery({
         queryKey: [ 'network', props.id ],
         queryFn: () => getNetworkById(props.id),
         select: data => {
@@ -32,13 +32,7 @@ export default function NetworkDetails(props: Props) {
         );
     }
 
-    if (isError) {
-        return (
-            <Content>{ error.message }</Content>
-        );
-    }
-
-    if (!data) {
+    if (isError || !data) {
         return (
             <Content>Data not found</Content>
         );

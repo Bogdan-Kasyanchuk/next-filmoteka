@@ -12,7 +12,9 @@ import {
     pagesTrendingDayUrl,
     pagesTrendingWeekUrl
 } from '@/routes';
-import { getMovies, getPersons, getTVShows } from '@/services/api';
+import { getMovies } from '@/services/tmdbApi/movies';
+import { getPersons } from '@/services/tmdbApi/persons';
+import { getTVShows } from '@/services/tmdbApi/tvShows';
 
 export const revalidate = 86400;
 

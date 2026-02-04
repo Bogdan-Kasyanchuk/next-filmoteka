@@ -6,7 +6,7 @@ import Container from '@/components/ui/layouts/Container';
 import Title from '@/components/ui/typography/Title';
 import generateMetaTags from '@/helpers/generateMetaTags';
 import { pagesPersonsUrl } from '@/routes';
-import { getPersons } from '@/services/api';
+import { getPersons } from '@/services/tmdbApi/persons';
 import isInvalidPage from '@/utils/isInvalidPage';
 
 import Content from './components/Content';

@@ -6,9 +6,9 @@ import { notFound } from 'next/navigation';
 import Loader from '@/components/ui/data-display/Loader';
 import Container from '@/components/ui/layouts/Container';
 import { transformPersonDetails } from '@/helpers/transformData';
-import { getPersonByIdCached } from '@/lib/cachedWrappers';
+import { getPersonById } from '@/services/tmdbApi/persons';
 
-import Images from './Images';
+import Gallery from './Gallery';
 import PersonDetails from './PersonDetails';
 import Timeline from './Timeline';
 
@@ -19,7 +19,7 @@ type Props = {
 export default function Content(props: Props) {
     const { data, isPending, isError } = useQuery({
         queryKey: [ 'persons', props.id ],
-        queryFn: () => getPersonByIdCached(props.id),
+        queryFn: () => getPersonById(props.id),
         select: data => transformPersonDetails(data)
     });
 
@@ -38,7 +38,7 @@ export default function Content(props: Props) {
             <Container className="p-person__container">
                 {
                     data.images.length > 0 &&
-                    <Images
+                    <Gallery
                         images={ data.images }
                         name={ data.person.name }
                     />

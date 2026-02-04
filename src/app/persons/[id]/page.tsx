@@ -2,8 +2,8 @@ import { HydrationBoundary, QueryClient, dehydrate } from '@tanstack/react-query
 import { Metadata } from 'next';
 
 import generateMetaTags from '@/helpers/generateMetaTags';
-import { getPersonByIdCached } from '@/lib/cachedWrappers';
 import { pagesPersonUrl } from '@/routes';
+import { getPersonById } from '@/services/tmdbApi/persons';
 
 import Content from './components/Content';
 
@@ -16,13 +16,19 @@ type Props = {
 export async function generateMetadata(props: Props): Promise<Metadata> {
     const params = await props.params;
         
-    const data = await getPersonByIdCached(params.id);
+    const data = await getPersonById(params.id);
 
     return generateMetaTags(
         {
             title: data.name,
-            description: `${ data.name }. Details, biography, photos, timeline`,
-            keywords: [ data.name, `biography of ${ data.name }`, `photos of ${ data.name }`, `timeline of ${ data.name }` ],
+            description: `Detailed information about ${ data.name }. Her photo gallery, acting and producing career.`,
+            keywords: [
+                data.name,
+                `biography of ${ data.name }`,
+                `${ data.name } photo gallery`,
+                `${ data.name } acting`,
+                `${ data.name } producing`
+            ],
             url: pagesPersonUrl(params.id)
         }
     );
@@ -35,7 +41,7 @@ export default async function Page(props: Props) {
 
     await queryClient.prefetchQuery({
         queryKey: [ 'persons', params.id ],
-        queryFn: () => getPersonByIdCached(params.id)
+        queryFn: () => getPersonById(params.id)
     });
 
     return (

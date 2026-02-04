@@ -5,14 +5,14 @@ import { PropsWithChildren } from 'react';
 
 import ProductionCompanyDetailsCard from '@/components/ui/cards/ProductionCompanyDetailsCard';
 import { transformProductionCompanyDetails } from '@/helpers/transformData';
-import { getProductionCompanyById } from '@/services/api';
+import { getProductionCompanyById } from '@/services/tmdbApi/general';
 
 type Props = {
     id: string
 };
 
 export default function ProductionCompanyDetails(props: Props) {
-    const { data, isPending, isError, error } = useQuery({
+    const { data, isPending, isError } = useQuery({
         queryKey: [ 'production-company', props.id ],
         queryFn: () => getProductionCompanyById(props.id),
         select: data => {
@@ -32,13 +32,7 @@ export default function ProductionCompanyDetails(props: Props) {
         );
     }
 
-    if (isError) {
-        return (
-            <Content>{ error.message }</Content>
-        );
-    }
-
-    if (!data) {
+    if (isError || !data) {
         return (
             <Content>Data not found</Content>
         );

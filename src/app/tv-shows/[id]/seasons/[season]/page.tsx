@@ -2,9 +2,8 @@ import { HydrationBoundary, QueryClient, dehydrate } from '@tanstack/react-query
 import { Metadata } from 'next';
 
 import generateMetaTags from '@/helpers/generateMetaTags';
-import { getCurrentTVShowByIdCached } from '@/lib/cachedWrappers';
 import { pagesSeasonUrl } from '@/routes';
-import { getTVShowSeasonByNumber } from '@/services/api';
+import { getCurrentTVShowById, getTVShowSeasonByNumber } from '@/services/tmdbApi/tvShows';
 
 import Content from './components/Content';
 
@@ -20,7 +19,7 @@ type Props = {
 export async function generateMetadata(props: Props): Promise<Metadata> {
     const params = await props.params;
 
-    const data = await getCurrentTVShowByIdCached(params.id);
+    const data = await getCurrentTVShowById(params.id);
 
     const title = data.name || data.original_name;
 
@@ -45,7 +44,7 @@ export default async function Page(props: Props) {
         await queryClient.prefetchQuery(
             {
                 queryKey: [ 'tv-shows', 'current', params.id ],
-                queryFn: () => getCurrentTVShowByIdCached(params.id)
+                queryFn: () => getCurrentTVShowById(params.id)
             }
         ),
         await queryClient.prefetchQuery(

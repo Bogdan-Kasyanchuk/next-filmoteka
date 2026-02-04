@@ -51,10 +51,8 @@
 }
 
 @utility u-scroll {
-    overflow-x: auto;
-    overflow-y: hidden;
+    overflow: auto hidden;
     display: flex;
-
     width: calc(100% + 40px);
     margin-inline: -20px;
 
