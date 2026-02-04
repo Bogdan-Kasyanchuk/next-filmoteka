@@ -94,10 +94,16 @@ export type DataShema<Type> = {
         maximum: string,
         minimum: string
     },
+    id?: number,
     page: number,
     results: Type[],
     total_pages: number,
     total_results: number
+};
+
+export type VideosShema = {
+    id: string,
+    results: VideoShema[]
 };
 
 export type MovieShema = {
@@ -151,10 +157,6 @@ export type MovieDetailsShema = {
         cast: CastShema[],
         crew: CrewShema[]
     },
-    videos: {
-        results: VideoShema[]
-    },
-    reviews: DataShema<ReviewShema>,
     recommendations: DataShema<MovieShema>,
     external_ids: ExternalIdShema
 };

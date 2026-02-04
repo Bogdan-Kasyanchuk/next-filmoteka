@@ -7,7 +7,8 @@ import {
     MovieDetailsShema,
     MovieShema,
     ReviewShema,
-    SimilarMovieShema
+    SimilarMovieShema,
+    VideosShema
 } from '@/shemas';
 
 import { fetchApi } from './api';
@@ -18,7 +19,7 @@ export const getMovies = (type: MovieType, page: number) => {
 
 export const getMovieById = cache((id: string) => {
     return fetchApi<MovieDetailsShema>(
-        `${ MediaType.MOVIE }/${ id }?append_to_response=credits,videos,reviews,recommendations,external_ids`
+        `${ MediaType.MOVIE }/${ id }?append_to_response=credits,recommendations,external_ids`
     );
 });
 
@@ -42,5 +43,11 @@ export const getRecommendationsMovies = (id: string, page: number) => {
 export const getReviewsToMovie = (id: string, page: number) => {
     return fetchApi<DataShema<ReviewShema>>(
         `${ MediaType.MOVIE }/${ id }/reviews?page=${ page }`
+    );
+};
+
+export const getMoviesVideos = async (id: string) => {
+    return fetchApi<VideosShema>(
+        `${ MediaType.MOVIE }/${ id }/videos`
     );
 };

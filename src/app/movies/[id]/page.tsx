@@ -1,11 +1,15 @@
 import { HydrationBoundary, QueryClient, dehydrate } from '@tanstack/react-query';
 import { Metadata } from 'next';
+import { Suspense } from 'react';
 
+import Container from '@/components/ui/layouts/Container';
 import generateMetaTags from '@/helpers/generateMetaTags';
 import { pagesMovieUrl } from '@/routes';
 import { getMovieById } from '@/services/tmdbApi/movies';
 
 import Content from './components/Content';
+import Reviews from './components/Reviews';
+import Videos from './components/Videos';
 
 import './styles/index.css';
 
@@ -41,8 +45,30 @@ export default async function Page(props: Props) {
     });
 
     return (
-        <HydrationBoundary state={ dehydrate(queryClient) }>
-            <Content id={ params.id } />
-        </HydrationBoundary>
+        <div className="p-movie">
+            <HydrationBoundary state={ dehydrate(queryClient) }>
+                <Content id={ params.id } />
+            </HydrationBoundary>
+
+            <Suspense
+                fallback={
+                    <Container className="xxl:max-w-[1440px]">
+                        <div className="text-5xl">Loading videos...</div>
+                    </Container> 
+                }
+            >
+                <Videos id={ params.id } />
+            </Suspense>
+
+            <Suspense
+                fallback={
+                    <Container className="xxl:max-w-[1440px]">
+                        <div className="text-5xl">Loading reviews...</div>
+                    </Container> 
+                }
+            >
+                <Reviews id={ params.id } />
+            </Suspense>
+        </div>
     );
 }

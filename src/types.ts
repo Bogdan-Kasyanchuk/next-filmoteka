@@ -141,11 +141,6 @@ export type MovieDetailsMapper = {
     },
     cast: CastMapper[],
     crew: CrewMapper[],
-    videos: VideoMapper[],
-    reviews: {
-        items: ReviewMapper[],
-        totalPages: number
-    },
     recommendations: {
         items: MovieMapper[],
         totalPages: number

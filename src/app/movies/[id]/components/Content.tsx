@@ -6,14 +6,12 @@ import { notFound } from 'next/navigation';
 import Cast from '@/components/app/Cast';
 import Crew from '@/components/app/Crew';
 import Recommendations from '@/components/app/Recommendations';
-import Reviews from '@/components/app/Reviews';
-import Videos from '@/components/app/Videos';
 import MovieCard from '@/components/ui/cards/MovieCard';
 import Loader from '@/components/ui/data-display/Loader';
 import Container from '@/components/ui/layouts/Container';
 import { MediaType } from '@/enums';
 import { transformMovieDetails } from '@/helpers/transformData';
-import { recommendationsUrl, reviewsUrl } from '@/routes';
+import { recommendationsUrl } from '@/routes';
 import { getMovieById } from '@/services/tmdbApi/movies';
 import { MovieMapper } from '@/types';
 
@@ -39,7 +37,7 @@ export default function Content(props: Props) {
     }
 
     return (
-        <div className="p-movie">
+        <>
             <MovieDetails
                 movie={ data.movie }
                 id={ props.id }
@@ -57,11 +55,6 @@ export default function Content(props: Props) {
                 }
 
                 {
-                    data.videos.length > 0 &&
-                    <Videos videos={ data.videos } />
-                }
-
-                {
                     data.recommendations.items.length > 0 &&
                     <Recommendations<MovieMapper>
                         recommendations={ data.recommendations }
@@ -69,15 +62,7 @@ export default function Content(props: Props) {
                         showAllPath={ recommendationsUrl(MediaType.MOVIE, props.id) }
                     />
                 }
-
-                {
-                    data.reviews.items.length > 0 &&
-                    <Reviews
-                        reviews={ data.reviews }
-                        showAllPath={ reviewsUrl(MediaType.MOVIE, props.id) }
-                    />
-                }
             </Container>
-        </div>
+        </>
     );
 }
