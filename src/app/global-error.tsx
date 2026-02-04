@@ -5,8 +5,8 @@ export default function Error() {
         <html>
             <body>
                 <main>
-                    <div className="flex items-center justify-center w-full">
-                        <p className="text-5xl font-bold leading-[1.2]">
+                    <div className="flex items-center justify-center w-full px-5">
+                        <p className="text-5xl text-primary font-bold leading-[1.2] text-center">
                             Something globally went wrong
                         </p>
                     </div>
