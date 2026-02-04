@@ -157,7 +157,6 @@ export type MovieDetailsShema = {
         cast: CastShema[],
         crew: CrewShema[]
     },
-    recommendations: DataShema<MovieShema>,
     external_ids: ExternalIdShema
 };
 

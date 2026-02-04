@@ -20,7 +20,7 @@ export default function Videos(props: Props) {
         queryFn: () => getMoviesVideos(props.id),
         select: data => {
             if (!data.results.length) {
-                return [];  
+                return null;  
             }
 
             return data.results.filter(
@@ -35,7 +35,7 @@ export default function Videos(props: Props) {
         }
     });
 
-    if (isError || !data.length) {
+    if (isError || !data) {
         return null;
     }
     

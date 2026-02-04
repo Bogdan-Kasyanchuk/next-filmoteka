@@ -140,11 +140,7 @@ export type MovieDetailsMapper = {
         socialLinks: SocialLinkMapper[]
     },
     cast: CastMapper[],
-    crew: CrewMapper[],
-    recommendations: {
-        items: MovieMapper[],
-        totalPages: number
-    }
+    crew: CrewMapper[]
 };
 
 export type CurrentMovieMapper = {

@@ -8,6 +8,7 @@ import { pagesMovieUrl } from '@/routes';
 import { getMovieById } from '@/services/tmdbApi/movies';
 
 import Content from './components/Content';
+import Recommendations from './components/Recommendations';
 import Reviews from './components/Reviews';
 import Videos from './components/Videos';
 
@@ -27,8 +28,15 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
     return generateMetaTags(
         {
             title,
-            description: `${ title }. Details, overview, production companies, cast, crew, videos, recommendations, reviews`,
-            keywords: [ title, `cast of ${ title }`, `crew of ${ title }`, `videos of ${ title }`, `reviews of ${ title }` ],
+            description: `Detailed information about the movie ${ title }. Its overview, cast, crew, videos, reviews. Recommended movies`,
+            keywords: [
+                title,
+                `cast of ${ title }`,
+                `crew of ${ title }`,
+                `videos of ${ title }`,
+                `reviews of ${ title }`,
+                `recommended of ${ title }`
+            ],
             url: pagesMovieUrl(params.id)
         }
     );
@@ -58,6 +66,16 @@ export default async function Page(props: Props) {
                 }
             >
                 <Videos id={ params.id } />
+            </Suspense>
+
+            <Suspense
+                fallback={
+                    <Container className="xxl:max-w-[1440px]">
+                        <div className="text-5xl">Loading recommendations...</div>
+                    </Container> 
+                }
+            >
+                <Recommendations id={ params.id } />
             </Suspense>
 
             <Suspense

@@ -19,7 +19,7 @@ export const getMovies = (type: MovieType, page: number) => {
 
 export const getMovieById = cache((id: string) => {
     return fetchApi<MovieDetailsShema>(
-        `${ MediaType.MOVIE }/${ id }?append_to_response=credits,recommendations,external_ids`
+        `${ MediaType.MOVIE }/${ id }?append_to_response=credits,external_ids`
     );
 });
 

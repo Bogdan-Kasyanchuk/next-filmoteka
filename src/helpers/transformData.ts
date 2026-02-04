@@ -110,13 +110,7 @@ export const transformMovieDetails = (movie: MovieDetailsShema) => ({
         socialLinks: transformMovieOrTVShowExternalIds(movie.external_ids)
     },
     cast: movie.credits.cast.map(cast => transformCast(cast)),
-    crew: movie.credits.crew.map(crew => transformCrew(crew)),
-    recommendations: {
-        items: movie.recommendations.results.map(
-            movie => transformMovie(movie)
-        ),
-        totalPages: movie.recommendations.total_pages
-    }
+    crew: movie.credits.crew.map(crew => transformCrew(crew))
 }) as MovieDetailsMapper;
 
 export const transformCurrentMovie = (movie: CurrentMovieShema) => ({

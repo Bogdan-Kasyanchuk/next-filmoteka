@@ -12,12 +12,6 @@
     background-image: conic-gradient(from 90deg at 1px 1px, transparent 25%, rgba(34, 34, 34, 0.1) 0%);
     background-size: 0.5rem 0.5rem;
 
-    .p-movie-reviews & {
-        @variant min-md {
-            padding: 20px;
-        }
-    }
-
     &__avatar {
         position: relative;
 
@@ -71,16 +65,6 @@
 
         color: var(--color-secondary);
 
-        .p-movie-reviews & {
-            flex-direction: row;
-            flex-wrap: wrap;
-            column-gap: 40px;
-
-            @variant min-md {
-                padding-inline-start: 20px;
-            }
-        }
-
         &-name {
             display: flex;
             flex-direction: column;
@@ -90,10 +74,6 @@
 
             font-weight: 700;
             line-height: 1.2;
-
-            .p-movie-reviews & {
-                width: auto;
-            }
         }
 
         &-list {

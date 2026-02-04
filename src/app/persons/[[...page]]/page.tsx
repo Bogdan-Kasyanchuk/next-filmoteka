@@ -20,8 +20,8 @@ type Props = {
 export const metadata: Metadata = generateMetaTags(
     {
         title: 'Persons',
-        description: 'Actors of films and tv shows. Members of film crews of films and tv shows',
-        keywords: [ 'persons', 'actors', 'members of film crews' ],
+        description: 'Actors, film crew members of films and tv shows.',
+        keywords: [ 'persons', 'actors', 'film crew members' ],
         url: pagesPersonsUrl()
     }
 );
