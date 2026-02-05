@@ -5,8 +5,10 @@ import { useSuspenseInfiniteQuery } from '@tanstack/react-query';
 import MovieCard from '@/components/ui/cards/MovieCard';
 import Container from '@/components/ui/layouts/Container';
 import Title from '@/components/ui/typography/Title';
+import { MediaType } from '@/enums';
 import { transformMovie } from '@/helpers/transformData';
-import { getRecommendationsMovies } from '@/services/tmdbApi/movies';
+import { getRecommendations } from '@/services/tmdbApi/general';
+import { MovieShema } from '@/shemas';
 
 type Props = {
     id: string
@@ -20,8 +22,10 @@ export default function Recommendations(props: Props) {
         fetchNextPage,
         hasNextPage
     } = useSuspenseInfiniteQuery({
-        queryKey: [ 'movies', props.id, 'recommendations' ],
-        queryFn: ({ pageParam }) => getRecommendationsMovies(props.id, pageParam),
+        queryKey: [ 'recommendations', MediaType.MOVIE, props.id ],
+        queryFn: ({ pageParam }) => getRecommendations<MovieShema>(
+            MediaType.MOVIE, props.id, pageParam
+        ),
         initialPageParam: 1,
         getNextPageParam: lastPage => {
             const nextPage = lastPage.page + 1;
@@ -70,7 +74,7 @@ export default function Recommendations(props: Props) {
                     hasNextPage &&
                     <button
                         type="button"
-                        className="с-recommendations__show-all-button"
+                        className="с-recommendations__load-more-button"
                         disabled = { isFetchingNextPage }
                         onClick={
                             () => {

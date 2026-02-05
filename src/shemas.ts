@@ -160,7 +160,7 @@ export type MovieDetailsShema = {
     external_ids: ExternalIdShema
 };
 
-export type CurrentMovieShema = Omit<MovieDetailsShema, 'credits' | 'videos' | 'reviews' | 'recommendations'>;
+export type CurrentMovieShema = Omit<MovieDetailsShema, 'credits' | 'external_ids'>;
 
 export type TVShowShema = {
     adult: boolean,
@@ -219,11 +219,6 @@ export type TVShowDetailsShema = {
         cast: CastShema[],
         crew: CrewShema[]
     },
-    videos: {
-        results: VideoShema[]
-    },
-    reviews: DataShema<ReviewShema>,
-    recommendations: DataShema<TVShowShema>,
     external_ids: ExternalIdShema & {
         freebase_mid: string,
         freebase_id: string,
@@ -232,7 +227,7 @@ export type TVShowDetailsShema = {
     }
 };
 
-export type CurrentTVShowShema = Omit<TVShowDetailsShema, 'seasons' | 'credits' | 'videos' | 'reviews' | 'recommendations'>;
+export type CurrentTVShowShema = Omit<TVShowDetailsShema, 'seasons' | 'credits' | 'external_ids'>;
 
 export type TVShowSeasonDetailsShema = {
     _id: string,

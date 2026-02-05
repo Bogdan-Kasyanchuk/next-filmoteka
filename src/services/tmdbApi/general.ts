@@ -5,7 +5,9 @@ import {
     NetworkDetailsShema,
     PersonShema,
     ProductionCompanyDetailsShema,
-    TVShowShema
+    ReviewShema,
+    TVShowShema,
+    VideosShema
 } from '@/shemas';
 import { Adult } from '@/types';
 
@@ -26,6 +28,33 @@ export const getSearch = (
     return fetchApi<DataShema<MovieShema | TVShowShema | PersonShema>>(
         `search/${ type }?query=${ query }&page=${ page }&include_adult=${ adult }`
     );
+};
+
+export const getRecommendations = <T>(
+    type: MediaType.MOVIE | MediaType.TV_SHOW,
+    id: string,
+    page: number
+) => {
+    return fetchApi<DataShema<T>>(
+        `${ type }/${ id }/recommendations?page=${ page }`
+    );
+};
+
+export const getReviews = (
+    type: MediaType.MOVIE | MediaType.TV_SHOW,
+    id: string,
+    page: number
+) => {
+    return fetchApi<DataShema<ReviewShema>>(
+        `${ type }/${ id }/reviews?page=${ page }`
+    );
+};
+
+export const getVideos = async (
+    type: MediaType.MOVIE | MediaType.TV_SHOW,
+    id: string
+) => {
+    return fetchApi<VideosShema>(`${ type }/${ id }/videos`);
 };
 
 export const getNetworkById = (id: string) => {

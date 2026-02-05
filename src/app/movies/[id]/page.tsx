@@ -2,15 +2,16 @@ import { HydrationBoundary, QueryClient, dehydrate } from '@tanstack/react-query
 import { Metadata } from 'next';
 import { Suspense } from 'react';
 
+import Reviews from '@/components/app/Reviews';
+import Videos from '@/components/app/Videos';
 import Container from '@/components/ui/layouts/Container';
+import { MediaType } from '@/enums';
 import generateMetaTags from '@/helpers/generateMetaTags';
 import { pagesMovieUrl } from '@/routes';
 import { getMovieById } from '@/services/tmdbApi/movies';
 
 import Content from './components/Content';
 import Recommendations from './components/Recommendations';
-import Reviews from './components/Reviews';
-import Videos from './components/Videos';
 
 import './styles/index.css';
 
@@ -65,7 +66,10 @@ export default async function Page(props: Props) {
                     </Container> 
                 }
             >
-                <Videos id={ params.id } />
+                <Videos
+                    type={ MediaType.MOVIE }
+                    id={ params.id }
+                />
             </Suspense>
 
             <Suspense
@@ -85,7 +89,10 @@ export default async function Page(props: Props) {
                     </Container> 
                 }
             >
-                <Reviews id={ params.id } />
+                <Reviews
+                    type={ MediaType.MOVIE }
+                    id={ params.id }
+                />
             </Suspense>
         </div>
     );

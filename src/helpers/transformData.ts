@@ -1,4 +1,4 @@
-import { MediaType, VideoSiteType, VideoType } from '@/enums';
+import { MediaType } from '@/enums';
 import {
     facebookUrl,
     imdbUrl,
@@ -196,24 +196,7 @@ export const transformTVShowDetails = (tvShow: TVShowDetailsShema) => ({
     },
     seasons: tvShow.seasons.map(season => transformSeason(season)),
     cast: tvShow.credits.cast.map(cast => transformCast(cast)),
-    crew: tvShow.credits.crew.map(crew => transformCrew(crew)),
-    videos: tvShow.videos.results.filter(
-        video => {
-            if (video.site === VideoSiteType.YOUTUBE && video.type === VideoType.TRAILER) {
-                return transformVideo(video);
-            }
-        }
-    ),
-    reviews: {
-        items: tvShow.reviews.results.map(review => transformReview(review)),
-        totalPages: tvShow.reviews.total_pages
-    },
-    recommendations: {
-        items: tvShow.recommendations.results.map(
-            tvShow => transformTVShow(tvShow)
-        ),
-        totalPages: tvShow.recommendations.total_pages
-    }
+    crew: tvShow.credits.crew.map(crew => transformCrew(crew))
 }) as TVShowDetailsMapper;
 
 export const transformCurrentTVShow = (tvShow: CurrentTVShowShema) => ({

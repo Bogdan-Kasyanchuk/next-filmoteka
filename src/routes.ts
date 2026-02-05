@@ -26,10 +26,6 @@ export const pagesPersonUrl = (id: string) => `/persons/${ id }`;
 
 export const pagesSimilarUrl = (type: MediaType, id: string) => `/${ type === MediaType.MOVIE ? 'movies' : 'tv-shows' }/${ id }/similar`;
 
-export const recommendationsUrl = (type: MediaType, id: string) => `/${ type === MediaType.MOVIE ? 'movies' : 'tv-shows' }/${ id }/recommendations`;
-
-export const reviewsUrl = (type: MediaType, id: string) => `/${ type === MediaType.MOVIE ? 'movies' : 'tv-shows' }/${ id }/reviews`;
-
 // ---URLS----
 export const youtubeEmbedUrl = (id: string) => `${ URLS.YOUTUBE_EMBED }/${ id }`;
 

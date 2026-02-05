@@ -15,7 +15,7 @@
         @apply xxl:grid-cols-4;
     }
 
-    &__show-all-button {
+    &__load-more-button {
         display: block;
 
         width: fit-content;
