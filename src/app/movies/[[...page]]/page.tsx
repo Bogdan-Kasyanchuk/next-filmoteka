@@ -40,7 +40,13 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
         {
             title: `Movies | ${ normalizedType }`,
             description: 'Now playing, popular, top rated and upcoming movies',
-            keywords: [ 'now playing movies', 'popular movies', 'top rated movies', 'upcoming movies', 'movies' ],
+            keywords: [
+                'now playing movies',
+                'popular movies',
+                'top rated movies',
+                'upcoming movies',
+                'movies'
+            ],
             url: pagesMoviesUrl()
         }
     );

@@ -140,16 +140,7 @@ export type MovieDetailsMapper = {
         socialLinks: SocialLinkMapper[]
     },
     cast: CastMapper[],
-    crew: CrewMapper[],
-    videos: VideoMapper[],
-    reviews: {
-        items: ReviewMapper[],
-        totalPages: number
-    },
-    recommendations: {
-        items: MovieMapper[],
-        totalPages: number
-    }
+    crew: CrewMapper[]
 };
 
 export type CurrentMovieMapper = {
@@ -200,16 +191,7 @@ export type TVShowDetailsMapper = {
     },
     seasons: SeasonMapper[],
     cast: CastMapper[],
-    crew: CrewMapper[],
-    videos: VideoMapper[],
-    reviews: {
-        items: ReviewMapper[],
-        totalPages: number
-    },
-    recommendations: {
-        items: TVShowMapper[],
-        totalPages: number
-    }
+    crew: CrewMapper[]
 };
 
 export type CurrentTVShowMapper = {

@@ -94,10 +94,16 @@ export type DataShema<Type> = {
         maximum: string,
         minimum: string
     },
+    id?: number,
     page: number,
     results: Type[],
     total_pages: number,
     total_results: number
+};
+
+export type VideosShema = {
+    id: string,
+    results: VideoShema[]
 };
 
 export type MovieShema = {
@@ -151,15 +157,10 @@ export type MovieDetailsShema = {
         cast: CastShema[],
         crew: CrewShema[]
     },
-    videos: {
-        results: VideoShema[]
-    },
-    reviews: DataShema<ReviewShema>,
-    recommendations: DataShema<MovieShema>,
     external_ids: ExternalIdShema
 };
 
-export type CurrentMovieShema = Omit<MovieDetailsShema, 'credits' | 'videos' | 'reviews' | 'recommendations'>;
+export type CurrentMovieShema = Omit<MovieDetailsShema, 'credits' | 'external_ids'>;
 
 export type TVShowShema = {
     adult: boolean,
@@ -218,11 +219,6 @@ export type TVShowDetailsShema = {
         cast: CastShema[],
         crew: CrewShema[]
     },
-    videos: {
-        results: VideoShema[]
-    },
-    reviews: DataShema<ReviewShema>,
-    recommendations: DataShema<TVShowShema>,
     external_ids: ExternalIdShema & {
         freebase_mid: string,
         freebase_id: string,
@@ -231,7 +227,7 @@ export type TVShowDetailsShema = {
     }
 };
 
-export type CurrentTVShowShema = Omit<TVShowDetailsShema, 'seasons' | 'credits' | 'videos' | 'reviews' | 'recommendations'>;
+export type CurrentTVShowShema = Omit<TVShowDetailsShema, 'seasons' | 'credits' | 'external_ids'>;
 
 export type TVShowSeasonDetailsShema = {
     _id: string,

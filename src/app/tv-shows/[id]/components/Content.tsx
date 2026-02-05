@@ -5,17 +5,10 @@ import { notFound } from 'next/navigation';
 
 import Cast from '@/components/app/Cast';
 import Crew from '@/components/app/Crew';
-import Recommendations from '@/components/app/Recommendations';
-import Reviews from '@/components/app/Reviews';
-import Videos from '@/components/app/Videos';
-import TVShowCard from '@/components/ui/cards/TVShowCard';
 import Loader from '@/components/ui/data-display/Loader';
 import Container from '@/components/ui/layouts/Container';
-import { MediaType } from '@/enums';
 import { transformTVShowDetails } from '@/helpers/transformData';
-import { recommendationsUrl, reviewsUrl } from '@/routes';
 import { getTVShowById } from '@/services/tmdbApi/tvShows';
-import { TVShowMapper } from '@/types';
 
 import Seasons from './Seasons';
 import TVShowDetails from './TVShowDetails';
@@ -40,7 +33,7 @@ export default function Content(props: Props) {
     }
 
     return (
-        <div className="p-tv-show">
+        <>
             <TVShowDetails
                 tvShow={ data.tvShow }
                 id={ props.id }
@@ -64,29 +57,7 @@ export default function Content(props: Props) {
                     data.crew.length > 0 &&
                     <Crew crew={ data.crew } />
                 }
-
-                {
-                    data.videos.length > 0 &&
-                    <Videos videos={ data.videos } />
-                }
-
-                {
-                    data.recommendations.items.length > 0 &&
-                    <Recommendations<TVShowMapper>
-                        recommendations={ data.recommendations }
-                        item={ item => <TVShowCard tvShow={ item } /> }
-                        showAllPath={ recommendationsUrl(MediaType.TV_SHOW, props.id) }
-                    />
-                }
-
-                {
-                    data.reviews.items.length > 0 &&
-                    <Reviews
-                        reviews={ data.reviews }
-                        showAllPath={ reviewsUrl(MediaType.TV_SHOW, props.id) }
-                    />
-                }
             </Container>
-        </div>
+        </>
     );
 }

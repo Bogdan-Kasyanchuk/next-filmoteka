@@ -2,19 +2,19 @@
 
 import { useSuspenseInfiniteQuery } from '@tanstack/react-query';
 
-import ReviewCard from '@/components/ui/cards/ReviewCard';
+import MovieCard from '@/components/ui/cards/MovieCard';
 import Container from '@/components/ui/layouts/Container';
 import Title from '@/components/ui/typography/Title';
 import { MediaType } from '@/enums';
-import { transformReview } from '@/helpers/transformData';
-import { getReviews } from '@/services/tmdbApi/general';
+import { transformMovie } from '@/helpers/transformData';
+import { getRecommendations } from '@/services/tmdbApi/general';
+import { MovieShema } from '@/shemas';
 
 type Props = {
-    type: MediaType.MOVIE | MediaType.TV_SHOW,
     id: string
 };
 
-export default function Reviews(props: Props) {
+export default function Recommendations(props: Props) {
     const {
         data,
         isError,
@@ -22,8 +22,10 @@ export default function Reviews(props: Props) {
         fetchNextPage,
         hasNextPage
     } = useSuspenseInfiniteQuery({
-        queryKey: [ 'reviews', props.type, props.id ],
-        queryFn: ({ pageParam }) => getReviews(props.type, props.id, pageParam),
+        queryKey: [ 'recommendations', MediaType.MOVIE, props.id ],
+        queryFn: ({ pageParam }) => getRecommendations<MovieShema>(
+            MediaType.MOVIE, props.id, pageParam
+        ),
         initialPageParam: 1,
         getNextPageParam: lastPage => {
             const nextPage = lastPage.page + 1;
@@ -37,7 +39,7 @@ export default function Reviews(props: Props) {
                 return null;  
             }
 
-            return data.pages.flatMap(page => page.results.map(transformReview));
+            return data.pages.flatMap(page => page.results.map(transformMovie));
         }
     });
 
@@ -47,27 +49,21 @@ export default function Reviews(props: Props) {
 
     return (
         <Container className="xxl:max-w-[1440px]">
-            <div className="с-reviews">
+            <div className="с-recommendations">
                 <Title
                     order="h3"
                     variant={ 3 }
-                    className="с-reviews__title"
+                    className="с-recommendations__title"
                 >
-                Reviews
+                Recommendations
                 </Title>
 
-                <ul className="с-reviews__list">
+                <ul className="с-recommendations__list">
                     {
                         data.map(
-                            (item, index) => (
-                                <li
-                                    key={ index }
-                                    className="с-reviews__item"
-                                >
-                                    <ReviewCard
-                                        review={ item }
-                                        isTextTruncated
-                                    />
+                            item => (
+                                <li key={ item.id }>
+                                    <MovieCard movie={ item } />
                                 </li>
                             )
                         )
@@ -78,7 +74,7 @@ export default function Reviews(props: Props) {
                     hasNextPage &&
                     <button
                         type="button"
-                        className="с-reviews__load-more-button"
+                        className="с-recommendations__load-more-button"
                         disabled = { isFetchingNextPage }
                         onClick={
                             () => {

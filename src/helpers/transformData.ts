@@ -1,4 +1,4 @@
-import { MediaType, VideoSiteType, VideoType } from '@/enums';
+import { MediaType } from '@/enums';
 import {
     facebookUrl,
     imdbUrl,
@@ -110,24 +110,7 @@ export const transformMovieDetails = (movie: MovieDetailsShema) => ({
         socialLinks: transformMovieOrTVShowExternalIds(movie.external_ids)
     },
     cast: movie.credits.cast.map(cast => transformCast(cast)),
-    crew: movie.credits.crew.map(crew => transformCrew(crew)),
-    videos: movie.videos.results.filter(
-        video => {
-            if (video.site === VideoSiteType.YOUTUBE && (video.type === VideoType.TRAILER || video.type === VideoType.CLIP)) {
-                return transformVideo(video);
-            }
-        }
-    ),
-    reviews: {
-        items: movie.reviews.results.map(review => transformReview(review)),
-        totalPages: movie.reviews.total_pages
-    },
-    recommendations: {
-        items: movie.recommendations.results.map(
-            movie => transformMovie(movie)
-        ),
-        totalPages: movie.recommendations.total_pages
-    }
+    crew: movie.credits.crew.map(crew => transformCrew(crew))
 }) as MovieDetailsMapper;
 
 export const transformCurrentMovie = (movie: CurrentMovieShema) => ({
@@ -213,24 +196,7 @@ export const transformTVShowDetails = (tvShow: TVShowDetailsShema) => ({
     },
     seasons: tvShow.seasons.map(season => transformSeason(season)),
     cast: tvShow.credits.cast.map(cast => transformCast(cast)),
-    crew: tvShow.credits.crew.map(crew => transformCrew(crew)),
-    videos: tvShow.videos.results.filter(
-        video => {
-            if (video.site === VideoSiteType.YOUTUBE && video.type === VideoType.TRAILER) {
-                return transformVideo(video);
-            }
-        }
-    ),
-    reviews: {
-        items: tvShow.reviews.results.map(review => transformReview(review)),
-        totalPages: tvShow.reviews.total_pages
-    },
-    recommendations: {
-        items: tvShow.recommendations.results.map(
-            tvShow => transformTVShow(tvShow)
-        ),
-        totalPages: tvShow.recommendations.total_pages
-    }
+    crew: tvShow.credits.crew.map(crew => transformCrew(crew))
 }) as TVShowDetailsMapper;
 
 export const transformCurrentTVShow = (tvShow: CurrentTVShowShema) => ({
@@ -313,6 +279,13 @@ export const transformProductionCompanyDetails = (company: ProductionCompanyDeta
             : company.parent_company.name
 }) as ProductionCompanyDetailsMapper;
 
+export const transformVideo = (video: VideoShema) => ({
+    name: video.name,
+    key: video.key,
+    type: video.type,
+    published_at: video.published_at
+}) as VideoMapper;
+
 const transformSeason = (season: SeasonShema) => ({
     air_date: season.air_date,
     episode_count: season.episode_count,
@@ -349,13 +322,6 @@ const transformCrew = (crew: CrewShema) => ({
     profile_path: crew.profile_path,
     job: crew.job
 }) as CrewMapper;
-
-const transformVideo = (video: VideoShema) => ({
-    name: video.name,
-    key: video.key,
-    type: video.type,
-    published_at: video.published_at
-}) as VideoMapper;
 
 const transformMediaCast = (media: MediaCastShema) => ({
     id: media.id.toString(),
