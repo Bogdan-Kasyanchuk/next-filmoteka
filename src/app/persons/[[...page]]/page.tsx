@@ -8,6 +8,7 @@ import generateMetaTags from '@/helpers/generateMetaTags';
 import { pagesPersonsUrl } from '@/routes';
 import { getPersons } from '@/services/tmdbApi/persons';
 import isInvalidPage from '@/utils/isInvalidPage';
+import normalizePage from '@/utils/normalizePage';
 
 import Content from './components/Content';
 
@@ -29,7 +30,7 @@ export const metadata: Metadata = generateMetaTags(
 export default async function Page(props: Props) {
     const params = await props.params;
     
-    const page = params.page ? Number(params.page[ 1 ]) : 1;
+    const page = params.page ? normalizePage(params.page[ 1 ]) : 1;
 
     if (params.page && isInvalidPage( params.page[ 0 ], page)) {
         notFound();

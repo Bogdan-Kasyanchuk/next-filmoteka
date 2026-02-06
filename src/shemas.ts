@@ -28,14 +28,14 @@ type CollectionShema = {
     backdrop_path: string
 };
 
-type ProductionCompanyShema = {
+type CompanyShema = {
     id: number,
     logo_path: string,
     name: string,
     origin_country: string
 };
 
-type ProductionCountryShema = {
+type CountryShema = {
     iso_3166_1: string,
     name: string
 };
@@ -64,7 +64,7 @@ export type NetworkDetailsShema = {
     homepage: string
 };
 
-export type ProductionCompanyDetailsShema = {
+export type CompanyDetailsShema = {
     id: number,
     logo_path: string,
     name: string,
@@ -141,8 +141,8 @@ export type MovieDetailsShema = {
     overview: string,
     popularity: number,
     poster_path: string,
-    production_companies: ProductionCompanyShema[],
-    production_countries: ProductionCountryShema[],
+    production_companies: CompanyShema[],
+    production_countries: CountryShema[],
     release_date: string,
     revenue: number,
     runtime: number,
@@ -206,8 +206,8 @@ export type TVShowDetailsShema = {
     overview: string,
     popularity: number,
     poster_path: string,
-    production_companies: ProductionCompanyShema[],
-    production_countries: ProductionCountryShema[],
+    production_companies: CompanyShema[],
+    production_countries: CountryShema[],
     spoken_languages: SpokenLanguageShema[],
     status: string,
     tagline: string,

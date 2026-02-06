@@ -1,10 +1,10 @@
 import { MediaType, TimeType } from '@/enums';
 import {
+    CompanyDetailsShema,
     DataShema,
     MovieShema,
     NetworkDetailsShema,
     PersonShema,
-    ProductionCompanyDetailsShema,
     ReviewShema,
     TVShowShema,
     VideosShema
@@ -61,6 +61,6 @@ export const getNetworkById = (id: string) => {
     return fetchApi<NetworkDetailsShema>(`network/${ id }`);
 };
 
-export const getProductionCompanyById = (id: string) => {
-    return fetchApi<ProductionCompanyDetailsShema>(`company/${ id }` );
+export const getCompanyById = (id: string) => {
+    return fetchApi<CompanyDetailsShema>(`company/${ id }` );
 };

@@ -1,0 +1,1 @@
+export default (page: number | string) => Number(page);

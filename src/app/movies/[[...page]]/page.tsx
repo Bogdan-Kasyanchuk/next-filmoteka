@@ -9,6 +9,7 @@ import generateMetaTags from '@/helpers/generateMetaTags';
 import { pagesMoviesUrl } from '@/routes';
 import { getMovies } from '@/services/tmdbApi/movies';
 import isInvalidPage from '@/utils/isInvalidPage';
+import normalizePage from '@/utils/normalizePage';
 
 import Content from './components/Content';
 import Filter from './components/Filter';
@@ -57,7 +58,7 @@ export default async function Page(props: Props) {
     const searchParams = await props.searchParams;
 
     const type = searchParams.type || MovieType.NOW_PLAYING;
-    const page = params.page ? Number(params.page[ 1 ]) : 1;
+    const page = params.page ? normalizePage(params.page[ 1 ]) : 1;
 
     if (params.page && isInvalidPage( params.page[ 0 ], page)) {
         notFound();

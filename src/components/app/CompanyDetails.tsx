@@ -3,20 +3,20 @@
 import { useQuery } from '@tanstack/react-query';
 import { PropsWithChildren } from 'react';
 
-import ProductionCompanyDetailsCard from '@/components/ui/cards/ProductionCompanyDetailsCard';
-import { transformProductionCompanyDetails } from '@/helpers/transformData';
-import { getProductionCompanyById } from '@/services/tmdbApi/general';
+import CompanyDetailsCard from '@/components/ui/cards/CompanyDetailsCard';
+import { transformCompanyDetails } from '@/helpers/transformData';
+import { getCompanyById } from '@/services/tmdbApi/general';
 
 type Props = {
     id: string
 };
 
-export default function ProductionCompanyDetails(props: Props) {
+export default function CompanyDetails(props: Props) {
     const { data, isPending, isError } = useQuery({
-        queryKey: [ 'production-company', props.id ],
-        queryFn: () => getProductionCompanyById(props.id),
+        queryKey: [ 'company', props.id ],
+        queryFn: () => getCompanyById(props.id),
         select: data => {
-            const result = transformProductionCompanyDetails(data);
+            const result = transformCompanyDetails(data);
 
             if (Object.values(result).every(value => !value)) {
                 return undefined;
@@ -39,7 +39,7 @@ export default function ProductionCompanyDetails(props: Props) {
     }
 
     return (
-        <ProductionCompanyDetailsCard company={ data } />
+        <CompanyDetailsCard company={ data } />
     );
 }
 

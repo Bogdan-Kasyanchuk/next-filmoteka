@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Fragment } from 'react';
 
-import ProductionCompanyDetails from '@/components/app/ProductionCompanyDetails';
+import CompanyDetails from '@/components/app/CompanyDetails';
 import Popover from '@/components/ui/data-display/Popover';
 import SocialLinks from '@/components/ui/data-display/SocialLinks';
 import Container from '@/components/ui/layouts/Container';
@@ -391,9 +391,7 @@ export default function TVShowDetails(props: Props) {
                                                             }
                                                             isArrow
                                                         >
-                                                            <ProductionCompanyDetails
-                                                                id={ company.id }
-                                                            />
+                                                            <CompanyDetails id={ company.id } />
                                                         </Popover>
                                                     </div>
                                                             

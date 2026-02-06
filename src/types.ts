@@ -5,7 +5,7 @@ type SpokenLanguage = {
     name: string
 };
 
-type ProductionCompany = {
+type Company = {
     id: string,
     logo_path: string,
     name: string,
@@ -25,7 +25,7 @@ type Creator = {
     profile_path: string
 };
 
-export type ProductionCompanyDetailsMapper = {
+export type CompanyDetailsMapper = {
     description: string,
     headquarters: string,
     homepage: string,
@@ -135,7 +135,7 @@ export type MovieDetailsMapper = {
         runtime: number,
         genres: string[],
         origin_country: string[],
-        production_companies: ProductionCompany[],
+        production_companies: Company[],
         spoken_languages: SpokenLanguage[],
         socialLinks: SocialLinkMapper[]
     },
@@ -183,7 +183,7 @@ export type TVShowDetailsMapper = {
         poster_path: string,
         genres: string[],
         origin_country: string[],
-        production_companies: ProductionCompany[],
+        production_companies: Company[],
         spoken_languages: SpokenLanguage[],
         created_by: Creator[],
         networks: Network[],

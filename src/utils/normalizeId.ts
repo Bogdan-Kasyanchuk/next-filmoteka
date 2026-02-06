@@ -1,0 +1,1 @@
+export default (id: number | string) => id.toString();

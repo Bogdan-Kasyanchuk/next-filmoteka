@@ -5,7 +5,7 @@
 @import '@/styles/components/videos.css';
 @import '@/styles/components/recommendations.css';
 @import '@/styles/components/reviews.css';
-@import '@/styles/components/cards/production-company-details-card.css';
+@import '@/styles/components/cards/company-details-card.css';
 @import '@/styles/components/cards/network-details-card.css';
 @import '@/styles/components/cards/cast-card.css';
 @import '@/styles/components/cards/crew-card.css';

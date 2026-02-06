@@ -15,6 +15,7 @@ import {
 import { getMovies } from '@/services/tmdbApi/movies';
 import { getPersons } from '@/services/tmdbApi/persons';
 import { getTVShows } from '@/services/tmdbApi/tvShows';
+import normalizeId from '@/utils/normalizeId';
 
 export const revalidate = 86400;
 
@@ -57,21 +58,21 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ];
 
     const moviePages = movies.results.map(movie => ({
-        url: `${ URLS.SITE }${ pagesMovieUrl(movie.id.toString()) }`,
+        url: `${ URLS.SITE }${ pagesMovieUrl(normalizeId(movie.id)) }`,
         lastModified: movie.release_date ? new Date(movie.release_date) : undefined,
         changeFrequency: 'weekly',
         priority: 0.7
     })) as MetadataRoute.Sitemap;
 
     const tvshowPages = tvshows.results.map(tvshow => ({
-        url: `${ URLS.SITE }${ pagesTVShowUrl(tvshow.id.toString()) }`,
+        url: `${ URLS.SITE }${ pagesTVShowUrl(normalizeId(tvshow.id)) }`,
         lastModified: tvshow.first_air_date ? new Date(tvshow.first_air_date) : undefined,
         changeFrequency: 'weekly',
         priority: 0.7
     })) as MetadataRoute.Sitemap;
 
     const personPages = persons.results.map(person => ({
-        url: `${ URLS.SITE }${ pagesPersonUrl(person.id.toString()) }`,
+        url: `${ URLS.SITE }${ pagesPersonUrl(normalizeId(person.id)) }`,
         changeFrequency: 'monthly',
         priority: 0.6
     })) as MetadataRoute.Sitemap;

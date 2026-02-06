@@ -9,6 +9,7 @@ import { pagesSearchUrl } from '@/routes';
 import { getSearch } from '@/services/tmdbApi/general';
 import { Adult } from '@/types';
 import isInvalidPage from '@/utils/isInvalidPage';
+import normalizePage from '@/utils/normalizePage';
 
 import Content from './components/Content';
 import Filter from './components/Filter';
@@ -43,7 +44,7 @@ export default async function Page(props: Props) {
     const type = searchParams.type || 'multi';
     const adult = searchParams.adult || 'false';
     const query = searchParams.query || '';
-    const page = params.page ? Number(params.page[ 1 ]) : 1;
+    const page = params.page ? normalizePage(params.page[ 1 ]) : 1;
 
     if (params.page && isInvalidPage( params.page[ 0 ], page)) {
         notFound();

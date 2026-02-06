@@ -9,6 +9,7 @@ import generateMetaTags from '@/helpers/generateMetaTags';
 import { pagesTrendingDayUrl } from '@/routes';
 import { getTrendings } from '@/services/tmdbApi/general';
 import isInvalidPage from '@/utils/isInvalidPage';
+import normalizePage from '@/utils/normalizePage';
 
 import Content from './components/Content';
 import Filter from '../../components/Filter';
@@ -50,7 +51,7 @@ export default async function Page(props: Props) {
     const searchParams = await props.searchParams;
 
     const type = searchParams.type || 'all';
-    const page = params.page ? Number(params.page[ 1 ]) : 1;
+    const page = params.page ? normalizePage(params.page[ 1 ]) : 1;
 
     if (params.page && isInvalidPage( params.page[ 0 ], page)) {
         notFound();
