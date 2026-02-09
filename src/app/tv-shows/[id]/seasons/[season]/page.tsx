@@ -26,8 +26,12 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
     return generateMetaTags(
         {
             title: `${ title } | Season ${ params.season }`,
-            description: `${ title }. Season ${ params.season }. Details, episodes. Details of episodes.`,
-            keywords: [ title, `season of ${ title }`, `episodes of ${ title }` ],
+            description: `Detailed information about the season ${ params.season } of the tv show ${ title }.  Its overview, episodes.`,
+            keywords: [
+                title,
+                `season ${ params.season } of the ${ title }`,
+                `episodes of season ${ params.season } of the ${ title }`
+            ],
             url: pagesSeasonUrl(params.id, Number(params.season))
         }
     );

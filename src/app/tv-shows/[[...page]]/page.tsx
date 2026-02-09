@@ -40,8 +40,14 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
     return generateMetaTags(
         {
             title: `TV Shows | ${ normalizedType }`,
-            description: 'Airing today, on the air, popular and top rated tv shows',
-            keywords: [ 'airing today tv shows', 'on the air tv shows', 'popular tv shows', 'top rated tv shows', 'tv shows' ],
+            description: 'Airing today, on the air, popular and top rated tv shows.',
+            keywords: [
+                'airing today tv shows',
+                'on the air tv shows',
+                'popular tv shows',
+                'top rated tv shows',
+                'tv shows'
+            ],
             url: pagesTVShowsUrl()
         }
     );

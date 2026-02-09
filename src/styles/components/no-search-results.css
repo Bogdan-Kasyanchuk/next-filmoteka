@@ -1,11 +1,25 @@
 .c-no-search-results {
-    @apply text-primary grow gap-5 flex flex-col items-center justify-center text-9xl text-center leading-[1.2];
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+
+    font-size: var(--text-9xl);
+    line-height: 1.2;
+    color: var(--color-primary);
+    text-align: center;
 
     &__title {
-        @apply text-5xl font-bold uppercase mt-5;
+        margin-top: 20px;
+        font-size: var(--text-5xl);
+        font-weight: 700;
+        text-transform: uppercase;
     }
 
     &__text {
-        @apply text-md opacity-75;
+        font-size: var(--text-md);
+        opacity: 0.75;
     }
 }

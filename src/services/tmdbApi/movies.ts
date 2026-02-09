@@ -21,10 +21,9 @@ export const getMovieById = cache((id: string) => {
     );
 });
 
-export const getCurrentMovieById = cache(
-    (id: string) => {
-        return fetchApi<CurrentMovieShema>(`${ MediaType.MOVIE }/${ id }`);
-    });
+export const getCurrentMovieById = cache((id: string) => {
+    return fetchApi<CurrentMovieShema>(`${ MediaType.MOVIE }/${ id }`);
+});
 
 export const getSimilarMovies = (id: string, page: number) => {
     return fetchApi<DataShema<SimilarMovieShema>>(

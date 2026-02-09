@@ -1,6 +1,13 @@
 .с-crew {
-    @apply pt-[30px] border-t border-t-primary/75 -mx-2.5 px-2.5;
-    @apply xxxl:-mx-5 xxxl:px-5;
+    margin-inline: -10px;
+    padding-top: 30px;
+    padding-inline: 10px;
+    border-top: 1px solid color-mix(in oklab, var(--color-primary) 75%, transparent);
+
+    @variant min-xxxl {
+        margin-inline: -20px;
+        padding-inline: 20px;
+    }
 
     &__title {
         margin-top: -6px;
@@ -46,22 +53,41 @@
     &__arrow {
         --icon-size: 20px;
 
+        position: absolute;
+        z-index: 1;
+        top: 50%;
+        transform: translate(50%);
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+
+        color: var(--color-secondary);
+
+        background-color: color-mix(in oklab, var(--color-white) 25%, transparent);
+        backdrop-filter: blur(24px);
+
         transition-property: background-color, box-shadow, opacity, color;
 
         &:disabled {
-            @apply opacity-20 pointer-events-none;
+            pointer-events: none;
+            opacity: 0.2;
         }
 
         &--prev {
-            @apply -start-[18px];
+            inset-inline-start: -18px;
 
             i {
-                @apply rotate-180;
+                transform: rotate(180deg);
             }
         }
 
         &--next {
-            @apply -end-[18px];
+            inset-inline-end: -18px;
         }
 
         @media (any-hover: hover) {
@@ -71,7 +97,5 @@
                 box-shadow: var(--shadow-custom-accent);
             }
         }
-
-        @apply absolute bg-white/25 backdrop-blur-xl z-1 size-9 flex items-center justify-center top-1/2 -translate-y-1/2 rounded-full text-secondary;
     }
 }

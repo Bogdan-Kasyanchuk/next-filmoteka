@@ -20,8 +20,8 @@ import './styles/index.css';
 export const metadata: Metadata = generateMetaTags(
     {
         title: 'Search',
-        description: 'Movies, series, tv shows, actors and members of film crews',
-        keywords: [ 'movies', 'series', 'tv shows', 'persons', 'actors', 'members of film crews' ],
+        description: 'Search movies, tv shows, actors and film crew members of films and tv shows.',
+        keywords: [ 'search', 'movies', 'tv shows', 'persons', 'actors', 'film crew members' ],
         url: pagesSearchUrl(),
         index: false,
         follow: false

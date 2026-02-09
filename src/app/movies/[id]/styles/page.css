@@ -7,8 +7,13 @@
     padding-bottom: 40px;
 
     &__container {
-        @apply flex flex-col gap-y-[30px];
-        @apply xxl:max-w-[1440px];
+        display: flex;
+        flex-direction: column;
+        row-gap: 30px;
+
+        @variant min-xxl {
+            max-width: 1440px;
+        }
     }
 
     &__details {
@@ -117,18 +122,22 @@
             inset-inline: 20px;
 
             padding: 10px;
+            border: 1px solid color-mix(in oklab, var(--color-primary) 75%, transparent);
             border-radius: 4px;
-
-            @apply bg-secondary/75 border-2 border-primary/75 transition-colors;
 
             font-size: var(--text-lg);
             font-weight: 700;
             text-align: center;
             text-transform: uppercase;
 
+            background-color: color-mix(in oklab, var(--color-secondary) 75%, transparent);
+
+            transition-property: color, background-color;
+
             @media (any-hover: hover) {
                 &:hover {
-                    @apply bg-primary/75 text-secondary;
+                    color: var(--color-secondary);
+                    background-color: color-mix(in oklab, var(--color-primary) 75%, transparent);
                 }
             }
         }
@@ -292,8 +301,17 @@
         }
 
         &-content {
-            @apply mt-[30px] text-primary bg-secondary/75 rounded-sm py-5;
-            @apply xxl:max-w-[1440px];
+            margin-top: 30px;
+            padding-block: 20px;
+            border-radius: 4px;
+
+            color: var(--color-primary);
+
+            background-color: color-mix(in oklab, var(--color-secondary) 75%, transparent);
+
+            @variant min-xxl {
+                max-width: 1440px;
+            }
         }
 
         &-companies {

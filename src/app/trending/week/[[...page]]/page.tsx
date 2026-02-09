@@ -39,8 +39,16 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
     return generateMetaTags(
         {
             title: `Trending this week | ${ normalizedType }`,
-            description: 'Trending this week movies, series, tv shows, actors and members of film crews',
-            keywords: [ 'trending', 'trending this week', 'movies', 'series', 'tv shows', 'persons', 'actors', 'members of film crews' ],
+            description: 'Trending this week movies, tv shows, actors and film crew members of films and tv shows.',
+            keywords: [
+                'trending',
+                'trending this week', 
+                'movies',
+                'tv shows',
+                'persons',
+                'actors',
+                'film crew members'
+            ],
             url: pagesTrendingWeekUrl()
         }
     );

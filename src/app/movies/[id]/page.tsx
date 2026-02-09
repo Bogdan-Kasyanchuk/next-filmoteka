@@ -29,7 +29,7 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
     return generateMetaTags(
         {
             title,
-            description: `Detailed information about the movie ${ title }. Its overview, cast, crew, videos, reviews. Recommended movies`,
+            description: `Detailed information about the movie ${ title }. Its overview, cast, crew, videos, reviews. Recommended movies.`,
             keywords: [
                 title,
                 `cast of ${ title }`,

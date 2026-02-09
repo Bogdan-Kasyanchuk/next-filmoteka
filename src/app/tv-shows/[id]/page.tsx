@@ -29,8 +29,16 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
     return generateMetaTags(
         {
             title,
-            description: `${ title }. Details, overview, creators, networks, cast, crew, seasons, recommendations and reviews.`,
-            keywords: [ title, `cast of ${ title }`, `crew of ${ title }`, `seasons of ${ title }`, `reviews of ${ title }` ],
+            description: `Detailed information about the tv show ${ title }. Its overview, cast, crew, seasons, videos, reviews. Recommended tv shows.`,
+            keywords: [
+                title,
+                `cast of ${ title }`,
+                `crew of ${ title }`,
+                `seasons of ${ title }`,
+                `videos of ${ title }`,
+                `reviews of ${ title }`,
+                `recommended of ${ title }`
+            ],
             url: pagesTVShowUrl(params.id)
         }
     );

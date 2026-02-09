@@ -13,8 +13,17 @@ import './styles/index.css';
 export const metadata: Metadata = generateMetaTags(
     {
         title: 'Home',
-        description: 'Trending movies, series, tv shows, actors and members of film crews',
-        keywords: [ 'trending', 'trending today', 'trending this week', 'movies', 'series', 'tv shows', 'persons', 'actors', 'members of film crews' ],
+        description: 'Trending movies, series, tv shows, actors and members of film crews.',
+        keywords: [
+            'trending',
+            'trending today',
+            'trending this week',
+            'movies',
+            'tv shows',
+            'persons',
+            'actors',
+            'film crew members'
+        ],
         url: pagesHomeUrl()
     }
 );

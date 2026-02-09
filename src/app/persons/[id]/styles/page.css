@@ -5,8 +5,13 @@
     padding-bottom: 40px;
 
     &__container {
-        @apply flex flex-col gap-y-[30px];
-        @apply xxl:max-w-[1440px];
+        display: flex;
+        flex-direction: column;
+        row-gap: 30px;
+
+        @variant min-xxl {
+            max-width: 1440px;
+        }
     }
 
     &__details {
@@ -205,24 +210,57 @@
         }
 
         &-list {
-            @apply mt-5 grid grid-cols-2 gap-2.5;
-            @apply sm:grid-cols-3;
-            @apply md:grid-cols-4;
-            @apply lg:grid-cols-6;
-            @apply xl:grid-cols-8;
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 10px;
+            margin-top: 20px;
+
+            @variant min-sm {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+
+            @variant min-md {
+                grid-template-columns: repeat(4, minmax(0, 1fr));
+            }
+
+            @variant min-lg {
+                grid-template-columns: repeat(6, minmax(0, 1fr));
+            }
+
+            @variant min-xl {
+                grid-template-columns: repeat(8, minmax(0, 1fr));
+            }
         }
     }
 
     &__timeline {
-        @apply pt-[30px] border-t border-t-primary/75 -mx-2.5 px-2.5;
-        @apply xxxl:-mx-5 xxxl:px-5;
+        margin-inline: -10px;
+        padding-top: 30px;
+        padding-inline: 10px;
+        border-top: 1px solid color-mix(in oklab, var(--color-primary) 75%, transparent);
+
+        @variant min-xxxl {
+            margin-inline: -20px;
+            padding-inline: 20px;
+        }
 
         &-title {
-            @apply max-w-[984px] mx-auto -mt-1 font-bold uppercase;
+            max-width: 984px;
+            margin-top: -4px;
+            margin-inline: auto;
+
+            font-weight: 700;
+            text-transform: uppercase;
         }
 
         &-list {
-            @apply max-w-[984px] mx-auto flex flex-col gap-5 mt-5;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+
+            max-width: 984px;
+            margin-top: 20px;
+            margin-inline: auto;
         }
 
         &-item {

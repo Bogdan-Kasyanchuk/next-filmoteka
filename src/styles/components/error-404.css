@@ -1,16 +1,33 @@
 .c-error-404 {
-    @apply flex flex-col items-center justify-center gap-5 text-primary;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+
+    color: var(--color-primary);
 
     &__title {
-        @apply text-[128px] font-bold uppercase leading-none;
+        font-size: 128px;
+        font-weight: 700;
+        line-height: 1;
+        text-transform: uppercase;
     }
 
     &__subtitle {
-        @apply text-5xl font-bold text-center mt-5 leading-[1.2];
+        margin-top: 20px;
+
+        font-size: var(--text-5xs);
+        font-weight: 700;
+        line-height: 1.2;
+        text-align: center;
     }
 
     &__text {
-        @apply text-md opacity-75 text-center leading-[1.2];
+        font-size: var(--text-md);
+        line-height: 1.2;
+        text-align: center;
+        opacity: 0.75;
     }
 
     &__button {
