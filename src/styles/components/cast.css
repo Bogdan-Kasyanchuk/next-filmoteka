@@ -51,7 +51,6 @@
         position: absolute;
         z-index: 1;
         top: 50%;
-        transform: translate(50%);
 
         display: flex;
         align-items: center;
@@ -74,7 +73,8 @@
         }
 
         &--prev {
-            inset-inline-start: -18px;
+            inset-inline-start: 0;
+            transform: translate(-50%, -50%);
 
             i {
                 transform: rotate(180deg);
@@ -82,7 +82,8 @@
         }
 
         &--next {
-            inset-inline-end: -18px;
+            inset-inline-end: 0;
+            transform: translate(50%, -50%);
         }
 
         @media (any-hover: hover) {
