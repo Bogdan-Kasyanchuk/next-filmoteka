@@ -12,19 +12,19 @@
     }
 
     &--small {
-        @variant min-md {
+        @media (--min-md) {
             max-width: var(--breakpoint-md);
         }
     }
 
     &--medium {
-        @variant min-lg {
+        @media (--min-lg) {
             max-width: var(--breakpoint-lg);
         }
     }
 
     &--large {
-        @variant min-xl {
+        @media (--min-xl) {
             max-width: var(--breakpoint-xl);
         }
     }

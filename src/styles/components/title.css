@@ -5,11 +5,11 @@
     &--2 {
         font-size: var(--text-3xl);
 
-        @variant min-md {
+        @media (--min-md) {
             font-size: var(--text-6xl);
         }
 
-        @variant min-xl {
+        @media (--min-xl) {
             font-size: var(--text-9xl);
         }
     }
@@ -17,11 +17,11 @@
     &--3 {
         font-size: var(--text-xl);
 
-        @variant min-md {
+        @media (--min-md) {
             font-size: var(--text-4xl);
         }
 
-        @variant min-xl {
+        @media (--min-xl) {
             font-size: var(--text-7xl);
         }
     }
@@ -29,11 +29,11 @@
     &--4 {
         font-size: var(--text-md);
 
-        @variant min-md {
+        @media (--min-md) {
             font-size: var(--text-2xl);
         }
 
-        @variant min-xl {
+        @media (--min-xl) {
             font-size: var(--text-5xl);
         }
     }

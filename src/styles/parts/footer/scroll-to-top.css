@@ -20,12 +20,12 @@
 
     transition-property: background-color, box-shadow, color;
 
-    @variant min-lg {
-        bottom: 84px;
-    }
-
     i {
         rotate: -90deg;
+    }
+
+    @media (--min-lg) {
+        bottom: 84px;
     }
 
     @media (any-hover: hover) {

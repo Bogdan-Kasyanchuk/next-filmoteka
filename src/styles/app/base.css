@@ -2,6 +2,9 @@
 @import 'tailwindcss';
 @import '@/styles/theme/base.css';
 
+/* Media */
+@import '@/styles/media.css';
+
 /* Base */
 @import '@/styles/base/reset.css' layer(base);
 

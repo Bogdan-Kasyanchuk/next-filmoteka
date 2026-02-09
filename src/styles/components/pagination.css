@@ -7,7 +7,7 @@
         column-gap: 8px;
         align-items: center;
 
-        @variant min-md {
+        @media (--min-md) {
             column-gap: 10px;
         }
     }
@@ -66,7 +66,7 @@
             }
         }
 
-        @variant min-md {
+        @media (--min-md) {
             min-width: 40px;
             height: 40px;
         }

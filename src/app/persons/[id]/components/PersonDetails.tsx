@@ -62,6 +62,7 @@ export default function PersonDetails(props: Props) {
                                 href={ props.person.homepage }
                                 rel="noopener noreferrer"
                                 target="_blank"
+                                className="truncate u-link-color"
                             >
                                 { props.person.homepage }
                             </a>

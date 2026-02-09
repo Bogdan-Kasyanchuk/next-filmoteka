@@ -18,6 +18,7 @@ export default function CompanyDetailsCard(props: Props) {
                             href={ props.company.homepage }
                             rel="noopener noreferrer"
                             target="_blank"
+                            className="truncate u-link-color"
                         >
                             { props.company.homepage }
                         </a>

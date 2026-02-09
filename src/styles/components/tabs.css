@@ -5,14 +5,6 @@
     align-items: center;
     justify-content: center;
 
-    @variant min-md {
-        gap: 15px
-    }
-
-    @variant min-lg {
-        gap: 20px
-    }
-
     &__item {
         cursor: pointer;
 
@@ -32,20 +24,15 @@
 
         transition-property: color, background-color, box-shadow;
 
-        @variant min-sm {
-            padding: 6px 12px;
-            font-size: var(--text-sm);
-        }
-
-        @variant min-md {
-            padding: 9px 18px;
-            font-size: var(--text-lg);
-        }
-
         &--is-active {
             pointer-events: none;
             color: var(--color-secondary);
             background-color: var(--color-active);
+        }
+
+        @media (--min-sm) {
+            padding: 6px 12px;
+            font-size: var(--text-sm);
         }
 
         @media (any-hover: hover) {
@@ -54,5 +41,18 @@
                 box-shadow: var(--shadow-custom-accent);
             }
         }
+
+        @media (--min-md) {
+            padding: 9px 18px;
+            font-size: var(--text-lg);
+        }
+    }
+
+    @media (--min-md) {
+        gap: 15px
+    }
+
+    @media (--min-lg) {
+        gap: 20px
     }
 }

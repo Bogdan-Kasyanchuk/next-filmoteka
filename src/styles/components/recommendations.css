@@ -4,11 +4,6 @@
     padding-inline: 10px;
     border-top: 1px solid color-mix(in oklab, var(--color-primary) 75%, transparent);
 
-    @variant min-xxxl {
-        margin-inline: -20px;
-        padding-inline: 20px;
-    }
-
     &__title {
         margin-top: -6px;
         font-weight: 700;
@@ -25,28 +20,28 @@
         margin-top: 20px;
         margin-inline: -10px;
 
-        @variant min-sm {
+        @media (--min-sm) {
             grid-gap: 10px;
             grid-template-columns: repeat(auto-fill, 215px);
             width: 100%;
             margin-inline: 0;
         }
 
-        @variant min-md {
+        @media (--min-md) {
             grid-gap: 15px;
             grid-template-columns: repeat(auto-fill, 232px);
         }
 
-        @variant min-lg {
+        @media (--min-lg) {
             grid-gap: 20px;
             grid-template-columns: repeat(auto-fill, 231px);
         }
 
-        @variant min-xl {
+        @media (--min-xl) {
             grid-template-columns: repeat(auto-fill, 240px);
         }
 
-        @variant min-xxl {
+        @media (--min-xxl) {
             grid-template-columns: repeat(auto-fill, 264px);
         }
     }
@@ -81,5 +76,10 @@
                 opacity: 0.75;
             }
         }
+    }
+
+    @media (--min-xxxl) {
+        margin-inline: -20px;
+        padding-inline: 20px;
     }
 }

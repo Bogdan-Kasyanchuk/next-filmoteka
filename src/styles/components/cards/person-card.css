@@ -29,11 +29,6 @@
         line-height: 1;
         text-transform: uppercase;
 
-        @variant min-md {
-            padding: 5px;
-            font-size: var(--text-xs);
-        }
-
         &--type {
             border-color: var(--color-secondary);
             color: var(--color-secondary);
@@ -62,11 +57,16 @@
                 top: -2px;
                 font-size: 9px;
 
-                @variant min-md {
+                @media (--min-md) {
                     top: -3px;
                     font-size: var(--text-3xs);
                 }
             }
+        }
+
+        @media (--min-md) {
+            padding: 5px;
+            font-size: var(--text-xs);
         }
     }
 
@@ -93,10 +93,6 @@
 
         background: linear-gradient(-90deg, var(--color-secondary) 50%, var(--color-accent) 100%);
 
-        @variant min-md {
-            height: 54px;
-        }
-
         &-name {
             overflow: hidden;
 
@@ -105,7 +101,7 @@
             text-overflow: ellipsis;
             white-space: nowrap;
 
-            @variant min-md {
+            @media (--min-md) {
                 font-size: var(--text-md);
             }
         }
@@ -120,9 +116,13 @@
 
             opacity: 0.75;
 
-            @variant min-md {
+            @media (--min-md) {
                 font-size: var(--text-sm);
             }
+        }
+
+        @media (--min-md) {
+            height: 54px;
         }
     }
 

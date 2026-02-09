@@ -8,6 +8,8 @@ import { URLS } from '@/datasets/constants';
 
 import Providers from './providers';
 
+import '@/styles/app/base.css';
+
 const font = Plus_Jakarta_Sans({ subsets: [ 'latin' ] });
 
 export const metadata: Metadata = {

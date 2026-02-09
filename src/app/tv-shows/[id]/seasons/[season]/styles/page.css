@@ -20,15 +20,6 @@
         background-image: conic-gradient(from 90deg at 1px 1px, transparent 25%, rgba(255, 255, 255, 0.1) 0%);
         background-size: 0.5rem 0.5rem;
 
-        @variant min-sm {
-            width: 100%;
-            margin-inline: 0;
-        }
-
-        @variant min-lg {
-            flex-direction: row;
-        }
-
         &-inner {
             display: flex;
             flex-grow: 1;
@@ -44,16 +35,16 @@
             aspect-ratio: 2/3;
             width: 62px;
 
-            @variant min-md {
+            img {
+                object-fit: cover;
+            }
+
+            @media (--min-md) {
                 width: 75px;
             }
 
-            @variant min-xl {
+            @media (--min-xl) {
                 width: 86px;
-            }
-
-            img {
-                object-fit: cover;
             }
         }
 
@@ -69,12 +60,12 @@
 
             color: var(--color-primary);
 
-            @variant min-md {
+            @media (--min-md) {
                 gap: 8px;
                 padding-inline-end: 20px;
             }
 
-            @variant min-xl {
+            @media (--min-xl) {
                 gap: 10px;
             }
         }
@@ -102,11 +93,11 @@
             text-overflow: ellipsis;
             white-space: nowrap;
 
-            @variant min-md {
+            @media (--min-md) {
                 font-size: var(--text-lg);
             }
 
-            @variant min-xl {
+            @media (--min-xl) {
                 font-size: var(--text-2xl);
             }
         }
@@ -151,15 +142,6 @@
             font-size: var(--text-xs);
             line-height: 1.4;
 
-            @variant min-md {
-                padding-inline: 20px;
-                font-size: var(--text-sm);
-            }
-
-            @variant min-lg {
-                width: 50%;
-            }
-
             &-text {
                 opacity: 0.75;
             }
@@ -167,9 +149,25 @@
             & a[data-testid='more-button'],
             & a[data-testid='less-button'] {
                 font-weight: 700;
-
-                @apply u-link-color;
             }
+
+            @media (--min-md) {
+                padding-inline: 20px;
+                font-size: var(--text-sm);
+            }
+
+            @media (--min-lg) {
+                width: 50%;
+            }
+        }
+
+        @media (--min-sm) {
+            width: 100%;
+            margin-inline: 0;
+        }
+
+        @media (--min-lg) {
+            flex-direction: row;
         }
     }
 
@@ -182,37 +180,37 @@
         width: calc(100% + 20px);
         margin-inline: -10px;
 
-        @variant min-sm {
+        @media (--min-sm) {
             grid-gap: 10px;
             grid-template-columns: repeat(auto-fill, 215px);
             width: 100%;
             margin-inline: 0;
         }
 
-        @variant min-md {
+        @media (--min-md) {
             grid-gap: 15px;
             grid-template-columns: repeat(auto-fill, 232px);
         }
 
-        @variant min-lg {
+        @media (--min-lg) {
             grid-gap: 20px;
             grid-template-columns: repeat(auto-fill, 231px);
         }
 
-        @variant min-xl {
+        @media (--min-xl) {
             grid-template-columns: repeat(auto-fill, 240px);
         }
 
-        @variant min-xxl {
+        @media (--min-xxl) {
             grid-template-columns: repeat(auto-fill, 216px);
         }
 
-        @variant min-xxxl {
+        @media (--min-xxxl) {
             grid-template-columns: repeat(auto-fill, 243px);
         }
     }
 
-    @variant min-md {
+    @media (--min-md) {
         row-gap: 30px;
     }
 }

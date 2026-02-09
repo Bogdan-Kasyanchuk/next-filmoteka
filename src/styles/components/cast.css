@@ -4,11 +4,6 @@
     padding-inline: 10px;
     border-top: 1px solid color-mix(in oklab, var(--color-primary) 75%, transparent);
 
-    @variant min-xxxl {
-        margin-inline: -20px;
-        padding-inline: 20px;
-    }
-
     &__title {
         margin-top: -6px;
         font-weight: 700;
@@ -25,27 +20,27 @@
 
         width: calc((100% / 2) - var(--swiper-col-gap) * 1 / 2);
 
-        @variant min-sm {
+        @media (--min-sm) {
             width: calc((100% / 3) - var(--swiper-col-gap) * 2 / 3);
         }
 
-        @variant min-md {
+        @media (--min-md) {
             --swiper-col-gap: 15px;
 
             width: calc((100% / 5) - var(--swiper-col-gap) * 4 / 5);
         }
 
-        @variant min-lg {
+        @media (--min-lg) {
             --swiper-col-gap: 20px;
 
             width: calc((100% / 6) - var(--swiper-col-gap) * 5 / 6);
         }
 
-        @variant min-xl {
+        @media (--min-xl) {
             width: calc((100% / 8) - var(--swiper-col-gap) * 7 / 8);
         }
 
-        @variant min-xxl {
+        @media (--min-xxl) {
             width: calc((100% / 9) - var(--swiper-col-gap) * 8 / 9);
         }
     }
@@ -97,5 +92,10 @@
                 box-shadow: var(--shadow-custom-accent);
             }
         }
+    }
+
+    @media (--min-xxxl) {
+        margin-inline: -20px;
+        padding-inline: 20px;
     }
 }

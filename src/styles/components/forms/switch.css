@@ -17,7 +17,7 @@
     --f-switch-icon-bg: var(--color-primary);
     --f-switch-icon-color: var(--color-primary);
 
-    @variant min-sm {
+    @media (--min-sm) {
         --f-switch-height: 30px;
         --f-switch-width: 60px;
         --f-switch-gap: 8px;
@@ -28,7 +28,7 @@
         --f-switch-icon-left: 4px;
     }
 
-    @variant min-md {
+    @media (--min-md) {
         --f-switch-height: 40px;
         --f-switch-width: 80px;
         --f-switch-gap: 12px;

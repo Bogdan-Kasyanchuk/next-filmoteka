@@ -29,7 +29,7 @@
 
         width: 100%;
 
-        @variant min-md {
+        @media (--min-md) {
             row-gap: 30px;
         }
     }
@@ -43,37 +43,37 @@
         width: calc(100% + 20px);
         margin-inline: -10px;
 
-        @variant min-sm {
+        @media (--min-sm) {
             grid-gap: 10px;
             grid-template-columns: repeat(auto-fill, 215px);
             width: 100%;
             margin-inline: 0;
         }
 
-        @variant min-md {
+        @media (--min-md) {
             grid-gap: 15px;
             grid-template-columns: repeat(auto-fill, 232px);
         }
 
-        @variant min-lg {
+        @media (--min-lg) {
             grid-gap: 20px;
             grid-template-columns: repeat(auto-fill, 231px);
         }
 
-        @variant min-xl {
+        @media (--min-xl) {
             grid-template-columns: repeat(auto-fill, 240px);
         }
 
-        @variant min-xxl {
+        @media (--min-xxl) {
             grid-template-columns: repeat(auto-fill, 264px);
         }
 
-        @variant min-xxxl {
+        @media (--min-xxxl) {
             grid-template-columns: repeat(auto-fill, 296px);
         }
     }
 
-    @variant min-md {
+    @media (--min-md) {
         row-gap: 30px;
     }
 }

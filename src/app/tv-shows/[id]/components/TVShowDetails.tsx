@@ -126,6 +126,7 @@ export default function TVShowDetails(props: Props) {
                                     href={ props.tvShow.homepage }
                                     rel="noopener noreferrer"
                                     target="_blank"
+                                    className="truncate u-link-color"
                                 >
                                     { props.tvShow.homepage }
                                 </a>
@@ -253,7 +254,7 @@ export default function TVShowDetails(props: Props) {
                                             <li key={ index }>
                                                 <Link
                                                     href={ pagesPersonUrl(String(creator.id)) }
-                                                    className="p-tv-show__details-creators-item"
+                                                    className="p-tv-show__details-creators-item u-link"
                                                 >
 
                                                     <div className="p-tv-show__details-creators-logo">

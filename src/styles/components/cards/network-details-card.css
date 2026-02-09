@@ -18,10 +18,6 @@
 
         &--link {
             flex-wrap: nowrap;
-
-            a[href] {
-                @apply truncate u-link-color;
-            }
         }
 
         & > *:first-child {

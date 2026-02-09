@@ -16,6 +16,7 @@ export default function NetworkDetailsCard(props: Props) {
                             href={ props.network.homepage }
                             rel="noopener noreferrer"
                             target="_blank"
+                            className="truncate u-link-color"
                         >
                             { props.network.homepage }
                         </a>

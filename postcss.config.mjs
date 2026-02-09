@@ -11,9 +11,10 @@ const config = {
 
                 return id;
             }
-        }, 
+        },
         '@tailwindcss/nesting': {},
-        '@tailwindcss/postcss': {}
+        '@tailwindcss/postcss': {},
+        'postcss-custom-media': {}
     }
 };
 

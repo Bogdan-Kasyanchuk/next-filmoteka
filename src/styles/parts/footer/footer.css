@@ -14,7 +14,7 @@
         align-items: center;
         justify-content: center;
 
-        @variant min-lg {
+        @media (--min-lg) {
             flex-direction: row;
             justify-content: space-between;
         }
@@ -26,10 +26,6 @@
         gap: 20px;
         align-items: center;
         justify-content: center;
-
-        @variant min-md {
-            gap: 40px;
-        }
 
         &-item {
             position: relative;
@@ -45,6 +41,10 @@
                     opacity: 0.75;
                 }
             }
+        }
+
+        @media (--min-md) {
+            gap: 40px;
         }
     }
 

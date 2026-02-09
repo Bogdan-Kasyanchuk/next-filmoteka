@@ -125,8 +125,6 @@
         & a[data-testid='more-button'],
         & a[data-testid='less-button'] {
             font-weight: 700;
-
-            @apply u-link-color;
         }
     }
 }

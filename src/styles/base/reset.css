@@ -56,3 +56,8 @@ textarea,
 select {
     font: inherit;
 }
+
+a[data-testid='more-button'],
+a[data-testid='less-button'] {
+    @apply u-link-color;
+}

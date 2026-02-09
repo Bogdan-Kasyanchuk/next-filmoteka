@@ -116,6 +116,7 @@ export default function MovieDetails(props: Props) {
                                     href={ props.movie.homepage }
                                     rel="noopener noreferrer"
                                     target="_blank"
+                                    className="truncate u-link-color"
                                 >
                                     { props.movie.homepage }
                                 </a>

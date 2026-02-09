@@ -63,14 +63,14 @@
                         top: -3px;
                         font-size: 9px;
 
-                        @variant min-md {
+                        @media (--min-md) {
                             top: -4px;
                             font-size: var(--text-3xs);
                         }
                     }
                 }
 
-                @variant min-md {
+                @media (--min-md) {
                     font-size: var(--text-sm);
                 }
             }
@@ -80,10 +80,6 @@
     &__overview {
         font-size: var(--text-xs);
         line-height: 1.4;
-
-        @variant min-md {
-            font-size: var(--text-sm);
-        }
 
         &-trigger {
             position: absolute;
@@ -115,6 +111,10 @@
                     box-shadow: var(--shadow-custom-accent);
                 }
             }
+        }
+
+        @media (--min-md) {
+            font-size: var(--text-sm);
         }
     }
 }
