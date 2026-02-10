@@ -7,9 +7,6 @@ const nextConfig: NextConfig = {
             fullUrl: true
         }
     },
-    experimental: {
-        inlineCss: true
-    },
     images: {
         remotePatterns: [
             {
