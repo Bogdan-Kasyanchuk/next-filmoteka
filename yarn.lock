@@ -766,17 +766,29 @@
     postcss "^8.4.41"
     tailwindcss "4.1.5"
 
-"@tanstack/query-core@5.75.0":
-  version "5.75.0"
-  resolved "https://registry.yarnpkg.com/@tanstack/query-core/-/query-core-5.75.0.tgz#6a29620a58cf91cac5f804dde44bb8904df071d7"
-  integrity sha512-rk8KQuCdhoRkzjRVF3QxLgAfFUyS0k7+GCQjlGEpEGco+qazJ0eMH6aO1DjDjibH7/ik383nnztua3BG+lOnwg==
+"@tanstack/query-core@5.90.20":
+  version "5.90.20"
+  resolved "https://registry.yarnpkg.com/@tanstack/query-core/-/query-core-5.90.20.tgz#e12128e39210715d4ce4fb299c33498ac297771e"
+  integrity sha512-OMD2HLpNouXEfZJWcKeVKUgQ5n+n3A2JFmBaScpNDUqSrQSjiveC7dKMe53uJUg1nDG16ttFPz2xfilz6i2uVg==
 
-"@tanstack/react-query@^5.75.2":
-  version "5.75.2"
-  resolved "https://registry.yarnpkg.com/@tanstack/react-query/-/react-query-5.75.2.tgz#6397277c90aa4d4203bf1b53738397bc51c00d7c"
-  integrity sha512-8F8VOsWUfSkCFoi62O9HSZT9jDgg28Ln8Z2dYKfRo/O2A0sgvr0uxTuNoon3PPXoDuHofv5V3elBI1M2Gh1MPg==
+"@tanstack/query-devtools@5.93.0":
+  version "5.93.0"
+  resolved "https://registry.yarnpkg.com/@tanstack/query-devtools/-/query-devtools-5.93.0.tgz#517f61d4e2cfb9af671e34ad5e7e871052bca814"
+  integrity sha512-+kpsx1NQnOFTZsw6HAFCW3HkKg0+2cepGtAWXjiiSOJJ1CtQpt72EE2nyZb+AjAbLRPoeRmPJ8MtQd8r8gsPdg==
+
+"@tanstack/react-query-devtools@^5.91.3":
+  version "5.91.3"
+  resolved "https://registry.yarnpkg.com/@tanstack/react-query-devtools/-/react-query-devtools-5.91.3.tgz#0f65340fa3f7e7d5575de928ad70cfa6b5f74ff1"
+  integrity sha512-nlahjMtd/J1h7IzOOfqeyDh5LNfG0eULwlltPEonYy0QL+nqrBB+nyzJfULV+moL7sZyxc2sHdNJki+vLA9BSA==
   dependencies:
-    "@tanstack/query-core" "5.75.0"
+    "@tanstack/query-devtools" "5.93.0"
+
+"@tanstack/react-query@^5.90.20":
+  version "5.90.20"
+  resolved "https://registry.yarnpkg.com/@tanstack/react-query/-/react-query-5.90.20.tgz#42bb7018bfedc72f216b6e9b4052c919063f350b"
+  integrity sha512-vXBxa+qeyveVO7OA0jX1z+DeyCA4JKnThKv411jd5SORpBKgkcVnYKCiBgECvADvniBX7tobwBmg01qq9JmMJw==
+  dependencies:
+    "@tanstack/query-core" "5.90.20"
 
 "@tarik02/eslint-config-type-1-import@^0.2.3":
   version "0.2.3"
