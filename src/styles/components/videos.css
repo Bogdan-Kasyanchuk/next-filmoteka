@@ -29,6 +29,35 @@
         }
     }
 
+    &__skeleton {
+        overflow: hidden;
+
+        width: 100%;
+        height: 248px;
+        margin-top: 20px;
+        border-radius: 4px;
+
+        @media (--min-sm) {
+            height: 307px;
+        }
+
+        @media (--min-md) {
+            height: 259px;
+        }
+
+        @media (--min-lg) {
+            height: 237px;
+        }
+
+        @media (--min-xl) {
+            height: 231px;
+        }
+
+        @media (--min-xxl) {
+            height: 248px;
+        }
+    }
+
     @media (--min-xxxl) {
         margin-inline: -20px;
         padding-inline: 20px;

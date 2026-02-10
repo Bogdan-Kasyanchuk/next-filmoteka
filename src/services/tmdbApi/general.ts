@@ -50,7 +50,7 @@ export const getReviews = (
     );
 };
 
-export const getVideos = async (
+export const getVideos = (
     type: MediaType.MOVIE | MediaType.TV_SHOW,
     id: string
 ) => {
