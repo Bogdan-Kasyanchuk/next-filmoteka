@@ -2,6 +2,7 @@
 @import '@/styles/components/tabs.css';
 @import '@/styles/components/forms/base.css';
 @import '@/styles/components/forms/switch.css';
+@import '@/styles/components/media-list.css';
 @import '@/styles/components/pagination.css';
 @import '@/styles/components/cards/movie-card.css';
 @import '@/styles/components/cards/tv-show-card.css';

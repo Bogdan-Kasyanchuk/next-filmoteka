@@ -5,7 +5,7 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { PropsWithChildren, useState } from 'react';
 
 export default function Providers(props: PropsWithChildren) {
-    const [queryClient] = useState(() => new QueryClient({
+    const [ queryClient ] = useState(() => new QueryClient({
         defaultOptions: {
             queries: {
                 staleTime: 60 * 1000,
@@ -13,14 +13,13 @@ export default function Providers(props: PropsWithChildren) {
             }
         }
     }));
-    
 
     return (
-        <QueryClientProvider client={queryClient}>
-            {props.children}
+        <QueryClientProvider client={ queryClient }>
+            { props.children }
 
             <ReactQueryDevtools
-                initialIsOpen={false}
+                initialIsOpen={ false }
                 buttonPosition="bottom-right"
             />
         </QueryClientProvider>

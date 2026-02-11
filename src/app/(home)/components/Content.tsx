@@ -95,7 +95,7 @@ export default function Content() {
                         Trending today
                     </Title>
 
-                    <ul className="p-home__list">
+                    <ul className="c-media-list">
                         {
                             data.today.items.map(
                                 (item, i) => (
@@ -129,7 +129,7 @@ export default function Content() {
                         Trending this week
                     </Title>
 
-                    <ul className="p-home__list">
+                    <ul className="c-media-list">
                         {
                             data.week.items.map(
                                 (item, i) => (

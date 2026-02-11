@@ -1,3 +1,4 @@
+@import '@/styles/components/media-list.css';
 @import '@/styles/components/cards/movie-card.css';
 @import '@/styles/components/cards/tv-show-card.css';
 @import '@/styles/components/cards/person-card.css';

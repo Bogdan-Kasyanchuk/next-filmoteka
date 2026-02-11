@@ -2,9 +2,8 @@
 
 import { useSuspenseInfiniteQuery } from '@tanstack/react-query';
 
+import RecommendationsComponent from '@/components/app/Recommendations';
 import TVShowCard from '@/components/ui/cards/TVShowCard';
-import Container from '@/components/ui/layouts/Container';
-import Title from '@/components/ui/typography/Title';
 import { MediaType } from '@/enums';
 import { transformTVShow } from '@/helpers/transformData';
 import { getRecommendations } from '@/services/tmdbApi/general';
@@ -48,44 +47,19 @@ export default function Recommendations(props: Props) {
     }
 
     return (
-        <Container className="xxl:max-w-[1440px]">
-            <div className="с-recommendations">
-                <Title
-                    order="h3"
-                    variant={ 3 }
-                    className="с-recommendations__title"
-                >
-                Recommendations
-                </Title>
-
-                <ul className="с-recommendations__list">
-                    {
-                        data.map(
-                            item => (
-                                <li key={ item.id }>
-                                    <TVShowCard tvShow={ item } />
-                                </li>
-                            )
-                        )
-                    }
-                </ul>
-
-                {
-                    hasNextPage &&
-                    <button
-                        type="button"
-                        className="с-recommendations__load-more-button"
-                        disabled = { isFetchingNextPage }
-                        onClick={
-                            () => {
-                                fetchNextPage();
-                            } 
-                        }
-                    >
-                        { isFetchingNextPage ? 'Loading...' : 'Load more' }
-                    </button>
-                }
-            </div>
-        </Container>
+        <RecommendationsComponent
+            items={ data }
+            hasNextPage={ hasNextPage }
+            isFetchingNextPage={ isFetchingNextPage }
+            fetchNextPage={
+                () => {
+                    fetchNextPage();
+                } 
+            }
+        > 
+            {
+                item => <TVShowCard tvShow={ item } />
+            }
+        </RecommendationsComponent>
     );
 }

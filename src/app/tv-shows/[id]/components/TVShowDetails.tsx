@@ -62,7 +62,7 @@ export default function TVShowDetails(props: Props) {
                             href={ pagesSimilarUrl(MediaType.TV_SHOW, props.id) }
                             className="p-tv-show__details-similar-button"
                         >
-                            Similar
+                            Similar tv shows
                         </Link>
                     </div>
 

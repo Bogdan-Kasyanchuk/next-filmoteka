@@ -59,11 +59,11 @@ export default function Content(props: Props) {
             />
 
             <Title className="p-movie-similar__title">
-                Similar
+                Similar movies
             </Title>
 
             <div className="p-movie-similar__content">
-                <ul className="p-movie-similar__list">
+                <ul className="c-media-list c-media-list--compact">
                     {
                         data.similar.movies.map(
                             movie => (

@@ -2,11 +2,9 @@ import { HydrationBoundary, QueryClient, dehydrate } from '@tanstack/react-query
 import { Metadata } from 'next';
 import { Suspense } from 'react';
 
-import RecommendationsSkeleton from '@/components/app/RecommendationsSkeleton';
-import Reviews from '@/components/app/Reviews';
-import ReviewsSkeleton from '@/components/app/ReviewsSkeleton';
-import Videos from '@/components/app/Videos';
-import VideosSkeleton from '@/components/app/VideosSkeleton';
+import { RecommendationsSkeleton } from '@/components/app/Recommendations';
+import Reviews, { ReviewsSkeleton } from '@/components/app/Reviews';
+import Videos, { VideosSkeleton } from '@/components/app/Videos';
 import { MediaType } from '@/enums';
 import generateMetaTags from '@/helpers/generateMetaTags';
 import { pagesTVShowUrl } from '@/routes';

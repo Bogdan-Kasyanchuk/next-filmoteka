@@ -49,7 +49,7 @@ export default function Content(props: Props) {
 
     return (
         <div className="p-trending__content">
-            <ul className="p-trending__list">
+            <ul className="c-media-list">
                 {
                     data.results.map(
                         result => (

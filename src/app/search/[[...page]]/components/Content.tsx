@@ -55,7 +55,7 @@ export default function Content(props: Props) {
 
     return (
         <div className="p-search__content">
-            <ul className="p-search__list">
+            <ul className="c-media-list c-media-list--compact">
                 {
                     data.results.map(
                         result => (

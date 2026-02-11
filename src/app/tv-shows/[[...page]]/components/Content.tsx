@@ -36,7 +36,7 @@ export default function Content(props: Props) {
 
     return (
         <div className="p-tv-shows__content">
-            <ul className="p-tv-shows__list">
+            <ul className="c-media-list">
                 {
                     data.tvShows.map(
                         tvShow => (

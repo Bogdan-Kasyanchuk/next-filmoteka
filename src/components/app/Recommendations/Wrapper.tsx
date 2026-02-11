@@ -1,22 +1,21 @@
+import { PropsWithChildren } from 'react';
+
 import Container from '@/components/ui/layouts/Container';
 import Title from '@/components/ui/typography/Title';
 
-export default function ReviewsSkeleton() {
-
+export default function Wrapper(props: PropsWithChildren) {
     return (
         <Container className="xxl:max-w-[1440px]">
-            <div className="с-reviews">
+            <div className="с-recommendations">
                 <Title
                     order="h3"
                     variant={ 3 }
-                    className="с-reviews__title"
+                    className="с-recommendations__title"
                 >
-                Reviews
+                    Recommendations
                 </Title>
 
-                <div className="с-reviews__skeleton">
-                    <div className="c-skeleton" />
-                </div>
+                { props.children }
             </div>
         </Container>
     );

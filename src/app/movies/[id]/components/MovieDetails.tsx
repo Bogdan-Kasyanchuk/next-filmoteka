@@ -61,7 +61,7 @@ export default function MovieDetails(props: Props) {
                             href={ pagesSimilarUrl(MediaType.MOVIE, props.id) }
                             className="p-movie__details-similar-button"
                         >
-                            Similar
+                            Similar movies
                         </Link>
                     </div>
 

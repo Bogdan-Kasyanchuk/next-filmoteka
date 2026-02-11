@@ -3,12 +3,12 @@
 import { useSuspenseQuery } from '@tanstack/react-query';
 
 import VideoCard from '@/components/ui/cards/VideoCard';
-import Container from '@/components/ui/layouts/Container';
-import Title from '@/components/ui/typography/Title';
 import { MediaType, VideoSiteType, VideoType } from '@/enums';
 import { transformVideo } from '@/helpers/transformData';
 import { getVideos } from '@/services/tmdbApi/general';
 import { VideoMapper } from '@/types';
+
+import Wrapper from './Wrapper';
 
 type Props = {
     type: MediaType.MOVIE | MediaType.TV_SHOW,
@@ -41,28 +41,18 @@ export default function Videos(props: Props) {
     }
     
     return (
-        <Container className="xxl:max-w-[1440px]">
-            <div className="с-videos">
-                <Title
-                    order="h3"
-                    variant={ 3 }
-                    className="с-videos__title"
-                >
-                Videos
-                </Title>
-
-                <ul className="с-videos__list">
-                    {
-                        data.map(
-                            (video, index) => (
-                                <li key={ index }>
-                                    <VideoCard video={ video } />
-                                </li>
-                            )
+        <Wrapper>
+            <ul className="с-videos__list">
+                {
+                    data.map(
+                        (video, index) => (
+                            <li key={ index }>
+                                <VideoCard video={ video } />
+                            </li>
                         )
-                    }
-                </ul>
-            </div>
-        </Container>
+                    )
+                }
+            </ul>
+        </Wrapper>
     );
 }
