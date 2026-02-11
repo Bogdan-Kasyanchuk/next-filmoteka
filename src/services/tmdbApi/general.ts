@@ -30,36 +30,30 @@ export const getSearch = (
     );
 };
 
-export const getRecommendations = async <T>(
+export const getRecommendations = <T>(
     type: MediaType.MOVIE | MediaType.TV_SHOW,
     id: string,
     page: number
 ) => {
-    await new Promise(resolve => setTimeout(resolve, 2000));
-
     return fetchApi<DataShema<T>>(
         `${ type }/${ id }/recommendations?page=${ page }`
     );
 };
 
-export const getReviews = async (
+export const getReviews = (
     type: MediaType.MOVIE | MediaType.TV_SHOW,
     id: string,
     page: number
 ) => {
-    await new Promise(resolve => setTimeout(resolve, 6000));
-        
     return fetchApi<DataShema<ReviewShema>>(
         `${ type }/${ id }/reviews?page=${ page }`
     );
 };
 
-export const getVideos = async (
+export const getVideos = (
     type: MediaType.MOVIE | MediaType.TV_SHOW,
     id: string
 ) => {
-    await new Promise(resolve => setTimeout(resolve, 4000));
-        
     return fetchApi<VideosShema>(`${ type }/${ id }/videos`);
 };
 
