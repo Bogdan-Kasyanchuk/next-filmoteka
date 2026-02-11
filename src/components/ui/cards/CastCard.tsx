@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { IMG_SIZES } from '@/datasets/constants';
+import { IMG_SIZES, PLACEHOLDERS } from '@/datasets/constants';
 import { imageUrl, pagesPersonUrl } from '@/routes';
 import { CastMapper } from '@/types';
 
@@ -31,6 +31,7 @@ export default function CastCard(props: Props) {
                     }
                     sizes="161px"
                     alt={ props.cast.name }
+                    placeholder={ PLACEHOLDERS[ '1x1_small' ] }
                     fill
                 />
             </div>

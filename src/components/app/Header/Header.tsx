@@ -13,7 +13,7 @@ export default function Header() {
                 <Logo
                     imgSrc="/svg/logo.svg"
                     className="text-accent"
-                    priority
+                    preload
                 >
                     <span className="max-md:sr-only">
                         Filmoteka

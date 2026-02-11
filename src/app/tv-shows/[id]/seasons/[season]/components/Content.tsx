@@ -49,7 +49,12 @@ export default function Content(props: Props) {
     return (
         <Container className="p-season">
             <CurrentSeason
-                tvShow={ data.tvShow }
+                tvShow={
+                    {
+                        name: data.tvShow.name,
+                        first_air_date: data.tvShow.first_air_date
+                    } 
+                }
                 season={ data.season.season }
                 id={ props.id }
             />
@@ -59,7 +64,10 @@ export default function Content(props: Props) {
                     data.season.episodes.map(
                         (episode, index) => (
                             <li key={ index }>
-                                <EpisodeCard episode={ episode } />
+                                <EpisodeCard
+                                    episode={ episode }
+                                    preload={ index < 6 }
+                                />
                             </li>
                         )
                     )

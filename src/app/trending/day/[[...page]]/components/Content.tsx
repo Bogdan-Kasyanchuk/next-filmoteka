@@ -52,10 +52,12 @@ export default function Content(props: Props) {
             <ul className="c-media-list">
                 {
                     data.results.map(
-                        result => (
-                            result &&
+                        (result, index) => (
                             <li key={ result.id }>
-                                <Card result={ result } />
+                                <Card
+                                    result={ result }
+                                    preload={ index < 6 }
+                                />
                             </li>
                         )
                     )
@@ -74,18 +76,34 @@ export default function Content(props: Props) {
 }
 
 type CardProps = {
-    result: MovieMapper | TVShowMapper | PersonMapper
+    result: MovieMapper | TVShowMapper | PersonMapper,
+    preload?: boolean
 };
 
 function Card(props: CardProps) {
     switch (props.result.media_type) {
         case MediaType.MOVIE:
-            return <MovieCard movie={ props.result } />;
+            return (
+                <MovieCard
+                    movie={ props.result }
+                    preload={ props.preload }
+                />
+            );
 
         case MediaType.TV_SHOW:
-            return <TVShowCard tvShow={ props.result } />;
+            return (
+                <TVShowCard
+                    tvShow={ props.result }
+                    preload={ props.preload }
+                />
+            );
 
         case MediaType.PERSON:
-            return <PersonCard person={ props.result } />;
+            return (
+                <PersonCard
+                    person={ props.result }
+                    preload={ props.preload }
+                />
+            );
     }
 }

@@ -36,7 +36,9 @@ export default function Navigation() {
                                     src={ searchLink.icon }
                                     alt="Search icon"
                                     className="c-navigation__img"
-                                    priority
+                                    preload
+                                    loading="eager"
+                                    unoptimized
                                 />
 
                                 <span className="c-navigation__text sr-only lg:not-sr-only">
@@ -94,7 +96,9 @@ export default function Navigation() {
                                         src={ link.icon }
                                         alt={ `${ link.name } icon` }
                                         className="c-navigation__img"
-                                        priority
+                                        preload
+                                        loading="eager"
+                                        unoptimized
                                     />
                                     
                                     <span className="c-navigation__text sr-only lg:not-sr-only">

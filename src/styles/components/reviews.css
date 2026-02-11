@@ -17,7 +17,6 @@
         margin-top: 20px;
 
         & .c-skeleton {
-            overflow: hidden;
             height: 233px;
             border-radius: 4px;
 

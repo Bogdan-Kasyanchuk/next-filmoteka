@@ -1,6 +1,6 @@
 import Image from 'next/image';
 
-import { IMG_SIZES } from '@/datasets/constants';
+import { IMG_SIZES, PLACEHOLDERS } from '@/datasets/constants';
 import { imageUrl } from '@/routes';
 import { ImageMapper } from '@/types';
 
@@ -21,6 +21,7 @@ export default function ImageCard(props: Props) {
                     }
                     sizes="174px"
                     alt={ props.alt }
+                    placeholder={ PLACEHOLDERS[ '2x3_medium' ] }
                     fill
                 />
             </div>

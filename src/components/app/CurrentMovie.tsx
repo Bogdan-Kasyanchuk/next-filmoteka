@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { Fragment } from 'react';
 
 import Title from '@/components/ui/typography/Title';
-import { IMG_SIZES } from '@/datasets/constants';
+import { IMG_SIZES, PLACEHOLDERS } from '@/datasets/constants';
 import { imageUrl, pagesMovieUrl } from '@/routes';
 import { CurrentMovieMapper } from '@/types';
 import formatDate from '@/utils/formateDate';
@@ -25,8 +25,10 @@ export default function CurrentMovie(props: Props) {
                     }
                     sizes="81px"
                     alt={ props.movie.title }
+                    placeholder={ PLACEHOLDERS[ '2x3_small' ] }
                     fill
-                    fetchPriority="high"
+                    preload
+                    loading="eager"
                 />
             </div>
 

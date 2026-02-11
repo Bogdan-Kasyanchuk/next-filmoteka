@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { IMG_SIZES } from '@/datasets/constants';
+import { IMG_SIZES, PLACEHOLDERS } from '@/datasets/constants';
 import { imageUrl, pagesSeasonUrl } from '@/routes';
 import { SeasonMapper } from '@/types';
 import formatDate from '@/utils/formateDate';
@@ -26,6 +26,7 @@ export default function SeasonCard(props: Props) {
                     }
                     sizes="106px"
                     alt={ props.season.name }
+                    placeholder={ PLACEHOLDERS[ '2x3_medium' ] }
                     fill
                 />
             </div>

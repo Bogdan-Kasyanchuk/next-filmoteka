@@ -35,7 +35,7 @@ export default function Content(props: Props) {
                 movie: results[ 0 ].data && transformCurrentMovie(results[ 0 ].data),
                 similar: {
                     movies: results[ 1 ].data?.results.map(transformMovie) ?? [],
-                    total_pages: results[ 1 ].data?.total_pages ?? 0
+                    total_pages: results[ 1 ].data?.total_pages ?? 1
                 },
                 pending: results.some(result => result.isPending),
                 isError: results.some(result => result.isError)
@@ -66,9 +66,12 @@ export default function Content(props: Props) {
                 <ul className="c-media-list c-media-list--compact">
                     {
                         data.similar.movies.map(
-                            movie => (
+                            (movie, index) => (
                                 <li key={ movie.id }>
-                                    <MovieCard movie={ movie } />
+                                    <MovieCard
+                                        movie={ movie }
+                                        preload={ index < 6 }
+                                    />
                                 </li>
                             )
                         )

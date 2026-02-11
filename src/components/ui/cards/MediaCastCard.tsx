@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { IMG_SIZES } from '@/datasets/constants';
+import { IMG_SIZES, PLACEHOLDERS } from '@/datasets/constants';
 import { MediaType } from '@/enums';
 import { imageUrl, pagesMovieUrl, pagesTVShowUrl } from '@/routes';
 import { MediaCastMapper } from '@/types';
@@ -45,6 +45,7 @@ export default function MediaCastCard(props: Props) {
                     }
                     sizes="45px"
                     alt={ props.cast.title }
+                    placeholder={ PLACEHOLDERS[ '2x3_small' ] }
                     fill
                 />
             </div>

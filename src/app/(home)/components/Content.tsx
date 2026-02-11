@@ -29,20 +29,6 @@ export default function Content() {
             }
         ],
         combine: results => {
-            let error = { 
-                isError: false,
-                message: ''
-            };
-
-            results.forEach(result => {
-                if (result.isError) {
-                    error = {
-                        isError: result.isError,
-                        message: result.error.message
-                    };
-                }
-            });
-
             return {
                 today: {
                     items: results[ 0 ].data?.results.map(
@@ -56,7 +42,7 @@ export default function Content() {
                                     return transformPerson(result);
                             }
                         }) ?? [],
-                    total_pages: results[ 0 ].data?.total_pages ?? 0
+                    total_pages: results[ 0 ].data?.total_pages ?? 1
                 },
                 week: {
                     items: results[ 1 ].data?.results.map(
@@ -70,10 +56,10 @@ export default function Content() {
                                     return transformPerson(result);
                             }
                         }) ?? [],
-                    total_pages: results[ 1 ].data?.total_pages ?? 0
+                    total_pages: results[ 1 ].data?.total_pages ?? 1
                 },
                 isPending: results.some(result => result.isPending),
-                error
+                isError: results.some(result => result.isError)
             };
         }
     });
@@ -82,7 +68,7 @@ export default function Content() {
         return <Loader />;
     }
 
-    if (data.error.isError || !data.today.items.length || !data.week.items.length) {
+    if (data.isError || (!data.today.items.length && !data.week.items.length)) {
         notFound();
     }
 
@@ -98,11 +84,11 @@ export default function Content() {
                     <ul className="c-media-list">
                         {
                             data.today.items.map(
-                                (item, i) => (
+                                (item, index) => (
                                     <li key={ item.id }>
                                         <Card
                                             result={ item }
-                                            priority={ i < 4 }
+                                            preload={ index < 6 }
                                         />
                                     </li>
                                 )
@@ -132,11 +118,11 @@ export default function Content() {
                     <ul className="c-media-list">
                         {
                             data.week.items.map(
-                                (item, i) => (
+                                (item, index) => (
                                     <li key={ item.id }>
                                         <Card
                                             result={ item }
-                                            priority={ !data.today.items.length && i < 4 }
+                                            preload={ !data.today.items.length && index < 6 }
                                         />
                                     </li>
                                 )
@@ -162,7 +148,7 @@ export default function Content() {
 
 type CardProps = {
     result: MovieMapper | TVShowMapper | PersonMapper,
-    priority?: boolean
+    preload?: boolean
 };
 
 function Card(props: CardProps) {
@@ -171,7 +157,7 @@ function Card(props: CardProps) {
             return (
                 <MovieCard
                     movie={ props.result }
-                    priority={ props.priority }
+                    preload={ props.preload }
                 />
             );
 
@@ -179,7 +165,7 @@ function Card(props: CardProps) {
             return (
                 <TVShowCard
                     tvShow={ props.result }
-                    priority={ props.priority }
+                    preload={ props.preload }
                 />
             );
 
@@ -187,7 +173,7 @@ function Card(props: CardProps) {
             return (
                 <PersonCard
                     person={ props.result }
-                    priority={ props.priority }
+                    preload={ props.preload }
                 />
             );
     }

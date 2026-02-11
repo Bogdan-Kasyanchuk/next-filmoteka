@@ -37,9 +37,12 @@ export default function Content(props: Props) {
             <ul className="c-media-list">
                 {
                     data.persons.map(
-                        person => (
+                        (person, index) => (
                             <li key={ person.id }>
-                                <PersonCard person={ person } />
+                                <PersonCard
+                                    person={ person }
+                                    preload={ index < 6 }
+                                />
                             </li>
                         )
                     )

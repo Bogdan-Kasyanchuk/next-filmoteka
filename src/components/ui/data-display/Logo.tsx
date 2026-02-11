@@ -8,7 +8,7 @@ import { pagesHomeUrl } from '@/routes';
 type Props = {
     imgSrc: string,
     className?: string,
-    priority?: boolean
+    preload?: boolean
 };
 
 export default function Logo(props: PropsWithChildren<Props>) {
@@ -23,7 +23,9 @@ export default function Logo(props: PropsWithChildren<Props>) {
                 src={ props.imgSrc }
                 alt="Logo"
                 className="c-logo__img"
-                priority={ props.priority }
+                preload={ props.preload }
+                loading={ props.preload ? 'eager' : 'lazy' }
+                unoptimized
             />
 
             { props.children }

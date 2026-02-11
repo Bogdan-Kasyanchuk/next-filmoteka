@@ -5,7 +5,7 @@ import { Fragment } from 'react';
 import SocialLinks from '@/components/ui/data-display/SocialLinks';
 import Container from '@/components/ui/layouts/Container';
 import Title from '@/components/ui/typography/Title';
-import { IMG_SIZES } from '@/datasets/constants';
+import { IMG_SIZES, PLACEHOLDERS } from '@/datasets/constants';
 import { imageUrl } from '@/routes';
 import { PersonDetailsMapper } from '@/types';
 import formatDate from '@/utils/formateDate';
@@ -23,7 +23,8 @@ export default function PersonDetails(props: Props) {
                     sizes="(max-width: 767px) 768px, (max-width: 1319px) 1320px, 1920px"
                     alt={ props.person.name }
                     fill
-                    fetchPriority="high"
+                    preload
+                    loading="eager"
                 />
             </div>
 
@@ -44,8 +45,10 @@ export default function PersonDetails(props: Props) {
                         }
                         sizes="(max-width: 767px) 254px, (max-width: 1319px) 327px, 351px"
                         alt={ props.person.name }
+                        placeholder={ PLACEHOLDERS[ '2x3_large' ] }
                         fill
-                        fetchPriority="high"
+                        preload
+                        loading="eager"
                     />
                 </div>
 

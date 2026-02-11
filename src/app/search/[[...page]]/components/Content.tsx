@@ -40,7 +40,7 @@ export default function Content(props: Props) {
                     if (result.media_type === MediaType.PERSON || props.type === MediaType.PERSON) {
                         return transformPerson(result as PersonShema);
                     }
-                }),
+                }).filter(item => item !== undefined),
             total_pages: data.total_pages
         })
     });
@@ -58,15 +58,18 @@ export default function Content(props: Props) {
             <ul className="c-media-list c-media-list--compact">
                 {
                     data.results.map(
-                        result => (
-                            result &&
+                        (result, index) => (
                             <li key={ result.id }>
                                 {
                                     props.type === 'multi'
-                                        ? <CardForMultiType result={ result } />
+                                        ? <CardForMultiType
+                                            result={ result }
+                                            preload={ index < 6 }
+                                        />
                                         : <Card
                                             result={ result }
                                             type={ props.type }
+                                            preload={ index < 6 }
                                         />
                                 }
                             </li>
@@ -87,36 +90,68 @@ export default function Content(props: Props) {
 }
 
 type CardForMultiTypeProps = {
-    result: MovieMapper | TVShowMapper | PersonMapper
+    result: MovieMapper | TVShowMapper | PersonMapper,
+    preload?: boolean
 };
 
 function CardForMultiType(props: CardForMultiTypeProps) {
     switch (props.result.media_type) {
         case MediaType.MOVIE:
-            return <MovieCard movie={ props.result } />;
+            return (
+                <MovieCard
+                    movie={ props.result }
+                    preload={ props.preload }
+                />
+            );
 
         case MediaType.TV_SHOW:
-            return <TVShowCard tvShow={ props.result } />;
+            return (
+                <TVShowCard
+                    tvShow={ props.result }
+                    preload={ props.preload }
+                />
+            );
 
         case MediaType.PERSON:
-            return <PersonCard person={ props.result } />;
+            return (
+                <PersonCard
+                    person={ props.result }
+                    preload={ props.preload }
+                />
+            );
     }
 }
 
 type CardProps = {
     result: MovieMapper | TVShowMapper | PersonMapper,
-    type: MediaType
+    type: MediaType,
+    preload?: boolean
 };
 
 function Card(props: CardProps) {
     switch (props.type) {
         case MediaType.MOVIE:
-            return <MovieCard movie={ props.result as MovieMapper } />;
+            return (
+                <MovieCard
+                    movie={ props.result as MovieMapper }
+                    preload={ props.preload }
+                />
+            );
 
         case MediaType.TV_SHOW:
-            return <TVShowCard tvShow={ props.result as TVShowMapper } />;
+            return (
+                <TVShowCard
+                    tvShow={ props.result as TVShowMapper }
+                    preload={ props.preload }
+                />
+            );
 
         case MediaType.PERSON:
-            return <PersonCard person={ props.result as PersonMapper } />;
+            return (
+                <PersonCard
+                    person={ props.result as PersonMapper }
+                    preload={ props.preload }
+                />
+            );
     }
 }

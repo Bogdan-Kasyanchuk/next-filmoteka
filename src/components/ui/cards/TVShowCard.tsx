@@ -1,14 +1,14 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { IMG_SIZES } from '@/datasets/constants';
+import { IMG_SIZES, PLACEHOLDERS } from '@/datasets/constants';
 import { imageUrl, pagesTVShowUrl } from '@/routes';
 import { TVShowMapper } from '@/types';
 import formatDate from '@/utils/formateDate';
 
 type Props = {
     tvShow: TVShowMapper,
-    priority?: boolean
+    preload?: boolean
 };
 
 export default function TVShowCard(props: Props) {
@@ -23,8 +23,10 @@ export default function TVShowCard(props: Props) {
                     }
                     sizes="(max-width: 479px) 174px, (max-width: 767px) 214px, (max-width: 1023px) 231px, 295px"
                     alt={ props.tvShow.name }
+                    placeholder={ PLACEHOLDERS[ '2x3_large' ] }
                     fill
-                    priority={ props.priority }
+                    preload={ props.preload }
+                    loading={ props.preload ? 'eager' : 'lazy' }
                 />
             </div>
 

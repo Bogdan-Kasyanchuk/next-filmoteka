@@ -3,13 +3,16 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import Title from '@/components/ui/typography/Title';
-import { IMG_SIZES } from '@/datasets/constants';
+import { IMG_SIZES, PLACEHOLDERS } from '@/datasets/constants';
 import { imageUrl, pagesTVShowUrl } from '@/routes';
 import { CurrentTVShowMapper, TVShowSeasonDetailsMapper } from '@/types';
 import formatDate from '@/utils/formateDate';
 
 type Props = {
-    tvShow: CurrentTVShowMapper,
+    tvShow: {
+        name: CurrentTVShowMapper['name'],
+        first_air_date: CurrentTVShowMapper['first_air_date']
+    },
     season: TVShowSeasonDetailsMapper['season'],
     id: string
 };
@@ -27,7 +30,10 @@ export default function CurrentSeason(props: Props) {
                         }
                         sizes="87px"
                         alt={ props.season.name }
+                        placeholder={ PLACEHOLDERS[ '2x3_small' ] }
                         fill
+                        preload
+                        loading="eager"
                     />
                 </div>
 

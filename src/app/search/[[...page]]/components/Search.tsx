@@ -54,6 +54,9 @@ export default function Search() {
                 src="/svg/search.svg"
                 alt="Search icon"
                 className="absolute top-1/2 -translate-y-1/2 start-[9px]"
+                preload
+                loading="eager"
+                unoptimized
             />
 
             {
@@ -75,6 +78,9 @@ export default function Search() {
                         src="/svg/close.svg"
                         alt="Close icon"
                         className="pointer-events-none"
+                        preload
+                        loading="eager"
+                        unoptimized
                     />
                 </button>
             }

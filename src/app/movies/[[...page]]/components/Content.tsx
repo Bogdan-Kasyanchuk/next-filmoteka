@@ -39,9 +39,12 @@ export default function Content(props: Props) {
             <ul className="c-media-list">
                 {
                     data.movies.map(
-                        movie => (
+                        (movie, index) => (
                             <li key={ movie.id }>
-                                <MovieCard movie={ movie } />
+                                <MovieCard
+                                    movie={ movie }
+                                    preload={ index < 6 }
+                                />
                             </li>
                         )
                     )

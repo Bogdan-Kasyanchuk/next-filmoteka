@@ -17,7 +17,6 @@
         margin-top: 20px;
 
         & .c-skeleton {
-            overflow: hidden;
             border-radius: 4px;
 
             &>div:first-child {

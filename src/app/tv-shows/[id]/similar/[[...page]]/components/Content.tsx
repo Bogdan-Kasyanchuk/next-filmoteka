@@ -35,7 +35,7 @@ export default function Content(props: Props) {
                 tvShow: results[ 0 ].data && transformCurrentTVShow(results[ 0 ].data),
                 similar: {
                     tvShows: results[ 1 ].data?.results.map(transformTVShow) ?? [],
-                    total_pages: results[ 1 ].data?.total_pages ?? 0
+                    total_pages: results[ 1 ].data?.total_pages ?? 1
                 },
                 pending: results.some(result => result.isPending),
                 isError: results.some(result => result.isError)
@@ -66,9 +66,12 @@ export default function Content(props: Props) {
                 <ul className="c-media-list c-media-list--compact">
                     {
                         data.similar.tvShows.map(
-                            tvShow => (
+                            (tvShow, index) => (
                                 <li key={ tvShow.id }>
-                                    <TVShowCard tvShow={ tvShow } />
+                                    <TVShowCard
+                                        tvShow={ tvShow }
+                                        preload={ index < 6 }
+                                    />
                                 </li>
                             )
                         )

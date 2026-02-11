@@ -8,7 +8,7 @@ import Popover from '@/components/ui/data-display/Popover';
 import SocialLinks from '@/components/ui/data-display/SocialLinks';
 import Container from '@/components/ui/layouts/Container';
 import Title from '@/components/ui/typography/Title';
-import { IMG_SIZES } from '@/datasets/constants';
+import { IMG_SIZES, PLACEHOLDERS } from '@/datasets/constants';
 import { MediaType } from '@/enums';
 import { imageUrl, pagesPersonUrl, pagesSimilarUrl } from '@/routes';
 import { TVShowDetailsMapper } from '@/types';
@@ -33,7 +33,8 @@ export default function TVShowDetails(props: Props) {
                         sizes="(max-width: 767px) 768px, (max-width: 1319px) 1320px, 1920px"
                         alt={ props.tvShow.name }
                         fill
-                        fetchPriority="high"
+                        preload
+                        loading="eager"
                     />
                 </div>
 
@@ -54,8 +55,10 @@ export default function TVShowDetails(props: Props) {
                             }
                             sizes="(max-width: 767px) 254px, (max-width: 1319px) 327px, 351px"
                             alt={ props.tvShow.name }
+                            placeholder={ PLACEHOLDERS[ '2x3_large' ] }
                             fill
-                            fetchPriority="high"
+                            preload
+                            loading="eager"
                         />
 
                         <Link
@@ -264,9 +267,10 @@ export default function TVShowDetails(props: Props) {
                                                                     ? imageUrl(IMG_SIZES.CREATOR_AVATAR, creator.profile_path)
                                                                     : '/img/avatar-placeholder.svg'
                                                             }
-                                                            fill
                                                             sizes="50px"
                                                             alt={ creator.name }
+                                                            placeholder={ PLACEHOLDERS[ '1x1_small' ] }
+                                                            fill
                                                         />
                                                     </div>
 
@@ -301,9 +305,10 @@ export default function TVShowDetails(props: Props) {
                                                                 ? imageUrl(IMG_SIZES.NETWORK_LOGO, network.logo_path)
                                                                 : '/img/image-placeholder.svg'
                                                         }
-                                                        fill
-                                                        sizes="50px"
                                                         alt={ network.name }
+                                                        sizes="50px"
+                                                        placeholder={ PLACEHOLDERS[ '1x1_small' ] }
+                                                        fill
                                                     />
                                                 </div>
 
@@ -366,9 +371,10 @@ export default function TVShowDetails(props: Props) {
                                                                 ? imageUrl(IMG_SIZES.COMPANY_LOGO, company.logo_path)
                                                                 : '/img/image-placeholder.svg'
                                                         }
-                                                        fill
                                                         sizes="50px"
                                                         alt={ company.name }
+                                                        placeholder={ PLACEHOLDERS[ '1x1_small' ] }
+                                                        fill
                                                     />
                                                 </div>
 

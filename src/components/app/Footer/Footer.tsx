@@ -39,6 +39,7 @@ export default function Footer() {
                                     <img
                                         src={ logo.icon }
                                         alt={ `${ logo.name } icon` }
+                                        loading="lazy"
                                     />
 
                                     <a
