@@ -1,3 +1,5 @@
+import { PLACEHOLDERS } from '@/datasets/constants';
+
 import Wrapper from './Wrapper';
 
 export default function Skeleton() {
@@ -9,10 +11,16 @@ export default function Skeleton() {
                         item => (
                             <div
                                 key={ item }
-                                className="c-skeleton"
+                                className="с-recommendations__skeleton"
                             >
                                 <div />
-                                <div />
+                                
+                                <img
+                                    src={ PLACEHOLDERS[ '2x3_large' ] }
+                                    alt="Placeholder"
+                                    width={ 360 }
+                                    height={ 540 }
+                                />
                             </div>
                         )
                     )
