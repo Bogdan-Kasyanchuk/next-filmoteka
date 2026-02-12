@@ -1,11 +1,14 @@
+'use client';
+
 import { ShowMore } from '@re-dev/react-truncate';
 import Image from 'next/image';
+import { useLocale } from 'next-intl';
 
 import { IMG_SIZES } from '@/datasets/constants';
 import { PLACEHOLDERS } from '@/datasets/placeholders';
 import { imageUrl } from '@/routes';
 import { ReviewMapper } from '@/types';
-import formatDate from '@/utils/formateDate';
+import formatDate from '@/utils/formatDate';
 
 type Props = {
     review: ReviewMapper,
@@ -13,6 +16,8 @@ type Props = {
 };
 
 export default function ReviewCard(props: Props) {
+    const locale = useLocale();
+        
     if (!props.review.content) {
         return null;
     }
@@ -65,14 +70,18 @@ export default function ReviewCard(props: Props) {
                     <ul className="c-review-card__info-list">
                         <li className="c-review-card__info-list-item">
                             <span>Created:</span>
-                            <span>{ formatDate(props.review.created_at, 'DD.MM.YYYY') }</span>
+                            <span>
+                                { formatDate(props.review.created_at, locale, 'DD.MM.YYYY') }
+                            </span>
                         </li>
 
                         {
                             props.review.updated_at &&
                             <li className="c-review-card__info-list-item">
                                 <span>Updated:</span>
-                                <span>{ formatDate(props.review.updated_at, 'DD.MM.YYYY') }</span>
+                                <span>
+                                    { formatDate(props.review.updated_at, locale, 'DD.MM.YYYY') }
+                                </span>
                             </li>
                         }
                     </ul>

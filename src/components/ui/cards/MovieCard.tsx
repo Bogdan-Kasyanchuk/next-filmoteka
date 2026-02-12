@@ -1,11 +1,14 @@
+'use client';
+
 import Image from 'next/image';
+import { useLocale } from 'next-intl';
 
 import { IMG_SIZES } from '@/datasets/constants';
 import { PLACEHOLDERS } from '@/datasets/placeholders';
 import { imageUrl, pagesMovieUrl } from '@/routes';
 import { Link } from '@/services/i18n/navigation';
 import { MovieMapper } from '@/types';
-import formatDate from '@/utils/formateDate';
+import formatDate from '@/utils/formatDate';
 
 type Props = {
     movie: MovieMapper,
@@ -13,6 +16,8 @@ type Props = {
 };
 
 export default function MovieCard(props: Props) {
+    const locale = useLocale();
+    
     return (
         <div className="с-movie-card">
             <div className="с-movie-card__cover">
@@ -37,7 +42,7 @@ export default function MovieCard(props: Props) {
                 </div>
 
                 <div className="с-movie-card__tag с-movie-card__tag--date">
-                    { formatDate(props.movie.release_date, 'YYYY') }
+                    { formatDate(props.movie.release_date, locale, 'YYYY') }
                 </div>
 
                 {

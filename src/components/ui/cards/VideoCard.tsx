@@ -1,15 +1,19 @@
 'use client';
 
+import { useLocale } from 'next-intl';
+
 import useInView from '@/hooks/useInView';
 import { youtubeEmbedUrl } from '@/routes';
 import { VideoMapper } from '@/types';
-import formatDate from '@/utils/formateDate';
+import formatDate from '@/utils/formatDate';
 
 type Props = {
     video: VideoMapper
 };
 
 export default function VideoCard(props: Props) {
+    const locale = useLocale();
+        
     const { ref, entry } = useInView({
         rootMargin: '100%'
     }, true);
@@ -29,7 +33,7 @@ export default function VideoCard(props: Props) {
 
                 <div className="c-video-card__header-info">
                     <span>
-                        { formatDate(props.video.published_at, 'DD.MM.YYYY') }
+                        { formatDate(props.video.published_at, locale, 'DD.MM.YYYY') }
                     </span>
                     <span>
                         { props.video.type }

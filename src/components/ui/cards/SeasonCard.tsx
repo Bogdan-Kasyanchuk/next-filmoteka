@@ -1,11 +1,14 @@
+'use client';
+
 import Image from 'next/image';
+import { useLocale } from 'next-intl';
 
 import { IMG_SIZES } from '@/datasets/constants';
 import { PLACEHOLDERS } from '@/datasets/placeholders';
 import { imageUrl, pagesSeasonUrl } from '@/routes';
 import { Link } from '@/services/i18n/navigation';
 import { SeasonMapper } from '@/types';
-import formatDate from '@/utils/formateDate';
+import formatDate from '@/utils/formatDate';
 
 type Props = {
     season: SeasonMapper,
@@ -13,6 +16,8 @@ type Props = {
 };
 
 export default function SeasonCard(props: Props) {
+    const locale = useLocale();
+        
     return (
         <Link
             href={ pagesSeasonUrl(props.tvShowId, props.season.season_number) }
@@ -42,7 +47,7 @@ export default function SeasonCard(props: Props) {
                         props.season.air_date &&
                         <div className="с-season-card__info-list-item">
                             <dt>Air date:</dt>
-                            <dd>{ formatDate(props.season.air_date, 'DD.MM.YYYY') }</dd>
+                            <dd>{ formatDate(props.season.air_date, locale, 'DD.MM.YYYY') }</dd>
                         </div>
                     }
 

@@ -17,7 +17,7 @@ import { imageUrl, pagesSimilarUrl } from '@/routes';
 import { Link } from '@/services/i18n/navigation';
 import { MovieDetailsMapper } from '@/types';
 import formatCurrency from '@/utils/formatCurrency';
-import formatDate from '@/utils/formateDate';
+import formatDate from '@/utils/formatDate';
 
 type Props = {
     movie: MovieDetailsMapper['movie'],

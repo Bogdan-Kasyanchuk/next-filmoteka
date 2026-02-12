@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { useLocale } from 'next-intl';
 import { Fragment } from 'react';
 
 import Title from '@/components/ui/typography/Title';
@@ -7,7 +8,7 @@ import { PLACEHOLDERS } from '@/datasets/placeholders';
 import { imageUrl, pagesTVShowUrl } from '@/routes';
 import { Link } from '@/services/i18n/navigation';
 import { CurrentTVShowMapper } from '@/types';
-import formatDate from '@/utils/formateDate';
+import formatDate from '@/utils/formatDate';
 
 type Props = {
     tvShow: CurrentTVShowMapper,
@@ -15,6 +16,8 @@ type Props = {
 };
 
 export default function CurrentTVShow(props: Props) {
+    const locale = useLocale();
+        
     return (
         <div className="c-current-tv-show">
             <div className="c-current-tv-show__cover">
@@ -41,11 +44,17 @@ export default function CurrentTVShow(props: Props) {
                     <Link
                         href={ pagesTVShowUrl(props.id) }
                         title={
-                            `${ props.tvShow.name } ${ formatDate(props.tvShow.first_air_date, 'YYYY') }`
+                            `${ props.tvShow.name } ${ formatDate(
+                                props.tvShow.first_air_date, locale, 'YYYY'
+                            ) }`
                         }
                         className="u-link-color"
                     >
-                        { props.tvShow.name }&nbsp;({ formatDate(props.tvShow.first_air_date, 'YYYY') })
+                        { props.tvShow.name }&nbsp;{
+                            formatDate(
+                                props.tvShow.first_air_date, locale, 'YYYY'
+                            ) 
+                        }
                     </Link>
                 </Title>
 

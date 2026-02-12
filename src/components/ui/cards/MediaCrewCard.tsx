@@ -1,4 +1,7 @@
+'use client';
+
 import Image from 'next/image';
+import { useLocale } from 'next-intl';
 
 import { IMG_SIZES } from '@/datasets/constants';
 import { PLACEHOLDERS } from '@/datasets/placeholders';
@@ -6,13 +9,15 @@ import { MediaType } from '@/enums';
 import { imageUrl, pagesMovieUrl, pagesTVShowUrl } from '@/routes';
 import { Link } from '@/services/i18n/navigation';
 import { MediaCrewMapper } from '@/types';
-import formatDate from '@/utils/formateDate';
+import formatDate from '@/utils/formatDate';
 
 type Props = {
     crew: MediaCrewMapper
 };
 
 export default function MediaCrewCard(props: Props) {
+    const locale = useLocale();
+        
     return (
         <Link
             href={
@@ -27,7 +32,7 @@ export default function MediaCrewCard(props: Props) {
                     {
 
                         props.crew.release_date
-                            ? formatDate(props.crew.release_date, 'YYYY')
+                            ? formatDate(props.crew.release_date, locale, 'YYYY')
                             : '-'
                     }
                 </div>

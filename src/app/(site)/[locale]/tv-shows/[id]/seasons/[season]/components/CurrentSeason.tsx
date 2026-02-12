@@ -1,5 +1,8 @@
+'use client';
+
 import { ShowMore } from '@re-dev/react-truncate';
 import Image from 'next/image';
+import { useLocale } from 'next-intl';
 
 import Title from '@/components/ui/typography/Title';
 import { IMG_SIZES } from '@/datasets/constants';
@@ -7,7 +10,7 @@ import { PLACEHOLDERS } from '@/datasets/placeholders';
 import { imageUrl, pagesTVShowUrl } from '@/routes';
 import { Link } from '@/services/i18n/navigation';
 import { CurrentTVShowMapper, TVShowSeasonDetailsMapper } from '@/types';
-import formatDate from '@/utils/formateDate';
+import formatDate from '@/utils/formatDate';
 
 type Props = {
     tvShow: {
@@ -19,6 +22,8 @@ type Props = {
 };
 
 export default function CurrentSeason(props: Props) {
+    const locale = useLocale();
+        
     return (
         <div className="p-season__current-season">
             <div className="p-season__current-season-inner">
@@ -46,21 +51,33 @@ export default function CurrentSeason(props: Props) {
                         <Link
                             href={ pagesTVShowUrl(props.id) }
                             title={
-                                `${ props.tvShow.name } ${ formatDate(props.tvShow.first_air_date, 'YYYY') }`
+                                `${ props.tvShow.name } ${ formatDate(
+                                    props.tvShow.first_air_date, locale, 'YYYY'
+                                ) }`
                             }
                             className="u-link-color"
                         >
-                            { props.tvShow.name }&nbsp;({ formatDate(props.tvShow.first_air_date, 'YYYY') })
+                            { props.tvShow.name }&nbsp;{
+                                formatDate(
+                                    props.tvShow.first_air_date, locale, 'YYYY'
+                                ) 
+                            }
                         </Link>
                     </Title>
 
                     <h3
                         className="p-season__current-season-title"
                         title={
-                            `${ props.season.name } ${ formatDate(props.season.air_date, 'DD.MM.YYYY') }`
+                            `${ props.season.name } ${ formatDate(
+                                props.season.air_date, locale, 'DD.MM.YYYY'
+                            ) }`
                         }
                     >
-                        { props.season.name }&nbsp;({ formatDate(props.season.air_date, 'DD.MM.YYYY') })
+                        { props.season.name }&nbsp;{
+                            formatDate(
+                                props.season.air_date, locale, 'DD.MM.YYYY'
+                            ) 
+                        }
                     </h3>
 
                     <div className="p-season__current-season-tags">

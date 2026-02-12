@@ -22,7 +22,16 @@ const nextConfig: NextConfig = {
 const withNextIntl = createNextIntlPlugin({
     requestConfig: './src/services/i18n/request.ts',
     experimental: {
-        createMessagesDeclaration: './src/messages/en.json'
+        srcPath: './src', 
+        extract: {
+            sourceLocale: 'en'
+        }, 
+        messages: {
+            path: './src/messages',
+            format: 'json',
+            locales: 'infer',
+            precompile: true
+        }
     }
 });
 

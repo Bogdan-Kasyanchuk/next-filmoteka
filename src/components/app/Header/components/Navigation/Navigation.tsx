@@ -3,7 +3,7 @@
 import clsx from 'clsx';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import { useLocale } from 'next-intl';
+import { useExtracted, useLocale } from 'next-intl';
 
 import Popover from '@/components/ui/data-display/Popover';
 import { Link } from '@/services/i18n/navigation';
@@ -14,8 +14,14 @@ const searchLink = links[ 0 ];
 
 export default function Navigation() {
     const locale = useLocale();
+
+    const t = useExtracted();
         
     const pathname = usePathname();
+
+    const isCurrentLink = (exact: boolean, href: string ) => exact
+        ? pathname === `/${ locale }${ href }`
+        : pathname === `/${ locale }${ href }` || pathname.startsWith(`/${ locale }${ href }/page`);
 
     return (
         <nav className="c-navigation">
@@ -27,9 +33,9 @@ export default function Navigation() {
                                 type="button"
                                 className={
                                     clsx('c-navigation__link', {
-                                        'c-navigation__link--is-active c-navigation__link--is-disabled': searchLink.exact
-                                            ? pathname === '/' + locale + searchLink.href
-                                            : pathname === '/' + locale + searchLink.href || pathname.startsWith('/' + locale + searchLink.href + '/page')
+                                        'c-navigation__link--is-active c-navigation__link--is-disabled': isCurrentLink(
+                                            searchLink.exact, searchLink.href
+                                        )
                                     })
                                 }
                             >
@@ -62,7 +68,7 @@ export default function Navigation() {
                             <input
                                 className="c-navigation__search-input"
                                 name="query"
-                                placeholder="Search movies, tv shows, persons"
+                                placeholder={ t('Search movies, tv shows, persons') }
                                 autoComplete="off"
                                 minLength={ 3 }
                                 required
@@ -72,7 +78,7 @@ export default function Navigation() {
                                 type="submit"
                                 className="c-navigation__search-button"
                             >
-                                Search
+                                { t('Search') }
                             </button>
                         </form>
                     </Popover>
@@ -86,10 +92,10 @@ export default function Navigation() {
                                     href={ link.href }
                                     className={
                                         clsx('c-navigation__link', {
-                                            'c-navigation__link--is-active': link.exact
-                                                ? pathname === '/' + locale + link.href
-                                                : pathname === '/' + locale + link.href || pathname.startsWith('/' + locale + link.href + '/page'),
-                                            'c-navigation__link--is-disabled': pathname === link.href
+                                            'c-navigation__link--is-active': isCurrentLink(
+                                                link.exact, link.href
+                                            ),
+                                            'c-navigation__link--is-disabled': pathname === '/' + locale + link.href
                                         })
                                     }
                                 >

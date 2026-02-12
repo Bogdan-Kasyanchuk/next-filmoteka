@@ -3,12 +3,14 @@ import { Plus_Jakarta_Sans } from 'next/font/google';
 import { notFound } from 'next/navigation';
 import { NextIntlClientProvider, hasLocale } from 'next-intl';
 import { setRequestLocale } from 'next-intl/server';
+import { PropsWithChildren } from 'react';
 
 import Footer from '@/components/app/Footer';
 import Header from '@/components/app/Header';
 import { URLS } from '@/datasets/constants';
 import QueryProvider from '@/providers/QueryProvider';
 import { routing } from '@/services/i18n/routing';
+import { Locale } from '@/types';
 
 const font = Plus_Jakarta_Sans({ subsets: [ 'latin' ] });
 
@@ -29,7 +31,11 @@ export const metadata: Metadata = {
     metadataBase: new URL(URLS.SITE)
 };
 
-export default async function Layout(props: LayoutProps<'/[locale]'>) {
+type Props = {
+    params: Promise<{ locale: Locale }>
+};
+
+export default async function Layout(props: PropsWithChildren<Props>) {
     const { locale } = await props.params;
 
     if (!hasLocale(routing.locales, locale)) {
