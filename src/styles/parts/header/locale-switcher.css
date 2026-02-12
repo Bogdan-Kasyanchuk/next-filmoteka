@@ -1,0 +1,20 @@
+.c-locale-switcher {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 36px;
+    height: 36px;
+    margin-inline-start: auto;
+
+    font-size: var(--text-5xl);
+    line-height: 1;
+
+    transition-property: opacity;
+
+    @media (any-hover: hover) {
+        &:hover {
+            opacity: 0.75;
+        }
+    }
+}

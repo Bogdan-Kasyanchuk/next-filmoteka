@@ -2,16 +2,19 @@
 
 import clsx from 'clsx';
 import Image from 'next/image';
-import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { useLocale } from 'next-intl';
 
 import Popover from '@/components/ui/data-display/Popover';
+import { Link } from '@/services/i18n/navigation';
 
 import { links } from './datasets';
 
 const searchLink = links[ 0 ];
 
 export default function Navigation() {
+    const locale = useLocale();
+        
     const pathname = usePathname();
 
     return (
@@ -25,8 +28,8 @@ export default function Navigation() {
                                 className={
                                     clsx('c-navigation__link', {
                                         'c-navigation__link--is-active c-navigation__link--is-disabled': searchLink.exact
-                                            ? pathname === searchLink.href
-                                            : pathname === searchLink.href || pathname.startsWith(searchLink.href + '/page')
+                                            ? pathname === '/' + locale + searchLink.href
+                                            : pathname === '/' + locale + searchLink.href || pathname.startsWith('/' + locale + searchLink.href + '/page')
                                     })
                                 }
                             >
@@ -84,8 +87,8 @@ export default function Navigation() {
                                     className={
                                         clsx('c-navigation__link', {
                                             'c-navigation__link--is-active': link.exact
-                                                ? pathname === link.href
-                                                : pathname === link.href || pathname.startsWith(link.href + '/page'),
+                                                ? pathname === '/' + locale + link.href
+                                                : pathname === '/' + locale + link.href || pathname.startsWith('/' + locale + link.href + '/page'),
                                             'c-navigation__link--is-disabled': pathname === link.href
                                         })
                                     }

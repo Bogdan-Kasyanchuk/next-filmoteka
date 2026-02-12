@@ -1,9 +1,9 @@
 import clsx from 'clsx';
 import Image from 'next/image';
-import Link from 'next/link';
 import { PropsWithChildren } from 'react';
 
 import { pagesHomeUrl } from '@/routes';
+import { Link } from '@/services/i18n/navigation';
 
 type Props = {
     imgSrc: string,

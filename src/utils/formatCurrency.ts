@@ -1,6 +1,10 @@
 import { PARAMETERS } from '@/datasets/constants';
+import { Locale } from '@/types';
 
-const locale = `${ PARAMETERS.LOCALE.language }-${ PARAMETERS.LOCALE.region }`;
-
-export default (value: number, options?: Intl.NumberFormatOptions) =>
-    new Intl.NumberFormat(locale, options).format(value);
+export default (value: number, locale: Locale, options?: Intl.NumberFormatOptions) => {
+  
+    return new Intl.NumberFormat(
+        PARAMETERS.LOCALES[ locale as keyof typeof PARAMETERS.LOCALES ],
+        options
+    ).format(value);
+};

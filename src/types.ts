@@ -265,3 +265,5 @@ export type PersonDetailsMapper = {
 };
 
 export type Adult = 'true' | 'false';
+
+export type Locale = string;

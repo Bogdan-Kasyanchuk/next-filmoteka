@@ -2,6 +2,7 @@ import Logo from '@/components/ui/data-display/Logo';
 import Container from '@/components/ui/layouts/Container';
 
 import Navigation from './components/Navigation';
+import SwitchLocale from './components/SwitchLocale';
 
 export default function Header() {
     return (
@@ -19,6 +20,8 @@ export default function Header() {
                         Filmoteka
                     </span>
                 </Logo>
+
+                <SwitchLocale />
 
                 <Navigation />
             </Container>

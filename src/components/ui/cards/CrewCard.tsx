@@ -1,10 +1,10 @@
 import clsx from 'clsx';
 import Image from 'next/image';
-import Link from 'next/link';
 
 import { IMG_SIZES } from '@/datasets/constants';
 import { PLACEHOLDERS } from '@/datasets/placeholders';
 import { imageUrl, pagesPersonUrl } from '@/routes';
+import { Link } from '@/services/i18n/navigation';
 import { CrewMapper } from '@/types';
 
 type Props = {

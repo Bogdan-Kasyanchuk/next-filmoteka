@@ -22,7 +22,7 @@ export default function Pagination(props: Props) {
 
     const createPageURL = (page: number) => {
         const params = new URLSearchParams(searchParams);
-        
+
         const basePath = pathname.replace(/\/page\/[0-9]+$/, '');
 
         return buildUrl(`${ basePath }/page/${ page }`, params);

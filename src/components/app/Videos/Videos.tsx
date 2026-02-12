@@ -1,11 +1,13 @@
 'use client';
 
 import { useSuspenseQuery } from '@tanstack/react-query';
+import { useLocale } from 'next-intl';
 
 import VideoCard from '@/components/ui/cards/VideoCard';
 import { MediaType, VideoSiteType, VideoType } from '@/enums';
+import { generalQueryKeys } from '@/helpers/queryKeys';
 import { transformVideo } from '@/helpers/transformData';
-import { getVideos } from '@/services/tmdbApi/general';
+import { getVideos } from '@/services/tmdb/general';
 import { VideoMapper } from '@/types';
 
 import Wrapper from './Wrapper';
@@ -16,9 +18,11 @@ type Props = {
 };
 
 export default function Videos(props: Props) {
+    const locale = useLocale();
+    
     const { data, isError } = useSuspenseQuery({
-        queryKey: [ 'videos', props.type, props.id ],
-        queryFn: () => getVideos(props.type, props.id),
+        queryKey: generalQueryKeys.videos(props.type, props.id, locale),
+        queryFn: () => getVideos(props.type, props.id, locale),
         select: data => {
             if (!data.results.length) {
                 return null;  

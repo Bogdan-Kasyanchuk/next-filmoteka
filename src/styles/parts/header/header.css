@@ -1,4 +1,5 @@
 @import './navigation.css';
+@import './locale-switcher.css';
 
 .c-header {
     position: sticky;
@@ -12,9 +13,13 @@
 
     &__container {
         display: flex;
-        column-gap: 21px;
+        column-gap: 10px;
         align-items: center;
         justify-content: space-between;
+
+        @media (--min-sm) {
+            column-gap: 20px;
+        }
     }
 
     @media (--min-lg) {

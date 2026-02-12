@@ -1,7 +1,7 @@
-import Link from 'next/link';
 
 import Container from '@/components/ui/layouts/Container';
 import { pagesHomeUrl } from '@/routes';
+import { Link } from '@/services/i18n/navigation';
 
 export default function Error404() {
     return (

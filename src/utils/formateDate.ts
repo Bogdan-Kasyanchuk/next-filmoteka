@@ -6,13 +6,14 @@ import utc from 'dayjs/plugin/utc';
 
 import 'dayjs/locale/en';
 import { PARAMETERS } from '@/datasets/constants';
+import { Locale } from '@/types';
 
 dayjs.extend(utc);
 dayjs.extend(relativeTime);
 dayjs.extend(timezone);
 dayjs.extend(localizedFormat);
 
-export default (date: string | number | Date, format?: string) => {
+export default (date: string | number | Date, locale: Locale, format?: string) => {
     const parsed = dayjs(date);
 
     if (!parsed.isValid()) {
@@ -20,7 +21,7 @@ export default (date: string | number | Date, format?: string) => {
     }
   
     return dayjs(date)
-        .locale(PARAMETERS.LOCALE.language)
+        .locale(locale)
         .tz(PARAMETERS.ZONE)
         .format(format ?? 'lll');
 };

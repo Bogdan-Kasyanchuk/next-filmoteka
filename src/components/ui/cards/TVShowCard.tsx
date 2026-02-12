@@ -1,9 +1,9 @@
 import Image from 'next/image';
-import Link from 'next/link';
 
 import { IMG_SIZES } from '@/datasets/constants';
 import { PLACEHOLDERS } from '@/datasets/placeholders';
 import { imageUrl, pagesTVShowUrl } from '@/routes';
+import { Link } from '@/services/i18n/navigation';
 import { TVShowMapper } from '@/types';
 import formatDate from '@/utils/formateDate';
 
