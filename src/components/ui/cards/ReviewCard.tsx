@@ -1,7 +1,8 @@
 import { ShowMore } from '@re-dev/react-truncate';
 import Image from 'next/image';
 
-import { IMG_SIZES, PLACEHOLDERS } from '@/datasets/constants';
+import { IMG_SIZES } from '@/datasets/constants';
+import { PLACEHOLDERS } from '@/datasets/placeholders';
 import { imageUrl } from '@/routes';
 import { ReviewMapper } from '@/types';
 import formatDate from '@/utils/formateDate';
@@ -28,7 +29,7 @@ export default function ReviewCard(props: Props) {
                         }
                         sizes="91px"
                         alt={ props.review.author.name || props.review.author.username }
-                        placeholder={ PLACEHOLDERS[ '1x1_small' ] }
+                        placeholder={ PLACEHOLDERS[ '1x1' ] }
                         fill
                     />
 

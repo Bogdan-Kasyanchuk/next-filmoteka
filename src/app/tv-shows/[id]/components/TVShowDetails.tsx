@@ -8,7 +8,8 @@ import Popover from '@/components/ui/data-display/Popover';
 import SocialLinks from '@/components/ui/data-display/SocialLinks';
 import Container from '@/components/ui/layouts/Container';
 import Title from '@/components/ui/typography/Title';
-import { IMG_SIZES, PLACEHOLDERS } from '@/datasets/constants';
+import { IMG_SIZES } from '@/datasets/constants';
+import { PLACEHOLDERS } from '@/datasets/placeholders';
 import { MediaType } from '@/enums';
 import { imageUrl, pagesPersonUrl, pagesSimilarUrl } from '@/routes';
 import { TVShowDetailsMapper } from '@/types';
@@ -55,7 +56,7 @@ export default function TVShowDetails(props: Props) {
                             }
                             sizes="(max-width: 767px) 254px, (max-width: 1319px) 327px, 351px"
                             alt={ props.tvShow.name }
-                            placeholder={ PLACEHOLDERS[ '2x3_large' ] }
+                            placeholder={ PLACEHOLDERS[ '2x3' ] }
                             fill
                             preload
                             loading="eager"
@@ -269,7 +270,7 @@ export default function TVShowDetails(props: Props) {
                                                             }
                                                             sizes="50px"
                                                             alt={ creator.name }
-                                                            placeholder={ PLACEHOLDERS[ '1x1_small' ] }
+                                                            placeholder={ PLACEHOLDERS[ '1x1' ] }
                                                             fill
                                                         />
                                                     </div>
@@ -307,7 +308,7 @@ export default function TVShowDetails(props: Props) {
                                                         }
                                                         alt={ network.name }
                                                         sizes="50px"
-                                                        placeholder={ PLACEHOLDERS[ '1x1_small' ] }
+                                                        placeholder={ PLACEHOLDERS[ '1x1' ] }
                                                         fill
                                                     />
                                                 </div>
@@ -373,7 +374,7 @@ export default function TVShowDetails(props: Props) {
                                                         }
                                                         sizes="50px"
                                                         alt={ company.name }
-                                                        placeholder={ PLACEHOLDERS[ '1x1_small' ] }
+                                                        placeholder={ PLACEHOLDERS[ '1x1' ] }
                                                         fill
                                                     />
                                                 </div>

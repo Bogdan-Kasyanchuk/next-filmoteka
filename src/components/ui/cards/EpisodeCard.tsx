@@ -1,7 +1,8 @@
 import Image from 'next/image';
 
 import Popover from '@/components/ui/data-display/Popover';
-import { IMG_SIZES, PLACEHOLDERS } from '@/datasets/constants';
+import { IMG_SIZES } from '@/datasets/constants';
+import { PLACEHOLDERS } from '@/datasets/placeholders';
 import { imageUrl } from '@/routes';
 import { EpisodeMapper } from '@/types';
 import formatDate from '@/utils/formateDate';
@@ -23,7 +24,7 @@ export default function EpisodeCard(props: Props) {
                     }
                     sizes="(max-width: 479px) 176px, (max-width: 767px) 216px, 244px"
                     alt={ props.episode.name }
-                    placeholder={ PLACEHOLDERS[ '16x9_medium' ] }
+                    placeholder={ PLACEHOLDERS[ '16x9' ] }
                     fill
                     preload={ props.preload }
                     loading={ props.preload ? 'eager' : 'lazy' }

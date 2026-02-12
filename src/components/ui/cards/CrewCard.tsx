@@ -2,7 +2,8 @@ import clsx from 'clsx';
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { IMG_SIZES, PLACEHOLDERS } from '@/datasets/constants';
+import { IMG_SIZES } from '@/datasets/constants';
+import { PLACEHOLDERS } from '@/datasets/placeholders';
 import { imageUrl, pagesPersonUrl } from '@/routes';
 import { CrewMapper } from '@/types';
 
@@ -31,7 +32,7 @@ export default function CrewCard(props: Props) {
                     }
                     sizes="161px"
                     alt={ props.crew.name }
-                    placeholder={ PLACEHOLDERS[ '1x1_small' ] }
+                    placeholder={ PLACEHOLDERS[ '1x1' ] }
                     fill
                 />
             </div>

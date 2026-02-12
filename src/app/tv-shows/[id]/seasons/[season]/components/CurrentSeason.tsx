@@ -3,7 +3,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import Title from '@/components/ui/typography/Title';
-import { IMG_SIZES, PLACEHOLDERS } from '@/datasets/constants';
+import { IMG_SIZES } from '@/datasets/constants';
+import { PLACEHOLDERS } from '@/datasets/placeholders';
 import { imageUrl, pagesTVShowUrl } from '@/routes';
 import { CurrentTVShowMapper, TVShowSeasonDetailsMapper } from '@/types';
 import formatDate from '@/utils/formateDate';
@@ -30,7 +31,7 @@ export default function CurrentSeason(props: Props) {
                         }
                         sizes="87px"
                         alt={ props.season.name }
-                        placeholder={ PLACEHOLDERS[ '2x3_small' ] }
+                        placeholder={ PLACEHOLDERS[ '2x3' ] }
                         fill
                         preload
                         loading="eager"

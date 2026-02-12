@@ -1,7 +1,8 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { IMG_SIZES, PLACEHOLDERS } from '@/datasets/constants';
+import { IMG_SIZES } from '@/datasets/constants';
+import { PLACEHOLDERS } from '@/datasets/placeholders';
 import { imageUrl, pagesTVShowUrl } from '@/routes';
 import { TVShowMapper } from '@/types';
 import formatDate from '@/utils/formateDate';
@@ -23,7 +24,7 @@ export default function TVShowCard(props: Props) {
                     }
                     sizes="(max-width: 479px) 174px, (max-width: 767px) 214px, (max-width: 1023px) 231px, 295px"
                     alt={ props.tvShow.name }
-                    placeholder={ PLACEHOLDERS[ '2x3_large' ] }
+                    placeholder={ PLACEHOLDERS[ '2x3' ] }
                     fill
                     preload={ props.preload }
                     loading={ props.preload ? 'eager' : 'lazy' }

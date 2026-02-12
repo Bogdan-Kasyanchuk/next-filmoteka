@@ -3,7 +3,8 @@ import Link from 'next/link';
 import { Fragment } from 'react';
 
 import Title from '@/components/ui/typography/Title';
-import { IMG_SIZES, PLACEHOLDERS } from '@/datasets/constants';
+import { IMG_SIZES } from '@/datasets/constants';
+import { PLACEHOLDERS } from '@/datasets/placeholders';
 import { imageUrl, pagesTVShowUrl } from '@/routes';
 import { CurrentTVShowMapper } from '@/types';
 import formatDate from '@/utils/formateDate';
@@ -25,7 +26,7 @@ export default function CurrentTVShow(props: Props) {
                     }
                     sizes="81px"
                     alt={ props.tvShow.name }
-                    placeholder={ PLACEHOLDERS[ '2x3_small' ] }
+                    placeholder={ PLACEHOLDERS[ '2x3' ] }
                     fill
                     preload
                     loading="eager"
@@ -76,7 +77,8 @@ export default function CurrentTVShow(props: Props) {
                                         { index !== 0 && <>&nbsp;|&nbsp;</> }
                                         { genre }
                                     </Fragment>
-                                ))
+                                )
+                            )
                         }
                     </div>
                 }

@@ -1,4 +1,4 @@
-import { PLACEHOLDERS } from '@/datasets/constants';
+import { PLACEHOLDERS } from '@/datasets/placeholders';
 
 import Wrapper from './Wrapper';
 
@@ -16,10 +16,10 @@ export default function Skeleton() {
                                 <div />
                                 
                                 <img
-                                    src={ PLACEHOLDERS[ '2x3_large' ] }
+                                    src={ PLACEHOLDERS[ '2x3' ] }
                                     alt="Placeholder"
-                                    width={ 360 }
-                                    height={ 540 }
+                                    width={ 400 }
+                                    height={ 600 }
                                 />
                             </div>
                         )

@@ -8,7 +8,8 @@ import Popover from '@/components/ui/data-display/Popover';
 import SocialLinks from '@/components/ui/data-display/SocialLinks';
 import Container from '@/components/ui/layouts/Container';
 import Title from '@/components/ui/typography/Title';
-import { IMG_SIZES, PLACEHOLDERS } from '@/datasets/constants';
+import { IMG_SIZES } from '@/datasets/constants';
+import { PLACEHOLDERS } from '@/datasets/placeholders';
 import { MediaType } from '@/enums';
 import { imageUrl, pagesSimilarUrl } from '@/routes';
 import { MovieDetailsMapper } from '@/types';
@@ -54,7 +55,7 @@ export default function MovieDetails(props: Props) {
                             }
                             sizes="(max-width: 767px) 254px, (max-width: 1319px) 327px, 351px"
                             alt={ props.movie.title }
-                            placeholder={ PLACEHOLDERS[ '2x3_large' ] }
+                            placeholder={ PLACEHOLDERS[ '2x3' ] }
                             fill
                             preload
                             loading="eager"
