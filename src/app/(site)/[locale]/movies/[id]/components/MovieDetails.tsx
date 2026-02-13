@@ -2,7 +2,7 @@
 
 import { ShowMore } from '@re-dev/react-truncate';
 import Image from 'next/image';
-import { useLocale } from 'next-intl';
+import { useFormatter } from 'next-intl';
 import { Fragment } from 'react';
 
 import CompanyDetails from '@/components/app/CompanyDetails';
@@ -16,8 +16,6 @@ import { MediaType } from '@/enums';
 import { imageUrl, pagesSimilarUrl } from '@/routes';
 import { Link } from '@/services/i18n/navigation';
 import { MovieDetailsMapper } from '@/types';
-import formatCurrency from '@/utils/formatCurrency';
-import formatDate from '@/utils/formatDate';
 
 type Props = {
     movie: MovieDetailsMapper['movie'],
@@ -25,7 +23,7 @@ type Props = {
 };
 
 export default function MovieDetails(props: Props) {
-    const locale = useLocale();
+    const format = useFormatter();
         
     const average = Math.round((props.movie.vote_average ?? 0) * 10);
 
@@ -75,7 +73,11 @@ export default function MovieDetails(props: Props) {
                     </div>
 
                     <Title className="p-movie__details-title">
-                        { props.movie.title }&nbsp;{ formatDate(props.movie.release_date, locale, 'YYYY') }
+                        { props.movie.title }&nbsp;({
+                            format.dateTime(
+                                props.movie.release_date, { year: 'numeric' }
+                            )
+                        })
                     </Title>
 
                     <ul className="p-movie__details-list-rounds">
@@ -134,21 +136,23 @@ export default function MovieDetails(props: Props) {
 
                         <li className="p-movie__details-list-info-item">
                             <span>Budget:</span>
-                            <span>${ formatCurrency(props.movie.budget ?? 0, locale) }</span>
+                            <span>
+                                { format.number(props.movie.budget ?? 0, 'currency-precise') }
+                            </span>
                         </li>
 
                         <li className="p-movie__details-list-info-item">
                             <span>Revenue:</span>
-                            <span>${ formatCurrency(props.movie.revenue ?? 0, locale) }</span>
+                            <span>
+                                { format.number(props.movie.revenue ?? 0, 'currency-precise') }
+                            </span>
                         </li>
 
                         {
                             props.movie.release_date &&
                             <li className="p-movie__details-list-info-item">
                                 <span>Release:</span>
-                                <span>
-                                    { formatDate(props.movie.release_date, locale, 'DD.MM.YYYY') }
-                                </span>
+                                <span>{ format.dateTime(props.movie.release_date) }</span>
                             </li>
                         }
 

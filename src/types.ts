@@ -130,7 +130,7 @@ export type MovieDetailsMapper = {
         backdrop_path: string,
         poster_path: string,
         original_language: string,
-        release_date: string,
+        release_date: Date,
         revenue: number,
         runtime: number,
         genres: string[],
@@ -265,5 +265,3 @@ export type PersonDetailsMapper = {
 };
 
 export type Adult = 'true' | 'false';
-
-export type Locale = string;

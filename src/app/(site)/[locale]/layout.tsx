@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import { Plus_Jakarta_Sans } from 'next/font/google';
 import { notFound } from 'next/navigation';
-import { NextIntlClientProvider, hasLocale } from 'next-intl';
+import { Locale, NextIntlClientProvider, hasLocale } from 'next-intl';
 import { setRequestLocale } from 'next-intl/server';
 import { PropsWithChildren } from 'react';
 
@@ -10,7 +10,6 @@ import Header from '@/components/app/Header';
 import { URLS } from '@/datasets/constants';
 import QueryProvider from '@/providers/QueryProvider';
 import { routing } from '@/services/i18n/routing';
-import { Locale } from '@/types';
 
 const font = Plus_Jakarta_Sans({ subsets: [ 'latin' ] });
 

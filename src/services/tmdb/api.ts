@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation';
+import { Locale } from 'next-intl';
 
 import { PARAMETERS, URLS } from '@/datasets/constants';
-import { Locale } from '@/types';
 
 type FetchOptions = {
     next?: {

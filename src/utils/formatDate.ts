@@ -3,10 +3,10 @@ import localizedFormat from 'dayjs/plugin/localizedFormat';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import timezone from 'dayjs/plugin/timezone';
 import utc from 'dayjs/plugin/utc';
-
+import { Locale } from 'next-intl';
 import 'dayjs/locale/en';
+
 import { PARAMETERS } from '@/datasets/constants';
-import { Locale } from '@/types';
 
 dayjs.extend(utc);
 dayjs.extend(relativeTime);

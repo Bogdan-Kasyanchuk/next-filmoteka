@@ -4,7 +4,7 @@
     row-gap: 20px;
     align-items: center;
 
-    padding-block: 40px;
+    padding-block: 30px;
 
     &__title {
         font-weight: 700;
@@ -36,5 +36,6 @@
 
     @media (--min-md) {
         row-gap: 30px;
+        padding-block: 40px;
     }
 }

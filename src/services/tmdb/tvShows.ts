@@ -1,3 +1,4 @@
+import { Locale } from 'next-intl';
 import { cache } from 'react';
 
 import { MediaType, TVShowType } from '@/enums';
@@ -9,7 +10,6 @@ import {
     TVShowSeasonDetailsShema,
     TVShowShema
 } from '@/shemas';
-import { Locale } from '@/types';
 
 import { fetchApi } from './api';
 

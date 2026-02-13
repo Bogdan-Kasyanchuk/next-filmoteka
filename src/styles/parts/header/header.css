@@ -13,11 +13,11 @@
 
     &__container {
         display: flex;
-        column-gap: 10px;
+        column-gap: 15px;
         align-items: center;
         justify-content: space-between;
 
-        @media (--min-sm) {
+        @media (--min-md) {
             column-gap: 20px;
         }
     }

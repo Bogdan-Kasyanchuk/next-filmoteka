@@ -1,3 +1,4 @@
+import { Locale } from 'next-intl';
 import { cache } from 'react';
 
 import { MediaType, MovieType } from '@/enums';
@@ -8,7 +9,6 @@ import {
     MovieShema,
     SimilarMovieShema
 } from '@/shemas';
-import { Locale } from '@/types';
 
 import { fetchApi } from './api';
 

@@ -84,7 +84,7 @@ export const transformMovieDetails = (
         popularity: movie.popularity,
         backdrop_path: movie.backdrop_path,
         poster_path: movie.poster_path,
-        release_date: movie.release_date,
+        release_date: new Date(movie.release_date),
         revenue: movie.revenue,
         runtime: movie.runtime,
         genres: movie.genres.map(genre => genre.name),

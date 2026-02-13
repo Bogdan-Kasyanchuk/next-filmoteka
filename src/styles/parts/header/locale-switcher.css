@@ -7,8 +7,11 @@
     height: 36px;
     margin-inline-start: auto;
 
-    font-size: var(--text-5xl);
+    font-size: var(--text-2xl);
+    font-weight: 700;
     line-height: 1;
+    color: var(--color-primary);
+    text-transform: uppercase;
 
     transition-property: opacity;
 

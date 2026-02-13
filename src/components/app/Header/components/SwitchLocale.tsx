@@ -1,17 +1,18 @@
 'use client';
 
-import { useLocale } from 'next-intl';
+import { Locale, useLocale } from 'next-intl';
 
 import { usePathname, useRouter } from '@/services/i18n/navigation';
-import { Locale } from '@/types';
 
 export default function LocaleSwitcher() {
     const router = useRouter();
     const pathname = usePathname();
     const locale = useLocale();
 
-    const setLocale = (newLocale: Locale) => {
-        router.replace(pathname, { locale: newLocale });
+    const newLocale = locale === 'en' ? 'uk' : 'en';
+
+    const setLocale = (locale: Locale) => {
+        router.replace(pathname, { locale });
     };
 
     return (
@@ -20,11 +21,11 @@ export default function LocaleSwitcher() {
             className="c-locale-switcher"
             onClick={
                 () => {
-                    setLocale(locale === 'en' ? 'uk' : 'en');
+                    setLocale(newLocale);
                 } 
             }
         >
-            { locale === 'en' ? '🇺🇦' : '🇬🇧' }
+            { newLocale }
         </button>
     );
 }

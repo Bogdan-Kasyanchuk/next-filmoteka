@@ -1,7 +1,7 @@
+import { Locale } from 'next-intl';
 import { cache } from 'react';
 
 import { DataShema, PersonDetailsShema, PersonShema } from '@/shemas';
-import { Locale } from '@/types';
 
 import { fetchApi } from './api';
 
