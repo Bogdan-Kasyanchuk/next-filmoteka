@@ -2,7 +2,7 @@
 
 import { useQueries } from '@tanstack/react-query';
 import { notFound } from 'next/navigation';
-import { useLocale } from 'next-intl';
+import { useExtracted, useLocale } from 'next-intl';
 
 import MovieCard from '@/components/ui/cards/MovieCard';
 import PersonCard from '@/components/ui/cards/PersonCard';
@@ -20,6 +20,8 @@ import { MovieMapper, PersonMapper, TVShowMapper } from '@/types';
 
 export default function Content() {
     const locale = useLocale();
+
+    const t = useExtracted();
       
     const data = useQueries({
         queries: [
@@ -82,7 +84,7 @@ export default function Content() {
                 data.today.items.length > 0 &&
                 <div className="p-home__block">
                     <Title className="p-home__title">
-                        Trending today
+                        { t('Trending today') }
                     </Title>
 
                     <ul className="c-media-list">
@@ -106,7 +108,7 @@ export default function Content() {
                             href={ pagesTrendingDayUrl() }
                             className="p-home__show-all-button"
                         >
-                            Show all trending today
+                            { t('Show all trending today') }
                         </Link>
                     }
                 </div>
@@ -116,7 +118,7 @@ export default function Content() {
                 data.week.items.length > 0 &&
                 <div className="p-home__block">
                     <Title className="p-home__title">
-                        Trending this week
+                        { t('Trending this week') }
                     </Title>
 
                     <ul className="c-media-list">
@@ -140,12 +142,11 @@ export default function Content() {
                             href={ pagesTrendingWeekUrl() }
                             className="p-home__show-all-button"
                         >
-                            Show all trending this week
+                            { t('Show all trending this week') }
                         </Link>
                     }
                 </div>
             }
-
         </Container>
     );
 }

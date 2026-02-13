@@ -1,7 +1,7 @@
 'use client';
 
 import { useQuery } from '@tanstack/react-query';
-import { useLocale } from 'next-intl';
+import { useExtracted, useLocale } from 'next-intl';
 import { PropsWithChildren } from 'react';
 
 import CompanyDetailsCard from '@/components/ui/cards/CompanyDetailsCard';
@@ -15,6 +15,8 @@ type Props = {
 
 export default function CompanyDetails(props: Props) {
     const locale = useLocale();
+
+    const t = useExtracted();
         
     const { data, isPending, isError } = useQuery({
         queryKey: generalQueryKeys.company(props.id, locale),
@@ -38,7 +40,7 @@ export default function CompanyDetails(props: Props) {
 
     if (isError || !data) {
         return (
-            <Content>Data not found</Content>
+            <Content>{ t('Data not found') }</Content>
         );
     }
 

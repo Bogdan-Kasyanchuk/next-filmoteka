@@ -1,8 +1,14 @@
+'use client';
+
+import { useExtracted } from 'next-intl';
+
 import { PLACEHOLDERS } from '@/datasets/placeholders';
 
 import Wrapper from './Wrapper';
 
 export default function Skeleton() {
+    const t = useExtracted();
+        
     return (
         <Wrapper>
             <div className="с-videos__list">
@@ -17,7 +23,7 @@ export default function Skeleton() {
 
                                 <img
                                     src={ PLACEHOLDERS[ '16x9' ] }
-                                    alt="Placeholder"
+                                    alt={ t('Placeholder') }
                                     width={ 500 }
                                     height={ 282 }
                                 />

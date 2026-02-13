@@ -126,7 +126,6 @@ export const transformCurrentMovie = (
     vote_average: movie.vote_average,
     poster_path: movie.poster_path,
     release_date: movie.release_date ? new Date(movie.release_date) : null,
-    media_type: MediaType.MOVIE,
     genres: movie.genres.map(genre => genre.name)
 });
 
@@ -218,7 +217,6 @@ export const transformCurrentTVShow = (
     name: tvShow.name || tvShow.original_name,
     vote_average: tvShow.vote_average,
     poster_path: tvShow.poster_path,
-    media_type: MediaType.TV_SHOW,
     genres: tvShow.genres.map(genre => genre.name)
 });
 

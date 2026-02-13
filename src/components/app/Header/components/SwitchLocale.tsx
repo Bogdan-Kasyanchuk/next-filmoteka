@@ -1,6 +1,6 @@
 'use client';
 
-import { Locale, useLocale } from 'next-intl';
+import { Locale, useExtracted, useLocale } from 'next-intl';
 
 import { usePathname, useRouter } from '@/services/i18n/navigation';
 
@@ -8,6 +8,8 @@ export default function LocaleSwitcher() {
     const router = useRouter();
     const pathname = usePathname();
     const locale = useLocale();
+
+    const t = useExtracted();
 
     const newLocale = locale === 'en' ? 'uk' : 'en';
 
@@ -17,7 +19,7 @@ export default function LocaleSwitcher() {
 
     return (
         <button
-            aria-label="Language switcher"
+            aria-label={ t('Language switcher') }
             className="c-locale-switcher"
             onClick={
                 () => {

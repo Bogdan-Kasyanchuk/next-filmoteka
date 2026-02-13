@@ -3,6 +3,7 @@
 import { useDebouncedValue, useDidUpdate } from '@mantine/hooks';
 import Image from 'next/image';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+import { useExtracted } from 'next-intl';
 import { useRef, useState } from 'react';
 
 import buildUrl from '@/utils/buildUrl';
@@ -11,6 +12,8 @@ export default function Search() {
     const pathname = usePathname();
     const searchParams = useSearchParams();
     const { push } = useRouter();
+
+    const t = useExtracted();
     
     const [ term, setTerm ] = useState(searchParams.get('query') ?? '');
     const [ debouncedTerm ] = useDebouncedValue(term, 250);
@@ -38,7 +41,7 @@ export default function Search() {
                 type="text"
                 name="search"
                 value={ term }
-                placeholder="Search movies, tv shows, persons"
+                placeholder={ t('Search movies, tv shows, persons') }
                 autoComplete="off"
                 className="p-search__search-input"
                 onChange={
@@ -52,7 +55,7 @@ export default function Search() {
                 width={ 20 }
                 height={ 20 }
                 src="/svg/search.svg"
-                alt="Search icon"
+                alt={ t('Icon') }
                 className="absolute top-1/2 -translate-y-1/2 start-[9px]"
                 preload
                 loading="eager"
@@ -63,7 +66,7 @@ export default function Search() {
                 term &&
                 <button
                     type="button"
-                    aria-label="Clear search"
+                    aria-label={ t('Clear search') }
                     className="p-search__search-clear"
                     onClick={
                         () => {
@@ -76,7 +79,7 @@ export default function Search() {
                         width={ 20 }
                         height={ 20 }
                         src="/svg/close.svg"
-                        alt="Close icon"
+                        alt={ t('Icon') }
                         className="pointer-events-none"
                         preload
                         loading="eager"

@@ -2,7 +2,7 @@
 
 import { ShowMore } from '@re-dev/react-truncate';
 import Image from 'next/image';
-import { useFormatter } from 'next-intl';
+import { useExtracted, useFormatter } from 'next-intl';
 import { Fragment } from 'react';
 
 import CompanyDetails from '@/components/app/CompanyDetails';
@@ -24,6 +24,8 @@ type Props = {
 
 export default function MovieDetails(props: Props) {
     const format = useFormatter();
+
+    const t = useExtracted();
         
     const average = Math.round((props.movie.vote_average ?? 0) * 10);
 
@@ -68,7 +70,7 @@ export default function MovieDetails(props: Props) {
                             href={ pagesSimilarUrl(MediaType.MOVIE, props.id) }
                             className="p-movie__details-similar-button"
                         >
-                            Similar movies
+                            { t('Similar movies') }
                         </Link>
                     </div>
 
@@ -101,17 +103,17 @@ export default function MovieDetails(props: Props) {
 
                         <li className="p-movie__details-list-rounds-item">
                             { props.movie.vote_count ?? 0 }
-                            <span>votes</span>
+                            <span>{ t('votes') }</span>
                         </li>
 
                         <li className="p-movie__details-list-rounds-item">
                             { Math.round(props.movie.popularity ?? 0) }
-                            <span>popularity</span>
+                            <span>{ t('popularity') }</span>
                         </li>
 
                         <li className="p-movie__details-list-rounds-item">
                             { props.movie.runtime ?? 0 }
-                            <span>min</span>
+                            <span>{ t('min') }</span>
                         </li>
                     </ul>
 
@@ -126,7 +128,7 @@ export default function MovieDetails(props: Props) {
                         {
                             props.movie.homepage &&
                             <li className="p-movie__details-list-info-item p-movie__details-list-info-item--link">
-                                <span>WebSite:</span>
+                                <span>{ t('WebSite:') }</span>
                                 <a
                                     href={ props.movie.homepage }
                                     rel="noopener noreferrer"
@@ -139,14 +141,14 @@ export default function MovieDetails(props: Props) {
                         }
 
                         <li className="p-movie__details-list-info-item">
-                            <span>Budget:</span>
+                            <span>{ t('Budget:') }</span>
                             <span>
                                 { format.number(props.movie.budget ?? 0, 'currency-precise') }
                             </span>
                         </li>
 
                         <li className="p-movie__details-list-info-item">
-                            <span>Revenue:</span>
+                            <span>{ t('Revenue:') }</span>
                             <span>
                                 { format.number(props.movie.revenue ?? 0, 'currency-precise') }
                             </span>
@@ -155,7 +157,7 @@ export default function MovieDetails(props: Props) {
                         {
                             props.movie.release_date &&
                             <li className="p-movie__details-list-info-item">
-                                <span>Release:</span>
+                                <span>{ t('Release:') }</span>
                                 <span>{ format.dateTime(props.movie.release_date) }</span>
                             </li>
                         }
@@ -163,7 +165,7 @@ export default function MovieDetails(props: Props) {
                         {
                             props.movie.genres.length > 0 &&
                             <li className="p-movie__details-list-info-item">
-                                <span className="self-start">Genres:</span>
+                                <span className="self-start">{ t('Genres:') }</span>
                                 <span>
                                     {
                                         props.movie.genres.map(
@@ -181,7 +183,7 @@ export default function MovieDetails(props: Props) {
                         {
                             props.movie.original_language &&
                             <li className="p-movie__details-list-info-item">
-                                <span>Original language:</span>
+                                <span>{ t('Original language:') }</span>
                                 <span>{ props.movie.original_language }</span>
                             </li>
                         }
@@ -189,7 +191,7 @@ export default function MovieDetails(props: Props) {
                         {
                             props.movie.spoken_languages.length > 0 &&
                             <li className="p-movie__details-list-info-item">
-                                <span className="self-start">Spoken languages:</span>
+                                <span className="self-start">{ t('Spoken languages:') }</span>
                                 <span>
                                     {
                                         props.movie.spoken_languages.map(
@@ -207,7 +209,7 @@ export default function MovieDetails(props: Props) {
                         {
                             props.movie.origin_country.length > 0 &&
                             <li className="p-movie__details-list-info-item">
-                                <span className="self-start">Countries:</span>
+                                <span className="self-start">{ t('Countries:') }</span>
                                 <span>
                                     {
                                         props.movie.origin_country.map(
@@ -232,7 +234,7 @@ export default function MovieDetails(props: Props) {
                         props.movie.overview &&
                         <div className="p-movie__details-overview">
                             <p className="p-movie__details-overview-title">
-                                Overview:
+                                { t('Overview:') }
                             </p>
 
                             <ShowMore
@@ -251,7 +253,7 @@ export default function MovieDetails(props: Props) {
                 <Container className="p-movie__details-content">
                     <div className="p-movie__details-companies">
                         <p className="p-movie__details-companies-title">
-                            Production companies:
+                            { t('Production companies:') }
                         </p>
 
                         <ul className="p-movie__details-companies-list">

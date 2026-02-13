@@ -1,10 +1,13 @@
+import { getExtracted } from 'next-intl/server';
+
 import Logo from '@/components/ui/data-display/Logo';
 import Container from '@/components/ui/layouts/Container';
 
 import Navigation from './components/Navigation';
 import SwitchLocale from './components/SwitchLocale';
 
-export default function Header() {
+export default async function Header() {
+    const t = await getExtracted();
     return (
         <header className="c-header">
             <Container
@@ -17,7 +20,7 @@ export default function Header() {
                     preload
                 >
                     <span className="max-md:sr-only">
-                        Filmoteka
+                        { t('Filmoteka') }
                     </span>
                 </Logo>
 

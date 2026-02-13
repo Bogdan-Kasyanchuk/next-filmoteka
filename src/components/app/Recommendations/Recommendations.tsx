@@ -1,5 +1,6 @@
 'use client';
 
+import { useExtracted } from 'next-intl';
 import { ReactNode } from 'react';
 
 import Wrapper from './Wrapper';
@@ -13,6 +14,8 @@ type Props<T extends Record<string, any>> = {
 };
 
 export default function Recommendations<T extends Record<string, any>>(props: Props<T>) {
+    const t = useExtracted();
+        
     return (
         <Wrapper>
             <ul className="с-recommendations__list">
@@ -41,7 +44,7 @@ export default function Recommendations<T extends Record<string, any>>(props: Pr
                         } 
                     }
                 >
-                    { props.isFetchingNextPage ? 'Loading...' : 'Load more' }
+                    { props.isFetchingNextPage ? 'Loading...' : t('Load more') }
                 </button>
             }
         </Wrapper>

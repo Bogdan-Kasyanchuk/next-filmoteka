@@ -2,9 +2,8 @@
 
 import { keepPreviousData, useQueries } from '@tanstack/react-query';
 import { notFound } from 'next/navigation';
-import { useLocale } from 'next-intl';
+import { useExtracted, useLocale } from 'next-intl';
 
-import CurrentMovie from '@/components/app/CurrentMovie';
 import Pagination from '@/components/app/Pagination';
 import MovieCard from '@/components/ui/cards/MovieCard';
 import Loader from '@/components/ui/data-display/Loader';
@@ -14,6 +13,8 @@ import { moviesQueryKeys } from '@/helpers/queryKeys';
 import { transformCurrentMovie, transformMovie } from '@/helpers/transformData';
 import { getCurrentMovieById, getSimilarMovies } from '@/services/tmdb/movies';
 
+import CurrentMovie from './CurrentMovie';
+
 type Props = {
     id: string,
     page: number
@@ -21,6 +22,8 @@ type Props = {
 
 export default function Content(props: Props) {
     const locale = useLocale();
+
+    const t = useExtracted();
         
     const data = useQueries({
         queries: [
@@ -63,7 +66,7 @@ export default function Content(props: Props) {
             />
 
             <Title className="p-movie-similar__title">
-                Similar movies
+                { t('Similar movies') }
             </Title>
 
             <div className="p-movie-similar__content">

@@ -2,7 +2,7 @@
 
 import { ShowMore } from '@re-dev/react-truncate';
 import Image from 'next/image';
-import { useFormatter } from 'next-intl';
+import { useExtracted, useFormatter } from 'next-intl';
 import { Fragment } from 'react';
 
 import SocialLinks from '@/components/ui/data-display/SocialLinks';
@@ -19,6 +19,8 @@ type Props = {
 
 export default function PersonDetails(props: Props) {
     const format = useFormatter();
+
+    const t = useExtracted();
         
     return (
         <div className="p-person__details">
@@ -65,7 +67,7 @@ export default function PersonDetails(props: Props) {
                     {
                         props.person.homepage &&
                         <li className="p-person__details-list-info-item p-person__details-list-info-item--link">
-                            <span>WebSite:</span>
+                            <span>{ t('WebSite:') }</span>
                             <a
                                 href={ props.person.homepage }
                                 rel="noopener noreferrer"
@@ -80,7 +82,7 @@ export default function PersonDetails(props: Props) {
                     {
                         props.person.known_for_department &&
                         <li className="p-person__details-list-info-item">
-                            <span>Department:</span>
+                            <span>{ t('Department:') }</span>
                             { props.person.known_for_department }
                         </li>
                     }
@@ -88,7 +90,7 @@ export default function PersonDetails(props: Props) {
                     {
                         props.person.place_of_birth &&
                         <li className="p-person__details-list-info-item">
-                            <span>Place of birth:</span>
+                            <span>{ t('Place of birth:') }</span>
                             { props.person.place_of_birth }
                         </li>
                     }
@@ -96,7 +98,7 @@ export default function PersonDetails(props: Props) {
                     {
                         props.person.birthday &&
                         <li className="p-person__details-list-info-item">
-                            <span>Birthday:</span>
+                            <span>{ t('Birthday:') }</span>
                             <span>{ format.dateTime(props.person.birthday) }</span>
                         </li>
                     }
@@ -104,20 +106,20 @@ export default function PersonDetails(props: Props) {
                     {
                         props.person.deathday &&
                         <li className="p-person__details-list-info-item">
-                            <span>Deathday:</span>
+                            <span>{ t('Deathday:') }</span>
                             <span>{ format.dateTime(props.person.deathday) }</span>
                         </li>
                     }
 
                     <li className="p-person__details-list-info-item">
-                        <span>Popularity:</span>
+                        <span>{ t('Popularity:') }</span>
                         { Math.round(props.person.popularity ?? 0) }
                     </li>
 
                     {
                         props.person.also_known_as.length > 0 &&
                         <li className="p-person__details-list-info-item">
-                            <span className="self-start">Also known as:</span>
+                            <span className="self-start">{ t('Also known as:') }</span>
                             <span>
                                 {
                                     props.person.also_known_as.map(
@@ -142,7 +144,7 @@ export default function PersonDetails(props: Props) {
                     props.person.biography &&
                     <div className="p-person__details-biography">
                         <p className="p-person__details-biography-title">
-                            Biography:
+                            { t('Biography:') }
                         </p>
 
                         <ShowMore

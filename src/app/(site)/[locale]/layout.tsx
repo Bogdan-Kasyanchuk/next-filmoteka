@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import { Plus_Jakarta_Sans } from 'next/font/google';
 import { notFound } from 'next/navigation';
 import { Locale, NextIntlClientProvider, hasLocale } from 'next-intl';
-import { setRequestLocale } from 'next-intl/server';
+import { getExtracted, setRequestLocale } from 'next-intl/server';
 import { PropsWithChildren } from 'react';
 
 import Footer from '@/components/app/Footer';
@@ -36,12 +36,14 @@ type Props = {
 
 export default async function Layout(props: PropsWithChildren<Props>) {
     const { locale } = await props.params;
-
+    
     if (!hasLocale(routing.locales, locale)) {
         notFound();
     }
-
+    
     setRequestLocale(locale);
+    
+    const t = await getExtracted();
 
     return (
         <html lang={ locale }>
@@ -51,7 +53,7 @@ export default async function Layout(props: PropsWithChildren<Props>) {
                         <Header />
 
                         <main>
-                            <h1 className="sr-only">Filmoteka</h1>
+                            <h1 className="sr-only">{ t('Filmoteka') }</h1>
 
                             { props.children }
                         </main>

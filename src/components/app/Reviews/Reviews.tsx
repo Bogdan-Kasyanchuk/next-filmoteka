@@ -1,7 +1,7 @@
 'use client';
 
 import { useSuspenseInfiniteQuery } from '@tanstack/react-query';
-import { useLocale } from 'next-intl';
+import { useExtracted, useLocale } from 'next-intl';
 
 import ReviewCard from '@/components/ui/cards/ReviewCard';
 import { MediaType } from '@/enums';
@@ -18,6 +18,8 @@ type Props = {
 
 export default function Reviews(props: Props) {
     const locale = useLocale();
+
+    const t = useExtracted();
         
     const {
         data,
@@ -71,18 +73,18 @@ export default function Reviews(props: Props) {
 
             {
                 hasNextPage &&
-                    <button
-                        type="button"
-                        className="с-reviews__load-more-button"
-                        disabled = { isFetchingNextPage }
-                        onClick={
-                            () => {
-                                fetchNextPage();
-                            } 
-                        }
-                    >
-                        { isFetchingNextPage ? 'Loading...' : 'Load more' }
-                    </button>
+                <button
+                    type="button"
+                    className="с-reviews__load-more-button"
+                    disabled = { isFetchingNextPage }
+                    onClick={
+                        () => {
+                            fetchNextPage();
+                        } 
+                    }
+                >
+                    { isFetchingNextPage ? 'Loading...' : t('Load more') }
+                </button>
             }
         </Wrapper>
     );

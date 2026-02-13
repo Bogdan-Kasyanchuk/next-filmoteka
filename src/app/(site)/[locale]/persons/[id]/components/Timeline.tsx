@@ -1,3 +1,6 @@
+'use client';
+
+import { useExtracted } from 'next-intl';
 import { useMemo } from 'react';
 
 import MediaCastCard from '@/components/ui/cards/MediaCastCard';
@@ -27,12 +30,14 @@ function transformedData<T extends MediaCastMapper | MediaCrewMapper>(data: T[])
 }
 
 export default function Timeline(props: Props) {
+    const t = useExtracted();
+        
     const cast = useMemo(() => transformedData(props.cast), [ props.cast ]);
     const crew = useMemo(() => transformedData(props.crew), [ props.crew ]);
 
     const sections = [
-        { title: 'Acting', data: cast, prop: 'cast' },
-        { title: 'Producing', data: crew, prop: 'crew' }
+        { title: t('Acting'), data: cast, prop: 'cast' },
+        { title: t('Producing'), data: crew, prop: 'crew' }
     ] as const;
 
     return (
@@ -42,7 +47,7 @@ export default function Timeline(props: Props) {
                 variant={ 3 }
                 className="p-person__timeline-title"
             >
-                Acting and producing career
+                { t('Acting and producing career') }
             </Title>
 
             <ul className="p-person__timeline-list">

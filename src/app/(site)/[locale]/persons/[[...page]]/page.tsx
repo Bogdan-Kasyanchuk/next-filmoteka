@@ -1,7 +1,7 @@
 import { HydrationBoundary, QueryClient, dehydrate } from '@tanstack/react-query';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { getLocale } from 'next-intl/server';
+import { getExtracted, getLocale } from 'next-intl/server';
 
 import Container from '@/components/ui/layouts/Container';
 import Title from '@/components/ui/typography/Title';
@@ -30,10 +30,13 @@ export const metadata: Metadata = generateMetaTags(
 );
 
 export default async function Page(props: Props) {
-    const locale = await getLocale();
-        
-    const params = await props.params;
-    
+    const [ locale, params ] = await Promise.all([
+        getLocale(),
+        props.params
+    ]);
+
+    const t = await getExtracted();
+
     const page = params.page ? normalizePage(params.page[ 1 ]) : 1;
 
     if (params.page && isInvalidPage( params.page[ 0 ], page)) {
@@ -50,7 +53,7 @@ export default async function Page(props: Props) {
     return (
         <Container className="p-persons">
             <Title className="p-persons__title">
-                Persons
+                { t('Persons') }
             </Title>
 
             <HydrationBoundary state={ dehydrate(queryClient) }>

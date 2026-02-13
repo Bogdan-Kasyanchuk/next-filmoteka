@@ -1,7 +1,7 @@
 'use client';
 
 import { useQuery } from '@tanstack/react-query';
-import { useLocale } from 'next-intl';
+import { useExtracted, useLocale } from 'next-intl';
 import { PropsWithChildren } from 'react';
 
 import NetworkDetailsCard from '@/components/ui/cards/NetworkDetailsCard';
@@ -15,6 +15,8 @@ type Props = {
 
 export default function NetworkDetails(props: Props) {
     const locale = useLocale();
+
+    const t = useExtracted();
         
     const { data, isPending, isError } = useQuery({
         queryKey: generalQueryKeys.network(props.id, locale),
@@ -38,7 +40,7 @@ export default function NetworkDetails(props: Props) {
 
     if (isError || !data) {
         return (
-            <Content>Data not found</Content>
+            <Content>{ t('Data not found') }</Content>
         );
     }
 

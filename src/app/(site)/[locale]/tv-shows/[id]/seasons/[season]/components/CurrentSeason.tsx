@@ -2,7 +2,7 @@
 
 import { ShowMore } from '@re-dev/react-truncate';
 import Image from 'next/image';
-import { useFormatter } from 'next-intl';
+import { useExtracted, useFormatter } from 'next-intl';
 
 import Title from '@/components/ui/typography/Title';
 import { IMG_SIZES } from '@/datasets/constants';
@@ -22,6 +22,8 @@ type Props = {
 
 export default function CurrentSeason(props: Props) {
     const format = useFormatter();
+    
+    const t = useExtracted();
 
     const firstAirDate = props.tvShow.first_air_date &&
     format.dateTime(props.tvShow.first_air_date, { year: 'numeric' });
@@ -73,7 +75,11 @@ export default function CurrentSeason(props: Props) {
 
                     <div className="p-season__current-season-tags">
                         <div className="p-season__current-season-tag p-season__current-season-tag--type">
-                            Season:&nbsp;{ props.season.season_number }
+                            { 
+                                t('Season: {season}', {
+                                    season: props.season.season_number.toString()
+                                }) 
+                            }
                         </div>
 
                         <div className="p-season__current-season-tag p-season__current-season-tag--average">

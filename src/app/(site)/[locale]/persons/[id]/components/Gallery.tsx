@@ -1,3 +1,7 @@
+'use client';
+
+import { useExtracted } from 'next-intl';
+
 import ImageCard from '@/components/ui/cards/ImageCard';
 import Title from '@/components/ui/typography/Title';
 import { ImageMapper } from '@/types';
@@ -8,6 +12,8 @@ type Props = {
 };
 
 export default function Gallery(props: Props) {
+    const t = useExtracted();
+        
     return (
         <div className="p-person__gallery">
             <Title
@@ -15,7 +21,7 @@ export default function Gallery(props: Props) {
                 variant={ 3 }
                 className="p-person__gallery-title"
             >
-                Photo gallery
+                { t('Photo gallery') }
             </Title>
 
             <ul className="p-person__gallery-list">

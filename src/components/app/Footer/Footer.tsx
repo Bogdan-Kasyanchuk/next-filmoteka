@@ -1,32 +1,14 @@
+import { getExtracted } from 'next-intl/server';
+
 import Logo from '@/components/ui/data-display/Logo';
 import Container from '@/components/ui/layouts/Container';
 
 import ButtonScrollToTop from './components/ButtonScrollToTop';
+import { LOGOS } from './datasets';
 
-const logos = [
-    {
-        name: 'Next.js',
-        href: 'https://nextjs.org',
-        icon: '/svg/logos/next.svg'
-    },
-    {
-        name: 'TailwindCSS',
-        href: 'https://tailwindcss.com',
-        icon: '/svg/logos/tailwindcss.svg'
-    },
-    {
-        name: 'TanStack',
-        href: 'https://tanstack.com',
-        icon: '/svg/logos/tanstack.svg'
-    },
-    {
-        name: 'Internationalization',
-        href: 'https://next-intl.dev',
-        icon: '/svg/logos/next-intl.svg'
-    }
-];
-
-export default function Footer() {
+export default async function Footer() {
+    const t = await getExtracted();
+        
     return (
         <footer className="c-footer">
             <Container
@@ -35,7 +17,7 @@ export default function Footer() {
             >
                 <ul className="c-footer__logos">
                     {
-                        logos.map(
+                        LOGOS.map(
                             (logo, index) => (
                                 <li
                                     key={ index }
@@ -43,7 +25,7 @@ export default function Footer() {
                                 >
                                     <img
                                         src={ logo.icon }
-                                        alt={ `${ logo.name } icon` }
+                                        alt={ logo.name }
                                         loading="lazy"
                                     />
 
@@ -65,7 +47,7 @@ export default function Footer() {
                     imgSrc="/svg/logo-white.svg"
                     className="text-primary"
                 >
-                    Filmoteka
+                    { t('Filmoteka') }
                 </Logo>
             </Container>
 

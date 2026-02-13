@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { useFormatter } from 'next-intl';
+import { useExtracted, useFormatter } from 'next-intl';
 import { Fragment } from 'react';
 
 import Title from '@/components/ui/typography/Title';
@@ -16,6 +16,8 @@ type Props = {
 
 export default function CurrentTVShow(props: Props) {
     const format = useFormatter();
+
+    const t = useExtracted();
 
     const firstAirDate = props.tvShow.first_air_date &&
     format.dateTime(props.tvShow.first_air_date, { year: 'numeric' });
@@ -55,7 +57,7 @@ export default function CurrentTVShow(props: Props) {
 
                 <div className="c-current-tv-show__tags">
                     <div className="c-current-tv-show__tag c-current-tv-show__tag--type">
-                        { props.tvShow.media_type }
+                        { t('TV Show') }
                     </div>
 
                     <div className="c-current-tv-show__tag c-current-tv-show__tag--average">

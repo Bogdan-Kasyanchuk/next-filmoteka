@@ -1,21 +1,25 @@
+import { getExtracted } from 'next-intl/server';
+
 import { TVShowType } from '@/enums';
 
 type Props = {
     type: TVShowType
 };
 
-export default function TitleText(props: Props) {
+export default async function TitleText(props: Props) {
+    const t = await getExtracted();
+    
     switch (props.type) {
         case TVShowType.AIRING_TODAY:
-            return 'TV Shows airing today';
+            return t('TV Shows airing today');
 
         case TVShowType.ON_THE_AIR:
-            return 'TV Shows that air in the next 7 days';
+            return t('TV Shows that air in the next 7 days');
 
         case TVShowType.POPULAR:
-            return 'Popular TV Shows';
+            return t('Popular TV Shows');
 
         case TVShowType.TOP_RATED:
-            return 'TV Shows with a top rating';
+            return t('TV Shows with a top rating');
     }
 }

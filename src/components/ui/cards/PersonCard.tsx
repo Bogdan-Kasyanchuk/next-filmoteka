@@ -1,4 +1,7 @@
+'use client';
+
 import Image from 'next/image';
+import { useExtracted } from 'next-intl';
 
 import { IMG_SIZES } from '@/datasets/constants';
 import { PLACEHOLDERS } from '@/datasets/placeholders';
@@ -12,6 +15,8 @@ type Props = {
 };
 
 export default function PersonCard(props: Props) {
+    const t = useExtracted();
+        
     return (
         <div className="с-person-card">
             <div className="с-person-card__cover">
@@ -32,7 +37,7 @@ export default function PersonCard(props: Props) {
 
             <div className="с-person-card__tags">
                 <div className="с-person-card__tag с-person-card__tag--type">
-                    { props.person.media_type }
+                    { t('Person') }
                 </div>
 
                 {

@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { useFormatter } from 'next-intl';
+import { useExtracted, useFormatter } from 'next-intl';
 
 import { IMG_SIZES } from '@/datasets/constants';
 import { PLACEHOLDERS } from '@/datasets/placeholders';
@@ -16,6 +16,8 @@ type Props = {
 
 export default function TVShowCard(props: Props) {
     const format = useFormatter();
+
+    const t = useExtracted();
         
     return (
         <div className="с-tv-show-card">
@@ -37,7 +39,7 @@ export default function TVShowCard(props: Props) {
 
             <div className="с-tv-show-card__tags">
                 <div className="с-tv-show-card__tag с-tv-show-card__tag--type">
-                    { props.tvShow.media_type }
+                    { t('TV Show') }
                 </div>
 
                 {

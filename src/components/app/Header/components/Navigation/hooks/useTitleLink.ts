@@ -1,22 +1,22 @@
 import { useExtracted } from 'next-intl';
 
-import { TitleKeys } from '../enums';
+import { NavTitleType } from '@/enums';
 
 export default () => {
     const t = useExtracted();
   
-    return ( key: TitleKeys) => {
+    return ( key: NavTitleType) => {
         switch (key) {
-            case TitleKeys.SEARCH:
+            case NavTitleType.SEARCH:
                 return t('Search');
                 
-            case TitleKeys.MOVIES:
+            case NavTitleType.MOVIES:
                 return t('Movies');
 
-            case TitleKeys.TV_SHOWS:
+            case NavTitleType.TV_SHOWS:
                 return t('TV Shows');
 
-            case TitleKeys.PERSONS:
+            case NavTitleType.PERSONS:
                 return t('Persons');
         }
     };

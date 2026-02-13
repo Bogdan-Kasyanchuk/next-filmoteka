@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { useFormatter } from 'next-intl';
+import { useExtracted, useFormatter } from 'next-intl';
 import { Fragment } from 'react';
 
 import Title from '@/components/ui/typography/Title';
@@ -18,6 +18,8 @@ type Props = {
 
 export default function CurrentMovie(props: Props) {
     const format = useFormatter();
+
+    const t = useExtracted();
 
     const releaseDate = props.movie.release_date &&
     format.dateTime( props.movie.release_date, { year: 'numeric' });
@@ -57,7 +59,7 @@ export default function CurrentMovie(props: Props) {
 
                 <div className="c-current-movie__tags">
                     <div className="c-current-movie__tag c-current-movie__tag--type">
-                        { props.movie.media_type }
+                        { t('Movie') }
                     </div>
 
                     <div className="c-current-movie__tag c-current-movie__tag--average">

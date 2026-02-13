@@ -16,9 +16,10 @@ type Props = {
 };
 
 export async function generateMetadata(props: Props): Promise<Metadata> {
-    const locale = await getLocale();
-        
-    const params = await props.params;
+    const [ locale, params ] = await Promise.all([
+        getLocale(),
+        props.params
+    ]);
         
     const data = await getPersonById(params.id, locale);
 
@@ -39,9 +40,10 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
 }
 
 export default async function Page(props: Props) {
-    const locale = await getLocale();
-        
-    const params = await props.params;
+    const [ locale, params ] = await Promise.all([
+        getLocale(),
+        props.params
+    ]);
 
     const queryClient = new QueryClient();
 

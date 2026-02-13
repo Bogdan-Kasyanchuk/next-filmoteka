@@ -149,7 +149,6 @@ export type CurrentMovieMapper = {
     vote_average: number,
     poster_path: string,
     release_date: Date | null,
-    media_type: MediaType.MOVIE,
     genres: string[]
 };
 
@@ -200,7 +199,6 @@ export type CurrentTVShowMapper = {
     name: string,
     vote_average: number,
     poster_path: string,
-    media_type: MediaType.TV_SHOW,
     genres: string[]
 };
 

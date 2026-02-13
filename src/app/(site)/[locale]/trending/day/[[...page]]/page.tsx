@@ -1,7 +1,7 @@
 import { HydrationBoundary, QueryClient, dehydrate } from '@tanstack/react-query';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { getLocale } from 'next-intl/server';
+import { getExtracted, getLocale } from 'next-intl/server';
 
 import Container from '@/components/ui/layouts/Container';
 import Title from '@/components/ui/typography/Title';
@@ -57,10 +57,12 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
 }
 
 export default async function Page(props: Props) {
-    const locale = await getLocale();
-        
-    const params = await props.params;
-    const searchParams = await props.searchParams;
+    const [ locale, params, searchParams, t ] = await Promise.all([
+        getLocale(),
+        props.params,
+        props.searchParams,
+        getExtracted()
+    ]);
 
     const type = searchParams.type || 'all';
     const page = params.page ? normalizePage(params.page[ 1 ]) : 1;
@@ -81,7 +83,7 @@ export default async function Page(props: Props) {
             <Filter type={ type } />
 
             <Title className="p-trending__title">
-                 Trending today
+                { t('Trending today') }
             </Title>
 
             <HydrationBoundary state={ dehydrate(queryClient) }>

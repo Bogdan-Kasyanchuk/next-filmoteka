@@ -2,9 +2,8 @@
 
 import { keepPreviousData, useQueries } from '@tanstack/react-query';
 import { notFound } from 'next/navigation';
-import { useLocale } from 'next-intl';
+import { useExtracted, useLocale } from 'next-intl';
 
-import CurrentTVShow from '@/components/app/CurrentTVShow';
 import Pagination from '@/components/app/Pagination';
 import TVShowCard from '@/components/ui/cards/TVShowCard';
 import Loader from '@/components/ui/data-display/Loader';
@@ -14,6 +13,8 @@ import { tvShowsQueryKeys } from '@/helpers/queryKeys';
 import { transformCurrentTVShow, transformTVShow } from '@/helpers/transformData';
 import { getCurrentTVShowById, getSimilarTVShows } from '@/services/tmdb/tvShows';
 
+import CurrentTVShow from './CurrentTVShow';
+
 type Props = {
     id: string,
     page: number
@@ -21,6 +22,8 @@ type Props = {
 
 export default function Content(props: Props) {
     const locale = useLocale();
+
+    const t = useExtracted();
         
     const data = useQueries({
         queries: [
@@ -63,7 +66,7 @@ export default function Content(props: Props) {
             />
 
             <Title className="p-tv-show-similar__title">
-                Similar tv shows
+                { t('Similar tv shows') }
             </Title>
 
             <div className="p-tv-show-similar__content">

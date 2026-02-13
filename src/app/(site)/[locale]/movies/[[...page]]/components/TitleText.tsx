@@ -1,21 +1,25 @@
+import { getExtracted } from 'next-intl/server';
+
 import { MovieType } from '@/enums';
 
 type Props = {
     type: MovieType
 };
 
-export default function TitleText(props: Props) {
+export default async function TitleText(props: Props) {
+    const t = await getExtracted();
+
     switch (props.type) {
         case MovieType.NOW_PLAYING:
-            return 'Movies that are currently in theatres';
+            return t('Movies that are currently in theatres');
 
         case MovieType.POPULAR:
-            return 'Popular movies';
+            return t('Popular movies');
 
         case MovieType.TOP_RATED:
-            return 'Movies with a top rating';
+            return t('Movies with a top rating');
 
         case MovieType.UPCOMING:
-            return 'Movies that are being released soon';
+            return t('Movies that are being released soon');
     }
 }

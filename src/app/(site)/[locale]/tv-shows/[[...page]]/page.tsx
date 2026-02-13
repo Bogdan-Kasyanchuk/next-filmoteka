@@ -56,10 +56,11 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
 }
 
 export default async function Page(props: Props) {
-    const locale = await getLocale();
-        
-    const params = await props.params;
-    const searchParams = await props.searchParams;
+    const [ locale, params, searchParams ] = await Promise.all([
+        getLocale(),
+        props.params,
+        props.searchParams
+    ]);
 
     const type = searchParams.type || TVShowType.AIRING_TODAY;
     const page = params.page ? normalizePage(params.page[ 1 ]) : 1;

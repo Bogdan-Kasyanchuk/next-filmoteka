@@ -2,7 +2,7 @@
 
 import { ShowMore } from '@re-dev/react-truncate';
 import Image from 'next/image';
-import { useFormatter } from 'next-intl';
+import { useExtracted, useFormatter } from 'next-intl';
 import { Fragment } from 'react';
 
 import CompanyDetails from '@/components/app/CompanyDetails';
@@ -26,6 +26,8 @@ type Props = {
 
 export default function TVShowDetails(props: Props) {
     const format = useFormatter();
+
+    const t = useExtracted();
         
     const average = Math.round((props.tvShow.vote_average ?? 0) * 10);
 
@@ -70,7 +72,7 @@ export default function TVShowDetails(props: Props) {
                             href={ pagesSimilarUrl(MediaType.TV_SHOW, props.id) }
                             className="p-tv-show__details-similar-button"
                         >
-                            Similar tv shows
+                            { t('Similar tv shows') }
                         </Link>
                     </div>
 
@@ -103,22 +105,22 @@ export default function TVShowDetails(props: Props) {
 
                         <li className="p-tv-show__details-list-rounds-item">
                             { props.tvShow.vote_count ?? 0 }
-                            <span>votes</span>
+                            <span>{ t('votes') }</span>
                         </li>
 
                         <li className="p-tv-show__details-list-rounds-item">
                             { Math.round(props.tvShow.popularity ?? 0) }
-                            <span>popularity</span>
+                            <span>{ t('popularity') }</span>
                         </li>
 
                         <li className="p-tv-show__details-list-rounds-item">
                             { props.tvShow.number_of_seasons ?? 0 }
-                            <span>seasons</span>
+                            <span>{ t('seasons') }</span>
                         </li>
 
                         <li className="p-tv-show__details-list-rounds-item">
                             { props.tvShow.number_of_episodes ?? 0 }
-                            <span>episodes</span>
+                            <span>{ t('episodes') }</span>
                         </li>
                     </ul>
 
@@ -133,7 +135,7 @@ export default function TVShowDetails(props: Props) {
                         {
                             props.tvShow.homepage &&
                             <li className="p-tv-show__details-list-info-item p-tv-show__details-list-info-item--link">
-                                <span>WebSite:</span>
+                                <span>{ t('WebSite:') }</span>
                                 <a
                                     href={ props.tvShow.homepage }
                                     rel="noopener noreferrer"
@@ -148,7 +150,7 @@ export default function TVShowDetails(props: Props) {
                         {
                             props.tvShow.first_air_date &&
                             <li className="p-tv-show__details-list-info-item">
-                                <span>First air date:</span>
+                                <span>{ t('First air date:') }</span>
                                 <span>{ format.dateTime(props.tvShow.first_air_date) }</span>
                             </li>
                         }
@@ -156,20 +158,20 @@ export default function TVShowDetails(props: Props) {
                         {
                             props.tvShow.last_air_date &&
                             <li className="p-tv-show__details-list-info-item">
-                                <span>Last air date:</span>
+                                <span>{ t('Last air date:') }</span>
                                 <span>{ format.dateTime(props.tvShow.last_air_date) }</span>
                             </li>
                         }
 
                         <li className="p-tv-show__details-list-info-item">
-                            <span>Type:</span>
+                            <span>{ t('Type:') }</span>
                             <span>{ props.tvShow.type }</span>
                         </li>
 
                         {
                             props.tvShow.genres.length > 0 &&
                             <li className="p-tv-show__details-list-info-item">
-                                <span className="self-start">Genres:</span>
+                                <span className="self-start">{ t('Genres:') }</span>
                                 <span>
                                     {
                                         props.tvShow.genres.map(
@@ -185,14 +187,14 @@ export default function TVShowDetails(props: Props) {
                         }
 
                         <li className="p-tv-show__details-list-info-item">
-                            <span>Original language:</span>
+                            <span>{ t('Original language:') }</span>
                             <span>{ props.tvShow.original_language }</span>
                         </li>
 
                         {
                             props.tvShow.spoken_languages.length > 0 &&
                             <li className="p-tv-show__details-list-info-item">
-                                <span className="self-start">Spoken languages:</span>
+                                <span className="self-start">{ t('Spoken languages:') }</span>
                                 <span>
                                     {
                                         props.tvShow.spoken_languages.map(
@@ -210,7 +212,7 @@ export default function TVShowDetails(props: Props) {
                         {
                             props.tvShow.origin_country.length > 0 &&
                             <li className="p-tv-show__details-list-info-item">
-                                <span className="self-start">Countries:</span>
+                                <span className="self-start">{ t('Countries:') }</span>
                                 <span>
                                     {
                                         props.tvShow.origin_country.map(
@@ -235,7 +237,7 @@ export default function TVShowDetails(props: Props) {
                         props.tvShow.overview &&
                         <div className="p-tv-show__details-overview">
                             <p className="p-tv-show__details-overview-title">
-                                Overview:
+                                { t('Overview:') }
                             </p>
 
                             <ShowMore
@@ -256,7 +258,7 @@ export default function TVShowDetails(props: Props) {
                         props.tvShow.created_by.length > 0 &&
                         <div className="p-tv-show__details-creators">
                             <p className="p-tv-show__details-creators-title">
-                                Creators:
+                                { t('Creators:') }
                             </p>
 
                             <ul className="p-tv-show__details-creators-list">
@@ -298,7 +300,7 @@ export default function TVShowDetails(props: Props) {
                         props.tvShow.networks.length > 0 &&
                         <div className="p-tv-show__details-networks">
                             <p className="p-tv-show__details-networks-title">
-                                Networks:
+                                { t('Networks:') }
                             </p>
                             <ul className="p-tv-show__details-networks-list">
                                 {
@@ -364,7 +366,7 @@ export default function TVShowDetails(props: Props) {
                         props.tvShow.production_companies.length > 0 &&
                         <div className="p-tv-show__details-companies">
                             <p className="p-tv-show__details-companies-title">
-                                Production companies:
+                                { t('Production companies:') }
                             </p>
                             <ul className="p-tv-show__details-companies-list">
                                 {

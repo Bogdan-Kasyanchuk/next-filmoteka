@@ -1,6 +1,7 @@
 'use client';
 
 import clsx from 'clsx';
+import { useExtracted } from 'next-intl';
 import { Dispatch, SetStateAction, useState } from 'react';
 import { Autoplay, Navigation } from 'swiper/modules';
 
@@ -15,6 +16,8 @@ type Props = {
 };
 
 export default function Cast(props: Props) {
+    const t = useExtracted();
+        
     const [ prevButtonRef, setPrevButtonRef ] = useState<HTMLButtonElement | null>(null);
     const [ nextButtonRef, setNextButtonRef ] = useState<HTMLButtonElement | null>(null);
 
@@ -25,7 +28,7 @@ export default function Cast(props: Props) {
                 variant={ 3 }
                 className="с-cast__title"
             >
-                Cast
+                { t('Cast') }
             </Title>
 
             <div className="с-cast__cards">
@@ -59,12 +62,12 @@ export default function Cast(props: Props) {
                 <>
                     <Arrow
                         type="prev"
-                        ariaLabel="Previous"
+                        ariaLabel={ t('Previous') }
                         refEl={ setPrevButtonRef }
                     />
                     <Arrow
                         type="next"
-                        ariaLabel="Next"
+                        ariaLabel={ t('Next') }
                         refEl={ setNextButtonRef }
                     />
                 </>
