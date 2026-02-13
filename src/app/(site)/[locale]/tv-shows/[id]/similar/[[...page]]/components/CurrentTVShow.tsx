@@ -1,0 +1,94 @@
+import Image from 'next/image';
+import { useExtracted, useFormatter } from 'next-intl';
+import { Fragment } from 'react';
+
+import Title from '@/components/ui/typography/Title';
+import { IMG_SIZES } from '@/datasets/constants';
+import { PLACEHOLDERS } from '@/datasets/placeholders';
+import { imageUrl, pagesTVShowUrl } from '@/routes';
+import { Link } from '@/services/i18n/navigation';
+import { CurrentTVShowMapper } from '@/types';
+
+type Props = {
+    tvShow: CurrentTVShowMapper,
+    id: string
+};
+
+export default function CurrentTVShow(props: Props) {
+    const format = useFormatter();
+
+    const t = useExtracted();
+
+    const firstAirDate = props.tvShow.first_air_date &&
+    format.dateTime(props.tvShow.first_air_date, { year: 'numeric' });
+        
+    return (
+        <div className="c-current-tv-show">
+            <div className="c-current-tv-show__cover">
+                <Image
+                    src={
+                        props.tvShow.poster_path
+                            ? imageUrl(IMG_SIZES.MEDIA_CURRENT_COVER, props.tvShow.poster_path)
+                            : '/img/poster-not-available.jpg'
+                    }
+                    sizes="81px"
+                    alt={ props.tvShow.name }
+                    placeholder={ PLACEHOLDERS[ '2x3' ] }
+                    fill
+                    preload
+                    loading="eager"
+                />
+            </div>
+
+            <div className="c-current-tv-show__info">
+                <Title
+                    className="c-current-tv-show__title"
+                    variant={ 3 }
+                >
+                    <Link
+                        href={ pagesTVShowUrl(props.id) }
+                        title={ `${ props.tvShow.name } ${ firstAirDate ?? '' }` }
+                        className="u-link-color"
+                    >
+                        { props.tvShow.name }
+                        { firstAirDate && <>&nbsp;({ firstAirDate })</> }
+                    </Link>
+                </Title>
+
+                <div className="c-current-tv-show__tags">
+                    <div className="c-current-tv-show__tag c-current-tv-show__tag--type">
+                        { t('TV Show') }
+                    </div>
+
+                    <div className="c-current-tv-show__tag c-current-tv-show__tag--average">
+                        { Math.round((props.tvShow.vote_average ?? 0) * 10) }
+                        <span>%</span>
+                    </div>
+
+                    {
+                        props.tvShow.adult &&
+                        <div className="c-current-tv-show__tag c-current-tv-show__tag--adult">
+                            18<span>+</span>
+                        </div>
+                    }
+                </div>
+
+                {
+                    props.tvShow.genres.length > 0 &&
+                    <div className="c-current-tv-show__genres">
+                        {
+                            props.tvShow.genres.map(
+                                (genre, index) => (
+                                    <Fragment key={ index }>
+                                        { index !== 0 && <>&nbsp;|&nbsp;</> }
+                                        { genre }
+                                    </Fragment>
+                                )
+                            )
+                        }
+                    </div>
+                }
+            </div>
+        </div>
+    );
+}

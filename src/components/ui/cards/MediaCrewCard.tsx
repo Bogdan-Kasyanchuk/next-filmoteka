@@ -1,18 +1,24 @@
+'use client';
+
 import Image from 'next/image';
-import Link from 'next/link';
+import { useExtracted, useFormatter } from 'next-intl';
 
 import { IMG_SIZES } from '@/datasets/constants';
 import { PLACEHOLDERS } from '@/datasets/placeholders';
 import { MediaType } from '@/enums';
 import { imageUrl, pagesMovieUrl, pagesTVShowUrl } from '@/routes';
+import { Link } from '@/services/i18n/navigation';
 import { MediaCrewMapper } from '@/types';
-import formatDate from '@/utils/formateDate';
 
 type Props = {
     crew: MediaCrewMapper
 };
 
 export default function MediaCrewCard(props: Props) {
+    const format = useFormatter();
+
+    const t = useExtracted();
+        
     return (
         <Link
             href={
@@ -27,7 +33,7 @@ export default function MediaCrewCard(props: Props) {
                     {
 
                         props.crew.release_date
-                            ? formatDate(props.crew.release_date, 'YYYY')
+                            ? format.dateTime(props.crew.release_date, { year: 'numeric' })
                             : '-'
                     }
                 </div>
@@ -65,7 +71,7 @@ export default function MediaCrewCard(props: Props) {
                         className="с-media-crew-card__info-job"
                         title={ props.crew.job }
                     >
-                        as&nbsp;{ props.crew.job }
+                        { t('as {job}', { job: props.crew.job }) }
                     </p>
                 }
             </div>

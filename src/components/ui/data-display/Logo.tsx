@@ -1,9 +1,10 @@
 import clsx from 'clsx';
 import Image from 'next/image';
-import Link from 'next/link';
+import { getExtracted } from 'next-intl/server';
 import { PropsWithChildren } from 'react';
 
 import { pagesHomeUrl } from '@/routes';
+import { Link } from '@/services/i18n/navigation';
 
 type Props = {
     imgSrc: string,
@@ -11,7 +12,9 @@ type Props = {
     preload?: boolean
 };
 
-export default function Logo(props: PropsWithChildren<Props>) {
+export default async function Logo(props: PropsWithChildren<Props>) {
+    const t = await getExtracted();
+        
     return (
         <Link
             href={ pagesHomeUrl() }
@@ -21,7 +24,7 @@ export default function Logo(props: PropsWithChildren<Props>) {
                 width={ 46 }
                 height={ 46 }
                 src={ props.imgSrc }
-                alt="Logo"
+                alt={ t('Logo') }
                 className="c-logo__img"
                 preload={ props.preload }
                 loading={ props.preload ? 'eager' : 'lazy' }

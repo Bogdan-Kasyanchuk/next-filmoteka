@@ -2,17 +2,27 @@
 
 import clsx from 'clsx';
 import Image from 'next/image';
-import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { useExtracted, useLocale } from 'next-intl';
 
 import Popover from '@/components/ui/data-display/Popover';
+import { Link } from '@/services/i18n/navigation';
 
-import { links } from './datasets';
+import { LINKS } from './datasets';
+import useTitleLink from './hooks/useTitleLink';
 
-const searchLink = links[ 0 ];
+const searchLink = LINKS[ 0 ];
 
 export default function Navigation() {
+    const locale = useLocale();
+
+    const t = useExtracted();
+        
     const pathname = usePathname();
+
+    const getTitleLink = useTitleLink();
+
+    const isCurrentLink = (href: string ) => pathname === `/${ locale }${ href }` || pathname.startsWith(`/${ locale }${ href }/page`);
 
     return (
         <nav className="c-navigation">
@@ -24,9 +34,9 @@ export default function Navigation() {
                                 type="button"
                                 className={
                                     clsx('c-navigation__link', {
-                                        'c-navigation__link--is-active c-navigation__link--is-disabled': searchLink.exact
-                                            ? pathname === searchLink.href
-                                            : pathname === searchLink.href || pathname.startsWith(searchLink.href + '/page')
+                                        'c-navigation__link--is-active c-navigation__link--is-disabled': isCurrentLink(
+                                            searchLink.href
+                                        )
                                     })
                                 }
                             >
@@ -34,7 +44,7 @@ export default function Navigation() {
                                     width={ 24 }
                                     height={ 24 }
                                     src={ searchLink.icon }
-                                    alt="Search icon"
+                                    alt={ t('Icon') }
                                     className="c-navigation__img"
                                     preload
                                     loading="eager"
@@ -42,7 +52,7 @@ export default function Navigation() {
                                 />
 
                                 <span className="c-navigation__text sr-only lg:not-sr-only">
-                                    { searchLink.name }
+                                    { getTitleLink(searchLink.key) }
                                 </span>
                             </button>
                         }
@@ -59,7 +69,7 @@ export default function Navigation() {
                             <input
                                 className="c-navigation__search-input"
                                 name="query"
-                                placeholder="Search movies, tv shows, persons"
+                                placeholder={ t('Search movies, tv shows, persons') }
                                 autoComplete="off"
                                 minLength={ 3 }
                                 required
@@ -69,24 +79,24 @@ export default function Navigation() {
                                 type="submit"
                                 className="c-navigation__search-button"
                             >
-                                Search
+                                { t('Search') }
                             </button>
                         </form>
                     </Popover>
                 </li>
 
                 {
-                    links.slice(1).map(
+                    LINKS.slice(1).map(
                         link => (
-                            <li key={ link.name }>
+                            <li key={ link.key }>
                                 <Link
                                     href={ link.href }
                                     className={
                                         clsx('c-navigation__link', {
-                                            'c-navigation__link--is-active': link.exact
-                                                ? pathname === link.href
-                                                : pathname === link.href || pathname.startsWith(link.href + '/page'),
-                                            'c-navigation__link--is-disabled': pathname === link.href
+                                            'c-navigation__link--is-active': isCurrentLink(
+                                                link.href
+                                            ),
+                                            'c-navigation__link--is-disabled': pathname === `/${ locale }${ link.href }`
                                         })
                                     }
                                 >
@@ -94,7 +104,7 @@ export default function Navigation() {
                                         width={ 24 }
                                         height={ 24 }
                                         src={ link.icon }
-                                        alt={ `${ link.name } icon` }
+                                        alt={ t('Icon') }
                                         className="c-navigation__img"
                                         preload
                                         loading="eager"
@@ -102,7 +112,7 @@ export default function Navigation() {
                                     />
                                     
                                     <span className="c-navigation__text sr-only lg:not-sr-only">
-                                        { link.name }
+                                        { getTitleLink(link.key) }
                                     </span>
                                 </Link>
                             </li>

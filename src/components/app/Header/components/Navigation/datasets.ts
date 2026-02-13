@@ -1,40 +1,25 @@
-import {
-    pagesHomeUrl,
-    pagesMoviesUrl,
-    pagesPersonsUrl,
-    pagesSearchUrl,
-    pagesTVShowsUrl
-} from '@/routes';
+import { NavTitleType } from '@/enums';
+import { pagesMoviesUrl, pagesPersonsUrl, pagesSearchUrl, pagesTVShowsUrl } from '@/routes';
 
-export const links = [
+export const LINKS = [
     {
-        name: 'Search',
+        key: NavTitleType.SEARCH,
         href: pagesSearchUrl(),
-        icon: '/svg/search.svg',
-        exact: false
+        icon: '/svg/search.svg'
     },
     {
-        name: 'Home',
-        href: pagesHomeUrl(),
-        icon: '/svg/home.svg',
-        exact: true
-    },
-    {
-        name: 'Movies',
+        key: NavTitleType.MOVIES,
         href: pagesMoviesUrl(),
-        icon: '/svg/movie.svg',
-        exact: false
+        icon: '/svg/movie.svg'
     },
     {
-        name: 'TV Shows',
+        key: NavTitleType.TV_SHOWS,
         href: pagesTVShowsUrl(),
-        icon: '/svg/tv.svg',
-        exact: false
+        icon: '/svg/tv.svg'
     },
     {
-        name: 'Persons',
+        key: NavTitleType.PERSONS,
         href: pagesPersonsUrl(),
-        icon: '/svg/users.svg',
-        exact: false
+        icon: '/svg/users.svg'
     }
 ];

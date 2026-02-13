@@ -30,7 +30,8 @@ export default function Tabs<T>(props: Props<T>) {
                         >
                             { filter.label }
                         </li>
-                    ))
+                    )
+                )
             }
         </ul>
     );

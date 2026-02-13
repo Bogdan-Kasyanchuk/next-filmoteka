@@ -1,11 +1,13 @@
 'use client';
 
 import { useSuspenseInfiniteQuery } from '@tanstack/react-query';
+import { useExtracted, useLocale } from 'next-intl';
 
 import ReviewCard from '@/components/ui/cards/ReviewCard';
 import { MediaType } from '@/enums';
+import { generalQueryKeys } from '@/helpers/queryKeys';
 import { transformReview } from '@/helpers/transformData';
-import { getReviews } from '@/services/tmdbApi/general';
+import { getReviews } from '@/services/tmdb/general';
 
 import Wrapper from './Wrapper';
 
@@ -15,6 +17,10 @@ type Props = {
 };
 
 export default function Reviews(props: Props) {
+    const locale = useLocale();
+
+    const t = useExtracted();
+        
     const {
         data,
         isError,
@@ -22,8 +28,8 @@ export default function Reviews(props: Props) {
         fetchNextPage,
         hasNextPage
     } = useSuspenseInfiniteQuery({
-        queryKey: [ 'reviews', props.type, props.id ],
-        queryFn: ({ pageParam }) => getReviews(props.type, props.id, pageParam),
+        queryKey: generalQueryKeys.reviews(props.type, props.id, locale),
+        queryFn: ({ pageParam }) => getReviews(props.type, props.id, pageParam, locale),
         initialPageParam: 1,
         getNextPageParam: lastPage => {
             const nextPage = lastPage.page + 1;
@@ -67,18 +73,18 @@ export default function Reviews(props: Props) {
 
             {
                 hasNextPage &&
-                    <button
-                        type="button"
-                        className="с-reviews__load-more-button"
-                        disabled = { isFetchingNextPage }
-                        onClick={
-                            () => {
-                                fetchNextPage();
-                            } 
-                        }
-                    >
-                        { isFetchingNextPage ? 'Loading...' : 'Load more' }
-                    </button>
+                <button
+                    type="button"
+                    className="с-reviews__load-more-button"
+                    disabled = { isFetchingNextPage }
+                    onClick={
+                        () => {
+                            fetchNextPage();
+                        } 
+                    }
+                >
+                    { isFetchingNextPage ? 'Loading...' : t('Load more') }
+                </button>
             }
         </Wrapper>
     );

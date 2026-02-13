@@ -1,3 +1,7 @@
+'use client';
+
+import { useExtracted } from 'next-intl';
+
 import { NetworkDetailsMapper } from '@/types';
 
 type Props = {
@@ -5,13 +9,15 @@ type Props = {
 };
 
 export default function NetworkDetailsCard(props: Props) {
+    const t = useExtracted();
+        
     return (
         <div className="c-network-details-card">
             <ul className="c-network-details-card__list">
                 {
                     props.network.homepage &&
                     <li className="c-network-details-card__item c-network-details-card__item--link">
-                        <span>WebSite:</span>
+                        <span>{ t('WebSite:') }</span>
                         <a
                             href={ props.network.homepage }
                             rel="noopener noreferrer"
@@ -26,7 +32,7 @@ export default function NetworkDetailsCard(props: Props) {
                 {
                     props.network.headquarters &&
                     <li className="c-network-details-card__item">
-                        <span>Headquarters:</span>
+                        <span>{ t('Headquarters:') }</span>
                         <span>{ props.network.headquarters }</span>
                     </li>
                 }

@@ -4,6 +4,7 @@ import { useMediaQuery } from '@mantine/hooks';
 import clsx from 'clsx';
 import Link from 'next/link';
 import { usePathname, useSearchParams } from 'next/navigation';
+import { useExtracted } from 'next-intl';
 import { useMemo } from 'react';
 
 import Icon from '@/components/ui/data-display/Icon';
@@ -20,9 +21,11 @@ export default function Pagination(props: Props) {
     const pathname = usePathname();
     const searchParams = useSearchParams();
 
+    const t = useExtracted();
+
     const createPageURL = (page: number) => {
         const params = new URLSearchParams(searchParams);
-        
+
         const basePath = pathname.replace(/\/page\/[0-9]+$/, '');
 
         return buildUrl(`${ basePath }/page/${ page }`, params);
@@ -40,8 +43,6 @@ export default function Pagination(props: Props) {
             : desktopPagination(props.currentPage, props.totalPages);
     }, [ props.currentPage, props.totalPages, isMobile ]);
 
-    const icon = <Icon name="angle" />;
-
     return (
         <div className="c-pagination">
             <ul className="c-pagination__list">
@@ -54,12 +55,12 @@ export default function Pagination(props: Props) {
                 >
                     {
                         props.currentPage <= 1
-                            ? <>{ icon }</>
+                            ? <IconComponent />
                             : <Link
                                 href={ createPageURL(props.currentPage - 1) }
-                                aria-label="Previous page"
+                                aria-label={ t('Previous page') }
                             >
-                                { icon }
+                                <IconComponent />
                             </Link>
                     }
                 </li>
@@ -96,12 +97,12 @@ export default function Pagination(props: Props) {
                 >
                     {
                         props.currentPage >= props.totalPages
-                            ? <>{ icon }</>
+                            ? <IconComponent />
                             : <Link
                                 href={ createPageURL(props.currentPage + 1) }
-                                aria-label="Next page"
+                                aria-label={ t('Next page') }
                             >
-                                { icon }
+                                <IconComponent />
                             </Link>
                     }
                 </li>
@@ -112,5 +113,11 @@ export default function Pagination(props: Props) {
                 style={ { width: `${ props.currentPage / props.totalPages * 100 }%` } }
             />
         </div>
+    );
+}
+
+function IconComponent() {
+    return (
+        <Icon name="angle" />
     );
 }

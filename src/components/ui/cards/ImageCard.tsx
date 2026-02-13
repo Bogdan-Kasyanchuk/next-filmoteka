@@ -1,4 +1,7 @@
+'use client';
+
 import Image from 'next/image';
+import { useExtracted } from 'next-intl';
 
 import { IMG_SIZES } from '@/datasets/constants';
 import { PLACEHOLDERS } from '@/datasets/placeholders';
@@ -11,6 +14,8 @@ type Props = {
 };
 
 export default function ImageCard(props: Props) {
+    const t = useExtracted();
+        
     return (
         <div className="c-image-card">
             <div className="c-image-card__cover">
@@ -29,12 +34,12 @@ export default function ImageCard(props: Props) {
 
             <dl className="c-image-card__info-list">
                 <div className="c-image-card__info-item">
-                    <dt>Rating:</dt>
+                    <dt>{ t('Rating:') }</dt>
                     <dd>{ Math.round(props.image.vote_average ?? 0 * 10) }</dd>
                 </div>
 
                 <div className="c-image-card__info-item">
-                    <dt>Votes:</dt>
+                    <dt>{ t('Votes:') }</dt>
                     <dd>{ props.image.vote_count ?? 0 }</dd>
                 </div>
             </dl>

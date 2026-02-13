@@ -1,8 +1,8 @@
 export const PARAMETERS = {
     API_KEY: process.env.API_KEY!,
-    LOCALE: {
-        language: 'en',
-        region: 'US'
+    LOCALES: {
+        en: 'en-US',
+        uk: 'uk-UA'
     },
     ZONE: 'Europe/Kyiv'
 };

@@ -1,18 +1,24 @@
+'use client';
+
 import Image from 'next/image';
-import Link from 'next/link';
+import { useExtracted, useFormatter } from 'next-intl';
 
 import { IMG_SIZES } from '@/datasets/constants';
 import { PLACEHOLDERS } from '@/datasets/placeholders';
 import { MediaType } from '@/enums';
 import { imageUrl, pagesMovieUrl, pagesTVShowUrl } from '@/routes';
+import { Link } from '@/services/i18n/navigation';
 import { MediaCastMapper } from '@/types';
-import formatDate from '@/utils/formateDate';
 
 type Props = {
     cast: MediaCastMapper
 };
 
 export default function MediaCastCard(props: Props) {
+    const format = useFormatter();
+
+    const t = useExtracted();
+        
     return (
         <Link
             href={
@@ -27,7 +33,7 @@ export default function MediaCastCard(props: Props) {
                     {
 
                         props.cast.release_date
-                            ? formatDate(props.cast.release_date, 'YYYY')
+                            ? format.dateTime(props.cast.release_date, { year: 'numeric' })
                             : '-'
                     }
                 </div>
@@ -65,7 +71,7 @@ export default function MediaCastCard(props: Props) {
                         className="с-media-cast-card__info-character"
                         title={ props.cast.character }
                     >
-                        as&nbsp;{ props.cast.character }
+                        { t('as {character}', { character: props.cast.character }) }
                     </p>
                 }
             </div>

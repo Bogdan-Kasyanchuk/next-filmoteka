@@ -1,0 +1,32 @@
+.p-persons {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+    align-items: center;
+
+    padding-block: 30px;
+
+    &__title {
+        font-weight: 700;
+        text-align: center;
+        text-transform: uppercase;
+    }
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        row-gap: 20px;
+        align-items: center;
+
+        width: 100%;
+
+        @media (--min-md) {
+            row-gap: 30px;
+        }
+    }
+
+    @media (--min-md) {
+        row-gap: 30px;
+        padding-block: 40px;
+    }
+}

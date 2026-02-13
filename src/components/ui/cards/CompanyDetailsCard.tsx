@@ -1,4 +1,7 @@
+'use client';
+
 import { ShowMore } from '@re-dev/react-truncate';
+import { useExtracted } from 'next-intl';
 
 import { CompanyDetailsMapper } from '@/types';
 
@@ -7,13 +10,15 @@ type Props = {
 };
 
 export default function CompanyDetailsCard(props: Props) {
+    const t = useExtracted();
+        
     return (
         <div className="c-company-details-card">
             <ul className="c-company-details-card__list">
                 {
                     props.company.homepage &&
                     <li className="c-company-details-card__item c-company-details-card__item--link">
-                        <span>WebSite:</span>
+                        <span>{ t('WebSite:') }</span>
                         <a
                             href={ props.company.homepage }
                             rel="noopener noreferrer"
@@ -28,7 +33,7 @@ export default function CompanyDetailsCard(props: Props) {
                 {
                     props.company.headquarters &&
                     <li className="c-company-details-card__item">
-                        <span>Headquarters:</span>
+                        <span>{ t('Headquarters:') }</span>
                         <span>{ props.company.headquarters }</span>
                     </li>
                 }
@@ -36,7 +41,7 @@ export default function CompanyDetailsCard(props: Props) {
                 {
                     props.company.parent_company &&
                     <li className="c-company-details-card__item">
-                        <span>Parent company:</span>
+                        <span>{ t('Parent company:') }</span>
                         <span>{ props.company.parent_company }</span>
                     </li>
                 }

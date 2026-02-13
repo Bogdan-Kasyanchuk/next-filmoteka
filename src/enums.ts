@@ -44,3 +44,10 @@ export enum EpisodeType {
     STANDARD = 'standard',
     FINALE = 'finale'
 }
+
+export enum NavTitleType {
+    SEARCH = 'search',
+    MOVIES = 'movies',
+    TV_SHOWS = 'shows',
+    PERSONS = 'persons'
+}

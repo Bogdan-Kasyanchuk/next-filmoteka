@@ -1,11 +1,13 @@
+'use client';
+
 import Image from 'next/image';
-import Link from 'next/link';
+import { useExtracted, useFormatter } from 'next-intl';
 
 import { IMG_SIZES } from '@/datasets/constants';
 import { PLACEHOLDERS } from '@/datasets/placeholders';
 import { imageUrl, pagesSeasonUrl } from '@/routes';
+import { Link } from '@/services/i18n/navigation';
 import { SeasonMapper } from '@/types';
-import formatDate from '@/utils/formateDate';
 
 type Props = {
     season: SeasonMapper,
@@ -13,6 +15,10 @@ type Props = {
 };
 
 export default function SeasonCard(props: Props) {
+    const format = useFormatter();
+
+    const t = useExtracted();
+        
     return (
         <Link
             href={ pagesSeasonUrl(props.tvShowId, props.season.season_number) }
@@ -41,13 +47,13 @@ export default function SeasonCard(props: Props) {
                     {
                         props.season.air_date &&
                         <div className="с-season-card__info-list-item">
-                            <dt>Air date:</dt>
-                            <dd>{ formatDate(props.season.air_date, 'DD.MM.YYYY') }</dd>
+                            <dt>{ t('Air date:') }</dt>
+                            <dd>{ format.dateTime(props.season.air_date) }</dd>
                         </div>
                     }
 
                     <div className="с-season-card__info-list-item с-season-card__info-list-item--rating">
-                        <dt>Rating:</dt>
+                        <dt>{ t('Rating:') }</dt>
                         <dd>
                             { Math.round((props.season.vote_average ?? 0) * 10) }
                             <span>%</span>
@@ -55,12 +61,12 @@ export default function SeasonCard(props: Props) {
                     </div>
 
                     <div className="с-season-card__info-list-item">
-                        <dt>Season:</dt>
+                        <dt>{ t('Season:') }</dt>
                         <dd>{ props.season.season_number }</dd>
                     </div>
 
                     <div className="с-season-card__info-list-item">
-                        <dt>Episodes:</dt>
+                        <dt>{ t('Episodes:') }</dt>
                         <dd>{ props.season.episode_count }</dd>
                     </div>
                 </dl>

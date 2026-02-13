@@ -1,11 +1,13 @@
+'use client';
+
 import Image from 'next/image';
-import Link from 'next/link';
+import { useExtracted, useFormatter } from 'next-intl';
 
 import { IMG_SIZES } from '@/datasets/constants';
 import { PLACEHOLDERS } from '@/datasets/placeholders';
 import { imageUrl, pagesMovieUrl } from '@/routes';
+import { Link } from '@/services/i18n/navigation';
 import { MovieMapper } from '@/types';
-import formatDate from '@/utils/formateDate';
 
 type Props = {
     movie: MovieMapper,
@@ -13,6 +15,10 @@ type Props = {
 };
 
 export default function MovieCard(props: Props) {
+    const format = useFormatter();
+
+    const t = useExtracted();
+    
     return (
         <div className="с-movie-card">
             <div className="с-movie-card__cover">
@@ -33,12 +39,15 @@ export default function MovieCard(props: Props) {
 
             <div className="с-movie-card__tags">
                 <div className="с-movie-card__tag с-movie-card__tag--type">
-                    { props.movie.media_type }
+                    { t('Movie') }
                 </div>
 
-                <div className="с-movie-card__tag с-movie-card__tag--date">
-                    { formatDate(props.movie.release_date, 'YYYY') }
-                </div>
+                {
+                    props.movie.release_date &&
+                    <div className="с-movie-card__tag с-movie-card__tag--date">
+                        { format.dateTime(props.movie.release_date, { year: 'numeric' }) }
+                    </div>
+                }
 
                 {
                     props.movie.adult &&
