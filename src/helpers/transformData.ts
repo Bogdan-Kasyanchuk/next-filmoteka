@@ -62,7 +62,7 @@ export const transformMovie = (
 ): MovieMapper => ({
     id: normalizeId(movie.id),
     adult: movie.adult,
-    release_date: movie.release_date,
+    release_date: movie.release_date ? new Date(movie.release_date) : null,
     title: movie.title || movie.original_title,
     poster_path: movie.poster_path,
     media_type: MediaType.MOVIE,
@@ -84,7 +84,7 @@ export const transformMovieDetails = (
         popularity: movie.popularity,
         backdrop_path: movie.backdrop_path,
         poster_path: movie.poster_path,
-        release_date: new Date(movie.release_date),
+        release_date: movie.release_date ? new Date(movie.release_date) : null,
         revenue: movie.revenue,
         runtime: movie.runtime,
         genres: movie.genres.map(genre => genre.name),
@@ -125,7 +125,7 @@ export const transformCurrentMovie = (
     title: movie.title || movie.original_title,
     vote_average: movie.vote_average,
     poster_path: movie.poster_path,
-    release_date: movie.release_date,
+    release_date: movie.release_date ? new Date(movie.release_date) : null,
     media_type: MediaType.MOVIE,
     genres: movie.genres.map(genre => genre.name)
 });
@@ -135,7 +135,7 @@ export const transformTVShow = (
 ): TVShowMapper => ({
     id: normalizeId(tvShow.id),
     adult: tvShow.adult,
-    first_air_date: tvShow.first_air_date,
+    first_air_date: tvShow.first_air_date ? new Date(tvShow.first_air_date) : null,
     name: tvShow.name || tvShow.original_name,
     poster_path: tvShow.poster_path,
     media_type: MediaType.TV_SHOW,
@@ -148,8 +148,8 @@ export const transformTVShowDetails = (
     tvShow: {
         adult: tvShow.adult,
         homepage: tvShow.homepage,
-        first_air_date: tvShow.first_air_date,
-        last_air_date: tvShow.last_air_date,
+        first_air_date: tvShow.first_air_date ? new Date(tvShow.first_air_date) : null,
+        last_air_date: tvShow.last_air_date ? new Date(tvShow.last_air_date) : null,
         name: tvShow.name || tvShow.original_name,
         number_of_episodes: tvShow.number_of_episodes,
         number_of_seasons: tvShow.number_of_seasons,
@@ -214,7 +214,7 @@ export const transformCurrentTVShow = (
     tvShow: CurrentTVShowShema
 ): CurrentTVShowMapper => ({
     adult: tvShow.adult,
-    first_air_date: tvShow.first_air_date,
+    first_air_date: tvShow.first_air_date ? new Date(tvShow.first_air_date) : null,
     name: tvShow.name || tvShow.original_name,
     vote_average: tvShow.vote_average,
     poster_path: tvShow.poster_path,
@@ -226,7 +226,7 @@ export const transformTVShowSeasonDetails = (
     season: TVShowSeasonDetailsShema
 ): TVShowSeasonDetailsMapper => ({
     season: {
-        air_date: season.air_date,
+        air_date: season.air_date ? new Date(season.air_date) : null,
         name: season.name,
         overview: season.overview,
         poster_path: season.poster_path,
@@ -255,8 +255,8 @@ export const transformPersonDetails = (
         adult: person.adult,
         also_known_as: person.also_known_as,
         biography: person.biography,
-        birthday: person.birthday,
-        deathday: person.deathday,
+        birthday: person.birthday ? new Date(person.birthday) : null,
+        deathday: person.deathday ? new Date(person.deathday) : null,
         homepage: person.homepage,
         known_for_department: person.known_for_department,
         name: person.name,
@@ -280,8 +280,8 @@ export const transformReview = (
         rating: review.author_details.rating
     },
     content: review.content,
-    created_at: review.created_at,
-    updated_at: review.updated_at
+    created_at: review.created_at ? new Date(review.created_at) : null,
+    updated_at: review.updated_at ? new Date(review.updated_at) : null
 });
 
 export const transformNetworkDetails = (
@@ -316,7 +316,7 @@ export const transformVideo = (
 const transformSeason = (
     season: SeasonShema
 ): SeasonMapper => ({
-    air_date: season.air_date,
+    air_date: season.air_date ? new Date(season.air_date) : null,
     episode_count: season.episode_count,
     name: season.name,
     poster_path: season.poster_path,
@@ -327,7 +327,7 @@ const transformSeason = (
 const transformEpisode = (
     episode: EpisodeShema
 ): EpisodeMapper => ({
-    air_date: episode.air_date,
+    air_date: episode.air_date ? new Date(episode.air_date) : null,
     episode_number: episode.episode_number,
     episode_type: episode.episode_type,
     name: episode.name,
@@ -366,7 +366,7 @@ const transformMediaCast = (
         ? media.title || media.original_title
         : media.name || media.original_name,
     poster_path: media.poster_path,
-    release_date: media.release_date,
+    release_date: media.release_date ? new Date(media.release_date) : null,
     character: media.character,
     media_type: media.media_type
 });
@@ -379,7 +379,7 @@ const transformMediaCrew = (
         ? media.title || media.original_title
         : media.name || media.original_name,
     poster_path: media.poster_path,
-    release_date: media.release_date,
+    release_date: media.release_date ? new Date(media.release_date) : null,
     job: media.job,
     media_type: media.media_type
 });

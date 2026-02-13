@@ -11,9 +11,18 @@ type Props = {
 };
 
 function transformedData<T extends MediaCastMapper | MediaCrewMapper>(data: T[]) {
-    const noDate = data.filter(item => !item.release_date);
-    const withDate = data.filter(item => item.release_date).sort((a, b) => new Date(b.release_date).getTime() - new Date(a.release_date).getTime());
+    const noDate: T[] = [];
+    const withDate: T[] = [];
 
+    data.map(item => {
+        if (item.release_date) {
+            withDate.push(item);
+        } else {
+            noDate.push(item);
+        }
+    });
+
+    withDate.sort((a, b) => b.release_date!.getTime() - a.release_date!.getTime());
     return [ ...withDate, ...noDate ];
 }
 

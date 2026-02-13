@@ -1,6 +1,8 @@
 import { HydrationBoundary, QueryClient, dehydrate } from '@tanstack/react-query';
 import { Metadata } from 'next';
-import { getLocale } from 'next-intl/server';
+import { Locale } from 'next-intl';
+import { setRequestLocale } from 'next-intl/server';
+import { PropsWithChildren } from 'react';
 
 import { TimeType } from '@/enums';
 import generateMetaTags from '@/helpers/generateMetaTags';
@@ -30,8 +32,14 @@ export const metadata: Metadata = generateMetaTags(
     }
 );
 
-export default async function Page() {
-    const locale = await getLocale();
+type Props = {
+    params: Promise<{ locale: Locale }>
+};
+
+export default async function Page(props: PropsWithChildren<Props>) {
+    const { locale } = await props.params;
+
+    setRequestLocale(locale);
       
     const queryClient = new QueryClient();
 

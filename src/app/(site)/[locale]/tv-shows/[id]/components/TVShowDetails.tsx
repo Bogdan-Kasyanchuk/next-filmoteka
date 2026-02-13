@@ -2,7 +2,7 @@
 
 import { ShowMore } from '@re-dev/react-truncate';
 import Image from 'next/image';
-import { useLocale } from 'next-intl';
+import { useFormatter } from 'next-intl';
 import { Fragment } from 'react';
 
 import CompanyDetails from '@/components/app/CompanyDetails';
@@ -16,7 +16,6 @@ import { MediaType } from '@/enums';
 import { imageUrl, pagesPersonUrl, pagesSimilarUrl } from '@/routes';
 import { Link } from '@/services/i18n/navigation';
 import { TVShowDetailsMapper } from '@/types';
-import formatDate from '@/utils/formatDate';
 
 import NetworkDetails from './NetworkDetails';
 
@@ -26,7 +25,7 @@ type Props = {
 };
 
 export default function TVShowDetails(props: Props) {
-    const locale = useLocale();
+    const format = useFormatter();
         
     const average = Math.round((props.tvShow.vote_average ?? 0) * 10);
 
@@ -79,7 +78,11 @@ export default function TVShowDetails(props: Props) {
                         { props.tvShow.name }
                         {
                             props.tvShow.first_air_date &&
-                            <>&nbsp;{ formatDate(props.tvShow.first_air_date, locale, 'YYYY') }</>
+                            <>&nbsp;({
+                                format.dateTime(
+                                    props.tvShow.first_air_date, { year: 'numeric' }
+                                )
+                            })</>
                         }
                     </Title>
 
@@ -146,9 +149,7 @@ export default function TVShowDetails(props: Props) {
                             props.tvShow.first_air_date &&
                             <li className="p-tv-show__details-list-info-item">
                                 <span>First air date:</span>
-                                <span>
-                                    { formatDate(props.tvShow.first_air_date, locale, 'DD.MM.YYYY') }
-                                </span>
+                                <span>{ format.dateTime(props.tvShow.first_air_date) }</span>
                             </li>
                         }
 
@@ -156,9 +157,7 @@ export default function TVShowDetails(props: Props) {
                             props.tvShow.last_air_date &&
                             <li className="p-tv-show__details-list-info-item">
                                 <span>Last air date:</span>
-                                <span>
-                                    { formatDate(props.tvShow.last_air_date, locale, 'DD.MM.YYYY') }
-                                </span>
+                                <span>{ format.dateTime(props.tvShow.last_air_date) }</span>
                             </li>
                         }
 

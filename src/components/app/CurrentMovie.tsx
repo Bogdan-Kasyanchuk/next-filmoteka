@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { useLocale } from 'next-intl';
+import { useFormatter } from 'next-intl';
 import { Fragment } from 'react';
 
 import Title from '@/components/ui/typography/Title';
@@ -10,7 +10,6 @@ import { PLACEHOLDERS } from '@/datasets/placeholders';
 import { imageUrl, pagesMovieUrl } from '@/routes';
 import { Link } from '@/services/i18n/navigation';
 import { CurrentMovieMapper } from '@/types';
-import formatDate from '@/utils/formatDate';
 
 type Props = {
     movie: CurrentMovieMapper,
@@ -18,7 +17,10 @@ type Props = {
 };
 
 export default function CurrentMovie(props: Props) {
-    const locale = useLocale();
+    const format = useFormatter();
+
+    const releaseDate = props.movie.release_date &&
+    format.dateTime( props.movie.release_date, { year: 'numeric' });
         
     return (
         <div className="c-current-movie">
@@ -45,18 +47,11 @@ export default function CurrentMovie(props: Props) {
                 >
                     <Link
                         href={ pagesMovieUrl(props.id) }
-                        title={
-                            `${ props.movie.title } ${ formatDate(
-                                props.movie.release_date, locale, 'YYYY'
-                            ) }`
-                        }
+                        title={ `${ props.movie.title } ${ releaseDate ?? '' }` }
                         className="u-link-color"
                     >
-                        { props.movie.title }&nbsp;{
-                            formatDate(
-                                props.movie.release_date, locale, 'YYYY'
-                            ) 
-                        }
+                        { props.movie.title }
+                        { releaseDate && <>&nbsp;({ releaseDate })</> }
                     </Link>
                 </Title>
 

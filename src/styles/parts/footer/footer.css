@@ -33,7 +33,15 @@
 
             img {
                 width: auto;
-                max-height: 22px;
+                max-height: 12px;
+
+                @media (--min-md) {
+                    max-height: 16px;
+                }
+
+                @media (--min-lg) {
+                    max-height: 20px;
+                }
             }
 
             @media (any-hover: hover) {

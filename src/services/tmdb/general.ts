@@ -1,3 +1,5 @@
+import { Locale } from 'next-intl';
+
 import { MediaType, TimeType } from '@/enums';
 import {
     CompanyDetailsShema,
@@ -9,7 +11,7 @@ import {
     TVShowShema,
     VideosShema
 } from '@/shemas';
-import { Adult, Locale } from '@/types';
+import { Adult } from '@/types';
 
 import { fetchApi } from './api';
 

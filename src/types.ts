@@ -61,8 +61,8 @@ export type ReviewMapper = {
         rating: number
     },
     content: string,
-    created_at: string,
-    updated_at: string
+    created_at: Date | null,
+    updated_at: Date | null
 };
 
 export type VideoMapper = {
@@ -73,7 +73,7 @@ export type VideoMapper = {
 };
 
 export type EpisodeMapper = {
-    air_date: string,
+    air_date: Date | null,
     episode_number: number,
     episode_type: EpisodeType,
     name: string,
@@ -85,7 +85,7 @@ export type EpisodeMapper = {
 };
 
 export type SeasonMapper = {
-    air_date: string,
+    air_date: Date | null,
     episode_count: number,
     name: string,
     poster_path: string,
@@ -109,7 +109,7 @@ export type SocialLinkMapper = {
 export type MovieMapper = {
     id: string,
     adult: boolean,
-    release_date: string,
+    release_date: Date | null,
     title: string,
     poster_path: string,
     media_type: MediaType.MOVIE,
@@ -130,7 +130,7 @@ export type MovieDetailsMapper = {
         backdrop_path: string,
         poster_path: string,
         original_language: string,
-        release_date: Date,
+        release_date: Date | null,
         revenue: number,
         runtime: number,
         genres: string[],
@@ -148,7 +148,7 @@ export type CurrentMovieMapper = {
     title: string,
     vote_average: number,
     poster_path: string,
-    release_date: string,
+    release_date: Date | null,
     media_type: MediaType.MOVIE,
     genres: string[]
 };
@@ -156,7 +156,7 @@ export type CurrentMovieMapper = {
 export type TVShowMapper = {
     id: string,
     adult: boolean,
-    first_air_date: string,
+    first_air_date: Date | null,
     name: string,
     poster_path: string,
     media_type: MediaType.TV_SHOW,
@@ -167,8 +167,8 @@ export type TVShowDetailsMapper = {
     tvShow: {
         adult: boolean,
         homepage: string,
-        first_air_date: string,
-        last_air_date: string,
+        first_air_date: Date | null,
+        last_air_date: Date | null,
         name: string,
         number_of_episodes: number,
         number_of_seasons: number,
@@ -196,7 +196,7 @@ export type TVShowDetailsMapper = {
 
 export type CurrentTVShowMapper = {
     adult: boolean,
-    first_air_date: string,
+    first_air_date: Date | null,
     name: string,
     vote_average: number,
     poster_path: string,
@@ -206,7 +206,7 @@ export type CurrentTVShowMapper = {
 
 export type TVShowSeasonDetailsMapper = {
     season: {
-        air_date: string,
+        air_date: Date | null,
         name: string,
         overview: string,
         poster_path: string,
@@ -220,7 +220,7 @@ export type MediaCastMapper = {
     id: string,
     title: string,
     poster_path: string,
-    release_date: string,
+    release_date: Date | null,
     character: string,
     media_type: string
 };
@@ -229,7 +229,7 @@ export type MediaCrewMapper = {
     id: string,
     title: string,
     poster_path: string,
-    release_date: string,
+    release_date: Date | null,
     job: string,
     media_type: string
 };
@@ -249,8 +249,8 @@ export type PersonDetailsMapper = {
         adult: boolean,
         also_known_as: string[],
         biography: string,
-        birthday: string,
-        deathday: string,
+        birthday: Date | null,
+        deathday: Date | null,
         homepage: string,
         known_for_department: string,
         name: string,

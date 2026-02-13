@@ -2,7 +2,7 @@
 
 import { ShowMore } from '@re-dev/react-truncate';
 import Image from 'next/image';
-import { useLocale } from 'next-intl';
+import { useFormatter } from 'next-intl';
 import { Fragment } from 'react';
 
 import SocialLinks from '@/components/ui/data-display/SocialLinks';
@@ -12,14 +12,13 @@ import { IMG_SIZES } from '@/datasets/constants';
 import { PLACEHOLDERS } from '@/datasets/placeholders';
 import { imageUrl } from '@/routes';
 import { PersonDetailsMapper } from '@/types';
-import formatDate from '@/utils/formatDate';
 
 type Props = {
     person: PersonDetailsMapper['person']
 };
 
 export default function PersonDetails(props: Props) {
-    const locale = useLocale();
+    const format = useFormatter();
         
     return (
         <div className="p-person__details">
@@ -98,7 +97,7 @@ export default function PersonDetails(props: Props) {
                         props.person.birthday &&
                         <li className="p-person__details-list-info-item">
                             <span>Birthday:</span>
-                            <span>{ formatDate(props.person.birthday, locale, 'DD.MM.YYYY') }</span>
+                            <span>{ format.dateTime(props.person.birthday) }</span>
                         </li>
                     }
 
@@ -106,7 +105,7 @@ export default function PersonDetails(props: Props) {
                         props.person.deathday &&
                         <li className="p-person__details-list-info-item">
                             <span>Deathday:</span>
-                            <span>{ formatDate(props.person.deathday, locale, 'DD.MM.YYYY') }</span>
+                            <span>{ format.dateTime(props.person.deathday) }</span>
                         </li>
                     }
 

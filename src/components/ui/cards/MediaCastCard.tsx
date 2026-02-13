@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { useLocale } from 'next-intl';
+import { useFormatter } from 'next-intl';
 
 import { IMG_SIZES } from '@/datasets/constants';
 import { PLACEHOLDERS } from '@/datasets/placeholders';
@@ -9,14 +9,13 @@ import { MediaType } from '@/enums';
 import { imageUrl, pagesMovieUrl, pagesTVShowUrl } from '@/routes';
 import { Link } from '@/services/i18n/navigation';
 import { MediaCastMapper } from '@/types';
-import formatDate from '@/utils/formatDate';
 
 type Props = {
     cast: MediaCastMapper
 };
 
 export default function MediaCastCard(props: Props) {
-    const locale = useLocale();
+    const format = useFormatter();
         
     return (
         <Link
@@ -32,7 +31,7 @@ export default function MediaCastCard(props: Props) {
                     {
 
                         props.cast.release_date
-                            ? formatDate(props.cast.release_date, locale, 'YYYY')
+                            ? format.dateTime(props.cast.release_date, { year: 'numeric' })
                             : '-'
                     }
                 </div>

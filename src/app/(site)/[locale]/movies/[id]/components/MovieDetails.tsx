@@ -73,11 +73,15 @@ export default function MovieDetails(props: Props) {
                     </div>
 
                     <Title className="p-movie__details-title">
-                        { props.movie.title }&nbsp;({
-                            format.dateTime(
-                                props.movie.release_date, { year: 'numeric' }
-                            )
-                        })
+                        { props.movie.title }
+                        {
+                            props.movie.release_date &&
+                            <>&nbsp;({
+                                format.dateTime(
+                                    props.movie.release_date, { year: 'numeric' }
+                                )
+                            })</>
+                        }
                     </Title>
 
                     <ul className="p-movie__details-list-rounds">

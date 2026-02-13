@@ -1,14 +1,13 @@
 'use client';
 
 import Image from 'next/image';
-import { useLocale } from 'next-intl';
+import { useFormatter } from 'next-intl';
 
 import Popover from '@/components/ui/data-display/Popover';
 import { IMG_SIZES } from '@/datasets/constants';
 import { PLACEHOLDERS } from '@/datasets/placeholders';
 import { imageUrl } from '@/routes';
 import { EpisodeMapper } from '@/types';
-import formatDate from '@/utils/formatDate';
 
 type Props = {
     episode: EpisodeMapper,
@@ -16,7 +15,7 @@ type Props = {
 };
 
 export default function EpisodeCard(props: Props) {
-    const locale = useLocale();
+    const format = useFormatter();
         
     return (
         <div className="с-episode-card">
@@ -49,7 +48,7 @@ export default function EpisodeCard(props: Props) {
                         props.episode.air_date &&
                         <div className="с-episode-card__info-list-item">
                             <dt>Air date:</dt>
-                            <dd>{ formatDate(props.episode.air_date, locale, 'DD.MM.YYYY') }</dd>
+                            <dd>{ format.dateTime(props.episode.air_date) }</dd>
                         </div>
                     }
 
