@@ -1,4 +1,7 @@
+'use client';
+
 import clsx from 'clsx';
+import { useExtracted } from 'next-intl';
 import { ComponentPropsWithoutRef, useId } from 'react';
 
 import Icon from '@/components/ui/data-display/Icon';
@@ -15,6 +18,8 @@ type Props = Omit<ComponentPropsWithoutRef<'input'>, 'className'> & {
 };
 
 export default function Switch(props: Props) {
+    const t = useExtracted();
+
     const defaultID = useId();
 
     const {
@@ -65,7 +70,7 @@ export default function Switch(props: Props) {
                     </span>
 
                     <span className="f-switch__text">
-                        { checked ? 'Yes' : 'No' }
+                        { checked ? t('Yes') : t('No') }
                     </span>
                 </label>
             </div>

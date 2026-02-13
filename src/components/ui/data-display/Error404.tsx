@@ -1,28 +1,33 @@
+'use client';
+
+import { useExtracted } from 'next-intl';
 
 import Container from '@/components/ui/layouts/Container';
 import { pagesHomeUrl } from '@/routes';
 import { Link } from '@/services/i18n/navigation';
 
 export default function Error404() {
+    const t = useExtracted();
+        
     return (
         <Container className="c-error-404">
             <h2 className="c-error-404__title">
-                <span className="sr-only">Error</span>404
+                <span className="sr-only">{ t('Error') }</span>404
             </h2>
 
             <p className="c-error-404__subtitle">
-                Sorry, we couldn&apos;t find this page.
+                { t('Sorry, we could not find this page.') }
             </p>
 
             <p className="c-error-404__text">
-                But dont worry, you can find plenty of other things on homepage.
+                { t('But dont worry, you can find plenty of other things on homepage.') }
             </p>
 
             <Link
                 href={ pagesHomeUrl() }
                 className="c-error-404__button"
             >
-                Back to homepage
+                { t('Back to homepage') }
             </Link>
         </Container>
     );

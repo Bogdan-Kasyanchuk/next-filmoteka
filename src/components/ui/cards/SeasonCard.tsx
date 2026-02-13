@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { useFormatter } from 'next-intl';
+import { useExtracted, useFormatter } from 'next-intl';
 
 import { IMG_SIZES } from '@/datasets/constants';
 import { PLACEHOLDERS } from '@/datasets/placeholders';
@@ -16,6 +16,8 @@ type Props = {
 
 export default function SeasonCard(props: Props) {
     const format = useFormatter();
+
+    const t = useExtracted();
         
     return (
         <Link
@@ -45,13 +47,13 @@ export default function SeasonCard(props: Props) {
                     {
                         props.season.air_date &&
                         <div className="с-season-card__info-list-item">
-                            <dt>Air date:</dt>
+                            <dt>{ t('Air date:') }</dt>
                             <dd>{ format.dateTime(props.season.air_date) }</dd>
                         </div>
                     }
 
                     <div className="с-season-card__info-list-item с-season-card__info-list-item--rating">
-                        <dt>Rating:</dt>
+                        <dt>{ t('Rating:') }</dt>
                         <dd>
                             { Math.round((props.season.vote_average ?? 0) * 10) }
                             <span>%</span>
@@ -59,12 +61,12 @@ export default function SeasonCard(props: Props) {
                     </div>
 
                     <div className="с-season-card__info-list-item">
-                        <dt>Season:</dt>
+                        <dt>{ t('Season:') }</dt>
                         <dd>{ props.season.season_number }</dd>
                     </div>
 
                     <div className="с-season-card__info-list-item">
-                        <dt>Episodes:</dt>
+                        <dt>{ t('Episodes:') }</dt>
                         <dd>{ props.season.episode_count }</dd>
                     </div>
                 </dl>

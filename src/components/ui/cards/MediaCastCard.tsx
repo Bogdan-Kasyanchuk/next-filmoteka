@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { useFormatter } from 'next-intl';
+import { useExtracted, useFormatter } from 'next-intl';
 
 import { IMG_SIZES } from '@/datasets/constants';
 import { PLACEHOLDERS } from '@/datasets/placeholders';
@@ -16,6 +16,8 @@ type Props = {
 
 export default function MediaCastCard(props: Props) {
     const format = useFormatter();
+
+    const t = useExtracted();
         
     return (
         <Link
@@ -69,7 +71,7 @@ export default function MediaCastCard(props: Props) {
                         className="с-media-cast-card__info-character"
                         title={ props.cast.character }
                     >
-                        as&nbsp;{ props.cast.character }
+                        { t('as {character}', { character: props.cast.character }) }
                     </p>
                 }
             </div>

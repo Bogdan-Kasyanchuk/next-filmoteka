@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { useFormatter } from 'next-intl';
+import { useExtracted, useFormatter } from 'next-intl';
 
 import Popover from '@/components/ui/data-display/Popover';
 import { IMG_SIZES } from '@/datasets/constants';
@@ -16,6 +16,8 @@ type Props = {
 
 export default function EpisodeCard(props: Props) {
     const format = useFormatter();
+
+    const t = useExtracted();
         
     return (
         <div className="с-episode-card">
@@ -47,23 +49,23 @@ export default function EpisodeCard(props: Props) {
                     {
                         props.episode.air_date &&
                         <div className="с-episode-card__info-list-item">
-                            <dt>Air date:</dt>
+                            <dt>{ t('Air date:') }</dt>
                             <dd>{ format.dateTime(props.episode.air_date) }</dd>
                         </div>
                     }
 
                     <div className="с-episode-card__info-list-item">
-                        <dt>Type:</dt>
+                        <dt>{ t('Type:') }</dt>
                         <dd className="capitalize">{ props.episode.episode_type }</dd>
                     </div>
 
                     <div className="с-episode-card__info-list-item">
-                        <dt>Episode:</dt>
+                        <dt>{ t('Episode:') }</dt>
                         <dd>{ props.episode.episode_number }</dd>
                     </div>
 
                     <div className="с-episode-card__info-list-item с-episode-card__info-list-item--rating">
-                        <dt>Rating:</dt>
+                        <dt>{ t('Rating:') }</dt>
                         <dd>
                             { Math.round((props.episode.vote_average ?? 0) * 10) }
                             <span>%</span>
@@ -71,13 +73,13 @@ export default function EpisodeCard(props: Props) {
                     </div>
 
                     <div className="с-episode-card__info-list-item">
-                        <dt>Votes:</dt>
+                        <dt>{ t('Votes:') }</dt>
                         <dd>{ props.episode.vote_count ?? 0 }</dd>
                     </div>
 
                     <div className="с-episode-card__info-list-item">
-                        <dt>Runtime:</dt>
-                        <dd>{ props.episode.runtime ?? 0 }min</dd>
+                        <dt>{ t('Runtime:') }</dt>
+                        <dd>{ props.episode.runtime ?? 0 }{ t('min') }</dd>
                     </div>
                 </dl>
             </div>

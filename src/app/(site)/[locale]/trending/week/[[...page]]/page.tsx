@@ -57,12 +57,13 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
 }
 
 export default async function Page(props: Props) {
-    const [ locale, params, searchParams, t ] = await Promise.all([
+    const [ locale, params, searchParams ] = await Promise.all([
         getLocale(),
         props.params,
-        props.searchParams,
-        getExtracted()
+        props.searchParams
     ]);
+
+    const t = await getExtracted();
 
     const type = searchParams.type || 'all';
     const page = params.page ? normalizePage(params.page[ 1 ]) : 1;

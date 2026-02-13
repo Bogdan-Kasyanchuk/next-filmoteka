@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { useFormatter } from 'next-intl';
+import { useExtracted, useFormatter } from 'next-intl';
 
 import { IMG_SIZES } from '@/datasets/constants';
 import { PLACEHOLDERS } from '@/datasets/placeholders';
@@ -16,6 +16,8 @@ type Props = {
 
 export default function MediaCrewCard(props: Props) {
     const format = useFormatter();
+
+    const t = useExtracted();
         
     return (
         <Link
@@ -69,7 +71,7 @@ export default function MediaCrewCard(props: Props) {
                         className="с-media-crew-card__info-job"
                         title={ props.crew.job }
                     >
-                        as&nbsp;{ props.crew.job }
+                        { t('as {job}', { job: props.crew.job }) }
                     </p>
                 }
             </div>

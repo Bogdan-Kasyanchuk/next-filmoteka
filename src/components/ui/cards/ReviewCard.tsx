@@ -2,7 +2,7 @@
 
 import { ShowMore } from '@re-dev/react-truncate';
 import Image from 'next/image';
-import { useFormatter } from 'next-intl';
+import { useExtracted, useFormatter } from 'next-intl';
 
 import { IMG_SIZES } from '@/datasets/constants';
 import { PLACEHOLDERS } from '@/datasets/placeholders';
@@ -16,6 +16,8 @@ type Props = {
 
 export default function ReviewCard(props: Props) {
     const format = useFormatter();
+
+    const t = useExtracted();
         
     if (!props.review.content) {
         return null;
@@ -70,7 +72,7 @@ export default function ReviewCard(props: Props) {
                         {
                             props.review.created_at &&
                             <li className="c-review-card__info-list-item">
-                                <span>Created:</span>
+                                <span>{ t('Created:') }</span>
                                 <span>
                                     { format.dateTime(props.review.created_at) }
                                 </span>
@@ -80,7 +82,7 @@ export default function ReviewCard(props: Props) {
                         {
                             props.review.updated_at &&
                             <li className="c-review-card__info-list-item">
-                                <span>Updated:</span>
+                                <span>{ t('Updated:') }</span>
                                 <span>
                                     { format.dateTime(props.review.updated_at) }
                                 </span>

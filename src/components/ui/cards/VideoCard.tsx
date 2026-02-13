@@ -38,9 +38,7 @@ export default function VideoCard(props: Props) {
                         </span>
                     }
 
-                    <span>
-                        { props.video.type }
-                    </span>
+                    <span>{ props.video.type }</span>
                 </div>
             </div>
 

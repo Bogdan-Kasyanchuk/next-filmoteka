@@ -8,6 +8,7 @@ import SwitchLocale from './components/SwitchLocale';
 
 export default async function Header() {
     const t = await getExtracted();
+    
     return (
         <header className="c-header">
             <Container

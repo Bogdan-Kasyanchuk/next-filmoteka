@@ -2,6 +2,7 @@
 
 import { useMediaQuery, useToggle } from '@mantine/hooks';
 import clsx from 'clsx';
+import { useExtracted } from 'next-intl';
 
 type Props = {
     text: string,
@@ -18,6 +19,8 @@ type Props = {
 };
 
 export default function ReadMore(props: Props) {
+    const t = useExtracted();
+        
     const [ value, toggle ] = useToggle([ false, true ]);
 
     const isMobile = useMediaQuery(
@@ -65,7 +68,7 @@ export default function ReadMore(props: Props) {
                         }
                     }
                 >
-                    { value ? 'Read less' : 'Read more' }
+                    { value ? t('Read less') : t('Read more') }
                 </button>
             }
         </div>
