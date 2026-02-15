@@ -1,13 +1,11 @@
 @import '@/styles/components/socials.css';
 @import '@/styles/components/carousel.css';
-@import '@/styles/components/cast.css';
-@import '@/styles/components/crew.css';
+@import '@/styles/components/persons.css';
 @import '@/styles/components/videos.css';
 @import '@/styles/components/recommendations.css';
 @import '@/styles/components/reviews.css';
 @import '@/styles/components/cards/company-details-card.css';
-@import '@/styles/components/cards/cast-card.css';
-@import '@/styles/components/cards/crew-card.css';
+@import '@/styles/components/cards/person-compact-card.css';
 @import '@/styles/components/cards/video-card.css';
 @import '@/styles/components/cards/movie-card.css';
 @import '@/styles/components/cards/review-card.css';

@@ -22,16 +22,16 @@ export default function Crew(props: Props) {
     const [ nextButtonRef, setNextButtonRef ] = useState<HTMLButtonElement | null>(null);
 
     return (
-        <div className="с-crew">
+        <div className="с-persons">
             <Title
                 order="h3"
                 variant={ 3 }
-                className="с-crew__title"
+                className="с-persons__title"
             >
                 { t('Crew') }
             </Title>
 
-            <div className="с-crew__cards">
+            <div className="с-persons__cards">
                 <Carousel
                     items={ props.crew }
                     modules={ [ Autoplay, Navigation ] }
@@ -50,7 +50,7 @@ export default function Crew(props: Props) {
                     }
                     slideProps={
                         {
-                            className: 'с-crew__slide'
+                            className: 'с-persons__slide'
                         }
                     }
                 >
@@ -90,10 +90,10 @@ function Arrow(props: ArrowProps) {
             aria-label={ props.ariaLabel }
             className={
                 clsx(
-                    'с-crew__arrow',
+                    'с-persons__arrow',
                     props.type === 'prev'
-                        ? 'с-crew__arrow--prev'
-                        : 'с-crew__arrow--next'
+                        ? 'с-persons__arrow--prev'
+                        : 'с-persons__arrow--next'
 
                 )
             }

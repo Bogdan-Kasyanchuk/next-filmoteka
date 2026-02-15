@@ -1,4 +1,4 @@
-.с-media-crew-card {
+.с-media-compact-card {
     display: flex;
     column-gap: 20px;
     align-items: flex-start;
@@ -73,6 +73,7 @@
             font-weight: 700;
         }
 
+        &-character,
         &-job {
             overflow: hidden;
 

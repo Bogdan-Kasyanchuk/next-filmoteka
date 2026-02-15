@@ -26,10 +26,10 @@ export default function MediaCrewCard(props: Props) {
                     ? pagesMovieUrl(props.crew.id)
                     : pagesTVShowUrl(props.crew.id)
             }
-            className="с-media-crew-card"
+            className="с-media-compact-card"
         >
-            <div className="с-media-crew-card__left">
-                <div className="с-media-crew-card__date">
+            <div className="с-media-compact-card__left">
+                <div className="с-media-compact-card__date">
                     {
 
                         props.crew.release_date
@@ -38,12 +38,12 @@ export default function MediaCrewCard(props: Props) {
                     }
                 </div>
 
-                <div className="с-media-crew-card__type">
+                <div className="с-media-compact-card__type">
                     { props.crew.media_type }
                 </div>
             </div>
 
-            <div className="с-media-crew-card__cover">
+            <div className="с-media-compact-card__cover">
                 <Image
                     src={
                         props.crew.poster_path
@@ -57,9 +57,9 @@ export default function MediaCrewCard(props: Props) {
                 />
             </div>
 
-            <div className="с-media-crew-card__info">
+            <div className="с-media-compact-card__info">
                 <p
-                    className="с-media-crew-card__info-name"
+                    className="с-media-compact-card__info-name"
                     title={ props.crew.title }
                 >
                     { props.crew.title }
@@ -68,7 +68,7 @@ export default function MediaCrewCard(props: Props) {
                 {
                     props.crew.job &&
                     <p
-                        className="с-media-crew-card__info-job"
+                        className="с-media-compact-card__info-job"
                         title={ props.crew.job }
                     >
                         { t('as {job}', { job: props.crew.job }) }

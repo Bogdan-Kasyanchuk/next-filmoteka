@@ -1,4 +1,4 @@
-.с-crew-card {
+.с-person-compact-card {
     position: relative;
 
     overflow: hidden;
@@ -61,7 +61,8 @@
             font-weight: 700;
         }
 
-        &-job {
+        &-job,
+        &-character {
             overflow: hidden;
             display: -webkit-box;
             -webkit-box-orient: vertical;

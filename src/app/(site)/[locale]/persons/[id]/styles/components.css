@@ -1,4 +1,3 @@
 @import '@/styles/components/socials.css';
 @import '@/styles/components/cards/image-card.css';
-@import '@/styles/components/cards/media-cast-card.css';
-@import '@/styles/components/cards/media-crew-card.css';
+@import '@/styles/components/cards/media-compact-card.css';

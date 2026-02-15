@@ -22,16 +22,16 @@ export default function Cast(props: Props) {
     const [ nextButtonRef, setNextButtonRef ] = useState<HTMLButtonElement | null>(null);
 
     return (
-        <div className="с-cast">
+        <div className="с-persons">
             <Title
                 order="h3"
                 variant={ 3 }
-                className="с-cast__title"
+                className="с-persons__title"
             >
                 { t('Cast') }
             </Title>
 
-            <div className="с-cast__cards">
+            <div className="с-persons__cards">
                 <Carousel
                     items={ props.cast }
                     modules={ [ Autoplay, Navigation ] }
@@ -50,7 +50,7 @@ export default function Cast(props: Props) {
                     }
                     slideProps={
                         {
-                            className: 'с-cast__slide'
+                            className: 'с-persons__slide'
                         }
                     }
                 >
@@ -90,10 +90,10 @@ function Arrow(props: ArrowProps) {
             aria-label={ props.ariaLabel }
             className={
                 clsx(
-                    'с-cast__arrow',
+                    'с-persons__arrow',
                     props.type === 'prev'
-                        ? 'с-cast__arrow--prev'
-                        : 'с-cast__arrow--next'
+                        ? 'с-persons__arrow--prev'
+                        : 'с-persons__arrow--next'
 
                 )
             }

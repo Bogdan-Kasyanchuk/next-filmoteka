@@ -26,10 +26,10 @@ export default function MediaCastCard(props: Props) {
                     ? pagesMovieUrl(props.cast.id)
                     : pagesTVShowUrl(props.cast.id)
             }
-            className="с-media-cast-card"
+            className="с-media-compact-card"
         >
-            <div className="с-media-cast-card__left">
-                <div className="с-media-cast-card__date">
+            <div className="с-media-compact-card__left">
+                <div className="с-media-compact-card__date">
                     {
 
                         props.cast.release_date
@@ -38,12 +38,12 @@ export default function MediaCastCard(props: Props) {
                     }
                 </div>
 
-                <div className="с-media-cast-card__type">
+                <div className="с-media-compact-card__type">
                     { props.cast.media_type }
                 </div>
             </div>
 
-            <div className="с-media-cast-card__cover">
+            <div className="с-media-compact-card__cover">
                 <Image
                     src={
                         props.cast.poster_path
@@ -57,9 +57,9 @@ export default function MediaCastCard(props: Props) {
                 />
             </div>
 
-            <div className="с-media-cast-card__info">
+            <div className="с-media-compact-card__info">
                 <p
-                    className="с-media-cast-card__info-name"
+                    className="с-media-compact-card__info-name"
                     title={ props.cast.title }
                 >
                     { props.cast.title }
@@ -68,7 +68,7 @@ export default function MediaCastCard(props: Props) {
                 {
                     props.cast.character &&
                     <p
-                        className="с-media-cast-card__info-character"
+                        className="с-media-compact-card__info-character"
                         title={ props.cast.character }
                     >
                         { t('as {character}', { character: props.cast.character }) }

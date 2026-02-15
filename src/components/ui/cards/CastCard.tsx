@@ -15,11 +15,11 @@ export default function CastCard(props: Props) {
     return (
         <Link
             href={ pagesPersonUrl(props.cast.id) }
-            className="с-cast-card"
+            className="с-person-compact-card"
         >
             <div
                 className={
-                    clsx('с-cast-card__cover', {
+                    clsx('с-person-compact-card__cover', {
                         'bg-primary': !props.cast.profile_path
                     })
                 }
@@ -37,20 +37,20 @@ export default function CastCard(props: Props) {
                 />
             </div>
    
-            <div className="с-cast-card__tag">
+            <div className="с-person-compact-card__tag">
                 { Math.round(props.cast.popularity ?? 0) }
             </div>
 
-            <div className="с-cast-card__footer">
+            <div className="с-person-compact-card__footer">
                 <p
-                    className="с-cast-card__footer-name"
+                    className="с-person-compact-card__footer-name"
                     title={ props.cast.name }
                 >
                     { props.cast.name }
                 </p>
 
                 <p
-                    className="с-cast-card__footer-character"
+                    className="с-person-compact-card__footer-character"
                     title={ props.cast.character }
                 >
                     { props.cast.character }

@@ -15,11 +15,11 @@ export default function CrewCard(props: Props) {
     return (
         <Link
             href={ pagesPersonUrl(props.crew.id) }
-            className="с-crew-card"
+            className="с-person-compact-card"
         >
             <div
                 className={
-                    clsx('с-crew-card__cover', {
+                    clsx('с-person-compact-card__cover', {
                         'bg-primary': !props.crew.profile_path
                     })
                 }
@@ -37,20 +37,20 @@ export default function CrewCard(props: Props) {
                 />
             </div>
 
-            <div className="с-crew-card__tag">
+            <div className="с-person-compact-card__tag">
                 { Math.round(props.crew.popularity ?? 0) }
             </div>
 
-            <div className="с-crew-card__footer">
+            <div className="с-person-compact-card__footer">
                 <p
-                    className="с-crew-card__footer-name"
+                    className="с-person-compact-card__footer-name"
                     title={ props.crew.name }
                 >
                     { props.crew.name }
                 </p>
 
                 <p
-                    className="с-crew-card__footer-job"
+                    className="с-person-compact-card__footer-job"
                     title={ props.crew.job }
                 >
                     { props.crew.job }

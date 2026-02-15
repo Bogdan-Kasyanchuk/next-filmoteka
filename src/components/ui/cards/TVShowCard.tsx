@@ -39,7 +39,7 @@ export default function TVShowCard(props: Props) {
 
             <div className="с-tv-show-card__tags">
                 <div className="с-tv-show-card__tag с-tv-show-card__tag--type">
-                    { t('TV Show') }
+                    { t('TV') }
                 </div>
 
                 {

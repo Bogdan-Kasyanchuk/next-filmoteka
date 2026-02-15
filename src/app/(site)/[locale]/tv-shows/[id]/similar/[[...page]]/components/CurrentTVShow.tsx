@@ -57,7 +57,7 @@ export default function CurrentTVShow(props: Props) {
 
                 <div className="c-current-tv-show__tags">
                     <div className="c-current-tv-show__tag c-current-tv-show__tag--type">
-                        { t('TV Show') }
+                        { t('TV') }
                     </div>
 
                     <div className="c-current-tv-show__tag c-current-tv-show__tag--average">
