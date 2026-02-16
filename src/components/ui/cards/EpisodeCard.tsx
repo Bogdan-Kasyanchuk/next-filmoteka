@@ -20,8 +20,8 @@ export default function EpisodeCard(props: Props) {
     const t = useExtracted();
         
     return (
-        <div className="с-episode-card">
-            <div className="с-episode-card__cover">
+        <div className="c-episode-card">
+            <div className="c-episode-card__cover">
                 <Image
                     src={
                         props.episode.still_path
@@ -37,34 +37,34 @@ export default function EpisodeCard(props: Props) {
                 />
             </div>
 
-            <div className="с-episode-card__info">
+            <div className="c-episode-card__info">
                 <p
-                    className="с-episode-card__info-name"
+                    className="c-episode-card__info-name"
                     title={ props.episode.name }
                 >
                     { props.episode.name }
                 </p>
 
-                <dl className="с-episode-card__info-list">
+                <dl className="c-episode-card__info-list">
                     {
                         props.episode.air_date &&
-                        <div className="с-episode-card__info-list-item">
+                        <div className="c-episode-card__info-list-item">
                             <dt>{ t('Air date:') }</dt>
                             <dd>{ format.dateTime(props.episode.air_date) }</dd>
                         </div>
                     }
 
-                    <div className="с-episode-card__info-list-item">
+                    <div className="c-episode-card__info-list-item">
                         <dt>{ t('Type:') }</dt>
                         <dd className="capitalize">{ props.episode.episode_type }</dd>
                     </div>
 
-                    <div className="с-episode-card__info-list-item">
+                    <div className="c-episode-card__info-list-item">
                         <dt>{ t('Episode:') }</dt>
                         <dd>{ props.episode.episode_number }</dd>
                     </div>
 
-                    <div className="с-episode-card__info-list-item с-episode-card__info-list-item--rating">
+                    <div className="c-episode-card__info-list-item c-episode-card__info-list-item--rating">
                         <dt>{ t('Rating:') }</dt>
                         <dd>
                             { Math.round((props.episode.vote_average ?? 0) * 10) }
@@ -72,12 +72,12 @@ export default function EpisodeCard(props: Props) {
                         </dd>
                     </div>
 
-                    <div className="с-episode-card__info-list-item">
+                    <div className="c-episode-card__info-list-item">
                         <dt>{ t('Votes:') }</dt>
                         <dd>{ props.episode.vote_count ?? 0 }</dd>
                     </div>
 
-                    <div className="с-episode-card__info-list-item">
+                    <div className="c-episode-card__info-list-item">
                         <dt>{ t('Runtime:') }</dt>
                         <dd>{ props.episode.runtime ?? 0 }{ t('min') }</dd>
                     </div>
@@ -90,14 +90,14 @@ export default function EpisodeCard(props: Props) {
                     trigger={
                         <button
                             type="button"
-                            className="с-episode-card__overview-trigger"
+                            className="c-episode-card__overview-trigger"
                         >
                             i
                         </button>
                     }
                     classNames={
                         {
-                            content: 'с-episode-card__overview'
+                            content: 'c-episode-card__overview'
                         }
                     }
                     isArrow

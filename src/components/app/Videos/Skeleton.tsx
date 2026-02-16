@@ -11,13 +11,13 @@ export default function Skeleton() {
         
     return (
         <Wrapper>
-            <div className="с-videos__list">
+            <div className="c-videos__list">
                 {
                     [ 1, 2, 3, 4 ].map(
                         item => (
                             <div
                                 key={ item }
-                                className="с-videos__skeleton"
+                                className="c-videos__skeleton"
                             >
                                 <div />
 

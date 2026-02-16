@@ -20,8 +20,8 @@ export default function MovieCard(props: Props) {
     const t = useExtracted();
     
     return (
-        <div className="с-movie-card">
-            <div className="с-movie-card__cover">
+        <div className="c-media-card">
+            <div className="c-media-card__cover">
                 <Image
                     src={
                         props.movie.poster_path
@@ -37,35 +37,35 @@ export default function MovieCard(props: Props) {
                 />
             </div>
 
-            <div className="с-movie-card__tags">
-                <div className="с-movie-card__tag с-movie-card__tag--type">
+            <div className="c-media-card__tags">
+                <div className="c-media-card__tag c-media-card__tag--type">
                     { t('Movie') }
                 </div>
 
                 {
                     props.movie.release_date &&
-                    <div className="с-movie-card__tag с-movie-card__tag--date">
+                    <div className="c-media-card__tag c-media-card__tag--date">
                         { format.dateTime(props.movie.release_date, { year: 'numeric' }) }
                     </div>
                 }
 
                 {
                     props.movie.adult &&
-                    <div className="с-movie-card__tag с-movie-card__tag--adult">
+                    <div className="c-media-card__tag c-media-card__tag--adult">
                         18<span>+</span>
                     </div>
                 }
 
-                <div className="с-movie-card__tag с-movie-card__tag--average">
+                <div className="c-media-card__tag c-media-card__tag--average">
                     { Math.round((props.movie.vote_average ?? 0) * 10) }
                     <span>%</span>
                 </div>
             </div>
 
-            <div className="с-movie-card__footer">
+            <div className="c-media-card__footer">
                 <Link
                     href={ pagesMovieUrl(props.movie.id) }
-                    className="с-movie-card__footer-title u-overlay"
+                    className="c-media-card__footer-title u-overlay"
                     title={ props.movie.title }
                 >
                     { props.movie.title }

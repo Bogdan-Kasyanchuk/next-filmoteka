@@ -46,7 +46,7 @@ export default function Videos(props: Props) {
     
     return (
         <Wrapper>
-            <ul className="с-videos__list">
+            <ul className="c-videos__list">
                 {
                     data.map(
                         (video, index) => (

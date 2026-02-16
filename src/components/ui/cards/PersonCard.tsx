@@ -18,8 +18,8 @@ export default function PersonCard(props: Props) {
     const t = useExtracted();
         
     return (
-        <div className="с-person-card">
-            <div className="с-person-card__cover">
+        <div className="c-media-card">
+            <div className="c-media-card__cover">
                 <Image
                     src={
                         props.person.profile_path
@@ -35,33 +35,33 @@ export default function PersonCard(props: Props) {
                 />
             </div>
 
-            <div className="с-person-card__tags">
-                <div className="с-person-card__tag с-person-card__tag--type">
+            <div className="c-media-card__tags">
+                <div className="c-media-card__tag c-media-card__tag--type">
                     { t('Person') }
                 </div>
 
                 {
                     props.person.adult &&
-                    <div className="с-person-card__tag с-person-card__tag--adult">
+                    <div className="c-media-card__tag c-media-card__tag--adult">
                         18<span>+</span>
                     </div>
                 }
 
-                <div className="с-person-card__tag с-person-card__tag--popularity">
+                <div className="c-media-card__tag c-media-card__tag--popularity">
                     { Math.round(props.person.popularity ?? 0) }
                 </div>
             </div>
 
-            <div className="с-person-card__footer">
+            <div className="c-media-card__footer">
                 <Link
                     href={ pagesPersonUrl(props.person.id) }
-                    className="с-person-card__footer-name u-overlay"
+                    className="c-media-card__footer-name u-overlay"
                     title={ props.person.name }
                 >
                     { props.person.name }
                 </Link>
                 
-                <p className="с-person-card__footer-department">
+                <p className="c-media-card__footer-department">
                     { props.person.known_for_department }
                 </p>
             </div>

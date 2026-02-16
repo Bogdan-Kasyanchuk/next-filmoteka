@@ -1,4 +1,4 @@
-.с-recommendations {
+.c-recommendations {
     margin-inline: -10px;
     padding-top: 30px;
     padding-inline: 10px;
@@ -30,31 +30,31 @@
         @media (--min-md) {
             grid-template-columns: repeat(auto-fill, 174px);
 
-            .с-movie-card__tags,
-            .с-tv-show-card__tags {
+            .c-movie-card__tags,
+            .c-tv-show-card__tags {
                 gap: 6px;
             }
 
-            .с-movie-card__tag,
-            .с-tv-show-card__tag {
+            .c-movie-card__tag,
+            .c-tv-show-card__tag {
                 font-size: var(--text-3xs);
             }
 
-            .с-movie-card__tag--average,
-            .с-tv-show-card__tag--average {
+            .c-movie-card__tag--average,
+            .c-tv-show-card__tag--average {
                 span {
                     top: -2px;
                     font-size: 9px;
                 }
             }
 
-            .с-movie-card__footer,
-            .с-tv-show-card__footer {
+            .c-movie-card__footer,
+            .c-tv-show-card__footer {
                 height: 49px;
             }
 
-            .с-movie-card__footer-title,
-            .с-tv-show-card__footer-title {
+            .c-movie-card__footer-title,
+            .c-tv-show-card__footer-title {
                 font-size: var(--text-sm);
             }
         }

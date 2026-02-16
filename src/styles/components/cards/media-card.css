@@ -1,4 +1,4 @@
-.с-movie-card {
+.c-media-card {
     position: relative;
 
     overflow: hidden;
@@ -56,7 +56,8 @@
             }
         }
 
-        &--average {
+        &--average,
+        &--popularity {
             margin-inline-start: auto;
             border-color: var(--color-primary);
             color: var(--color-primary);
@@ -96,6 +97,11 @@
         height: 49px;
         padding: 5px 10px;
 
+        font-size: var(--text-sm);
+        font-weight: 700;
+        line-height: 1.2;
+        color: var(--color-primary);
+
         background: linear-gradient(-90deg, var(--color-secondary) 50%, var(--color-accent) 100%);
 
         &-title {
@@ -103,19 +109,32 @@
             display: -webkit-box;
             -webkit-box-orient: vertical;
             -webkit-line-clamp: 2;
+        }
 
-            font-size: var(--text-sm);
-            font-weight: 700;
-            line-height: 1.2;
-            color: var(--color-primary);
+        &-name {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        &-department {
+            overflow: hidden;
+
+            font-size: var(--text-xs);
+            font-weight: 600;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+
+            opacity: 0.75;
 
             @media (--min-md) {
-                font-size: var(--text-md);
+                font-size: var(--text-sm);
             }
         }
 
         @media (--min-md) {
             height: 54px;
+            font-size: var(--text-md);
         }
     }
 

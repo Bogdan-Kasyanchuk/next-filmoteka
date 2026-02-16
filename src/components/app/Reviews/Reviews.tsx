@@ -53,13 +53,13 @@ export default function Reviews(props: Props) {
 
     return (
         <Wrapper>
-            <ul className="с-reviews__list">
+            <ul className="c-reviews__list">
                 {
                     data.map(
                         (item, index) => (
                             <li
                                 key={ index }
-                                className="с-reviews__item"
+                                className="c-reviews__item"
                             >
                                 <ReviewCard
                                     review={ item }
@@ -75,7 +75,7 @@ export default function Reviews(props: Props) {
                 hasNextPage &&
                 <button
                     type="button"
-                    className="с-reviews__load-more-button"
+                    className="c-reviews__load-more-button"
                     disabled = { isFetchingNextPage }
                     onClick={
                         () => {

@@ -11,11 +11,11 @@ export default function Wrapper(props: PropsWithChildren) {
         
     return (
         <Container className="xxl:max-w-[1440px]">
-            <div className="с-reviews">
+            <div className="c-reviews">
                 <Title
                     order="h3"
                     variant={ 3 }
-                    className="с-reviews__title"
+                    className="c-reviews__title"
                 >
                     { t('Reviews') }
                 </Title>

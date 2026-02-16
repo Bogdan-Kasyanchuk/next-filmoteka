@@ -18,7 +18,7 @@ export default function Recommendations<T extends Record<string, any>>(props: Pr
         
     return (
         <Wrapper>
-            <ul className="с-recommendations__list">
+            <ul className="c-recommendations__list">
                 {
                     props.items.map(
                         item => (
@@ -36,7 +36,7 @@ export default function Recommendations<T extends Record<string, any>>(props: Pr
                 props.hasNextPage &&
                 <button
                     type="button"
-                    className="с-recommendations__load-more-button"
+                    className="c-recommendations__load-more-button"
                     disabled = { props.isFetchingNextPage }
                     onClick={
                         () => {

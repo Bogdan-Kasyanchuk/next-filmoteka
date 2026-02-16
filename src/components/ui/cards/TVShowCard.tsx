@@ -20,8 +20,8 @@ export default function TVShowCard(props: Props) {
     const t = useExtracted();
         
     return (
-        <div className="с-tv-show-card">
-            <div className="с-tv-show-card__cover">
+        <div className="c-media-card">
+            <div className="c-media-card__cover">
                 <Image
                     src={
                         props.tvShow.poster_path
@@ -37,35 +37,35 @@ export default function TVShowCard(props: Props) {
                 />
             </div>
 
-            <div className="с-tv-show-card__tags">
-                <div className="с-tv-show-card__tag с-tv-show-card__tag--type">
+            <div className="c-media-card__tags">
+                <div className="c-media-card__tag c-media-card__tag--type">
                     { t('TV') }
                 </div>
 
                 {
                     props.tvShow.first_air_date &&
-                    <div className="с-tv-show-card__tag с-tv-show-card__tag--date">
+                    <div className="c-media-card__tag c-media-card__tag--date">
                         { format.dateTime(props.tvShow.first_air_date, { year: 'numeric' }) }
                     </div>
                 }
 
                 {
                     props.tvShow.adult &&
-                    <div className="с-tv-show-card__tag с-tv-show-card__tag--adult">
+                    <div className="c-media-card__tag c-media-card__tag--adult">
                         18<span>+</span>
                     </div>
                 }
 
-                <div className="с-tv-show-card__tag с-tv-show-card__tag--average">
+                <div className="c-media-card__tag c-media-card__tag--average">
                     { Math.round((props.tvShow.vote_average ?? 0) * 10) }
                     <span>%</span>
                 </div>
             </div>
 
-            <div className="с-tv-show-card__footer">
+            <div className="c-media-card__footer">
                 <Link
                     href={ pagesTVShowUrl(props.tvShow.id) }
-                    className="с-tv-show-card__footer-title u-overlay"
+                    className="c-media-card__footer-title u-overlay"
                     title={ props.tvShow.name }
                 >
                     { props.tvShow.name }
