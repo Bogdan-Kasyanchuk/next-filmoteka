@@ -48,6 +48,6 @@ export enum EpisodeType {
 export enum NavTitleType {
     SEARCH = 'search',
     MOVIES = 'movies',
-    TV_SHOWS = 'shows',
+    TV_SHOWS = 'tv-shows',
     PERSONS = 'persons'
 }

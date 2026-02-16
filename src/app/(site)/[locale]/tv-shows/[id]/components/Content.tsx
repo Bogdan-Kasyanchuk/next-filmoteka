@@ -3,15 +3,21 @@
 import { useQuery } from '@tanstack/react-query';
 import { notFound } from 'next/navigation';
 import { useLocale } from 'next-intl';
+import { Suspense } from 'react';
 
 import Cast from '@/components/app/Cast';
 import Crew from '@/components/app/Crew';
+import { RecommendationsSkeleton } from '@/components/app/Recommendations';
+import Reviews, { ReviewsSkeleton } from '@/components/app/Reviews';
+import Videos, { VideosSkeleton } from '@/components/app/Videos';
 import Loader from '@/components/ui/data-display/Loader';
 import Container from '@/components/ui/layouts/Container';
+import { MediaType } from '@/enums';
 import { tvShowsQueryKeys } from '@/helpers/queryKeys';
 import { transformTVShowDetails } from '@/helpers/transformData';
 import { getTVShowById } from '@/services/tmdb/tvShows';
 
+import Recommendations from './Recommendations';
 import Seasons from './Seasons';
 import TVShowDetails from './TVShowDetails';
 
@@ -37,7 +43,7 @@ export default function Content(props: Props) {
     }
 
     return (
-        <>
+        <div className="p-tv-show">
             <TVShowDetails
                 tvShow={ data.tvShow }
                 id={ props.id }
@@ -61,7 +67,25 @@ export default function Content(props: Props) {
                     data.crew.length > 0 &&
                     <Crew crew={ data.crew } />
                 }
+
+                <Suspense fallback={ <VideosSkeleton /> }>
+                    <Videos
+                        type={ MediaType.TV_SHOW }
+                        id={ props.id }
+                    />
+                </Suspense>
+            
+                <Suspense fallback={ <RecommendationsSkeleton /> }>
+                    <Recommendations id={ props.id } />
+                </Suspense>
+            
+                <Suspense fallback={ <ReviewsSkeleton /> }>
+                    <Reviews
+                        type={ MediaType.TV_SHOW }
+                        id={ props.id }
+                    />
+                </Suspense>
             </Container>
-        </>
+        </div>
     );
 }

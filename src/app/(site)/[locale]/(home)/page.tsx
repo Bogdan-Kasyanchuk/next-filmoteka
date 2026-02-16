@@ -1,7 +1,7 @@
 import { HydrationBoundary, QueryClient, dehydrate } from '@tanstack/react-query';
 import { Metadata } from 'next';
 import { Locale } from 'next-intl';
-import { setRequestLocale } from 'next-intl/server';
+import { getExtracted, setRequestLocale } from 'next-intl/server';
 import { PropsWithChildren } from 'react';
 
 import { TimeType } from '@/enums';
@@ -14,23 +14,34 @@ import Content from './components/Content';
 
 import './styles/index.css';
 
-export const metadata: Metadata = generateMetaTags(
-    {
-        title: 'Home',
-        description: 'Trending movies, series, tv shows, actors and members of film crews.',
-        keywords: [
-            'trending',
-            'trending today',
-            'trending this week',
-            'movies',
-            'tv shows',
-            'persons',
-            'actors',
-            'film crew members'
-        ],
-        url: pagesHomeUrl()
-    }
-);
+export async function generateMetadata(props: Props): Promise<Metadata> {
+    const { locale } = await props.params;
+
+    const t = await getExtracted();
+
+    return generateMetaTags(
+        {
+            title: t('Home'),
+            description: t('Trending movies, series, tv shows, actors and members of film crews.'),
+            keywords: [
+                t('trending'),
+                t('trending today'),
+                t('trending this week'),
+                t('movies'),
+                t('tv shows'),
+                t('persons'),
+                t('actors'),
+                t('film crew members')
+            ],
+            url: `${ pagesHomeUrl() }${ locale }`,
+            languages: {
+                en: `${ pagesHomeUrl() }en`,
+                uk: `${ pagesHomeUrl() }uk`
+            }
+        }
+    );
+
+}
 
 type Props = {
     params: Promise<{ locale: Locale }>

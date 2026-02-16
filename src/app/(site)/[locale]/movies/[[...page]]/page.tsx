@@ -42,7 +42,7 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
     return generateMetaTags(
         {
             title: `Movies | ${ normalizedType }`,
-            description: 'Now playing, popular, top rated and upcoming movi1es.',
+            description: 'Now playing, popular, top rated and upcoming movies.',
             keywords: [
                 'now playing movies',
                 'popular movies',

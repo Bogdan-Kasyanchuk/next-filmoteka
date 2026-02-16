@@ -30,31 +30,26 @@
         @media (--min-md) {
             grid-template-columns: repeat(auto-fill, 174px);
 
-            .c-movie-card__tags,
-            .c-tv-show-card__tags {
+            .c-media-card__tags {
                 gap: 6px;
             }
 
-            .c-movie-card__tag,
-            .c-tv-show-card__tag {
+            .c-media-card__tag {
                 font-size: var(--text-3xs);
             }
 
-            .c-movie-card__tag--average,
-            .c-tv-show-card__tag--average {
+            .c-media-card__tag--average {
                 span {
                     top: -2px;
                     font-size: 9px;
                 }
             }
 
-            .c-movie-card__footer,
-            .c-tv-show-card__footer {
+            .c-media-card__footer {
                 height: 49px;
             }
 
-            .c-movie-card__footer-title,
-            .c-tv-show-card__footer-title {
+            .c-media-card__footer-title {
                 font-size: var(--text-sm);
             }
         }

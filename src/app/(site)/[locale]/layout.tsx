@@ -11,24 +11,27 @@ import { URLS } from '@/datasets/constants';
 import QueryProvider from '@/providers/QueryProvider';
 import { routing } from '@/services/i18n/routing';
 
+import '@/styles/app/base.css';
+
 const font = Plus_Jakarta_Sans({ subsets: [ 'latin' ] });
 
 export function generateStaticParams() {
     return routing.locales.map(locale => ({ locale }));
 }
 
-export const metadata: Metadata = {
-    title: {
-        default: 'Filmoteka',
-        template: 'Filmoteka | %s'
-    },
-    applicationName: 'Filmoteka',
-    robots: {
-        index: false,
-        follow: false
-    },
-    metadataBase: new URL(URLS.SITE)
-};
+export async function generateMetadata(): Promise<Metadata> {
+    const t = await getExtracted();
+
+    return {
+        title: {
+            default: t('Filmoteka'),
+            template: `${ t('Filmoteka') } | %s`
+        },
+        description: t('Movies, series, tv shows, actors and members of film crews.'),
+        applicationName: t('Filmoteka'),
+        metadataBase: new URL(URLS.SITE)
+    };
+}
 
 type Props = {
     params: Promise<{ locale: Locale }>

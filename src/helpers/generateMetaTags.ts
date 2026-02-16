@@ -5,6 +5,7 @@ type Props = {
     description: string,
     keywords: string[],
     url: string,
+    languages?: Record<string, string>,
     index?: boolean,
     follow?: boolean
 };
@@ -14,7 +15,8 @@ export default (props: Props): Metadata => ({
     description: props.description,
     keywords: props.keywords,
     alternates: {
-        canonical: props.url
+        canonical: props.url,
+        languages: props.languages
     },
     robots: {
         'index': props.index ?? true,
