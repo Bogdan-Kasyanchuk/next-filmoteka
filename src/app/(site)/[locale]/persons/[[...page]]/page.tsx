@@ -16,18 +16,32 @@ import Content from './components/Content';
 
 import './styles/index.css';
 
+export async function generateMetadata(): Promise<Metadata> {
+    const locale = await getLocale();
+
+    const t = await getExtracted();
+
+    return generateMetaTags(
+        {
+            title: t('Persons'),
+            description: t('Actors, film crew members of films and tv shows.'),
+            keywords: [ 
+                t('persons'),
+                t('actors'),
+                t('film crew members')
+            ],
+            url: `/${ locale }${ pagesPersonsUrl() }`,
+            languages: {
+                en: `/en${ pagesPersonsUrl() }`,
+                uk: `/uk${ pagesPersonsUrl() }`
+            }
+        }
+    );
+}
+
 type Props = {
     params: Promise<{ page?: string[] }>
 };
-
-export const metadata: Metadata = generateMetaTags(
-    {
-        title: 'Persons',
-        description: 'Actors, film crew members of films and tv shows.',
-        keywords: [ 'persons', 'actors', 'film crew members' ],
-        url: pagesPersonsUrl()
-    }
-);
 
 export default async function Page(props: Props) {
     const [ locale, params ] = await Promise.all([

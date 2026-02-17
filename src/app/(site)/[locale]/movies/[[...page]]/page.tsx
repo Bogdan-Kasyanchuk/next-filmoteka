@@ -1,7 +1,7 @@
 import { HydrationBoundary, QueryClient, dehydrate } from '@tanstack/react-query';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { getLocale } from 'next-intl/server';
+import { getExtracted, getLocale } from 'next-intl/server';
 
 import Container from '@/components/ui/layouts/Container';
 import Title from '@/components/ui/typography/Title';
@@ -27,30 +27,39 @@ type Props = {
 };
 
 export async function generateMetadata(props: Props): Promise<Metadata> {
-    const searchParams = await props.searchParams;
+    const [ locale, searchParams ] = await Promise.all([
+        getLocale(),
+        props.searchParams
+    ]);
+
+    const t = await getExtracted();
 
     const type = searchParams.type || MovieType.NOW_PLAYING;
 
     const normalizedType = type === MovieType.NOW_PLAYING
-        ? 'Now playing'
+        ? t('Now playing')
         : type === MovieType.POPULAR
-            ? 'Popular'
+            ? t('Popular')
             : type === MovieType.TOP_RATED
-                ? 'Top rated'
-                : 'Upcoming';
+                ? t('Top rated')
+                : t('Upcoming');
  
     return generateMetaTags(
         {
-            title: `Movies | ${ normalizedType }`,
-            description: 'Now playing, popular, top rated and upcoming movies.',
+            title: `${ t('Movies') } | ${ normalizedType }`,
+            description: t('Now playing, popular, top rated and upcoming movies.'),
             keywords: [
-                'now playing movies',
-                'popular movies',
-                'top rated movies',
-                'upcoming movies',
-                'movies'
+                t('now playing movies'),
+                t('popular movies'),
+                t('top rated movies'),
+                t('upcoming movies'),
+                t('movies')
             ],
-            url: pagesMoviesUrl()
+            url: `/${ locale }/${ pagesMoviesUrl() }`,
+            languages: {
+                en: `/en/${ pagesMoviesUrl() }`,
+                uk: `/uk/${ pagesMoviesUrl() }`
+            }
         }
     );
 }

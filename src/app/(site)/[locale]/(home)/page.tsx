@@ -14,6 +14,10 @@ import Content from './components/Content';
 
 import './styles/index.css';
 
+type Props = {
+    params: Promise<{ locale: Locale }>
+};
+
 export async function generateMetadata(props: Props): Promise<Metadata> {
     const { locale } = await props.params;
 
@@ -33,19 +37,15 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
                 t('actors'),
                 t('film crew members')
             ],
-            url: `${ pagesHomeUrl() }${ locale }`,
+            url: `/${ locale }${ pagesHomeUrl() }`,
             languages: {
-                en: `${ pagesHomeUrl() }en`,
-                uk: `${ pagesHomeUrl() }uk`
+                en: `/en${ pagesHomeUrl() }`,
+                uk: `/uk${ pagesHomeUrl() }`
             }
         }
     );
 
 }
-
-type Props = {
-    params: Promise<{ locale: Locale }>
-};
 
 export default async function Page(props: PropsWithChildren<Props>) {
     const { locale } = await props.params;

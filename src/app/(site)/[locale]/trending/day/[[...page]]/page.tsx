@@ -26,32 +26,41 @@ type Props = {
 };
 
 export async function generateMetadata(props: Props): Promise<Metadata> {
-    const searchParams = await props.searchParams;
+    const [ locale, searchParams ] = await Promise.all([
+        getLocale(),
+        props.searchParams
+    ]);
+
+    const t = await getExtracted();
 
     const type = searchParams.type || 'all';
 
     const normalizedType = type === MediaType.MOVIE
-        ? 'Movies'
+        ? t('Movies')
         : type === MediaType.TV_SHOW
-            ? 'TV Shows'
+            ? t('TV Shows')
             : type === MediaType.PERSON
-                ? 'Persons'
-                : 'All';
+                ? t('Persons')
+                : t('All');
   
     return generateMetaTags(
         {
-            title: `Trending today | ${ normalizedType }`,
-            description: 'Trending today movies, tv shows, actors and film crew members of films and tv shows.',
+            title: `${ t('Trending today') } | ${ normalizedType }`,
+            description: t('Trending today movies, tv shows, actors and film crew members of films and tv shows.'),
             keywords: [
-                'trending',
-                'trending today',
-                'movies',
-                'tv shows',
-                'persons',
-                'actors',
-                'film crew members'
+                t('trending'),
+                t('trending today'),
+                t('movies'),
+                t('tv shows'),
+                t('persons'),
+                t('actors'),
+                t('film crew members')
             ],
-            url: pagesTrendingDayUrl()
+            url: `/${ locale }/${ pagesTrendingDayUrl() }`,
+            languages: {
+                en: `/en/${ pagesTrendingDayUrl() }`,
+                uk: `/uk/${ pagesTrendingDayUrl() }`
+            }
         }
     );
 }

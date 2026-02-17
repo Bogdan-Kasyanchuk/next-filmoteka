@@ -1,7 +1,7 @@
 import { HydrationBoundary, QueryClient, dehydrate } from '@tanstack/react-query';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { getLocale } from 'next-intl/server';
+import { getExtracted, getLocale } from 'next-intl/server';
 
 import Container from '@/components/ui/layouts/Container';
 import { MediaType } from '@/enums';
@@ -19,16 +19,33 @@ import Search from './components/Search';
 
 import './styles/index.css';
 
-export const metadata: Metadata = generateMetaTags(
-    {
-        title: 'Search',
-        description: 'Search movies, tv shows, actors and film crew members of films and tv shows.',
-        keywords: [ 'search', 'movies', 'tv shows', 'persons', 'actors', 'film crew members' ],
-        url: pagesSearchUrl(),
-        index: false,
-        follow: false
-    }
-);
+export async function generateMetadata(): Promise<Metadata> {
+    const locale = await getLocale();
+
+    const t = await getExtracted();
+
+    return generateMetaTags(
+        {
+            title: t('Search'),
+            description: t('Search movies, tv shows, actors and film crew members of films and tv shows.'),
+            keywords: [
+                t('search'),
+                t('movies'),
+                t('tv shows'),
+                t('persons'),
+                t('actors'),
+                t('film crew members')
+            ],
+            url: `/${ locale }${ pagesSearchUrl() }`,
+            languages: {
+                en: `/en${ pagesSearchUrl() }`,
+                uk: `/uk${ pagesSearchUrl() }`
+            },
+            index: false,
+            follow: false
+        }
+    );
+}
 
 type Props = {
     params: Promise<{ page?: string[] }>,

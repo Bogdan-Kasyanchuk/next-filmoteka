@@ -1,7 +1,7 @@
 import { HydrationBoundary, QueryClient, dehydrate } from '@tanstack/react-query';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { getLocale } from 'next-intl/server';
+import { getExtracted, getLocale } from 'next-intl/server';
 
 import Container from '@/components/ui/layouts/Container';
 import Title from '@/components/ui/typography/Title';
@@ -27,30 +27,39 @@ type Props = {
 };
 
 export async function generateMetadata(props: Props): Promise<Metadata> {
-    const searchParams = await props.searchParams;
+    const [ locale, searchParams ] = await Promise.all([
+        getLocale(),
+        props.searchParams
+    ]);
+
+    const t = await getExtracted();
 
     const type = searchParams.type || TVShowType.AIRING_TODAY;
 
     const normalizedType = type === TVShowType.AIRING_TODAY
-        ? 'Airing today'
+        ? t('Airing today')
         : type === TVShowType.ON_THE_AIR
-            ? 'On the air'
+            ? t('On the air')
             : type === TVShowType.POPULAR
-                ? 'Popular'
-                : 'Top rated';
+                ? t('Popular')
+                : t('Top rated');
   
     return generateMetaTags(
         {
-            title: `TV Shows | ${ normalizedType }`,
-            description: 'Airing today, on the air, popular and top rated tv shows.',
+            title: `${ t('TV Shows') } | ${ normalizedType }`,
+            description: t('Airing today, on the air, popular and top rated tv shows.'),
             keywords: [
-                'airing today tv shows',
-                'on the air tv shows',
-                'popular tv shows',
-                'top rated tv shows',
-                'tv shows'
+                t('airing today tv shows'),
+                t('on the air tv shows'),
+                t('popular tv shows'),
+                t('top rated tv shows'),
+                t('tv shows')
             ],
-            url: pagesTVShowsUrl()
+            url: `/${ locale }/${ pagesTVShowsUrl() }`,
+            languages: {
+                en: `/en/${ pagesTVShowsUrl() }`,
+                uk: `/uk/${ pagesTVShowsUrl() }`
+            }
         }
     );
 }
