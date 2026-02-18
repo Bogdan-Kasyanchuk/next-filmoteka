@@ -1,7 +1,7 @@
 import { HydrationBoundary, QueryClient, dehydrate } from '@tanstack/react-query';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { getLocale } from 'next-intl/server';
+import { getExtracted, getLocale } from 'next-intl/server';
 
 import { MediaType } from '@/enums';
 import generateMetaTags from '@/helpers/generateMetaTags';
@@ -27,6 +27,8 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
         getLocale(),
         props.params
     ]);
+
+    const t = await getExtracted();
         
     const data = await getCurrentTVShowById(params.id, locale);
 
@@ -34,10 +36,17 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
 
     return generateMetaTags(
         {
-            title: `${ title } | Similar`,
+            title: `${ title } | ${ t('Similar') }`,
             description: `Similar tv shows to ${ title }.`,
-            keywords: [ title, `similar to ${ title }` ],
-            url: pagesSimilarUrl(MediaType.TV_SHOW, params.id)
+            keywords: [
+                title,
+                t('similar to {title}', { title })
+            ],
+            url: `/${ locale }/${ pagesSimilarUrl(MediaType.TV_SHOW, params.id) }`,
+            languages: {
+                en: `/en/${ pagesSimilarUrl(MediaType.TV_SHOW, params.id) }`,
+                uk: `/uk/${ pagesSimilarUrl(MediaType.TV_SHOW, params.id) }`
+            }
         }
     );
 }

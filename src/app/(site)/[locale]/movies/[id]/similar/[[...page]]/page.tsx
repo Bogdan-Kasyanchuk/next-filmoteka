@@ -1,7 +1,7 @@
 import { HydrationBoundary, QueryClient, dehydrate } from '@tanstack/react-query';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { getLocale } from 'next-intl/server';
+import { getExtracted, getLocale } from 'next-intl/server';
 
 import { MediaType } from '@/enums';
 import generateMetaTags from '@/helpers/generateMetaTags';
@@ -28,16 +28,25 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
         props.params
     ]);
 
+    const t = await getExtracted();
+
     const data = await getCurrentMovieById(params.id, locale);
 
     const title = data.title || data.original_title;
 
     return generateMetaTags(
         {
-            title: `${ title } | Similar`,
-            description: `Similar movies to ${ title }.`,
-            keywords: [ title, `similar to ${ title }` ],
-            url: pagesSimilarUrl(MediaType.MOVIE, params.id)
+            title: `${ title } | ${ t('Similar') }`,
+            description: t('Similar movies to {title}.', { title }),
+            keywords: [
+                title,
+                t('similar to {title}', { title })
+            ],
+            url: `/${ locale }/${ pagesSimilarUrl(MediaType.MOVIE, params.id) }`,
+            languages: {
+                en: `/en/${ pagesSimilarUrl(MediaType.MOVIE, params.id) }`,
+                uk: `/uk/${ pagesSimilarUrl(MediaType.MOVIE, params.id) }`
+            }
         }
     );
 }

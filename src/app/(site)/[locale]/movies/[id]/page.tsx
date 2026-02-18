@@ -1,6 +1,6 @@
 import { HydrationBoundary, QueryClient, dehydrate } from '@tanstack/react-query';
 import { Metadata } from 'next';
-import { getLocale } from 'next-intl/server';
+import { getExtracted, getLocale } from 'next-intl/server';
 
 import generateMetaTags from '@/helpers/generateMetaTags';
 import { moviesQueryKeys } from '@/helpers/queryKeys';
@@ -21,6 +21,8 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
         props.params
     ]);
 
+    const t = await getExtracted();
+
     const data = await getMovieById(params.id, locale);
 
     const title = data.title || data.original_title;
@@ -28,16 +30,20 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
     return generateMetaTags(
         {
             title,
-            description: `Detailed information about the movie ${ title }. Its overview, cast, crew, videos, reviews. Recommended movies.`,
+            description: t('Detailed information about the movie {title}. Its overview, cast, crew, videos, reviews. Recommended movies.', { title }),
             keywords: [
                 title,
-                `cast of ${ title }`,
-                `crew of ${ title }`,
-                `videos of ${ title }`,
-                `reviews of ${ title }`,
-                `recommended of ${ title }`
+                t('cast of {title}', { title }),
+                t('crew of {title}', { title }),
+                t('videos of {title}', { title }),
+                t('reviews of {title}', { title }),
+                t('recommended movies for {title}', { title })
             ],
-            url: pagesMovieUrl(params.id)
+            url: `/${ locale }/${ pagesMovieUrl(params.id) }`,
+            languages: {
+                en: `/en/${ pagesMovieUrl(params.id) }`,
+                uk: `/uk/${ pagesMovieUrl(params.id) }`
+            }
         }
     );
 }

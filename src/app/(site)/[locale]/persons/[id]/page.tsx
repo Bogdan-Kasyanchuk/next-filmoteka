@@ -1,6 +1,6 @@
 import { HydrationBoundary, QueryClient, dehydrate } from '@tanstack/react-query';
 import { Metadata } from 'next';
-import { getLocale } from 'next-intl/server';
+import { getExtracted, getLocale } from 'next-intl/server';
 
 import generateMetaTags from '@/helpers/generateMetaTags';
 import { personsQueryKeys } from '@/helpers/queryKeys';
@@ -20,21 +20,27 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
         getLocale(),
         props.params
     ]);
+
+    const t = await getExtracted();
         
     const data = await getPersonById(params.id, locale);
 
     return generateMetaTags(
         {
             title: data.name,
-            description: `Detailed information about ${ data.name }. Her photo gallery, acting and producing career.`,
+            description: t('Detailed information about {title}. Photo gallery, acting and producing career.', { title: data.name }),
             keywords: [
                 data.name,
-                `biography of ${ data.name }`,
-                `${ data.name } photo gallery`,
-                `${ data.name } acting`,
-                `${ data.name } producing`
+                t('biography of {title}', { title: data.name }),
+                t('photo gallery of {title}', { title: data.name }),
+                t('acting of {title}', { title: data.name }),
+                t('producing of {title}', { title: data.name })
             ],
-            url: pagesPersonUrl(params.id)
+            url: `/${ locale }/${ pagesPersonUrl(params.id) }`,
+            languages: {
+                en: `/en/${ pagesPersonUrl(params.id) }`,
+                uk: `/uk/${ pagesPersonUrl(params.id) }`
+            }
         }
     );
 }

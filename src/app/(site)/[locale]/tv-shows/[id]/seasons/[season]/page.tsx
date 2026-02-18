@@ -1,6 +1,6 @@
 import { HydrationBoundary, QueryClient, dehydrate } from '@tanstack/react-query';
 import { Metadata } from 'next';
-import { getLocale } from 'next-intl/server';
+import { getExtracted, getLocale } from 'next-intl/server';
 
 import generateMetaTags from '@/helpers/generateMetaTags';
 import { tvShowsQueryKeys } from '@/helpers/queryKeys';
@@ -24,20 +24,37 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
         props.params
     ]);
 
+    const t = await getExtracted();
+
     const data = await getCurrentTVShowById(params.id, locale);
 
     const title = data.name || data.original_name;
 
     return generateMetaTags(
         {
-            title: `${ title } | Season ${ params.season }`,
-            description: `Detailed information about the season ${ params.season } of the tv show ${ title }.  Its overview, episodes.`,
+            title: `${ title } | ${ t('Season') } ${ params.season }`,
+            description: t('Detailed information about the season {season} of the tv show {title}. Its overview, episodes.', {
+                season: params.season,
+                title: title
+            }),
             keywords: [
                 title,
-                `season ${ params.season } of the ${ title }`,
-                `episodes of season ${ params.season } of the ${ title }`
+                t('cast of {title}', { title }),
+                t('cast of {title}', { title }),
+                t('season {season} of the {title}', {
+                    season: params.season,
+                    title: title
+                }),
+                t('episodes of season {season} of the {title}', {
+                    season: params.season,
+                    title: title
+                })
             ],
-            url: pagesSeasonUrl(params.id, Number(params.season))
+            url: `/${ locale }/${ pagesSeasonUrl(params.id, Number(params.season)) }`,
+            languages: {
+                en: `/en/${ pagesSeasonUrl(params.id, Number(params.season)) }`,
+                uk: `/uk/${ pagesSeasonUrl(params.id, Number(params.season)) }`
+            }
         }
     );
 }

@@ -1,6 +1,6 @@
 import { HydrationBoundary, QueryClient, dehydrate } from '@tanstack/react-query';
 import { Metadata } from 'next';
-import { getLocale } from 'next-intl/server';
+import { getExtracted, getLocale } from 'next-intl/server';
 
 import generateMetaTags from '@/helpers/generateMetaTags';
 import { tvShowsQueryKeys } from '@/helpers/queryKeys';
@@ -20,7 +20,9 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
         getLocale(),
         props.params
     ]);
-        
+    
+    const t = await getExtracted();
+
     const data = await getTVShowById(params.id, locale);
 
     const title = data.name || data.original_name;
@@ -28,17 +30,21 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
     return generateMetaTags(
         {
             title,
-            description: `Detailed information about the tv show ${ title }. Its overview, cast, crew, seasons, videos, reviews. Recommended tv shows.`,
+            description: t('Detailed information about the tv show {title}. Its overview, cast, crew, seasons, videos, reviews. Recommended tv shows.', { title }),
             keywords: [
                 title,
-                `cast of ${ title }`,
-                `crew of ${ title }`,
-                `seasons of ${ title }`,
-                `videos of ${ title }`,
-                `reviews of ${ title }`,
-                `recommended of ${ title }`
+                t('cast of {title}', { title }),
+                t('crew of {title}', { title }),
+                t('seasons of {title}', { title }),
+                t('videos of {title}', { title }),
+                t('reviews of {title}', { title }),
+                t('recommended tv shows for {title}', { title })
             ],
-            url: pagesTVShowUrl(params.id)
+            url: `/${ locale }/${ pagesTVShowUrl(params.id) }`,
+            languages: {
+                en: `/en/${ pagesTVShowUrl(params.id) }`,
+                uk: `/uk/${ pagesTVShowUrl(params.id) }`
+            }
         }
     );
 }
