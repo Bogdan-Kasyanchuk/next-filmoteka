@@ -5,10 +5,10 @@ import { getExtracted, setRequestLocale } from 'next-intl/server';
 import { PropsWithChildren } from 'react';
 
 import { TimeType } from '@/enums';
-import generateMetaTags from '@/helpers/generateMetaTags';
 import { homeQueryKeys } from '@/helpers/queryKeys';
 import { pagesHomeUrl } from '@/routes';
 import { getTrendings } from '@/services/tmdb/general';
+import generateMetaTags from '@/utils/generateMetaTags';
 
 import Content from './components/Content';
 

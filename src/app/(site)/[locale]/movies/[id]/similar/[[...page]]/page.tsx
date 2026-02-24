@@ -4,10 +4,10 @@ import { notFound } from 'next/navigation';
 import { getExtracted, getLocale } from 'next-intl/server';
 
 import { MediaType } from '@/enums';
-import generateMetaTags from '@/helpers/generateMetaTags';
 import { moviesQueryKeys } from '@/helpers/queryKeys';
 import { pagesSimilarUrl } from '@/routes';
 import { getCurrentMovieById, getSimilarMovies } from '@/services/tmdb/movies';
+import generateMetaTags from '@/utils/generateMetaTags';
 import isInvalidPage from '@/utils/isInvalidPage';
 import normalizePage from '@/utils/normalizePage';
 

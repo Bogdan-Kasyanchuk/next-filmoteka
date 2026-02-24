@@ -4,10 +4,10 @@ import { notFound } from 'next/navigation';
 import { getExtracted, getLocale } from 'next-intl/server';
 
 import { MediaType } from '@/enums';
-import generateMetaTags from '@/helpers/generateMetaTags';
 import { tvShowsQueryKeys } from '@/helpers/queryKeys';
 import { pagesSimilarUrl } from '@/routes';
 import { getCurrentTVShowById, getSimilarTVShows } from '@/services/tmdb/tvShows';
+import generateMetaTags from '@/utils/generateMetaTags';
 import isInvalidPage from '@/utils/isInvalidPage';
 import normalizePage from '@/utils/normalizePage';
 

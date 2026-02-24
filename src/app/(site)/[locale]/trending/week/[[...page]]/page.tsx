@@ -6,10 +6,10 @@ import { getExtracted, getLocale } from 'next-intl/server';
 import Container from '@/components/ui/layouts/Container';
 import Title from '@/components/ui/typography/Title';
 import { MediaType, TimeType } from '@/enums';
-import generateMetaTags from '@/helpers/generateMetaTags';
 import { trendingsQueryKeys } from '@/helpers/queryKeys';
 import { pagesTrendingWeekUrl } from '@/routes';
 import { getTrendings } from '@/services/tmdb/general';
+import generateMetaTags from '@/utils/generateMetaTags';
 import isInvalidPage from '@/utils/isInvalidPage';
 import normalizePage from '@/utils/normalizePage';
 

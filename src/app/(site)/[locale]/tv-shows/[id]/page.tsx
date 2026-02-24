@@ -2,10 +2,10 @@ import { HydrationBoundary, QueryClient, dehydrate } from '@tanstack/react-query
 import { Metadata } from 'next';
 import { getExtracted, getLocale } from 'next-intl/server';
 
-import generateMetaTags from '@/helpers/generateMetaTags';
 import { tvShowsQueryKeys } from '@/helpers/queryKeys';
 import { pagesTVShowUrl } from '@/routes';
 import { getTVShowById } from '@/services/tmdb/tvShows';
+import generateMetaTags from '@/utils/generateMetaTags';
 
 import Content from './components/Content';
 

@@ -6,10 +6,10 @@ import { getExtracted, getLocale } from 'next-intl/server';
 import Container from '@/components/ui/layouts/Container';
 import Title from '@/components/ui/typography/Title';
 import { TVShowType } from '@/enums';
-import generateMetaTags from '@/helpers/generateMetaTags';
 import { tvShowsQueryKeys } from '@/helpers/queryKeys';
 import { pagesTVShowsUrl } from '@/routes';
 import { getTVShows } from '@/services/tmdb/tvShows';
+import generateMetaTags from '@/utils/generateMetaTags';
 import isInvalidPage from '@/utils/isInvalidPage';
 import normalizePage from '@/utils/normalizePage';
 

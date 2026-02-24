@@ -5,11 +5,11 @@ import { getExtracted, getLocale } from 'next-intl/server';
 
 import Container from '@/components/ui/layouts/Container';
 import { MediaType } from '@/enums';
-import generateMetaTags from '@/helpers/generateMetaTags';
 import { generalQueryKeys } from '@/helpers/queryKeys';
 import { pagesSearchUrl } from '@/routes';
 import { getSearch } from '@/services/tmdb/general';
 import { Adult } from '@/types';
+import generateMetaTags from '@/utils/generateMetaTags';
 import isInvalidPage from '@/utils/isInvalidPage';
 import normalizePage from '@/utils/normalizePage';
 

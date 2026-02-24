@@ -5,10 +5,10 @@ import { getExtracted, getLocale } from 'next-intl/server';
 
 import Container from '@/components/ui/layouts/Container';
 import Title from '@/components/ui/typography/Title';
-import generateMetaTags from '@/helpers/generateMetaTags';
 import { personsQueryKeys } from '@/helpers/queryKeys';
 import { pagesPersonsUrl } from '@/routes';
 import { getPersons } from '@/services/tmdb/persons';
+import generateMetaTags from '@/utils/generateMetaTags';
 import isInvalidPage from '@/utils/isInvalidPage';
 import normalizePage from '@/utils/normalizePage';
 

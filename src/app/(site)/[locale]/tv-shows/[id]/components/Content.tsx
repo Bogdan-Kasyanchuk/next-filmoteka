@@ -1,6 +1,7 @@
 'use client';
 
 import { useQuery } from '@tanstack/react-query';
+import dynamic from 'next/dynamic';
 import { notFound } from 'next/navigation';
 import { useLocale } from 'next-intl';
 import { Suspense } from 'react';
@@ -8,8 +9,8 @@ import { Suspense } from 'react';
 import Cast from '@/components/app/Cast';
 import Crew from '@/components/app/Crew';
 import { RecommendationsSkeleton } from '@/components/app/Recommendations';
-import Reviews, { ReviewsSkeleton } from '@/components/app/Reviews';
-import Videos, { VideosSkeleton } from '@/components/app/Videos';
+import { ReviewsSkeleton } from '@/components/app/Reviews';
+import { VideosSkeleton } from '@/components/app/Videos';
 import Loader from '@/components/ui/data-display/Loader';
 import Container from '@/components/ui/layouts/Container';
 import { MediaType } from '@/enums';
@@ -17,9 +18,21 @@ import { tvShowsQueryKeys } from '@/helpers/queryKeys';
 import { transformTVShowDetails } from '@/helpers/transformData';
 import { getTVShowById } from '@/services/tmdb/tvShows';
 
-import Recommendations from './Recommendations';
 import Seasons from './Seasons';
 import TVShowDetails from './TVShowDetails';
+
+const Videos = dynamic(() => import('@/components/app/Videos'), {
+    loading: () => <VideosSkeleton />,
+    ssr: false
+});
+const Recommendations = dynamic(() => import('./Recommendations'), {
+    loading: () => <RecommendationsSkeleton />,
+    ssr: false
+});
+const Reviews = dynamic(() => import('@/components/app/Reviews'), {
+    loading: () => <ReviewsSkeleton />,
+    ssr: false
+});
 
 type Props = {
     id: string

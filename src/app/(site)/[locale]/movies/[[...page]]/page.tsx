@@ -6,10 +6,10 @@ import { getExtracted, getLocale } from 'next-intl/server';
 import Container from '@/components/ui/layouts/Container';
 import Title from '@/components/ui/typography/Title';
 import { MovieType } from '@/enums';
-import generateMetaTags from '@/helpers/generateMetaTags';
 import { moviesQueryKeys } from '@/helpers/queryKeys';
 import { pagesMoviesUrl } from '@/routes';
 import { getMovies } from '@/services/tmdb/movies';
+import generateMetaTags from '@/utils/generateMetaTags';
 import isInvalidPage from '@/utils/isInvalidPage';
 import normalizePage from '@/utils/normalizePage';
 
