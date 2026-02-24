@@ -18,20 +18,18 @@ export default function GlobalNotFound() {
         <html lang="en">
             <body className={ font.className }>
                 <main>
-                    <Container>
-                        <div className="flex items-center justify-center text-primary size-full flex-col gap-5 text-center">
-                            <h1 className="uppercase text-[128px] font-bold leading-none">
-                                <span className="sr-only">Error</span>404
-                            </h1>
+                    <Container className="flex items-center justify-center text-primary w-full flex-col gap-5 text-center">
+                        <h1 className="uppercase text-[128px] font-bold leading-none">
+                            <span className="sr-only">Error</span>404
+                        </h1>
 
-                            <p className="mt-5 text-5xl leading-[1.2]">
+                        <p className="mt-5 text-5xl leading-[1.2]">
                                 Sorry, we could not find this page.
-                            </p>
+                        </p>
 
-                            <p className="text-md leading-[1.2] opacity-75">
+                        <p className="text-md leading-[1.2] opacity-75">
                                 But dont worry, you can find plenty of other things on homepage.
-                            </p>
-                        </div>
+                        </p>
                     </Container>
                 </main>
             </body>

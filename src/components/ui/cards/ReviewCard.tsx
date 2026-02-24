@@ -6,7 +6,7 @@ import { useExtracted, useFormatter } from 'next-intl';
 
 import { IMG_SIZES } from '@/datasets/constants';
 import { PLACEHOLDERS } from '@/datasets/placeholders';
-import { imageUrl } from '@/routes';
+import { imageUrl } from '@/helpers/externalUrls';
 import { ReviewMapper } from '@/types';
 
 type Props = {

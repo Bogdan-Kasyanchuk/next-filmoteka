@@ -7,7 +7,7 @@ import {
     twitterUrl,
     wikidataUrl,
     youtubeUrl
-} from '@/routes';
+} from '@/helpers/externalUrls';
 import {
     CastShema,
     CompanyDetailsShema,
@@ -24,11 +24,11 @@ import {
     PersonDetailsShema,
     PersonShema,
     ReviewShema,
+    SeasonDetailsShema,
     SeasonShema,
     SimilarMovieShema,
     SimilarTVShowShema,
     TVShowDetailsShema,
-    TVShowSeasonDetailsShema,
     TVShowShema,
     VideoShema
 } from '@/shemas';
@@ -48,11 +48,11 @@ import {
     PersonDetailsMapper,
     PersonMapper,
     ReviewMapper,
+    SeasonDetailsMapper,
     SeasonMapper,
     SocialLinkMapper,
     TVShowDetailsMapper,
     TVShowMapper,
-    TVShowSeasonDetailsMapper,
     VideoMapper
 } from '@/types';
 import normalizeId from '@/utils/normalizeId';
@@ -221,8 +221,8 @@ export const transformCurrentTVShow = (
 });
 
 export const transformTVShowSeasonDetails = (
-    season: TVShowSeasonDetailsShema
-): TVShowSeasonDetailsMapper => ({
+    season: SeasonDetailsShema
+): SeasonDetailsMapper => ({
     season: {
         air_date: season.air_date ? new Date(season.air_date) : null,
         name: season.name,

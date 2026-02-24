@@ -18,28 +18,26 @@ export default function GlobalError(props: Props) {
         <html lang="en">
             <body className={ font.className }>
                 <main>
-                    <Container>
-                        <div className="flex items-center justify-center text-primary size-full flex-col gap-5 text-center">
-                            <p className="uppercase text-9xl font-bold leading-none">
+                    <Container className="flex items-center justify-center text-primary w-full flex-col gap-5 text-center">
+                        <p className="uppercase text-9xl font-bold leading-none">
                                 Something globally went wrong
-                            </p>
+                        </p>
 
-                            <p className="text-md leading-[1.2] opacity-75">
-                                { props.error.message }
-                            </p>
+                        <p className="text-md leading-[1.2] opacity-75">
+                            { props.error.message }
+                        </p>
 
-                            <button
-                                type="button"
-                                className="flex items-center justify-center text-lg px-4 py-2 w-fit min-h-[50px] mt-5 rounded-sm bg-active text-secondary uppercase min-w-[300px] font-bold transition-opacity hover:opacity-75"
-                                onClick={
-                                    () => {
-                                        props.reset();
-                                    }
+                        <button
+                            type="button"
+                            className="flex items-center justify-center text-lg px-4 py-2 w-fit min-h-[50px] mt-5 rounded-sm bg-active text-secondary uppercase min-w-[300px] font-bold transition-opacity hover:opacity-75"
+                            onClick={
+                                () => {
+                                    props.reset();
                                 }
-                            >
+                            }
+                        >
                                 Try again
-                            </button>
-                        </div>
+                        </button>
                     </Container>
                 </main>
             </body>

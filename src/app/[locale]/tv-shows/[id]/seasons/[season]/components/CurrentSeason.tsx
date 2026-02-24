@@ -7,16 +7,17 @@ import { useExtracted, useFormatter } from 'next-intl';
 import Title from '@/components/ui/typography/Title';
 import { IMG_SIZES } from '@/datasets/constants';
 import { PLACEHOLDERS } from '@/datasets/placeholders';
-import { imageUrl, pagesTVShowUrl } from '@/routes';
+import { imageUrl } from '@/helpers/externalUrls';
+import { pagesTVShowUrl } from '@/routes';
 import { Link } from '@/services/i18n/navigation';
-import { CurrentTVShowMapper, TVShowSeasonDetailsMapper } from '@/types';
+import { CurrentTVShowMapper, SeasonDetailsMapper } from '@/types';
 
 type Props = {
     tvShow: {
         name: CurrentTVShowMapper['name'],
         first_air_date: CurrentTVShowMapper['first_air_date']
     },
-    season: TVShowSeasonDetailsMapper['season'],
+    season: SeasonDetailsMapper['season'],
     id: string
 };
 

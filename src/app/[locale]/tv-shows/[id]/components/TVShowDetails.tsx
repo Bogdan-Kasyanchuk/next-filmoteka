@@ -13,7 +13,8 @@ import Title from '@/components/ui/typography/Title';
 import { IMG_SIZES } from '@/datasets/constants';
 import { PLACEHOLDERS } from '@/datasets/placeholders';
 import { MediaType } from '@/enums';
-import { imageUrl, pagesPersonUrl, pagesSimilarUrl } from '@/routes';
+import { imageUrl } from '@/helpers/externalUrls';
+import { pagesPersonUrl, pagesSimilarUrl } from '@/routes';
 import { Link } from '@/services/i18n/navigation';
 import { TVShowDetailsMapper } from '@/types';
 

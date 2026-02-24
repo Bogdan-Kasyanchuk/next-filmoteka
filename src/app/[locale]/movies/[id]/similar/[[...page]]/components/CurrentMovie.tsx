@@ -7,7 +7,8 @@ import { Fragment } from 'react';
 import Title from '@/components/ui/typography/Title';
 import { IMG_SIZES } from '@/datasets/constants';
 import { PLACEHOLDERS } from '@/datasets/placeholders';
-import { imageUrl, pagesMovieUrl } from '@/routes';
+import { imageUrl } from '@/helpers/externalUrls';
+import { pagesMovieUrl } from '@/routes';
 import { Link } from '@/services/i18n/navigation';
 import { CurrentMovieMapper } from '@/types';
 

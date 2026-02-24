@@ -202,7 +202,7 @@ export type CurrentTVShowMapper = {
     genres: string[]
 };
 
-export type TVShowSeasonDetailsMapper = {
+export type SeasonDetailsMapper = {
     season: {
         air_date: Date | null,
         name: string,

@@ -2,8 +2,8 @@
 
 import { useFormatter } from 'next-intl';
 
+import { youtubeEmbedUrl } from '@/helpers/externalUrls';
 import useInView from '@/hooks/useInView';
-import { youtubeEmbedUrl } from '@/routes';
 import { VideoMapper } from '@/types';
 
 type Props = {

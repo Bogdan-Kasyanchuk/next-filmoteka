@@ -6,7 +6,7 @@ import { useExtracted, useFormatter } from 'next-intl';
 import Popover from '@/components/ui/data-display/Popover';
 import { IMG_SIZES } from '@/datasets/constants';
 import { PLACEHOLDERS } from '@/datasets/placeholders';
-import { imageUrl } from '@/routes';
+import { imageUrl } from '@/helpers/externalUrls';
 import { EpisodeMapper } from '@/types';
 
 type Props = {

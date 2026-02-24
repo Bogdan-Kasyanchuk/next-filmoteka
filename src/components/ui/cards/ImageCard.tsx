@@ -5,7 +5,7 @@ import { useExtracted } from 'next-intl';
 
 import { IMG_SIZES } from '@/datasets/constants';
 import { PLACEHOLDERS } from '@/datasets/placeholders';
-import { imageUrl } from '@/routes';
+import { imageUrl } from '@/helpers/externalUrls';
 import { ImageMapper } from '@/types';
 
 type Props = {

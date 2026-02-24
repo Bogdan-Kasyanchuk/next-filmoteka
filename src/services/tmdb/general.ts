@@ -15,7 +15,7 @@ import { Adult } from '@/types';
 
 import { fetchApi } from './api';
 
-export const getTrendings = (
+export const getTrendings = async (
     type: 'all' | MediaType, time: TimeType,
     page: number,
     locale: Locale
@@ -26,7 +26,7 @@ export const getTrendings = (
     );
 };
 
-export const getSearch = (
+export const getSearch = async (
     type: 'multi' | MediaType,
     adult: Adult,
     query: string,
@@ -39,7 +39,7 @@ export const getSearch = (
     );
 };
 
-export const getRecommendations = <T>(
+export const getRecommendations = async <T>(
     type: MediaType.MOVIE | MediaType.TV_SHOW,
     id: string,
     page: number,
@@ -51,7 +51,7 @@ export const getRecommendations = <T>(
     );
 };
 
-export const getReviews = (
+export const getReviews = async (
     type: MediaType.MOVIE | MediaType.TV_SHOW,
     id: string,
     page: number,
@@ -63,7 +63,7 @@ export const getReviews = (
     );
 };
 
-export const getVideos = (
+export const getVideos = async (
     type: MediaType.MOVIE | MediaType.TV_SHOW,
     id: string,
     locale: Locale
@@ -71,10 +71,10 @@ export const getVideos = (
     return fetchApi<VideosShema>(`${ type }/${ id }/videos`, locale);
 };
 
-export const getNetworkById = (id: string, locale: Locale) => {
+export const getNetworkById = async (id: string, locale: Locale) => {
     return fetchApi<NetworkDetailsShema>(`network/${ id }`, locale);
 };
 
-export const getCompanyById = (id: string, locale: Locale) => {
+export const getCompanyById = async (id: string, locale: Locale) => {
     return fetchApi<CompanyDetailsShema>(`company/${ id }`, locale);
 };

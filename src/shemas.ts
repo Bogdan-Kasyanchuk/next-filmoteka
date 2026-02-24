@@ -229,7 +229,7 @@ export type TVShowDetailsShema = {
 
 export type CurrentTVShowShema = Omit<TVShowDetailsShema, 'seasons' | 'credits' | 'external_ids'>;
 
-export type TVShowSeasonDetailsShema = {
+export type SeasonDetailsShema = {
     _id: string,
     air_date: string,
     name: string,

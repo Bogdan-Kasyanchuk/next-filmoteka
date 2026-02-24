@@ -13,7 +13,5 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default function NotFound() {
-    return (
-        <Error404 />
-    );
+    return <Error404 />;
 }

@@ -5,7 +5,8 @@ import { useExtracted, useFormatter } from 'next-intl';
 
 import { IMG_SIZES } from '@/datasets/constants';
 import { PLACEHOLDERS } from '@/datasets/placeholders';
-import { imageUrl, pagesSeasonUrl } from '@/routes';
+import { imageUrl } from '@/helpers/externalUrls';
+import { pagesSeasonUrl } from '@/routes';
 import { Link } from '@/services/i18n/navigation';
 import { SeasonMapper } from '@/types';
 

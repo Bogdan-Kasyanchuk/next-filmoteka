@@ -3,7 +3,8 @@ import Image from 'next/image';
 
 import { IMG_SIZES } from '@/datasets/constants';
 import { PLACEHOLDERS } from '@/datasets/placeholders';
-import { imageUrl, pagesPersonUrl } from '@/routes';
+import { imageUrl } from '@/helpers/externalUrls';
+import { pagesPersonUrl } from '@/routes';
 import { Link } from '@/services/i18n/navigation';
 import { CastMapper } from '@/types';
 
