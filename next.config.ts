@@ -16,6 +16,9 @@ const nextConfig: NextConfig = {
                 hostname: 'image.tmdb.org'
             }
         ]
+    },
+    experimental: {
+        globalNotFound: true
     }
 };
 
