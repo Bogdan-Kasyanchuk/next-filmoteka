@@ -11,7 +11,7 @@ import { URLS } from '@/datasets/constants';
 import QueryProvider from '@/providers/QueryProvider';
 import { routing } from '@/services/i18n/routing';
 
-import '@/styles/app/base.css';
+import '@/styles/app.css';
 
 const font = Plus_Jakarta_Sans({ subsets: [ 'latin' ] });
 

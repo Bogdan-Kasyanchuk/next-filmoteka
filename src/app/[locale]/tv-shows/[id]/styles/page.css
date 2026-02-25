@@ -121,13 +121,17 @@
             bottom: 20px;
             inset-inline: 20px;
 
-            padding: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            min-height: 50px;
+            padding: 8px 16px;
             border: 1px solid color-mix(in oklab, var(--color-primary) 75%, transparent);
             border-radius: 4px;
 
             font-size: var(--text-lg);
             font-weight: 700;
-            text-align: center;
             text-transform: uppercase;
 
             background-color: color-mix(in oklab, var(--color-secondary) 75%, transparent);

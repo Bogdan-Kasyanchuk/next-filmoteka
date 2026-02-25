@@ -4,7 +4,7 @@ import Container from '@/components/ui/layouts/Container';
 
 import type { Metadata } from 'next';
 
-import '@/styles/app/base.css';
+import '@/styles/app.css';
 
 const font = Plus_Jakarta_Sans({ subsets: [ 'latin' ] });
  
@@ -24,11 +24,11 @@ export default function GlobalNotFound() {
                         </h1>
 
                         <p className="mt-5 text-5xl leading-[1.2]">
-                                Sorry, we could not find this page.
+                            Sorry, we could not find this page.
                         </p>
 
                         <p className="text-md leading-[1.2] opacity-75">
-                                But dont worry, you can find plenty of other things on homepage.
+                            But dont worry, you can find plenty of other things on homepage.
                         </p>
                     </Container>
                 </main>

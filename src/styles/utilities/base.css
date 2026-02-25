@@ -32,35 +32,3 @@
         display: block;
     }
 }
-
-@utility u-hide-scroll-bar {
-    scrollbar-color: transparent transparent;
-    scrollbar-width: none;
-
-    &::-webkit-scrollbar {
-        display: none;
-    }
-
-    &::-webkit-scrollbar-track {
-        display: none;
-    }
-
-    &::-webkit-scrollbar-thumb {
-        display: none;
-    }
-}
-
-@utility u-scroll {
-    overflow: auto hidden;
-    display: flex;
-    width: calc(100% + 40px);
-    margin-inline: -20px;
-
-    &::after,
-    &::before {
-        content: '';
-        display: block;
-        flex-shrink: 0;
-        width: 20px;
-    }
-}
