@@ -46,7 +46,7 @@ export default function TVShowDetails(props: Props) {
                     />
                 </div>
 
-                <Container className="p-tv-show__details-container sh">
+                <Container className="p-tv-show__details-container">
                     <div className="p-tv-show__details-cover">
                         {
                             props.tvShow.adult &&

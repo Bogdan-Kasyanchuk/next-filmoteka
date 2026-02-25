@@ -18,7 +18,7 @@ export default function GlobalError(props: Props) {
         <html lang="en">
             <body className={ font.className }>
                 <main>
-                    <Container className="flex items-center justify-center text-primary w-full flex-col gap-5 text-center">
+                    <Container className="flex-center text-primary w-full flex-col gap-5 text-center">
                         <p className="uppercase text-9xl font-bold leading-none">
                                 Something globally went wrong
                         </p>

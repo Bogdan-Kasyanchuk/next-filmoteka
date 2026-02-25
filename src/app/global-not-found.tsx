@@ -18,7 +18,7 @@ export default function GlobalNotFound() {
         <html lang="en">
             <body className={ font.className }>
                 <main>
-                    <Container className="flex items-center justify-center text-primary w-full flex-col gap-5 text-center">
+                    <Container className="flex-center text-primary w-full flex-col gap-5 text-center">
                         <h1 className="uppercase text-[128px] font-bold leading-none">
                             <span className="sr-only">Error</span>404
                         </h1>

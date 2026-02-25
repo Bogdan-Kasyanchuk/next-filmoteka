@@ -12,7 +12,7 @@
 @import '@/styles/parts/footer/footer.css' layer(base);
 
 /* Layouts */
-@import '@/styles/layouts/container.css' layer(base);
+@import '@/styles/layouts/container.css' layer(utilities);
 
 /* Components */
 @import '@/styles/components/loader.css';
