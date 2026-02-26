@@ -6,21 +6,21 @@ import Container from '@/components/ui/layouts/Container';
 import { pagesHomeUrl } from '@/routes';
 import { Link } from '@/services/i18n/navigation';
 
-export default function Error404() {
+type Props = {
+    error: Error
+};
+
+export default function Error(props: Props) {
     const t = useExtracted();
         
     return (
         <Container className="c-error">
-            <h2 className="c-error__title">
-                <span className="sr-only">{ t('Error') }</span>404
-            </h2>
-
             <p className="c-error__subtitle">
-                { t('Sorry, we could not find this page.') }
+                { t('Oops, something went wrong. Please try again later.') }
             </p>
 
             <p className="c-error__text">
-                { t('But dont worry, you can find plenty of other things on home page.') }
+                { props.error.message }
             </p>
 
             <Link

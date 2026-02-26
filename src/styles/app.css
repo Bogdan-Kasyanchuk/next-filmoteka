@@ -16,7 +16,7 @@
 
 /* Components */
 @import '@/styles/components/loader.css';
-@import '@/styles/components/error-404.css';
+@import '@/styles/components/error.css';
 @import '@/styles/components/popover.css';
 @import '@/styles/components/icon.css';
 @import '@/styles/components/logo.css';

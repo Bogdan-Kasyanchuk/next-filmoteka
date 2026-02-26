@@ -1,6 +1,8 @@
 import { Plus_Jakarta_Sans } from 'next/font/google';
+import Link from 'next/link';
 
 import Container from '@/components/ui/layouts/Container';
+import { pagesHomeUrl } from '@/routes';
 
 import type { Metadata } from 'next';
 
@@ -28,8 +30,15 @@ export default function GlobalNotFound() {
                         </p>
 
                         <p className="text-md leading-[1.2] opacity-75">
-                            But dont worry, you can find plenty of other things on homepage.
+                            But dont worry, you can find plenty of other things on home page.
                         </p>
+
+                        <Link
+                            href={ pagesHomeUrl() }
+                            className="flex items-center justify-center text-lg px-4 py-2 w-fit min-h-[50px] mt-5 rounded-sm bg-active text-secondary uppercase min-w-[300px] font-bold transition-opacity hover:opacity-75"
+                        >
+                            Back to home page
+                        </Link>
                     </Container>
                 </main>
             </body>
