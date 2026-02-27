@@ -19,7 +19,7 @@ export default function PersonCard(props: Props) {
     const t = useExtracted();
         
     return (
-        <div className="c-media-card">
+        <div className="c-media-card c-media-card--person">
             <div className="c-media-card__cover">
                 <Image
                     src={

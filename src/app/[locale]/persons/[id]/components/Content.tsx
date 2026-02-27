@@ -3,7 +3,6 @@
 import { useQuery } from '@tanstack/react-query';
 import { useLocale } from 'next-intl';
 
-import ErrorComponent from '@/components/ui/data-display/ErrorComponent';
 import Loader from '@/components/ui/data-display/Loader';
 import Container from '@/components/ui/layouts/Container';
 import { personsQueryKeys } from '@/helpers/queryKeys';
@@ -32,7 +31,7 @@ export default function Content(props: Props) {
     }
 
     if (isError) {
-        return <ErrorComponent errorMessage={ error.message } />;
+        throw new Error(error.message);
     }
 
     return (

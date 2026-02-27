@@ -90,7 +90,7 @@ export default async function Page(props: Props) {
     });
 
     const data = queryClient.getQueryData<DataShema<MovieShema | TVShowShema | PersonShema>>(
-        trendingsQueryKeys.trendingsDay(type, page, locale)
+        trendingsQueryKeys.trendingsWeek(type, page, locale)
     );
     
     if (!data || !data.results.length) {

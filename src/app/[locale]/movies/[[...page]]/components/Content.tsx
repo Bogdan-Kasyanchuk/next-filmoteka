@@ -5,7 +5,6 @@ import { useLocale } from 'next-intl';
 
 import Pagination from '@/components/app/Pagination';
 import MovieCard from '@/components/ui/cards/MovieCard';
-import ErrorComponent from '@/components/ui/data-display/ErrorComponent';
 import Loader from '@/components/ui/data-display/Loader';
 import { MovieType } from '@/enums';
 import { moviesQueryKeys } from '@/helpers/queryKeys';
@@ -35,7 +34,7 @@ export default function Content(props: Props) {
     }
 
     if (isError) {
-        return <ErrorComponent errorMessage={ error.message } />;
+        throw new Error(error.message);
     }
 
     return (

@@ -6,7 +6,6 @@ import { useLocale } from 'next-intl';
 import Persons from '@/components/app/Persons';
 import CastCard from '@/components/ui/cards/CastCard';
 import CrewCard from '@/components/ui/cards/CrewCard';
-import ErrorComponent from '@/components/ui/data-display/ErrorComponent';
 import Loader from '@/components/ui/data-display/Loader';
 import Container from '@/components/ui/layouts/Container';
 import { moviesQueryKeys } from '@/helpers/queryKeys';
@@ -33,7 +32,7 @@ export default function Content(props: Props) {
     }
 
     if (isError) {
-        return <ErrorComponent errorMessage={ error.message } />;
+        throw new Error(error.message);
     }
 
     return (
