@@ -1,11 +1,11 @@
 'use client';
 
 import { keepPreviousData, useQueries } from '@tanstack/react-query';
-import { notFound } from 'next/navigation';
 import { useExtracted, useLocale } from 'next-intl';
 
 import Pagination from '@/components/app/Pagination';
 import TVShowCard from '@/components/ui/cards/TVShowCard';
+import ErrorComponent from '@/components/ui/data-display/ErrorComponent';
 import Loader from '@/components/ui/data-display/Loader';
 import Container from '@/components/ui/layouts/Container';
 import Title from '@/components/ui/typography/Title';
@@ -39,13 +39,14 @@ export default function Content(props: Props) {
         ],
         combine: results => {
             return {
-                tvShow: results[ 0 ].data && transformCurrentTVShow(results[ 0 ].data),
+                tvShow: transformCurrentTVShow(results[ 0 ].data!),
                 similar: {
                     tvShows: results[ 1 ].data?.results.map(transformTVShow) ?? [],
                     total_pages: results[ 1 ].data?.total_pages ?? 1
                 },
                 pending: results.some(result => result.isPending),
-                isError: results.some(result => result.isError)
+                isError: results.some(result => result.isError),
+                error: results.find(result => result.isError)?.error
             };
         }
     });
@@ -54,8 +55,8 @@ export default function Content(props: Props) {
         return <Loader />;
     }
 
-    if (data.isError || !data.tvShow || !data.similar.tvShows.length) {
-        notFound();
+    if (data.isError) {
+        return <ErrorComponent errorMessage={ data.error?.message } />;
     }
 
     return (

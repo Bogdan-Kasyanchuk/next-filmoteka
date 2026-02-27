@@ -1,12 +1,12 @@
 'use client';
 
 import { useQueries } from '@tanstack/react-query';
-import { notFound } from 'next/navigation';
 import { useExtracted, useLocale } from 'next-intl';
 
 import MovieCard from '@/components/ui/cards/MovieCard';
 import PersonCard from '@/components/ui/cards/PersonCard';
 import TVShowCard from '@/components/ui/cards/TVShowCard';
+import ErrorComponent from '@/components/ui/data-display/ErrorComponent';
 import Loader from '@/components/ui/data-display/Loader';
 import Container from '@/components/ui/layouts/Container';
 import Title from '@/components/ui/typography/Title';
@@ -65,7 +65,8 @@ export default function Content() {
                     total_pages: results[ 1 ].data?.total_pages ?? 1
                 },
                 isPending: results.some(result => result.isPending),
-                isError: results.some(result => result.isError)
+                isError: results.some(result => result.isError),
+                error: results.find(result => result.isError)?.error
             };
         }
     });
@@ -74,8 +75,8 @@ export default function Content() {
         return <Loader />;
     }
 
-    if (data.isError || (!data.today.items.length && !data.week.items.length)) {
-        notFound();
+    if (data.isError) {
+        return <ErrorComponent errorMessage={ data.error?.message } />;
     }
 
     return (

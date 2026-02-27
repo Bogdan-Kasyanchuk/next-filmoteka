@@ -1,10 +1,10 @@
 'use client';
 
 import { useQueries } from '@tanstack/react-query';
-import { notFound } from 'next/navigation';
 import { useLocale } from 'next-intl';
 
 import EpisodeCard from '@/components/ui/cards/EpisodeCard';
+import ErrorComponent from '@/components/ui/data-display/ErrorComponent';
 import Loader from '@/components/ui/data-display/Loader';
 import Container from '@/components/ui/layouts/Container';
 import { tvShowsQueryKeys } from '@/helpers/queryKeys';
@@ -34,10 +34,11 @@ export default function Content(props: Props) {
         ],
         combine: results => {
             return {
-                tvShow: results[ 0 ].data && transformCurrentTVShow(results[ 0 ].data),
-                season: results[ 1 ].data && transformTVShowSeasonDetails(results[ 1 ].data),
+                tvShow: transformCurrentTVShow(results[ 0 ].data!),
+                season: transformTVShowSeasonDetails(results[ 1 ].data!),
                 pending: results.some(result => result.isPending),
-                isError: results.some(result => result.isError)
+                isError: results.some(result => result.isError),
+                error: results.find(result => result.isError)?.error
             };
         }
     });
@@ -46,8 +47,8 @@ export default function Content(props: Props) {
         return <Loader />;
     }
 
-    if (data.isError || !data.tvShow || !data.season) {
-        notFound();
+    if (data.isError) {
+        return <ErrorComponent errorMessage={ data.error?.message } />;
     }
 
     return (

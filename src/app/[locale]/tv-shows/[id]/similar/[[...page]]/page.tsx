@@ -7,6 +7,7 @@ import { MediaType } from '@/enums';
 import { tvShowsQueryKeys } from '@/helpers/queryKeys';
 import { pagesSimilarUrl } from '@/routes';
 import { getCurrentTVShowById, getSimilarTVShows } from '@/services/tmdb/tvShows';
+import { CurrentTVShowShema, DataShema, SimilarTVShowShema } from '@/shemas';
 import generateMetaTags from '@/utils/generateMetaTags';
 import isInvalidPage from '@/utils/isInvalidPage';
 import normalizePage from '@/utils/normalizePage';
@@ -79,6 +80,18 @@ export default async function Page(props: Props) {
             }
         )
     ]);
+
+    const tvShowData = queryClient.getQueryData<CurrentTVShowShema>(
+        tvShowsQueryKeys.currentTvShowById(params.id, locale)
+    );
+    
+    const similarData = queryClient.getQueryData<DataShema<SimilarTVShowShema>>(
+        tvShowsQueryKeys.similartvShows(params.id, page, locale)
+    );
+                    
+    if (!tvShowData || !similarData || !similarData.results.length) {
+        notFound();
+    }
 
     return (
         <HydrationBoundary state={ dehydrate(queryClient) }>

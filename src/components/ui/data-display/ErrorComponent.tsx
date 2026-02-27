@@ -7,10 +7,10 @@ import { pagesHomeUrl } from '@/routes';
 import { Link } from '@/services/i18n/navigation';
 
 type Props = {
-    error: Error
+    errorMessage?: Error['message']
 };
 
-export default function Error(props: Props) {
+export default function ErrorComponent(props: Props) {
     const t = useExtracted();
         
     return (
@@ -19,9 +19,12 @@ export default function Error(props: Props) {
                 { t('Oops, something went wrong. Please try again later.') }
             </p>
 
-            <p className="c-error__text">
-                { props.error.message }
-            </p>
+            {
+                props.errorMessage &&
+                <p className="c-error__text">
+                    { props.errorMessage }
+                </p>
+            }
 
             <Link
                 href={ pagesHomeUrl() }

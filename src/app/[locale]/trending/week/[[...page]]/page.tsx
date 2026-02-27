@@ -9,6 +9,7 @@ import { MediaType, TimeType } from '@/enums';
 import { trendingsQueryKeys } from '@/helpers/queryKeys';
 import { pagesTrendingWeekUrl } from '@/routes';
 import { getTrendings } from '@/services/tmdb/general';
+import { DataShema, MovieShema, PersonShema, TVShowShema } from '@/shemas';
 import generateMetaTags from '@/utils/generateMetaTags';
 import isInvalidPage from '@/utils/isInvalidPage';
 import normalizePage from '@/utils/normalizePage';
@@ -87,6 +88,14 @@ export default async function Page(props: Props) {
         queryKey: trendingsQueryKeys.trendingsWeek(type, page, locale),
         queryFn: () => getTrendings(type, TimeType.WEEK, page, locale)
     });
+
+    const data = queryClient.getQueryData<DataShema<MovieShema | TVShowShema | PersonShema>>(
+        trendingsQueryKeys.trendingsDay(type, page, locale)
+    );
+    
+    if (!data || !data.results.length) {
+        notFound();
+    }
 
     return (
         <Container className="p-trending">

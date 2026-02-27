@@ -1,13 +1,13 @@
 'use client';
 
 import { keepPreviousData, useQuery } from '@tanstack/react-query';
-import { notFound } from 'next/navigation';
 import { useLocale } from 'next-intl';
 
 import Pagination from '@/components/app/Pagination';
 import MovieCard from '@/components/ui/cards/MovieCard';
 import PersonCard from '@/components/ui/cards/PersonCard';
 import TVShowCard from '@/components/ui/cards/TVShowCard';
+import ErrorComponent from '@/components/ui/data-display/ErrorComponent';
 import Loader from '@/components/ui/data-display/Loader';
 import { MediaType, TimeType } from '@/enums';
 import { trendingsQueryKeys } from '@/helpers/queryKeys';
@@ -23,7 +23,7 @@ type Props = {
 export default function Content(props: Props) {
     const locale = useLocale();
         
-    const { data, isPending, isError } = useQuery({
+    const { data, isPending, isError, error } = useQuery({
         queryKey: trendingsQueryKeys.trendingsDay(props.type, props.page, locale),
         queryFn: () => getTrendings(props.type, TimeType.DAY, props.page, locale),
         placeholderData: keepPreviousData,
@@ -47,8 +47,8 @@ export default function Content(props: Props) {
         return <Loader />;
     }
 
-    if (isError || !data || !data.results.length) {
-        notFound();
+    if (isError) {
+        return <ErrorComponent errorMessage={ error.message } />;
     }
 
     return (

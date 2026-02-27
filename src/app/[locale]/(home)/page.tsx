@@ -14,7 +14,7 @@ import Content from './components/Content';
 
 import './styles/index.css';
 
-export const revalidate = 60;
+export const revalidate = 300;
 
 type Props = {
     params: Promise<{ locale: Locale }>

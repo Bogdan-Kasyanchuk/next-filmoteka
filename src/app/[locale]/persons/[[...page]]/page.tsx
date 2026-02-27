@@ -8,6 +8,7 @@ import Title from '@/components/ui/typography/Title';
 import { personsQueryKeys } from '@/helpers/queryKeys';
 import { pagesPersonsUrl } from '@/routes';
 import { getPersons } from '@/services/tmdb/persons';
+import { DataShema, PersonShema } from '@/shemas';
 import generateMetaTags from '@/utils/generateMetaTags';
 import isInvalidPage from '@/utils/isInvalidPage';
 import normalizePage from '@/utils/normalizePage';
@@ -63,6 +64,14 @@ export default async function Page(props: Props) {
         queryKey: personsQueryKeys.allPersons(page, locale),
         queryFn: () => getPersons(page, locale)
     });
+
+    const data = queryClient.getQueryData<DataShema<PersonShema>>(
+        personsQueryKeys.allPersons(page, locale)
+    );
+            
+    if (!data || !data.results.length) {
+        notFound();
+    }
 
     return (
         <Container className="p-persons">
