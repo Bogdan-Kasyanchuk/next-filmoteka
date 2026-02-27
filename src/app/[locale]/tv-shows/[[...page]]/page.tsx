@@ -9,6 +9,7 @@ import { TVShowType } from '@/enums';
 import { tvShowsQueryKeys } from '@/helpers/queryKeys';
 import { pagesTVShowsUrl } from '@/routes';
 import { getTVShows } from '@/services/tmdb/tvShows';
+import { DataShema, TVShowShema } from '@/shemas';
 import generateMetaTags from '@/utils/generateMetaTags';
 import isInvalidPage from '@/utils/isInvalidPage';
 import normalizePage from '@/utils/normalizePage';
@@ -84,6 +85,14 @@ export default async function Page(props: Props) {
         queryKey: tvShowsQueryKeys.alltvShows(type, page, locale),
         queryFn: () => getTVShows(type, page, locale)
     });
+
+    const data = queryClient.getQueryData<DataShema<TVShowShema>>(
+        tvShowsQueryKeys.alltvShows(type, page, locale)
+    );
+        
+    if (!data || !data.results.length) {
+        notFound();
+    }
 
     return (
         <Container className="p-tv-shows">

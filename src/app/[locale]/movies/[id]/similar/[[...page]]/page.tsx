@@ -7,6 +7,7 @@ import { MediaType } from '@/enums';
 import { moviesQueryKeys } from '@/helpers/queryKeys';
 import { pagesSimilarUrl } from '@/routes';
 import { getCurrentMovieById, getSimilarMovies } from '@/services/tmdb/movies';
+import { CurrentMovieShema, DataShema, SimilarMovieShema } from '@/shemas';
 import generateMetaTags from '@/utils/generateMetaTags';
 import isInvalidPage from '@/utils/isInvalidPage';
 import normalizePage from '@/utils/normalizePage';
@@ -79,6 +80,18 @@ export default async function Page(props: Props) {
             }
         )
     ]);
+
+    const movieData = queryClient.getQueryData<CurrentMovieShema>(
+        moviesQueryKeys.currentMovieById(params.id, locale)
+    );
+
+    const similarData = queryClient.getQueryData<DataShema<SimilarMovieShema>>(
+        moviesQueryKeys.similarMovies(params.id, page, locale)
+    );
+                
+    if (!movieData || !similarData || !similarData.results.length) {
+        notFound();
+    }
 
     return (
         <HydrationBoundary state={ dehydrate(queryClient) }>

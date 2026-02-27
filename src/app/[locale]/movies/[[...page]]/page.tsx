@@ -9,6 +9,7 @@ import { MovieType } from '@/enums';
 import { moviesQueryKeys } from '@/helpers/queryKeys';
 import { pagesMoviesUrl } from '@/routes';
 import { getMovies } from '@/services/tmdb/movies';
+import { DataShema, MovieShema } from '@/shemas';
 import generateMetaTags from '@/utils/generateMetaTags';
 import isInvalidPage from '@/utils/isInvalidPage';
 import normalizePage from '@/utils/normalizePage';
@@ -84,6 +85,14 @@ export default async function Page(props: Props) {
         queryKey: moviesQueryKeys.allMovies(type, page, locale),
         queryFn: () => getMovies(type, page, locale)
     });
+
+    const data = queryClient.getQueryData<DataShema<MovieShema>>(
+        moviesQueryKeys.allMovies(type, page, locale)
+    );
+            
+    if (!data || !data.results.length) {
+        notFound();
+    }
 
     return (
         <Container className="p-movies">

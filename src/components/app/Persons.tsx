@@ -2,20 +2,19 @@
 
 import clsx from 'clsx';
 import { useExtracted } from 'next-intl';
-import { Dispatch, SetStateAction, useState } from 'react';
+import { Dispatch, ReactNode, SetStateAction, useState } from 'react';
 import { Autoplay, Navigation } from 'swiper/modules';
 
-import CastCard from '@/components/ui/cards/CastCard';
 import Carousel from '@/components/ui/data-display/Carousel';
 import Icon from '@/components/ui/data-display/Icon';
 import Title from '@/components/ui/typography/Title';
-import { CastMapper } from '@/types';
 
-type Props = {
-    cast: CastMapper[]
+type Props<T extends Record<string, any>> = {
+    items: Array<T>,
+    children: (item: T) => ReactNode
 };
 
-export default function Cast(props: Props) {
+export default function Persons<T extends Record<string, any>>(props: Props<T>) {
     const t = useExtracted();
         
     const [ prevButtonRef, setPrevButtonRef ] = useState<HTMLButtonElement | null>(null);
@@ -33,7 +32,7 @@ export default function Cast(props: Props) {
 
             <div className="c-persons__cards">
                 <Carousel
-                    items={ props.cast }
+                    items={ props.items }
                     modules={ [ Autoplay, Navigation ] }
                     options={
                         {
@@ -55,7 +54,7 @@ export default function Cast(props: Props) {
                     }
                 >
                     {
-                        slide => <CastCard cast={ slide } />
+                        slide => props.children(slide)
                     }
                 </Carousel>
 

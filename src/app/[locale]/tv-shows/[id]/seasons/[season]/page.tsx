@@ -1,10 +1,12 @@
 import { HydrationBoundary, QueryClient, dehydrate } from '@tanstack/react-query';
 import { Metadata } from 'next';
+import { notFound } from 'next/navigation';
 import { getExtracted, getLocale } from 'next-intl/server';
 
 import { tvShowsQueryKeys } from '@/helpers/queryKeys';
 import { pagesSeasonUrl } from '@/routes';
 import { getCurrentTVShowById, getTVShowSeasonByNumber } from '@/services/tmdb/tvShows';
+import { CurrentTVShowShema, SeasonDetailsShema } from '@/shemas';
 import generateMetaTags from '@/utils/generateMetaTags';
 
 import Content from './components/Content';
@@ -83,6 +85,18 @@ export default async function Page(props: Props) {
             }
         )
     ]);
+
+    const tvShowData = queryClient.getQueryData<CurrentTVShowShema>(
+        tvShowsQueryKeys.currentTvShowById(params.id, locale)
+    );
+        
+    const seasonData = queryClient.getQueryData<SeasonDetailsShema>(
+        tvShowsQueryKeys.seasonById(params.id, season, locale)
+    );
+                        
+    if (!tvShowData || !seasonData) {
+        notFound();
+    }
 
     return (
         <HydrationBoundary state={ dehydrate(queryClient) }>

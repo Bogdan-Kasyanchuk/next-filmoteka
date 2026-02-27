@@ -1,10 +1,12 @@
 import { HydrationBoundary, QueryClient, dehydrate } from '@tanstack/react-query';
 import { Metadata } from 'next';
+import { notFound } from 'next/navigation';
 import { getExtracted, getLocale } from 'next-intl/server';
 
 import { personsQueryKeys } from '@/helpers/queryKeys';
 import { pagesPersonUrl } from '@/routes';
 import { getPersonById } from '@/services/tmdb/persons';
+import { PersonDetailsShema } from '@/shemas';
 import generateMetaTags from '@/utils/generateMetaTags';
 
 import Content from './components/Content';
@@ -57,6 +59,14 @@ export default async function Page(props: Props) {
         queryKey: personsQueryKeys.personById(params.id, locale),
         queryFn: () => getPersonById(params.id, locale)
     });
+
+    const data = queryClient.getQueryData<PersonDetailsShema>(
+        personsQueryKeys.personById(params.id, locale)
+    );
+                    
+    if (!data) {
+        notFound();
+    }
 
     return (
         <HydrationBoundary state={ dehydrate(queryClient) }>

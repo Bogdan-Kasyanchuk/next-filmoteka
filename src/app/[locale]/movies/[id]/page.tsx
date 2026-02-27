@@ -1,13 +1,22 @@
 import { HydrationBoundary, QueryClient, dehydrate } from '@tanstack/react-query';
 import { Metadata } from 'next';
+import { notFound } from 'next/navigation';
 import { getExtracted, getLocale } from 'next-intl/server';
+import { Suspense } from 'react';
 
+import { RecommendationsSkeleton } from '@/components/app/Recommendations';
+import Reviews, { ReviewsSkeleton } from '@/components/app/Reviews';
+import Videos, { VideosSkeleton } from '@/components/app/Videos';
+import Container from '@/components/ui/layouts/Container';
+import { MediaType } from '@/enums';
 import { moviesQueryKeys } from '@/helpers/queryKeys';
 import { pagesMovieUrl } from '@/routes';
 import { getMovieById } from '@/services/tmdb/movies';
+import { MovieDetailsShema } from '@/shemas';
 import generateMetaTags from '@/utils/generateMetaTags';
 
 import Content from './components/Content';
+import Recommendations from './components/Recommendations';
 
 import './styles/index.css';
 
@@ -61,9 +70,39 @@ export default async function Page(props: Props) {
         queryFn: () => getMovieById(params.id, locale)
     });
 
+    const data = queryClient.getQueryData<MovieDetailsShema>(
+        moviesQueryKeys.movieById(params.id, locale)
+    );
+                
+    if (!data) {
+        notFound();
+    }
+
     return (
-        <HydrationBoundary state={ dehydrate(queryClient) }>
-            <Content id={ params.id } />
-        </HydrationBoundary>
+        <div className="p-movie">
+            <HydrationBoundary state={ dehydrate(queryClient) }>
+                <Content id={ params.id } />
+            </HydrationBoundary>
+
+            <Container className="p-movie__container">
+                <Suspense fallback={ <VideosSkeleton /> }>
+                    <Videos
+                        type={ MediaType.MOVIE }
+                        id={ params.id }
+                    />
+                </Suspense>
+                            
+                <Suspense fallback={ <RecommendationsSkeleton /> }>
+                    <Recommendations id={ params.id } />
+                </Suspense>
+                            
+                <Suspense fallback={ <ReviewsSkeleton /> }>
+                    <Reviews
+                        type={ MediaType.MOVIE }
+                        id={ params.id }
+                    />
+                </Suspense>
+            </Container>
+        </div>
     );
 }

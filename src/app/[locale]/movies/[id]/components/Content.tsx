@@ -1,37 +1,19 @@
 'use client';
 
 import { useQuery } from '@tanstack/react-query';
-import dynamic from 'next/dynamic';
-import { notFound } from 'next/navigation';
 import { useLocale } from 'next-intl';
-import { Suspense } from 'react';
 
-import Cast from '@/components/app/Cast';
-import Crew from '@/components/app/Crew';
-import { RecommendationsSkeleton } from '@/components/app/Recommendations';
-import { ReviewsSkeleton } from '@/components/app/Reviews';
-import { VideosSkeleton } from '@/components/app/Videos';
+import Persons from '@/components/app/Persons';
+import CastCard from '@/components/ui/cards/CastCard';
+import CrewCard from '@/components/ui/cards/CrewCard';
+import ErrorComponent from '@/components/ui/data-display/ErrorComponent';
 import Loader from '@/components/ui/data-display/Loader';
 import Container from '@/components/ui/layouts/Container';
-import { MediaType } from '@/enums';
 import { moviesQueryKeys } from '@/helpers/queryKeys';
 import { transformMovieDetails } from '@/helpers/transformData';
 import { getMovieById } from '@/services/tmdb/movies';
 
 import MovieDetails from './MovieDetails';
-
-const Videos = dynamic(() => import('@/components/app/Videos'), {
-    loading: () => <VideosSkeleton />,
-    ssr: false
-});
-const Recommendations = dynamic(() => import('./Recommendations'), {
-    loading: () => <RecommendationsSkeleton />,
-    ssr: false
-});
-const Reviews = dynamic(() => import('@/components/app/Reviews'), {
-    loading: () => <ReviewsSkeleton />,
-    ssr: false
-});
 
 type Props = {
     id: string
@@ -40,7 +22,7 @@ type Props = {
 export default function Content(props: Props) {
     const locale = useLocale();
         
-    const { data, isPending, isError } = useQuery({
+    const { data, isPending, isError, error } = useQuery({
         queryKey: moviesQueryKeys.movieById(props.id, locale),
         queryFn: () => getMovieById(props.id, locale),
         select: data => transformMovieDetails(data)
@@ -50,46 +32,39 @@ export default function Content(props: Props) {
         return <Loader />;
     }
 
-    if (isError || !data) {
-        notFound();
+    if (isError) {
+        return <ErrorComponent errorMessage={ error.message } />;
     }
 
     return (
-        <div className="p-movie">
+        <>
             <MovieDetails
                 movie={ data.movie }
                 id={ props.id }
             />
 
-            <Container className="p-movie__container">
-                {
-                    data.cast.length > 0 &&
-                    <Cast cast={ data.cast } />
-                }
+            {
+                (data.cast.length > 0 || data.crew.length > 0) &&
+                <Container className="p-movie__container">
+                    {
+                        data.cast.length > 0 &&
+                        <Persons items={ data.cast }>
+                            {
+                                item => <CastCard cast={ item } />
+                            }
+                        </Persons>
+                    }
 
-                {
-                    data.crew.length > 0 &&
-                    <Crew crew={ data.crew } />
-                }
-
-                <Suspense fallback={ <VideosSkeleton /> }>
-                    <Videos
-                        type={ MediaType.MOVIE }
-                        id={ props.id }
-                    />
-                </Suspense>
-                
-                <Suspense fallback={ <RecommendationsSkeleton /> }>
-                    <Recommendations id={ props.id } />
-                </Suspense>
-                
-                <Suspense fallback={ <ReviewsSkeleton /> }>
-                    <Reviews
-                        type={ MediaType.MOVIE }
-                        id={ props.id }
-                    />
-                </Suspense>
-            </Container>
-        </div>
+                    {
+                        data.crew.length > 0 &&
+                        <Persons items={ data.crew }>
+                            {
+                                item => <CrewCard crew={ item } />
+                            }
+                        </Persons>
+                    }
+                </Container>
+            }
+        </>
     );
 }

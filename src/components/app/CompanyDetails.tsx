@@ -18,7 +18,7 @@ export default function CompanyDetails(props: Props) {
 
     const t = useExtracted();
         
-    const { data, isPending, isError } = useQuery({
+    const { data, isPending, isError, error } = useQuery({
         queryKey: generalQueryKeys.company(props.id, locale),
         queryFn: () => getCompanyById(props.id, locale),
         select: data => {
@@ -38,7 +38,13 @@ export default function CompanyDetails(props: Props) {
         );
     }
 
-    if (isError || !data) {
+    if (isError) {
+        return (
+            <Content>{ error.message }</Content>
+        );
+    }
+
+    if (!data) {
         return (
             <Content>{ t('Data not found') }</Content>
         );

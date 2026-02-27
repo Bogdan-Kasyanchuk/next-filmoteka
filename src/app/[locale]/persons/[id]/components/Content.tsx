@@ -1,9 +1,9 @@
 'use client';
 
 import { useQuery } from '@tanstack/react-query';
-import { notFound } from 'next/navigation';
 import { useLocale } from 'next-intl';
 
+import ErrorComponent from '@/components/ui/data-display/ErrorComponent';
 import Loader from '@/components/ui/data-display/Loader';
 import Container from '@/components/ui/layouts/Container';
 import { personsQueryKeys } from '@/helpers/queryKeys';
@@ -21,7 +21,7 @@ type Props = {
 export default function Content(props: Props) {
     const locale = useLocale();
         
-    const { data, isPending, isError } = useQuery({
+    const { data, isPending, isError, error } = useQuery({
         queryKey: personsQueryKeys.personById(props.id, locale),
         queryFn: () => getPersonById(props.id, locale),
         select: data => transformPersonDetails(data)
@@ -31,8 +31,8 @@ export default function Content(props: Props) {
         return <Loader />;
     }
 
-    if (isError || !data) {
-        notFound();
+    if (isError) {
+        return <ErrorComponent errorMessage={ error.message } />;
     }
 
     return (

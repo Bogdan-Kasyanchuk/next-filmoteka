@@ -7,6 +7,7 @@ import Pagination from '@/components/app/Pagination';
 import MovieCard from '@/components/ui/cards/MovieCard';
 import PersonCard from '@/components/ui/cards/PersonCard';
 import TVShowCard from '@/components/ui/cards/TVShowCard';
+import ErrorComponent from '@/components/ui/data-display/ErrorComponent';
 import Loader from '@/components/ui/data-display/Loader';
 import NoSearchResults from '@/components/ui/data-display/NoSearchResults';
 import { MediaType } from '@/enums';
@@ -26,7 +27,7 @@ type Props = {
 export default function Content(props: Props) {
     const locale = useLocale();
     
-    const { data, isPending, isError } = useQuery({
+    const { data, isPending, isError, error } = useQuery({
         queryKey: generalQueryKeys.search(props.type, props.adult, props.query, props.page, locale),
         queryFn: () => getSearch(props.type, props.adult, props.query, props.page, locale),
         placeholderData: keepPreviousData,
@@ -53,8 +54,12 @@ export default function Content(props: Props) {
         return <Loader />;
     }
 
-    if (isError || !data || !data.results.length) {
+    if (!data || !data.results.length) {
         return <NoSearchResults />;
+    }
+
+    if (isError) {
+        return <ErrorComponent errorMessage={ error.message } />;
     }
 
     return (

@@ -1,38 +1,20 @@
 'use client';
 
 import { useQuery } from '@tanstack/react-query';
-import dynamic from 'next/dynamic';
-import { notFound } from 'next/navigation';
 import { useLocale } from 'next-intl';
-import { Suspense } from 'react';
 
-import Cast from '@/components/app/Cast';
-import Crew from '@/components/app/Crew';
-import { RecommendationsSkeleton } from '@/components/app/Recommendations';
-import { ReviewsSkeleton } from '@/components/app/Reviews';
-import { VideosSkeleton } from '@/components/app/Videos';
+import Persons from '@/components/app/Persons';
+import CastCard from '@/components/ui/cards/CastCard';
+import CrewCard from '@/components/ui/cards/CrewCard';
+import ErrorComponent from '@/components/ui/data-display/ErrorComponent';
 import Loader from '@/components/ui/data-display/Loader';
 import Container from '@/components/ui/layouts/Container';
-import { MediaType } from '@/enums';
 import { tvShowsQueryKeys } from '@/helpers/queryKeys';
 import { transformTVShowDetails } from '@/helpers/transformData';
 import { getTVShowById } from '@/services/tmdb/tvShows';
 
 import Seasons from './Seasons';
 import TVShowDetails from './TVShowDetails';
-
-const Videos = dynamic(() => import('@/components/app/Videos'), {
-    loading: () => <VideosSkeleton />,
-    ssr: false
-});
-const Recommendations = dynamic(() => import('./Recommendations'), {
-    loading: () => <RecommendationsSkeleton />,
-    ssr: false
-});
-const Reviews = dynamic(() => import('@/components/app/Reviews'), {
-    loading: () => <ReviewsSkeleton />,
-    ssr: false
-});
 
 type Props = {
     id: string
@@ -41,7 +23,7 @@ type Props = {
 export default function Content(props: Props) {
     const locale = useLocale();
         
-    const { data, isPending, isError } = useQuery({
+    const { data, isPending, isError, error } = useQuery({
         queryKey: tvShowsQueryKeys.tvShowById(props.id, locale),
         queryFn: () => getTVShowById(props.id, locale),
         select: data => transformTVShowDetails(data)
@@ -51,54 +33,47 @@ export default function Content(props: Props) {
         return <Loader />;
     }
 
-    if ( isError || !data) {
-        notFound();
+    if (isError) {
+        return <ErrorComponent errorMessage={ error.message } />;
     }
 
     return (
-        <div className="p-tv-show">
+        <>
             <TVShowDetails
                 tvShow={ data.tvShow }
                 id={ props.id }
             />
 
-            <Container className="p-tv-show__container">
-                {
-                    data.seasons.length > 0 &&
-                    <Seasons
-                        seasons={ data.seasons }
-                        tvShowId={ props.id }
-                    />
-                }
+            {
+                (data.seasons.length > 0 || data.cast.length > 0 || data.crew.length > 0) &&
+                <Container className="p-tv-show__container">
+                    {
+                        data.seasons.length > 0 &&
+                        <Seasons
+                            seasons={ data.seasons }
+                            tvShowId={ props.id }
+                        />
+                    }
 
-                {
-                    data.cast.length > 0 &&
-                    <Cast cast={ data.cast } />
-                }
-
-                {
-                    data.crew.length > 0 &&
-                    <Crew crew={ data.crew } />
-                }
-
-                <Suspense fallback={ <VideosSkeleton /> }>
-                    <Videos
-                        type={ MediaType.TV_SHOW }
-                        id={ props.id }
-                    />
-                </Suspense>
-            
-                <Suspense fallback={ <RecommendationsSkeleton /> }>
-                    <Recommendations id={ props.id } />
-                </Suspense>
-            
-                <Suspense fallback={ <ReviewsSkeleton /> }>
-                    <Reviews
-                        type={ MediaType.TV_SHOW }
-                        id={ props.id }
-                    />
-                </Suspense>
-            </Container>
-        </div>
+                    {
+                        data.cast.length > 0 &&
+                        <Persons items={ data.cast }>
+                            {
+                                item => <CastCard cast={ item } />
+                            }
+                        </Persons>
+                    }
+                    
+                    {
+                        data.crew.length > 0 &&
+                        <Persons items={ data.crew }>
+                            {
+                                item => <CrewCard crew={ item } />
+                            }
+                        </Persons>
+                    }
+                </Container>
+            }
+        </>
     );
 }
