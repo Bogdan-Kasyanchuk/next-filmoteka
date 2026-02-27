@@ -104,6 +104,11 @@
 
         background: linear-gradient(-90deg, var(--color-secondary) 50%, var(--color-accent) 100%);
 
+        .c-media-card--person & {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
         &-title {
             overflow: hidden;
             display: -webkit-box;

@@ -5,7 +5,6 @@ import { useLocale } from 'next-intl';
 
 import Pagination from '@/components/app/Pagination';
 import TVShowCard from '@/components/ui/cards/TVShowCard';
-import ErrorComponent from '@/components/ui/data-display/ErrorComponent';
 import Loader from '@/components/ui/data-display/Loader';
 import { TVShowType } from '@/enums';
 import { tvShowsQueryKeys } from '@/helpers/queryKeys';
@@ -35,7 +34,7 @@ export default function Content(props: Props) {
     }
 
     if (isError) {
-        return <ErrorComponent errorMessage={ error.message } />;
+        throw new Error(error.message);
     }
 
     return (

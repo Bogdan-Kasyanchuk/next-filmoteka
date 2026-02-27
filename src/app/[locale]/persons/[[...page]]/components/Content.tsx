@@ -5,7 +5,6 @@ import { useLocale } from 'next-intl';
 
 import Pagination from '@/components/app/Pagination';
 import PersonCard from '@/components/ui/cards/PersonCard';
-import ErrorComponent from '@/components/ui/data-display/ErrorComponent';
 import Loader from '@/components/ui/data-display/Loader';
 import { personsQueryKeys } from '@/helpers/queryKeys';
 import { transformPerson } from '@/helpers/transformData';
@@ -33,7 +32,7 @@ export default function Content(props: Props) {
     }
 
     if (isError) {
-        return <ErrorComponent errorMessage={ error.message } />;
+        throw new Error(error.message);
     }
 
     return (

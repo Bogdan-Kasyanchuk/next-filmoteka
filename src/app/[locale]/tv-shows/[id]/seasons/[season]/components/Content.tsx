@@ -4,7 +4,6 @@ import { useQueries } from '@tanstack/react-query';
 import { useLocale } from 'next-intl';
 
 import EpisodeCard from '@/components/ui/cards/EpisodeCard';
-import ErrorComponent from '@/components/ui/data-display/ErrorComponent';
 import Loader from '@/components/ui/data-display/Loader';
 import Container from '@/components/ui/layouts/Container';
 import { tvShowsQueryKeys } from '@/helpers/queryKeys';
@@ -48,7 +47,7 @@ export default function Content(props: Props) {
     }
 
     if (data.isError) {
-        return <ErrorComponent errorMessage={ data.error?.message } />;
+        throw new Error(data.error?.message || 'Internal server error');
     }
 
     return (
