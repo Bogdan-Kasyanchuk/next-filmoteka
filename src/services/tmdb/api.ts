@@ -48,7 +48,7 @@ export async function fetchApi<T>(
         }
 
         const text = await response.text();
-        throw new Error(text || 'API error');
+        throw new Error(text || 'Internal server error');
     }
 
     return response.json() as Promise<T>;

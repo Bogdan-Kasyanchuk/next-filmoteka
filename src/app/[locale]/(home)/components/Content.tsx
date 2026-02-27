@@ -6,7 +6,6 @@ import { useExtracted, useLocale } from 'next-intl';
 import MovieCard from '@/components/ui/cards/MovieCard';
 import PersonCard from '@/components/ui/cards/PersonCard';
 import TVShowCard from '@/components/ui/cards/TVShowCard';
-import ErrorComponent from '@/components/ui/data-display/ErrorComponent';
 import Loader from '@/components/ui/data-display/Loader';
 import Container from '@/components/ui/layouts/Container';
 import Title from '@/components/ui/typography/Title';
@@ -76,7 +75,7 @@ export default function Content() {
     }
 
     if (data.isError) {
-        return <ErrorComponent errorMessage={ data.error?.message } />;
+        throw new Error(data.error?.message || 'Internal server error');
     }
 
     return (

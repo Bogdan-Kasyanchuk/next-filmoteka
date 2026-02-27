@@ -3,15 +3,14 @@
 import { Plus_Jakarta_Sans } from 'next/font/google';
 
 import Container from '@/components/ui/layouts/Container';
-import { pagesHomeUrl } from '@/routes';
-import { Link } from '@/services/i18n/navigation';
 
 import '@/styles/app.css';
 
 const font = Plus_Jakarta_Sans({ subsets: [ 'latin' ] });
 
 type Props = {
-    error: Error
+    error: Error,
+    reset: () => void
 };
 
 export default function GlobalError(props: Props) {
@@ -28,12 +27,16 @@ export default function GlobalError(props: Props) {
                             { props.error.message }
                         </p>
 
-                        <Link
-                            href={ pagesHomeUrl() }
+                        <button
                             className="flex items-center justify-center text-lg px-4 py-2 w-fit min-h-[50px] mt-5 rounded-sm bg-active text-secondary uppercase min-w-[300px] font-bold transition-opacity hover:opacity-75"
+                            onClick={
+                                () => {
+                                    props.reset();
+                                } 
+                            }
                         >
-                            Back to home page
-                        </Link>
+                            Try again
+                        </button>
                     </Container>
                 </main>
             </body>
