@@ -46,7 +46,6 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
             }
         }
     );
-
 }
 
 export default async function Page(props: PropsWithChildren<Props>) {
