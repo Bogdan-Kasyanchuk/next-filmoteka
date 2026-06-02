@@ -11,7 +11,8 @@ import Title from '@/components/ui/typography/Title';
 
 type Props<T extends Record<string, any>> = {
     items: Array<T>,
-    children: (item: T) => ReactNode
+    children: (item: T) => ReactNode,
+    title: string
 };
 
 export default function Persons<T extends Record<string, any>>(props: Props<T>) {
@@ -27,7 +28,7 @@ export default function Persons<T extends Record<string, any>>(props: Props<T>) 
                 variant={ 3 }
                 className="c-persons__title"
             >
-                { t('Cast') }
+                { props.title }
             </Title>
 
             <div className="c-persons__cards">
@@ -93,7 +94,6 @@ function Arrow(props: ArrowProps) {
                     props.type === 'prev'
                         ? 'c-persons__arrow--prev'
                         : 'c-persons__arrow--next'
-
                 )
             }
         >

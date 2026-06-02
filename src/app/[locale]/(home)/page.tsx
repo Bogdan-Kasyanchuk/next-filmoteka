@@ -51,7 +51,7 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
 export default async function Page(props: PropsWithChildren<Props>) {
     const { locale } = await props.params;
 
-    setRequestLocale(locale);
+    // setRequestLocale(locale);
       
     const queryClient = new QueryClient();
 

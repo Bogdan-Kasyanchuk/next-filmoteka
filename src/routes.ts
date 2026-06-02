@@ -1,4 +1,3 @@
-import { URLS } from '@/datasets/constants';
 import { MediaType } from '@/enums';
 
 // ---PAGES----

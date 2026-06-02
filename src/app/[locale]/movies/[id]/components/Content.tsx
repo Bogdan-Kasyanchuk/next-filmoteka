@@ -1,7 +1,7 @@
 'use client';
 
 import { useQuery } from '@tanstack/react-query';
-import { useLocale } from 'next-intl';
+import { useExtracted, useLocale } from 'next-intl';
 
 import Persons from '@/components/app/Persons';
 import CastCard from '@/components/ui/cards/CastCard';
@@ -20,6 +20,8 @@ type Props = {
 
 export default function Content(props: Props) {
     const locale = useLocale();
+
+    const t = useExtracted();
         
     const { data, isPending, isError, error } = useQuery({
         queryKey: moviesQueryKeys.movieById(props.id, locale),
@@ -47,7 +49,10 @@ export default function Content(props: Props) {
                 <Container className="p-movie__container">
                     {
                         data.cast.length > 0 &&
-                        <Persons items={ data.cast }>
+                        <Persons
+                            items={ data.cast }
+                            title= { t('Cast') }
+                        >
                             {
                                 item => <CastCard cast={ item } />
                             }
@@ -56,7 +61,10 @@ export default function Content(props: Props) {
 
                     {
                         data.crew.length > 0 &&
-                        <Persons items={ data.crew }>
+                        <Persons
+                            items={ data.crew }
+                            title= { t('Crew') }
+                        >
                             {
                                 item => <CrewCard crew={ item } />
                             }

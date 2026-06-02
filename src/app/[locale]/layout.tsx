@@ -15,9 +15,9 @@ import '@/styles/app.css';
 
 const font = Plus_Jakarta_Sans({ subsets: [ 'latin' ] });
 
-export function generateStaticParams() {
-    return routing.locales.map(locale => ({ locale }));
-}
+// export function generateStaticParams() {
+//     return routing.locales.map(locale => ({ locale }));
+// }
 
 export async function generateMetadata(): Promise<Metadata> {
     const t = await getExtracted();
@@ -44,7 +44,7 @@ export default async function Layout(props: PropsWithChildren<Props>) {
         notFound();
     }
     
-    setRequestLocale(locale);
+    // setRequestLocale(locale);
     
     const t = await getExtracted();
 
