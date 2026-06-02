@@ -43,11 +43,8 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
                 title,
                 t('similar to {title}', { title })
             ],
-            url: `/${ locale }/${ pagesSimilarUrl(MediaType.MOVIE, params.id) }`,
-            languages: {
-                en: `/en/${ pagesSimilarUrl(MediaType.MOVIE, params.id) }`,
-                uk: `/uk/${ pagesSimilarUrl(MediaType.MOVIE, params.id) }`
-            }
+            path: pagesSimilarUrl(MediaType.MOVIE, params.id),
+            locale
         }
     );
 }

@@ -1,11 +1,15 @@
 import { Metadata } from 'next';
+import { Locale } from 'next-intl';
+
+import { getPathname } from '@/services/i18n/navigation';
+import { routing } from '@/services/i18n/routing';
 
 type Props = {
     title: string,
     description: string,
     keywords: string[],
-    url: string,
-    languages?: Record<string, string>,
+    path: string,
+    locale: Locale,
     index?: boolean,
     follow?: boolean
 };
@@ -15,8 +19,8 @@ export default (props: Props): Metadata => ({
     description: props.description,
     keywords: props.keywords,
     alternates: {
-        canonical: props.url,
-        languages: props.languages
+        canonical: getPathname({ locale: props.locale, href: props.path }),
+        languages: generateLanguages(props.path)
     },
     robots: {
         'index': props.index ?? true,
@@ -28,7 +32,7 @@ export default (props: Props): Metadata => ({
     openGraph: {
         title: props.title,
         description: props.description,
-        url: props.url,
+        url: getPathname({ locale: props.locale, href: props.path }),
         type: 'website',
         images: [
             {
@@ -47,3 +51,12 @@ export default (props: Props): Metadata => ({
         images: '/og.png'
     }
 });
+
+function generateLanguages(path: string) {
+    return routing.locales.reduce((acc, cur) => {
+        return {
+            ...acc,
+            [ cur ]: getPathname({ locale: cur, href: path })
+        };
+    }, {} as Record<string, string>);
+}

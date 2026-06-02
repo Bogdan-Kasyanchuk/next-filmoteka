@@ -57,11 +57,8 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
                 t('actors'),
                 t('film crew members')
             ],
-            url: `/${ locale }/${ pagesTrendingDayUrl() }`,
-            languages: {
-                en: `/en/${ pagesTrendingDayUrl() }`,
-                uk: `/uk/${ pagesTrendingDayUrl() }`
-            }
+            path: pagesTrendingDayUrl(),
+            locale
         }
     );
 }

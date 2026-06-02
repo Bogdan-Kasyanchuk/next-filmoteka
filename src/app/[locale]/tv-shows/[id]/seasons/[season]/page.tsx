@@ -52,11 +52,8 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
                     title: title
                 })
             ],
-            url: `/${ locale }/${ pagesSeasonUrl(params.id, Number(params.season)) }`,
-            languages: {
-                en: `/en/${ pagesSeasonUrl(params.id, Number(params.season)) }`,
-                uk: `/uk/${ pagesSeasonUrl(params.id, Number(params.season)) }`
-            }
+            path: pagesSeasonUrl(params.id, Number(params.season)),
+            locale
         }
     );
 }

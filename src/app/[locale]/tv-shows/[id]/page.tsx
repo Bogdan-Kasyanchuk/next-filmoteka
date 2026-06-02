@@ -49,11 +49,8 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
                 t('reviews of {title}', { title }),
                 t('recommended tv shows for {title}', { title })
             ],
-            url: `/${ locale }/${ pagesTVShowUrl(params.id) }`,
-            languages: {
-                en: `/en/${ pagesTVShowUrl(params.id) }`,
-                uk: `/uk/${ pagesTVShowUrl(params.id) }`
-            }
+            path: pagesTVShowUrl(params.id),
+            locale
         }
     );
 }

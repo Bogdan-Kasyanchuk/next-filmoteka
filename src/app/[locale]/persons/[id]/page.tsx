@@ -38,11 +38,8 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
                 t('acting of {title}', { title: data.name }),
                 t('producing of {title}', { title: data.name })
             ],
-            url: `/${ locale }/${ pagesPersonUrl(params.id) }`,
-            languages: {
-                en: `/en/${ pagesPersonUrl(params.id) }`,
-                uk: `/uk/${ pagesPersonUrl(params.id) }`
-            }
+            path: pagesPersonUrl(params.id),
+            locale
         }
     );
 }

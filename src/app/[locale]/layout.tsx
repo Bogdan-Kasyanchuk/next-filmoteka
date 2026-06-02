@@ -15,7 +15,18 @@ import '@/styles/app.css';
 
 const font = Plus_Jakarta_Sans({ subsets: [ 'latin' ] });
 
-export async function generateMetadata(): Promise<Metadata> {
+type Props = {
+    params: Promise<{ locale: Locale }>
+};
+
+export async function generateMetadata(props: Props): Promise<Metadata> {
+    const { locale } = await props.params;
+    
+    if (!hasLocale(routing.locales, locale)) {
+        notFound();
+
+    }
+    
     const t = await getExtracted();
 
     return {
@@ -28,10 +39,6 @@ export async function generateMetadata(): Promise<Metadata> {
         metadataBase: new URL(URLS.SITE)
     };
 }
-
-type Props = {
-    params: Promise<{ locale: Locale }>
-};
 
 export default async function Layout(props: PropsWithChildren<Props>) {
     const { locale } = await props.params;

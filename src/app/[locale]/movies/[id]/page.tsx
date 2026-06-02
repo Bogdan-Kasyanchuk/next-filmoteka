@@ -48,11 +48,8 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
                 t('reviews of {title}', { title }),
                 t('recommended movies for {title}', { title })
             ],
-            url: `/${ locale }/${ pagesMovieUrl(params.id) }`,
-            languages: {
-                en: `/en/${ pagesMovieUrl(params.id) }`,
-                uk: `/uk/${ pagesMovieUrl(params.id) }`
-            }
+            path: pagesMovieUrl(params.id),
+            locale
         }
     );
 }
