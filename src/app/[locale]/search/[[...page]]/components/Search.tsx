@@ -29,9 +29,9 @@ export default function Search() {
             params.delete('query');
         }
 
-        const basePath = pathname.replace(/\/page\/[0-9]+$/, '');
+        const basePath = pathname.replace(/\/page\/[0-9]+\/$/, '');
 
-        push(buildUrl(`${ basePath }/page/1`, params));
+        push(buildUrl(`${ basePath }/page/1`, params).replaceAll('//', '/'));
     }, [ debouncedTerm ]);
 
     return (

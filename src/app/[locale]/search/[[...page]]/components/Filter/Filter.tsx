@@ -53,9 +53,9 @@ export default function Filter(props: Props) {
     
         params.set(key, value);
             
-        const basePath = pathname.replace(/\/page\/[0-9]+$/, '');
+        const basePath = pathname.replace(/\/page\/[0-9]+\/$/, '');
 
-        push(buildUrl(`${ basePath }/page/1`, params));
+        push(buildUrl(`${ basePath }/page/1`, params).replaceAll('//', '/'));
     };
     
     return (
