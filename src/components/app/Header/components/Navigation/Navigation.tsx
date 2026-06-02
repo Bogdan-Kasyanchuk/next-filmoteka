@@ -22,7 +22,7 @@ export default function Navigation() {
 
     const getTitleLink = useTitleLink();
 
-    const isCurrentLink = (href: string ) => pathname === `${ href }` || pathname === `/${ locale }${ href }` || pathname.startsWith(`${ href }/page`) || pathname.startsWith(`/${ locale }${ href }/page`);
+    const isCurrentLink = (href: string ) => pathname === `${ href }/` || pathname === `/${ locale }${ href }/` || pathname.startsWith(`${ href }/page/`) || pathname.startsWith(`/${ locale }${ href }/page/`);
 
     return (
         <nav className="c-navigation">

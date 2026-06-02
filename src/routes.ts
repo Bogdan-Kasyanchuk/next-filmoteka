@@ -1,6 +1,5 @@
 import { MediaType } from '@/enums';
 
-// ---PAGES----
 export const pagesHomeUrl = () => '/';
 
 export const pagesSearchUrl = () => '/search';

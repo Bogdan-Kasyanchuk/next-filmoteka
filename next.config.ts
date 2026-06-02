@@ -19,7 +19,8 @@ const nextConfig: NextConfig = {
     },
     experimental: {
         globalNotFound: true
-    }
+    },
+    trailingSlash: true
 };
 
 const withNextIntl = createNextIntlPlugin({
