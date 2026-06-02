@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import { Plus_Jakarta_Sans } from 'next/font/google';
 import { notFound } from 'next/navigation';
 import { Locale, NextIntlClientProvider, hasLocale } from 'next-intl';
-import { getExtracted, setRequestLocale } from 'next-intl/server';
+import { getExtracted } from 'next-intl/server';
 import { PropsWithChildren } from 'react';
 
 import Footer from '@/components/app/Footer';
@@ -14,10 +14,6 @@ import { routing } from '@/services/i18n/routing';
 import '@/styles/app.css';
 
 const font = Plus_Jakarta_Sans({ subsets: [ 'latin' ] });
-
-// export function generateStaticParams() {
-//     return routing.locales.map(locale => ({ locale }));
-// }
 
 export async function generateMetadata(): Promise<Metadata> {
     const t = await getExtracted();
@@ -43,9 +39,7 @@ export default async function Layout(props: PropsWithChildren<Props>) {
     if (!hasLocale(routing.locales, locale)) {
         notFound();
     }
-    
-    // setRequestLocale(locale);
-    
+
     const t = await getExtracted();
 
     return (
