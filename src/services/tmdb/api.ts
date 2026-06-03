@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation';
 import { Locale } from 'next-intl';
 
-import { PARAMETERS, URLS } from '@/datasets/constants';
+import { PARAMETERS } from '@/datasets/constants';
 
 type FetchOptions = {
     next?: {
@@ -17,7 +17,7 @@ export async function fetchApi<T>(
     const isServer = typeof window === 'undefined';
 
     const baseUrl = isServer
-        ? URLS.API
+        ? PARAMETERS.API_URL
         : '/api/tmdb';
 
     const url = new URL(`${ baseUrl }/${ path }`, isServer ? undefined : window.location.origin);

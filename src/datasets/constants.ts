@@ -1,6 +1,8 @@
 export const PARAMETERS = {
     API_KEY: process.env.API_KEY!,
     APP_URL: process.env.NEXT_PUBLIC_APP_URL!,
+    API_URL: 'https://api.themoviedb.org/3',
+    IMAGE_URL: 'https://image.tmdb.org/t/p',
     LOCALES: {
         en: 'en-US',
         uk: 'uk-UA'
@@ -30,9 +32,6 @@ export const IMG_SIZES = {
 };
 
 export const URLS = {
-    SITE: 'https://next-filmoteka.netlify.app',
-    API: 'https://api.themoviedb.org/3',
-    IMAGE: 'https://image.tmdb.org/t/p',
     YOUTUBE_EMBED: 'https://www.youtube.com/embed',
     FACEBOOK: 'https://www.facebook.com',
     IMDB: 'https://www.imdb.com',

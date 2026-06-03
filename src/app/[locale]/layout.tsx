@@ -7,7 +7,7 @@ import { PropsWithChildren } from 'react';
 
 import Footer from '@/components/app/Footer';
 import Header from '@/components/app/Header';
-import { URLS } from '@/datasets/constants';
+import { PARAMETERS } from '@/datasets/constants';
 import QueryProvider from '@/providers/QueryProvider';
 import { routing } from '@/services/i18n/routing';
 
@@ -36,7 +36,7 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
         },
         description: t('Movies, series, tv shows, actors and members of film crews.'),
         applicationName: t('Filmoteka'),
-        metadataBase: new URL(URLS.SITE)
+        metadataBase: new URL(PARAMETERS.APP_URL)
     };
 }
 

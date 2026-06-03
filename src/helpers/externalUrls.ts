@@ -1,8 +1,8 @@
-import { URLS } from '@/datasets/constants';
+import { PARAMETERS, URLS } from '@/datasets/constants';
 
 export const youtubeEmbedUrl = (id: string) => `${ URLS.YOUTUBE_EMBED }/${ id }`;
 
-export const imageUrl = (size: string, path: string) => `${ URLS.IMAGE }/${ size }${ path }`;
+export const imageUrl = (size: string, path: string) => `${ PARAMETERS.IMAGE_URL }/${ size }${ path }`;
 
 export const imdbUrl = (id: string, type: 'title' | 'name') => `${ URLS.IMDB }/${ type }/${ id }`;
 
