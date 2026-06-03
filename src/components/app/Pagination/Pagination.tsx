@@ -3,32 +3,35 @@
 import { useMediaQuery } from '@mantine/hooks';
 import clsx from 'clsx';
 import Link from 'next/link';
-import { usePathname, useSearchParams } from 'next/navigation';
-import { useExtracted } from 'next-intl';
+import { useSearchParams } from 'next/navigation';
+import { useExtracted, useLocale } from 'next-intl';
 import { useMemo } from 'react';
 
 import Icon from '@/components/ui/data-display/Icon';
+import { getPathname } from '@/services/i18n/navigation';
 import buildUrl from '@/utils/buildUrl';
+import { withBaseUrl } from '@/utils/withBaseUrl';
 
 import { ELLIPSIS, desktopPagination, mobilePagination } from './generatePagination';
 
 type Props = {
     currentPage: number,
-    totalPages: number
+    totalPages: number,
+    path: string
 };
 
 export default function Pagination(props: Props) {
-    const pathname = usePathname();
     const searchParams = useSearchParams();
+    const locale = useLocale();
 
     const t = useExtracted();
 
     const createPageURL = (page: number) => {
         const params = new URLSearchParams(searchParams);
 
-        const basePath = pathname.replace(/\/page\/[0-9]+\/$/, '');
-
-        return buildUrl(`${ basePath }/page/${ page }`, params).replaceAll('//', '/');
+        return withBaseUrl(buildUrl)(
+            getPathname({ locale, href: `${ props.path }/page/${ page }/` }), params
+        );
     };
 
     const isMobile = useMediaQuery(

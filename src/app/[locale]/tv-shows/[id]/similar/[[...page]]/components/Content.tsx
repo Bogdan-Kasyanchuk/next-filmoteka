@@ -8,8 +8,10 @@ import TVShowCard from '@/components/ui/cards/TVShowCard';
 import Loader from '@/components/ui/data-display/Loader';
 import Container from '@/components/ui/layouts/Container';
 import Title from '@/components/ui/typography/Title';
+import { MediaType } from '@/enums';
 import { tvShowsQueryKeys } from '@/helpers/queryKeys';
 import { transformCurrentTVShow, transformTVShow } from '@/helpers/transformData';
+import { pagesSimilarUrl } from '@/routes';
 import { getCurrentTVShowById, getSimilarTVShows } from '@/services/tmdb/tvShows';
 
 import CurrentTVShow from './CurrentTVShow';
@@ -94,6 +96,7 @@ export default function Content(props: Props) {
                                 ? 500
                                 : data.similar.total_pages 
                         }
+                        path={ pagesSimilarUrl(MediaType.TV_SHOW, props.id ) }
                     />
                 }
             </div>

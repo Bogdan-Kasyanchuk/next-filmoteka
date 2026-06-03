@@ -8,8 +8,10 @@ import MovieCard from '@/components/ui/cards/MovieCard';
 import Loader from '@/components/ui/data-display/Loader';
 import Container from '@/components/ui/layouts/Container';
 import Title from '@/components/ui/typography/Title';
+import { MediaType } from '@/enums';
 import { moviesQueryKeys } from '@/helpers/queryKeys';
 import { transformCurrentMovie, transformMovie } from '@/helpers/transformData';
+import { pagesSimilarUrl } from '@/routes';
 import { getCurrentMovieById, getSimilarMovies } from '@/services/tmdb/movies';
 
 import CurrentMovie from './CurrentMovie';
@@ -94,6 +96,7 @@ export default function Content(props: Props) {
                                 ? 500
                                 : data.similar.total_pages 
                         }
+                        path={ pagesSimilarUrl(MediaType.MOVIE, props.id) }
                     />
                 }
             </div>

@@ -37,8 +37,9 @@
         padding: 7px 14px;
         border-radius: 4px;
 
-        font-size: var(--text-md);
+        font-size: var(--text-sm);
         font-weight: 700;
+        text-align: center;
         text-transform: uppercase;
 
         background-color: var(--color-active);

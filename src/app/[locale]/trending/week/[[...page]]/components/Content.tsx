@@ -11,6 +11,7 @@ import Loader from '@/components/ui/data-display/Loader';
 import { MediaType, TimeType } from '@/enums';
 import { trendingsQueryKeys } from '@/helpers/queryKeys';
 import { transformMovie, transformPerson, transformTVShow } from '@/helpers/transformData';
+import { pagesTrendingWeekUrl } from '@/routes';
 import { getTrendings } from '@/services/tmdb/general';
 import { MovieMapper, PersonMapper, TVShowMapper } from '@/types';
 
@@ -72,6 +73,7 @@ export default function Content(props: Props) {
                 <Pagination
                     currentPage={ props.page }
                     totalPages={ data.total_pages > 500 ? 500 : data.total_pages }
+                    path={ pagesTrendingWeekUrl() }
                 />
             }
         </div>

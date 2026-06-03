@@ -12,6 +12,7 @@ import NoSearchResults from '@/components/ui/data-display/NoSearchResults';
 import { MediaType } from '@/enums';
 import { generalQueryKeys } from '@/helpers/queryKeys';
 import { transformMovie, transformPerson, transformTVShow } from '@/helpers/transformData';
+import { pagesSearchUrl } from '@/routes';
 import { getSearch } from '@/services/tmdb/general';
 import { MovieShema, PersonShema, TVShowShema } from '@/shemas';
 import { Adult, MovieMapper, PersonMapper, TVShowMapper } from '@/types';
@@ -91,6 +92,7 @@ export default function Content(props: Props) {
                 <Pagination
                     currentPage={ props.page }
                     totalPages={ data.total_pages > 500 ? 500 : data.total_pages }
+                    path={ pagesSearchUrl() }
                 />
             }
         </div>

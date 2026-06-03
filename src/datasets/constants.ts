@@ -1,5 +1,6 @@
 export const PARAMETERS = {
     API_KEY: process.env.API_KEY!,
+    APP_URL: process.env.NEXT_PUBLIC_APP_URL!,
     LOCALES: {
         en: 'en-US',
         uk: 'uk-UA'

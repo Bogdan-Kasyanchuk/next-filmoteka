@@ -27,7 +27,7 @@ export default function LocaleSwitcher() {
                 } 
             }
         >
-            { newLocale }
+            { locale }
         </button>
     );
 }

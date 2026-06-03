@@ -9,6 +9,7 @@ import Loader from '@/components/ui/data-display/Loader';
 import { MovieType } from '@/enums';
 import { moviesQueryKeys } from '@/helpers/queryKeys';
 import { transformMovie } from '@/helpers/transformData';
+import { pagesMoviesUrl } from '@/routes';
 import { getMovies } from '@/services/tmdb/movies';
 
 type Props = {
@@ -59,6 +60,7 @@ export default function Content(props: Props) {
                 <Pagination
                     currentPage={ props.page }
                     totalPages={ data.total_pages > 500 ? 500 : data.total_pages }
+                    path={ pagesMoviesUrl() }
                 />
             }
         </div>

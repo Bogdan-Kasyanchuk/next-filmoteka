@@ -2,16 +2,18 @@
 
 import { useDebouncedValue, useDidUpdate } from '@mantine/hooks';
 import Image from 'next/image';
-import { usePathname, useRouter, useSearchParams } from 'next/navigation';
-import { useExtracted } from 'next-intl';
+import { useRouter, useSearchParams } from 'next/navigation';
+import { useExtracted, useLocale } from 'next-intl';
 import { useRef, useState } from 'react';
 
+import { pagesSearchUrl } from '@/routes';
+import { getPathname } from '@/services/i18n/navigation';
 import buildUrl from '@/utils/buildUrl';
 
 export default function Search() {
-    const pathname = usePathname();
     const searchParams = useSearchParams();
     const { push } = useRouter();
+    const locale = useLocale();
 
     const t = useExtracted();
     
@@ -29,9 +31,7 @@ export default function Search() {
             params.delete('query');
         }
 
-        const basePath = pathname.replace(/\/page\/[0-9]+\/$/, '');
-
-        push(buildUrl(`${ basePath }/page/1`, params).replaceAll('//', '/'));
+        push(buildUrl(`${ getPathname({ locale, href: pagesSearchUrl() }) }/page/1/`, params));
     }, [ debouncedTerm ]);
 
     return (

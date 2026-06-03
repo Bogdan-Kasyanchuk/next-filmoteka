@@ -1,11 +1,12 @@
 'use client';
 
-import { usePathname, useRouter, useSearchParams } from 'next/navigation';
-import { useExtracted } from 'next-intl';
+import { useRouter, useSearchParams } from 'next/navigation';
+import { useExtracted, useLocale } from 'next-intl';
 import { useMemo } from 'react';
 
 import Tabs from '@/components/ui/data-display/Tabs';
 import { MediaType } from '@/enums';
+import { getPathname } from '@/services/i18n/navigation';
 import buildUrl from '@/utils/buildUrl';
 
 type Filter = {
@@ -14,13 +15,14 @@ type Filter = {
 };
 
 type Props = {
-    type: 'all' | MediaType
+    type: 'all' | MediaType,
+    path: string
 };
 
 export default function Filter(props: Props) {
-    const pathname = usePathname();
     const searchParams = useSearchParams();
     const { push } = useRouter();
+    const locale = useLocale();
 
     const t = useExtracted();
     
@@ -50,9 +52,7 @@ export default function Filter(props: Props) {
 
         params.set('type', type);
 
-        const basePath = pathname.replace(/\/page\/[0-9]+\/$/, '');
-
-        push(buildUrl(`${ basePath }/page/1`, params).replaceAll('//', '/'));
+        push(buildUrl(`${ getPathname({ locale, href: props.path }) }/page/1/`, params));
     };
     
     return (

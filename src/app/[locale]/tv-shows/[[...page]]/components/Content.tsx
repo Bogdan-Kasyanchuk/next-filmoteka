@@ -9,6 +9,7 @@ import Loader from '@/components/ui/data-display/Loader';
 import { TVShowType } from '@/enums';
 import { tvShowsQueryKeys } from '@/helpers/queryKeys';
 import { transformTVShow } from '@/helpers/transformData';
+import { pagesTVShowsUrl } from '@/routes';
 import { getTVShows } from '@/services/tmdb/tvShows';
 
 type Props = {
@@ -59,6 +60,7 @@ export default function Content(props: Props) {
                 <Pagination
                     currentPage={ props.page }
                     totalPages={ data.total_pages > 500 ? 500 : data.total_pages }
+                    path={ pagesTVShowsUrl() }
                 />
             }
         </div>

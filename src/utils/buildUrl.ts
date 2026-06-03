@@ -1,19 +1,19 @@
-export default (pathname: string, params: URLSearchParams) => {
+export default (path: string, params: URLSearchParams) => {
     const query = params.get('query');
 
-    const newParams = new URLSearchParams();
+    const newSearchParams = new URLSearchParams();
 
     params.forEach((value, key) => {
         if (key !== 'query') {
-            newParams.append(key, value);
+            newSearchParams.append(key, value);
         }
     });
 
     if (query) {
-        newParams.set('query', query);
+        newSearchParams.set('query', query);
     }
 
-    const sp = newParams.toString();
+    const searchParams = newSearchParams.toString();
 
-    return sp ? `${ pathname }?${ sp }` : pathname;
+    return (searchParams ? `${ path }?${ searchParams }` : path).replace('//', '/');
 };

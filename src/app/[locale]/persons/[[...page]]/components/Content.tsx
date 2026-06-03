@@ -8,6 +8,7 @@ import PersonCard from '@/components/ui/cards/PersonCard';
 import Loader from '@/components/ui/data-display/Loader';
 import { personsQueryKeys } from '@/helpers/queryKeys';
 import { transformPerson } from '@/helpers/transformData';
+import { pagesPersonsUrl } from '@/routes';
 import { getPersons } from '@/services/tmdb/persons';
 
 type Props = {
@@ -57,6 +58,7 @@ export default function Content(props: Props) {
                 <Pagination
                     currentPage={ props.page }
                     totalPages={ data.total_pages > 500 ? 500 : data.total_pages }
+                    path={ pagesPersonsUrl() }
                 />
             }
         </div>

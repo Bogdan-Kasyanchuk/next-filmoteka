@@ -96,7 +96,10 @@ export default async function Page(props: Props) {
 
     return (
         <Container className="p-trending">
-            <Filter type={ type } />
+            <Filter
+                type={ type }
+                path={ pagesTrendingWeekUrl() }
+            />
 
             <Title className="p-trending__title">
                 { t('Trending this week') }
