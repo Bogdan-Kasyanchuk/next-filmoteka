@@ -18,9 +18,12 @@ export default function Error(props: Props) {
                 { t('Oops, something went wrong. Please try again later.') }
             </p>
 
-            <p className="c-error__text">
-                { props.error.message }
-            </p>
+            {
+                process.env.NODE_ENV === 'development' &&
+                <p className="c-error__text">
+                    { props.error.message }
+                </p>
+            }
 
             <button
                 className="c-error__button"

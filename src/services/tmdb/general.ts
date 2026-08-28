@@ -33,8 +33,14 @@ export const getSearch = async (
     page: number,
     locale: Locale
 ) => {
+    const params = new URLSearchParams({
+        query,
+        page: String(page),
+        include_adult: adult
+    });
+
     return fetchApi<DataShema<MovieShema | TVShowShema | PersonShema>>(
-        `search/${ type }?query=${ query }&page=${ page }&include_adult=${ adult }`,
+        `search/${ type }?${ params.toString() }`,
         locale
     );
 };
