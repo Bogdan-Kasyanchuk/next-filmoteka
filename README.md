@@ -1,36 +1,78 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Filmoteka
 
-## Getting Started
+Каталог фільмів, серіалів та персон на базі [TMDB API](https://www.themoviedb.org/documentation/api). Побудовано на Next.js 16 (App Router) з React 19 та повною підтримкою двох мов (`en`, `uk`).
 
-First, run the development server:
+## Стек
+
+- **Next.js 16** (App Router, Server Components)
+- **React 19** з увімкненим React Compiler
+- **TypeScript** (`strict: true`)
+- **next-intl** — інтернаціоналізація (`en`/`uk`)
+- **TanStack Query** — кешування та стан запитів на клієнті
+- **Tailwind CSS 4** + власні CSS-модулі за фічами
+- **TMDB API** як джерело даних (через власний серверний проксі)
+
+## Можливості
+
+- Список і фільтрація фільмів, серіалів та персон із пагінацією
+- Детальні сторінки фільму/серіалу/персони, сезони серіалів, схожі тайтли, рекомендації
+- Пошук за фільмами, серіалами та персонами
+- Розділ Trending (день/тиждень)
+- Локалізація інтерфейсу (українська/англійська)
+- Серверний проксі до TMDB API (`src/app/api/tmdb/[...path]`) з allow-list дозволених шляхів і rate limiting — ключ API ніколи не потрапляє на клієнт
+
+## Початок роботи
+
+Встановіть залежності (проєкт використовує Yarn):
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+yarn install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Створіть `.env.local` на основі `.env.example` і вкажіть свій TMDB API-ключ:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+API_KEY=your_tmdb_api_key
+NEXT_PUBLIC_APP_URL=http://localhost:3000
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Запустіть dev-сервер:
 
-## Learn More
+```bash
+yarn dev
+```
 
-To learn more about Next.js, take a look at the following resources:
+Відкрийте [http://localhost:3000](http://localhost:3000).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Скрипти
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+| Команда                 | Опис                                    |
+| ------------------------ | ---------------------------------------- |
+| `yarn dev`                | Запуск дев-сервера                       |
+| `yarn build`               | Продакшн-збірка                          |
+| `yarn start`               | Запуск продакшн-збірки                   |
+| `yarn lint`                | Лінт JS/TS (`next lint`)                 |
+| `yarn typecheck`           | Перевірка типів (`tsc --noEmit`)         |
+| `yarn stylelint`           | Лінт CSS                                 |
+| `yarn stylelint:fix`       | Лінт CSS з автовиправленням              |
 
-## Deploy on Vercel
+## Структура проєкту
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```
+src/
+├── app/                # Роути App Router, включно з [locale]-групою та api/tmdb-проксі
+├── components/
+│   ├── app/             # Фічеві компоненти (Header, Footer, Videos, Reviews, ...)
+│   └── ui/               # Перевикористовувані UI-примітиви (картки, форми, типографіка)
+├── services/
+│   ├── tmdb/             # Клієнт TMDB API
+│   └── i18n/             # Налаштування next-intl (routing, navigation, request)
+├── helpers/             # Допоміжні функції (query keys, URL, трансформація даних)
+├── hooks/               # Кастомні React-хуки
+├── messages/            # Переклади (en.json, uk.json)
+└── styles/              # Глобальні стилі та Tailwind-конфігурація
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Деплой
+
+Проєкт задеплоєний на [Netlify](https://www.netlify.com/). Врахуйте, що API-роути виконуються як окремі serverless-інстанси — вбудований in-memory rate limiting у `src/app/api/tmdb/[...path]/route.ts` діє в межах одного інстансу, а не глобально.
