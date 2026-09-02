@@ -23,8 +23,8 @@ export default (props: Props): Metadata => ({
         languages: generateLanguages(props.path)
     },
     robots: {
-        'index': props.index ?? true,
-        'follow': props.follow ?? true,
+        'index': props.index ?? false,
+        'follow': props.follow ?? false,
         'max-snippet': -1,
         'max-video-preview': -1,
         'max-image-preview': 'large'
