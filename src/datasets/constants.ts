@@ -18,6 +18,8 @@ export const IMG_SIZES = {
     SEASON_COVER: 'w154',
     SEASON_DETAILS_COVER: 'w92',
     EPISODE_COVER: 'w300',
+    EPISODE_DETAILS_COVER: 'w780',
+    EPISODE_IMAGE: 'w300',
     CAST_COVER: 'w180_and_h180_face',
     CREW_COVER: 'w180_and_h180_face',
     CREATOR_AVATAR: 'w50_and_h50_face',

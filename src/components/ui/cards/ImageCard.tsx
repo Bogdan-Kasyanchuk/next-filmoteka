@@ -10,19 +10,20 @@ import { ImageMapper } from '@/types';
 
 type Props = {
     image: ImageMapper,
-    alt: string
+    alt: string,
+    size?: string
 };
 
 export default function ImageCard(props: Props) {
     const t = useExtracted();
-        
+
     return (
         <div className="c-image-card">
             <div className="c-image-card__cover">
                 <Image
                     src={
                         props.image.file_path
-                            ? imageUrl(IMG_SIZES.PERSON_IMAGE, props.image.file_path)
+                            ? imageUrl(props.size || IMG_SIZES.PERSON_IMAGE, props.image.file_path)
                             : '/img/avatar-placeholder.svg'
                     }
                     sizes="174px"

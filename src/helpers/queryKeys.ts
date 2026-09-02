@@ -7,7 +7,13 @@ export const generalQueryKeys = {
         id: string,
         locale: string
     ) => [ 'recommendations', type, id, locale ],
-    videos: (type: MediaType, id: string, locale: string) => [ 'videos', type, id, locale ],
+    videos: (
+        type: MediaType,
+        id: string,
+        locale: string,
+        season?: number,
+        episode?: number
+    ) => [ 'videos', type, id, season, episode, locale ],
     reviews: (type: MediaType, id: string, locale: string) => [ 'reviews', type, id, locale ],
     company: (id: string, locale: string) => [ 'company', id, locale ],
     network: (id: string, locale: string) => [ 'network', id, locale ],
@@ -67,5 +73,11 @@ export const tvShowsQueryKeys = {
         page: number,
         locale: string
     ) => [ 'tv-shows', id, 'similar', page, locale ],
-    seasonById: (id: string, season: number, locale: string) => [ 'tv-shows', id, season, locale ]
+    seasonById: (id: string, season: number, locale: string) => [ 'tv-shows', id, season, locale ],
+    episodeById: (
+        id: string,
+        season: number,
+        episode: number,
+        locale: string
+    ) => [ 'tv-shows', id, season, episode, locale ]
 };

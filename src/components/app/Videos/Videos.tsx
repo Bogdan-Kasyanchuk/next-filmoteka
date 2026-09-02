@@ -15,14 +15,23 @@ import Wrapper from './Wrapper';
 type Props = {
     type: MediaType.MOVIE | MediaType.TV_SHOW,
     id: string
+} | {
+    type: MediaType.EPISODE,
+    id: string,
+    season: number,
+    episode: number
 };
 
 export default function Videos(props: Props) {
     const locale = useLocale();
-    
+
     const { data, isError } = useSuspenseQuery({
-        queryKey: generalQueryKeys.videos(props.type, props.id, locale),
-        queryFn: () => getVideos(props.type, props.id, locale),
+        queryKey: props.type === MediaType.EPISODE
+            ? generalQueryKeys.videos(props.type, props.id, locale, props.season, props.episode)
+            : generalQueryKeys.videos(props.type, props.id, locale),
+        queryFn: () => props.type === MediaType.EPISODE
+            ? getVideos(props.type, props.id, locale, props.season, props.episode)
+            : getVideos(props.type, props.id, locale),
         select: data => {
             if (!data.results.length) {
                 return null;  

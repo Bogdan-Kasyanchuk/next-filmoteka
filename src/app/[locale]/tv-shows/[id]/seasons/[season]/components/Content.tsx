@@ -70,6 +70,8 @@ export default function Content(props: Props) {
                             <li key={ index }>
                                 <EpisodeCard
                                     episode={ episode }
+                                    tvShowId={ props.id }
+                                    season={ props.season }
                                     preload={ index < 6 }
                                 />
                             </li>

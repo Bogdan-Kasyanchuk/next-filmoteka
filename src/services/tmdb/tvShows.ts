@@ -5,6 +5,7 @@ import { MediaType, TVShowType } from '@/enums';
 import {
     CurrentTVShowShema,
     DataShema,
+    EpisodeDetailsShema,
     SeasonDetailsShema,
     SimilarTVShowShema,
     TVShowDetailsShema,
@@ -44,3 +45,15 @@ export const getTVShowSeasonByNumber = async (seriesId: string, number: number, 
         locale
     );
 };
+
+export const getTVShowEpisodeByNumber = cache(async (
+    seriesId: string,
+    season: number,
+    episode: number,
+    locale: Locale
+) => {
+    return fetchApi<EpisodeDetailsShema>(
+        `${ MediaType.TV_SHOW }/${ seriesId }/season/${ season }/episode/${ episode }?append_to_response=images`,
+        locale
+    );
+});

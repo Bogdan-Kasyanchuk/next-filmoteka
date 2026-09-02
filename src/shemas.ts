@@ -259,6 +259,26 @@ export type EpisodeShema = {
     guest_stars: Omit<CastShema, 'cast_id'>[]
 };
 
+export type EpisodeDetailsShema = {
+    air_date: string,
+    episode_number: number,
+    episode_type: EpisodeType,
+    id: number,
+    name: string,
+    overview: string,
+    production_code: string,
+    runtime: number,
+    season_number: number,
+    still_path: string,
+    vote_average: number,
+    vote_count: number,
+    crew: CrewShema[],
+    guest_stars: Omit<CastShema, 'cast_id'>[],
+    images: {
+        stills: ImageShema[]
+    }
+};
+
 export type SeasonShema = {
     air_date: string,
     episode_count: number,

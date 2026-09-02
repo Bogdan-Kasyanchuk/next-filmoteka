@@ -18,6 +18,12 @@ export const pagesTVShowUrl = (id: string) => `/tv-shows/${ id }`;
 
 export const pagesSeasonUrl = (tvShowId: string, season: number) => `/tv-shows/${ tvShowId }/seasons/${ season }`;
 
+export const pagesEpisodeUrl = (
+    tvShowId: string,
+    season: number,
+    episode: number
+) => `/tv-shows/${ tvShowId }/seasons/${ season }/episodes/${ episode }`;
+
 export const pagesPersonsUrl = () => '/persons';
 
 export const pagesPersonUrl = (id: string) => `/persons/${ id }`;

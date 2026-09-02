@@ -7,10 +7,14 @@ import Popover from '@/components/ui/data-display/Popover';
 import { IMG_SIZES } from '@/datasets/constants';
 import { PLACEHOLDERS } from '@/datasets/placeholders';
 import { imageUrl } from '@/helpers/externalUrls';
+import { pagesEpisodeUrl } from '@/routes';
+import { Link } from '@/services/i18n/navigation';
 import { EpisodeMapper } from '@/types';
 
 type Props = {
     episode: EpisodeMapper,
+    tvShowId: string,
+    season: number,
     preload?: boolean
 };
 
@@ -18,9 +22,16 @@ export default function EpisodeCard(props: Props) {
     const format = useFormatter();
 
     const t = useExtracted();
-        
+
     return (
         <div className="c-episode-card">
+            <Link
+                href={ pagesEpisodeUrl(props.tvShowId, props.season, props.episode.episode_number) }
+                className="c-episode-card__link"
+            >
+                <span className="sr-only">{ props.episode.name }</span>
+            </Link>
+
             <div className="c-episode-card__cover">
                 <Image
                     src={

@@ -84,6 +84,23 @@ export type EpisodeMapper = {
     vote_count: number
 };
 
+export type EpisodeDetailsMapper = {
+    episode: {
+        air_date: Date | null,
+        episode_number: number,
+        episode_type: EpisodeType,
+        name: string,
+        overview: string,
+        runtime: number,
+        still_path: string,
+        vote_average: number,
+        vote_count: number
+    },
+    guest_stars: CastMapper[],
+    crew: CrewMapper[],
+    images: ImageMapper[]
+};
+
 export type SeasonMapper = {
     air_date: Date | null,
     episode_count: number,

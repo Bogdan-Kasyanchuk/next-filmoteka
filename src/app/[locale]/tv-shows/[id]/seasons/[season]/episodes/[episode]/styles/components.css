@@ -1,0 +1,5 @@
+@import '@/styles/components/persons.css';
+@import '@/styles/components/videos.css';
+@import '@/styles/components/cards/person-card.css';
+@import '@/styles/components/cards/image-card.css';
+@import '@/styles/components/cards/video-card.css';

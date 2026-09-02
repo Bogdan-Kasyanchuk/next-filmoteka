@@ -14,6 +14,7 @@ import {
     CrewShema,
     CurrentMovieShema,
     CurrentTVShowShema,
+    EpisodeDetailsShema,
     EpisodeShema,
     ImageShema,
     MediaCastShema,
@@ -38,6 +39,7 @@ import {
     CrewMapper,
     CurrentMovieMapper,
     CurrentTVShowMapper,
+    EpisodeDetailsMapper,
     EpisodeMapper,
     ImageMapper,
     MediaCastMapper,
@@ -234,6 +236,15 @@ export const transformTVShowSeasonDetails = (
     episodes: season.episodes.map(transformEpisode)
 });
 
+export const transformTVShowEpisodeDetails = (
+    episode: EpisodeDetailsShema
+): EpisodeDetailsMapper => ({
+    episode: transformEpisode(episode),
+    guest_stars: episode.guest_stars.map(transformCast),
+    crew: episode.crew.map(transformCrew),
+    images: episode.images.stills.map(transformImage)
+});
+
 export const transformPerson = (
     person: PersonShema
 ): PersonMapper => ({
@@ -323,7 +334,7 @@ const transformSeason = (
 });
 
 const transformEpisode = (
-    episode: EpisodeShema
+    episode: Omit<EpisodeShema, 'show_id'>
 ): EpisodeMapper => ({
     air_date: episode.air_date ? new Date(episode.air_date) : null,
     episode_number: episode.episode_number,
@@ -337,7 +348,7 @@ const transformEpisode = (
 });
 
 const transformCast = (
-    cast: CastShema
+    cast: Omit<CastShema, 'cast_id'>
 ): CastMapper => ({
     id: normalizeId(cast.id),
     name: cast.name || cast.original_name,

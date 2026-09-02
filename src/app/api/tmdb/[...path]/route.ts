@@ -14,6 +14,8 @@ const ALLOWED_PATH_PATTERNS = [
     /^tv\/\d+$/,
     /^tv\/\d+\/(similar|recommendations|reviews|videos)$/,
     /^tv\/\d+\/season\/\d+$/,
+    /^tv\/\d+\/season\/\d+\/episode\/\d+$/,
+    /^tv\/\d+\/season\/\d+\/episode\/\d+\/videos$/,
     /^person\/popular$/,
     /^person\/\d+$/,
     /^trending\/(all|movie|tv|person)\/(day|week)$/,

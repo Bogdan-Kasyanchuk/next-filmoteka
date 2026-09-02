@@ -69,13 +69,31 @@ export const getReviews = async (
     );
 };
 
-export const getVideos = async (
+export function getVideos(
     type: MediaType.MOVIE | MediaType.TV_SHOW,
     id: string,
     locale: Locale
-) => {
-    return fetchApi<VideosShema>(`${ type }/${ id }/videos`, locale);
-};
+): Promise<VideosShema>;
+export function getVideos(
+    type: MediaType.EPISODE,
+    id: string,
+    locale: Locale,
+    season: number,
+    episode: number
+): Promise<VideosShema>;
+export function getVideos(
+    type: MediaType.MOVIE | MediaType.TV_SHOW | MediaType.EPISODE,
+    id: string,
+    locale: Locale,
+    season?: number,
+    episode?: number
+) {
+    const path = type === MediaType.EPISODE
+        ? `${ MediaType.TV_SHOW }/${ id }/season/${ season }/episode/${ episode }/videos`
+        : `${ type }/${ id }/videos`;
+
+    return fetchApi<VideosShema>(path, locale);
+}
 
 export const getNetworkById = async (id: string, locale: Locale) => {
     return fetchApi<NetworkDetailsShema>(`network/${ id }`, locale);

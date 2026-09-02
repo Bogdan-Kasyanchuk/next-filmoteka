@@ -9,6 +9,12 @@
 
     background-color: var(--color-secondary);
 
+    &__link {
+        position: absolute;
+        z-index: 1;
+        inset: 0;
+    }
+
     &__cover {
         position: relative;
         aspect-ratio: 300/169;
@@ -83,6 +89,7 @@
 
         &-trigger {
             position: absolute;
+            z-index: 2;
             top: 5px;
             inset-inline-end: 5px;
 
