@@ -7,8 +7,8 @@
         background-color: currentcolor;
 
         mask-image: var(--icon-path);
-        mask-position: center;
         mask-repeat: no-repeat;
+        mask-position: center;
         mask-size: contain;
     }
 

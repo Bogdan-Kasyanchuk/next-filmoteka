@@ -6,7 +6,7 @@
         "dev": "next dev",
         "build": "next build",
         "start": "next start",
-        "lint": "next lint",
+        "lint": "eslint .",
         "typecheck": "tsc --noEmit",
         "stylelint": "stylelint \"src/**/*.css\"",
         "stylelint:fix": "stylelint \"src/**/*.css\" --fix"
@@ -48,6 +48,7 @@
         "stylelint-config-clean-order": "^7.0.0",
         "stylelint-config-standard": "^37.0.0",
         "stylelint-config-tailwindcss": "^1.0.0",
+        "stylelint-order": "^8.1.1",
         "tailwindcss": "^4",
         "typescript": "^5"
     }
