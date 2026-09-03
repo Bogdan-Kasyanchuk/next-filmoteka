@@ -31,7 +31,7 @@ export default function Search() {
             params.delete('query');
         }
 
-        push(buildUrl(`${ getPathname({ locale, href: pagesSearchUrl() }) }/page/1/`, params));
+        push(buildUrl(`${ getPathname({ locale, href: pagesSearchUrl() }) }/page/1`, params));
     }, [ debouncedTerm ]);
 
     return (

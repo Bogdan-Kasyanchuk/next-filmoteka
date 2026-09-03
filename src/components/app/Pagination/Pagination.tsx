@@ -30,7 +30,7 @@ export default function Pagination(props: Props) {
         const params = new URLSearchParams(searchParams);
 
         return withBaseUrl(buildUrl)(
-            getPathname({ locale, href: `${ props.path }/page/${ page }/` }), params
+            getPathname({ locale, href: `${ props.path }/page/${ page }` }), params
         );
     };
 
