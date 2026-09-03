@@ -22,7 +22,7 @@ export const getTVShows = async (type: TVShowType, page: number, locale: Locale)
 
 export const getTVShowById = cache(async (id: string, locale: Locale) => {
     return fetchApi<TVShowDetailsShema>(
-        `${ MediaType.TV_SHOW }/${ id }?append_to_response=credits,external_ids`,
+        `${ MediaType.TV_SHOW }/${ id }?append_to_response=credits,external_ids,videos`,
         locale
     );
 });

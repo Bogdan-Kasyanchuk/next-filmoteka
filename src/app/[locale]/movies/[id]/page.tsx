@@ -6,7 +6,6 @@ import { Suspense } from 'react';
 
 import { RecommendationsSkeleton } from '@/components/app/Recommendations';
 import Reviews, { ReviewsSkeleton } from '@/components/app/Reviews';
-import Videos, { VideosSkeleton } from '@/components/app/Videos';
 import Container from '@/components/ui/layouts/Container';
 import { MediaType } from '@/enums';
 import { moviesQueryKeys } from '@/helpers/queryKeys';
@@ -82,13 +81,6 @@ export default async function Page(props: Props) {
             </HydrationBoundary>
 
             <Container className="p-movie__container">
-                <Suspense fallback={ <VideosSkeleton /> }>
-                    <Videos
-                        type={ MediaType.MOVIE }
-                        id={ params.id }
-                    />
-                </Suspense>
-                            
                 <Suspense fallback={ <RecommendationsSkeleton /> }>
                     <Recommendations id={ params.id } />
                 </Suspense>

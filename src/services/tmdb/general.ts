@@ -8,8 +8,7 @@ import {
     NetworkDetailsShema,
     PersonShema,
     ReviewShema,
-    TVShowShema,
-    VideosShema
+    TVShowShema
 } from '@/shemas';
 import { Adult } from '@/types';
 
@@ -67,14 +66,6 @@ export const getReviews = async (
         `${ type }/${ id }/reviews?page=${ page }`,
         locale
     );
-};
-
-export const getVideos = async (
-    type: MediaType.MOVIE | MediaType.TV_SHOW,
-    id: string,
-    locale: Locale
-) => {
-    return fetchApi<VideosShema>(`${ type }/${ id }/videos`, locale);
 };
 
 export const getNetworkById = async (id: string, locale: Locale) => {

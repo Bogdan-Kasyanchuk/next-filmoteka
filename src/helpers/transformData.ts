@@ -1,4 +1,4 @@
-import { MediaType } from '@/enums';
+import { MediaType, VideoSiteType, VideoType } from '@/enums';
 import {
     facebookUrl,
     imdbUrl,
@@ -115,7 +115,8 @@ export const transformMovieDetails = (
         socialLinks: transformMovieOrTVShowExternalIds(movie.external_ids)
     },
     cast: movie.credits.cast.map(transformCast),
-    crew: movie.credits.crew.map(transformCrew)
+    crew: movie.credits.crew.map(transformCrew),
+    videos: transformVideos(movie.videos.results)
 });
 
 export const transformCurrentMovie = (
@@ -206,7 +207,8 @@ export const transformTVShowDetails = (
     },
     seasons: tvShow.seasons.map(transformSeason),
     cast: tvShow.credits.cast.map(transformCast),
-    crew: tvShow.credits.crew.map(transformCrew)
+    crew: tvShow.credits.crew.map(transformCrew),
+    videos: transformVideos(tvShow.videos.results)
 });
 
 export const transformCurrentTVShow = (
@@ -302,15 +304,6 @@ export const transformCompanyDetails = (
             : company.parent_company.name
 });
 
-export const transformVideo = (
-    video: VideoShema
-): VideoMapper => ({
-    name: video.name,
-    key: video.key,
-    type: video.type,
-    published_at: video.published_at
-});
-
 const transformSeason = (
     season: SeasonShema
 ): SeasonMapper => ({
@@ -355,6 +348,24 @@ const transformCrew = (
     profile_path: crew.profile_path,
     job: crew.job
 });
+
+const transformVideo = (
+    video: VideoShema
+): VideoMapper => ({
+    name: video.name,
+    key: video.key,
+    type: video.type,
+    published_at: video.published_at
+});
+
+const transformVideos = (
+    videos: VideoShema[]
+): VideoMapper[] => videos
+    .filter(
+        video => video.site === VideoSiteType.YOUTUBE &&
+            (video.type === VideoType.TRAILER || video.type === VideoType.CLIP)
+    )
+    .map(transformVideo);
 
 const transformMediaCast = (
     media: MediaCastShema
