@@ -8,7 +8,7 @@ export const PARAMETERS = {
         uk: 'uk-UA'
     },
     ZONE: 'Europe/Kyiv'
-};
+} as const;
 
 export const IMG_SIZES = {
     MEDIA_COVER: 'w342',
@@ -31,7 +31,7 @@ export const IMG_SIZES = {
     PERSON_IMAGE: 'w185',
     MEDIA_CAST_COVER: 'w92',
     MEDIA_CREW_COVER: 'w92'
-};
+} as const;
 
 export const URLS = {
     YOUTUBE_EMBED: 'https://www.youtube.com/embed',
@@ -42,4 +42,4 @@ export const URLS = {
     TWITTER: 'https://x.com',
     WIKIDATA: 'https://www.wikidata.org/wiki',
     YOUTUBE: 'https://www.youtube.com'
-};
+} as const;

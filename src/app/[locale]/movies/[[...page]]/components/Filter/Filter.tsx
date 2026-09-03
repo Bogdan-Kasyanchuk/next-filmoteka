@@ -52,7 +52,7 @@ export default function Filter(props: Props) {
         
         params.set('type', type);
 
-        push(buildUrl(`${ getPathname({ locale, href: pagesMoviesUrl() }) }/page/1/`, params));
+        push(buildUrl(`${ getPathname({ locale, href: pagesMoviesUrl() }) }/page/1`, params));
     };
 
     return (

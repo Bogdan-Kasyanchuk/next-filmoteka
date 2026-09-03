@@ -55,7 +55,7 @@ export default function Filter(props: Props) {
     
         params.set(key, value);
             
-        push(buildUrl(`${ getPathname({ locale, href: pagesSearchUrl() }) }/page/1/`, params));
+        push(buildUrl(`${ getPathname({ locale, href: pagesSearchUrl() }) }/page/1`, params));
     };
     
     return (
