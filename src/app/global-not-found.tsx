@@ -35,7 +35,7 @@ export default function GlobalNotFound() {
 
                         <Link
                             href={ pagesHomeUrl() }
-                            className="flex items-center justify-center text-lg px-4 py-2 w-fit min-h-[50px] mt-5 rounded-sm bg-active text-secondary uppercase min-w-[300px] font-bold transition-opacity hover:opacity-75"
+                            className="flex items-center justify-center text-lg px-4 py-2 w-fit min-h-12.5 mt-5 rounded-sm bg-active text-secondary uppercase min-w-75 font-bold transition-opacity hover:opacity-75"
                         >
                             Back to home page
                         </Link>

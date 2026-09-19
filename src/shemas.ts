@@ -101,11 +101,6 @@ export type DataShema<Type> = {
     total_results: number
 };
 
-export type VideosShema = {
-    id: string,
-    results: VideoShema[]
-};
-
 export type MovieShema = {
     adult: boolean,
     backdrop_path: string,
@@ -157,10 +152,13 @@ export type MovieDetailsShema = {
         cast: CastShema[],
         crew: CrewShema[]
     },
-    external_ids: ExternalIdShema
+    external_ids: ExternalIdShema,
+    videos: {
+        results: VideoShema[]
+    }
 };
 
-export type CurrentMovieShema = Omit<MovieDetailsShema, 'credits' | 'external_ids'>;
+export type CurrentMovieShema = Omit<MovieDetailsShema, 'credits' | 'external_ids' | 'videos'>;
 
 export type TVShowShema = {
     adult: boolean,
@@ -224,10 +222,13 @@ export type TVShowDetailsShema = {
         freebase_id: string,
         tvdb_id: number,
         tvrage_id: number
+    },
+    videos: {
+        results: VideoShema[]
     }
 };
 
-export type CurrentTVShowShema = Omit<TVShowDetailsShema, 'seasons' | 'credits' | 'external_ids'>;
+export type CurrentTVShowShema = Omit<TVShowDetailsShema, 'seasons' | 'credits' | 'external_ids' | 'videos'>;
 
 export type SeasonDetailsShema = {
     _id: string,

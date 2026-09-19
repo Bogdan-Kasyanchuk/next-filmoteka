@@ -21,7 +21,7 @@ export const getMovies = async (type: MovieType, page: number, locale: Locale) =
 
 export const getMovieById = cache(async (id: string, locale: Locale) => {
     return fetchApi<MovieDetailsShema>(
-        `${ MediaType.MOVIE }/${ id }?append_to_response=credits,external_ids`,
+        `${ MediaType.MOVIE }/${ id }?append_to_response=credits,external_ids,videos`,
         locale
     );
 });

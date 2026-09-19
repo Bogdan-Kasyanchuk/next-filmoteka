@@ -7,7 +7,6 @@ export const generalQueryKeys = {
         id: string,
         locale: string
     ) => [ 'recommendations', type, id, locale ],
-    videos: (type: MediaType, id: string, locale: string) => [ 'videos', type, id, locale ],
     reviews: (type: MediaType, id: string, locale: string) => [ 'reviews', type, id, locale ],
     company: (id: string, locale: string) => [ 'company', id, locale ],
     network: (id: string, locale: string) => [ 'network', id, locale ],

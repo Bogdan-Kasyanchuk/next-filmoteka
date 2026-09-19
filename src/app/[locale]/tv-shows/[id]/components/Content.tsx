@@ -4,6 +4,7 @@ import { useQuery } from '@tanstack/react-query';
 import { useExtracted, useLocale } from 'next-intl';
 
 import Persons from '@/components/app/Persons';
+import Videos from '@/components/app/Videos';
 import CastCard from '@/components/ui/cards/CastCard';
 import CrewCard from '@/components/ui/cards/CrewCard';
 import Loader from '@/components/ui/data-display/Loader';
@@ -46,7 +47,7 @@ export default function Content(props: Props) {
             />
 
             {
-                (data.seasons.length > 0 || data.cast.length > 0 || data.crew.length > 0) &&
+                (data.seasons.length > 0 || data.videos.length > 0 || data.cast.length > 0 || data.crew.length > 0) &&
                 <Container className="p-tv-show__container">
                     {
                         data.seasons.length > 0 &&
@@ -54,6 +55,11 @@ export default function Content(props: Props) {
                             seasons={ data.seasons }
                             tvShowId={ props.id }
                         />
+                    }
+
+                    {
+                        data.videos.length > 0 &&
+                        <Videos videos={ data.videos } />
                     }
 
                     {
