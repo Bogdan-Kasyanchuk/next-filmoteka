@@ -1,13 +1,14 @@
 import { HydrationBoundary, QueryClient, dehydrate } from '@tanstack/react-query';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { getExtracted, getLocale } from 'next-intl/server';
+import { Locale } from 'next-intl';
+import { getExtracted, setRequestLocale } from 'next-intl/server';
 
 import { tvShowsQueryKeys } from '@/helpers/queryKeys';
 import { pagesSeasonUrl } from '@/routes';
 import { getCurrentTVShowById, getTVShowSeasonByNumber } from '@/services/tmdb/tvShows';
-import { CurrentTVShowShema, SeasonDetailsShema } from '@/shemas';
 import generateMetaTags from '@/utils/generateMetaTags';
+import withNotFound from '@/utils/withNotFound';
 
 import Content from './components/Content';
 
@@ -15,20 +16,30 @@ import './styles/index.css';
 
 type Props = {
     params: Promise<{
+        locale: Locale,
         id: string,
         season: string
     }>
 };
 
+const isInvalidSeason = (season: string) => !/^(0|[1-9]\d*)$/.test(season);
+
+// rendered on first request, then served from the cache and revalidated with the data
+export function generateStaticParams() {
+    return [];
+}
+
 export async function generateMetadata(props: Props): Promise<Metadata> {
-    const [ locale, params ] = await Promise.all([
-        getLocale(),
-        props.params
-    ]);
+    const params = await props.params;
+    const { locale } = params;
 
-    const t = await getExtracted();
+    if (isInvalidSeason(params.season)) {
+        notFound();
+    }
 
-    const data = await getCurrentTVShowById(params.id, locale);
+    const t = await getExtracted({ locale });
+
+    const data = await withNotFound(getCurrentTVShowById(params.id, locale));
 
     const title = data.name || data.original_name;
 
@@ -39,19 +50,6 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
                 season: params.season,
                 title: title
             }),
-            keywords: [
-                title,
-                t('cast of {title}', { title }),
-                t('cast of {title}', { title }),
-                t('season {season} of the {title}', {
-                    season: params.season,
-                    title: title
-                }),
-                t('episodes of season {season} of the {title}', {
-                    season: params.season,
-                    title: title
-                })
-            ],
             path: pagesSeasonUrl(params.id, Number(params.season)),
             locale
         }
@@ -59,41 +57,33 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
 }
 
 export default async function Page(props: Props) {
-    const [ locale, params ] = await Promise.all([
-        getLocale(),
-        props.params
-    ]);
+    const params = await props.params;
+    const { locale } = params;
+
+    setRequestLocale(locale);
+
+    if (isInvalidSeason(params.season)) {
+        notFound();
+    }
 
     const season = Number(params.season);
 
     const queryClient = new QueryClient();
 
-    await Promise.all([
-        await queryClient.prefetchQuery(
+    await withNotFound(Promise.all([
+        queryClient.fetchQuery(
             {
                 queryKey: tvShowsQueryKeys.currentTvShowById(params.id, locale),
                 queryFn: () => getCurrentTVShowById(params.id, locale)
             }
         ),
-        await queryClient.prefetchQuery(
+        queryClient.fetchQuery(
             {
                 queryKey: tvShowsQueryKeys.seasonById(params.id, season, locale),
                 queryFn: () => getTVShowSeasonByNumber(params.id, season, locale)
             }
         )
-    ]);
-
-    const tvShowData = queryClient.getQueryData<CurrentTVShowShema>(
-        tvShowsQueryKeys.currentTvShowById(params.id, locale)
-    );
-        
-    const seasonData = queryClient.getQueryData<SeasonDetailsShema>(
-        tvShowsQueryKeys.seasonById(params.id, season, locale)
-    );
-                        
-    if (!tvShowData || !seasonData) {
-        notFound();
-    }
+    ]));
 
     return (
         <HydrationBoundary state={ dehydrate(queryClient) }>

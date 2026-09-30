@@ -1,0 +1,276 @@
+- generic [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - link "Logo Filmoteka" [ref=e4] [cursor=pointer]:
+        - /url: /
+        - img "Logo" [ref=e5]
+        - generic [ref=e6]: Filmoteka
+      - button "Language switcher" [ref=e7] [cursor=pointer]: en
+      - navigation [ref=e8]:
+        - list [ref=e9]:
+          - listitem [ref=e10]:
+            - button "Icon Search" [ref=e11] [cursor=pointer]:
+              - img "Icon" [ref=e12]
+              - generic [ref=e13]: Search
+          - listitem [ref=e14]:
+            - link "Icon Movies" [ref=e15] [cursor=pointer]:
+              - /url: /movies
+              - img "Icon" [ref=e16]
+              - generic [ref=e17]: Movies
+          - listitem [ref=e18]:
+            - link "Icon TV Shows" [active] [ref=e19] [cursor=pointer]:
+              - /url: /tv-shows
+              - img "Icon" [ref=e20]
+              - generic [ref=e21]: TV Shows
+          - listitem [ref=e22]:
+            - link "Icon Persons" [ref=e23] [cursor=pointer]:
+              - /url: /persons
+              - img "Icon" [ref=e24]
+              - generic [ref=e25]: Persons
+  - main [ref=e26]:
+    - heading "Filmoteka" [level=1] [ref=e27]
+    - generic [ref=e615]:
+      - list [ref=e617]:
+        - listitem: Airing today
+        - listitem [ref=e618] [cursor=pointer]: On the air
+        - listitem [ref=e619] [cursor=pointer]: Popular
+        - listitem [ref=e620] [cursor=pointer]: Top rated
+      - heading "TV Shows airing today" [level=2] [ref=e621]
+      - generic [ref=e622]:
+        - list [ref=e623]:
+          - listitem [ref=e624]:
+            - generic [ref=e625]:
+              - img "Watch What Happens Live with Andy Cohen" [ref=e627]
+              - generic [ref=e628]:
+                - generic [ref=e629]: TV
+                - generic [ref=e630]: "2009"
+                - generic [ref=e631]: 50%
+              - link "Watch What Happens Live with Andy Cohen" [ref=e633] [cursor=pointer]:
+                - /url: /tv-shows/22980
+          - listitem [ref=e634]:
+            - generic [ref=e635]:
+              - img "The Tonight Show Starring Jimmy Fallon" [ref=e637]
+              - generic [ref=e638]:
+                - generic [ref=e639]: TV
+                - generic [ref=e640]: "2014"
+                - generic [ref=e641]: 58%
+              - link "The Tonight Show Starring Jimmy Fallon" [ref=e643] [cursor=pointer]:
+                - /url: /tv-shows/59941
+          - listitem [ref=e644]:
+            - generic [ref=e645]:
+              - img "Late Night with Seth Meyers" [ref=e647]
+              - generic [ref=e648]:
+                - generic [ref=e649]: TV
+                - generic [ref=e650]: "2014"
+                - generic [ref=e651]: 51%
+              - link "Late Night with Seth Meyers" [ref=e653] [cursor=pointer]:
+                - /url: /tv-shows/61818
+          - listitem [ref=e654]:
+            - generic [ref=e655]:
+              - img "The Daily Show" [ref=e657]
+              - generic [ref=e658]:
+                - generic [ref=e659]: TV
+                - generic [ref=e660]: "1996"
+                - generic [ref=e661]: 64%
+              - link "The Daily Show" [ref=e663] [cursor=pointer]:
+                - /url: /tv-shows/2224
+          - listitem [ref=e664]:
+            - generic [ref=e665]:
+              - img "Goede Tijden, Slechte Tijden" [ref=e667]
+              - generic [ref=e668]:
+                - generic [ref=e669]: TV
+                - generic [ref=e670]: "1990"
+                - generic [ref=e671]: 53%
+              - link "Goede Tijden, Slechte Tijden" [ref=e673] [cursor=pointer]:
+                - /url: /tv-shows/11890
+          - listitem [ref=e674]:
+            - generic [ref=e675]:
+              - img "Tomorrow Is Ours" [ref=e677]
+              - generic [ref=e678]:
+                - generic [ref=e679]: TV
+                - generic [ref=e680]: "2017"
+                - generic [ref=e681]: 62%
+              - link "Tomorrow Is Ours" [ref=e683] [cursor=pointer]:
+                - /url: /tv-shows/72879
+          - listitem [ref=e684]:
+            - generic [ref=e685]:
+              - img "Ted Lasso" [ref=e687]
+              - generic [ref=e688]:
+                - generic [ref=e689]: TV
+                - generic [ref=e690]: "2020"
+                - generic [ref=e691]: 84%
+              - link "Ted Lasso" [ref=e693] [cursor=pointer]:
+                - /url: /tv-shows/97546
+          - listitem [ref=e694]:
+            - generic [ref=e695]:
+              - img "Binnelanders" [ref=e697]
+              - generic [ref=e698]:
+                - generic [ref=e699]: TV
+                - generic [ref=e700]: "2005"
+                - generic [ref=e701]: 55%
+              - link "Binnelanders" [ref=e703] [cursor=pointer]:
+                - /url: /tv-shows/206559
+          - listitem [ref=e704]:
+            - generic [ref=e705]:
+              - img "The View" [ref=e707]
+              - generic [ref=e708]:
+                - generic [ref=e709]: TV
+                - generic [ref=e710]: "1997"
+                - generic [ref=e711]: 43%
+              - link "The View" [ref=e713] [cursor=pointer]:
+                - /url: /tv-shows/2221
+          - listitem [ref=e714]:
+            - generic [ref=e715]:
+              - img "Jeopardy!" [ref=e717]
+              - generic [ref=e718]:
+                - generic [ref=e719]: TV
+                - generic [ref=e720]: "1984"
+                - generic [ref=e721]: 69%
+              - link "Jeopardy!" [ref=e723] [cursor=pointer]:
+                - /url: /tv-shows/2912
+          - listitem [ref=e724]:
+            - generic [ref=e725]:
+              - img "Good Mythical Morning" [ref=e727]
+              - generic [ref=e728]:
+                - generic [ref=e729]: TV
+                - generic [ref=e730]: "2012"
+                - generic [ref=e731]: 69%
+              - link "Good Mythical Morning" [ref=e733] [cursor=pointer]:
+                - /url: /tv-shows/65701
+          - listitem [ref=e734]:
+            - generic [ref=e735]:
+              - img "Jimmy Kimmel Live!" [ref=e737]
+              - generic [ref=e738]:
+                - generic [ref=e739]: TV
+                - generic [ref=e740]: "2003"
+                - generic [ref=e741]: 53%
+              - link "Jimmy Kimmel Live!" [ref=e743] [cursor=pointer]:
+                - /url: /tv-shows/1489
+          - listitem [ref=e744]:
+            - generic [ref=e745]:
+              - img "LIVE with Kelly and Mark" [ref=e747]
+              - generic [ref=e748]:
+                - generic [ref=e749]: TV
+                - generic [ref=e750]: "1988"
+                - generic [ref=e751]: 56%
+              - link "LIVE with Kelly and Mark" [ref=e753] [cursor=pointer]:
+                - /url: /tv-shows/1900
+          - listitem [ref=e754]:
+            - generic [ref=e755]:
+              - img "Ici tout commence" [ref=e757]
+              - generic [ref=e758]:
+                - generic [ref=e759]: TV
+                - generic [ref=e760]: "2020"
+                - generic [ref=e761]: 68%
+              - link "Ici tout commence" [ref=e763] [cursor=pointer]:
+                - /url: /tv-shows/112470
+          - listitem [ref=e764]:
+            - generic [ref=e765]:
+              - img "Against the Current" [ref=e767]
+              - generic [ref=e768]:
+                - generic [ref=e769]: TV
+                - generic [ref=e770]: "2026"
+                - generic [ref=e771]: 62%
+              - link "Against the Current" [ref=e773] [cursor=pointer]:
+                - /url: /tv-shows/282326
+          - listitem [ref=e774]:
+            - generic [ref=e775]:
+              - img "EastEnders" [ref=e777]
+              - generic [ref=e778]:
+                - generic [ref=e779]: TV
+                - generic [ref=e780]: "1985"
+                - generic [ref=e781]: 43%
+              - link "EastEnders" [ref=e783] [cursor=pointer]:
+                - /url: /tv-shows/1871
+          - listitem [ref=e784]:
+            - generic [ref=e785]:
+              - img "Dancing with the Stars" [ref=e787]
+              - generic [ref=e788]:
+                - generic [ref=e789]: TV
+                - generic [ref=e790]: "2005"
+                - generic [ref=e791]: 62%
+              - link "Dancing with the Stars" [ref=e793] [cursor=pointer]:
+                - /url: /tv-shows/1508
+          - listitem [ref=e794]:
+            - generic [ref=e795]:
+              - img "WWE NXT" [ref=e797]
+              - generic [ref=e798]:
+                - generic [ref=e799]: TV
+                - generic [ref=e800]: "2010"
+                - generic [ref=e801]: 67%
+              - link "WWE NXT" [ref=e803] [cursor=pointer]:
+                - /url: /tv-shows/31991
+          - listitem [ref=e804]:
+            - generic [ref=e805]:
+              - img "Chronicles of the Sun" [ref=e807]
+              - generic [ref=e808]:
+                - generic [ref=e809]: TV
+                - generic [ref=e810]: "2018"
+                - generic [ref=e811]: 66%
+              - link "Chronicles of the Sun" [ref=e813] [cursor=pointer]:
+                - /url: /tv-shows/81329
+          - listitem [ref=e814]:
+            - generic [ref=e815]:
+              - img "El hormiguero" [ref=e817]
+              - generic [ref=e818]:
+                - generic [ref=e819]: TV
+                - generic [ref=e820]: "2006"
+                - generic [ref=e821]: 47%
+              - link "El hormiguero" [ref=e823] [cursor=pointer]:
+                - /url: /tv-shows/6809
+        - list [ref=e825]:
+          - listitem
+          - listitem:
+            - link "1":
+              - /url: http://localhost:3000/tv-shows/page/1
+          - listitem [ref=e826]:
+            - link "2" [ref=e827] [cursor=pointer]:
+              - /url: http://localhost:3000/tv-shows/page/2
+          - listitem [ref=e828]:
+            - link "3" [ref=e829] [cursor=pointer]:
+              - /url: http://localhost:3000/tv-shows/page/3
+          - listitem [ref=e830]:
+            - link "4" [ref=e831] [cursor=pointer]:
+              - /url: http://localhost:3000/tv-shows/page/4
+          - listitem [ref=e832]:
+            - link "5" [ref=e833] [cursor=pointer]:
+              - /url: http://localhost:3000/tv-shows/page/5
+          - listitem [ref=e834]:
+            - link "6" [ref=e835] [cursor=pointer]:
+              - /url: http://localhost:3000/tv-shows/page/6
+          - listitem: ...
+          - listitem [ref=e836]:
+            - link "21" [ref=e837] [cursor=pointer]:
+              - /url: http://localhost:3000/tv-shows/page/21
+          - listitem [ref=e838]:
+            - link "22" [ref=e839] [cursor=pointer]:
+              - /url: http://localhost:3000/tv-shows/page/22
+          - listitem [ref=e840]:
+            - link "Next page" [ref=e841] [cursor=pointer]:
+              - /url: http://localhost:3000/tv-shows/page/2
+  - contentinfo [ref=e257]:
+    - generic [ref=e258]:
+      - list [ref=e259]:
+        - listitem [ref=e260]:
+          - img "Next.js" [ref=e261]
+          - link "Next.js":
+            - /url: https://nextjs.org
+        - listitem [ref=e263]:
+          - img "TailwindCSS" [ref=e264]
+          - link "TailwindCSS":
+            - /url: https://tailwindcss.com
+        - listitem [ref=e266]:
+          - img "TanStack" [ref=e267]
+          - link "TanStack":
+            - /url: https://tanstack.com
+        - listitem [ref=e269]:
+          - img "Internationalization" [ref=e270]
+          - link "Internationalization":
+            - /url: https://next-intl.dev
+      - link [ref=e272] [cursor=pointer]:
+        - /url: /
+        - img "Logo" [ref=e273]
+        - text: Filmoteka
+  - button "Open Tanstack query devtools" [ref=e324] [cursor=pointer]
+  - button "Open Next.js Dev Tools" [ref=e378] [cursor=pointer]
+  - alert [ref=e382]: Filmoteka

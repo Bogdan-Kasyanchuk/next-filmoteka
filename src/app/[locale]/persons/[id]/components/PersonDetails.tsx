@@ -11,6 +11,7 @@ import Title from '@/components/ui/typography/Title';
 import { IMG_SIZES } from '@/datasets/constants';
 import { PLACEHOLDERS } from '@/datasets/placeholders';
 import { imageUrl } from '@/helpers/externalUrls';
+import useTmdbLabels from '@/hooks/useTmdbLabels';
 import { PersonDetailsMapper } from '@/types';
 
 type Props = {
@@ -21,18 +22,22 @@ export default function PersonDetails(props: Props) {
     const format = useFormatter();
 
     const t = useExtracted();
+    const { department } = useTmdbLabels();
         
     return (
         <div className="p-person__details">
             <div className="p-person__details-backdrop">
-                <Image
-                    src={ imageUrl(IMG_SIZES.PERSON_DETAILS_COVER, props.person.profile_path) }
-                    sizes="(max-width: 767px) 768px, (max-width: 1319px) 1320px, 1920px"
-                    alt={ props.person.name }
-                    fill
-                    preload
-                    loading="eager"
-                />
+                {
+                    props.person.profile_path &&
+                    <Image
+                        src={ imageUrl(IMG_SIZES.PERSON_DETAILS_COVER, props.person.profile_path) }
+                        sizes="(max-width: 767px) 768px, (max-width: 1319px) 1320px, 1920px"
+                        alt={ props.person.name }
+                        fill
+                        preload
+                        loading="eager"
+                    />
+                }
             </div>
 
             <Container className="p-person__details-container">
@@ -83,7 +88,7 @@ export default function PersonDetails(props: Props) {
                         props.person.known_for_department &&
                         <li className="p-person__details-list-info-item">
                             <span>{ t('Department:') }</span>
-                            { props.person.known_for_department }
+                            { department(props.person.known_for_department) }
                         </li>
                     }
 
@@ -150,6 +155,8 @@ export default function PersonDetails(props: Props) {
                         <ShowMore
                             className="p-person__details-biography-text"
                             lines={ 5 }
+                            more={ t('Read more') }
+                            less={ t('Read less') }
                         >
                             { props.person.biography }
                         </ShowMore>

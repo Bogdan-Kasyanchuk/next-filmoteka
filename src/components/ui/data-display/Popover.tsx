@@ -1,3 +1,5 @@
+'use client';
+
 import { Arrow, Content, Portal, Root, Trigger } from '@radix-ui/react-popover';
 import clsx from 'clsx';
 import { PropsWithChildren, ReactNode } from 'react';

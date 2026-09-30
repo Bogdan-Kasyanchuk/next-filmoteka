@@ -1,7 +1,8 @@
 import { HydrationBoundary, QueryClient, dehydrate } from '@tanstack/react-query';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { getExtracted, getLocale } from 'next-intl/server';
+import { Locale } from 'next-intl';
+import { getExtracted, setRequestLocale } from 'next-intl/server';
 
 import Container from '@/components/ui/layouts/Container';
 import Title from '@/components/ui/typography/Title';
@@ -9,10 +10,10 @@ import { MovieType } from '@/enums';
 import { moviesQueryKeys } from '@/helpers/queryKeys';
 import { pagesMoviesUrl } from '@/routes';
 import { getMovies } from '@/services/tmdb/movies';
-import { DataShema, MovieShema } from '@/shemas';
 import generateMetaTags from '@/utils/generateMetaTags';
 import isInvalidPage from '@/utils/isInvalidPage';
 import normalizePage from '@/utils/normalizePage';
+import withNotFound from '@/utils/withNotFound';
 
 import Content from './components/Content';
 import Filter from './components/Filter';
@@ -21,19 +22,19 @@ import TitleText from './components/TitleText';
 import './styles/index.css';
 
 type Props = {
-    params: Promise<{ page?: string[] }>,
+    params: Promise<{ locale: Locale, page?: string[] }>,
     searchParams: Promise<{
         type?: MovieType
     }>
 };
 
 export async function generateMetadata(props: Props): Promise<Metadata> {
-    const [ locale, searchParams ] = await Promise.all([
-        getLocale(),
+    const [ { locale }, searchParams ] = await Promise.all([
+        props.params,
         props.searchParams
     ]);
 
-    const t = await getExtracted();
+    const t = await getExtracted({ locale });
 
     const type = searchParams.type || MovieType.NOW_PLAYING;
 
@@ -49,13 +50,6 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
         {
             title: `${ t('Movies') } | ${ normalizedType }`,
             description: t('Now playing, popular, top rated and upcoming movies.'),
-            keywords: [
-                t('now playing movies'),
-                t('popular movies'),
-                t('top rated movies'),
-                t('upcoming movies'),
-                t('movies')
-            ],
             path: pagesMoviesUrl(),
             locale
         }
@@ -63,31 +57,29 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
 }
 
 export default async function Page(props: Props) {
-    const [ locale, params, searchParams ] = await Promise.all([
-        getLocale(),
+    const [ params, searchParams ] = await Promise.all([
         props.params,
         props.searchParams
     ]);
+    const { locale } = params;
+
+    setRequestLocale(locale);
 
     const type = searchParams.type || MovieType.NOW_PLAYING;
     const page = params.page ? normalizePage(params.page[ 1 ]) : 1;
 
-    if (params.page && isInvalidPage( params.page[ 0 ], page)) {
+    if (params.page && isInvalidPage(params.page)) {
         notFound();
     }
 
     const queryClient = new QueryClient();
 
-    await queryClient.prefetchQuery({
+    const data = await withNotFound(queryClient.fetchQuery({
         queryKey: moviesQueryKeys.allMovies(type, page, locale),
         queryFn: () => getMovies(type, page, locale)
-    });
+    }));
 
-    const data = queryClient.getQueryData<DataShema<MovieShema>>(
-        moviesQueryKeys.allMovies(type, page, locale)
-    );
-            
-    if (!data || !data.results.length) {
+    if (!data.results.length) {
         notFound();
     }
 

@@ -155,10 +155,11 @@ export type MovieDetailsShema = {
     external_ids: ExternalIdShema,
     videos: {
         results: VideoShema[]
-    }
+    },
+    similar: DataShema<SimilarMovieShema>
 };
 
-export type CurrentMovieShema = Omit<MovieDetailsShema, 'credits' | 'external_ids' | 'videos'>;
+export type CurrentMovieShema = Omit<MovieDetailsShema, 'credits' | 'external_ids' | 'videos' | 'similar'>;
 
 export type TVShowShema = {
     adult: boolean,
@@ -225,10 +226,11 @@ export type TVShowDetailsShema = {
     },
     videos: {
         results: VideoShema[]
-    }
+    },
+    similar: DataShema<SimilarTVShowShema>
 };
 
-export type CurrentTVShowShema = Omit<TVShowDetailsShema, 'seasons' | 'credits' | 'external_ids' | 'videos'>;
+export type CurrentTVShowShema = Omit<TVShowDetailsShema, 'seasons' | 'credits' | 'external_ids' | 'videos' | 'similar'>;
 
 export type SeasonDetailsShema = {
     _id: string,
@@ -339,7 +341,9 @@ export type MediaCastShema = {
     overview: string,
     popularity: number,
     poster_path: string,
-    release_date: string,
+    // movies have release_date, tv shows first_air_date
+    release_date?: string,
+    first_air_date?: string,
     title: string,
     name: string,
     video: boolean,
@@ -362,7 +366,9 @@ export type MediaCrewShema = {
     overview: string,
     popularity: number,
     poster_path: string,
-    release_date: string,
+    // movies have release_date, tv shows first_air_date
+    release_date?: string,
+    first_air_date?: string,
     title: string,
     name: string,
     video: boolean,

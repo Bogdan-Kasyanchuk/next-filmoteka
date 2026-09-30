@@ -1,4 +1,4 @@
-import { Plus_Jakarta_Sans } from 'next/font/google';
+import { Manrope } from 'next/font/google';
 import Link from 'next/link';
 
 import Container from '@/components/ui/layouts/Container';
@@ -8,7 +8,7 @@ import type { Metadata } from 'next';
 
 import '@/styles/app.css';
 
-const font = Plus_Jakarta_Sans({ subsets: [ 'latin' ] });
+const font = Manrope({ subsets: [ 'latin' ] });
  
 export const metadata: Metadata = {
     title: 'Filmoteka | 404',

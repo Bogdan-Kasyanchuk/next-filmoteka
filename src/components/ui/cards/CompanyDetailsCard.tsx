@@ -49,11 +49,15 @@ export default function CompanyDetailsCard(props: Props) {
 
             {
                 props.company.description &&
-                <p className="c-company-details-card__description">
-                    <ShowMore lines={ 5 }>
+                <div className="c-company-details-card__description">
+                    <ShowMore
+                        lines={ 5 }
+                        more={ t('Read more') }
+                        less={ t('Read less') }
+                    >
                         { props.company.description }
                     </ShowMore>
-                </p>
+                </div>
             }
         </div>
     );

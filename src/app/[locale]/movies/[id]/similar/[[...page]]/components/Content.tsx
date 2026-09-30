@@ -40,24 +40,23 @@ export default function Content(props: Props) {
         ],
         combine: results => {
             return {
-                movie: transformCurrentMovie(results[ 0 ].data!),
+                movie: results[ 0 ].data ? transformCurrentMovie(results[ 0 ].data) : undefined,
                 similar: {
                     movies: results[ 1 ].data?.results.map(transformMovie) ?? [],
                     total_pages: results[ 1 ].data?.total_pages ?? 1
                 },
                 pending: results.some(result => result.isPending),
-                isError: results.some(result => result.isError),
-                error: results.find(result => result.isError)?.error
+                error: results.find(result => result.isError && !result.data)?.error
             };
         }
     });
 
-    if (data.pending) {
-        return <Loader />;
+    if (data.error) {
+        throw new Error(data.error.message || 'Internal server error');
     }
 
-    if (data.isError) {
-        throw new Error(data.error?.message || 'Internal server error');
+    if (data.pending || !data.movie) {
+        return <Loader />;
     }
 
     return (

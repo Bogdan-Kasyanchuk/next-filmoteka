@@ -8,12 +8,12 @@ import PersonCard from '@/components/ui/cards/PersonCard';
 import TVShowCard from '@/components/ui/cards/TVShowCard';
 import Loader from '@/components/ui/data-display/Loader';
 import Container from '@/components/ui/layouts/Container';
+import Link from '@/components/ui/navigation/PrefetchLink';
 import Title from '@/components/ui/typography/Title';
 import { MediaType, TimeType } from '@/enums';
 import { homeQueryKeys } from '@/helpers/queryKeys';
 import { transformMovie, transformPerson, transformTVShow } from '@/helpers/transformData';
 import { pagesTrendingDayUrl, pagesTrendingWeekUrl } from '@/routes';
-import { Link } from '@/services/i18n/navigation';
 import { getTrendings } from '@/services/tmdb/general';
 import { MovieMapper, PersonMapper, TVShowMapper } from '@/types';
 
@@ -64,8 +64,7 @@ export default function Content() {
                     total_pages: results[ 1 ].data?.total_pages ?? 1
                 },
                 isPending: results.some(result => result.isPending),
-                isError: results.some(result => result.isError),
-                error: results.find(result => result.isError)?.error
+                error: results.find(result => result.isError && !result.data)?.error
             };
         }
     });
@@ -74,8 +73,8 @@ export default function Content() {
         return <Loader />;
     }
 
-    if (data.isError) {
-        throw new Error(data.error?.message || 'Internal server error');
+    if (data.error) {
+        throw new Error(data.error.message || 'Internal server error');
     }
 
     return (

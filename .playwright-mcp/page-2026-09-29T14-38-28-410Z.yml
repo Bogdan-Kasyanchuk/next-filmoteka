@@ -1,0 +1,276 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - link "Logo Filmoteka" [ref=e4] [cursor=pointer]:
+        - /url: /
+        - img "Logo" [ref=e5]
+        - generic [ref=e6]: Filmoteka
+      - button "Language switcher" [ref=e7] [cursor=pointer]: en
+      - navigation [ref=e8]:
+        - list [ref=e9]:
+          - listitem [ref=e10]:
+            - button "Icon Search" [ref=e11] [cursor=pointer]:
+              - img "Icon" [ref=e12]
+              - generic [ref=e13]: Search
+          - listitem [ref=e14]:
+            - link "Icon Movies" [ref=e15] [cursor=pointer]:
+              - /url: /movies
+              - img "Icon" [ref=e16]
+              - generic [ref=e17]: Movies
+          - listitem [ref=e18]:
+            - link "Icon TV Shows" [ref=e19] [cursor=pointer]:
+              - /url: /tv-shows
+              - img "Icon" [ref=e20]
+              - generic [ref=e21]: TV Shows
+          - listitem [ref=e22]:
+            - link "Icon Persons" [ref=e23] [cursor=pointer]:
+              - /url: /persons
+              - img "Icon" [ref=e24]
+              - generic [ref=e25]: Persons
+  - main [ref=e26]:
+    - heading "Filmoteka" [level=1] [ref=e27]
+    - generic [ref=e28]:
+      - list [ref=e30]:
+        - listitem: Now playing
+        - listitem [ref=e31] [cursor=pointer]: Popular
+        - listitem [ref=e32] [cursor=pointer]: Top rated
+        - listitem [ref=e33] [cursor=pointer]: Upcoming
+      - heading "Movies that are currently in theatres" [level=2] [ref=e34]
+      - generic [ref=e35]:
+        - list [ref=e36]:
+          - listitem [ref=e37]:
+            - generic [ref=e38]:
+              - img "Resident Evil" [ref=e40]
+              - generic [ref=e41]:
+                - generic [ref=e42]: Movie
+                - generic [ref=e43]: "2026"
+                - generic [ref=e44]: 73%
+              - link "Resident Evil" [ref=e46] [cursor=pointer]:
+                - /url: /movies/1423191
+          - listitem [ref=e47]:
+            - generic [ref=e48]:
+              - img "The End of Oak Street" [ref=e50]
+              - generic [ref=e51]:
+                - generic [ref=e52]: Movie
+                - generic [ref=e53]: "2026"
+                - generic [ref=e54]: 71%
+              - link "The End of Oak Street" [ref=e56] [cursor=pointer]:
+                - /url: /movies/1101383
+          - listitem [ref=e57]:
+            - generic [ref=e58]:
+              - img "The Odyssey" [ref=e60]
+              - generic [ref=e61]:
+                - generic [ref=e62]: Movie
+                - generic [ref=e63]: "2026"
+                - generic [ref=e64]: 80%
+              - link "The Odyssey" [ref=e66] [cursor=pointer]:
+                - /url: /movies/1368337
+          - listitem [ref=e67]:
+            - generic [ref=e68]:
+              - img "The Love Hypothesis" [ref=e70]
+              - generic [ref=e71]:
+                - generic [ref=e72]: Movie
+                - generic [ref=e73]: "2026"
+                - generic [ref=e74]: 81%
+              - link "The Love Hypothesis" [ref=e76] [cursor=pointer]:
+                - /url: /movies/1032863
+          - listitem [ref=e77]:
+            - generic [ref=e78]:
+              - img "Coyote vs. Acme" [ref=e80]
+              - generic [ref=e81]:
+                - generic [ref=e82]: Movie
+                - generic [ref=e83]: "2026"
+                - generic [ref=e84]: 76%
+              - link "Coyote vs. Acme" [ref=e86] [cursor=pointer]:
+                - /url: /movies/1204680
+          - listitem [ref=e87]:
+            - generic [ref=e88]:
+              - img "After Impact" [ref=e90]
+              - generic [ref=e91]:
+                - generic [ref=e92]: Movie
+                - generic [ref=e93]: "2026"
+                - generic [ref=e94]: 64%
+              - link "After Impact" [ref=e96] [cursor=pointer]:
+                - /url: /movies/1751701
+          - listitem [ref=e97]:
+            - generic [ref=e98]:
+              - img "The Fix" [ref=e100]
+              - generic [ref=e101]:
+                - generic [ref=e102]: Movie
+                - generic [ref=e103]: "2026"
+                - generic [ref=e104]: 72%
+              - link "The Fix" [ref=e106] [cursor=pointer]:
+                - /url: /movies/1228834
+          - listitem [ref=e107]:
+            - generic [ref=e108]:
+              - img "Mutiny" [ref=e110]
+              - generic [ref=e111]:
+                - generic [ref=e112]: Movie
+                - generic [ref=e113]: "2026"
+                - generic [ref=e114]: 73%
+              - link "Mutiny" [ref=e116] [cursor=pointer]:
+                - /url: /movies/1288445
+          - listitem [ref=e117]:
+            - generic [ref=e118]:
+              - img "Colony" [ref=e120]
+              - generic [ref=e121]:
+                - generic [ref=e122]: Movie
+                - generic [ref=e123]: "2026"
+                - generic [ref=e124]: 81%
+              - link "Colony" [ref=e126] [cursor=pointer]:
+                - /url: /movies/1375646
+          - listitem [ref=e127]:
+            - generic [ref=e128]:
+              - img "Heart of the Beast" [ref=e130]
+              - generic [ref=e131]:
+                - generic [ref=e132]: Movie
+                - generic [ref=e133]: "2026"
+                - generic [ref=e134]: 77%
+              - link "Heart of the Beast" [ref=e136] [cursor=pointer]:
+                - /url: /movies/1263337
+          - listitem [ref=e137]:
+            - generic [ref=e138]:
+              - img "One Last Shot" [ref=e140]
+              - generic [ref=e141]:
+                - generic [ref=e142]: Movie
+                - generic [ref=e143]: "2026"
+                - generic [ref=e144]: 74%
+              - link "One Last Shot" [ref=e146] [cursor=pointer]:
+                - /url: /movies/1607127
+          - listitem [ref=e147]:
+            - generic [ref=e148]:
+              - img "UNABOMBER" [ref=e150]
+              - generic [ref=e151]:
+                - generic [ref=e152]: Movie
+                - generic [ref=e153]: "2026"
+                - generic [ref=e154]: 70%
+              - link "UNABOMBER" [ref=e156] [cursor=pointer]:
+                - /url: /movies/1492640
+          - listitem [ref=e157]:
+            - generic [ref=e158]:
+              - img "Zip Wire" [ref=e160]
+              - generic [ref=e161]:
+                - generic [ref=e162]: Movie
+                - generic [ref=e163]: "2026"
+                - generic [ref=e164]: 73%
+              - link "Zip Wire" [ref=e166] [cursor=pointer]:
+                - /url: /movies/1482547
+          - listitem [ref=e167]:
+            - generic [ref=e168]:
+              - img "Runner" [ref=e170]
+              - generic [ref=e171]:
+                - generic [ref=e172]: Movie
+                - generic [ref=e173]: "2026"
+                - generic [ref=e174]: 80%
+              - link "Runner" [ref=e176] [cursor=pointer]:
+                - /url: /movies/1377237
+          - listitem [ref=e177]:
+            - generic [ref=e178]:
+              - img "Obsession" [ref=e180]
+              - generic [ref=e181]:
+                - generic [ref=e182]: Movie
+                - generic [ref=e183]: "2026"
+                - generic [ref=e184]: 82%
+              - link "Obsession" [ref=e186] [cursor=pointer]:
+                - /url: /movies/1339713
+          - listitem [ref=e187]:
+            - generic [ref=e188]:
+              - img "Moana" [ref=e190]
+              - generic [ref=e191]:
+                - generic [ref=e192]: Movie
+                - generic [ref=e193]: "2026"
+                - generic [ref=e194]: 74%
+              - link "Moana" [ref=e196] [cursor=pointer]:
+                - /url: /movies/1108427
+          - listitem [ref=e197]:
+            - generic [ref=e198]:
+              - img "Ice Cream Man" [ref=e200]
+              - generic [ref=e201]:
+                - generic [ref=e202]: Movie
+                - generic [ref=e203]: "2026"
+                - generic [ref=e204]: 47%
+              - link "Ice Cream Man" [ref=e206] [cursor=pointer]:
+                - /url: /movies/1477712
+          - listitem [ref=e207]:
+            - generic [ref=e208]:
+              - 'img "Avengers: Endgame" [ref=e210]'
+              - generic [ref=e211]:
+                - generic [ref=e212]: Movie
+                - generic [ref=e213]: "2019"
+                - generic [ref=e214]: 82%
+              - 'link "Avengers: Endgame" [ref=e216] [cursor=pointer]':
+                - /url: /movies/299534
+          - listitem [ref=e217]:
+            - generic [ref=e218]:
+              - 'img "Pinocchio: Unstrung" [ref=e220]'
+              - generic [ref=e221]:
+                - generic [ref=e222]: Movie
+                - generic [ref=e223]: "2026"
+                - generic [ref=e224]: 66%
+              - 'link "Pinocchio: Unstrung" [ref=e226] [cursor=pointer]':
+                - /url: /movies/1232569
+          - listitem [ref=e227]:
+            - generic [ref=e228]:
+              - img "Drawn Together" [ref=e230]
+              - generic [ref=e231]:
+                - generic [ref=e232]: Movie
+                - generic [ref=e233]: "2026"
+                - generic [ref=e234]: 68%
+              - link "Drawn Together" [ref=e236] [cursor=pointer]:
+                - /url: /movies/1440098
+        - list [ref=e238]:
+          - listitem
+          - listitem:
+            - link "1":
+              - /url: http://localhost:3000/movies/page/1
+          - listitem [ref=e239]:
+            - link "2" [ref=e240] [cursor=pointer]:
+              - /url: http://localhost:3000/movies/page/2
+          - listitem [ref=e241]:
+            - link "3" [ref=e242] [cursor=pointer]:
+              - /url: http://localhost:3000/movies/page/3
+          - listitem [ref=e243]:
+            - link "4" [ref=e244] [cursor=pointer]:
+              - /url: http://localhost:3000/movies/page/4
+          - listitem [ref=e245]:
+            - link "5" [ref=e246] [cursor=pointer]:
+              - /url: http://localhost:3000/movies/page/5
+          - listitem [ref=e247]:
+            - link "6" [ref=e248] [cursor=pointer]:
+              - /url: http://localhost:3000/movies/page/6
+          - listitem: ...
+          - listitem [ref=e249]:
+            - link "308" [ref=e250] [cursor=pointer]:
+              - /url: http://localhost:3000/movies/page/308
+          - listitem [ref=e251]:
+            - link "309" [ref=e252] [cursor=pointer]:
+              - /url: http://localhost:3000/movies/page/309
+          - listitem [ref=e253]:
+            - link "Next page" [ref=e254] [cursor=pointer]:
+              - /url: http://localhost:3000/movies/page/2
+  - contentinfo [ref=e257]:
+    - generic [ref=e258]:
+      - list [ref=e259]:
+        - listitem [ref=e260]:
+          - img "Next.js" [ref=e261]
+          - link "Next.js":
+            - /url: https://nextjs.org
+        - listitem [ref=e263]:
+          - img "TailwindCSS" [ref=e264]
+          - link "TailwindCSS":
+            - /url: https://tailwindcss.com
+        - listitem [ref=e266]:
+          - img "TanStack" [ref=e267]
+          - link "TanStack":
+            - /url: https://tanstack.com
+        - listitem [ref=e269]:
+          - img "Internationalization" [ref=e270]
+          - link "Internationalization":
+            - /url: https://next-intl.dev
+      - link [ref=e272] [cursor=pointer]:
+        - /url: /
+        - img "Logo" [ref=e273]
+        - text: Filmoteka
+  - button "Open Tanstack query devtools" [ref=e324] [cursor=pointer]
+  - button "Open Next.js Dev Tools" [ref=e378] [cursor=pointer]
+  - alert [ref=e382]

@@ -1,0 +1,2984 @@
+- generic [active] [ref=f1e1]:
+  - banner [ref=f1e2]:
+    - generic [ref=f1e3]:
+      - link "Логотип Фільмотека" [ref=f1e4] [cursor=pointer]:
+        - /url: /uk
+        - img "Логотип" [ref=f1e5]
+        - generic [ref=f1e6]: Фільмотека
+      - button "Перемикач мов" [ref=f1e7] [cursor=pointer]: uk
+      - navigation [ref=f1e8]:
+        - list [ref=f1e9]:
+          - listitem [ref=f1e10]:
+            - button "Іконка Пошук" [ref=f1e11] [cursor=pointer]:
+              - img "Іконка" [ref=f1e12]
+              - generic [ref=f1e13]: Пошук
+          - listitem [ref=f1e14]:
+            - link "Іконка Фільми" [ref=f1e15] [cursor=pointer]:
+              - /url: /uk/movies
+              - img "Іконка" [ref=f1e16]
+              - generic [ref=f1e17]: Фільми
+          - listitem [ref=f1e18]:
+            - link "Іконка Телешоу" [ref=f1e19] [cursor=pointer]:
+              - /url: /uk/tv-shows
+              - img "Іконка" [ref=f1e20]
+              - generic [ref=f1e21]: Телешоу
+          - listitem [ref=f1e22]:
+            - link "Іконка Персони" [ref=f1e23] [cursor=pointer]:
+              - /url: /uk/persons
+              - img "Іконка" [ref=f1e24]
+              - generic [ref=f1e25]: Персони
+  - main [ref=f1e26]:
+    - heading "Фільмотека" [level=1] [ref=f1e27]
+    - generic [ref=f1e28]:
+      - generic [ref=f1e29]:
+        - img "Бред Пітт" [ref=f1e31]
+        - generic [ref=f1e32]:
+          - img "Бред Пітт" [ref=f1e34]
+          - heading "Бред Пітт" [level=2] [ref=f1e35]
+          - list [ref=f1e36]:
+            - listitem [ref=f1e37]:
+              - generic [ref=f1e38]: "Відділ:"
+              - text: Acting
+            - listitem [ref=f1e39]:
+              - generic [ref=f1e40]: "Місце народження:"
+              - text: Shawnee, Oklahoma, USA
+            - listitem [ref=f1e41]:
+              - generic [ref=f1e42]: "Дата народження:"
+              - generic [ref=f1e43]: 18.12.1963
+            - listitem [ref=f1e44]:
+              - generic [ref=f1e45]: "Популярність:"
+              - text: "15"
+            - listitem [ref=f1e46]:
+              - generic [ref=f1e47]: "Також відомий як:"
+              - generic [ref=f1e48]: William Bradley Pitt
+          - list [ref=f1e49]:
+            - listitem [ref=f1e50]:
+              - link "imdb" [ref=f1e51] [cursor=pointer]:
+                - /url: https://www.imdb.com/name/nm0000093
+            - listitem [ref=f1e53]:
+              - link "wikidata" [ref=f1e54] [cursor=pointer]:
+                - /url: https://www.wikidata.org/wiki/Q35332
+          - generic [ref=f1e56]:
+            - paragraph [ref=f1e57]: "Біографія:"
+            - generic [ref=f1e58]: Бред Пітт — американський кіноактор, дворазовий лауреат премій «Оскар» (2014, 2020), «Золотий глобус» (1996, 2020), «Еммі» (2014), БАФТА (2014, 2020) та інших.
+      - generic [ref=f1e60]:
+        - generic [ref=f1e61]:
+          - heading "Фотогалерея" [level=3] [ref=f1e62]
+          - list [ref=f1e63]:
+            - listitem [ref=f1e64]:
+              - generic [ref=f1e65]:
+                - img "Бред Пітт" [ref=f1e67]
+                - generic [ref=f1e68]:
+                  - generic [ref=f1e69]:
+                    - term [ref=f1e70]: "Рейтинг:"
+                    - definition [ref=f1e71]: "5"
+                  - generic [ref=f1e72]:
+                    - term [ref=f1e73]: "Голоси:"
+                    - definition [ref=f1e74]: "121"
+            - listitem [ref=f1e75]:
+              - generic [ref=f1e76]:
+                - img "Бред Пітт" [ref=f1e78]
+                - generic [ref=f1e79]:
+                  - generic [ref=f1e80]:
+                    - term [ref=f1e81]: "Рейтинг:"
+                    - definition [ref=f1e82]: "5"
+                  - generic [ref=f1e83]:
+                    - term [ref=f1e84]: "Голоси:"
+                    - definition [ref=f1e85]: "139"
+            - listitem [ref=f1e86]:
+              - generic [ref=f1e87]:
+                - img "Бред Пітт" [ref=f1e89]
+                - generic [ref=f1e90]:
+                  - generic [ref=f1e91]:
+                    - term [ref=f1e92]: "Рейтинг:"
+                    - definition [ref=f1e93]: "5"
+                  - generic [ref=f1e94]:
+                    - term [ref=f1e95]: "Голоси:"
+                    - definition [ref=f1e96]: "104"
+            - listitem [ref=f1e97]:
+              - generic [ref=f1e98]:
+                - img "Бред Пітт" [ref=f1e100]
+                - generic [ref=f1e101]:
+                  - generic [ref=f1e102]:
+                    - term [ref=f1e103]: "Рейтинг:"
+                    - definition [ref=f1e104]: "5"
+                  - generic [ref=f1e105]:
+                    - term [ref=f1e106]: "Голоси:"
+                    - definition [ref=f1e107]: "83"
+            - listitem [ref=f1e108]:
+              - generic [ref=f1e109]:
+                - img "Бред Пітт" [ref=f1e111]
+                - generic [ref=f1e112]:
+                  - generic [ref=f1e113]:
+                    - term [ref=f1e114]: "Рейтинг:"
+                    - definition [ref=f1e115]: "4"
+                  - generic [ref=f1e116]:
+                    - term [ref=f1e117]: "Голоси:"
+                    - definition [ref=f1e118]: "64"
+            - listitem [ref=f1e119]:
+              - generic [ref=f1e120]:
+                - img "Бред Пітт" [ref=f1e122]
+                - generic [ref=f1e123]:
+                  - generic [ref=f1e124]:
+                    - term [ref=f1e125]: "Рейтинг:"
+                    - definition [ref=f1e126]: "4"
+                  - generic [ref=f1e127]:
+                    - term [ref=f1e128]: "Голоси:"
+                    - definition [ref=f1e129]: "52"
+            - listitem [ref=f1e130]:
+              - generic [ref=f1e131]:
+                - img "Бред Пітт" [ref=f1e133]
+                - generic [ref=f1e134]:
+                  - generic [ref=f1e135]:
+                    - term [ref=f1e136]: "Рейтинг:"
+                    - definition [ref=f1e137]: "4"
+                  - generic [ref=f1e138]:
+                    - term [ref=f1e139]: "Голоси:"
+                    - definition [ref=f1e140]: "65"
+            - listitem [ref=f1e141]:
+              - generic [ref=f1e142]:
+                - img "Бред Пітт" [ref=f1e144]
+                - generic [ref=f1e145]:
+                  - generic [ref=f1e146]:
+                    - term [ref=f1e147]: "Рейтинг:"
+                    - definition [ref=f1e148]: "4"
+                  - generic [ref=f1e149]:
+                    - term [ref=f1e150]: "Голоси:"
+                    - definition [ref=f1e151]: "14"
+            - listitem [ref=f1e152]:
+              - generic [ref=f1e153]:
+                - img "Бред Пітт" [ref=f1e155]
+                - generic [ref=f1e156]:
+                  - generic [ref=f1e157]:
+                    - term [ref=f1e158]: "Рейтинг:"
+                    - definition [ref=f1e159]: "4"
+                  - generic [ref=f1e160]:
+                    - term [ref=f1e161]: "Голоси:"
+                    - definition [ref=f1e162]: "43"
+            - listitem [ref=f1e163]:
+              - generic [ref=f1e164]:
+                - img "Бред Пітт" [ref=f1e166]
+                - generic [ref=f1e167]:
+                  - generic [ref=f1e168]:
+                    - term [ref=f1e169]: "Рейтинг:"
+                    - definition [ref=f1e170]: "4"
+                  - generic [ref=f1e171]:
+                    - term [ref=f1e172]: "Голоси:"
+                    - definition [ref=f1e173]: "23"
+            - listitem [ref=f1e174]:
+              - generic [ref=f1e175]:
+                - img "Бред Пітт" [ref=f1e177]
+                - generic [ref=f1e178]:
+                  - generic [ref=f1e179]:
+                    - term [ref=f1e180]: "Рейтинг:"
+                    - definition [ref=f1e181]: "4"
+                  - generic [ref=f1e182]:
+                    - term [ref=f1e183]: "Голоси:"
+                    - definition [ref=f1e184]: "45"
+            - listitem [ref=f1e185]:
+              - generic [ref=f1e186]:
+                - img "Бред Пітт" [ref=f1e188]
+                - generic [ref=f1e189]:
+                  - generic [ref=f1e190]:
+                    - term [ref=f1e191]: "Рейтинг:"
+                    - definition [ref=f1e192]: "4"
+                  - generic [ref=f1e193]:
+                    - term [ref=f1e194]: "Голоси:"
+                    - definition [ref=f1e195]: "15"
+            - listitem [ref=f1e196]:
+              - generic [ref=f1e197]:
+                - img "Бред Пітт" [ref=f1e199]
+                - generic [ref=f1e200]:
+                  - generic [ref=f1e201]:
+                    - term [ref=f1e202]: "Рейтинг:"
+                    - definition [ref=f1e203]: "3"
+                  - generic [ref=f1e204]:
+                    - term [ref=f1e205]: "Голоси:"
+                    - definition [ref=f1e206]: "20"
+            - listitem [ref=f1e207]:
+              - generic [ref=f1e208]:
+                - img "Бред Пітт" [ref=f1e210]
+                - generic [ref=f1e211]:
+                  - generic [ref=f1e212]:
+                    - term [ref=f1e213]: "Рейтинг:"
+                    - definition [ref=f1e214]: "3"
+                  - generic [ref=f1e215]:
+                    - term [ref=f1e216]: "Голоси:"
+                    - definition [ref=f1e217]: "1"
+            - listitem [ref=f1e218]:
+              - generic [ref=f1e219]:
+                - img "Бред Пітт" [ref=f1e221]
+                - generic [ref=f1e222]:
+                  - generic [ref=f1e223]:
+                    - term [ref=f1e224]: "Рейтинг:"
+                    - definition [ref=f1e225]: "3"
+                  - generic [ref=f1e226]:
+                    - term [ref=f1e227]: "Голоси:"
+                    - definition [ref=f1e228]: "2"
+            - listitem [ref=f1e229]:
+              - generic [ref=f1e230]:
+                - img "Бред Пітт" [ref=f1e232]
+                - generic [ref=f1e233]:
+                  - generic [ref=f1e234]:
+                    - term [ref=f1e235]: "Рейтинг:"
+                    - definition [ref=f1e236]: "3"
+                  - generic [ref=f1e237]:
+                    - term [ref=f1e238]: "Голоси:"
+                    - definition [ref=f1e239]: "1"
+            - listitem [ref=f1e240]:
+              - generic [ref=f1e241]:
+                - img "Бред Пітт" [ref=f1e243]
+                - generic [ref=f1e244]:
+                  - generic [ref=f1e245]:
+                    - term [ref=f1e246]: "Рейтинг:"
+                    - definition [ref=f1e247]: "3"
+                  - generic [ref=f1e248]:
+                    - term [ref=f1e249]: "Голоси:"
+                    - definition [ref=f1e250]: "1"
+            - listitem [ref=f1e251]:
+              - generic [ref=f1e252]:
+                - img "Бред Пітт" [ref=f1e254]
+                - generic [ref=f1e255]:
+                  - generic [ref=f1e256]:
+                    - term [ref=f1e257]: "Рейтинг:"
+                    - definition [ref=f1e258]: "3"
+                  - generic [ref=f1e259]:
+                    - term [ref=f1e260]: "Голоси:"
+                    - definition [ref=f1e261]: "17"
+            - listitem [ref=f1e262]:
+              - generic [ref=f1e263]:
+                - img "Бред Пітт" [ref=f1e265]
+                - generic [ref=f1e266]:
+                  - generic [ref=f1e267]:
+                    - term [ref=f1e268]: "Рейтинг:"
+                    - definition [ref=f1e269]: "3"
+                  - generic [ref=f1e270]:
+                    - term [ref=f1e271]: "Голоси:"
+                    - definition [ref=f1e272]: "17"
+            - listitem [ref=f1e273]:
+              - generic [ref=f1e274]:
+                - img "Бред Пітт" [ref=f1e276]
+                - generic [ref=f1e277]:
+                  - generic [ref=f1e278]:
+                    - term [ref=f1e279]: "Рейтинг:"
+                    - definition [ref=f1e280]: "3"
+                  - generic [ref=f1e281]:
+                    - term [ref=f1e282]: "Голоси:"
+                    - definition [ref=f1e283]: "38"
+            - listitem [ref=f1e284]:
+              - generic [ref=f1e285]:
+                - img "Бред Пітт" [ref=f1e287]
+                - generic [ref=f1e288]:
+                  - generic [ref=f1e289]:
+                    - term [ref=f1e290]: "Рейтинг:"
+                    - definition [ref=f1e291]: "3"
+                  - generic [ref=f1e292]:
+                    - term [ref=f1e293]: "Голоси:"
+                    - definition [ref=f1e294]: "15"
+            - listitem [ref=f1e295]:
+              - generic [ref=f1e296]:
+                - img "Бред Пітт" [ref=f1e298]
+                - generic [ref=f1e299]:
+                  - generic [ref=f1e300]:
+                    - term [ref=f1e301]: "Рейтинг:"
+                    - definition [ref=f1e302]: "3"
+                  - generic [ref=f1e303]:
+                    - term [ref=f1e304]: "Голоси:"
+                    - definition [ref=f1e305]: "16"
+            - listitem [ref=f1e306]:
+              - generic [ref=f1e307]:
+                - img "Бред Пітт" [ref=f1e309]
+                - generic [ref=f1e310]:
+                  - generic [ref=f1e311]:
+                    - term [ref=f1e312]: "Рейтинг:"
+                    - definition [ref=f1e313]: "3"
+                  - generic [ref=f1e314]:
+                    - term [ref=f1e315]: "Голоси:"
+                    - definition [ref=f1e316]: "4"
+            - listitem [ref=f1e317]:
+              - generic [ref=f1e318]:
+                - img "Бред Пітт" [ref=f1e320]
+                - generic [ref=f1e321]:
+                  - generic [ref=f1e322]:
+                    - term [ref=f1e323]: "Рейтинг:"
+                    - definition [ref=f1e324]: "2"
+                  - generic [ref=f1e325]:
+                    - term [ref=f1e326]: "Голоси:"
+                    - definition [ref=f1e327]: "3"
+            - listitem [ref=f1e328]:
+              - generic [ref=f1e329]:
+                - img "Бред Пітт" [ref=f1e331]
+                - generic [ref=f1e332]:
+                  - generic [ref=f1e333]:
+                    - term [ref=f1e334]: "Рейтинг:"
+                    - definition [ref=f1e335]: "2"
+                  - generic [ref=f1e336]:
+                    - term [ref=f1e337]: "Голоси:"
+                    - definition [ref=f1e338]: "3"
+            - listitem [ref=f1e339]:
+              - generic [ref=f1e340]:
+                - img "Бред Пітт" [ref=f1e342]
+                - generic [ref=f1e343]:
+                  - generic [ref=f1e344]:
+                    - term [ref=f1e345]: "Рейтинг:"
+                    - definition [ref=f1e346]: "2"
+                  - generic [ref=f1e347]:
+                    - term [ref=f1e348]: "Голоси:"
+                    - definition [ref=f1e349]: "3"
+            - listitem [ref=f1e350]:
+              - generic [ref=f1e351]:
+                - img "Бред Пітт" [ref=f1e353]
+                - generic [ref=f1e354]:
+                  - generic [ref=f1e355]:
+                    - term [ref=f1e356]: "Рейтинг:"
+                    - definition [ref=f1e357]: "2"
+                  - generic [ref=f1e358]:
+                    - term [ref=f1e359]: "Голоси:"
+                    - definition [ref=f1e360]: "6"
+            - listitem [ref=f1e361]:
+              - generic [ref=f1e362]:
+                - img "Бред Пітт" [ref=f1e364]
+                - generic [ref=f1e365]:
+                  - generic [ref=f1e366]:
+                    - term [ref=f1e367]: "Рейтинг:"
+                    - definition [ref=f1e368]: "1"
+                  - generic [ref=f1e369]:
+                    - term [ref=f1e370]: "Голоси:"
+                    - definition [ref=f1e371]: "6"
+            - listitem [ref=f1e372]:
+              - generic [ref=f1e373]:
+                - img "Бред Пітт" [ref=f1e375]
+                - generic [ref=f1e376]:
+                  - generic [ref=f1e377]:
+                    - term [ref=f1e378]: "Рейтинг:"
+                    - definition [ref=f1e379]: "1"
+                  - generic [ref=f1e380]:
+                    - term [ref=f1e381]: "Голоси:"
+                    - definition [ref=f1e382]: "5"
+            - listitem [ref=f1e383]:
+              - generic [ref=f1e384]:
+                - img "Бред Пітт" [ref=f1e386]
+                - generic [ref=f1e387]:
+                  - generic [ref=f1e388]:
+                    - term [ref=f1e389]: "Рейтинг:"
+                    - definition [ref=f1e390]: "1"
+                  - generic [ref=f1e391]:
+                    - term [ref=f1e392]: "Голоси:"
+                    - definition [ref=f1e393]: "12"
+            - listitem [ref=f1e394]:
+              - generic [ref=f1e395]:
+                - img "Бред Пітт" [ref=f1e397]
+                - generic [ref=f1e398]:
+                  - generic [ref=f1e399]:
+                    - term [ref=f1e400]: "Рейтинг:"
+                    - definition [ref=f1e401]: "0"
+                  - generic [ref=f1e402]:
+                    - term [ref=f1e403]: "Голоси:"
+                    - definition [ref=f1e404]: "1"
+        - generic [ref=f1e405]:
+          - heading "Акторська та продюсерська кар'єра" [level=3] [ref=f1e406]
+          - list [ref=f1e407]:
+            - listitem [ref=f1e408]:
+              - paragraph [ref=f1e409]: Акторство
+              - list [ref=f1e410]:
+                - listitem [ref=f1e411]:
+                  - link "2026 movie Нові злощасні пригоди Кліффа Бута Нові злощасні пригоди Кліффа Бута як Cliff Booth" [ref=f1e412] [cursor=pointer]:
+                    - /url: /uk/movies/1457866
+                    - generic [ref=f1e413]:
+                      - generic [ref=f1e414]: "2026"
+                      - generic [ref=f1e415]: movie
+                    - img "Нові злощасні пригоди Кліффа Бута" [ref=f1e417]
+                    - generic [ref=f1e418]:
+                      - paragraph [ref=f1e419]: Нові злощасні пригоди Кліффа Бута
+                      - paragraph [ref=f1e420]: як Cliff Booth
+                - listitem [ref=f1e421]:
+                  - link "2026 movie Who is Holiewood, Holiewood Alex Steele Olache. content creator, GarrusVakrian. Who is Holiewood, Holiewood Alex Steele Olache. content creator, GarrusVakrian. як Brad Pitt" [ref=f1e422] [cursor=pointer]:
+                    - /url: /uk/movies/1783183
+                    - generic [ref=f1e423]:
+                      - generic [ref=f1e424]: "2026"
+                      - generic [ref=f1e425]: movie
+                    - img "Who is Holiewood, Holiewood Alex Steele Olache. content creator, GarrusVakrian." [ref=f1e427]
+                    - generic [ref=f1e428]:
+                      - paragraph [ref=f1e429]: Who is Holiewood, Holiewood Alex Steele Olache. content creator, GarrusVakrian.
+                      - paragraph [ref=f1e430]: як Brad Pitt
+                - listitem [ref=f1e431]:
+                  - link "2026 movie Серце звіра Серце звіра як James Belmont" [ref=f1e432] [cursor=pointer]:
+                    - /url: /uk/movies/1263337
+                    - generic [ref=f1e433]:
+                      - generic [ref=f1e434]: "2026"
+                      - generic [ref=f1e435]: movie
+                    - img "Серце звіра" [ref=f1e437]
+                    - generic [ref=f1e438]:
+                      - paragraph [ref=f1e439]: Серце звіра
+                      - paragraph [ref=f1e440]: як James Belmont
+                - listitem [ref=f1e441]:
+                  - 'link "2026 movie Диваки: Найкраще і останнє Диваки: Найкраще і останнє як Self (archive footage)" [ref=f1e442] [cursor=pointer]':
+                    - /url: /uk/movies/1612018
+                    - generic [ref=f1e443]:
+                      - generic [ref=f1e444]: "2026"
+                      - generic [ref=f1e445]: movie
+                    - 'img "Диваки: Найкраще і останнє" [ref=f1e447]'
+                    - generic [ref=f1e448]:
+                      - paragraph [ref=f1e449]: "Диваки: Найкраще і останнє"
+                      - paragraph [ref=f1e450]: як Self (archive footage)
+                - listitem [ref=f1e451]:
+                  - 'link "2026 movie Untold UK: Vinnie Jones Untold UK: Vinnie Jones як Self - (archive footage)" [ref=f1e452] [cursor=pointer]':
+                    - /url: /uk/movies/1684246
+                    - generic [ref=f1e453]:
+                      - generic [ref=f1e454]: "2026"
+                      - generic [ref=f1e455]: movie
+                    - 'img "Untold UK: Vinnie Jones" [ref=f1e457]'
+                    - generic [ref=f1e458]:
+                      - paragraph [ref=f1e459]: "Untold UK: Vinnie Jones"
+                      - paragraph [ref=f1e460]: як Self - (archive footage)
+                - listitem [ref=f1e461]:
+                  - 'link "2025 movie F1: Фільм F1: Фільм як Sonny Hayes" [ref=f1e462] [cursor=pointer]':
+                    - /url: /uk/movies/911430
+                    - generic [ref=f1e463]:
+                      - generic [ref=f1e464]: "2025"
+                      - generic [ref=f1e465]: movie
+                    - 'img "F1: Фільм" [ref=f1e467]'
+                    - generic [ref=f1e468]:
+                      - paragraph [ref=f1e469]: "F1: Фільм"
+                      - paragraph [ref=f1e470]: як Sonny Hayes
+                - listitem [ref=f1e471]:
+                  - link "2024 movie The Trainer The Trainer як Brad Pitt" [ref=f1e472] [cursor=pointer]:
+                    - /url: /uk/movies/956057
+                    - generic [ref=f1e473]:
+                      - generic [ref=f1e474]: "2024"
+                      - generic [ref=f1e475]: movie
+                    - img "The Trainer" [ref=f1e477]
+                    - generic [ref=f1e478]:
+                      - paragraph [ref=f1e479]: The Trainer
+                      - paragraph [ref=f1e480]: як Brad Pitt
+                - listitem [ref=f1e481]:
+                  - link "2024 movie Самотні вовки Самотні вовки як Pam's Man" [ref=f1e482] [cursor=pointer]:
+                    - /url: /uk/movies/877817
+                    - generic [ref=f1e483]:
+                      - generic [ref=f1e484]: "2024"
+                      - generic [ref=f1e485]: movie
+                    - img "Самотні вовки" [ref=f1e487]
+                    - generic [ref=f1e488]:
+                      - paragraph [ref=f1e489]: Самотні вовки
+                      - paragraph [ref=f1e490]: як Pam's Man
+                - listitem [ref=f1e491]:
+                  - link "2024 movie Most Outrageous Celebrity Splits Most Outrageous Celebrity Splits" [ref=f1e492] [cursor=pointer]:
+                    - /url: /uk/movies/1629246
+                    - generic [ref=f1e493]:
+                      - generic [ref=f1e494]: "2024"
+                      - generic [ref=f1e495]: movie
+                    - img "Most Outrageous Celebrity Splits" [ref=f1e497]
+                    - paragraph [ref=f1e499]: Most Outrageous Celebrity Splits
+                - listitem [ref=f1e500]:
+                  - link "2022 movie Вавилон Вавилон як Jack Conrad" [ref=f1e501] [cursor=pointer]:
+                    - /url: /uk/movies/615777
+                    - generic [ref=f1e502]:
+                      - generic [ref=f1e503]: "2022"
+                      - generic [ref=f1e504]: movie
+                    - img "Вавилон" [ref=f1e506]
+                    - generic [ref=f1e507]:
+                      - paragraph [ref=f1e508]: Вавилон
+                      - paragraph [ref=f1e509]: як Jack Conrad
+                - listitem [ref=f1e510]:
+                  - link "2022 movie Brad Pitt - La Revanche d'un blond Brad Pitt - La Revanche d'un blond як Self (archive footage)" [ref=f1e511] [cursor=pointer]:
+                    - /url: /uk/movies/1033548
+                    - generic [ref=f1e512]:
+                      - generic [ref=f1e513]: "2022"
+                      - generic [ref=f1e514]: movie
+                    - img "Brad Pitt - La Revanche d'un blond" [ref=f1e516]
+                    - generic [ref=f1e517]:
+                      - paragraph [ref=f1e518]: Brad Pitt - La Revanche d'un blond
+                      - paragraph [ref=f1e519]: як Self (archive footage)
+                - listitem [ref=f1e520]:
+                  - 'link "2022 movie Unity Temple: Frank Lloyd Wright’s Modern Masterpiece Unity Temple: Frank Lloyd Wright’s Modern Masterpiece як Narrator (voice)" [ref=f1e521] [cursor=pointer]':
+                    - /url: /uk/movies/1185698
+                    - generic [ref=f1e522]:
+                      - generic [ref=f1e523]: "2022"
+                      - generic [ref=f1e524]: movie
+                    - 'img "Unity Temple: Frank Lloyd Wright’s Modern Masterpiece" [ref=f1e526]'
+                    - generic [ref=f1e527]:
+                      - paragraph [ref=f1e528]: "Unity Temple: Frank Lloyd Wright’s Modern Masterpiece"
+                      - paragraph [ref=f1e529]: як Narrator (voice)
+                - listitem [ref=f1e530]:
+                  - link "2022 movie Швидкісний поїзд Швидкісний поїзд як Ladybug" [ref=f1e531] [cursor=pointer]:
+                    - /url: /uk/movies/718930
+                    - generic [ref=f1e532]:
+                      - generic [ref=f1e533]: "2022"
+                      - generic [ref=f1e534]: movie
+                    - img "Швидкісний поїзд" [ref=f1e536]
+                    - generic [ref=f1e537]:
+                      - paragraph [ref=f1e538]: Швидкісний поїзд
+                      - paragraph [ref=f1e539]: як Ladybug
+                - listitem [ref=f1e540]:
+                  - link "2022 movie Загублене місто Загублене місто як Jack Trainer" [ref=f1e541] [cursor=pointer]:
+                    - /url: /uk/movies/752623
+                    - generic [ref=f1e542]:
+                      - generic [ref=f1e543]: "2022"
+                      - generic [ref=f1e544]: movie
+                    - img "Загублене місто" [ref=f1e546]
+                    - generic [ref=f1e547]:
+                      - paragraph [ref=f1e548]: Загублене місто
+                      - paragraph [ref=f1e549]: як Jack Trainer
+                - listitem [ref=f1e550]:
+                  - link "2020 movie Die Brad Pitt Story Die Brad Pitt Story як Self (archive footage)" [ref=f1e551] [cursor=pointer]:
+                    - /url: /uk/movies/1421107
+                    - generic [ref=f1e552]:
+                      - generic [ref=f1e553]: "2020"
+                      - generic [ref=f1e554]: movie
+                    - img "Die Brad Pitt Story" [ref=f1e556]
+                    - generic [ref=f1e557]:
+                      - paragraph [ref=f1e558]: Die Brad Pitt Story
+                      - paragraph [ref=f1e559]: як Self (archive footage)
+                - listitem [ref=f1e560]:
+                  - link "2019 movie Reach for the Stars Reach for the Stars як Self" [ref=f1e561] [cursor=pointer]:
+                    - /url: /uk/movies/1232965
+                    - generic [ref=f1e562]:
+                      - generic [ref=f1e563]: "2019"
+                      - generic [ref=f1e564]: movie
+                    - img "Reach for the Stars" [ref=f1e566]
+                    - generic [ref=f1e567]:
+                      - paragraph [ref=f1e568]: Reach for the Stars
+                      - paragraph [ref=f1e569]: як Self
+                - listitem [ref=f1e570]:
+                  - link "2019 movie До зірок До зірок як Roy McBride" [ref=f1e571] [cursor=pointer]:
+                    - /url: /uk/movies/419704
+                    - generic [ref=f1e572]:
+                      - generic [ref=f1e573]: "2019"
+                      - generic [ref=f1e574]: movie
+                    - img "До зірок" [ref=f1e576]
+                    - generic [ref=f1e577]:
+                      - paragraph [ref=f1e578]: До зірок
+                      - paragraph [ref=f1e579]: як Roy McBride
+                - listitem [ref=f1e580]:
+                  - link "2019 movie Одного разу в… Голлівуді Одного разу в… Голлівуді як Cliff Booth" [ref=f1e581] [cursor=pointer]:
+                    - /url: /uk/movies/466272
+                    - generic [ref=f1e582]:
+                      - generic [ref=f1e583]: "2019"
+                      - generic [ref=f1e584]: movie
+                    - img "Одного разу в… Голлівуді" [ref=f1e586]
+                    - generic [ref=f1e587]:
+                      - paragraph [ref=f1e588]: Одного разу в… Голлівуді
+                      - paragraph [ref=f1e589]: як Cliff Booth
+                - listitem [ref=f1e590]:
+                  - link "2018 movie Жив-був Дедпул Жив-був Дедпул як Vanisher" [ref=f1e591] [cursor=pointer]:
+                    - /url: /uk/movies/567604
+                    - generic [ref=f1e592]:
+                      - generic [ref=f1e593]: "2018"
+                      - generic [ref=f1e594]: movie
+                    - img "Жив-був Дедпул" [ref=f1e596]
+                    - generic [ref=f1e597]:
+                      - paragraph [ref=f1e598]: Жив-був Дедпул
+                      - paragraph [ref=f1e599]: як Vanisher
+                - listitem [ref=f1e600]:
+                  - 'link "2018 movie Broken: The Incredible Story of Brangelina Broken: The Incredible Story of Brangelina як Self (archive footage)" [ref=f1e601] [cursor=pointer]':
+                    - /url: /uk/movies/988627
+                    - generic [ref=f1e602]:
+                      - generic [ref=f1e603]: "2018"
+                      - generic [ref=f1e604]: movie
+                    - 'img "Broken: The Incredible Story of Brangelina" [ref=f1e606]'
+                    - generic [ref=f1e607]:
+                      - paragraph [ref=f1e608]: "Broken: The Incredible Story of Brangelina"
+                      - paragraph [ref=f1e609]: як Self (archive footage)
+                - listitem [ref=f1e610]:
+                  - link "2018 movie Дедпул 2 Дедпул 2 як Vanisher" [ref=f1e611] [cursor=pointer]:
+                    - /url: /uk/movies/383498
+                    - generic [ref=f1e612]:
+                      - generic [ref=f1e613]: "2018"
+                      - generic [ref=f1e614]: movie
+                    - img "Дедпул 2" [ref=f1e616]
+                    - generic [ref=f1e617]:
+                      - paragraph [ref=f1e618]: Дедпул 2
+                      - paragraph [ref=f1e619]: як Vanisher
+                - listitem [ref=f1e620]:
+                  - link "2017 movie Машина війни Машина війни як Gen. Glen McMahon" [ref=f1e621] [cursor=pointer]:
+                    - /url: /uk/movies/354287
+                    - generic [ref=f1e622]:
+                      - generic [ref=f1e623]: "2017"
+                      - generic [ref=f1e624]: movie
+                    - img "Машина війни" [ref=f1e626]
+                    - generic [ref=f1e627]:
+                      - paragraph [ref=f1e628]: Машина війни
+                      - paragraph [ref=f1e629]: як Gen. Glen McMahon
+                - listitem [ref=f1e630]:
+                  - link "2016 movie Шпигуни-союзники Шпигуни-союзники як Max Vatan" [ref=f1e631] [cursor=pointer]:
+                    - /url: /uk/movies/369885
+                    - generic [ref=f1e632]:
+                      - generic [ref=f1e633]: "2016"
+                      - generic [ref=f1e634]: movie
+                    - img "Шпигуни-союзники" [ref=f1e636]
+                    - generic [ref=f1e637]:
+                      - paragraph [ref=f1e638]: Шпигуни-союзники
+                      - paragraph [ref=f1e639]: як Max Vatan
+                - listitem [ref=f1e640]:
+                  - 'link "2016 movie Voyage of Time: The IMAX Experience Voyage of Time: The IMAX Experience як Narrator (voice)" [ref=f1e641] [cursor=pointer]':
+                    - /url: /uk/movies/417198
+                    - generic [ref=f1e642]:
+                      - generic [ref=f1e643]: "2016"
+                      - generic [ref=f1e644]: movie
+                    - 'img "Voyage of Time: The IMAX Experience" [ref=f1e646]'
+                    - generic [ref=f1e647]:
+                      - paragraph [ref=f1e648]: "Voyage of Time: The IMAX Experience"
+                      - paragraph [ref=f1e649]: як Narrator (voice)
+                - listitem [ref=f1e650]:
+                  - link "2015 movie Гра на пониження Гра на пониження як Ben Rickert" [ref=f1e651] [cursor=pointer]:
+                    - /url: /uk/movies/318846
+                    - generic [ref=f1e652]:
+                      - generic [ref=f1e653]: "2015"
+                      - generic [ref=f1e654]: movie
+                    - img "Гра на пониження" [ref=f1e656]
+                    - generic [ref=f1e657]:
+                      - paragraph [ref=f1e658]: Гра на пониження
+                      - paragraph [ref=f1e659]: як Ben Rickert
+                - listitem [ref=f1e660]:
+                  - link "2015 movie Біля моря Біля моря як Roland" [ref=f1e661] [cursor=pointer]:
+                    - /url: /uk/movies/314385
+                    - generic [ref=f1e662]:
+                      - generic [ref=f1e663]: "2015"
+                      - generic [ref=f1e664]: movie
+                    - img "Біля моря" [ref=f1e666]
+                    - generic [ref=f1e667]:
+                      - paragraph [ref=f1e668]: Біля моря
+                      - paragraph [ref=f1e669]: як Roland
+                - listitem [ref=f1e670]:
+                  - link "2015 movie Прослуховування Прослуховування як Self" [ref=f1e671] [cursor=pointer]:
+                    - /url: /uk/movies/365717
+                    - generic [ref=f1e672]:
+                      - generic [ref=f1e673]: "2015"
+                      - generic [ref=f1e674]: movie
+                    - img "Прослуховування" [ref=f1e676]
+                    - generic [ref=f1e677]:
+                      - paragraph [ref=f1e678]: Прослуховування
+                      - paragraph [ref=f1e679]: як Self
+                - listitem [ref=f1e680]:
+                  - link "2015 movie Hitting the Apex Hitting the Apex як Narrator (voice)" [ref=f1e681] [cursor=pointer]:
+                    - /url: /uk/movies/357681
+                    - generic [ref=f1e682]:
+                      - generic [ref=f1e683]: "2015"
+                      - generic [ref=f1e684]: movie
+                    - img "Hitting the Apex" [ref=f1e686]
+                    - generic [ref=f1e687]:
+                      - paragraph [ref=f1e688]: Hitting the Apex
+                      - paragraph [ref=f1e689]: як Narrator (voice)
+                - listitem [ref=f1e690]:
+                  - link "2014 movie Лють Лють як Don 'Wardaddy' Collier" [ref=f1e691] [cursor=pointer]:
+                    - /url: /uk/movies/228150
+                    - generic [ref=f1e692]:
+                      - generic [ref=f1e693]: "2014"
+                      - generic [ref=f1e694]: movie
+                    - img "Лють" [ref=f1e696]
+                    - generic [ref=f1e697]:
+                      - paragraph [ref=f1e698]: Лють
+                      - paragraph [ref=f1e699]: як Don 'Wardaddy' Collier
+                - listitem [ref=f1e700]:
+                  - 'link "2014 movie Truth of the Situation: Making ''The Counselor'' Truth of the Situation: Making ''The Counselor'' як Self (archive footage)" [ref=f1e701] [cursor=pointer]':
+                    - /url: /uk/movies/460224
+                    - generic [ref=f1e702]:
+                      - generic [ref=f1e703]: "2014"
+                      - generic [ref=f1e704]: movie
+                    - 'img "Truth of the Situation: Making ''The Counselor''" [ref=f1e706]'
+                    - generic [ref=f1e707]:
+                      - paragraph [ref=f1e708]: "Truth of the Situation: Making 'The Counselor'"
+                      - paragraph [ref=f1e709]: як Self (archive footage)
+                - listitem [ref=f1e710]:
+                  - link "2013 movie Радник Радник як Westray" [ref=f1e711] [cursor=pointer]:
+                    - /url: /uk/movies/109091
+                    - generic [ref=f1e712]:
+                      - generic [ref=f1e713]: "2013"
+                      - generic [ref=f1e714]: movie
+                    - img "Радник" [ref=f1e716]
+                    - generic [ref=f1e717]:
+                      - paragraph [ref=f1e718]: Радник
+                      - paragraph [ref=f1e719]: як Westray
+                - listitem [ref=f1e720]:
+                  - link "2013 movie 12 років рабства 12 років рабства як Samuel Bass" [ref=f1e721] [cursor=pointer]:
+                    - /url: /uk/movies/76203
+                    - generic [ref=f1e722]:
+                      - generic [ref=f1e723]: "2013"
+                      - generic [ref=f1e724]: movie
+                    - img "12 років рабства" [ref=f1e726]
+                    - generic [ref=f1e727]:
+                      - paragraph [ref=f1e728]: 12 років рабства
+                      - paragraph [ref=f1e729]: як Samuel Bass
+                - listitem [ref=f1e730]:
+                  - link "2013 movie Всесвітня Війна Z Всесвітня Війна Z як Gerry Lane" [ref=f1e731] [cursor=pointer]:
+                    - /url: /uk/movies/72190
+                    - generic [ref=f1e732]:
+                      - generic [ref=f1e733]: "2013"
+                      - generic [ref=f1e734]: movie
+                    - img "Всесвітня Війна Z" [ref=f1e736]
+                    - generic [ref=f1e737]:
+                      - paragraph [ref=f1e738]: Всесвітня Війна Z
+                      - paragraph [ref=f1e739]: як Gerry Lane
+                - listitem [ref=f1e740]:
+                  - link "2012 movie La Classe américaine La Classe américaine як Self" [ref=f1e741] [cursor=pointer]:
+                    - /url: /uk/movies/738017
+                    - generic [ref=f1e742]:
+                      - generic [ref=f1e743]: "2012"
+                      - generic [ref=f1e744]: movie
+                    - img "La Classe américaine" [ref=f1e746]
+                    - generic [ref=f1e747]:
+                      - paragraph [ref=f1e748]: La Classe américaine
+                      - paragraph [ref=f1e749]: як Self
+                - listitem [ref=f1e750]:
+                  - link "2012 movie Close Up Close Up як Self (archive footage)" [ref=f1e751] [cursor=pointer]:
+                    - /url: /uk/movies/1113682
+                    - generic [ref=f1e752]:
+                      - generic [ref=f1e753]: "2012"
+                      - generic [ref=f1e754]: movie
+                    - img "Close Up" [ref=f1e756]
+                    - generic [ref=f1e757]:
+                      - paragraph [ref=f1e758]: Close Up
+                      - paragraph [ref=f1e759]: як Self (archive footage)
+                - listitem [ref=f1e760]:
+                  - link "2012 movie Пограбування казино Пограбування казино як Jackie Cogan" [ref=f1e761] [cursor=pointer]:
+                    - /url: /uk/movies/64689
+                    - generic [ref=f1e762]:
+                      - generic [ref=f1e763]: "2012"
+                      - generic [ref=f1e764]: movie
+                    - img "Пограбування казино" [ref=f1e766]
+                    - generic [ref=f1e767]:
+                      - paragraph [ref=f1e768]: Пограбування казино
+                      - paragraph [ref=f1e769]: як Jackie Cogan
+                - listitem [ref=f1e770]:
+                  - link "2012 movie 8 8 як Judge Vaughn Walker" [ref=f1e771] [cursor=pointer]:
+                    - /url: /uk/movies/1321694
+                    - generic [ref=f1e772]:
+                      - generic [ref=f1e773]: "2012"
+                      - generic [ref=f1e774]: movie
+                    - img "8" [ref=f1e776]
+                    - generic [ref=f1e777]:
+                      - paragraph [ref=f1e778]: "8"
+                      - paragraph [ref=f1e779]: як Judge Vaughn Walker
+                - listitem [ref=f1e780]:
+                  - 'link "2012 movie Final Cut: Hölgyeim és uraim Final Cut: Hölgyeim és uraim як (archive footage)" [ref=f1e781] [cursor=pointer]':
+                    - /url: /uk/movies/126314
+                    - generic [ref=f1e782]:
+                      - generic [ref=f1e783]: "2012"
+                      - generic [ref=f1e784]: movie
+                    - 'img "Final Cut: Hölgyeim és uraim" [ref=f1e786]'
+                    - generic [ref=f1e787]:
+                      - paragraph [ref=f1e788]: "Final Cut: Hölgyeim és uraim"
+                      - paragraph [ref=f1e789]: як (archive footage)
+                - listitem [ref=f1e790]:
+                  - link "2011 movie Веселі ніжки 2 Веселі ніжки 2 як Will (voice)" [ref=f1e791] [cursor=pointer]:
+                    - /url: /uk/movies/65759
+                    - generic [ref=f1e792]:
+                      - generic [ref=f1e793]: "2011"
+                      - generic [ref=f1e794]: movie
+                    - img "Веселі ніжки 2" [ref=f1e796]
+                    - generic [ref=f1e797]:
+                      - paragraph [ref=f1e798]: Веселі ніжки 2
+                      - paragraph [ref=f1e799]: як Will (voice)
+                - listitem [ref=f1e800]:
+                  - link "2011 movie Exploring 'The Tree of Life' Exploring 'The Tree of Life' як Self" [ref=f1e801] [cursor=pointer]:
+                    - /url: /uk/movies/292790
+                    - generic [ref=f1e802]:
+                      - generic [ref=f1e803]: "2011"
+                      - generic [ref=f1e804]: movie
+                    - img "Exploring 'The Tree of Life'" [ref=f1e806]
+                    - generic [ref=f1e807]:
+                      - paragraph [ref=f1e808]: Exploring 'The Tree of Life'
+                      - paragraph [ref=f1e809]: як Self
+                - listitem [ref=f1e810]:
+                  - link "2011 movie Людина, яка змінила все Людина, яка змінила все як Billy Beane" [ref=f1e811] [cursor=pointer]:
+                    - /url: /uk/movies/60308
+                    - generic [ref=f1e812]:
+                      - generic [ref=f1e813]: "2011"
+                      - generic [ref=f1e814]: movie
+                    - img "Людина, яка змінила все" [ref=f1e816]
+                    - generic [ref=f1e817]:
+                      - paragraph [ref=f1e818]: Людина, яка змінила все
+                      - paragraph [ref=f1e819]: як Billy Beane
+                - listitem [ref=f1e820]:
+                  - link "2011 movie Древо життя Древо життя як Mr. O'Brien" [ref=f1e821] [cursor=pointer]:
+                    - /url: /uk/movies/8967
+                    - generic [ref=f1e822]:
+                      - generic [ref=f1e823]: "2011"
+                      - generic [ref=f1e824]: movie
+                    - img "Древо життя" [ref=f1e826]
+                    - generic [ref=f1e827]:
+                      - paragraph [ref=f1e828]: Древо життя
+                      - paragraph [ref=f1e829]: як Mr. O'Brien
+                - listitem [ref=f1e830]:
+                  - link "2011 movie His Way His Way як Self" [ref=f1e831] [cursor=pointer]:
+                    - /url: /uk/movies/63472
+                    - generic [ref=f1e832]:
+                      - generic [ref=f1e833]: "2011"
+                      - generic [ref=f1e834]: movie
+                    - img "His Way" [ref=f1e836]
+                    - generic [ref=f1e837]:
+                      - paragraph [ref=f1e838]: His Way
+                      - paragraph [ref=f1e839]: як Self
+                - listitem [ref=f1e840]:
+                  - link "2010 movie Мегамозок Мегамозок як Metro Man (voice)" [ref=f1e841] [cursor=pointer]:
+                    - /url: /uk/movies/38055
+                    - generic [ref=f1e842]:
+                      - generic [ref=f1e843]: "2010"
+                      - generic [ref=f1e844]: movie
+                    - img "Мегамозок" [ref=f1e846]
+                    - generic [ref=f1e847]:
+                      - paragraph [ref=f1e848]: Мегамозок
+                      - paragraph [ref=f1e849]: як Metro Man (voice)
+                - listitem [ref=f1e850]:
+                  - link "2010 movie Вихід через сувенірну крамницю Вихід через сувенірну крамницю як Self (uncredited)" [ref=f1e851] [cursor=pointer]:
+                    - /url: /uk/movies/39452
+                    - generic [ref=f1e852]:
+                      - generic [ref=f1e853]: "2010"
+                      - generic [ref=f1e854]: movie
+                    - img "Вихід через сувенірну крамницю" [ref=f1e856]
+                    - generic [ref=f1e857]:
+                      - paragraph [ref=f1e858]: Вихід через сувенірну крамницю
+                      - paragraph [ref=f1e859]: як Self (uncredited)
+                - listitem [ref=f1e860]:
+                  - link "2009 movie Beyond All Boundaries Beyond All Boundaries як Sgt. Bill Mauldin" [ref=f1e861] [cursor=pointer]:
+                    - /url: /uk/movies/574379
+                    - generic [ref=f1e862]:
+                      - generic [ref=f1e863]: "2009"
+                      - generic [ref=f1e864]: movie
+                    - img "Beyond All Boundaries" [ref=f1e866]
+                    - generic [ref=f1e867]:
+                      - paragraph [ref=f1e868]: Beyond All Boundaries
+                      - paragraph [ref=f1e869]: як Sgt. Bill Mauldin
+                - listitem [ref=f1e870]:
+                  - link "2009 movie Безславні виродки Безславні виродки як LT. Aldo Raine" [ref=f1e871] [cursor=pointer]:
+                    - /url: /uk/movies/16869
+                    - generic [ref=f1e872]:
+                      - generic [ref=f1e873]: "2009"
+                      - generic [ref=f1e874]: movie
+                    - img "Безславні виродки" [ref=f1e876]
+                    - generic [ref=f1e877]:
+                      - paragraph [ref=f1e878]: Безславні виродки
+                      - paragraph [ref=f1e879]: як LT. Aldo Raine
+                - listitem [ref=f1e880]:
+                  - link "2009 movie The Curious Birth of Benjamin Button The Curious Birth of Benjamin Button як Self" [ref=f1e881] [cursor=pointer]:
+                    - /url: /uk/movies/585240
+                    - generic [ref=f1e882]:
+                      - generic [ref=f1e883]: "2009"
+                      - generic [ref=f1e884]: movie
+                    - img "The Curious Birth of Benjamin Button" [ref=f1e886]
+                    - generic [ref=f1e887]:
+                      - paragraph [ref=f1e888]: The Curious Birth of Benjamin Button
+                      - paragraph [ref=f1e889]: як Self
+                - listitem [ref=f1e890]:
+                  - link "2008 movie Загадкова справа Бенджаміна Баттона Загадкова справа Бенджаміна Баттона як Benjamin Button" [ref=f1e891] [cursor=pointer]:
+                    - /url: /uk/movies/4922
+                    - generic [ref=f1e892]:
+                      - generic [ref=f1e893]: "2008"
+                      - generic [ref=f1e894]: movie
+                    - img "Загадкова справа Бенджаміна Баттона" [ref=f1e896]
+                    - generic [ref=f1e897]:
+                      - paragraph [ref=f1e898]: Загадкова справа Бенджаміна Баттона
+                      - paragraph [ref=f1e899]: як Benjamin Button
+                - listitem [ref=f1e900]:
+                  - link "2008 movie Finding the Burn Finding the Burn як Self / Chad Feldheimer (archive footage)" [ref=f1e901] [cursor=pointer]:
+                    - /url: /uk/movies/1556422
+                    - generic [ref=f1e902]:
+                      - generic [ref=f1e903]: "2008"
+                      - generic [ref=f1e904]: movie
+                    - img "Finding the Burn" [ref=f1e906]
+                    - generic [ref=f1e907]:
+                      - paragraph [ref=f1e908]: Finding the Burn
+                      - paragraph [ref=f1e909]: як Self / Chad Feldheimer (archive footage)
+                - listitem [ref=f1e910]:
+                  - link "2008 movie DC Insiders Run Amuck DC Insiders Run Amuck як Self" [ref=f1e911] [cursor=pointer]:
+                    - /url: /uk/movies/1556433
+                    - generic [ref=f1e912]:
+                      - generic [ref=f1e913]: "2008"
+                      - generic [ref=f1e914]: movie
+                    - img "DC Insiders Run Amuck" [ref=f1e916]
+                    - generic [ref=f1e917]:
+                      - paragraph [ref=f1e918]: DC Insiders Run Amuck
+                      - paragraph [ref=f1e919]: як Self
+                - listitem [ref=f1e920]:
+                  - link "2008 movie His Highness Hollywood His Highness Hollywood як Self" [ref=f1e921] [cursor=pointer]:
+                    - /url: /uk/movies/319714
+                    - generic [ref=f1e922]:
+                      - generic [ref=f1e923]: "2008"
+                      - generic [ref=f1e924]: movie
+                    - img "His Highness Hollywood" [ref=f1e926]
+                    - generic [ref=f1e927]:
+                      - paragraph [ref=f1e928]: His Highness Hollywood
+                      - paragraph [ref=f1e929]: як Self
+                - listitem [ref=f1e930]:
+                  - link "2008 movie Прочитати та спалити Прочитати та спалити як Chad Feldheimer" [ref=f1e931] [cursor=pointer]:
+                    - /url: /uk/movies/4944
+                    - generic [ref=f1e932]:
+                      - generic [ref=f1e933]: "2008"
+                      - generic [ref=f1e934]: movie
+                    - img "Прочитати та спалити" [ref=f1e936]
+                    - generic [ref=f1e937]:
+                      - paragraph [ref=f1e938]: Прочитати та спалити
+                      - paragraph [ref=f1e939]: як Chad Feldheimer
+                - listitem [ref=f1e940]:
+                  - 'link "2008 movie The Assassination of Jesse James: Death of an Outlaw The Assassination of Jesse James: Death of an Outlaw як Self" [ref=f1e941] [cursor=pointer]':
+                    - /url: /uk/movies/17171
+                    - generic [ref=f1e942]:
+                      - generic [ref=f1e943]: "2008"
+                      - generic [ref=f1e944]: movie
+                    - 'img "The Assassination of Jesse James: Death of an Outlaw" [ref=f1e946]'
+                    - generic [ref=f1e947]:
+                      - paragraph [ref=f1e948]: "The Assassination of Jesse James: Death of an Outlaw"
+                      - paragraph [ref=f1e949]: як Self
+                - listitem [ref=f1e950]:
+                  - link "2007 movie Voom Portraits Voom Portraits як Self" [ref=f1e951] [cursor=pointer]:
+                    - /url: /uk/movies/576131
+                    - generic [ref=f1e952]:
+                      - generic [ref=f1e953]: "2007"
+                      - generic [ref=f1e954]: movie
+                    - img "Voom Portraits" [ref=f1e956]
+                    - generic [ref=f1e957]:
+                      - paragraph [ref=f1e958]: Voom Portraits
+                      - paragraph [ref=f1e959]: як Self
+                - listitem [ref=f1e960]:
+                  - 'link "2007 movie Common Ground: Under Construction Notes Common Ground: Under Construction Notes як Self" [ref=f1e961] [cursor=pointer]':
+                    - /url: /uk/movies/1389971
+                    - generic [ref=f1e962]:
+                      - generic [ref=f1e963]: "2007"
+                      - generic [ref=f1e964]: movie
+                    - 'img "Common Ground: Under Construction Notes" [ref=f1e966]'
+                    - generic [ref=f1e967]:
+                      - paragraph [ref=f1e968]: "Common Ground: Under Construction Notes"
+                      - paragraph [ref=f1e969]: як Self
+                - listitem [ref=f1e970]:
+                  - link "2007 movie Як боязкий Роберт Форд убив Джессі Джеймса Як боязкий Роберт Форд убив Джессі Джеймса як Jesse James" [ref=f1e971] [cursor=pointer]:
+                    - /url: /uk/movies/4512
+                    - generic [ref=f1e972]:
+                      - generic [ref=f1e973]: "2007"
+                      - generic [ref=f1e974]: movie
+                    - img "Як боязкий Роберт Форд убив Джессі Джеймса" [ref=f1e976]
+                    - generic [ref=f1e977]:
+                      - paragraph [ref=f1e978]: Як боязкий Роберт Форд убив Джессі Джеймса
+                      - paragraph [ref=f1e979]: як Jesse James
+                - listitem [ref=f1e980]:
+                  - link "2007 movie Тринадцять друзів Оушена Тринадцять друзів Оушена як Rusty Ryan" [ref=f1e981] [cursor=pointer]:
+                    - /url: /uk/movies/298
+                    - generic [ref=f1e982]:
+                      - generic [ref=f1e983]: "2007"
+                      - generic [ref=f1e984]: movie
+                    - img "Тринадцять друзів Оушена" [ref=f1e986]
+                    - generic [ref=f1e987]:
+                      - paragraph [ref=f1e988]: Тринадцять друзів Оушена
+                      - paragraph [ref=f1e989]: як Rusty Ryan
+                - listitem [ref=f1e990]:
+                  - link "2006 movie Вавилон Вавилон як Richard Jones" [ref=f1e991] [cursor=pointer]:
+                    - /url: /uk/movies/1164
+                    - generic [ref=f1e992]:
+                      - generic [ref=f1e993]: "2006"
+                      - generic [ref=f1e994]: movie
+                    - img "Вавилон" [ref=f1e996]
+                    - generic [ref=f1e997]:
+                      - paragraph [ref=f1e998]: Вавилон
+                      - paragraph [ref=f1e999]: як Richard Jones
+                - listitem [ref=f1e1000]:
+                  - link "2005 movie Live 8 Live 8 як Self" [ref=f1e1001] [cursor=pointer]:
+                    - /url: /uk/movies/42348
+                    - generic [ref=f1e1002]:
+                      - generic [ref=f1e1003]: "2005"
+                      - generic [ref=f1e1004]: movie
+                    - img "Live 8" [ref=f1e1006]
+                    - generic [ref=f1e1007]:
+                      - paragraph [ref=f1e1008]: Live 8
+                      - paragraph [ref=f1e1009]: як Self
+                - listitem [ref=f1e1010]:
+                  - link "2005 movie Мiстер i мiсiс Смiт Мiстер i мiсiс Смiт як John Smith" [ref=f1e1011] [cursor=pointer]:
+                    - /url: /uk/movies/787
+                    - generic [ref=f1e1012]:
+                      - generic [ref=f1e1013]: "2005"
+                      - generic [ref=f1e1014]: movie
+                    - img "Мiстер i мiсiс Смiт" [ref=f1e1016]
+                    - generic [ref=f1e1017]:
+                      - paragraph [ref=f1e1018]: Мiстер i мiсiс Смiт
+                      - paragraph [ref=f1e1019]: як John Smith
+                - listitem [ref=f1e1020]:
+                  - link "2005 movie Nos Bastidores de Hollywood Nos Bastidores de Hollywood як Self (archive footage)" [ref=f1e1021] [cursor=pointer]:
+                    - /url: /uk/movies/1242980
+                    - generic [ref=f1e1022]:
+                      - generic [ref=f1e1023]: "2005"
+                      - generic [ref=f1e1024]: movie
+                    - img "Nos Bastidores de Hollywood" [ref=f1e1026]
+                    - generic [ref=f1e1027]:
+                      - paragraph [ref=f1e1028]: Nos Bastidores de Hollywood
+                      - paragraph [ref=f1e1029]: як Self (archive footage)
+                - listitem [ref=f1e1030]:
+                  - link "2004 movie Дванадцять друзів Оушена Дванадцять друзів Оушена як Rusty Ryan" [ref=f1e1031] [cursor=pointer]:
+                    - /url: /uk/movies/163
+                    - generic [ref=f1e1032]:
+                      - generic [ref=f1e1033]: "2004"
+                      - generic [ref=f1e1034]: movie
+                    - img "Дванадцять друзів Оушена" [ref=f1e1036]
+                    - generic [ref=f1e1037]:
+                      - paragraph [ref=f1e1038]: Дванадцять друзів Оушена
+                      - paragraph [ref=f1e1039]: як Rusty Ryan
+                - listitem [ref=f1e1040]:
+                  - link "2004 movie Троя Троя як Achilles" [ref=f1e1041] [cursor=pointer]:
+                    - /url: /uk/movies/652
+                    - generic [ref=f1e1042]:
+                      - generic [ref=f1e1043]: "2004"
+                      - generic [ref=f1e1044]: movie
+                    - img "Троя" [ref=f1e1046]
+                    - generic [ref=f1e1047]:
+                      - paragraph [ref=f1e1048]: Троя
+                      - paragraph [ref=f1e1049]: як Achilles
+                - listitem [ref=f1e1050]:
+                  - link "2003 movie Синдбад та Острів Циклопів Синдбад та Острів Циклопів як Sinbad" [ref=f1e1051] [cursor=pointer]:
+                    - /url: /uk/movies/381690
+                    - generic [ref=f1e1052]:
+                      - generic [ref=f1e1053]: "2003"
+                      - generic [ref=f1e1054]: movie
+                    - img "Синдбад та Острів Циклопів" [ref=f1e1056]
+                    - generic [ref=f1e1057]:
+                      - paragraph [ref=f1e1058]: Синдбад та Острів Циклопів
+                      - paragraph [ref=f1e1059]: як Sinbad
+                - listitem [ref=f1e1060]:
+                  - link "2003 movie Abby Singer Abby Singer як Brad Pitt (uncredited)" [ref=f1e1061] [cursor=pointer]:
+                    - /url: /uk/movies/499117
+                    - generic [ref=f1e1062]:
+                      - generic [ref=f1e1063]: "2003"
+                      - generic [ref=f1e1064]: movie
+                    - img "Abby Singer" [ref=f1e1066]
+                    - generic [ref=f1e1067]:
+                      - paragraph [ref=f1e1068]: Abby Singer
+                      - paragraph [ref=f1e1069]: як Brad Pitt (uncredited)
+                - listitem [ref=f1e1070]:
+                  - 'link "2003 movie Синдбад: Легенда семи морів Синдбад: Легенда семи морів як Sinbad (voice)" [ref=f1e1071] [cursor=pointer]':
+                    - /url: /uk/movies/14411
+                    - generic [ref=f1e1072]:
+                      - generic [ref=f1e1073]: "2003"
+                      - generic [ref=f1e1074]: movie
+                    - 'img "Синдбад: Легенда семи морів" [ref=f1e1076]'
+                    - generic [ref=f1e1077]:
+                      - paragraph [ref=f1e1078]: "Синдбад: Легенда семи морів"
+                      - paragraph [ref=f1e1079]: як Sinbad (voice)
+                - listitem [ref=f1e1080]:
+                  - 'link "2003 movie Thelma & Louise: The Last Journey Thelma & Louise: The Last Journey як Self" [ref=f1e1081] [cursor=pointer]':
+                    - /url: /uk/movies/327962
+                    - generic [ref=f1e1082]:
+                      - generic [ref=f1e1083]: "2003"
+                      - generic [ref=f1e1084]: movie
+                    - 'img "Thelma & Louise: The Last Journey" [ref=f1e1086]'
+                    - generic [ref=f1e1087]:
+                      - paragraph [ref=f1e1088]: "Thelma & Louise: The Last Journey"
+                      - paragraph [ref=f1e1089]: як Self
+                - listitem [ref=f1e1090]:
+                  - link "2002 movie Сповідь небезпечної людини Сповідь небезпечної людини як Bachelor Brad" [ref=f1e1091] [cursor=pointer]:
+                    - /url: /uk/movies/4912
+                    - generic [ref=f1e1092]:
+                      - generic [ref=f1e1093]: "2002"
+                      - generic [ref=f1e1094]: movie
+                    - img "Сповідь небезпечної людини" [ref=f1e1096]
+                    - generic [ref=f1e1097]:
+                      - paragraph [ref=f1e1098]: Сповідь небезпечної людини
+                      - paragraph [ref=f1e1099]: як Bachelor Brad
+                - listitem [ref=f1e1100]:
+                  - link "2002 movie Full Frontal Full Frontal як Brad Pitt / Self" [ref=f1e1101] [cursor=pointer]:
+                    - /url: /uk/movies/15186
+                    - generic [ref=f1e1102]:
+                      - generic [ref=f1e1103]: "2002"
+                      - generic [ref=f1e1104]: movie
+                    - img "Full Frontal" [ref=f1e1106]
+                    - generic [ref=f1e1107]:
+                      - paragraph [ref=f1e1108]: Full Frontal
+                      - paragraph [ref=f1e1109]: як Brad Pitt / Self
+                - listitem [ref=f1e1110]:
+                  - 'link "2002 movie Jeff Buckley: Everybody Here Wants You Jeff Buckley: Everybody Here Wants You як Self" [ref=f1e1111] [cursor=pointer]':
+                    - /url: /uk/movies/594392
+                    - generic [ref=f1e1112]:
+                      - generic [ref=f1e1113]: "2002"
+                      - generic [ref=f1e1114]: movie
+                    - 'img "Jeff Buckley: Everybody Here Wants You" [ref=f1e1116]'
+                    - generic [ref=f1e1117]:
+                      - paragraph [ref=f1e1118]: "Jeff Buckley: Everybody Here Wants You"
+                      - paragraph [ref=f1e1119]: як Self
+                - listitem [ref=f1e1120]:
+                  - 'link "2002 movie ''Ocean''s Eleven'': The Look of the Con ''Ocean''s Eleven'': The Look of the Con як Self" [ref=f1e1121] [cursor=pointer]':
+                    - /url: /uk/movies/961030
+                    - generic [ref=f1e1122]:
+                      - generic [ref=f1e1123]: "2002"
+                      - generic [ref=f1e1124]: movie
+                    - 'img "''Ocean''s Eleven'': The Look of the Con" [ref=f1e1126]'
+                    - generic [ref=f1e1127]:
+                      - paragraph [ref=f1e1128]: "'Ocean's Eleven': The Look of the Con"
+                      - paragraph [ref=f1e1129]: як Self
+                - listitem [ref=f1e1130]:
+                  - link "2001 movie Одинадцять друзів Оушена Одинадцять друзів Оушена як Rusty Ryan" [ref=f1e1131] [cursor=pointer]:
+                    - /url: /uk/movies/161
+                    - generic [ref=f1e1132]:
+                      - generic [ref=f1e1133]: "2001"
+                      - generic [ref=f1e1134]: movie
+                    - img "Одинадцять друзів Оушена" [ref=f1e1136]
+                    - generic [ref=f1e1137]:
+                      - paragraph [ref=f1e1138]: Одинадцять друзів Оушена
+                      - paragraph [ref=f1e1139]: як Rusty Ryan
+                - listitem [ref=f1e1140]:
+                  - link "2001 movie Шпигунські ігри Шпигунські ігри як Tom Bishop" [ref=f1e1141] [cursor=pointer]:
+                    - /url: /uk/movies/1535
+                    - generic [ref=f1e1142]:
+                      - generic [ref=f1e1143]: "2001"
+                      - generic [ref=f1e1144]: movie
+                    - img "Шпигунські ігри" [ref=f1e1146]
+                    - generic [ref=f1e1147]:
+                      - paragraph [ref=f1e1148]: Шпигунські ігри
+                      - paragraph [ref=f1e1149]: як Tom Bishop
+                - listitem [ref=f1e1150]:
+                  - link "2001 movie Making 'Snatch' Making 'Snatch' як Self" [ref=f1e1151] [cursor=pointer]:
+                    - /url: /uk/movies/357659
+                    - generic [ref=f1e1152]:
+                      - generic [ref=f1e1153]: "2001"
+                      - generic [ref=f1e1154]: movie
+                    - img "Making 'Snatch'" [ref=f1e1156]
+                    - generic [ref=f1e1157]:
+                      - paragraph [ref=f1e1158]: Making 'Snatch'
+                      - paragraph [ref=f1e1159]: як Self
+                - listitem [ref=f1e1160]:
+                  - link "2001 movie Мексиканець Мексиканець як Jerry" [ref=f1e1161] [cursor=pointer]:
+                    - /url: /uk/movies/6073
+                    - generic [ref=f1e1162]:
+                      - generic [ref=f1e1163]: "2001"
+                      - generic [ref=f1e1164]: movie
+                    - img "Мексиканець" [ref=f1e1166]
+                    - generic [ref=f1e1167]:
+                      - paragraph [ref=f1e1168]: Мексиканець
+                      - paragraph [ref=f1e1169]: як Jerry
+                - listitem [ref=f1e1170]:
+                  - link "2000 movie Великий куш Великий куш як Mickey O'Neil" [ref=f1e1171] [cursor=pointer]:
+                    - /url: /uk/movies/107
+                    - generic [ref=f1e1172]:
+                      - generic [ref=f1e1173]: "2000"
+                      - generic [ref=f1e1174]: movie
+                    - img "Великий куш" [ref=f1e1176]
+                    - generic [ref=f1e1177]:
+                      - paragraph [ref=f1e1178]: Великий куш
+                      - paragraph [ref=f1e1179]: як Mickey O'Neil
+                - listitem [ref=f1e1180]:
+                  - 'link "2000 movie In the Shadow of the Vampire: The Making of Interview with the Vampire In the Shadow of the Vampire: The Making of Interview with the Vampire як Self / Louis (archive footage)" [ref=f1e1181] [cursor=pointer]':
+                    - /url: /uk/movies/1231307
+                    - generic [ref=f1e1182]:
+                      - generic [ref=f1e1183]: "2000"
+                      - generic [ref=f1e1184]: movie
+                    - 'img "In the Shadow of the Vampire: The Making of Interview with the Vampire" [ref=f1e1186]'
+                    - generic [ref=f1e1187]:
+                      - paragraph [ref=f1e1188]: "In the Shadow of the Vampire: The Making of Interview with the Vampire"
+                      - paragraph [ref=f1e1189]: як Self / Louis (archive footage)
+                - listitem [ref=f1e1190]:
+                  - 'link "2000 movie Fight Club: Behind the Scenes Fight Club: Behind the Scenes як Self" [ref=f1e1191] [cursor=pointer]':
+                    - /url: /uk/movies/1683558
+                    - generic [ref=f1e1192]:
+                      - generic [ref=f1e1193]: "2000"
+                      - generic [ref=f1e1194]: movie
+                    - 'img "Fight Club: Behind the Scenes" [ref=f1e1196]'
+                    - generic [ref=f1e1197]:
+                      - paragraph [ref=f1e1198]: "Fight Club: Behind the Scenes"
+                      - paragraph [ref=f1e1199]: як Self
+                - listitem [ref=f1e1200]:
+                  - 'link "2000 movie Brad Pitt & Jennifer Aniston: Hollywood''s Couple of the Year Brad Pitt & Jennifer Aniston: Hollywood''s Couple of the Year як Self (archive footage)" [ref=f1e1201] [cursor=pointer]':
+                    - /url: /uk/movies/923893
+                    - generic [ref=f1e1202]:
+                      - generic [ref=f1e1203]: "2000"
+                      - generic [ref=f1e1204]: movie
+                    - 'img "Brad Pitt & Jennifer Aniston: Hollywood''s Couple of the Year" [ref=f1e1206]'
+                    - generic [ref=f1e1207]:
+                      - paragraph [ref=f1e1208]: "Brad Pitt & Jennifer Aniston: Hollywood's Couple of the Year"
+                      - paragraph [ref=f1e1209]: як Self (archive footage)
+                - listitem [ref=f1e1210]:
+                  - link "1999 movie Бути Джоном Малковічем Бути Джоном Малковічем як Brad Pitt (uncredited)" [ref=f1e1211] [cursor=pointer]:
+                    - /url: /uk/movies/492
+                    - generic [ref=f1e1212]:
+                      - generic [ref=f1e1213]: "1999"
+                      - generic [ref=f1e1214]: movie
+                    - img "Бути Джоном Малковічем" [ref=f1e1216]
+                    - generic [ref=f1e1217]:
+                      - paragraph [ref=f1e1218]: Бути Джоном Малковічем
+                      - paragraph [ref=f1e1219]: як Brad Pitt (uncredited)
+                - listitem [ref=f1e1220]:
+                  - link "1999 movie Бійцівський клуб Бійцівський клуб як Tyler Durden" [ref=f1e1221] [cursor=pointer]:
+                    - /url: /uk/movies/550
+                    - generic [ref=f1e1222]:
+                      - generic [ref=f1e1223]: "1999"
+                      - generic [ref=f1e1224]: movie
+                    - img "Бійцівський клуб" [ref=f1e1226]
+                    - generic [ref=f1e1227]:
+                      - paragraph [ref=f1e1228]: Бійцівський клуб
+                      - paragraph [ref=f1e1229]: як Tyler Durden
+                - listitem [ref=f1e1230]:
+                  - link "1998 movie Знайомтеся — Джо Блек Знайомтеся — Джо Блек як Joe Black / Young Man in Coffee Shop" [ref=f1e1231] [cursor=pointer]:
+                    - /url: /uk/movies/297
+                    - generic [ref=f1e1232]:
+                      - generic [ref=f1e1233]: "1998"
+                      - generic [ref=f1e1234]: movie
+                    - img "Знайомтеся — Джо Блек" [ref=f1e1236]
+                    - generic [ref=f1e1237]:
+                      - paragraph [ref=f1e1238]: Знайомтеся — Джо Блек
+                      - paragraph [ref=f1e1239]: як Joe Black / Young Man in Coffee Shop
+                - listitem [ref=f1e1240]:
+                  - link "1997 movie Сім років у Тибеті Сім років у Тибеті як Heinrich Harrer" [ref=f1e1241] [cursor=pointer]:
+                    - /url: /uk/movies/978
+                    - generic [ref=f1e1242]:
+                      - generic [ref=f1e1243]: "1997"
+                      - generic [ref=f1e1244]: movie
+                    - img "Сім років у Тибеті" [ref=f1e1246]
+                    - generic [ref=f1e1247]:
+                      - paragraph [ref=f1e1248]: Сім років у Тибеті
+                      - paragraph [ref=f1e1249]: як Heinrich Harrer
+                - listitem [ref=f1e1250]:
+                  - link "1997 movie The Making of Se7en The Making of Se7en як Self" [ref=f1e1251] [cursor=pointer]:
+                    - /url: /uk/movies/1421243
+                    - generic [ref=f1e1252]:
+                      - generic [ref=f1e1253]: "1997"
+                      - generic [ref=f1e1254]: movie
+                    - img "The Making of Se7en" [ref=f1e1256]
+                    - generic [ref=f1e1257]:
+                      - paragraph [ref=f1e1258]: The Making of Se7en
+                      - paragraph [ref=f1e1259]: як Self
+                - listitem [ref=f1e1260]:
+                  - link "1997 movie Власність диявола Власність диявола як Rory Devaney" [ref=f1e1261] [cursor=pointer]:
+                    - /url: /uk/movies/4477
+                    - generic [ref=f1e1262]:
+                      - generic [ref=f1e1263]: "1997"
+                      - generic [ref=f1e1264]: movie
+                    - img "Власність диявола" [ref=f1e1266]
+                    - generic [ref=f1e1267]:
+                      - paragraph [ref=f1e1268]: Власність диявола
+                      - paragraph [ref=f1e1269]: як Rory Devaney
+                - listitem [ref=f1e1270]:
+                  - link "1996 movie The Hamster Factor and Other Tales of 'Twelve Monkeys' The Hamster Factor and Other Tales of 'Twelve Monkeys' як Self" [ref=f1e1271] [cursor=pointer]:
+                    - /url: /uk/movies/30565
+                    - generic [ref=f1e1272]:
+                      - generic [ref=f1e1273]: "1996"
+                      - generic [ref=f1e1274]: movie
+                    - img "The Hamster Factor and Other Tales of 'Twelve Monkeys'" [ref=f1e1276]
+                    - generic [ref=f1e1277]:
+                      - paragraph [ref=f1e1278]: The Hamster Factor and Other Tales of 'Twelve Monkeys'
+                      - paragraph [ref=f1e1279]: як Self
+                - listitem [ref=f1e1280]:
+                  - link "1996 movie Сплячі Сплячі як Michael" [ref=f1e1281] [cursor=pointer]:
+                    - /url: /uk/movies/819
+                    - generic [ref=f1e1282]:
+                      - generic [ref=f1e1283]: "1996"
+                      - generic [ref=f1e1284]: movie
+                    - img "Сплячі" [ref=f1e1286]
+                    - generic [ref=f1e1287]:
+                      - paragraph [ref=f1e1288]: Сплячі
+                      - paragraph [ref=f1e1289]: як Michael
+                - listitem [ref=f1e1290]:
+                  - link "1995 movie 12 мавп 12 мавп як Jeffrey Goines" [ref=f1e1291] [cursor=pointer]:
+                    - /url: /uk/movies/63
+                    - generic [ref=f1e1292]:
+                      - generic [ref=f1e1293]: "1995"
+                      - generic [ref=f1e1294]: movie
+                    - img "12 мавп" [ref=f1e1296]
+                    - generic [ref=f1e1297]:
+                      - paragraph [ref=f1e1298]: 12 мавп
+                      - paragraph [ref=f1e1299]: як Jeffrey Goines
+                - listitem [ref=f1e1300]:
+                  - link "1995 movie Сім Сім як Mills" [ref=f1e1301] [cursor=pointer]:
+                    - /url: /uk/movies/807
+                    - generic [ref=f1e1302]:
+                      - generic [ref=f1e1303]: "1995"
+                      - generic [ref=f1e1304]: movie
+                    - img "Сім" [ref=f1e1306]
+                    - generic [ref=f1e1307]:
+                      - paragraph [ref=f1e1308]: Сім
+                      - paragraph [ref=f1e1309]: як Mills
+                - listitem [ref=f1e1310]:
+                  - link "1994 movie Легенди осені Легенди осені як Tristan Ludlow" [ref=f1e1311] [cursor=pointer]:
+                    - /url: /uk/movies/4476
+                    - generic [ref=f1e1312]:
+                      - generic [ref=f1e1313]: "1994"
+                      - generic [ref=f1e1314]: movie
+                    - img "Легенди осені" [ref=f1e1316]
+                    - generic [ref=f1e1317]:
+                      - paragraph [ref=f1e1318]: Легенди осені
+                      - paragraph [ref=f1e1319]: як Tristan Ludlow
+                - listitem [ref=f1e1320]:
+                  - link "1994 movie Інтерв’ю з вампіром Інтерв’ю з вампіром як Louis" [ref=f1e1321] [cursor=pointer]:
+                    - /url: /uk/movies/628
+                    - generic [ref=f1e1322]:
+                      - generic [ref=f1e1323]: "1994"
+                      - generic [ref=f1e1324]: movie
+                    - img "Інтерв’ю з вампіром" [ref=f1e1326]
+                    - generic [ref=f1e1327]:
+                      - paragraph [ref=f1e1328]: Інтерв’ю з вампіром
+                      - paragraph [ref=f1e1329]: як Louis
+                - listitem [ref=f1e1330]:
+                  - link "1994 movie Послуга Послуга як Elliott Fowler" [ref=f1e1331] [cursor=pointer]:
+                    - /url: /uk/movies/50463
+                    - generic [ref=f1e1332]:
+                      - generic [ref=f1e1333]: "1994"
+                      - generic [ref=f1e1334]: movie
+                    - img "Послуга" [ref=f1e1336]
+                    - generic [ref=f1e1337]:
+                      - paragraph [ref=f1e1338]: Послуга
+                      - paragraph [ref=f1e1339]: як Elliott Fowler
+                - listitem [ref=f1e1340]:
+                  - link "1993 movie Справжнє кохання Справжнє кохання як Floyd (Dick's Roommate)" [ref=f1e1341] [cursor=pointer]:
+                    - /url: /uk/movies/319
+                    - generic [ref=f1e1342]:
+                      - generic [ref=f1e1343]: "1993"
+                      - generic [ref=f1e1344]: movie
+                    - img "Справжнє кохання" [ref=f1e1346]
+                    - generic [ref=f1e1347]:
+                      - paragraph [ref=f1e1348]: Справжнє кохання
+                      - paragraph [ref=f1e1349]: як Floyd (Dick's Roommate)
+                - listitem [ref=f1e1350]:
+                  - link "1993 movie Каліфорнія Каліфорнія як Early Grayce" [ref=f1e1351] [cursor=pointer]:
+                    - /url: /uk/movies/10909
+                    - generic [ref=f1e1352]:
+                      - generic [ref=f1e1353]: "1993"
+                      - generic [ref=f1e1354]: movie
+                    - img "Каліфорнія" [ref=f1e1356]
+                    - generic [ref=f1e1357]:
+                      - paragraph [ref=f1e1358]: Каліфорнія
+                      - paragraph [ref=f1e1359]: як Early Grayce
+                - listitem [ref=f1e1360]:
+                  - link "1992 movie Там, де тече ріка Там, де тече ріка як Paul Maclean" [ref=f1e1361] [cursor=pointer]:
+                    - /url: /uk/movies/293
+                    - generic [ref=f1e1362]:
+                      - generic [ref=f1e1363]: "1992"
+                      - generic [ref=f1e1364]: movie
+                    - img "Там, де тече ріка" [ref=f1e1366]
+                    - generic [ref=f1e1367]:
+                      - paragraph [ref=f1e1368]: Там, де тече ріка
+                      - paragraph [ref=f1e1369]: як Paul Maclean
+                - listitem [ref=f1e1370]:
+                  - link "1992 movie Крутий світ Крутий світ як Detective Frank Harris" [ref=f1e1371] [cursor=pointer]:
+                    - /url: /uk/movies/14239
+                    - generic [ref=f1e1372]:
+                      - generic [ref=f1e1373]: "1992"
+                      - generic [ref=f1e1374]: movie
+                    - img "Крутий світ" [ref=f1e1376]
+                    - generic [ref=f1e1377]:
+                      - paragraph [ref=f1e1378]: Крутий світ
+                      - paragraph [ref=f1e1379]: як Detective Frank Harris
+                - listitem [ref=f1e1380]:
+                  - link "1992 movie Історії про сильних людей Історії про сильних людей як Billy (segment \"King of the Road\")" [ref=f1e1381] [cursor=pointer]:
+                    - /url: /uk/movies/213503
+                    - generic [ref=f1e1382]:
+                      - generic [ref=f1e1383]: "1992"
+                      - generic [ref=f1e1384]: movie
+                    - img "Історії про сильних людей" [ref=f1e1386]
+                    - generic [ref=f1e1387]:
+                      - paragraph [ref=f1e1388]: Історії про сильних людей
+                      - paragraph [ref=f1e1389]: як Billy (segment "King of the Road")
+                - listitem [ref=f1e1390]:
+                  - link "1992 movie Contact Contact як Cox" [ref=f1e1391] [cursor=pointer]:
+                    - /url: /uk/movies/244743
+                    - generic [ref=f1e1392]:
+                      - generic [ref=f1e1393]: "1992"
+                      - generic [ref=f1e1394]: movie
+                    - img "Contact" [ref=f1e1396]
+                    - generic [ref=f1e1397]:
+                      - paragraph [ref=f1e1398]: Contact
+                      - paragraph [ref=f1e1399]: як Cox
+                - listitem [ref=f1e1400]:
+                  - link "1991 movie Johnny Suede Johnny Suede як Johnny Suede" [ref=f1e1401] [cursor=pointer]:
+                    - /url: /uk/movies/45145
+                    - generic [ref=f1e1402]:
+                      - generic [ref=f1e1403]: "1991"
+                      - generic [ref=f1e1404]: movie
+                    - img "Johnny Suede" [ref=f1e1406]
+                    - generic [ref=f1e1407]:
+                      - paragraph [ref=f1e1408]: Johnny Suede
+                      - paragraph [ref=f1e1409]: як Johnny Suede
+                - listitem [ref=f1e1410]:
+                  - link "1991 movie Тельма і Луїза Тельма і Луїза як J.D." [ref=f1e1411] [cursor=pointer]:
+                    - /url: /uk/movies/1541
+                    - generic [ref=f1e1412]:
+                      - generic [ref=f1e1413]: "1991"
+                      - generic [ref=f1e1414]: movie
+                    - img "Тельма і Луїза" [ref=f1e1416]
+                    - generic [ref=f1e1417]:
+                      - paragraph [ref=f1e1418]: Тельма і Луїза
+                      - paragraph [ref=f1e1419]: як J.D.
+                - listitem [ref=f1e1420]:
+                  - link "1991 movie Across the Tracks Across the Tracks як Joe Maloney" [ref=f1e1421] [cursor=pointer]:
+                    - /url: /uk/movies/48448
+                    - generic [ref=f1e1422]:
+                      - generic [ref=f1e1423]: "1991"
+                      - generic [ref=f1e1424]: movie
+                    - img "Across the Tracks" [ref=f1e1426]
+                    - generic [ref=f1e1427]:
+                      - paragraph [ref=f1e1428]: Across the Tracks
+                      - paragraph [ref=f1e1429]: як Joe Maloney
+                - listitem [ref=f1e1430]:
+                  - link "1990 movie Надто молода, щоб померти? Надто молода, щоб померти? як Billy Canton" [ref=f1e1431] [cursor=pointer]:
+                    - /url: /uk/movies/10917
+                    - generic [ref=f1e1432]:
+                      - generic [ref=f1e1433]: "1990"
+                      - generic [ref=f1e1434]: movie
+                    - img "Надто молода, щоб померти?" [ref=f1e1436]
+                    - generic [ref=f1e1437]:
+                      - paragraph [ref=f1e1438]: Надто молода, щоб померти?
+                      - paragraph [ref=f1e1439]: як Billy Canton
+                - listitem [ref=f1e1440]:
+                  - link "1990 movie The Image The Image як Steve Black" [ref=f1e1441] [cursor=pointer]:
+                    - /url: /uk/movies/75451
+                    - generic [ref=f1e1442]:
+                      - generic [ref=f1e1443]: "1990"
+                      - generic [ref=f1e1444]: movie
+                    - img "The Image" [ref=f1e1446]
+                    - generic [ref=f1e1447]:
+                      - paragraph [ref=f1e1448]: The Image
+                      - paragraph [ref=f1e1449]: як Steve Black
+                - listitem [ref=f1e1450]:
+                  - link "1989 movie Щасливі разом Щасливі разом як Brian" [ref=f1e1451] [cursor=pointer]:
+                    - /url: /uk/movies/55059
+                    - generic [ref=f1e1452]:
+                      - generic [ref=f1e1453]: "1989"
+                      - generic [ref=f1e1454]: movie
+                    - img "Щасливі разом" [ref=f1e1456]
+                    - generic [ref=f1e1457]:
+                      - paragraph [ref=f1e1458]: Щасливі разом
+                      - paragraph [ref=f1e1459]: як Brian
+                - listitem [ref=f1e1460]:
+                  - link "1989 movie Cutting Class Cutting Class як Dwight Ingalls" [ref=f1e1461] [cursor=pointer]:
+                    - /url: /uk/movies/21799
+                    - generic [ref=f1e1462]:
+                      - generic [ref=f1e1463]: "1989"
+                      - generic [ref=f1e1464]: movie
+                    - img "Cutting Class" [ref=f1e1466]
+                    - generic [ref=f1e1467]:
+                      - paragraph [ref=f1e1468]: Cutting Class
+                      - paragraph [ref=f1e1469]: як Dwight Ingalls
+                - listitem [ref=f1e1470]:
+                  - link "1988 movie The Dark Side of the Sun The Dark Side of the Sun як Rick" [ref=f1e1471] [cursor=pointer]:
+                    - /url: /uk/movies/26642
+                    - generic [ref=f1e1472]:
+                      - generic [ref=f1e1473]: "1988"
+                      - generic [ref=f1e1474]: movie
+                    - img "The Dark Side of the Sun" [ref=f1e1476]
+                    - generic [ref=f1e1477]:
+                      - paragraph [ref=f1e1478]: The Dark Side of the Sun
+                      - paragraph [ref=f1e1479]: як Rick
+                - listitem [ref=f1e1480]:
+                  - link "1988 movie A Stoning in Fulham County A Stoning in Fulham County як Teddy Johnson" [ref=f1e1481] [cursor=pointer]:
+                    - /url: /uk/movies/209340
+                    - generic [ref=f1e1482]:
+                      - generic [ref=f1e1483]: "1988"
+                      - generic [ref=f1e1484]: movie
+                    - img "A Stoning in Fulham County" [ref=f1e1486]
+                    - generic [ref=f1e1487]:
+                      - paragraph [ref=f1e1488]: A Stoning in Fulham County
+                      - paragraph [ref=f1e1489]: як Teddy Johnson
+                - listitem [ref=f1e1490]:
+                  - link "1987 movie Less Than Zero Less Than Zero як Partygoer / Preppie Kid at Fight (uncredited)" [ref=f1e1491] [cursor=pointer]:
+                    - /url: /uk/movies/13703
+                    - generic [ref=f1e1492]:
+                      - generic [ref=f1e1493]: "1987"
+                      - generic [ref=f1e1494]: movie
+                    - img "Less Than Zero" [ref=f1e1496]
+                    - generic [ref=f1e1497]:
+                      - paragraph [ref=f1e1498]: Less Than Zero
+                      - paragraph [ref=f1e1499]: як Partygoer / Preppie Kid at Fight (uncredited)
+                - listitem [ref=f1e1500]:
+                  - link "1987 movie Нічия земля Нічия земля як Waiter (uncredited)" [ref=f1e1501] [cursor=pointer]:
+                    - /url: /uk/movies/34379
+                    - generic [ref=f1e1502]:
+                      - generic [ref=f1e1503]: "1987"
+                      - generic [ref=f1e1504]: movie
+                    - img "Нічия земля" [ref=f1e1506]
+                    - generic [ref=f1e1507]:
+                      - paragraph [ref=f1e1508]: Нічия земля
+                      - paragraph [ref=f1e1509]: як Waiter (uncredited)
+                - listitem [ref=f1e1510]:
+                  - link "1987 movie Hunk Hunk як Boy at the Beach (uncredited)" [ref=f1e1511] [cursor=pointer]:
+                    - /url: /uk/movies/32227
+                    - generic [ref=f1e1512]:
+                      - generic [ref=f1e1513]: "1987"
+                      - generic [ref=f1e1514]: movie
+                    - img "Hunk" [ref=f1e1516]
+                    - generic [ref=f1e1517]:
+                      - paragraph [ref=f1e1518]: Hunk
+                      - paragraph [ref=f1e1519]: як Boy at the Beach (uncredited)
+                - listitem [ref=f1e1520]:
+                  - link "- movie Вершники Вершники як Fred Scully" [ref=f1e1521] [cursor=pointer]:
+                    - /url: /uk/movies/1139422
+                    - generic [ref=f1e1522]:
+                      - generic [ref=f1e1523]: "-"
+                      - generic [ref=f1e1524]: movie
+                    - img "Вершники" [ref=f1e1526]
+                    - generic [ref=f1e1527]:
+                      - paragraph [ref=f1e1528]: Вершники
+                      - paragraph [ref=f1e1529]: як Fred Scully
+                - listitem [ref=f1e1530]:
+                  - link "- movie Ocean's Fourteen Ocean's Fourteen як Rusty Ryan" [ref=f1e1531] [cursor=pointer]:
+                    - /url: /uk/movies/1422045
+                    - generic [ref=f1e1532]:
+                      - generic [ref=f1e1533]: "-"
+                      - generic [ref=f1e1534]: movie
+                    - img "Ocean's Fourteen" [ref=f1e1536]
+                    - generic [ref=f1e1537]:
+                      - paragraph [ref=f1e1538]: Ocean's Fourteen
+                      - paragraph [ref=f1e1539]: як Rusty Ryan
+                - listitem [ref=f1e1540]:
+                  - link "- movie Untitled World War Z Sequel Untitled World War Z Sequel як Gerry Lane" [ref=f1e1541] [cursor=pointer]:
+                    - /url: /uk/movies/1674201
+                    - generic [ref=f1e1542]:
+                      - generic [ref=f1e1543]: "-"
+                      - generic [ref=f1e1544]: movie
+                    - img "Untitled World War Z Sequel" [ref=f1e1546]
+                    - generic [ref=f1e1547]:
+                      - paragraph [ref=f1e1548]: Untitled World War Z Sequel
+                      - paragraph [ref=f1e1549]: як Gerry Lane
+                - listitem [ref=f1e1550]:
+                  - link "- tv Growing Pains Growing Pains як Jeff" [ref=f1e1551] [cursor=pointer]:
+                    - /url: /uk/tv-shows/54
+                    - generic [ref=f1e1552]:
+                      - generic [ref=f1e1553]: "-"
+                      - generic [ref=f1e1554]: tv
+                    - img "Growing Pains" [ref=f1e1556]
+                    - generic [ref=f1e1557]:
+                      - paragraph [ref=f1e1558]: Growing Pains
+                      - paragraph [ref=f1e1559]: як Jeff
+                - listitem [ref=f1e1560]:
+                  - link "- tv thirtysomething thirtysomething як Bernard" [ref=f1e1561] [cursor=pointer]:
+                    - /url: /uk/tv-shows/1448
+                    - generic [ref=f1e1562]:
+                      - generic [ref=f1e1563]: "-"
+                      - generic [ref=f1e1564]: tv
+                    - img "thirtysomething" [ref=f1e1566]
+                    - generic [ref=f1e1567]:
+                      - paragraph [ref=f1e1568]: thirtysomething
+                      - paragraph [ref=f1e1569]: як Bernard
+                - listitem [ref=f1e1570]:
+                  - link "- tv Джамп стріт, 21 Джамп стріт, 21 як Peter" [ref=f1e1571] [cursor=pointer]:
+                    - /url: /uk/tv-shows/1486
+                    - generic [ref=f1e1572]:
+                      - generic [ref=f1e1573]: "-"
+                      - generic [ref=f1e1574]: tv
+                    - img "Джамп стріт, 21" [ref=f1e1576]
+                    - generic [ref=f1e1577]:
+                      - paragraph [ref=f1e1578]: Джамп стріт, 21
+                      - paragraph [ref=f1e1579]: як Peter
+                - listitem [ref=f1e1580]:
+                  - link "- tv Придурки Придурки як Self" [ref=f1e1581] [cursor=pointer]:
+                    - /url: /uk/tv-shows/1795
+                    - generic [ref=f1e1582]:
+                      - generic [ref=f1e1583]: "-"
+                      - generic [ref=f1e1584]: tv
+                    - img "Придурки" [ref=f1e1586]
+                    - generic [ref=f1e1587]:
+                      - paragraph [ref=f1e1588]: Придурки
+                      - paragraph [ref=f1e1589]: як Self
+                - listitem [ref=f1e1590]:
+                  - link "- tv Щоденне шоу з Тревором Ноа Щоденне шоу з Тревором Ноа як Self" [ref=f1e1591] [cursor=pointer]:
+                    - /url: /uk/tv-shows/2224
+                    - generic [ref=f1e1592]:
+                      - generic [ref=f1e1593]: "-"
+                      - generic [ref=f1e1594]: tv
+                    - img "Щоденне шоу з Тревором Ноа" [ref=f1e1596]
+                    - generic [ref=f1e1597]:
+                      - paragraph [ref=f1e1598]: Щоденне шоу з Тревором Ноа
+                      - paragraph [ref=f1e1599]: як Self
+                - listitem [ref=f1e1600]:
+                  - link "- tv Друзі Друзі як Will Colbert (uncredited)" [ref=f1e1601] [cursor=pointer]:
+                    - /url: /uk/tv-shows/1668
+                    - generic [ref=f1e1602]:
+                      - generic [ref=f1e1603]: "-"
+                      - generic [ref=f1e1604]: tv
+                    - img "Друзі" [ref=f1e1606]
+                    - generic [ref=f1e1607]:
+                      - paragraph [ref=f1e1608]: Друзі
+                      - paragraph [ref=f1e1609]: як Will Colbert (uncredited)
+                - listitem [ref=f1e1610]:
+                  - link "- tv Король гори Король гори як Patch Boomhauer (voice)" [ref=f1e1611] [cursor=pointer]:
+                    - /url: /uk/tv-shows/2122
+                    - generic [ref=f1e1612]:
+                      - generic [ref=f1e1613]: "-"
+                      - generic [ref=f1e1614]: tv
+                    - img "Король гори" [ref=f1e1616]
+                    - generic [ref=f1e1617]:
+                      - paragraph [ref=f1e1618]: Король гори
+                      - paragraph [ref=f1e1619]: як Patch Boomhauer (voice)
+                - listitem [ref=f1e1620]:
+                  - link "- tv Today Today як Self" [ref=f1e1621] [cursor=pointer]:
+                    - /url: /uk/tv-shows/1709
+                    - generic [ref=f1e1622]:
+                      - generic [ref=f1e1623]: "-"
+                      - generic [ref=f1e1624]: tv
+                    - img "Today" [ref=f1e1626]
+                    - generic [ref=f1e1627]:
+                      - paragraph [ref=f1e1628]: Today
+                      - paragraph [ref=f1e1629]: як Self
+                - listitem [ref=f1e1630]:
+                  - link "- tv Наживо з Келлі та Раяном Наживо з Келлі та Раяном" [ref=f1e1631] [cursor=pointer]:
+                    - /url: /uk/tv-shows/1900
+                    - generic [ref=f1e1632]:
+                      - generic [ref=f1e1633]: "-"
+                      - generic [ref=f1e1634]: tv
+                    - img "Наживо з Келлі та Раяном" [ref=f1e1636]
+                    - paragraph [ref=f1e1638]: Наживо з Келлі та Раяном
+                - listitem [ref=f1e1639]:
+                  - link "- tv Байки зі склепу Байки зі склепу як Billy" [ref=f1e1640] [cursor=pointer]:
+                    - /url: /uk/tv-shows/2391
+                    - generic [ref=f1e1641]:
+                      - generic [ref=f1e1642]: "-"
+                      - generic [ref=f1e1643]: tv
+                    - img "Байки зі склепу" [ref=f1e1645]
+                    - generic [ref=f1e1646]:
+                      - paragraph [ref=f1e1647]: Байки зі склепу
+                      - paragraph [ref=f1e1648]: як Billy
+                - listitem [ref=f1e1649]:
+                  - link "- tv Head of the Class Head of the Class" [ref=f1e1650] [cursor=pointer]:
+                    - /url: /uk/tv-shows/2589
+                    - generic [ref=f1e1651]:
+                      - generic [ref=f1e1652]: "-"
+                      - generic [ref=f1e1653]: tv
+                    - img "Head of the Class" [ref=f1e1655]
+                    - paragraph [ref=f1e1657]: Head of the Class
+                - listitem [ref=f1e1658]:
+                  - link "- tv Американський Ідол Американський Ідол як Self" [ref=f1e1659] [cursor=pointer]:
+                    - /url: /uk/tv-shows/3626
+                    - generic [ref=f1e1660]:
+                      - generic [ref=f1e1661]: "-"
+                      - generic [ref=f1e1662]: tv
+                    - img "Американський Ідол" [ref=f1e1664]
+                    - generic [ref=f1e1665]:
+                      - paragraph [ref=f1e1666]: Американський Ідол
+                      - paragraph [ref=f1e1667]: як Self
+                - listitem [ref=f1e1668]:
+                  - link "- tv Pet Star Pet Star як Self - Judge" [ref=f1e1669] [cursor=pointer]:
+                    - /url: /uk/tv-shows/4325
+                    - generic [ref=f1e1670]:
+                      - generic [ref=f1e1671]: "-"
+                      - generic [ref=f1e1672]: tv
+                    - img "Pet Star" [ref=f1e1674]
+                    - generic [ref=f1e1675]:
+                      - paragraph [ref=f1e1676]: Pet Star
+                      - paragraph [ref=f1e1677]: як Self - Judge
+                - listitem [ref=f1e1678]:
+                  - link "- tv Кошмари Фредді Кошмари Фредді як Rick" [ref=f1e1679] [cursor=pointer]:
+                    - /url: /uk/tv-shows/4346
+                    - generic [ref=f1e1680]:
+                      - generic [ref=f1e1681]: "-"
+                      - generic [ref=f1e1682]: tv
+                    - img "Кошмари Фредді" [ref=f1e1684]
+                    - generic [ref=f1e1685]:
+                      - paragraph [ref=f1e1686]: Кошмари Фредді
+                      - paragraph [ref=f1e1687]: як Rick
+                - listitem [ref=f1e1688]:
+                  - link "- tv Пізня ніч із Конаном О'Браєном Пізня ніч із Конаном О'Браєном як Self - Guest" [ref=f1e1689] [cursor=pointer]:
+                    - /url: /uk/tv-shows/4573
+                    - generic [ref=f1e1690]:
+                      - generic [ref=f1e1691]: "-"
+                      - generic [ref=f1e1692]: tv
+                    - img "Пізня ніч із Конаном О'Браєном" [ref=f1e1694]
+                    - generic [ref=f1e1695]:
+                      - paragraph [ref=f1e1696]: Пізня ніч із Конаном О'Браєном
+                      - paragraph [ref=f1e1697]: як Self - Guest
+                - listitem [ref=f1e1698]:
+                  - link "- tv Даллас Даллас як Randy" [ref=f1e1699] [cursor=pointer]:
+                    - /url: /uk/tv-shows/40
+                    - generic [ref=f1e1700]:
+                      - generic [ref=f1e1701]: "-"
+                      - generic [ref=f1e1702]: tv
+                    - img "Даллас" [ref=f1e1704]
+                    - generic [ref=f1e1705]:
+                      - paragraph [ref=f1e1706]: Даллас
+                      - paragraph [ref=f1e1707]: як Randy
+                - listitem [ref=f1e1708]:
+                  - link "- tv Знаменитості без цензури Знаменитості без цензури як Self" [ref=f1e1709] [cursor=pointer]:
+                    - /url: /uk/tv-shows/10946
+                    - generic [ref=f1e1710]:
+                      - generic [ref=f1e1711]: "-"
+                      - generic [ref=f1e1712]: tv
+                    - img "Знаменитості без цензури" [ref=f1e1714]
+                    - generic [ref=f1e1715]:
+                      - paragraph [ref=f1e1716]: Знаменитості без цензури
+                      - paragraph [ref=f1e1717]: як Self
+                - listitem [ref=f1e1718]:
+                  - link "- tv Glory Days Glory Days як Walker Lovejoy" [ref=f1e1719] [cursor=pointer]:
+                    - /url: /uk/tv-shows/29999
+                    - generic [ref=f1e1720]:
+                      - generic [ref=f1e1721]: "-"
+                      - generic [ref=f1e1722]: tv
+                    - img "Glory Days" [ref=f1e1724]
+                    - generic [ref=f1e1725]:
+                      - paragraph [ref=f1e1726]: Glory Days
+                      - paragraph [ref=f1e1727]: як Walker Lovejoy
+                - listitem [ref=f1e1728]:
+                  - link "- tv Дейв Дейв як Brad Pitt" [ref=f1e1729] [cursor=pointer]:
+                    - /url: /uk/tv-shows/97084
+                    - generic [ref=f1e1730]:
+                      - generic [ref=f1e1731]: "-"
+                      - generic [ref=f1e1732]: tv
+                    - img "Дейв" [ref=f1e1734]
+                    - generic [ref=f1e1735]:
+                      - paragraph [ref=f1e1736]: Дейв
+                      - paragraph [ref=f1e1737]: як Brad Pitt
+                - listitem [ref=f1e1738]:
+                  - link "- tv The True Story of... The True Story of... як Self (archive footage)" [ref=f1e1739] [cursor=pointer]:
+                    - /url: /uk/tv-shows/133401
+                    - generic [ref=f1e1740]:
+                      - generic [ref=f1e1741]: "-"
+                      - generic [ref=f1e1742]: tv
+                    - img "The True Story of..." [ref=f1e1744]
+                    - generic [ref=f1e1745]:
+                      - paragraph [ref=f1e1746]: The True Story of...
+                      - paragraph [ref=f1e1747]: як Self (archive footage)
+                - listitem [ref=f1e1748]:
+                  - link "- tv Growing Pains Growing Pains як Jonathan Keith" [ref=f1e1749] [cursor=pointer]:
+                    - /url: /uk/tv-shows/54
+                    - generic [ref=f1e1750]:
+                      - generic [ref=f1e1751]: "-"
+                      - generic [ref=f1e1752]: tv
+                    - img "Growing Pains" [ref=f1e1754]
+                    - generic [ref=f1e1755]:
+                      - paragraph [ref=f1e1756]: Growing Pains
+                      - paragraph [ref=f1e1757]: як Jonathan Keith
+                - listitem [ref=f1e1758]:
+                  - link "- tv e² design e² design як Narrator (voice)" [ref=f1e1759] [cursor=pointer]:
+                    - /url: /uk/tv-shows/3165
+                    - generic [ref=f1e1760]:
+                      - generic [ref=f1e1761]: "-"
+                      - generic [ref=f1e1762]: tv
+                    - img "e² design" [ref=f1e1764]
+                    - generic [ref=f1e1765]:
+                      - paragraph [ref=f1e1766]: e² design
+                      - paragraph [ref=f1e1767]: як Narrator (voice)
+                - listitem [ref=f1e1768]:
+                  - 'link "- tv America''s Game: The Super Bowl Champions America''s Game: The Super Bowl Champions як Narrator (voice)" [ref=f1e1769] [cursor=pointer]':
+                    - /url: /uk/tv-shows/2851
+                    - generic [ref=f1e1770]:
+                      - generic [ref=f1e1771]: "-"
+                      - generic [ref=f1e1772]: tv
+                    - 'img "America''s Game: The Super Bowl Champions" [ref=f1e1774]'
+                    - generic [ref=f1e1775]:
+                      - paragraph [ref=f1e1776]: "America's Game: The Super Bowl Champions"
+                      - paragraph [ref=f1e1777]: як Narrator (voice)
+                - listitem [ref=f1e1778]:
+                  - link "- tv The Jim Jefferies Show The Jim Jefferies Show як Jim Jefferies Show Weatherman" [ref=f1e1779] [cursor=pointer]:
+                    - /url: /uk/tv-shows/72025
+                    - generic [ref=f1e1780]:
+                      - generic [ref=f1e1781]: "-"
+                      - generic [ref=f1e1782]: tv
+                    - img "The Jim Jefferies Show" [ref=f1e1784]
+                    - generic [ref=f1e1785]:
+                      - paragraph [ref=f1e1786]: The Jim Jefferies Show
+                      - paragraph [ref=f1e1787]: як Jim Jefferies Show Weatherman
+                - listitem [ref=f1e1788]:
+                  - link "- tv The Jim Jefferies Show The Jim Jefferies Show як Ex-Weatherman" [ref=f1e1789] [cursor=pointer]:
+                    - /url: /uk/tv-shows/72025
+                    - generic [ref=f1e1790]:
+                      - generic [ref=f1e1791]: "-"
+                      - generic [ref=f1e1792]: tv
+                    - img "The Jim Jefferies Show" [ref=f1e1794]
+                    - generic [ref=f1e1795]:
+                      - paragraph [ref=f1e1796]: The Jim Jefferies Show
+                      - paragraph [ref=f1e1797]: як Ex-Weatherman
+                - listitem [ref=f1e1798]:
+                  - link "- tv Raw Raw як Self (archive footage)" [ref=f1e1799] [cursor=pointer]:
+                    - /url: /uk/tv-shows/4656
+                    - generic [ref=f1e1800]:
+                      - generic [ref=f1e1801]: "-"
+                      - generic [ref=f1e1802]: tv
+                    - img "Raw" [ref=f1e1804]
+                    - generic [ref=f1e1805]:
+                      - paragraph [ref=f1e1806]: Raw
+                      - paragraph [ref=f1e1807]: як Self (archive footage)
+                - listitem [ref=f1e1808]:
+                  - link "- tv Leute heute Leute heute як Self" [ref=f1e1809] [cursor=pointer]:
+                    - /url: /uk/tv-shows/111979
+                    - generic [ref=f1e1810]:
+                      - generic [ref=f1e1811]: "-"
+                      - generic [ref=f1e1812]: tv
+                    - img "Leute heute" [ref=f1e1814]
+                    - generic [ref=f1e1815]:
+                      - paragraph [ref=f1e1816]: Leute heute
+                      - paragraph [ref=f1e1817]: як Self
+                - listitem [ref=f1e1818]:
+                  - link "- tv Трохи історії Трохи історії як Self (archive footage)" [ref=f1e1819] [cursor=pointer]:
+                    - /url: /uk/tv-shows/102905
+                    - generic [ref=f1e1820]:
+                      - generic [ref=f1e1821]: "-"
+                      - generic [ref=f1e1822]: tv
+                    - img "Трохи історії" [ref=f1e1824]
+                    - generic [ref=f1e1825]:
+                      - paragraph [ref=f1e1826]: Трохи історії
+                      - paragraph [ref=f1e1827]: як Self (archive footage)
+                - listitem [ref=f1e1828]:
+                  - link "- tv Entertainment Tonight Entertainment Tonight як Self" [ref=f1e1829] [cursor=pointer]:
+                    - /url: /uk/tv-shows/1387
+                    - generic [ref=f1e1830]:
+                      - generic [ref=f1e1831]: "-"
+                      - generic [ref=f1e1832]: tv
+                    - img "Entertainment Tonight" [ref=f1e1834]
+                    - generic [ref=f1e1835]:
+                      - paragraph [ref=f1e1836]: Entertainment Tonight
+                      - paragraph [ref=f1e1837]: як Self
+                - listitem [ref=f1e1838]:
+                  - link "- tv Суботнього вечора в прямому ефірі Суботнього вечора в прямому ефірі як Self (uncredited)" [ref=f1e1839] [cursor=pointer]:
+                    - /url: /uk/tv-shows/1667
+                    - generic [ref=f1e1840]:
+                      - generic [ref=f1e1841]: "-"
+                      - generic [ref=f1e1842]: tv
+                    - img "Суботнього вечора в прямому ефірі" [ref=f1e1844]
+                    - generic [ref=f1e1845]:
+                      - paragraph [ref=f1e1846]: Суботнього вечора в прямому ефірі
+                      - paragraph [ref=f1e1847]: як Self (uncredited)
+                - listitem [ref=f1e1848]:
+                  - link "- tv Some Good News Some Good News як Weatherman" [ref=f1e1849] [cursor=pointer]:
+                    - /url: /uk/tv-shows/101214
+                    - generic [ref=f1e1850]:
+                      - generic [ref=f1e1851]: "-"
+                      - generic [ref=f1e1852]: tv
+                    - img "Some Good News" [ref=f1e1854]
+                    - generic [ref=f1e1855]:
+                      - paragraph [ref=f1e1856]: Some Good News
+                      - paragraph [ref=f1e1857]: як Weatherman
+                - listitem [ref=f1e1858]:
+                  - link "- tv Оскар Оскар як Self" [ref=f1e1859] [cursor=pointer]:
+                    - /url: /uk/tv-shows/27023
+                    - generic [ref=f1e1860]:
+                      - generic [ref=f1e1861]: "-"
+                      - generic [ref=f1e1862]: tv
+                    - img "Оскар" [ref=f1e1864]
+                    - generic [ref=f1e1865]:
+                      - paragraph [ref=f1e1866]: Оскар
+                      - paragraph [ref=f1e1867]: як Self
+                - listitem [ref=f1e1868]:
+                  - link "- tv В даний час з Біллом Маром В даний час з Біллом Маром як Self" [ref=f1e1869] [cursor=pointer]:
+                    - /url: /uk/tv-shows/4419
+                    - generic [ref=f1e1870]:
+                      - generic [ref=f1e1871]: "-"
+                      - generic [ref=f1e1872]: tv
+                    - img "В даний час з Біллом Маром" [ref=f1e1874]
+                    - generic [ref=f1e1875]:
+                      - paragraph [ref=f1e1876]: В даний час з Біллом Маром
+                      - paragraph [ref=f1e1877]: як Self
+                - listitem [ref=f1e1878]:
+                  - link "- tv Золотий глобус Золотий глобус як Self - Nominee" [ref=f1e1879] [cursor=pointer]:
+                    - /url: /uk/tv-shows/71494
+                    - generic [ref=f1e1880]:
+                      - generic [ref=f1e1881]: "-"
+                      - generic [ref=f1e1882]: tv
+                    - img "Золотий глобус" [ref=f1e1884]
+                    - generic [ref=f1e1885]:
+                      - paragraph [ref=f1e1886]: Золотий глобус
+                      - paragraph [ref=f1e1887]: як Self - Nominee
+                - listitem [ref=f1e1888]:
+                  - link "- tv Зірковий ремонт Зірковий ремонт як Self" [ref=f1e1889] [cursor=pointer]:
+                    - /url: /uk/tv-shows/100347
+                    - generic [ref=f1e1890]:
+                      - generic [ref=f1e1891]: "-"
+                      - generic [ref=f1e1892]: tv
+                    - img "Зірковий ремонт" [ref=f1e1894]
+                    - generic [ref=f1e1895]:
+                      - paragraph [ref=f1e1896]: Зірковий ремонт
+                      - paragraph [ref=f1e1897]: як Self
+                - listitem [ref=f1e1898]:
+                  - link "- tv Between Two Ferns with Zach Galifianakis Between Two Ferns with Zach Galifianakis як Self" [ref=f1e1899] [cursor=pointer]:
+                    - /url: /uk/tv-shows/39754
+                    - generic [ref=f1e1900]:
+                      - generic [ref=f1e1901]: "-"
+                      - generic [ref=f1e1902]: tv
+                    - img "Between Two Ferns with Zach Galifianakis" [ref=f1e1904]
+                    - generic [ref=f1e1905]:
+                      - paragraph [ref=f1e1906]: Between Two Ferns with Zach Galifianakis
+                      - paragraph [ref=f1e1907]: як Self
+                - listitem [ref=f1e1908]:
+                  - link "- tv Unscripted Unscripted як Brad Pitt" [ref=f1e1909] [cursor=pointer]:
+                    - /url: /uk/tv-shows/15025
+                    - generic [ref=f1e1910]:
+                      - generic [ref=f1e1911]: "-"
+                      - generic [ref=f1e1912]: tv
+                    - img "Unscripted" [ref=f1e1914]
+                    - generic [ref=f1e1915]:
+                      - paragraph [ref=f1e1916]: Unscripted
+                      - paragraph [ref=f1e1917]: як Brad Pitt
+                - listitem [ref=f1e1918]:
+                  - link "- tv Studio 42 with Bob Costas Studio 42 with Bob Costas як Self" [ref=f1e1919] [cursor=pointer]:
+                    - /url: /uk/tv-shows/277572
+                    - generic [ref=f1e1920]:
+                      - generic [ref=f1e1921]: "-"
+                      - generic [ref=f1e1922]: tv
+                    - img "Studio 42 with Bob Costas" [ref=f1e1924]
+                    - generic [ref=f1e1925]:
+                      - paragraph [ref=f1e1926]: Studio 42 with Bob Costas
+                      - paragraph [ref=f1e1927]: як Self
+                - listitem [ref=f1e1928]:
+                  - 'link "- tv Variety Studio: Actors on Actors Variety Studio: Actors on Actors як Self" [ref=f1e1929] [cursor=pointer]':
+                    - /url: /uk/tv-shows/105197
+                    - generic [ref=f1e1930]:
+                      - generic [ref=f1e1931]: "-"
+                      - generic [ref=f1e1932]: tv
+                    - 'img "Variety Studio: Actors on Actors" [ref=f1e1934]'
+                    - generic [ref=f1e1935]:
+                      - paragraph [ref=f1e1936]: "Variety Studio: Actors on Actors"
+                      - paragraph [ref=f1e1937]: як Self
+                - listitem [ref=f1e1938]:
+                  - link "- tv Faut Voir - L'Hebdo cinéma Faut Voir - L'Hebdo cinéma як Self - Guest" [ref=f1e1939] [cursor=pointer]:
+                    - /url: /uk/tv-shows/234635
+                    - generic [ref=f1e1940]:
+                      - generic [ref=f1e1941]: "-"
+                      - generic [ref=f1e1942]: tv
+                    - img "Faut Voir - L'Hebdo cinéma" [ref=f1e1944]
+                    - generic [ref=f1e1945]:
+                      - paragraph [ref=f1e1946]: Faut Voir - L'Hebdo cinéma
+                      - paragraph [ref=f1e1947]: як Self - Guest
+                - listitem [ref=f1e1948]:
+                  - link "- tv Шоу Елен Дедженерес Шоу Елен Дедженерес як Self" [ref=f1e1949] [cursor=pointer]:
+                    - /url: /uk/tv-shows/562
+                    - generic [ref=f1e1950]:
+                      - generic [ref=f1e1951]: "-"
+                      - generic [ref=f1e1952]: tv
+                    - img "Шоу Елен Дедженерес" [ref=f1e1954]
+                    - generic [ref=f1e1955]:
+                      - paragraph [ref=f1e1956]: Шоу Елен Дедженерес
+                      - paragraph [ref=f1e1957]: як Self
+                - listitem [ref=f1e1958]:
+                  - link "- tv Cérémonie des César Cérémonie des César як Self - Presenter" [ref=f1e1959] [cursor=pointer]:
+                    - /url: /uk/tv-shows/35588
+                    - generic [ref=f1e1960]:
+                      - generic [ref=f1e1961]: "-"
+                      - generic [ref=f1e1962]: tv
+                    - img "Cérémonie des César" [ref=f1e1964]
+                    - generic [ref=f1e1965]:
+                      - paragraph [ref=f1e1966]: Cérémonie des César
+                      - paragraph [ref=f1e1967]: як Self - Presenter
+                - listitem [ref=f1e1968]:
+                  - link "- tv Джиммі Кіммел наживо! Джиммі Кіммел наживо! як Self" [ref=f1e1969] [cursor=pointer]:
+                    - /url: /uk/tv-shows/1489
+                    - generic [ref=f1e1970]:
+                      - generic [ref=f1e1971]: "-"
+                      - generic [ref=f1e1972]: tv
+                    - img "Джиммі Кіммел наживо!" [ref=f1e1974]
+                    - generic [ref=f1e1975]:
+                      - paragraph [ref=f1e1976]: Джиммі Кіммел наживо!
+                      - paragraph [ref=f1e1977]: як Self
+                - listitem [ref=f1e1978]:
+                  - link "- tv Суботнього вечора в прямому ефірі Суботнього вечора в прямому ефірі як Self (voice)" [ref=f1e1979] [cursor=pointer]:
+                    - /url: /uk/tv-shows/1667
+                    - generic [ref=f1e1980]:
+                      - generic [ref=f1e1981]: "-"
+                      - generic [ref=f1e1982]: tv
+                    - img "Суботнього вечора в прямому ефірі" [ref=f1e1984]
+                    - generic [ref=f1e1985]:
+                      - paragraph [ref=f1e1986]: Суботнього вечора в прямому ефірі
+                      - paragraph [ref=f1e1987]: як Self (voice)
+                - listitem [ref=f1e1988]:
+                  - link "- tv Джиммі Кіммел наживо! Джиммі Кіммел наживо! як Self - Guest" [ref=f1e1989] [cursor=pointer]:
+                    - /url: /uk/tv-shows/1489
+                    - generic [ref=f1e1990]:
+                      - generic [ref=f1e1991]: "-"
+                      - generic [ref=f1e1992]: tv
+                    - img "Джиммі Кіммел наживо!" [ref=f1e1994]
+                    - generic [ref=f1e1995]:
+                      - paragraph [ref=f1e1996]: Джиммі Кіммел наживо!
+                      - paragraph [ref=f1e1997]: як Self - Guest
+            - listitem [ref=f1e1998]:
+              - paragraph [ref=f1e1999]: Продюсування
+              - list [ref=f1e2000]:
+                - listitem [ref=f1e2001]:
+                  - link "2026 movie Das Geheimnis der Orte Das Geheimnis der Orte як Executive Producer" [ref=f1e2002] [cursor=pointer]:
+                    - /url: /uk/movies/1355885
+                    - generic [ref=f1e2003]:
+                      - generic [ref=f1e2004]: "2026"
+                      - generic [ref=f1e2005]: movie
+                    - img "Das Geheimnis der Orte" [ref=f1e2007]
+                    - generic [ref=f1e2008]:
+                      - paragraph [ref=f1e2009]: Das Geheimnis der Orte
+                      - paragraph [ref=f1e2010]: як Executive Producer
+                - listitem [ref=f1e2011]:
+                  - link "2026 movie Нові злощасні пригоди Кліффа Бута Нові злощасні пригоди Кліффа Бута як Producer" [ref=f1e2012] [cursor=pointer]:
+                    - /url: /uk/movies/1457866
+                    - generic [ref=f1e2013]:
+                      - generic [ref=f1e2014]: "2026"
+                      - generic [ref=f1e2015]: movie
+                    - img "Нові злощасні пригоди Кліффа Бута" [ref=f1e2017]
+                    - generic [ref=f1e2018]:
+                      - paragraph [ref=f1e2019]: Нові злощасні пригоди Кліффа Бута
+                      - paragraph [ref=f1e2020]: як Producer
+                - listitem [ref=f1e2021]:
+                  - link "2026 movie Серце звіра Серце звіра як Producer" [ref=f1e2022] [cursor=pointer]:
+                    - /url: /uk/movies/1263337
+                    - generic [ref=f1e2023]:
+                      - generic [ref=f1e2024]: "2026"
+                      - generic [ref=f1e2025]: movie
+                    - img "Серце звіра" [ref=f1e2027]
+                    - generic [ref=f1e2028]:
+                      - paragraph [ref=f1e2029]: Серце звіра
+                      - paragraph [ref=f1e2030]: як Producer
+                - listitem [ref=f1e2031]:
+                  - link "2026 movie Olmo Olmo як Executive Producer" [ref=f1e2032] [cursor=pointer]:
+                    - /url: /uk/movies/1212934
+                    - generic [ref=f1e2033]:
+                      - generic [ref=f1e2034]: "2026"
+                      - generic [ref=f1e2035]: movie
+                    - img "Olmo" [ref=f1e2037]
+                    - generic [ref=f1e2038]:
+                      - paragraph [ref=f1e2039]: Olmo
+                      - paragraph [ref=f1e2040]: як Executive Producer
+                - listitem [ref=f1e2041]:
+                  - link "2026 movie Підлітковий секс і смерть у таборі «Міазма» Підлітковий секс і смерть у таборі «Міазма» як Executive Producer" [ref=f1e2042] [cursor=pointer]:
+                    - /url: /uk/movies/1240889
+                    - generic [ref=f1e2043]:
+                      - generic [ref=f1e2044]: "2026"
+                      - generic [ref=f1e2045]: movie
+                    - img "Підлітковий секс і смерть у таборі «Міазма»" [ref=f1e2047]
+                    - generic [ref=f1e2048]:
+                      - paragraph [ref=f1e2049]: Підлітковий секс і смерть у таборі «Міазма»
+                      - paragraph [ref=f1e2050]: як Executive Producer
+                - listitem [ref=f1e2051]:
+                  - link "2025 movie Приховання Приховання як Executive Producer" [ref=f1e2052] [cursor=pointer]:
+                    - /url: /uk/movies/1516391
+                    - generic [ref=f1e2053]:
+                      - generic [ref=f1e2054]: "2025"
+                      - generic [ref=f1e2055]: movie
+                    - img "Приховання" [ref=f1e2057]
+                    - generic [ref=f1e2058]:
+                      - paragraph [ref=f1e2059]: Приховання
+                      - paragraph [ref=f1e2060]: як Executive Producer
+                - listitem [ref=f1e2061]:
+                  - link "2025 movie «Я» означає Яструб «Я» означає Яструб як Executive Producer" [ref=f1e2062] [cursor=pointer]:
+                    - /url: /uk/movies/1243006
+                    - generic [ref=f1e2063]:
+                      - generic [ref=f1e2064]: "2025"
+                      - generic [ref=f1e2065]: movie
+                    - img "«Я» означає Яструб" [ref=f1e2067]
+                    - generic [ref=f1e2068]:
+                      - paragraph [ref=f1e2069]: «Я» означає Яструб
+                      - paragraph [ref=f1e2070]: як Executive Producer
+                - listitem [ref=f1e2071]:
+                  - link "2025 movie Гедда Гедда як Executive Producer" [ref=f1e2072] [cursor=pointer]:
+                    - /url: /uk/movies/997113
+                    - generic [ref=f1e2073]:
+                      - generic [ref=f1e2074]: "2025"
+                      - generic [ref=f1e2075]: movie
+                    - img "Гедда" [ref=f1e2077]
+                    - generic [ref=f1e2078]:
+                      - paragraph [ref=f1e2079]: Гедда
+                      - paragraph [ref=f1e2080]: як Executive Producer
+                - listitem [ref=f1e2081]:
+                  - link "2025 movie Анемона Анемона як Executive Producer" [ref=f1e2082] [cursor=pointer]:
+                    - /url: /uk/movies/1364608
+                    - generic [ref=f1e2083]:
+                      - generic [ref=f1e2084]: "2025"
+                      - generic [ref=f1e2085]: movie
+                    - img "Анемона" [ref=f1e2087]
+                    - generic [ref=f1e2088]:
+                      - paragraph [ref=f1e2089]: Анемона
+                      - paragraph [ref=f1e2090]: як Executive Producer
+                - listitem [ref=f1e2091]:
+                  - link "2025 movie صوت هند رجب صوت هند رجب як Executive Producer" [ref=f1e2092] [cursor=pointer]:
+                    - /url: /uk/movies/1480382
+                    - generic [ref=f1e2093]:
+                      - generic [ref=f1e2094]: "2025"
+                      - generic [ref=f1e2095]: movie
+                    - img "صوت هند رجب" [ref=f1e2097]
+                    - generic [ref=f1e2098]:
+                      - paragraph [ref=f1e2099]: صوت هند رجب
+                      - paragraph [ref=f1e2100]: як Executive Producer
+                - listitem [ref=f1e2101]:
+                  - link "2025 movie Preparation for the Next Life Preparation for the Next Life як Executive Producer" [ref=f1e2102] [cursor=pointer]:
+                    - /url: /uk/movies/1314129
+                    - generic [ref=f1e2103]:
+                      - generic [ref=f1e2104]: "2025"
+                      - generic [ref=f1e2105]: movie
+                    - img "Preparation for the Next Life" [ref=f1e2107]
+                    - generic [ref=f1e2108]:
+                      - paragraph [ref=f1e2109]: Preparation for the Next Life
+                      - paragraph [ref=f1e2110]: як Executive Producer
+                - listitem [ref=f1e2111]:
+                  - link "2025 movie It's Never Over, Jeff Buckley It's Never Over, Jeff Buckley як Executive Producer" [ref=f1e2112] [cursor=pointer]:
+                    - /url: /uk/movies/1400381
+                    - generic [ref=f1e2113]:
+                      - generic [ref=f1e2114]: "2025"
+                      - generic [ref=f1e2115]: movie
+                    - img "It's Never Over, Jeff Buckley" [ref=f1e2117]
+                    - generic [ref=f1e2118]:
+                      - paragraph [ref=f1e2119]: It's Never Over, Jeff Buckley
+                      - paragraph [ref=f1e2120]: як Executive Producer
+                - listitem [ref=f1e2121]:
+                  - link "2025 movie Апокаліпсис у тропіках Апокаліпсис у тропіках як Executive Producer" [ref=f1e2122] [cursor=pointer]:
+                    - /url: /uk/movies/1320400
+                    - generic [ref=f1e2123]:
+                      - generic [ref=f1e2124]: "2025"
+                      - generic [ref=f1e2125]: movie
+                    - img "Апокаліпсис у тропіках" [ref=f1e2127]
+                    - generic [ref=f1e2128]:
+                      - paragraph [ref=f1e2129]: Апокаліпсис у тропіках
+                      - paragraph [ref=f1e2130]: як Executive Producer
+                - listitem [ref=f1e2131]:
+                  - 'link "2025 movie F1: Фільм F1: Фільм як Producer" [ref=f1e2132] [cursor=pointer]':
+                    - /url: /uk/movies/911430
+                    - generic [ref=f1e2133]:
+                      - generic [ref=f1e2134]: "2025"
+                      - generic [ref=f1e2135]: movie
+                    - 'img "F1: Фільм" [ref=f1e2137]'
+                    - generic [ref=f1e2138]:
+                      - paragraph [ref=f1e2139]: "F1: Фільм"
+                      - paragraph [ref=f1e2140]: як Producer
+                - listitem [ref=f1e2141]:
+                  - 'link "2025 movie Боно: Шлях до примирення Боно: Шлях до примирення як Producer" [ref=f1e2142] [cursor=pointer]':
+                    - /url: /uk/movies/1440718
+                    - generic [ref=f1e2143]:
+                      - generic [ref=f1e2144]: "2025"
+                      - generic [ref=f1e2145]: movie
+                    - 'img "Боно: Шлях до примирення" [ref=f1e2147]'
+                    - generic [ref=f1e2148]:
+                      - paragraph [ref=f1e2149]: "Боно: Шлях до примирення"
+                      - paragraph [ref=f1e2150]: як Producer
+                - listitem [ref=f1e2151]:
+                  - 'link "2025 movie One to One: John & Yoko One to One: John & Yoko як Executive Producer" [ref=f1e2152] [cursor=pointer]':
+                    - /url: /uk/movies/1320392
+                    - generic [ref=f1e2153]:
+                      - generic [ref=f1e2154]: "2025"
+                      - generic [ref=f1e2155]: movie
+                    - 'img "One to One: John & Yoko" [ref=f1e2157]'
+                    - generic [ref=f1e2158]:
+                      - paragraph [ref=f1e2159]: "One to One: John & Yoko"
+                      - paragraph [ref=f1e2160]: як Executive Producer
+                - listitem [ref=f1e2161]:
+                  - link "2025 movie Мікі 17 Мікі 17 як Executive Producer" [ref=f1e2162] [cursor=pointer]:
+                    - /url: /uk/movies/696506
+                    - generic [ref=f1e2163]:
+                      - generic [ref=f1e2164]: "2025"
+                      - generic [ref=f1e2165]: movie
+                    - img "Мікі 17" [ref=f1e2167]
+                    - generic [ref=f1e2168]:
+                      - paragraph [ref=f1e2169]: Мікі 17
+                      - paragraph [ref=f1e2170]: як Executive Producer
+                - listitem [ref=f1e2171]:
+                  - link "2024 movie Nickel Boys Nickel Boys як Executive Producer" [ref=f1e2172] [cursor=pointer]:
+                    - /url: /uk/movies/1028196
+                    - generic [ref=f1e2173]:
+                      - generic [ref=f1e2174]: "2024"
+                      - generic [ref=f1e2175]: movie
+                    - img "Nickel Boys" [ref=f1e2177]
+                    - generic [ref=f1e2178]:
+                      - paragraph [ref=f1e2179]: Nickel Boys
+                      - paragraph [ref=f1e2180]: як Executive Producer
+                - listitem [ref=f1e2181]:
+                  - link "2024 movie Самотні вовки Самотні вовки як Producer" [ref=f1e2182] [cursor=pointer]:
+                    - /url: /uk/movies/877817
+                    - generic [ref=f1e2183]:
+                      - generic [ref=f1e2184]: "2024"
+                      - generic [ref=f1e2185]: movie
+                    - img "Самотні вовки" [ref=f1e2187]
+                    - generic [ref=f1e2188]:
+                      - paragraph [ref=f1e2189]: Самотні вовки
+                      - paragraph [ref=f1e2190]: як Producer
+                - listitem [ref=f1e2191]:
+                  - link "2024 movie Бітлджюс Бітлджюс Бітлджюс Бітлджюс як Executive Producer" [ref=f1e2192] [cursor=pointer]:
+                    - /url: /uk/movies/917496
+                    - generic [ref=f1e2193]:
+                      - generic [ref=f1e2194]: "2024"
+                      - generic [ref=f1e2195]: movie
+                    - img "Бітлджюс Бітлджюс" [ref=f1e2197]
+                    - generic [ref=f1e2198]:
+                      - paragraph [ref=f1e2199]: Бітлджюс Бітлджюс
+                      - paragraph [ref=f1e2200]: як Executive Producer
+                - listitem [ref=f1e2201]:
+                  - 'link "2024 movie Боб Марлі: One Love Боб Марлі: One Love як Executive Producer" [ref=f1e2202] [cursor=pointer]':
+                    - /url: /uk/movies/802219
+                    - generic [ref=f1e2203]:
+                      - generic [ref=f1e2204]: "2024"
+                      - generic [ref=f1e2205]: movie
+                    - 'img "Боб Марлі: One Love" [ref=f1e2207]'
+                    - generic [ref=f1e2208]:
+                      - paragraph [ref=f1e2209]: "Боб Марлі: One Love"
+                      - paragraph [ref=f1e2210]: як Executive Producer
+                - listitem [ref=f1e2211]:
+                  - link "2023 movie Пейзаж з невидимою рукою Пейзаж з невидимою рукою як Executive Producer" [ref=f1e2212] [cursor=pointer]:
+                    - /url: /uk/movies/777411
+                    - generic [ref=f1e2213]:
+                      - generic [ref=f1e2214]: "2023"
+                      - generic [ref=f1e2215]: movie
+                    - img "Пейзаж з невидимою рукою" [ref=f1e2217]
+                    - generic [ref=f1e2218]:
+                      - paragraph [ref=f1e2219]: Пейзаж з невидимою рукою
+                      - paragraph [ref=f1e2220]: як Executive Producer
+                - listitem [ref=f1e2221]:
+                  - link "2022 movie Говорять жінки Говорять жінки як Executive Producer" [ref=f1e2222] [cursor=pointer]:
+                    - /url: /uk/movies/777245
+                    - generic [ref=f1e2223]:
+                      - generic [ref=f1e2224]: "2022"
+                      - generic [ref=f1e2225]: movie
+                    - img "Говорять жінки" [ref=f1e2227]
+                    - generic [ref=f1e2228]:
+                      - paragraph [ref=f1e2229]: Говорять жінки
+                      - paragraph [ref=f1e2230]: як Executive Producer
+                - listitem [ref=f1e2231]:
+                  - link "2022 movie Вона сказала Вона сказала як Executive Producer" [ref=f1e2232] [cursor=pointer]:
+                    - /url: /uk/movies/837881
+                    - generic [ref=f1e2233]:
+                      - generic [ref=f1e2234]: "2022"
+                      - generic [ref=f1e2235]: movie
+                    - img "Вона сказала" [ref=f1e2237]
+                    - generic [ref=f1e2238]:
+                      - paragraph [ref=f1e2239]: Вона сказала
+                      - paragraph [ref=f1e2240]: як Executive Producer
+                - listitem [ref=f1e2241]:
+                  - link "2022 movie Білявка Білявка як Producer" [ref=f1e2242] [cursor=pointer]:
+                    - /url: /uk/movies/301502
+                    - generic [ref=f1e2243]:
+                      - generic [ref=f1e2244]: "2022"
+                      - generic [ref=f1e2245]: movie
+                    - img "Білявка" [ref=f1e2247]
+                    - generic [ref=f1e2248]:
+                      - paragraph [ref=f1e2249]: Білявка
+                      - paragraph [ref=f1e2250]: як Producer
+                - listitem [ref=f1e2251]:
+                  - link "2022 movie Батько нареченої Батько нареченої як Executive Producer" [ref=f1e2252] [cursor=pointer]:
+                    - /url: /uk/movies/746419
+                    - generic [ref=f1e2253]:
+                      - generic [ref=f1e2254]: "2022"
+                      - generic [ref=f1e2255]: movie
+                    - img "Батько нареченої" [ref=f1e2257]
+                    - generic [ref=f1e2258]:
+                      - paragraph [ref=f1e2259]: Батько нареченої
+                      - paragraph [ref=f1e2260]: як Executive Producer
+                - listitem [ref=f1e2261]:
+                  - link "2021 movie Civil War (Or, Who Do We Think We Are) Civil War (Or, Who Do We Think We Are) як Executive Producer" [ref=f1e2262] [cursor=pointer]:
+                    - /url: /uk/movies/842096
+                    - generic [ref=f1e2263]:
+                      - generic [ref=f1e2264]: "2021"
+                      - generic [ref=f1e2265]: movie
+                    - img "Civil War (Or, Who Do We Think We Are)" [ref=f1e2267]
+                    - generic [ref=f1e2268]:
+                      - paragraph [ref=f1e2269]: Civil War (Or, Who Do We Think We Are)
+                      - paragraph [ref=f1e2270]: як Executive Producer
+                - listitem [ref=f1e2271]:
+                  - link "2021 movie Мінарі Мінарі як Executive Producer" [ref=f1e2272] [cursor=pointer]:
+                    - /url: /uk/movies/615643
+                    - generic [ref=f1e2273]:
+                      - generic [ref=f1e2274]: "2021"
+                      - generic [ref=f1e2275]: movie
+                    - img "Мінарі" [ref=f1e2277]
+                    - generic [ref=f1e2278]:
+                      - paragraph [ref=f1e2279]: Мінарі
+                      - paragraph [ref=f1e2280]: як Executive Producer
+                - listitem [ref=f1e2281]:
+                  - link "2020 movie Tripping with Nils Frahm Tripping with Nils Frahm як Executive Producer" [ref=f1e2282] [cursor=pointer]:
+                    - /url: /uk/movies/766159
+                    - generic [ref=f1e2283]:
+                      - generic [ref=f1e2284]: "2020"
+                      - generic [ref=f1e2285]: movie
+                    - img "Tripping with Nils Frahm" [ref=f1e2287]
+                    - generic [ref=f1e2288]:
+                      - paragraph [ref=f1e2289]: Tripping with Nils Frahm
+                      - paragraph [ref=f1e2290]: як Executive Producer
+                - listitem [ref=f1e2291]:
+                  - 'link "2020 movie The Third Day: Autumn The Third Day: Autumn як Executive Producer" [ref=f1e2292] [cursor=pointer]':
+                    - /url: /uk/movies/749418
+                    - generic [ref=f1e2293]:
+                      - generic [ref=f1e2294]: "2020"
+                      - generic [ref=f1e2295]: movie
+                    - 'img "The Third Day: Autumn" [ref=f1e2297]'
+                    - generic [ref=f1e2298]:
+                      - paragraph [ref=f1e2299]: "The Third Day: Autumn"
+                      - paragraph [ref=f1e2300]: як Executive Producer
+                - listitem [ref=f1e2301]:
+                  - link "2020 movie Каджільйонер Каджільйонер як Executive Producer" [ref=f1e2302] [cursor=pointer]:
+                    - /url: /uk/movies/541305
+                    - generic [ref=f1e2303]:
+                      - generic [ref=f1e2304]: "2020"
+                      - generic [ref=f1e2305]: movie
+                    - img "Каджільйонер" [ref=f1e2307]
+                    - generic [ref=f1e2308]:
+                      - paragraph [ref=f1e2309]: Каджільйонер
+                      - paragraph [ref=f1e2310]: як Executive Producer
+                - listitem [ref=f1e2311]:
+                  - link "2020 movie Чесний кандидат Чесний кандидат як Executive Producer" [ref=f1e2312] [cursor=pointer]:
+                    - /url: /uk/movies/595148
+                    - generic [ref=f1e2313]:
+                      - generic [ref=f1e2314]: "2020"
+                      - generic [ref=f1e2315]: movie
+                    - img "Чесний кандидат" [ref=f1e2317]
+                    - generic [ref=f1e2318]:
+                      - paragraph [ref=f1e2319]: Чесний кандидат
+                      - paragraph [ref=f1e2320]: як Executive Producer
+                - listitem [ref=f1e2321]:
+                  - link "2019 movie Король Король як Producer" [ref=f1e2322] [cursor=pointer]:
+                    - /url: /uk/movies/504949
+                    - generic [ref=f1e2323]:
+                      - generic [ref=f1e2324]: "2019"
+                      - generic [ref=f1e2325]: movie
+                    - img "Король" [ref=f1e2327]
+                    - generic [ref=f1e2328]:
+                      - paragraph [ref=f1e2329]: Король
+                      - paragraph [ref=f1e2330]: як Producer
+                - listitem [ref=f1e2331]:
+                  - link "2019 movie До зірок До зірок як Producer" [ref=f1e2332] [cursor=pointer]:
+                    - /url: /uk/movies/419704
+                    - generic [ref=f1e2333]:
+                      - generic [ref=f1e2334]: "2019"
+                      - generic [ref=f1e2335]: movie
+                    - img "До зірок" [ref=f1e2337]
+                    - generic [ref=f1e2338]:
+                      - paragraph [ref=f1e2339]: До зірок
+                      - paragraph [ref=f1e2340]: як Producer
+                - listitem [ref=f1e2341]:
+                  - link "2019 movie Останній темношкірий у Сан-Франциско Останній темношкірий у Сан-Франциско як Executive Producer" [ref=f1e2342] [cursor=pointer]:
+                    - /url: /uk/movies/522039
+                    - generic [ref=f1e2343]:
+                      - generic [ref=f1e2344]: "2019"
+                      - generic [ref=f1e2345]: movie
+                    - img "Останній темношкірий у Сан-Франциско" [ref=f1e2347]
+                    - generic [ref=f1e2348]:
+                      - paragraph [ref=f1e2349]: Останній темношкірий у Сан-Франциско
+                      - paragraph [ref=f1e2350]: як Executive Producer
+                - listitem [ref=f1e2351]:
+                  - link "2018 movie Влада Влада як Producer" [ref=f1e2352] [cursor=pointer]:
+                    - /url: /uk/movies/429197
+                    - generic [ref=f1e2353]:
+                      - generic [ref=f1e2354]: "2018"
+                      - generic [ref=f1e2355]: movie
+                    - img "Влада" [ref=f1e2357]
+                    - generic [ref=f1e2358]:
+                      - paragraph [ref=f1e2359]: Влада
+                      - paragraph [ref=f1e2360]: як Producer
+                - listitem [ref=f1e2361]:
+                  - link "2018 movie Якби Біл-стріт могла заговорити Якби Біл-стріт могла заговорити як Executive Producer" [ref=f1e2362] [cursor=pointer]:
+                    - /url: /uk/movies/465914
+                    - generic [ref=f1e2363]:
+                      - generic [ref=f1e2364]: "2018"
+                      - generic [ref=f1e2365]: movie
+                    - img "Якби Біл-стріт могла заговорити" [ref=f1e2367]
+                    - generic [ref=f1e2368]:
+                      - paragraph [ref=f1e2369]: Якби Біл-стріт могла заговорити
+                      - paragraph [ref=f1e2370]: як Executive Producer
+                - listitem [ref=f1e2371]:
+                  - link "2018 movie Гарний хлопчик Гарний хлопчик як Producer" [ref=f1e2372] [cursor=pointer]:
+                    - /url: /uk/movies/451915
+                    - generic [ref=f1e2373]:
+                      - generic [ref=f1e2374]: "2018"
+                      - generic [ref=f1e2375]: movie
+                    - img "Гарний хлопчик" [ref=f1e2377]
+                    - generic [ref=f1e2378]:
+                      - paragraph [ref=f1e2379]: Гарний хлопчик
+                      - paragraph [ref=f1e2380]: як Producer
+                - listitem [ref=f1e2381]:
+                  - link "2017 movie Статус Бреда Статус Бреда як Executive Producer" [ref=f1e2382] [cursor=pointer]:
+                    - /url: /uk/movies/425980
+                    - generic [ref=f1e2383]:
+                      - generic [ref=f1e2384]: "2017"
+                      - generic [ref=f1e2385]: movie
+                    - img "Статус Бреда" [ref=f1e2387]
+                    - generic [ref=f1e2388]:
+                      - paragraph [ref=f1e2389]: Статус Бреда
+                      - paragraph [ref=f1e2390]: як Executive Producer
+                - listitem [ref=f1e2391]:
+                  - link "2017 movie Окча Окча як Executive Producer" [ref=f1e2392] [cursor=pointer]:
+                    - /url: /uk/movies/387426
+                    - generic [ref=f1e2393]:
+                      - generic [ref=f1e2394]: "2017"
+                      - generic [ref=f1e2395]: movie
+                    - img "Окча" [ref=f1e2397]
+                    - generic [ref=f1e2398]:
+                      - paragraph [ref=f1e2399]: Окча
+                      - paragraph [ref=f1e2400]: як Executive Producer
+                - listitem [ref=f1e2401]:
+                  - link "2017 movie Машина війни Машина війни як Producer" [ref=f1e2402] [cursor=pointer]:
+                    - /url: /uk/movies/354287
+                    - generic [ref=f1e2403]:
+                      - generic [ref=f1e2404]: "2017"
+                      - generic [ref=f1e2405]: movie
+                    - img "Машина війни" [ref=f1e2407]
+                    - generic [ref=f1e2408]:
+                      - paragraph [ref=f1e2409]: Машина війни
+                      - paragraph [ref=f1e2410]: як Producer
+                - listitem [ref=f1e2411]:
+                  - link "2017 movie Загублене місто Z Загублене місто Z як Executive Producer" [ref=f1e2412] [cursor=pointer]:
+                    - /url: /uk/movies/314095
+                    - generic [ref=f1e2413]:
+                      - generic [ref=f1e2414]: "2017"
+                      - generic [ref=f1e2415]: movie
+                    - img "Загублене місто Z" [ref=f1e2417]
+                    - generic [ref=f1e2418]:
+                      - paragraph [ref=f1e2419]: Загублене місто Z
+                      - paragraph [ref=f1e2420]: як Executive Producer
+                - listitem [ref=f1e2421]:
+                  - link "2017 movie Мандрівка часу Мандрівка часу як Producer" [ref=f1e2422] [cursor=pointer]:
+                    - /url: /uk/movies/86822
+                    - generic [ref=f1e2423]:
+                      - generic [ref=f1e2424]: "2017"
+                      - generic [ref=f1e2425]: movie
+                    - img "Мандрівка часу" [ref=f1e2427]
+                    - generic [ref=f1e2428]:
+                      - paragraph [ref=f1e2429]: Мандрівка часу
+                      - paragraph [ref=f1e2430]: як Producer
+                - listitem [ref=f1e2431]:
+                  - link "2016 movie Місячне сяйво Місячне сяйво як Executive Producer" [ref=f1e2432] [cursor=pointer]:
+                    - /url: /uk/movies/376867
+                    - generic [ref=f1e2433]:
+                      - generic [ref=f1e2434]: "2016"
+                      - generic [ref=f1e2435]: movie
+                    - img "Місячне сяйво" [ref=f1e2437]
+                    - generic [ref=f1e2438]:
+                      - paragraph [ref=f1e2439]: Місячне сяйво
+                      - paragraph [ref=f1e2440]: як Executive Producer
+                - listitem [ref=f1e2441]:
+                  - 'link "2016 movie Voyage of Time: The IMAX Experience Voyage of Time: The IMAX Experience як Producer" [ref=f1e2442] [cursor=pointer]':
+                    - /url: /uk/movies/417198
+                    - generic [ref=f1e2443]:
+                      - generic [ref=f1e2444]: "2016"
+                      - generic [ref=f1e2445]: movie
+                    - 'img "Voyage of Time: The IMAX Experience" [ref=f1e2447]'
+                    - generic [ref=f1e2448]:
+                      - paragraph [ref=f1e2449]: "Voyage of Time: The IMAX Experience"
+                      - paragraph [ref=f1e2450]: як Producer
+                - listitem [ref=f1e2451]:
+                  - link "2016 movie House of Time House of Time як Thanks" [ref=f1e2452] [cursor=pointer]:
+                    - /url: /uk/movies/369773
+                    - generic [ref=f1e2453]:
+                      - generic [ref=f1e2454]: "2016"
+                      - generic [ref=f1e2455]: movie
+                    - img "House of Time" [ref=f1e2457]
+                    - generic [ref=f1e2458]:
+                      - paragraph [ref=f1e2459]: House of Time
+                      - paragraph [ref=f1e2460]: як Thanks
+                - listitem [ref=f1e2461]:
+                  - link "2015 movie Гра на пониження Гра на пониження як Producer" [ref=f1e2462] [cursor=pointer]:
+                    - /url: /uk/movies/318846
+                    - generic [ref=f1e2463]:
+                      - generic [ref=f1e2464]: "2015"
+                      - generic [ref=f1e2465]: movie
+                    - img "Гра на пониження" [ref=f1e2467]
+                    - generic [ref=f1e2468]:
+                      - paragraph [ref=f1e2469]: Гра на пониження
+                      - paragraph [ref=f1e2470]: як Producer
+                - listitem [ref=f1e2471]:
+                  - link "2015 movie Біля моря Біля моря як Producer" [ref=f1e2472] [cursor=pointer]:
+                    - /url: /uk/movies/314385
+                    - generic [ref=f1e2473]:
+                      - generic [ref=f1e2474]: "2015"
+                      - generic [ref=f1e2475]: movie
+                    - img "Біля моря" [ref=f1e2477]
+                    - generic [ref=f1e2478]:
+                      - paragraph [ref=f1e2479]: Біля моря
+                      - paragraph [ref=f1e2480]: як Producer
+                - listitem [ref=f1e2481]:
+                  - link "2015 movie Hitting the Apex Hitting the Apex як Producer" [ref=f1e2482] [cursor=pointer]:
+                    - /url: /uk/movies/357681
+                    - generic [ref=f1e2483]:
+                      - generic [ref=f1e2484]: "2015"
+                      - generic [ref=f1e2485]: movie
+                    - img "Hitting the Apex" [ref=f1e2487]
+                    - generic [ref=f1e2488]:
+                      - paragraph [ref=f1e2489]: Hitting the Apex
+                      - paragraph [ref=f1e2490]: як Producer
+                - listitem [ref=f1e2491]:
+                  - link "2015 movie Правдива історія Правдива історія як Executive Producer" [ref=f1e2492] [cursor=pointer]:
+                    - /url: /uk/movies/245706
+                    - generic [ref=f1e2493]:
+                      - generic [ref=f1e2494]: "2015"
+                      - generic [ref=f1e2495]: movie
+                    - img "Правдива історія" [ref=f1e2497]
+                    - generic [ref=f1e2498]:
+                      - paragraph [ref=f1e2499]: Правдива історія
+                      - paragraph [ref=f1e2500]: як Executive Producer
+                - listitem [ref=f1e2501]:
+                  - link "2014 movie Сельма Сельма як Executive Producer" [ref=f1e2502] [cursor=pointer]:
+                    - /url: /uk/movies/273895
+                    - generic [ref=f1e2503]:
+                      - generic [ref=f1e2504]: "2014"
+                      - generic [ref=f1e2505]: movie
+                    - img "Сельма" [ref=f1e2507]
+                    - generic [ref=f1e2508]:
+                      - paragraph [ref=f1e2509]: Сельма
+                      - paragraph [ref=f1e2510]: як Executive Producer
+                - listitem [ref=f1e2511]:
+                  - link "2014 movie Лють Лють як Executive Producer" [ref=f1e2512] [cursor=pointer]:
+                    - /url: /uk/movies/228150
+                    - generic [ref=f1e2513]:
+                      - generic [ref=f1e2514]: "2014"
+                      - generic [ref=f1e2515]: movie
+                    - img "Лють" [ref=f1e2517]
+                    - generic [ref=f1e2518]:
+                      - paragraph [ref=f1e2519]: Лють
+                      - paragraph [ref=f1e2520]: як Executive Producer
+                - listitem [ref=f1e2521]:
+                  - link "2014 movie Nightingale Nightingale як Executive Producer" [ref=f1e2522] [cursor=pointer]:
+                    - /url: /uk/movies/277662
+                    - generic [ref=f1e2523]:
+                      - generic [ref=f1e2524]: "2014"
+                      - generic [ref=f1e2525]: movie
+                    - img "Nightingale" [ref=f1e2527]
+                    - generic [ref=f1e2528]:
+                      - paragraph [ref=f1e2529]: Nightingale
+                      - paragraph [ref=f1e2530]: як Executive Producer
+                - listitem [ref=f1e2531]:
+                  - link "2014 movie Звичайне серце Звичайне серце як Executive Producer" [ref=f1e2532] [cursor=pointer]:
+                    - /url: /uk/movies/113833
+                    - generic [ref=f1e2533]:
+                      - generic [ref=f1e2534]: "2014"
+                      - generic [ref=f1e2535]: movie
+                    - img "Звичайне серце" [ref=f1e2537]
+                    - generic [ref=f1e2538]:
+                      - paragraph [ref=f1e2539]: Звичайне серце
+                      - paragraph [ref=f1e2540]: як Executive Producer
+                - listitem [ref=f1e2541]:
+                  - link "2014 movie Big Men Big Men як Executive Producer" [ref=f1e2542] [cursor=pointer]:
+                    - /url: /uk/movies/174349
+                    - generic [ref=f1e2543]:
+                      - generic [ref=f1e2544]: "2014"
+                      - generic [ref=f1e2545]: movie
+                    - img "Big Men" [ref=f1e2547]
+                    - generic [ref=f1e2548]:
+                      - paragraph [ref=f1e2549]: Big Men
+                      - paragraph [ref=f1e2550]: як Executive Producer
+                - listitem [ref=f1e2551]:
+                  - link "2013 movie 12 років рабства 12 років рабства як Producer" [ref=f1e2552] [cursor=pointer]:
+                    - /url: /uk/movies/76203
+                    - generic [ref=f1e2553]:
+                      - generic [ref=f1e2554]: "2013"
+                      - generic [ref=f1e2555]: movie
+                    - img "12 років рабства" [ref=f1e2557]
+                    - generic [ref=f1e2558]:
+                      - paragraph [ref=f1e2559]: 12 років рабства
+                      - paragraph [ref=f1e2560]: як Producer
+                - listitem [ref=f1e2561]:
+                  - link "2013 movie Всесвітня Війна Z Всесвітня Війна Z як Producer" [ref=f1e2562] [cursor=pointer]:
+                    - /url: /uk/movies/72190
+                    - generic [ref=f1e2563]:
+                      - generic [ref=f1e2564]: "2013"
+                      - generic [ref=f1e2565]: movie
+                    - img "Всесвітня Війна Z" [ref=f1e2567]
+                    - generic [ref=f1e2568]:
+                      - paragraph [ref=f1e2569]: Всесвітня Війна Z
+                      - paragraph [ref=f1e2570]: як Producer
+                - listitem [ref=f1e2571]:
+                  - link "2012 movie The House I Live In The House I Live In як Executive Producer" [ref=f1e2572] [cursor=pointer]:
+                    - /url: /uk/movies/84284
+                    - generic [ref=f1e2573]:
+                      - generic [ref=f1e2574]: "2012"
+                      - generic [ref=f1e2575]: movie
+                    - img "The House I Live In" [ref=f1e2577]
+                    - generic [ref=f1e2578]:
+                      - paragraph [ref=f1e2579]: The House I Live In
+                      - paragraph [ref=f1e2580]: як Executive Producer
+                - listitem [ref=f1e2581]:
+                  - link "2012 movie Пограбування казино Пограбування казино як Producer" [ref=f1e2582] [cursor=pointer]:
+                    - /url: /uk/movies/64689
+                    - generic [ref=f1e2583]:
+                      - generic [ref=f1e2584]: "2012"
+                      - generic [ref=f1e2585]: movie
+                    - img "Пограбування казино" [ref=f1e2587]
+                    - generic [ref=f1e2588]:
+                      - paragraph [ref=f1e2589]: Пограбування казино
+                      - paragraph [ref=f1e2590]: як Producer
+                - listitem [ref=f1e2591]:
+                  - link "2011 movie Людина, яка змінила все Людина, яка змінила все як Producer" [ref=f1e2592] [cursor=pointer]:
+                    - /url: /uk/movies/60308
+                    - generic [ref=f1e2593]:
+                      - generic [ref=f1e2594]: "2011"
+                      - generic [ref=f1e2595]: movie
+                    - img "Людина, яка змінила все" [ref=f1e2597]
+                    - generic [ref=f1e2598]:
+                      - paragraph [ref=f1e2599]: Людина, яка змінила все
+                      - paragraph [ref=f1e2600]: як Producer
+                - listitem [ref=f1e2601]:
+                  - link "2011 movie Jane's Journey Jane's Journey як Thanks" [ref=f1e2602] [cursor=pointer]:
+                    - /url: /uk/movies/82686
+                    - generic [ref=f1e2603]:
+                      - generic [ref=f1e2604]: "2011"
+                      - generic [ref=f1e2605]: movie
+                    - img "Jane's Journey" [ref=f1e2607]
+                    - generic [ref=f1e2608]:
+                      - paragraph [ref=f1e2609]: Jane's Journey
+                      - paragraph [ref=f1e2610]: як Thanks
+                - listitem [ref=f1e2611]:
+                  - link "2011 movie Древо життя Древо життя як Producer" [ref=f1e2612] [cursor=pointer]:
+                    - /url: /uk/movies/8967
+                    - generic [ref=f1e2613]:
+                      - generic [ref=f1e2614]: "2011"
+                      - generic [ref=f1e2615]: movie
+                    - img "Древо життя" [ref=f1e2617]
+                    - generic [ref=f1e2618]:
+                      - paragraph [ref=f1e2619]: Древо життя
+                      - paragraph [ref=f1e2620]: як Producer
+                - listitem [ref=f1e2621]:
+                  - link "2010 movie Їсти, молитися, кохати Їсти, молитися, кохати як Executive Producer" [ref=f1e2622] [cursor=pointer]:
+                    - /url: /uk/movies/38167
+                    - generic [ref=f1e2623]:
+                      - generic [ref=f1e2624]: "2010"
+                      - generic [ref=f1e2625]: movie
+                    - img "Їсти, молитися, кохати" [ref=f1e2627]
+                    - generic [ref=f1e2628]:
+                      - paragraph [ref=f1e2629]: Їсти, молитися, кохати
+                      - paragraph [ref=f1e2630]: як Executive Producer
+                - listitem [ref=f1e2631]:
+                  - link "2010 movie Пипець Пипець як Producer" [ref=f1e2632] [cursor=pointer]:
+                    - /url: /uk/movies/23483
+                    - generic [ref=f1e2633]:
+                      - generic [ref=f1e2634]: "2010"
+                      - generic [ref=f1e2635]: movie
+                    - img "Пипець" [ref=f1e2637]
+                    - generic [ref=f1e2638]:
+                      - paragraph [ref=f1e2639]: Пипець
+                      - paragraph [ref=f1e2640]: як Producer
+                - listitem [ref=f1e2641]:
+                  - link "2009 movie Там, де живуть чудовиська Там, де живуть чудовиська як Thanks" [ref=f1e2642] [cursor=pointer]:
+                    - /url: /uk/movies/16523
+                    - generic [ref=f1e2643]:
+                      - generic [ref=f1e2644]: "2009"
+                      - generic [ref=f1e2645]: movie
+                    - img "Там, де живуть чудовиська" [ref=f1e2647]
+                    - generic [ref=f1e2648]:
+                      - paragraph [ref=f1e2649]: Там, де живуть чудовиська
+                      - paragraph [ref=f1e2650]: як Thanks
+                - listitem [ref=f1e2651]:
+                  - link "2009 movie Дружина мандрівника у часі Дружина мандрівника у часі як Executive Producer" [ref=f1e2652] [cursor=pointer]:
+                    - /url: /uk/movies/24420
+                    - generic [ref=f1e2653]:
+                      - generic [ref=f1e2654]: "2009"
+                      - generic [ref=f1e2655]: movie
+                    - img "Дружина мандрівника у часі" [ref=f1e2657]
+                    - generic [ref=f1e2658]:
+                      - paragraph [ref=f1e2659]: Дружина мандрівника у часі
+                      - paragraph [ref=f1e2660]: як Executive Producer
+                - listitem [ref=f1e2661]:
+                  - link "2009 movie Особисте життя Піпи Лі Особисте життя Піпи Лі як Executive Producer" [ref=f1e2662] [cursor=pointer]:
+                    - /url: /uk/movies/4475
+                    - generic [ref=f1e2663]:
+                      - generic [ref=f1e2664]: "2009"
+                      - generic [ref=f1e2665]: movie
+                    - img "Особисте життя Піпи Лі" [ref=f1e2667]
+                    - generic [ref=f1e2668]:
+                      - paragraph [ref=f1e2669]: Особисте життя Піпи Лі
+                      - paragraph [ref=f1e2670]: як Executive Producer
+                - listitem [ref=f1e2671]:
+                  - link "2008 movie Notes on an American Film Director at Work Notes on an American Film Director at Work як Thanks" [ref=f1e2672] [cursor=pointer]:
+                    - /url: /uk/movies/402970
+                    - generic [ref=f1e2673]:
+                      - generic [ref=f1e2674]: "2008"
+                      - generic [ref=f1e2675]: movie
+                    - img "Notes on an American Film Director at Work" [ref=f1e2677]
+                    - generic [ref=f1e2678]:
+                      - paragraph [ref=f1e2679]: Notes on an American Film Director at Work
+                      - paragraph [ref=f1e2680]: як Thanks
+                - listitem [ref=f1e2681]:
+                  - link "2007 movie Як боязкий Роберт Форд убив Джессі Джеймса Як боязкий Роберт Форд убив Джессі Джеймса як Producer" [ref=f1e2682] [cursor=pointer]:
+                    - /url: /uk/movies/4512
+                    - generic [ref=f1e2683]:
+                      - generic [ref=f1e2684]: "2007"
+                      - generic [ref=f1e2685]: movie
+                    - img "Як боязкий Роберт Форд убив Джессі Джеймса" [ref=f1e2687]
+                    - generic [ref=f1e2688]:
+                      - paragraph [ref=f1e2689]: Як боязкий Роберт Форд убив Джессі Джеймса
+                      - paragraph [ref=f1e2690]: як Producer
+                - listitem [ref=f1e2691]:
+                  - link "2007 movie Її серце Її серце як Producer" [ref=f1e2692] [cursor=pointer]:
+                    - /url: /uk/movies/1988
+                    - generic [ref=f1e2693]:
+                      - generic [ref=f1e2694]: "2007"
+                      - generic [ref=f1e2695]: movie
+                    - img "Її серце" [ref=f1e2697]
+                    - generic [ref=f1e2698]:
+                      - paragraph [ref=f1e2699]: Її серце
+                      - paragraph [ref=f1e2700]: як Producer
+                - listitem [ref=f1e2701]:
+                  - link "2007 movie Рік собаки Рік собаки як Executive Producer" [ref=f1e2702] [cursor=pointer]:
+                    - /url: /uk/movies/13574
+                    - generic [ref=f1e2703]:
+                      - generic [ref=f1e2704]: "2007"
+                      - generic [ref=f1e2705]: movie
+                    - img "Рік собаки" [ref=f1e2707]
+                    - generic [ref=f1e2708]:
+                      - paragraph [ref=f1e2709]: Рік собаки
+                      - paragraph [ref=f1e2710]: як Executive Producer
+                - listitem [ref=f1e2711]:
+                  - link "2006 movie God Grew Tired of Us God Grew Tired of Us як Executive Producer" [ref=f1e2712] [cursor=pointer]:
+                    - /url: /uk/movies/15325
+                    - generic [ref=f1e2713]:
+                      - generic [ref=f1e2714]: "2006"
+                      - generic [ref=f1e2715]: movie
+                    - img "God Grew Tired of Us" [ref=f1e2717]
+                    - generic [ref=f1e2718]:
+                      - paragraph [ref=f1e2719]: God Grew Tired of Us
+                      - paragraph [ref=f1e2720]: як Executive Producer
+                - listitem [ref=f1e2721]:
+                  - link "2006 movie Біг з ножицями Біг з ножицями як Producer" [ref=f1e2722] [cursor=pointer]:
+                    - /url: /uk/movies/7510
+                    - generic [ref=f1e2723]:
+                      - generic [ref=f1e2724]: "2006"
+                      - generic [ref=f1e2725]: movie
+                    - img "Біг з ножицями" [ref=f1e2727]
+                    - generic [ref=f1e2728]:
+                      - paragraph [ref=f1e2729]: Біг з ножицями
+                      - paragraph [ref=f1e2730]: як Producer
+                - listitem [ref=f1e2731]:
+                  - link "2006 movie Відступники Відступники як Producer" [ref=f1e2732] [cursor=pointer]:
+                    - /url: /uk/movies/1422
+                    - generic [ref=f1e2733]:
+                      - generic [ref=f1e2734]: "2006"
+                      - generic [ref=f1e2735]: movie
+                    - img "Відступники" [ref=f1e2737]
+                    - generic [ref=f1e2738]:
+                      - paragraph [ref=f1e2739]: Відступники
+                      - paragraph [ref=f1e2740]: як Producer
+                - listitem [ref=f1e2741]:
+                  - link "- movie The Silent Patient The Silent Patient як Producer" [ref=f1e2742] [cursor=pointer]:
+                    - /url: /uk/movies/682459
+                    - generic [ref=f1e2743]:
+                      - generic [ref=f1e2744]: "-"
+                      - generic [ref=f1e2745]: movie
+                    - img "The Silent Patient" [ref=f1e2747]
+                    - generic [ref=f1e2748]:
+                      - paragraph [ref=f1e2749]: The Silent Patient
+                      - paragraph [ref=f1e2750]: як Producer
+                - listitem [ref=f1e2751]:
+                  - link "- movie The Curious Incident of the Dog in the Night-Time The Curious Incident of the Dog in the Night-Time як Executive Producer" [ref=f1e2752] [cursor=pointer]:
+                    - /url: /uk/movies/631731
+                    - generic [ref=f1e2753]:
+                      - generic [ref=f1e2754]: "-"
+                      - generic [ref=f1e2755]: movie
+                    - img "The Curious Incident of the Dog in the Night-Time" [ref=f1e2757]
+                    - generic [ref=f1e2758]:
+                      - paragraph [ref=f1e2759]: The Curious Incident of the Dog in the Night-Time
+                      - paragraph [ref=f1e2760]: як Executive Producer
+                - listitem [ref=f1e2761]:
+                  - link "- movie Вершники Вершники як Producer" [ref=f1e2762] [cursor=pointer]:
+                    - /url: /uk/movies/1139422
+                    - generic [ref=f1e2763]:
+                      - generic [ref=f1e2764]: "-"
+                      - generic [ref=f1e2765]: movie
+                    - img "Вершники" [ref=f1e2767]
+                    - generic [ref=f1e2768]:
+                      - paragraph [ref=f1e2769]: Вершники
+                      - paragraph [ref=f1e2770]: як Producer
+                - listitem [ref=f1e2771]:
+                  - link "- movie Night People Night People як Producer" [ref=f1e2772] [cursor=pointer]:
+                    - /url: /uk/movies/1548015
+                    - generic [ref=f1e2773]:
+                      - generic [ref=f1e2774]: "-"
+                      - generic [ref=f1e2775]: movie
+                    - img "Night People" [ref=f1e2777]
+                    - generic [ref=f1e2778]:
+                      - paragraph [ref=f1e2779]: Night People
+                      - paragraph [ref=f1e2780]: як Producer
+                - listitem [ref=f1e2781]:
+                  - link "- movie The Tiger The Tiger як Producer" [ref=f1e2782] [cursor=pointer]:
+                    - /url: /uk/movies/1634415
+                    - generic [ref=f1e2783]:
+                      - generic [ref=f1e2784]: "-"
+                      - generic [ref=f1e2785]: movie
+                    - img "The Tiger" [ref=f1e2787]
+                    - generic [ref=f1e2788]:
+                      - paragraph [ref=f1e2789]: The Tiger
+                      - paragraph [ref=f1e2790]: як Producer
+                - listitem [ref=f1e2791]:
+                  - link "- movie Playground Playground як Producer" [ref=f1e2792] [cursor=pointer]:
+                    - /url: /uk/movies/1655070
+                    - generic [ref=f1e2793]:
+                      - generic [ref=f1e2794]: "-"
+                      - generic [ref=f1e2795]: movie
+                    - img "Playground" [ref=f1e2797]
+                    - generic [ref=f1e2798]:
+                      - paragraph [ref=f1e2799]: Playground
+                      - paragraph [ref=f1e2800]: як Producer
+                - listitem [ref=f1e2801]:
+                  - link "- movie Isle of Man Isle of Man як Producer" [ref=f1e2802] [cursor=pointer]:
+                    - /url: /uk/movies/1666979
+                    - generic [ref=f1e2803]:
+                      - generic [ref=f1e2804]: "-"
+                      - generic [ref=f1e2805]: movie
+                    - img "Isle of Man" [ref=f1e2807]
+                    - generic [ref=f1e2808]:
+                      - paragraph [ref=f1e2809]: Isle of Man
+                      - paragraph [ref=f1e2810]: як Producer
+                - listitem [ref=f1e2811]:
+                  - link "- movie Hold On to Your Angels Hold On to Your Angels як Executive Producer" [ref=f1e2812] [cursor=pointer]:
+                    - /url: /uk/movies/1690236
+                    - generic [ref=f1e2813]:
+                      - generic [ref=f1e2814]: "-"
+                      - generic [ref=f1e2815]: movie
+                    - img "Hold On to Your Angels" [ref=f1e2817]
+                    - generic [ref=f1e2818]:
+                      - paragraph [ref=f1e2819]: Hold On to Your Angels
+                      - paragraph [ref=f1e2820]: як Executive Producer
+                - listitem [ref=f1e2821]:
+                  - link "- movie The Bell Jar The Bell Jar як Executive Producer" [ref=f1e2822] [cursor=pointer]:
+                    - /url: /uk/movies/1650041
+                    - generic [ref=f1e2823]:
+                      - generic [ref=f1e2824]: "-"
+                      - generic [ref=f1e2825]: movie
+                    - img "The Bell Jar" [ref=f1e2827]
+                    - generic [ref=f1e2828]:
+                      - paragraph [ref=f1e2829]: The Bell Jar
+                      - paragraph [ref=f1e2830]: як Executive Producer
+                - listitem [ref=f1e2831]:
+                  - link "- movie The Chaperones The Chaperones як Executive Producer" [ref=f1e2832] [cursor=pointer]:
+                    - /url: /uk/movies/1523135
+                    - generic [ref=f1e2833]:
+                      - generic [ref=f1e2834]: "-"
+                      - generic [ref=f1e2835]: movie
+                    - img "The Chaperones" [ref=f1e2837]
+                    - generic [ref=f1e2838]:
+                      - paragraph [ref=f1e2839]: The Chaperones
+                      - paragraph [ref=f1e2840]: як Executive Producer
+                - listitem [ref=f1e2841]:
+                  - link "- movie Untitled World War Z Sequel Untitled World War Z Sequel як Producer" [ref=f1e2842] [cursor=pointer]:
+                    - /url: /uk/movies/1674201
+                    - generic [ref=f1e2843]:
+                      - generic [ref=f1e2844]: "-"
+                      - generic [ref=f1e2845]: movie
+                    - img "Untitled World War Z Sequel" [ref=f1e2847]
+                    - generic [ref=f1e2848]:
+                      - paragraph [ref=f1e2849]: Untitled World War Z Sequel
+                      - paragraph [ref=f1e2850]: як Producer
+                - listitem [ref=f1e2851]:
+                  - link "- movie Not Another F*cking Wedding Not Another F*cking Wedding як Executive Producer" [ref=f1e2852] [cursor=pointer]:
+                    - /url: /uk/movies/1657403
+                    - generic [ref=f1e2853]:
+                      - generic [ref=f1e2854]: "-"
+                      - generic [ref=f1e2855]: movie
+                    - img "Not Another F*cking Wedding" [ref=f1e2857]
+                    - generic [ref=f1e2858]:
+                      - paragraph [ref=f1e2859]: Not Another F*cking Wedding
+                      - paragraph [ref=f1e2860]: як Executive Producer
+                - listitem [ref=f1e2861]:
+                  - link "- movie The Waffle House Index The Waffle House Index як Executive Producer" [ref=f1e2862] [cursor=pointer]:
+                    - /url: /uk/movies/1762469
+                    - generic [ref=f1e2863]:
+                      - generic [ref=f1e2864]: "-"
+                      - generic [ref=f1e2865]: movie
+                    - img "The Waffle House Index" [ref=f1e2867]
+                    - generic [ref=f1e2868]:
+                      - paragraph [ref=f1e2869]: The Waffle House Index
+                      - paragraph [ref=f1e2870]: як Executive Producer
+                - listitem [ref=f1e2871]:
+                  - link "- tv ОА ОА як Executive Producer" [ref=f1e2872] [cursor=pointer]:
+                    - /url: /uk/tv-shows/69061
+                    - generic [ref=f1e2873]:
+                      - generic [ref=f1e2874]: "-"
+                      - generic [ref=f1e2875]: tv
+                    - img "ОА" [ref=f1e2877]
+                    - generic [ref=f1e2878]:
+                      - paragraph [ref=f1e2879]: ОА
+                      - paragraph [ref=f1e2880]: як Executive Producer
+                - listitem [ref=f1e2881]:
+                  - link "- tv Ворожнеча Ворожнеча як Executive Producer" [ref=f1e2882] [cursor=pointer]:
+                    - /url: /uk/tv-shows/69851
+                    - generic [ref=f1e2883]:
+                      - generic [ref=f1e2884]: "-"
+                      - generic [ref=f1e2885]: tv
+                    - img "Ворожнеча" [ref=f1e2887]
+                    - generic [ref=f1e2888]:
+                      - paragraph [ref=f1e2889]: Ворожнеча
+                      - paragraph [ref=f1e2890]: як Executive Producer
+                - listitem [ref=f1e2891]:
+                  - link "- tv Pretty/Handsome Pretty/Handsome як Executive Producer" [ref=f1e2892] [cursor=pointer]:
+                    - /url: /uk/tv-shows/6860
+                    - generic [ref=f1e2893]:
+                      - generic [ref=f1e2894]: "-"
+                      - generic [ref=f1e2895]: tv
+                    - img "Pretty/Handsome" [ref=f1e2897]
+                    - generic [ref=f1e2898]:
+                      - paragraph [ref=f1e2899]: Pretty/Handsome
+                      - paragraph [ref=f1e2900]: як Executive Producer
+                - listitem [ref=f1e2901]:
+                  - link "- tv Підземна залізниця Підземна залізниця як Executive Producer" [ref=f1e2902] [cursor=pointer]:
+                    - /url: /uk/tv-shows/80039
+                    - generic [ref=f1e2903]:
+                      - generic [ref=f1e2904]: "-"
+                      - generic [ref=f1e2905]: tv
+                    - img "Підземна залізниця" [ref=f1e2907]
+                    - generic [ref=f1e2908]:
+                      - paragraph [ref=f1e2909]: Підземна залізниця
+                      - paragraph [ref=f1e2910]: як Executive Producer
+                - listitem [ref=f1e2911]:
+                  - link "- tv Третій день Третій день як Executive Producer" [ref=f1e2912] [cursor=pointer]:
+                    - /url: /uk/tv-shows/90259
+                    - generic [ref=f1e2913]:
+                      - generic [ref=f1e2914]: "-"
+                      - generic [ref=f1e2915]: tv
+                    - img "Третій день" [ref=f1e2917]
+                    - generic [ref=f1e2918]:
+                      - paragraph [ref=f1e2919]: Третій день
+                      - paragraph [ref=f1e2920]: як Executive Producer
+                - listitem [ref=f1e2921]:
+                  - link "- tv За межами За межами як Executive Producer" [ref=f1e2922] [cursor=pointer]:
+                    - /url: /uk/tv-shows/113985
+                    - generic [ref=f1e2923]:
+                      - generic [ref=f1e2924]: "-"
+                      - generic [ref=f1e2925]: tv
+                    - img "За межами" [ref=f1e2927]
+                    - generic [ref=f1e2928]:
+                      - paragraph [ref=f1e2929]: За межами
+                      - paragraph [ref=f1e2930]: як Executive Producer
+                - listitem [ref=f1e2931]:
+                  - 'link "- tv Wayne Shorter: Zero Gravity Wayne Shorter: Zero Gravity як Producer" [ref=f1e2932] [cursor=pointer]':
+                    - /url: /uk/tv-shows/233356
+                    - generic [ref=f1e2933]:
+                      - generic [ref=f1e2934]: "-"
+                      - generic [ref=f1e2935]: tv
+                    - 'img "Wayne Shorter: Zero Gravity" [ref=f1e2937]'
+                    - generic [ref=f1e2938]:
+                      - paragraph [ref=f1e2939]: "Wayne Shorter: Zero Gravity"
+                      - paragraph [ref=f1e2940]: як Producer
+                - listitem [ref=f1e2941]:
+                  - link "- tv Проблема 3 тіл Проблема 3 тіл як Executive Producer" [ref=f1e2942] [cursor=pointer]:
+                    - /url: /uk/tv-shows/108545
+                    - generic [ref=f1e2943]:
+                      - generic [ref=f1e2944]: "-"
+                      - generic [ref=f1e2945]: tv
+                    - img "Проблема 3 тіл" [ref=f1e2947]
+                    - generic [ref=f1e2948]:
+                      - paragraph [ref=f1e2949]: Проблема 3 тіл
+                      - paragraph [ref=f1e2950]: як Executive Producer
+                - listitem [ref=f1e2951]:
+                  - link "- tv High School High School як Executive Producer" [ref=f1e2952] [cursor=pointer]:
+                    - /url: /uk/tv-shows/208061
+                    - generic [ref=f1e2953]:
+                      - generic [ref=f1e2954]: "-"
+                      - generic [ref=f1e2955]: tv
+                    - img "High School" [ref=f1e2957]
+                    - generic [ref=f1e2958]:
+                      - paragraph [ref=f1e2959]: High School
+                      - paragraph [ref=f1e2960]: як Executive Producer
+                - listitem [ref=f1e2961]:
+                  - link "- tv Юнацтво Юнацтво як Executive Producer" [ref=f1e2962] [cursor=pointer]:
+                    - /url: /uk/tv-shows/249042
+                    - generic [ref=f1e2963]:
+                      - generic [ref=f1e2964]: "-"
+                      - generic [ref=f1e2965]: tv
+                    - img "Юнацтво" [ref=f1e2967]
+                    - generic [ref=f1e2968]:
+                      - paragraph [ref=f1e2969]: Юнацтво
+                      - paragraph [ref=f1e2970]: як Executive Producer
+                - listitem [ref=f1e2971]:
+                  - link "- tv Black Hole Black Hole як Executive Producer" [ref=f1e2972] [cursor=pointer]:
+                    - /url: /uk/tv-shows/303701
+                    - generic [ref=f1e2973]:
+                      - generic [ref=f1e2974]: "-"
+                      - generic [ref=f1e2975]: tv
+                    - img "Black Hole" [ref=f1e2977]
+                    - generic [ref=f1e2978]:
+                      - paragraph [ref=f1e2979]: Black Hole
+                      - paragraph [ref=f1e2980]: як Executive Producer
+                - listitem [ref=f1e2981]:
+                  - 'link "- tv Rx for Survival: A Global Health Challenge Rx for Survival: A Global Health Challenge як Vocals" [ref=f1e2982] [cursor=pointer]':
+                    - /url: /uk/tv-shows/243678
+                    - generic [ref=f1e2983]:
+                      - generic [ref=f1e2984]: "-"
+                      - generic [ref=f1e2985]: tv
+                    - 'img "Rx for Survival: A Global Health Challenge" [ref=f1e2987]'
+                    - generic [ref=f1e2988]:
+                      - paragraph [ref=f1e2989]: "Rx for Survival: A Global Health Challenge"
+                      - paragraph [ref=f1e2990]: як Vocals
+  - contentinfo [ref=f1e2991]:
+    - generic [ref=f1e2992]:
+      - list:
+        - listitem:
+          - img "Next.js"
+          - link "Next.js":
+            - /url: https://nextjs.org
+        - listitem:
+          - img "TailwindCSS"
+          - link "TailwindCSS":
+            - /url: https://tailwindcss.com
+        - listitem:
+          - img "TanStack"
+          - link "TanStack":
+            - /url: https://tanstack.com
+        - listitem:
+          - img "Internationalization"
+          - link "Internationalization":
+            - /url: https://next-intl.dev
+      - link [ref=f1e2997] [cursor=pointer]:
+        - /url: /uk
+        - img "Логотип" [ref=f1e2998]
+        - text: Фільмотека
+  - button "Open Next.js Dev Tools" [ref=f1e3004] [cursor=pointer]

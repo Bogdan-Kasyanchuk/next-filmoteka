@@ -1,9 +1,10 @@
 import { HydrationBoundary, QueryClient, dehydrate } from '@tanstack/react-query';
 import { Metadata } from 'next';
-import { notFound } from 'next/navigation';
-import { getExtracted, getLocale } from 'next-intl/server';
+import { Locale } from 'next-intl';
+import { getExtracted, setRequestLocale } from 'next-intl/server';
 import { Suspense } from 'react';
 
+import ErrorBoundary from '@/components/app/ErrorBoundary';
 import { RecommendationsSkeleton } from '@/components/app/Recommendations';
 import Reviews, { ReviewsSkeleton } from '@/components/app/Reviews';
 import Container from '@/components/ui/layouts/Container';
@@ -11,8 +12,8 @@ import { MediaType } from '@/enums';
 import { tvShowsQueryKeys } from '@/helpers/queryKeys';
 import { pagesTVShowUrl } from '@/routes';
 import { getTVShowById } from '@/services/tmdb/tvShows';
-import { TVShowDetailsShema } from '@/shemas';
 import generateMetaTags from '@/utils/generateMetaTags';
+import withNotFound from '@/utils/withNotFound';
 
 import Content from './components/Content';
 import Recommendations from './components/Recommendations';
@@ -20,18 +21,21 @@ import Recommendations from './components/Recommendations';
 import './styles/index.css';
 
 type Props = {
-    params: Promise<{ id: string }>
+    params: Promise<{ locale: Locale, id: string }>
 };
 
-export async function generateMetadata(props: Props): Promise<Metadata> {
-    const [ locale, params ] = await Promise.all([
-        getLocale(),
-        props.params
-    ]);
-    
-    const t = await getExtracted();
+// rendered on first request, then served from the cache and revalidated with the data
+export function generateStaticParams() {
+    return [];
+}
 
-    const data = await getTVShowById(params.id, locale);
+export async function generateMetadata(props: Props): Promise<Metadata> {
+    const params = await props.params;
+    const { locale } = params;
+    
+    const t = await getExtracted({ locale });
+
+    const data = await withNotFound(getTVShowById(params.id, locale));
 
     const title = data.name || data.original_name;
 
@@ -39,15 +43,6 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
         {
             title,
             description: t('Detailed information about the tv show {title}. Its overview, cast, crew, seasons, videos, reviews. Recommended tv shows.', { title }),
-            keywords: [
-                title,
-                t('cast of {title}', { title }),
-                t('crew of {title}', { title }),
-                t('seasons of {title}', { title }),
-                t('videos of {title}', { title }),
-                t('reviews of {title}', { title }),
-                t('recommended tv shows for {title}', { title })
-            ],
             path: pagesTVShowUrl(params.id),
             locale
         }
@@ -55,25 +50,17 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
 }
 
 export default async function Page(props: Props) {
-    const [ locale, params ] = await Promise.all([
-        getLocale(),
-        props.params
-    ]);
+    const params = await props.params;
+    const { locale } = params;
+
+    setRequestLocale(locale);
 
     const queryClient = new QueryClient();
 
-    await queryClient.prefetchQuery({
+    await withNotFound(queryClient.fetchQuery({
         queryKey: tvShowsQueryKeys.tvShowById(params.id, locale),
         queryFn: () => getTVShowById(params.id, locale)
-    });
-
-    const data = queryClient.getQueryData<TVShowDetailsShema>(
-        tvShowsQueryKeys.tvShowById(params.id, locale)
-    );
-    
-    if (!data) {
-        notFound();
-    }
+    }));
 
     return (
         <div className="p-tv-show">
@@ -82,16 +69,20 @@ export default async function Page(props: Props) {
             </HydrationBoundary>
 
             <Container className="p-tv-show__container">
-                <Suspense fallback={ <RecommendationsSkeleton /> }>
-                    <Recommendations id={ params.id } />
-                </Suspense>
-                        
-                <Suspense fallback={ <ReviewsSkeleton /> }>
-                    <Reviews
-                        type={ MediaType.TV_SHOW }
-                        id={ params.id }
-                    />
-                </Suspense>
+                <ErrorBoundary>
+                    <Suspense fallback={ <RecommendationsSkeleton /> }>
+                        <Recommendations id={ params.id } />
+                    </Suspense>
+                </ErrorBoundary>
+
+                <ErrorBoundary>
+                    <Suspense fallback={ <ReviewsSkeleton /> }>
+                        <Reviews
+                            type={ MediaType.TV_SHOW }
+                            id={ params.id }
+                        />
+                    </Suspense>
+                </ErrorBoundary>
             </Container>
         </div>
     );

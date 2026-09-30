@@ -33,21 +33,20 @@ export default function Content(props: Props) {
         ],
         combine: results => {
             return {
-                tvShow: transformCurrentTVShow(results[ 0 ].data!),
-                season: transformTVShowSeasonDetails(results[ 1 ].data!),
+                tvShow: results[ 0 ].data ? transformCurrentTVShow(results[ 0 ].data) : undefined,
+                season: results[ 1 ].data ? transformTVShowSeasonDetails(results[ 1 ].data) : undefined,
                 pending: results.some(result => result.isPending),
-                isError: results.some(result => result.isError),
-                error: results.find(result => result.isError)?.error
+                error: results.find(result => result.isError && !result.data)?.error
             };
         }
     });
 
-    if (data.pending) {
-        return <Loader />;
+    if (data.error) {
+        throw new Error(data.error.message || 'Internal server error');
     }
 
-    if (data.isError) {
-        throw new Error(data.error?.message || 'Internal server error');
+    if (data.pending || !data.tvShow || !data.season) {
+        return <Loader />;
     }
 
     return (

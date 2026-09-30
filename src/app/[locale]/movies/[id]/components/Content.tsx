@@ -24,7 +24,7 @@ export default function Content(props: Props) {
 
     const t = useExtracted();
         
-    const { data, isPending, isError, error } = useQuery({
+    const { data, isPending, error } = useQuery({
         queryKey: moviesQueryKeys.movieById(props.id, locale),
         queryFn: () => getMovieById(props.id, locale),
         select: data => transformMovieDetails(data)
@@ -34,8 +34,8 @@ export default function Content(props: Props) {
         return <Loader />;
     }
 
-    if (isError) {
-        throw new Error(error.message);
+    if (!data) {
+        throw new Error(error?.message ?? 'Internal server error');
     }
 
     return (
@@ -48,11 +48,6 @@ export default function Content(props: Props) {
             {
                 (data.videos.length > 0 || data.cast.length > 0 || data.crew.length > 0) &&
                 <Container className="p-movie__container">
-                    {
-                        data.videos.length > 0 &&
-                        <Videos videos={ data.videos } />
-                    }
-
                     {
                         data.cast.length > 0 &&
                         <Persons
@@ -75,6 +70,11 @@ export default function Content(props: Props) {
                                 item => <CrewCard crew={ item } />
                             }
                         </Persons>
+                    }
+
+                    {
+                        data.videos.length > 0 &&
+                        <Videos videos={ data.videos } />
                     }
                 </Container>
             }

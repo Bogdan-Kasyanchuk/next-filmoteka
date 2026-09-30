@@ -10,12 +10,8 @@ const nextConfig: NextConfig = {
         }
     },
     images: {
-        remotePatterns: [
-            {
-                protocol: 'https',
-                hostname: 'image.tmdb.org'
-            }
-        ]
+        loader: 'custom',
+        loaderFile: './src/services/tmdb/imageLoader.ts'
     },
     experimental: {
         globalNotFound: true

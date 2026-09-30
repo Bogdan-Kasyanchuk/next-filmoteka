@@ -1,7 +1,7 @@
 import { HydrationBoundary, QueryClient, dehydrate } from '@tanstack/react-query';
 import { Metadata } from 'next';
 import { Locale } from 'next-intl';
-import { getExtracted } from 'next-intl/server';
+import { getExtracted, setRequestLocale } from 'next-intl/server';
 import { PropsWithChildren } from 'react';
 
 import { TimeType } from '@/enums';
@@ -14,8 +14,6 @@ import Content from './components/Content';
 
 import './styles/index.css';
 
-export const revalidate = 300;
-
 type Props = {
     params: Promise<{ locale: Locale }>
 };
@@ -23,22 +21,12 @@ type Props = {
 export async function generateMetadata(props: Props): Promise<Metadata> {
     const { locale } = await props.params;
 
-    const t = await getExtracted();
+    const t = await getExtracted({ locale });
 
     return generateMetaTags(
         {
             title: t('Home'),
             description: t('Trending movies, series, tv shows, actors and members of film crews.'),
-            keywords: [
-                t('trending'),
-                t('trending today'),
-                t('trending this week'),
-                t('movies'),
-                t('tv shows'),
-                t('persons'),
-                t('actors'),
-                t('film crew members')
-            ],
             path: pagesHomeUrl(),
             locale
         }
@@ -48,16 +36,18 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
 export default async function Page(props: PropsWithChildren<Props>) {
     const { locale } = await props.params;
 
+    setRequestLocale(locale);
+
     const queryClient = new QueryClient();
 
     await Promise.all([
-        await queryClient.prefetchQuery(
+        queryClient.prefetchQuery(
             {
                 queryKey: homeQueryKeys.trendingsDay(locale),
                 queryFn: () => getTrendings('all', TimeType.DAY, 1, locale)
             }
         ),
-        await queryClient.prefetchQuery(
+        queryClient.prefetchQuery(
             {
                 queryKey: homeQueryKeys.trendingsWeek(locale),
                 queryFn: () => getTrendings('all', TimeType.WEEK, 1, locale)

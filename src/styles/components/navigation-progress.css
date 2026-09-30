@@ -1,0 +1,39 @@
+.c-navigation-progress {
+    pointer-events: none;
+
+    position: fixed;
+    z-index: 200;
+    top: 0;
+    inset-inline-start: 0;
+
+    width: 0;
+    height: 3px;
+
+    opacity: 0;
+    background-color: var(--color-active);
+    box-shadow: 0 0 10px var(--color-active);
+
+    transition: width 200ms ease, opacity 300ms ease;
+
+    &--is-loading {
+        width: 80%;
+        opacity: 1;
+
+        /* the delay keeps fast navigations from flashing the bar */
+        transition: width 10s cubic-bezier(0.1, 0.7, 0.2, 1) 150ms, opacity 0ms linear 150ms;
+    }
+
+    &--is-done {
+        width: 100%;
+        opacity: 0;
+        transition: width 200ms ease, opacity 300ms ease 200ms;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        &,
+        &--is-loading,
+        &--is-done {
+            transition: none;
+        }
+    }
+}

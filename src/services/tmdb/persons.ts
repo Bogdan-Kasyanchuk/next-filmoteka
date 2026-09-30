@@ -6,12 +6,13 @@ import { DataShema, PersonDetailsShema, PersonShema } from '@/shemas';
 import { fetchApi } from './api';
 
 export const getPersons = async (page: number, locale: Locale) => {
-    return fetchApi<DataShema<PersonShema>>(`person/popular?page=${ page }`, locale);
+    return fetchApi<DataShema<PersonShema>>('person/popular', locale, { params: { page } });
 };
 
 export const getPersonById = cache(async (id: string, locale: Locale) => {
     return fetchApi<PersonDetailsShema>(
-        `person/${ id }?append_to_response=combined_credits,images,external_ids`,
-        locale
+        `person/${ id }`,
+        locale,
+        { params: { append_to_response: 'combined_credits,images,external_ids' } }
     );
 });

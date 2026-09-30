@@ -1,9 +1,10 @@
 import { HydrationBoundary, QueryClient, dehydrate } from '@tanstack/react-query';
 import { Metadata } from 'next';
-import { notFound } from 'next/navigation';
-import { getExtracted, getLocale } from 'next-intl/server';
+import { Locale } from 'next-intl';
+import { getExtracted, setRequestLocale } from 'next-intl/server';
 import { Suspense } from 'react';
 
+import ErrorBoundary from '@/components/app/ErrorBoundary';
 import { RecommendationsSkeleton } from '@/components/app/Recommendations';
 import Reviews, { ReviewsSkeleton } from '@/components/app/Reviews';
 import Container from '@/components/ui/layouts/Container';
@@ -11,8 +12,8 @@ import { MediaType } from '@/enums';
 import { moviesQueryKeys } from '@/helpers/queryKeys';
 import { pagesMovieUrl } from '@/routes';
 import { getMovieById } from '@/services/tmdb/movies';
-import { MovieDetailsShema } from '@/shemas';
 import generateMetaTags from '@/utils/generateMetaTags';
+import withNotFound from '@/utils/withNotFound';
 
 import Content from './components/Content';
 import Recommendations from './components/Recommendations';
@@ -20,18 +21,21 @@ import Recommendations from './components/Recommendations';
 import './styles/index.css';
 
 type Props = {
-    params: Promise<{ id: string }>
+    params: Promise<{ locale: Locale, id: string }>
 };
 
+// rendered on first request, then served from the cache and revalidated with the data
+export function generateStaticParams() {
+    return [];
+}
+
 export async function generateMetadata(props: Props): Promise<Metadata> {
-    const [ locale, params ] = await Promise.all([
-        getLocale(),
-        props.params
-    ]);
+    const params = await props.params;
+    const { locale } = params;
 
-    const t = await getExtracted();
+    const t = await getExtracted({ locale });
 
-    const data = await getMovieById(params.id, locale);
+    const data = await withNotFound(getMovieById(params.id, locale));
 
     const title = data.title || data.original_title;
 
@@ -39,14 +43,6 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
         {
             title,
             description: t('Detailed information about the movie {title}. Its overview, cast, crew, videos, reviews. Recommended movies.', { title }),
-            keywords: [
-                title,
-                t('cast of {title}', { title }),
-                t('crew of {title}', { title }),
-                t('videos of {title}', { title }),
-                t('reviews of {title}', { title }),
-                t('recommended movies for {title}', { title })
-            ],
             path: pagesMovieUrl(params.id),
             locale
         }
@@ -54,25 +50,17 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
 }
 
 export default async function Page(props: Props) {
-    const [ locale, params ] = await Promise.all([
-        getLocale(),
-        props.params
-    ]);
+    const params = await props.params;
+    const { locale } = params;
+
+    setRequestLocale(locale);
     
     const queryClient = new QueryClient();
 
-    await queryClient.prefetchQuery({
+    await withNotFound(queryClient.fetchQuery({
         queryKey: moviesQueryKeys.movieById(params.id, locale),
         queryFn: () => getMovieById(params.id, locale)
-    });
-
-    const data = queryClient.getQueryData<MovieDetailsShema>(
-        moviesQueryKeys.movieById(params.id, locale)
-    );
-                
-    if (!data) {
-        notFound();
-    }
+    }));
 
     return (
         <div className="p-movie">
@@ -81,16 +69,20 @@ export default async function Page(props: Props) {
             </HydrationBoundary>
 
             <Container className="p-movie__container">
-                <Suspense fallback={ <RecommendationsSkeleton /> }>
-                    <Recommendations id={ params.id } />
-                </Suspense>
-                            
-                <Suspense fallback={ <ReviewsSkeleton /> }>
-                    <Reviews
-                        type={ MediaType.MOVIE }
-                        id={ params.id }
-                    />
-                </Suspense>
+                <ErrorBoundary>
+                    <Suspense fallback={ <RecommendationsSkeleton /> }>
+                        <Recommendations id={ params.id } />
+                    </Suspense>
+                </ErrorBoundary>
+
+                <ErrorBoundary>
+                    <Suspense fallback={ <ReviewsSkeleton /> }>
+                        <Reviews
+                            type={ MediaType.MOVIE }
+                            id={ params.id }
+                        />
+                    </Suspense>
+                </ErrorBoundary>
             </Container>
         </div>
     );

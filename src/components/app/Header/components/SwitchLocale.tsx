@@ -2,6 +2,7 @@
 
 import { Locale, useExtracted, useLocale } from 'next-intl';
 
+import { startNavigationProgress } from '@/components/app/NavigationProgress';
 import { usePathname, useRouter } from '@/services/i18n/navigation';
 
 export default function LocaleSwitcher() {
@@ -14,7 +15,9 @@ export default function LocaleSwitcher() {
     const newLocale = locale === 'en' ? 'uk' : 'en';
 
     const setLocale = (locale: Locale) => {
-        router.replace(pathname, { locale });
+        startNavigationProgress();
+        // keep filters and the search query; read at click time so static pages don't depend on search params
+        router.replace(`${ pathname }${ window.location.search }`, { locale });
     };
 
     return (

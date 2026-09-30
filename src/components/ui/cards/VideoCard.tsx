@@ -4,6 +4,7 @@ import { useFormatter } from 'next-intl';
 
 import { youtubeEmbedUrl } from '@/helpers/externalUrls';
 import useInView from '@/hooks/useInView';
+import useTmdbLabels from '@/hooks/useTmdbLabels';
 import { VideoMapper } from '@/types';
 
 type Props = {
@@ -12,6 +13,8 @@ type Props = {
 
 export default function VideoCard(props: Props) {
     const format = useFormatter();
+
+    const { videoType } = useTmdbLabels();
 
     const { ref, entry } = useInView({
         rootMargin: '100%'
@@ -38,7 +41,7 @@ export default function VideoCard(props: Props) {
                         </span>
                     }
 
-                    <span>{ props.video.type }</span>
+                    <span>{ videoType(props.video.type) }</span>
                 </div>
             </div>
 
@@ -48,6 +51,8 @@ export default function VideoCard(props: Props) {
                     <iframe
                         src={ youtubeEmbedUrl(props.video.key) }
                         title={ props.video.name }
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowFullScreen
                         className="c-video-card__iframe"
                     />
                 }

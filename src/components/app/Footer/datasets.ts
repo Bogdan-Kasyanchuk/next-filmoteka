@@ -15,7 +15,7 @@ export const LOGOS = [
         icon: '/svg/logos/tanstack.svg'
     },
     {
-        name: 'Internationalization',
+        name: 'next-intl',
         href: 'https://next-intl.dev',
         icon: '/svg/logos/next-intl.svg'
     }

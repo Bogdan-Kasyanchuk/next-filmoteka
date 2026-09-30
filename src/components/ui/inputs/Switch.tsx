@@ -47,14 +47,19 @@ export default function Switch(props: Props) {
             <div className={ clsx('f-switch', classNames?.switch) }>
                 {
                     label &&
-                    <div className={ clsx('f-switch__label', classNames?.label) }>
+                    <label
+                        htmlFor={ id }
+                        className={ clsx('f-switch__label', classNames?.label) }
+                    >
                         { label }
-                    </div>
+                    </label>
                 }
                 
                 <input
                     id={ id }
                     type={ type }
+                    role="switch"
+                    aria-label={ label }
                     className={ clsx('f-switch__field sr-only', classNames?.field) }
                     checked={ checked }
                     disabled={ disabled }

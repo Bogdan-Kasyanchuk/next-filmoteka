@@ -20,8 +20,9 @@ export const getTrendings = async (
     locale: Locale
 ) => {
     return fetchApi<DataShema<MovieShema | TVShowShema | PersonShema>>(
-        `trending/${ type }/${ time }?page=${ page }`,
-        locale
+        `trending/${ type }/${ time }`,
+        locale,
+        { params: { page } }
     );
 };
 
@@ -32,15 +33,16 @@ export const getSearch = async (
     page: number,
     locale: Locale
 ) => {
-    const params = new URLSearchParams({
-        query,
-        page: String(page),
-        include_adult: adult
-    });
-
     return fetchApi<DataShema<MovieShema | TVShowShema | PersonShema>>(
-        `search/${ type }?${ params.toString() }`,
-        locale
+        `search/${ type }`,
+        locale,
+        {
+            params: {
+                query,
+                page,
+                include_adult: adult
+            }
+        }
     );
 };
 
@@ -51,20 +53,22 @@ export const getRecommendations = async <T>(
     locale: Locale
 ) => {
     return fetchApi<DataShema<T>>(
-        `${ type }/${ id }/recommendations?page=${ page }`,
-        locale
+        `${ type }/${ id }/recommendations`,
+        locale,
+        { params: { page } }
     );
 };
 
 export const getReviews = async (
     type: MediaType.MOVIE | MediaType.TV_SHOW,
     id: string,
-    page: number,
-    locale: Locale
+    page: number
 ) => {
+    // TMDB reviews are practically all in English and `language` filters the rest out
     return fetchApi<DataShema<ReviewShema>>(
-        `${ type }/${ id }/reviews?page=${ page }`,
-        locale
+        `${ type }/${ id }/reviews`,
+        'en',
+        { params: { page } }
     );
 };
 

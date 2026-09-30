@@ -1,3 +1,5 @@
+'use client';
+
 import { ReactNode } from 'react';
 import { Mousewheel } from 'swiper/modules';
 import { Swiper, type SwiperProps, SwiperSlide, type SwiperSlideProps } from 'swiper/react';

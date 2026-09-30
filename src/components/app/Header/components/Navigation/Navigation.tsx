@@ -6,7 +6,8 @@ import { usePathname } from 'next/navigation';
 import { useExtracted, useLocale } from 'next-intl';
 
 import Popover from '@/components/ui/data-display/Popover';
-import { Link } from '@/services/i18n/navigation';
+import Link from '@/components/ui/navigation/PrefetchLink';
+import { getPathname } from '@/services/i18n/navigation';
 
 import { LINKS } from './datasets';
 import useTitleLink from './hooks/useTitleLink';
@@ -32,6 +33,7 @@ export default function Navigation() {
                         trigger={
                             <button
                                 type="button"
+                                disabled={ isCurrentLink(searchLink.href) }
                                 className={
                                     clsx('c-navigation__link', {
                                         'c-navigation__link--is-active c-navigation__link--is-disabled': isCurrentLink(
@@ -44,14 +46,21 @@ export default function Navigation() {
                                     width={ 24 }
                                     height={ 24 }
                                     src={ searchLink.icon }
-                                    alt={ t('Icon') }
+                                    alt=""
                                     className="c-navigation__img"
                                     preload
                                     loading="eager"
                                     unoptimized
                                 />
 
-                                <span className="c-navigation__text sr-only lg:not-sr-only">
+                                <span
+                                    className={
+                                        clsx([
+                                            'c-navigation__text sr-only',
+                                            'lg:not-sr-only'
+                                        ])
+                                    }
+                                >
                                     { getTitleLink(searchLink.key) }
                                 </span>
                             </button>
@@ -63,12 +72,13 @@ export default function Navigation() {
                         }
                     >
                         <form
-                            action={ searchLink.href }
+                            action={ getPathname({ locale, href: searchLink.href }) }
                             className="c-navigation__search-form"
                         >
                             <input
                                 className="c-navigation__search-input"
                                 name="query"
+                                aria-label={ t('Search') }
                                 placeholder={ t('Search movies, tv shows, persons') }
                                 autoComplete="off"
                                 minLength={ 3 }
@@ -91,6 +101,7 @@ export default function Navigation() {
                             <li key={ link.key }>
                                 <Link
                                     href={ link.href }
+                                    aria-current={ isCurrentLink(link.href) ? 'page' : undefined }
                                     className={
                                         clsx('c-navigation__link', {
                                             'c-navigation__link--is-active': isCurrentLink(
@@ -104,14 +115,21 @@ export default function Navigation() {
                                         width={ 24 }
                                         height={ 24 }
                                         src={ link.icon }
-                                        alt={ t('Icon') }
+                                        alt=""
                                         className="c-navigation__img"
                                         preload
                                         loading="eager"
                                         unoptimized
                                     />
                                     
-                                    <span className="c-navigation__text sr-only lg:not-sr-only">
+                                    <span
+                                        className={
+                                            clsx([
+                                                'c-navigation__text sr-only',
+                                                'lg:not-sr-only'
+                                            ])
+                                        }
+                                    >
                                         { getTitleLink(link.key) }
                                     </span>
                                 </Link>

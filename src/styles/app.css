@@ -16,6 +16,7 @@
 
 /* Components */
 @import '@/styles/components/loader.css';
+@import '@/styles/components/navigation-progress.css';
 @import '@/styles/components/error.css';
 @import '@/styles/components/popover.css';
 @import '@/styles/components/icon.css';

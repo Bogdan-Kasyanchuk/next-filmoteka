@@ -8,11 +8,13 @@
 
 html {
     height: 100%;
+
+    @media (prefers-reduced-motion: no-preference) {
+        scroll-behavior: smooth;
+    }
 }
 
 body {
-    scroll-behavior: smooth;
-
     display: flex;
     flex-direction: column;
 
@@ -41,6 +43,11 @@ main {
 
 button {
     cursor: pointer;
+}
+
+:focus-visible {
+    outline: 2px solid var(--color-active);
+    outline-offset: 2px;
 }
 
 picture,

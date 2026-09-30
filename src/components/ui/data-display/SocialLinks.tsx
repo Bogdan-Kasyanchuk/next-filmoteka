@@ -17,7 +17,7 @@ export default function SocialLinks(props: Props) {
                                 href={ social.link }
                                 aria-label={ social.provider }
                                 target="_blank"
-                                rel="nofollow noindex noreferrer"
+                                rel="nofollow noreferrer"
                                 className="c-socials__link"
                             >
                                 <Icon
