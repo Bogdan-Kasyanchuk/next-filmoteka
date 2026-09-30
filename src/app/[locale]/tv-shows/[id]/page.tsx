@@ -2,16 +2,18 @@ import { HydrationBoundary, QueryClient, dehydrate } from '@tanstack/react-query
 import { Metadata } from 'next';
 import { Locale } from 'next-intl';
 import { getExtracted, setRequestLocale } from 'next-intl/server';
-import { Suspense } from 'react';
 
 import ErrorBoundary from '@/components/app/ErrorBoundary';
+import PrefetchSuspense from '@/components/app/PrefetchSuspense';
 import { RecommendationsSkeleton } from '@/components/app/Recommendations';
 import Reviews, { ReviewsSkeleton } from '@/components/app/Reviews';
 import Container from '@/components/ui/layouts/Container';
 import { MediaType } from '@/enums';
-import { tvShowsQueryKeys } from '@/helpers/queryKeys';
+import { generalQueryKeys, tvShowsQueryKeys } from '@/helpers/queryKeys';
 import { pagesTVShowUrl } from '@/routes';
+import { getRecommendations, getReviews } from '@/services/tmdb/general';
 import { getTVShowById } from '@/services/tmdb/tvShows';
+import { TVShowShema } from '@/shemas';
 import generateMetaTags from '@/utils/generateMetaTags';
 import withNotFound from '@/utils/withNotFound';
 
@@ -57,33 +59,64 @@ export default async function Page(props: Props) {
 
     const queryClient = new QueryClient();
 
-    await withNotFound(queryClient.fetchQuery({
-        queryKey: tvShowsQueryKeys.tvShowById(params.id, locale),
-        queryFn: () => getTVShowById(params.id, locale)
-    }));
+    const recommendationsKey = generalQueryKeys.recommendations(MediaType.TV_SHOW, params.id, locale);
+    const reviewsKey = generalQueryKeys.reviews(MediaType.TV_SHOW, params.id, locale);
+
+    // first pages of recommendations and reviews go into the dehydrated cache, so the client
+    // doesn't request them again; "Load more" fetches the next pages on the client as before.
+    // prefetchInfiniteQuery doesn't throw: on failure the client fetches them itself
+    await Promise.all([
+        withNotFound(queryClient.fetchQuery({
+            queryKey: tvShowsQueryKeys.tvShowById(params.id, locale),
+            queryFn: () => getTVShowById(params.id, locale)
+        })),
+        queryClient.prefetchInfiniteQuery({
+            queryKey: recommendationsKey,
+            queryFn: ({ pageParam }) => getRecommendations<TVShowShema>(
+                MediaType.TV_SHOW,
+                params.id,
+                pageParam,
+                locale
+            ),
+            initialPageParam: 1
+        }),
+        queryClient.prefetchInfiniteQuery({
+            queryKey: reviewsKey,
+            queryFn: ({ pageParam }) => getReviews(MediaType.TV_SHOW, params.id, pageParam),
+            initialPageParam: 1
+        })
+    ]);
+
+    const isPrefetched = (queryKey: string[]) => queryClient.getQueryState(queryKey)?.status === 'success';
 
     return (
         <div className="p-tv-show">
             <HydrationBoundary state={ dehydrate(queryClient) }>
                 <Content id={ params.id } />
+
+                <Container className="p-tv-show__container">
+                    <ErrorBoundary>
+                        <PrefetchSuspense
+                            isPrefetched={ isPrefetched(recommendationsKey) }
+                            fallback={ <RecommendationsSkeleton /> }
+                        >
+                            <Recommendations id={ params.id } />
+                        </PrefetchSuspense>
+                    </ErrorBoundary>
+
+                    <ErrorBoundary>
+                        <PrefetchSuspense
+                            isPrefetched={ isPrefetched(reviewsKey) }
+                            fallback={ <ReviewsSkeleton /> }
+                        >
+                            <Reviews
+                                type={ MediaType.TV_SHOW }
+                                id={ params.id }
+                            />
+                        </PrefetchSuspense>
+                    </ErrorBoundary>
+                </Container>
             </HydrationBoundary>
-
-            <Container className="p-tv-show__container">
-                <ErrorBoundary>
-                    <Suspense fallback={ <RecommendationsSkeleton /> }>
-                        <Recommendations id={ params.id } />
-                    </Suspense>
-                </ErrorBoundary>
-
-                <ErrorBoundary>
-                    <Suspense fallback={ <ReviewsSkeleton /> }>
-                        <Reviews
-                            type={ MediaType.TV_SHOW }
-                            id={ params.id }
-                        />
-                    </Suspense>
-                </ErrorBoundary>
-            </Container>
         </div>
     );
 }

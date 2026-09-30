@@ -31,10 +31,11 @@ export default function CrewCard(props: Props) {
                             ? imageUrl(IMG_SIZES.CREW_COVER, props.crew.profile_path)
                             : '/img/avatar-placeholder.svg'
                     }
-                    sizes="161px"
                     alt={ props.crew.name }
                     placeholder={ PLACEHOLDERS[ '1x1' ] }
                     fill
+                    // TMDB face crops exist in one size only, so a srcSet would repeat the same file
+                    unoptimized
                 />
             </div>
 
