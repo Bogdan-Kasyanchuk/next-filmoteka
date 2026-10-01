@@ -2,32 +2,22 @@ import { Metadata } from 'next';
 import { Locale } from 'next-intl';
 
 import { getPathname } from '@/services/i18n/navigation';
-import { routing } from '@/services/i18n/routing';
 
 type Props = {
     title: string,
     description: string,
-    keywords: string[],
     path: string,
-    locale: Locale,
-    index?: boolean,
-    follow?: boolean
+    locale: Locale
 };
 
+// The site is deliberately kept out of search indexes, so there are no keywords, canonical or hreflang;
+// Open Graph and Twitter tags stay for link previews in messengers and social networks
 export default (props: Props): Metadata => ({
     title: props.title,
     description: props.description,
-    keywords: props.keywords,
-    alternates: {
-        canonical: getPathname({ locale: props.locale, href: props.path }),
-        languages: generateLanguages(props.path)
-    },
     robots: {
-        'index': props.index ?? false,
-        'follow': props.follow ?? false,
-        'max-snippet': -1,
-        'max-video-preview': -1,
-        'max-image-preview': 'large'
+        index: false,
+        follow: false
     },
     openGraph: {
         title: props.title,
@@ -51,12 +41,3 @@ export default (props: Props): Metadata => ({
         images: '/og.png'
     }
 });
-
-function generateLanguages(path: string) {
-    return routing.locales.reduce((acc, cur) => {
-        return {
-            ...acc,
-            [ cur ]: getPathname({ locale: cur, href: path })
-        };
-    }, {} as Record<string, string>);
-}

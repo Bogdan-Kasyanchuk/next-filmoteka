@@ -6,6 +6,7 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import { useExtracted, useLocale } from 'next-intl';
 import { useRef, useState } from 'react';
 
+import { startNavigationProgress } from '@/components/app/NavigationProgress';
 import { pagesSearchUrl } from '@/routes';
 import { getPathname } from '@/services/i18n/navigation';
 import buildUrl from '@/utils/buildUrl';
@@ -31,7 +32,10 @@ export default function Search() {
             params.delete('query');
         }
 
-        push(buildUrl(`${ getPathname({ locale, href: pagesSearchUrl() }) }/page/1`, params));
+        const url = buildUrl(`${ getPathname({ locale, href: pagesSearchUrl() }) }/page/1`, params);
+
+        startNavigationProgress(url);
+        push(url);
     }, [ debouncedTerm ]);
 
     return (
@@ -40,6 +44,7 @@ export default function Search() {
                 ref={ inputRef }
                 type="text"
                 name="search"
+                aria-label={ t('Search') }
                 value={ term }
                 placeholder={ t('Search movies, tv shows, persons') }
                 autoComplete="off"
@@ -55,7 +60,7 @@ export default function Search() {
                 width={ 20 }
                 height={ 20 }
                 src="/svg/search.svg"
-                alt={ t('Icon') }
+                alt=""
                 className="absolute top-1/2 -translate-y-1/2 start-[9px]"
                 preload
                 loading="eager"
@@ -79,7 +84,7 @@ export default function Search() {
                         width={ 20 }
                         height={ 20 }
                         src="/svg/close.svg"
-                        alt={ t('Icon') }
+                        alt=""
                         className="pointer-events-none"
                         preload
                         loading="eager"

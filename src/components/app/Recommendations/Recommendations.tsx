@@ -44,7 +44,7 @@ export default function Recommendations<T extends Record<string, any>>(props: Pr
                         } 
                     }
                 >
-                    { props.isFetchingNextPage ? 'Loading...' : t('Load more') }
+                    { props.isFetchingNextPage ? t('Loading...') : t('Load more') }
                 </button>
             }
         </Wrapper>

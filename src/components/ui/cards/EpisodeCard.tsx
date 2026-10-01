@@ -7,6 +7,7 @@ import Popover from '@/components/ui/data-display/Popover';
 import { IMG_SIZES } from '@/datasets/constants';
 import { PLACEHOLDERS } from '@/datasets/placeholders';
 import { imageUrl } from '@/helpers/externalUrls';
+import useTmdbLabels from '@/hooks/useTmdbLabels';
 import { EpisodeMapper } from '@/types';
 
 type Props = {
@@ -18,6 +19,7 @@ export default function EpisodeCard(props: Props) {
     const format = useFormatter();
 
     const t = useExtracted();
+    const { episodeType } = useTmdbLabels();
         
     return (
         <div className="c-episode-card">
@@ -56,7 +58,7 @@ export default function EpisodeCard(props: Props) {
 
                     <div className="c-episode-card__info-list-item">
                         <dt>{ t('Type:') }</dt>
-                        <dd className="capitalize">{ props.episode.episode_type }</dd>
+                        <dd>{ episodeType(props.episode.episode_type) }</dd>
                     </div>
 
                     <div className="c-episode-card__info-list-item">
@@ -90,6 +92,7 @@ export default function EpisodeCard(props: Props) {
                     trigger={
                         <button
                             type="button"
+                            aria-label={ t('Overview') }
                             className="c-episode-card__overview-trigger"
                         >
                             i

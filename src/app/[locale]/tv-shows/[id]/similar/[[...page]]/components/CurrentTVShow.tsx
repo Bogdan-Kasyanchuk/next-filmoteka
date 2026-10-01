@@ -2,12 +2,12 @@ import Image from 'next/image';
 import { useExtracted, useFormatter } from 'next-intl';
 import { Fragment } from 'react';
 
+import Link from '@/components/ui/navigation/PrefetchLink';
 import Title from '@/components/ui/typography/Title';
 import { IMG_SIZES } from '@/datasets/constants';
 import { PLACEHOLDERS } from '@/datasets/placeholders';
 import { imageUrl } from '@/helpers/externalUrls';
 import { pagesTVShowUrl } from '@/routes';
-import { Link } from '@/services/i18n/navigation';
 import { CurrentTVShowMapper } from '@/types';
 
 type Props = {

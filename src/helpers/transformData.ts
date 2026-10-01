@@ -112,7 +112,8 @@ export const transformMovieDetails = (
                 name: language.name
             })
         ),
-        socialLinks: transformMovieOrTVShowExternalIds(movie.external_ids)
+        socialLinks: transformMovieOrTVShowExternalIds(movie.external_ids),
+        has_similar: movie.similar.total_results > 0
     },
     cast: movie.credits.cast.map(transformCast),
     crew: movie.credits.crew.map(transformCrew),
@@ -203,7 +204,8 @@ export const transformTVShowDetails = (
                 )?.name || network.origin_country
             })
         ),
-        socialLinks: transformMovieOrTVShowExternalIds(tvShow.external_ids)
+        socialLinks: transformMovieOrTVShowExternalIds(tvShow.external_ids),
+        has_similar: tvShow.similar.total_results > 0
     },
     seasons: tvShow.seasons.map(transformSeason),
     cast: tvShow.credits.cast.map(transformCast),
@@ -367,6 +369,12 @@ const transformVideos = (
     )
     .map(transformVideo);
 
+const getMediaDate = (media: MediaCastShema | MediaCrewShema) => {
+    const date = media.release_date || media.first_air_date;
+
+    return date ? new Date(date) : null;
+};
+
 const transformMediaCast = (
     media: MediaCastShema
 ): MediaCastMapper => ({
@@ -375,7 +383,7 @@ const transformMediaCast = (
         ? media.title || media.original_title
         : media.name || media.original_name,
     poster_path: media.poster_path,
-    release_date: media.release_date ? new Date(media.release_date) : null,
+    release_date: getMediaDate(media),
     character: media.character,
     media_type: media.media_type
 });
@@ -388,7 +396,7 @@ const transformMediaCrew = (
         ? media.title || media.original_title
         : media.name || media.original_name,
     poster_path: media.poster_path,
-    release_date: media.release_date ? new Date(media.release_date) : null,
+    release_date: getMediaDate(media),
     job: media.job,
     media_type: media.media_type
 });

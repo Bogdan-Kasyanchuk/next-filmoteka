@@ -4,6 +4,7 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import { useExtracted, useLocale } from 'next-intl';
 import { useMemo } from 'react';
 
+import { startNavigationProgress } from '@/components/app/NavigationProgress';
 import Tabs from '@/components/ui/data-display/Tabs';
 import Switch from '@/components/ui/inputs/Switch';
 import { MediaType } from '@/enums';
@@ -17,17 +18,15 @@ type Filter = {
     value: 'multi' | MediaType
 };
 
-type Props = {
-    type: 'multi' | MediaType,
-    adult: Adult
-};
-
-export default function Filter(props: Props) {
+export default function Filter() {
     const searchParams = useSearchParams();
     const { push } = useRouter();
     const locale = useLocale();
 
     const t = useExtracted();
+
+    const type = (searchParams.get('type') || 'multi') as 'multi' | MediaType;
+    const adult = (searchParams.get('adult') || 'false') as Adult;
         
     const filters: Filter[] = useMemo(() => {
         return [
@@ -55,14 +54,17 @@ export default function Filter(props: Props) {
     
         params.set(key, value);
             
-        push(buildUrl(`${ getPathname({ locale, href: pagesSearchUrl() }) }/page/1`, params));
+        const url = buildUrl(`${ getPathname({ locale, href: pagesSearchUrl() }) }/page/1`, params);
+
+        startNavigationProgress(url);
+        push(url);
     };
     
     return (
         <div className="p-search__filter">
             <Tabs<'multi' | MediaType>
                 tabs={ filters }
-                active={ props.type }
+                active={ type }
                 onClick={
                     value => {
                         handleParamChange('type', value);
@@ -72,7 +74,7 @@ export default function Filter(props: Props) {
 
             <Switch
                 label={ t('Adult') }
-                checked={ props.adult === 'true' }
+                checked={ adult === 'true' }
                 onChange={
                     event => {
                         handleParamChange(

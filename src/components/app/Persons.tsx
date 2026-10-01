@@ -2,12 +2,14 @@
 
 import clsx from 'clsx';
 import { useExtracted } from 'next-intl';
-import { Dispatch, ReactNode, SetStateAction, useState } from 'react';
+import { Dispatch, FocusEvent, ReactNode, SetStateAction, useRef, useState } from 'react';
 import { Autoplay, Navigation } from 'swiper/modules';
 
 import Carousel from '@/components/ui/data-display/Carousel';
 import Icon from '@/components/ui/data-display/Icon';
 import Title from '@/components/ui/typography/Title';
+
+import type { Swiper } from 'swiper/types';
 
 type Props<T extends Record<string, any>> = {
     items: Array<T>,
@@ -20,6 +22,31 @@ export default function Persons<T extends Record<string, any>>(props: Props<T>) 
         
     const [ prevButtonRef, setPrevButtonRef ] = useState<HTMLButtonElement | null>(null);
     const [ nextButtonRef, setNextButtonRef ] = useState<HTMLButtonElement | null>(null);
+    const [ swiper, setSwiper ] = useState<Swiper | null>(null);
+    const isStoppedByFocus = useRef(false);
+
+    // autoplay must not run for people who asked for less motion, and must not move slides away from keyboard focus
+    const handleSwiper = (instance: Swiper) => {
+        setSwiper(instance);
+
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            instance.autoplay.stop();
+        }
+    };
+
+    const handleFocus = () => {
+        if (swiper?.autoplay.running) {
+            swiper.autoplay.stop();
+            isStoppedByFocus.current = true;
+        }
+    };
+
+    const handleBlur = (event: FocusEvent<HTMLDivElement>) => {
+        if (isStoppedByFocus.current && !event.currentTarget.contains(event.relatedTarget)) {
+            swiper?.autoplay.start();
+            isStoppedByFocus.current = false;
+        }
+    };
 
     return (
         <div className="c-persons">
@@ -31,7 +58,11 @@ export default function Persons<T extends Record<string, any>>(props: Props<T>) 
                 { props.title }
             </Title>
 
-            <div className="c-persons__cards">
+            <div
+                className="c-persons__cards"
+                onFocus={ handleFocus }
+                onBlur={ handleBlur }
+            >
                 <Carousel
                     items={ props.items }
                     modules={ [ Autoplay, Navigation ] }
@@ -45,7 +76,8 @@ export default function Persons<T extends Record<string, any>>(props: Props<T>) 
                             navigation: {
                                 prevEl: prevButtonRef,
                                 nextEl: nextButtonRef
-                            }
+                            },
+                            onSwiper: handleSwiper
                         }
                     }
                     slideProps={

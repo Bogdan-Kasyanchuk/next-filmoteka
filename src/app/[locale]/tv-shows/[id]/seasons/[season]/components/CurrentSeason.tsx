@@ -4,12 +4,12 @@ import { ShowMore } from '@re-dev/react-truncate';
 import Image from 'next/image';
 import { useExtracted, useFormatter } from 'next-intl';
 
+import Link from '@/components/ui/navigation/PrefetchLink';
 import Title from '@/components/ui/typography/Title';
 import { IMG_SIZES } from '@/datasets/constants';
 import { PLACEHOLDERS } from '@/datasets/placeholders';
 import { imageUrl } from '@/helpers/externalUrls';
 import { pagesTVShowUrl } from '@/routes';
-import { Link } from '@/services/i18n/navigation';
 import { CurrentTVShowMapper, SeasonDetailsMapper } from '@/types';
 
 type Props = {
@@ -97,6 +97,8 @@ export default function CurrentSeason(props: Props) {
                     <ShowMore
                         className="p-season__current-season-overview-text"
                         lines={ 5 }
+                        more={ t('Read more') }
+                        less={ t('Read less') }
                     >
                         { props.season.overview }
                     </ShowMore>

@@ -1,11 +1,11 @@
 import clsx from 'clsx';
 import Image from 'next/image';
 
+import Link from '@/components/ui/navigation/PrefetchLink';
 import { IMG_SIZES } from '@/datasets/constants';
 import { PLACEHOLDERS } from '@/datasets/placeholders';
 import { imageUrl } from '@/helpers/externalUrls';
 import { pagesPersonUrl } from '@/routes';
-import { Link } from '@/services/i18n/navigation';
 import { CastMapper } from '@/types';
 
 type Props = {
@@ -31,10 +31,11 @@ export default function CastCard(props: Props) {
                             ? imageUrl(IMG_SIZES.CAST_COVER, props.cast.profile_path)
                             : '/img/avatar-placeholder.svg'
                     }
-                    sizes="161px"
                     alt={ props.cast.name }
                     placeholder={ PLACEHOLDERS[ '1x1' ] }
                     fill
+                    // TMDB face crops exist in one size only, so a srcSet would repeat the same file
+                    unoptimized
                 />
             </div>
    

@@ -2,17 +2,12 @@ import { Metadata } from 'next';
 import { getExtracted } from 'next-intl/server';
 
 import Container from '@/components/ui/layouts/Container';
+import Link from '@/components/ui/navigation/PrefetchLink';
 import { pagesHomeUrl } from '@/routes';
-import { Link } from '@/services/i18n/navigation';
 
-export async function generateMetadata(): Promise<Metadata> {
-    const t = await getExtracted();
-        
-    return {
-        title: '404',
-        description: t('The page you are looking for does not exist.')
-    };
-}
+export const metadata: Metadata = {
+    title: '404'
+};
 
 export default async function NotFound() {
     const t = await getExtracted();

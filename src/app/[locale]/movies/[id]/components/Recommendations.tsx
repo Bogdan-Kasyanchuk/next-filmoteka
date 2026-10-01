@@ -15,7 +15,7 @@ type Props = {
     id: string
 };
 
-export default function Recommendatio1ns(props: Props) {
+export default function Recommendations(props: Props) {
     const locale = useLocale();
         
     const {

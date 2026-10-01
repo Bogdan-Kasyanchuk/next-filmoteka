@@ -1,53 +1,62 @@
 'use client';
 
-import { useMediaQuery } from '@mantine/hooks';
 import clsx from 'clsx';
-import Link from 'next/link';
-import { useSearchParams } from 'next/navigation';
-import { useExtracted, useLocale } from 'next-intl';
-import { useMemo } from 'react';
+import { useExtracted } from 'next-intl';
 
 import Icon from '@/components/ui/data-display/Icon';
-import { getPathname } from '@/services/i18n/navigation';
+import Link from '@/components/ui/navigation/PrefetchLink';
 import buildUrl from '@/utils/buildUrl';
-import { withBaseUrl } from '@/utils/withBaseUrl';
 
 import { ELLIPSIS, desktopPagination, mobilePagination } from './generatePagination';
 
 type Props = {
     currentPage: number,
     totalPages: number,
-    path: string
+    path: string,
+    query?: Record<string, string>
 };
 
 export default function Pagination(props: Props) {
-    const searchParams = useSearchParams();
-    const locale = useLocale();
-
     const t = useExtracted();
 
     const createPageURL = (page: number) => {
-        const params = new URLSearchParams(searchParams);
+        const params = new URLSearchParams(props.query);
 
-        return withBaseUrl(buildUrl)(
-            getPathname({ locale, href: `${ props.path }/page/${ page }` }), params
-        );
+        return buildUrl(`${ props.path }/page/${ page }`, params);
     };
 
-    const isMobile = useMediaQuery(
-        '(max-width: 767px)',
-        false,
-        { getInitialValueInEffect: false }
+    // both sets are rendered and switched by CSS, so server and client markup match on any screen
+    const renderPages = (pages: (number | string)[], variant: 'mobile' | 'desktop') => pages.map(
+        (page, index) => (
+            <li
+                key={ `${ variant }-${ index }` }
+                aria-hidden={ page === ELLIPSIS ? true : undefined }
+                className={
+                    clsx('c-pagination__item', `c-pagination__item--${ variant }`, {
+                        'c-pagination__item--is-active': page === props.currentPage,
+                        'pointer-events-none': page === ELLIPSIS
+                    })
+                }
+            >
+                {
+                    typeof page === 'number'
+                        ? <Link
+                            href={ createPageURL(page) }
+                            aria-current={ page === props.currentPage ? 'page' : undefined }
+                        >
+                            { page }
+                        </Link>
+                        : <>{ page }</>
+                }
+            </li>
+        )
     );
 
-    const generatedAllPages = useMemo(() => {
-        return isMobile
-            ? mobilePagination(props.currentPage, props.totalPages)
-            : desktopPagination(props.currentPage, props.totalPages);
-    }, [ props.currentPage, props.totalPages, isMobile ]);
-
     return (
-        <div className="c-pagination">
+        <nav
+            aria-label={ t('Pagination') }
+            className="c-pagination"
+        >
             <ul className="c-pagination__list">
                 <li
                     className={
@@ -68,28 +77,8 @@ export default function Pagination(props: Props) {
                     }
                 </li>
 
-                {
-                    generatedAllPages.map(
-                        (page, index) => (
-                            <li
-                                key={ index }
-                                className={
-                                    clsx('c-pagination__item', {
-                                        'c-pagination__item--is-active': page === props.currentPage,
-                                        'pointer-events-none': page === ELLIPSIS
-                                    })
-                                }
-                            >
-                                {
-                                    typeof page === 'number'
-                                        ? <Link href={ createPageURL(page) }>
-                                            { page }
-                                        </Link>
-                                        : <>{ page }</>
-                                }
-                            </li>
-                        ))
-                }
+                { renderPages(mobilePagination(props.currentPage, props.totalPages), 'mobile') }
+                { renderPages(desktopPagination(props.currentPage, props.totalPages), 'desktop') }
 
                 <li
                     className={
@@ -115,7 +104,7 @@ export default function Pagination(props: Props) {
                 className="c-pagination__progress-bar"
                 style={ { width: `${ props.currentPage / props.totalPages * 100 }%` } }
             />
-        </div>
+        </nav>
     );
 }
 

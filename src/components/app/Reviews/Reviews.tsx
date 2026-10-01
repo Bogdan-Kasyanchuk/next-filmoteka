@@ -29,7 +29,7 @@ export default function Reviews(props: Props) {
         hasNextPage
     } = useSuspenseInfiniteQuery({
         queryKey: generalQueryKeys.reviews(props.type, props.id, locale),
-        queryFn: ({ pageParam }) => getReviews(props.type, props.id, pageParam, locale),
+        queryFn: ({ pageParam }) => getReviews(props.type, props.id, pageParam),
         initialPageParam: 1,
         getNextPageParam: lastPage => {
             const nextPage = lastPage.page + 1;
@@ -83,7 +83,7 @@ export default function Reviews(props: Props) {
                         } 
                     }
                 >
-                    { isFetchingNextPage ? 'Loading...' : t('Load more') }
+                    { isFetchingNextPage ? t('Loading...') : t('Load more') }
                 </button>
             }
         </Wrapper>

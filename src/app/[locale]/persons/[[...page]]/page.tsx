@@ -1,36 +1,37 @@
 import { HydrationBoundary, QueryClient, dehydrate } from '@tanstack/react-query';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { getExtracted, getLocale } from 'next-intl/server';
+import { Locale } from 'next-intl';
+import { getExtracted, setRequestLocale } from 'next-intl/server';
 
 import Container from '@/components/ui/layouts/Container';
 import Title from '@/components/ui/typography/Title';
 import { personsQueryKeys } from '@/helpers/queryKeys';
 import { pagesPersonsUrl } from '@/routes';
 import { getPersons } from '@/services/tmdb/persons';
-import { DataShema, PersonShema } from '@/shemas';
 import generateMetaTags from '@/utils/generateMetaTags';
 import isInvalidPage from '@/utils/isInvalidPage';
 import normalizePage from '@/utils/normalizePage';
+import withNotFound from '@/utils/withNotFound';
 
 import Content from './components/Content';
 
 import './styles/index.css';
 
-export async function generateMetadata(): Promise<Metadata> {
-    const locale = await getLocale();
+// rendered on first request, then served from the cache and revalidated with the data
+export function generateStaticParams() {
+    return [];
+}
 
-    const t = await getExtracted();
+export async function generateMetadata(props: Props): Promise<Metadata> {
+    const { locale } = await props.params;
+
+    const t = await getExtracted({ locale });
 
     return generateMetaTags(
         {
             title: t('Persons'),
             description: t('Actors, film crew members of films and tv shows.'),
-            keywords: [ 
-                t('persons'),
-                t('actors'),
-                t('film crew members')
-            ],
             path: pagesPersonsUrl(),
             locale
         }
@@ -38,35 +39,31 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 type Props = {
-    params: Promise<{ page?: string[] }>
+    params: Promise<{ locale: Locale, page?: string[] }>
 };
 
 export default async function Page(props: Props) {
-    const [ locale, params ] = await Promise.all([
-        getLocale(),
-        props.params
-    ]);
+    const params = await props.params;
+    const { locale } = params;
 
-    const t = await getExtracted();
+    setRequestLocale(locale);
+
+    const t = await getExtracted({ locale });
 
     const page = params.page ? normalizePage(params.page[ 1 ]) : 1;
 
-    if (params.page && isInvalidPage( params.page[ 0 ], page)) {
+    if (params.page && isInvalidPage(params.page)) {
         notFound();
     }
 
     const queryClient = new QueryClient();
 
-    await queryClient.prefetchQuery({
+    const data = await withNotFound(queryClient.fetchQuery({
         queryKey: personsQueryKeys.allPersons(page, locale),
         queryFn: () => getPersons(page, locale)
-    });
+    }));
 
-    const data = queryClient.getQueryData<DataShema<PersonShema>>(
-        personsQueryKeys.allPersons(page, locale)
-    );
-            
-    if (!data || !data.results.length) {
+    if (!data.results.length) {
         notFound();
     }
 

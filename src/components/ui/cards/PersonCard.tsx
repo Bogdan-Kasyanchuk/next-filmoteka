@@ -3,11 +3,12 @@
 import Image from 'next/image';
 import { useExtracted } from 'next-intl';
 
+import Link from '@/components/ui/navigation/PrefetchLink';
 import { IMG_SIZES } from '@/datasets/constants';
 import { PLACEHOLDERS } from '@/datasets/placeholders';
 import { imageUrl } from '@/helpers/externalUrls';
+import useTmdbLabels from '@/hooks/useTmdbLabels';
 import { pagesPersonUrl } from '@/routes';
-import { Link } from '@/services/i18n/navigation';
 import { PersonMapper } from '@/types';
 
 type Props = {
@@ -17,6 +18,7 @@ type Props = {
 
 export default function PersonCard(props: Props) {
     const t = useExtracted();
+    const { department } = useTmdbLabels();
         
     return (
         <div className="c-media-card c-media-card--person">
@@ -63,7 +65,7 @@ export default function PersonCard(props: Props) {
                 </Link>
                 
                 <p className="c-media-card__footer-department">
-                    { props.person.known_for_department }
+                    { department(props.person.known_for_department) }
                 </p>
             </div>
         </div>

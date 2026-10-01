@@ -95,7 +95,11 @@ export default function ReviewCard(props: Props) {
             <div className="c-review-card__content">
                 {
                     props.isTextTruncated
-                        ? <ShowMore lines={ 5 }>
+                        ? <ShowMore
+                            lines={ 5 }
+                            more={ t('Read more') }
+                            less={ t('Read less') }
+                        >
                             { props.review.content }
                         </ShowMore>
                         : <p>{ props.review.content }</p>

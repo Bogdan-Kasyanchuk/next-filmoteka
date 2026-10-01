@@ -18,7 +18,7 @@ type Props = {
 export default function Content(props: Props) {
     const locale = useLocale();
         
-    const { data, isPending, isError, error } = useQuery({
+    const { data, isPending, error } = useQuery({
         queryKey: personsQueryKeys.allPersons(props.page, locale),
         queryFn: () => getPersons(props.page, locale),
         placeholderData: keepPreviousData,
@@ -32,8 +32,8 @@ export default function Content(props: Props) {
         return <Loader />;
     }
 
-    if (isError) {
-        throw new Error(error.message);
+    if (!data) {
+        throw new Error(error?.message ?? 'Internal server error');
     }
 
     return (

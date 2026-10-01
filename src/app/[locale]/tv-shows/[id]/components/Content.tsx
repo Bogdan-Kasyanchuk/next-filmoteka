@@ -25,7 +25,7 @@ export default function Content(props: Props) {
 
     const t = useExtracted();
         
-    const { data, isPending, isError, error } = useQuery({
+    const { data, isPending, error } = useQuery({
         queryKey: tvShowsQueryKeys.tvShowById(props.id, locale),
         queryFn: () => getTVShowById(props.id, locale),
         select: data => transformTVShowDetails(data)
@@ -35,8 +35,8 @@ export default function Content(props: Props) {
         return <Loader />;
     }
 
-    if (isError) {
-        throw new Error(error.message);
+    if (!data) {
+        throw new Error(error?.message ?? 'Internal server error');
     }
 
     return (
@@ -55,11 +55,6 @@ export default function Content(props: Props) {
                             seasons={ data.seasons }
                             tvShowId={ props.id }
                         />
-                    }
-
-                    {
-                        data.videos.length > 0 &&
-                        <Videos videos={ data.videos } />
                     }
 
                     {
@@ -84,6 +79,11 @@ export default function Content(props: Props) {
                                 item => <CrewCard crew={ item } />
                             }
                         </Persons>
+                    }
+
+                    {
+                        data.videos.length > 0 &&
+                        <Videos videos={ data.videos } />
                     }
                 </Container>
             }

@@ -137,7 +137,8 @@ export type MovieDetailsMapper = {
         origin_country: string[],
         production_companies: Company[],
         spoken_languages: SpokenLanguage[],
-        socialLinks: SocialLinkMapper[]
+        socialLinks: SocialLinkMapper[],
+        has_similar: boolean
     },
     cast: CastMapper[],
     crew: CrewMapper[],
@@ -187,7 +188,8 @@ export type TVShowDetailsMapper = {
         spoken_languages: SpokenLanguage[],
         created_by: Creator[],
         networks: Network[],
-        socialLinks: SocialLinkMapper[]
+        socialLinks: SocialLinkMapper[],
+        has_similar: boolean
     },
     seasons: SeasonMapper[],
     cast: CastMapper[],

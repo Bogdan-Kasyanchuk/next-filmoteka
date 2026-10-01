@@ -10,19 +10,20 @@ type Props = ComponentPropsWithoutRef<`h${ Order }`> & {
 };
 
 export default function Title(props: Props) {
-    const Component = props.order || 'h2';
+    const { order, variant, className, ...rest } = props;
+
+    const Component = order || 'h2';
 
     return (
         <Component
+            { ...rest }
             className={
                 clsx([
                     'c-title',
-                    `c-title--${ props.variant || 2 }`,
-                    props.className
+                    `c-title--${ variant || 2 }`,
+                    className
                 ])
             }
-        >
-            { props.children }
-        </Component>
+        />
     );
 }

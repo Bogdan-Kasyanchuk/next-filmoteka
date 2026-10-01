@@ -12,7 +12,7 @@ export default function Videos(props: Props) {
     const t = useExtracted();
 
     return (
-        <div>
+        <div className="c-videos">
             <Title
                 order="h3"
                 variant={ 3 }
@@ -20,12 +20,12 @@ export default function Videos(props: Props) {
             >
                 { t('Videos') }
             </Title>
-            
+
             <ul className="c-videos__list">
                 {
                     props.videos.map(
-                        (video, index) => (
-                            <li key={ index }>
+                        video => (
+                            <li key={ video.key }>
                                 <VideoCard video={ video } />
                             </li>
                         )

@@ -20,7 +20,7 @@ type Props = {
 export default function Content(props: Props) {
     const locale = useLocale();
         
-    const { data, isPending, isError, error } = useQuery({
+    const { data, isPending, error } = useQuery({
         queryKey: tvShowsQueryKeys.alltvShows(props.type, props.page, locale),
         queryFn: () => getTVShows(props.type, props.page, locale),
         placeholderData: keepPreviousData,
@@ -34,8 +34,8 @@ export default function Content(props: Props) {
         return <Loader />;
     }
 
-    if (isError) {
-        throw new Error(error.message);
+    if (!data) {
+        throw new Error(error?.message ?? 'Internal server error');
     }
 
     return (
@@ -61,6 +61,7 @@ export default function Content(props: Props) {
                     currentPage={ props.page }
                     totalPages={ data.total_pages > 500 ? 500 : data.total_pages }
                     path={ pagesTVShowsUrl() }
+                    query={ { type: props.type } }
                 />
             }
         </div>

@@ -27,7 +27,7 @@ type Props = {
 export default function Content(props: Props) {
     const locale = useLocale();
     
-    const { data, isPending, isError, error } = useQuery({
+    const { data, isPending, error } = useQuery({
         queryKey: generalQueryKeys.search(props.type, props.adult, props.query, props.page, locale),
         queryFn: () => getSearch(props.type, props.adult, props.query, props.page, locale),
         placeholderData: keepPreviousData,
@@ -54,8 +54,8 @@ export default function Content(props: Props) {
         return <Loader />;
     }
 
-    if (isError) {
-        throw new Error(error.message);
+    if (!data) {
+        throw new Error(error?.message ?? 'Internal server error');
     }
 
     if (!data || !data.results.length) {
@@ -93,6 +93,13 @@ export default function Content(props: Props) {
                     currentPage={ props.page }
                     totalPages={ data.total_pages > 500 ? 500 : data.total_pages }
                     path={ pagesSearchUrl() }
+                    query={
+                        {
+                            type: props.type,
+                            adult: props.adult,
+                            query: props.query
+                        }
+                    }
                 />
             }
         </div>

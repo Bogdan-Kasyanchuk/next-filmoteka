@@ -35,7 +35,10 @@ export default function ImageCard(props: Props) {
             <dl className="c-image-card__info-list">
                 <div className="c-image-card__info-item">
                     <dt>{ t('Rating:') }</dt>
-                    <dd>{ Math.round(props.image.vote_average ?? 0 * 10) }</dd>
+                    <dd>
+                        { Math.round((props.image.vote_average ?? 0) * 10) }
+                        <span>%</span>
+                    </dd>
                 </div>
 
                 <div className="c-image-card__info-item">

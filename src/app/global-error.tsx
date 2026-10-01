@@ -1,12 +1,12 @@
 'use client';
 
-import { Plus_Jakarta_Sans } from 'next/font/google';
+import { Manrope } from 'next/font/google';
 
 import Container from '@/components/ui/layouts/Container';
 
 import '@/styles/app.css';
 
-const font = Plus_Jakarta_Sans({ subsets: [ 'latin' ] });
+const font = Manrope({ subsets: [ 'latin' ] });
 
 type Props = {
     error: Error,

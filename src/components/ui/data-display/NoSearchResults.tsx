@@ -12,7 +12,7 @@ export default function NoSearchResults() {
                 width={ 80 }
                 height={ 80 }
                 src="/svg/search.svg"
-                alt={ t('Search icon') }
+                alt=""
                 unoptimized
             />
 

@@ -9,13 +9,13 @@ import CompanyDetails from '@/components/app/CompanyDetails';
 import Popover from '@/components/ui/data-display/Popover';
 import SocialLinks from '@/components/ui/data-display/SocialLinks';
 import Container from '@/components/ui/layouts/Container';
+import Link from '@/components/ui/navigation/PrefetchLink';
 import Title from '@/components/ui/typography/Title';
 import { IMG_SIZES } from '@/datasets/constants';
 import { PLACEHOLDERS } from '@/datasets/placeholders';
 import { MediaType } from '@/enums';
 import { imageUrl } from '@/helpers/externalUrls';
 import { pagesSimilarUrl } from '@/routes';
-import { Link } from '@/services/i18n/navigation';
 import { MovieDetailsMapper } from '@/types';
 
 type Props = {
@@ -34,14 +34,17 @@ export default function MovieDetails(props: Props) {
         <div>
             <div className="p-movie__details">
                 <div className="p-movie__details-backdrop">
-                    <Image
-                        src={ imageUrl(IMG_SIZES.MEDIA_DETAILS_BACKDROP, props.movie.backdrop_path) }
-                        sizes="(max-width: 767px) 768px, (max-width: 1319px) 1320px, 1920px"
-                        alt={ props.movie.title }
-                        fill
-                        preload
-                        loading="eager"
-                    />
+                    {
+                        props.movie.backdrop_path &&
+                        <Image
+                            src={ imageUrl(IMG_SIZES.MEDIA_DETAILS_BACKDROP, props.movie.backdrop_path) }
+                            sizes="(max-width: 767px) 768px, (max-width: 1319px) 1320px, 1920px"
+                            alt={ props.movie.title }
+                            fill
+                            preload
+                            loading="eager"
+                        />
+                    }
                 </div>
 
                 <Container className="p-movie__details-container">
@@ -67,12 +70,15 @@ export default function MovieDetails(props: Props) {
                             loading="eager"
                         />
 
-                        <Link
-                            href={ pagesSimilarUrl(MediaType.MOVIE, props.id) }
-                            className="p-movie__details-similar-button"
-                        >
-                            { t('Similar movies') }
-                        </Link>
+                        {
+                            props.movie.has_similar &&
+                            <Link
+                                href={ pagesSimilarUrl(MediaType.MOVIE, props.id) }
+                                className="p-movie__details-similar-button"
+                            >
+                                { t('Similar movies') }
+                            </Link>
+                        }
                     </div>
 
                     <Title className="p-movie__details-title">
@@ -104,7 +110,7 @@ export default function MovieDetails(props: Props) {
 
                         <li className="p-movie__details-list-rounds-item">
                             { props.movie.vote_count ?? 0 }
-                            <span>{ t('votes') }</span>
+                            <span>{ t('{count, plural, one {vote} other {votes}}', { count: props.movie.vote_count ?? 0 }) }</span>
                         </li>
 
                         <li className="p-movie__details-list-rounds-item">
@@ -241,6 +247,8 @@ export default function MovieDetails(props: Props) {
                             <ShowMore
                                 className="p-movie__details-overview-text"
                                 lines={ 5 }
+                                more={ t('Read more') }
+                                less={ t('Read less') }
                             >
                                 { props.movie.overview }
                             </ShowMore>
@@ -274,7 +282,7 @@ export default function MovieDetails(props: Props) {
                                                     }
                                                     fill
                                                     sizes="50px"
-                                                    alt={ company.name }
+                                                    alt=""
                                                 />
                                             </div>
                                                     
@@ -286,6 +294,7 @@ export default function MovieDetails(props: Props) {
                                                         trigger={
                                                             <button
                                                                 type="button"
+                                                                aria-label={ t('About {name}', { name: company.name }) }
                                                                 className="p-movie__details-companies-trigger"
                                                             >
                                                                 i

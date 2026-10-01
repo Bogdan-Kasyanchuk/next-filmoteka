@@ -15,20 +15,25 @@ export default function Tabs<T>(props: Props<T>) {
             {
                 props.tabs.map(
                     (filter, index) => (
-                        <li
-                            key={ index }
-                            className={
-                                clsx('c-tabs__item', {
-                                    'c-tabs__item--is-active': filter.value === props.active
-                                })
-                            }
-                            onClick={
-                                () => {
-                                    props.onClick(filter.value);
+                        <li key={ index }>
+                            <button
+                                type="button"
+                                aria-pressed={ filter.value === props.active }
+                                className={
+                                    clsx('c-tabs__item', {
+                                        'c-tabs__item--is-active': filter.value === props.active
+                                    })
                                 }
-                            }
-                        >
-                            { filter.label }
+                                onClick={
+                                    () => {
+                                        if (filter.value !== props.active) {
+                                            props.onClick(filter.value);
+                                        }
+                                    }
+                                }
+                            >
+                                { filter.label }
+                            </button>
                         </li>
                     )
                 )

@@ -25,14 +25,14 @@ export default async function Footer() {
                                 >
                                     <img
                                         src={ logo.icon }
-                                        alt={ logo.name }
+                                        alt=""
                                         loading="lazy"
                                     />
 
                                     <a
                                         href={ logo.href }
                                         target="_blank"
-                                        rel="nofollow noindex noreferrer"
+                                        rel="nofollow noreferrer"
                                         className="u-overlay u-link"
                                     >
                                         <span className="sr-only">{ logo.name }</span>

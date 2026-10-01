@@ -1,17 +1,14 @@
-'use client';
-
-import { useExtracted } from 'next-intl';
-
 import { PLACEHOLDERS } from '@/datasets/placeholders';
 
 import Wrapper from './Wrapper';
 
 export default function Skeleton() {
-    const t = useExtracted();
-        
     return (
         <Wrapper>
-            <div className="c-recommendations__list">
+            <div
+                aria-hidden
+                className="c-recommendations__list"
+            >
                 {
                     [ 1, 2, 3, 4, 5, 6, 7 ].map(
                         item => (
@@ -23,7 +20,7 @@ export default function Skeleton() {
                                 
                                 <img
                                     src={ PLACEHOLDERS[ '2x3' ] }
-                                    alt={ t('Placeholder') }
+                                    alt=""
                                     width={ 400 }
                                     height={ 600 }
                                 />

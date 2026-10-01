@@ -9,13 +9,14 @@ import CompanyDetails from '@/components/app/CompanyDetails';
 import Popover from '@/components/ui/data-display/Popover';
 import SocialLinks from '@/components/ui/data-display/SocialLinks';
 import Container from '@/components/ui/layouts/Container';
+import Link from '@/components/ui/navigation/PrefetchLink';
 import Title from '@/components/ui/typography/Title';
 import { IMG_SIZES } from '@/datasets/constants';
 import { PLACEHOLDERS } from '@/datasets/placeholders';
 import { MediaType } from '@/enums';
 import { imageUrl } from '@/helpers/externalUrls';
+import useTmdbLabels from '@/hooks/useTmdbLabels';
 import { pagesPersonUrl, pagesSimilarUrl } from '@/routes';
-import { Link } from '@/services/i18n/navigation';
 import { TVShowDetailsMapper } from '@/types';
 
 import NetworkDetails from './NetworkDetails';
@@ -29,6 +30,7 @@ export default function TVShowDetails(props: Props) {
     const format = useFormatter();
 
     const t = useExtracted();
+    const { tvShowType } = useTmdbLabels();
         
     const average = Math.round((props.tvShow.vote_average ?? 0) * 10);
 
@@ -36,14 +38,17 @@ export default function TVShowDetails(props: Props) {
         <div>
             <div className="p-tv-show__details">
                 <div className="p-tv-show__details-backdrop">
-                    <Image
-                        src={ imageUrl(IMG_SIZES.MEDIA_DETAILS_BACKDROP, props.tvShow.backdrop_path) }
-                        sizes="(max-width: 767px) 768px, (max-width: 1319px) 1320px, 1920px"
-                        alt={ props.tvShow.name }
-                        fill
-                        preload
-                        loading="eager"
-                    />
+                    {
+                        props.tvShow.backdrop_path &&
+                        <Image
+                            src={ imageUrl(IMG_SIZES.MEDIA_DETAILS_BACKDROP, props.tvShow.backdrop_path) }
+                            sizes="(max-width: 767px) 768px, (max-width: 1319px) 1320px, 1920px"
+                            alt={ props.tvShow.name }
+                            fill
+                            preload
+                            loading="eager"
+                        />
+                    }
                 </div>
 
                 <Container className="p-tv-show__details-container">
@@ -69,12 +74,15 @@ export default function TVShowDetails(props: Props) {
                             loading="eager"
                         />
 
-                        <Link
-                            href={ pagesSimilarUrl(MediaType.TV_SHOW, props.id) }
-                            className="p-tv-show__details-similar-button"
-                        >
-                            { t('Similar tv shows') }
-                        </Link>
+                        {
+                            props.tvShow.has_similar &&
+                            <Link
+                                href={ pagesSimilarUrl(MediaType.TV_SHOW, props.id) }
+                                className="p-tv-show__details-similar-button"
+                            >
+                                { t('Similar tv shows') }
+                            </Link>
+                        }
                     </div>
 
                     <Title className="p-tv-show__details-title">
@@ -106,7 +114,7 @@ export default function TVShowDetails(props: Props) {
 
                         <li className="p-tv-show__details-list-rounds-item">
                             { props.tvShow.vote_count ?? 0 }
-                            <span>{ t('votes') }</span>
+                            <span>{ t('{count, plural, one {vote} other {votes}}', { count: props.tvShow.vote_count ?? 0 }) }</span>
                         </li>
 
                         <li className="p-tv-show__details-list-rounds-item">
@@ -116,12 +124,12 @@ export default function TVShowDetails(props: Props) {
 
                         <li className="p-tv-show__details-list-rounds-item">
                             { props.tvShow.number_of_seasons ?? 0 }
-                            <span>{ t('seasons') }</span>
+                            <span>{ t('{count, plural, one {season} other {seasons}}', { count: props.tvShow.number_of_seasons ?? 0 }) }</span>
                         </li>
 
                         <li className="p-tv-show__details-list-rounds-item">
                             { props.tvShow.number_of_episodes ?? 0 }
-                            <span>{ t('episodes') }</span>
+                            <span>{ t('{count, plural, one {episode} other {episodes}}', { count: props.tvShow.number_of_episodes ?? 0 }) }</span>
                         </li>
                     </ul>
 
@@ -166,7 +174,7 @@ export default function TVShowDetails(props: Props) {
 
                         <li className="p-tv-show__details-list-info-item">
                             <span>{ t('Type:') }</span>
-                            <span>{ props.tvShow.type }</span>
+                            <span>{ tvShowType(props.tvShow.type) }</span>
                         </li>
 
                         {
@@ -244,6 +252,8 @@ export default function TVShowDetails(props: Props) {
                             <ShowMore
                                 className="p-tv-show__details-overview-text"
                                 lines={ 5 }
+                                more={ t('Read more') }
+                                less={ t('Read less') }
                             >
                                 { props.tvShow.overview }
                             </ShowMore>
@@ -279,10 +289,11 @@ export default function TVShowDetails(props: Props) {
                                                                     ? imageUrl(IMG_SIZES.CREATOR_AVATAR, creator.profile_path)
                                                                     : '/img/avatar-placeholder.svg'
                                                             }
-                                                            sizes="50px"
-                                                            alt={ creator.name }
+                                                            alt=""
                                                             placeholder={ PLACEHOLDERS[ '1x1' ] }
                                                             fill
+                                                            // TMDB face crops exist in one size only, so a srcSet would repeat the same file
+                                                            unoptimized
                                                         />
                                                     </div>
 
@@ -317,7 +328,7 @@ export default function TVShowDetails(props: Props) {
                                                                 ? imageUrl(IMG_SIZES.NETWORK_LOGO, network.logo_path)
                                                                 : '/img/image-placeholder.svg'
                                                         }
-                                                        alt={ network.name }
+                                                        alt=""
                                                         sizes="50px"
                                                         placeholder={ PLACEHOLDERS[ '1x1' ] }
                                                         fill
@@ -332,6 +343,7 @@ export default function TVShowDetails(props: Props) {
                                                             trigger={
                                                                 <button
                                                                     type="button"
+                                                                    aria-label={ t('About {name}', { name: network.name }) }
                                                                     className="p-tv-show__details-networks-trigger"
                                                                 >
                                                                     i
@@ -384,7 +396,7 @@ export default function TVShowDetails(props: Props) {
                                                                 : '/img/image-placeholder.svg'
                                                         }
                                                         sizes="50px"
-                                                        alt={ company.name }
+                                                        alt=""
                                                         placeholder={ PLACEHOLDERS[ '1x1' ] }
                                                         fill
                                                     />
@@ -398,6 +410,7 @@ export default function TVShowDetails(props: Props) {
                                                             trigger={
                                                                 <button
                                                                     type="button"
+                                                                    aria-label={ t('About {name}', { name: company.name }) }
                                                                     className="p-tv-show__details-companies-trigger"
                                                                 >
                                                                     i

@@ -18,7 +18,7 @@ export default function NetworkDetails(props: Props) {
 
     const t = useExtracted();
         
-    const { data, isPending, isError, error } = useQuery({
+    const { data, isPending, isError } = useQuery({
         queryKey: generalQueryKeys.network(props.id, locale),
         queryFn: () => getNetworkById(props.id, locale),
         select: data => {
@@ -34,13 +34,13 @@ export default function NetworkDetails(props: Props) {
 
     if (isPending) {
         return (
-            <Content>Loading...</Content>
+            <Content>{ t('Loading...') }</Content>
         );
     }
 
     if (isError) {
         return (
-            <Content>{ error.message }</Content>
+            <Content>{ t('Oops, something went wrong. Please try again later.') }</Content>
         );
     }
 

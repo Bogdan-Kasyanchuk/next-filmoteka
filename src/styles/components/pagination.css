@@ -54,6 +54,18 @@
             opacity: 0.5;
         }
 
+        &--mobile {
+            @media (--min-md) {
+                display: none;
+            }
+        }
+
+        &--desktop {
+            @media (--max-sm) {
+                display: none;
+            }
+        }
+
         &:first-child i {
             transform: scale(-1);
         }

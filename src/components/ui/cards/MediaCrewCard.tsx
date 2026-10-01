@@ -3,12 +3,12 @@
 import Image from 'next/image';
 import { useExtracted, useFormatter } from 'next-intl';
 
+import Link from '@/components/ui/navigation/PrefetchLink';
 import { IMG_SIZES } from '@/datasets/constants';
 import { PLACEHOLDERS } from '@/datasets/placeholders';
 import { MediaType } from '@/enums';
 import { imageUrl } from '@/helpers/externalUrls';
 import { pagesMovieUrl, pagesTVShowUrl } from '@/routes';
-import { Link } from '@/services/i18n/navigation';
 import { MediaCrewMapper } from '@/types';
 
 type Props = {
@@ -40,7 +40,7 @@ export default function MediaCrewCard(props: Props) {
                 </div>
 
                 <div className="c-media-compact-card__type">
-                    { props.crew.media_type }
+                    { props.crew.media_type === MediaType.MOVIE ? t('Movie') : t('TV') }
                 </div>
             </div>
 

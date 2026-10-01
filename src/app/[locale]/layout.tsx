@@ -1,33 +1,37 @@
 import { Metadata } from 'next';
-import { Plus_Jakarta_Sans } from 'next/font/google';
+import { Manrope } from 'next/font/google';
 import { notFound } from 'next/navigation';
 import { Locale, NextIntlClientProvider, hasLocale } from 'next-intl';
-import { getExtracted } from 'next-intl/server';
-import { PropsWithChildren } from 'react';
+import { getExtracted, setRequestLocale } from 'next-intl/server';
+import { PropsWithChildren, Suspense } from 'react';
 
 import Footer from '@/components/app/Footer';
 import Header from '@/components/app/Header';
+import NavigationProgress from '@/components/app/NavigationProgress';
 import { PARAMETERS } from '@/datasets/constants';
 import QueryProvider from '@/providers/QueryProvider';
 import { routing } from '@/services/i18n/routing';
 
 import '@/styles/app.css';
 
-const font = Plus_Jakarta_Sans({ subsets: [ 'latin' ] });
+const font = Manrope({ subsets: [ 'latin', 'cyrillic' ] });
 
 type Props = {
     params: Promise<{ locale: Locale }>
 };
+
+export function generateStaticParams() {
+    return routing.locales.map(locale => ({ locale }));
+}
 
 export async function generateMetadata(props: Props): Promise<Metadata> {
     const { locale } = await props.params;
     
     if (!hasLocale(routing.locales, locale)) {
         notFound();
-
     }
-    
-    const t = await getExtracted();
+
+    const t = await getExtracted({ locale });
 
     return {
         title: {
@@ -47,13 +51,22 @@ export default async function Layout(props: PropsWithChildren<Props>) {
         notFound();
     }
 
-    const t = await getExtracted();
+    setRequestLocale(locale);
+
+    const t = await getExtracted({ locale });
 
     return (
-        <html lang={ locale }>
+        <html
+            lang={ locale }
+            data-scroll-behavior="smooth"
+        >
             <body className={ font.className }>
                 <NextIntlClientProvider>
                     <QueryProvider>
+                        <Suspense fallback={ null }>
+                            <NavigationProgress />
+                        </Suspense>
+
                         <Header />
 
                         <main>

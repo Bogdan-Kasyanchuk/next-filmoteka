@@ -4,6 +4,7 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import { useExtracted, useLocale } from 'next-intl';
 import { useMemo } from 'react';
 
+import { startNavigationProgress } from '@/components/app/NavigationProgress';
 import Tabs from '@/components/ui/data-display/Tabs';
 import { TVShowType } from '@/enums';
 import { pagesTVShowsUrl } from '@/routes';
@@ -52,7 +53,10 @@ export default function Filter(props: Props) {
 
         params.set('type', type);
 
-        push(buildUrl(`${ getPathname({ locale, href: pagesTVShowsUrl() }) }/page/1`, params));
+        const url = buildUrl(`${ getPathname({ locale, href: pagesTVShowsUrl() }) }/page/1`, params);
+
+        startNavigationProgress(url);
+        push(url);
     };
 
     return (

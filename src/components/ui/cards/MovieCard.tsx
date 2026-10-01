@@ -3,11 +3,11 @@
 import Image from 'next/image';
 import { useExtracted, useFormatter } from 'next-intl';
 
+import Link from '@/components/ui/navigation/PrefetchLink';
 import { IMG_SIZES } from '@/datasets/constants';
 import { PLACEHOLDERS } from '@/datasets/placeholders';
 import { imageUrl } from '@/helpers/externalUrls';
 import { pagesMovieUrl } from '@/routes';
-import { Link } from '@/services/i18n/navigation';
 import { MovieMapper } from '@/types';
 
 type Props = {

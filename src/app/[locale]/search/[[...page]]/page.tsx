@@ -1,9 +1,9 @@
 import { HydrationBoundary, QueryClient, dehydrate } from '@tanstack/react-query';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { getExtracted, getLocale } from 'next-intl/server';
+import { Locale } from 'next-intl';
+import { getExtracted, setRequestLocale } from 'next-intl/server';
 
-import Container from '@/components/ui/layouts/Container';
 import { MediaType } from '@/enums';
 import { generalQueryKeys } from '@/helpers/queryKeys';
 import { pagesSearchUrl } from '@/routes';
@@ -12,40 +12,27 @@ import { Adult } from '@/types';
 import generateMetaTags from '@/utils/generateMetaTags';
 import isInvalidPage from '@/utils/isInvalidPage';
 import normalizePage from '@/utils/normalizePage';
+import withNotFound from '@/utils/withNotFound';
 
 import Content from './components/Content';
-import Filter from './components/Filter';
-import Search from './components/Search';
 
-import './styles/index.css';
+export async function generateMetadata(props: Props): Promise<Metadata> {
+    const { locale } = await props.params;
 
-export async function generateMetadata(): Promise<Metadata> {
-    const locale = await getLocale();
-
-    const t = await getExtracted();
+    const t = await getExtracted({ locale });
 
     return generateMetaTags(
         {
             title: t('Search'),
             description: t('Search movies, tv shows, actors and film crew members of films and tv shows.'),
-            keywords: [
-                t('search'),
-                t('movies'),
-                t('tv shows'),
-                t('persons'),
-                t('actors'),
-                t('film crew members')
-            ],
             path: pagesSearchUrl(),
-            locale,
-            index: false,
-            follow: false
+            locale
         }
     );
 }
 
 type Props = {
-    params: Promise<{ page?: string[] }>,
+    params: Promise<{ locale: Locale, page?: string[] }>,
     searchParams: Promise<{
         type?: 'multi' | MediaType,
         adult?: Adult,
@@ -54,47 +41,38 @@ type Props = {
 };
 
 export default async function Page(props: Props) {
-    const [ locale, params, searchParams ] = await Promise.all([
-        getLocale(),
+    const [ params, searchParams ] = await Promise.all([
         props.params,
         props.searchParams
     ]);
+    const { locale } = params;
+
+    setRequestLocale(locale);
     
     const type = searchParams.type || 'multi';
     const adult = searchParams.adult || 'false';
     const query = searchParams.query || '';
     const page = params.page ? normalizePage(params.page[ 1 ]) : 1;
 
-    if (params.page && isInvalidPage( params.page[ 0 ], page)) {
+    if (params.page && isInvalidPage(params.page)) {
         notFound();
     }
 
     const queryClient = new QueryClient();
 
-    await queryClient.prefetchQuery({
+    await withNotFound(queryClient.fetchQuery({
         queryKey: generalQueryKeys.search(type, adult, query, page, locale),
         queryFn: () => getSearch(type, adult, query, page, locale)
-    });
+    }));
 
     return (
-        <Container className="p-search">
-            <div className="p-search__head">
-                <Search />
-
-                <Filter
-                    type={ type }
-                    adult={ adult }
-                />
-            </div>
-
-            <HydrationBoundary state={ dehydrate(queryClient) }>
-                <Content
-                    type={ type }
-                    adult={ adult }
-                    query={ query }
-                    page={ page }
-                />
-            </HydrationBoundary>
-        </Container>
+        <HydrationBoundary state={ dehydrate(queryClient) }>
+            <Content
+                type={ type }
+                adult={ adult }
+                query={ query }
+                page={ page }
+            />
+        </HydrationBoundary>
     );
 }
